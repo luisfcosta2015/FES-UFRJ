@@ -39,7 +39,15 @@ A metodologia para realizar o objetivo, inclui as seguintes etapas iniciais dest
 
 -Separar os alunos em grupos de 4 pessoas;
 
--O tema do projeto de desenvolvimento do sistema será o mesmo para todos os grupos, neste caso módulo de customização de relatórios para o software i-educar, e os alunos terão que passar pela fase de diagramação UML, codificação, documentação e testes.
+-O tema do projeto de desenvolvimento do sistema será o mesmo para todos os grupos, neste caso módulo de customização de relatórios para o software i-educar, e os alunos terão que passar pela fase de análise de requisitos, codificação, documentação e testes.
+
+-O repositório oficial do nosso trabalho é este aqui. Ao término do trabalho vamos migrar o conteúdo para o da comunidade.
+
+-Vamos realizar Sprint uma aula por semana, após o primeiro mês de aulas, com checagem de checkpoint do que foi proposto na semana anterior. Os atrasos nas entregas contaram negativamente na avaliação.
+
+-As entregas serão avaliadas de forma positiva;
+
+-Não existem avaliações neutras, ou foi bem ou foi mal;
 
 -Os/as alunos/as que optarem poderão ter apoio em horários fora da aulas, pelo telegram ou encontros presenciais.
 
