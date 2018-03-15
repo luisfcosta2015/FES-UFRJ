@@ -1,8 +1,11 @@
 # FES-UFRJ
 Repositório do Projeto da disciplina Fundamentos da Engenharia de Software,  UFRJ
+
 1o Período de 2018
+
 Prof. Eber Assis Schmitz
 eber@nce.ufrj.br
+
 Colaborador. Luis Felipe Coimbra Costa
 luisfcosta@cos.ufrj.br
 
@@ -70,4 +73,5 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 
 
 [1]https://github.com/portabilis/ieducar
+
 [2]https://pt.wikipedia.org/wiki/Ciclo_de_vida_de_desenvolvimento_de_sistemas
