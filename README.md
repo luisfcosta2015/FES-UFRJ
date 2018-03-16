@@ -73,13 +73,84 @@ Os alunos irão trabalhar no desnvolvimento do software, realizando Sprints sema
 
 Ao final da disciplina, os alunos devem liberar na versão Comunidade do software i_educar, no Github as principais melhorias desenvolvidas e realizar uma apresentação em grupo do trabalho.
 
+Os times de desenvolvimento estão assim divididos:
 
+NOME                                    TIME
 
+Lucas Rampazzo				                  FMF
 
+Matheus Guimarães			                  FMF
 
+Lucca Martins Felix 			              FMF
 
+Thiago Henrique Neves Coleho	          FMF
 
+Pedro Vítor				                      GAARA VS ROCKLEE.WMV
+
+Gabriel Aureo de Oliveira Campos	      GAARA VS ROCKLEE.WMV
+
+Matteo Vinícius de Oliveira Campos	    GAARA VS ROCKLEE.WMV
+
+André Cordeiro Santos de Queiroz	      GAARA VS ROCKLEE.WMV
+
+Xiao Yong Kong				                  LECHUGA
+
+Michel Vinicius				                  LECHUGA
+
+Gustavo de Assis Siqueira		            LECHUGA
+
+André Figueiredo Muniz			            LECHUGA
+
+Tomaz Cuber Guimarães			              GALINE
+
+Larissa Galleno				                  GALINE
+
+Gilberto Lopes				                  GALINE
+
+Aline Freire de Rezende			            GALINE
+
+Filipe José Maciel Ramalho		          SSL
+
+Gibrain da Silva Oliveira		            SSL
+
+Henrique Fernandes Fagundes		          SSL
+
+Caio Rodrigues Dias de Jesus		        SSL
+
+Gabriel Dias da Sousa Mattos		        CELTA 80Km/h
+
+Vitor Mattor Milioni			              CELTA 80Km/h
+
+Thiago Outeiro Damasceno		            CELTA 80Km/h
+
+Ricardo Soares Brito			              DEVILS
+
+Igor da Costa Trotte 			              DEVILS
+
+João Felipe Rocha			                  LOREM IPSUM
+
+François Alexis Rocha			              LOREM IPSUM
+
+Carolina Hiromi Kameyama		            LOREM IPSUM
+
+Daniel Lopes de Sousa			              LOREM IPSUM
+
+Lucas Telles Ferreira Leite		          TEDD
+
+Daniel da Rubia 			                  TEDD
+
+Elvis Nóbrega				                    TEDD
+
+Dennison Monteiro			                  TEDD
+
+Matheus Souza Feitosa 
 
 [1]https://github.com/portabilis/ieducar
 
 [2]https://pt.wikipedia.org/wiki/Ciclo_de_vida_de_desenvolvimento_de_sistemas
+
+
+
+
+
+
