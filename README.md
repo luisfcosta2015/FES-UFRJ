@@ -123,6 +123,8 @@ Vitor Mattor Milioni			              CELTA 80Km/h
 
 Thiago Outeiro Damasceno		            CELTA 80Km/h
 
+Joyce Brum				                      CELTA 80Km/h
+
 Ricardo Soares Brito			              DEVILS
 
 Igor da Costa Trotte 			              DEVILS
