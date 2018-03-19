@@ -83,15 +83,15 @@ Matheus Guimarães			                  FMF
 
 Lucca Martins Felix 			              FMF
 
-Thiago Henrique Neves Coleho	          FMF
+Thiago Henrique Neves Coleho	              FMF
 
-Pedro Vítor				                      GAARA VS ROCKLEE.WMV
+Pedro Vitor Marques Nascimento            GAARA VS ROCKLEE.WMV
 
 Gabriel Aureo de Oliveira Campos	      GAARA VS ROCKLEE.WMV
 
-Matteo Vinícius de Oliveira Campos	    GAARA VS ROCKLEE.WMV
+Matheus Vinícius de Oliveira Campos	      GAARA VS ROCKLEE.WMV
 
-André Cordeiro Santos de Queiroz	      GAARA VS ROCKLEE.WMV
+Henrique Vermelho de Toledo	              GAARA VS ROCKLEE.WMV
 
 Xiao Yong Kong				                  LECHUGA
 
@@ -141,7 +141,7 @@ Lucas Telles Ferreira Leite		          TEDD
 
 Daniel da Rubia 			                  TEDD
 
-Elvis Nóbrega				                    TEDD
+Elvis Nobrega				                    TEDD
 
 Dennison Monteiro			                  TEDD
 
