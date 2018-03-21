@@ -144,8 +144,10 @@ Daniel da Rubia 			                  TEDD
 Elvis Nobrega				                    TEDD
 
 Dennison Monteiro			                  TEDD
+ 
+Matheus Souza Feitosao			                  XtremeGoHorse
 
-Matheus Souza Feitosa 
+Gabriel Silva Pereira			                  XtremeGoHorse
 
 [1]https://github.com/portabilis/ieducar
 
