@@ -149,6 +149,8 @@ Matheus Souza Feitosao			                  XtremeGoHorse
 
 Gabriel Silva Pereira			                  XtremeGoHorse
 
+Victor Ribeiro Pires                                      XtremeGoHorse
+
 [1]https://github.com/portabilis/ieducar
 
 [2]https://pt.wikipedia.org/wiki/Ciclo_de_vida_de_desenvolvimento_de_sistemas
