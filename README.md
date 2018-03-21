@@ -72,7 +72,7 @@ As linguagens, técnicas, ferramentas e métodos disponíveis hoje em dia são d
 
 Ao final da disciplina, os alunos devem liberar na versão Comunidade do software *i-Educar*, no Github as principais melhorias desenvolvidas e realizar uma apresentação em grupo do trabalho.
 
-Os times de desenvolvimento estão assim divididos:
+## Grupos de Desenvolvimento:
 
 | Aluno | Grupo 
 | --- | --- |
