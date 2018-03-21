@@ -145,9 +145,11 @@ Elvis Nobrega				                    TEDD
 
 Dennison Monteiro			                  TEDD
  
-Matheus Souza Feitosao			                  XtremeGoHorse
+Matheus Souza Feitosa			                 XtremeGoHorse
 
 Gabriel Silva Pereira			                  XtremeGoHorse
+
+André Cordeiro Santos de Queiroz          XtremeGoHorse
 
 [1]https://github.com/portabilis/ieducar
 
