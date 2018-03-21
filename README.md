@@ -125,6 +125,8 @@ Thiago Outeiro Damasceno		            CELTA 80Km/h
 
 Joyce Brum				                      CELTA 80Km/h
 
+Gabriel Ribas Penha das Chagas       DEVILS
+
 Ricardo Soares Brito			              DEVILS
 
 Igor da Costa Trotte 			              DEVILS
