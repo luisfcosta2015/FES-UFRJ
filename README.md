@@ -100,6 +100,7 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 | Vitor Mattos Milioni | CELTA 80Km/h
 | Thiago Outeiro Damasceno | CELTA 80Km/h
 | Joyce Brum | CELTA 80Km/h
+|Matheus Martins de Souza | DEVILS
 | Gabriel Ribas Penha das Chagas | DEVILS
 | Ricardo Soares Brito | DEVILS
 | Igor da Costa Trotte | DEVILS
