@@ -115,6 +115,7 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 | Matheus Souza Feitosa | XtremeGoHorse
 | Gabriel Silva Pereira | XtremeGoHorse
 | Victor Ribeiro Pires | XtremeGoHorse
+| André Cordeiro Santos de Queiroz | XtremeGoHorse
 
 [1]<https://github.com/portabilis/ieducar>
 
