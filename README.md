@@ -76,53 +76,43 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 
 | Aluno | Grupo 
 | --- | --- |
-|
-|Lucas Rampazzo | FMF 
+| Lucas Rampazzo | FMF 
 | Matheus Guimarães | FMF
 | Lucca Martins Felix | FMF
 | Thiago Henrique Neves Coelho | FMF
-|
 | Pedro Vitor Marques Nascimento | GAARA VS ROCKLEE.WMV
 | Gabriel Áureo de Oliveira Campos | GAARA VS ROCKLEE.WMV
 | Matheus Vinicius Figueiredo | GAARA VS ROCKLEE.WMV
 | Henrique Vermelho de Toledo | GAARA VS ROCKLEE.WMV
-|
 | Xiao Yong Kong | LECHUGA
 | Michel Vinicius | LECHUGA
 | Gustavo de Assis Siqueira | LECHUGA
 | André Figueiredo Muniz | LECHUGA
-|
 | Tomaz Cuber Guimarães | GALINE
 | Larissa Galeno | GALINE
 | Gilberto Lopes | GALINE
 | Aline Freire de Rezende | GALINE
-|
-|Filipe José Maciel Ramalho | SSL
+| Filipe José Maciel Ramalho | SSL
 | Gibrain da Silva Oliveira | SSL
 | Henrique Fernandes Fagundes | SSL
 | Caio Rodrigues Dias de Jesus | SSL
-|
-|Gabriel Dias da Sousa Mattos | CELTA 80Km/h
+| Gabriel Dias da Sousa Mattos | CELTA 80Km/h
 | Vitor Mattos Milioni | CELTA 80Km/h
 | Thiago Outeiro Damasceno | CELTA 80Km/h
 | Joyce Brum | CELTA 80Km/h
-|
-|Matheus Martins de Souza | DEVILS
+| Matheus Martins de Souza | DEVILS
 | Gabriel Ribas Penha das Chagas | DEVILS
 | Ricardo Soares Brito | DEVILS
 | Igor da Costa Trotte | DEVILS
-|
-|João Felipe Rocha | LOREM IPSUM
+| João Felipe Rocha | LOREM IPSUM
 | François Alexis Rocha | LOREM IPSUM
 | Carolina Hiromi Kameyama| LOREM IPSUM
 | Daniel Lopes de Sousa | LOREM IPSUM
-|
-|Lucas Telles Ferreira Leite | TEDD
+| Lucas Telles Ferreira Leite | TEDD
 | Daniel da Rubia | TEDD
 | Elvis Nobrega | TEDD
 | Dennison Monteiro | TEDD
-|
-|Matheus Souza Feitosa | XtremeGoHorse
+| Matheus Souza Feitosa | XtremeGoHorse
 | Gabriel Silva Pereira | XtremeGoHorse
 | Victor Ribeiro Pires | XtremeGoHorse
 | André Cordeiro Santos de Queiroz | XtremeGoHorse 
