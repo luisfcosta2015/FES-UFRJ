@@ -85,7 +85,7 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 | Matheus Vinicius Figueiredo | GAARA VS ROCKLEE.WMV
 | Henrique Vermelho de Toledo | GAARA VS ROCKLEE.WMV
 | Xiao Yong Kong | LECHUGA
-| Michel Vinicius | LECHUGA
+| Michel Caiafa | LECHUGA
 | Gustavo de Assis Siqueira | LECHUGA
 | André Figueiredo Muniz | LECHUGA
 | Tomaz Cuber Guimarães | GALINE
