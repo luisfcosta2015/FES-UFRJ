@@ -94,7 +94,7 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 | Aline Freire de Rezende | GALINE
 | Filipe José Maciel Ramalho | SSL
 | Gibrain da Silva Oliveira | SSL
-| Henrique Fernandes Fagundes | SSL
+| Henrique Fernandes Rodrigues | SSL
 | Caio Rodrigues Dias de Jesus | SSL
 | Gabriel Dias da Sousa Mattos | CELTA 80Km/h
 | Vitor Mattos Milioni | CELTA 80Km/h
