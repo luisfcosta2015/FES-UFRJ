@@ -96,6 +96,7 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 | Gibrain da Silva Oliveira | SSL
 | Henrique Fernandes Rodrigues | SSL
 | Caio Rodrigues Dias de Jesus | SSL
+| Níkolas Ribeiro Curitnhas Pimentel | SSL
 | Gabriel Dias da Sousa Mattos | CELTA 80Km/h
 | Vitor Mattos Milioni | CELTA 80Km/h
 | Thiago Outeiro Damasceno | CELTA 80Km/h
