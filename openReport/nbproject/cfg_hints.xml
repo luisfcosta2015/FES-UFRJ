@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//NetBeans//DTD Tool Configuration 1.0//EN" "http://www.netbeans.org/dtds/ToolConfiguration-1_0.dtd">
+<configuration>
+    <tool kind="hints" type="text/x-java">
+        <node name="Braces_DO_WHILE_LOOP">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Braces_FOR_LOOP">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Braces_WHILE_LOOP">
+            <attribute name="enabled" value="true"/>
+        </node>
+        <node name="Braces_IF">
+            <attribute name="enabled" value="true"/>
+        </node>
+    </tool>
+</configuration>

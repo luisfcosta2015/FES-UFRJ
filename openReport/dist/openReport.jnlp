@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="openReport.jnlp">
+  <information>
+    <title>openReport</title>
+    <vendor>GvsRL</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lib\itextpdf-5.5.13.jar" size="2320581" download="eager" />
+    <jar href="lib\jfoenix-8.0.1.jar" size="2405715" download="eager" />
+    <jar href="lib\xmlpull-1.1.3.1.jar" size="7188" download="eager" />
+    <jar href="lib\xpp3_min-1.1.4c.jar" size="24956" download="eager" />
+    <jar href="lib\xstream-1.4.10.jar" size="589803" download="eager" />
+    <jar href="openReport.jar" size="15798" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="openReport" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="openreport.OpenReport"  name="openReport" />
+  <update check="always"/>
+</jnlp>

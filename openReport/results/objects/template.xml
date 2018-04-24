@@ -1,0 +1,25 @@
+<template>
+  <title>
+    <pdfexport.c__Text>
+      <id>0</id>
+      <type>PLAIN_TEXT</type>
+      <text>sofas</text>
+    </pdfexport.c__Text>
+    <pdfexport.c__Text>
+      <id>0</id>
+      <type>PLAIN_TEXT</type>
+      <text>sos</text>
+    </pdfexport.c__Text>
+    <pdfexport.c__Header>
+      <id>0</id>
+      <type>HEADER</type>
+      <schoolName>a</schoolName>
+      <street>b</street>
+      <aptNumber>c</aptNumber>
+      <cep>d</cep>
+      <telefone>e</telefone>
+      <webSite>f</webSite>
+      <image>g</image>
+    </pdfexport.c__Header>
+  </title>
+</template>
