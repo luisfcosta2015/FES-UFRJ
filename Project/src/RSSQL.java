@@ -2,25 +2,31 @@ import com.google.gson.Gson;
 import model.RSSQLObject;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class RSSQL {
 
     //for tests
     public static void main(String[] args) throws Exception{
+
         new RSSQL("res/test/rssql.json");
 
     }
 
     public RSSQL(String filename) throws Exception{
+
+        RSSQLObject mRSO;
+
         File file = new File(filename);
         Scanner scanner = new Scanner(file);
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         while(scanner.hasNext()){
-            str+=scanner.nextLine();
+            sb.append(scanner.nextLine());
         }
         Gson gson = new Gson();
-        RSSQLObject rso = gson.fromJson(str,RSSQLObject.class);
-        System.out.print(rso);
+        mRSO = gson.fromJson(sb.toString(),RSSQLObject.class);
+        System.out.print(mRSO);
+
     }
 }
