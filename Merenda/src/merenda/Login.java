@@ -121,8 +121,9 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Conexao con = new Conexao();
         // "" é macete pra converter de char[] pra String
-        if (con.login(txtUsuario.getText(),String.valueOf(passSenha.getPassword()))){
-            System.out.println("Login bem-sucedido!");                    
+        if ( con.login(txtUsuario.getText(),String.valueOf(passSenha.getPassword())) ){    
+            Sessao sessao = Sessao.getInstance();
+            System.out.println("Login bem-sucedido: " + sessao.getId() + " " + sessao.getFuncao());                    
         } else {
             System.out.println("Login falhou!");                              
         }

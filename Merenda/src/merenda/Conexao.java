@@ -15,6 +15,8 @@ public class Conexao {
     
     public boolean login(String usuario, String senha){
         
+        boolean logou = false;
+        
         try {
             String DBUrl = "jdbc:mysql://localhost:3306/merenda?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             String DBUser = "root";
@@ -33,18 +35,23 @@ public class Conexao {
             ResultSet rs = st.executeQuery(query);
 
             // iterate through the java resultset
-            boolean ans = rs.next();
+            if (rs.next()){    
+                logou = true;
+                int id = rs.getInt("id");
+                int funcao = rs.getInt("funcao_id");
+            
+                Sessao.createInstance(id, funcao);    
+            }
             
             st.close();  
 
             conn.close();
-            
-            return ans;
         } catch (Exception e) {
             System.err.println("Got an exception! ");
             System.err.println(e.getMessage());
         }
-        return false;
+        
+        return logou;
     }
 
     public void ConectaDB() {
