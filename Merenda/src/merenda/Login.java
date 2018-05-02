@@ -5,6 +5,11 @@
  */
 package merenda;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
 /**
  *
  * @author andrecsq
@@ -114,8 +119,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Conexao con = new Conexao();
-        con.ConectaDB();
+        System.out.println("Não quero");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -123,7 +127,16 @@ public class Login extends javax.swing.JFrame {
         // "" é macete pra converter de char[] pra String
         if ( con.login(txtUsuario.getText(),String.valueOf(passSenha.getPassword())) ){    
             Sessao sessao = Sessao.getInstance();
-            System.out.println("Login bem-sucedido: " + sessao.getId() + " " + sessao.getFuncao());                    
+            System.out.println("Login bem-sucedido: " + sessao.getId() + " " + sessao.getFuncao());   
+            
+            Principal tela = new Principal();
+            tela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            tela.pack();
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            tela.setLocation(dim.width/2-tela.getSize().width/2, dim.height/2-tela.getSize().height/2);
+            
+            this.setVisible(false);
+            tela.setVisible(true);
         } else {
             System.out.println("Login falhou!");                              
         }

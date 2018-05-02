@@ -32,6 +32,10 @@ public class Sessao {
             instance = new Sessao(id, funcao);        
     }
     
+    public static void destroy(){
+        instance = null;
+    }
+    
     public int getId() {
         return instance.id;
     }
