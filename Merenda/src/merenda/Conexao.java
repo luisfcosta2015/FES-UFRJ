@@ -60,20 +60,39 @@ public class Conexao {
         return logou;
     }
     
-    public boolean cadastra_pessoa(int funcao_id, String nome, String cpf, String usuario, String senha, String oficio, String depto){
+    // Executar select, 
+    public ResultSet query_select(String query){
+        ResultSet rs = null;
+        try {
+            Connection conn;
+            conn = getConnection();
+            
+            // create the java statement
+            Statement st;
+            st = conn.createStatement();
+
+            // execute the query, and get a java resultset
+            // nesse resultset que vem os paranaues
+            rs = st.executeQuery(query);
+
+            st.close();  
+            
+            conn.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        
+        return rs;
+    }
+    
+    // Executar insert e update
+    public boolean query_update(String query){
         
         boolean sucesso = false;
         
         try {
             Connection conn = getConnection();
-            
-            System.out.println("usuario: " + usuario);
-            System.out.println("senha: " + senha);
-            
-            String query = "INSERT INTO pessoa (funcao_id, nome, cpf, usuario, senha, oficio, depto) VALUES";
-            query += "("+ funcao_id +", " + "\'" + nome + "\',\'" + cpf + "\',\'" + usuario + "\',\'" ;
-            query += senha +"\',\'" + oficio + "\',\'" + depto + "\')" ;
-            
             System.out.println(query);
 
             // create the java statement
@@ -82,6 +101,7 @@ public class Conexao {
             // execute the query, and get a java resultset
             st.executeUpdate(query);
             
+            // se der merda vai cair no try/catch e não vai atribuir true ao sucesso
             sucesso = true;
             
             st.close();  
@@ -96,7 +116,19 @@ public class Conexao {
     }
     
     
+    
+    public boolean cadastra_pessoa(int funcao_id, String nome, String cpf, String usuario, String senha, String oficio, String depto){
+        
+        String query = "INSERT INTO pessoa (funcao_id, nome, cpf, usuario, senha, oficio, depto) VALUES";
+        query += "("+ funcao_id +", " + "\'" + nome + "\',\'" + cpf + "\',\'" + usuario + "\',\'" ;
+        query += senha +"\',\'" + oficio + "\',\'" + depto + "\')" ;
+        
+        return query_update(query);
+    }
+    
+    
 /*
+    // EXEMPLO DE SELECT
     public void ConectaDB() {
 
         try {
