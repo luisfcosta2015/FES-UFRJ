@@ -5,7 +5,7 @@ dados populado. Por isso, construímos um banco de dados fictício
 para o nosso projeto.  
 
 ### Modelo Entidade-Relacionamento do BD:
-![](ER.jpeg)
+![](ER.jpg)
 
 ### Tabela de Relação:
 ![](TABREL.jpeg)
