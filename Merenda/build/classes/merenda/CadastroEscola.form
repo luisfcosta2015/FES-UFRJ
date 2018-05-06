@@ -55,32 +55,32 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField2" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="inputEscolaNome" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField3" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="inputEndereco" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField4" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="inputTel1" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField5" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="inputTel2" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField6" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="inputTel3" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField7" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="inputFax" min="-2" pref="262" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="110" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField8" pref="262" max="32767" attributes="0"/>
+                      <Component id="inputEmail" pref="262" max="32767" attributes="0"/>
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
+                      <Component id="inputProfessores" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputDiretor" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="inputAlunos" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="inputVoltar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="inputCadastrar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -99,8 +99,8 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputEscolaNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -109,8 +109,8 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputProfessores" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -119,8 +119,8 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputTel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputDiretor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -129,20 +129,20 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputTel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputAlunos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputTel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputFax" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="inputVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="13" max="32767" attributes="0"/>
               </Group>
@@ -160,7 +160,7 @@
             <Property name="text" type="java.lang.String" value="Nome da escola:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="inputEscolaNome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex..: Escola Estadual Caxiense"/>
           </Properties>
@@ -170,7 +170,7 @@
             <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="inputEndereco">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex..: Rua Santa Cruz, 157, Centro"/>
           </Properties>
@@ -180,7 +180,7 @@
             <Property name="text" type="java.lang.String" value="Telefone 1:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="inputTel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex..: 21 1122-1122"/>
           </Properties>
@@ -190,7 +190,7 @@
             <Property name="text" type="java.lang.String" value="Telefone 2 - N&#xe3;o Obrigat&#xf3;rio:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="inputTel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex..: 21 1122-1122"/>
           </Properties>
@@ -200,7 +200,7 @@
             <Property name="text" type="java.lang.String" value="Telefone 3 - N&#xe3;o obrigat&#xf3;rio:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
+        <Component class="javax.swing.JTextField" name="inputTel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex..: 21 1122-1122"/>
           </Properties>
@@ -210,7 +210,7 @@
             <Property name="text" type="java.lang.String" value="Fax - N&#xe3;o obrigat&#xf3;rio:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
+        <Component class="javax.swing.JTextField" name="inputFax">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex..: 21 1122-1122"/>
           </Properties>
@@ -220,12 +220,12 @@
             <Property name="text" type="java.lang.String" value="E-mail:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField8">
+        <Component class="javax.swing.JTextField" name="inputEmail">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex.: escolacaxiense@caxias.gov.br"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputEmailActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
@@ -233,7 +233,7 @@
             <Property name="text" type="java.lang.String" value="N&#xfa;mero de professores:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="inputProfessores">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex.: 25"/>
           </Properties>
@@ -243,7 +243,7 @@
             <Property name="text" type="java.lang.String" value="Diretor"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="inputDiretor">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -263,17 +263,17 @@
             <Property name="text" type="java.lang.String" value="N&#xfa;mero de alunos:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="inputAlunos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ex.: 152"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="inputCadastrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="inputVoltar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
