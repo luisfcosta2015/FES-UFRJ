@@ -13,6 +13,7 @@ import java.sql.*;
  */
 public class MysqlCon{  
     public static void Conectar(){  
+ 
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
             Connection con=DriverManager.getConnection(  
@@ -22,6 +23,8 @@ public class MysqlCon{
             con.close();  
         }catch(Exception e){
             System.out.println(e);
-        }  
-}  
+        }
+
+        
+    }  
 }  

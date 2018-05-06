@@ -16,6 +16,8 @@ import MysqlCon.MysqlCon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -31,28 +33,12 @@ public class RelatorioCustomizadoFMF extends Application {
             
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-                //new MysqlCon().Conectar();
-                try {
-                  FileReader arq = new FileReader("../data/teste.txt");
-                  BufferedReader lerArq = new BufferedReader(arq);
-
-                  String temp_linha = lerArq.readLine();
-                  String linha = temp_linha + "\n"; // lê a primeira linha
-                  while (true) { 
-                    temp_linha = lerArq.readLine(); // lê da segunda até a última linha
-                    if(temp_linha==null){break;}
-                    linha+= temp_linha+ "\n";
-                  }
-
-                  System.out.printf("%s", linha);
- 
-                    arq.close();
-                } catch (IOException e) {
-                    System.err.printf("Erro na abertura do arquivo: %s.\n",
-                    e.getMessage());
-                }
-            }
+                Map<String, String> valores = new HashMap<String, String>(); 
+                valores.put("substituicao", "legal");
+                valores.put("materia", "Matemática III");
+                String resultado = Leitor.getConsulta("../data/teste.txt", valores);
+                System.out.println(resultado);
+            } 
         });
         
         StackPane root = new StackPane();
