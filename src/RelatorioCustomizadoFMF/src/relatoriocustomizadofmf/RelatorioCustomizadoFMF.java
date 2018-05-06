@@ -13,6 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import MysqlCon.MysqlCon;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -29,7 +32,26 @@ public class RelatorioCustomizadoFMF extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
-                new MysqlCon().Conectar();
+                //new MysqlCon().Conectar();
+                try {
+                  FileReader arq = new FileReader("../data/teste.txt");
+                  BufferedReader lerArq = new BufferedReader(arq);
+
+                  String temp_linha = lerArq.readLine();
+                  String linha = temp_linha + "\n"; // lê a primeira linha
+                  while (true) { 
+                    temp_linha = lerArq.readLine(); // lê da segunda até a última linha
+                    if(temp_linha==null){break;}
+                    linha+= temp_linha+ "\n";
+                  }
+
+                  System.out.printf("%s", linha);
+ 
+                    arq.close();
+                } catch (IOException e) {
+                    System.err.printf("Erro na abertura do arquivo: %s.\n",
+                    e.getMessage());
+                }
             }
         });
         
