@@ -27,17 +27,19 @@ public class RelatorioCustomizadoFMF extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        MysqlCon BD = new MysqlCon();
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent event) {
-                Map<String, String> valores = new HashMap<String, String>(); 
-                valores.put("substituicao", "legal");
-                valores.put("materia", "Matemática III");
-                String resultado = Leitor.getConsulta("../data/teste.txt", valores);
-                System.out.println(resultado);
+                //Map<String, String> valores = new HashMap<String, String>(); 
+                //valores.put("substituicao", "legal");
+                //valores.put("materia", "Matemática III");
+                //String resultado = Leitor.getConsulta("../data/teste.txt", valores);
+                BD.query("SELECT Nome FROM Professor WHERE Disciplina='Matemática III';");
+                //System.out.println(resultado);
             } 
         });
         

@@ -11,20 +11,46 @@ import java.sql.*;
  *
  * @author lucca
  */
-public class MysqlCon{  
-    public static void Conectar(){  
+public class MysqlCon{
+    public Connection con;
+    
+    public MysqlCon(){
+    }
+    public void Conectar(){  
  
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection(  
-            "jdbc:mysql://localhost:3306","root","FMF");  
+            con=DriverManager.getConnection(  
+            "jdbc:mysql://localhost:3306/FMF","root","FMF");  
             //here sonoo is database name, root is username and password  
             System.out.println("Conectado ao BD");  
-            con.close();  
+        }catch(Exception e){
+            System.out.println(e);
+        }        
+    }
+    
+    public void Desconectar(){
+        try{ 
+            con.close();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    public ResultSet query(String consulta){
+        try{
+            Conectar();
+            Statement stmt=con.createStatement();  
+            ResultSet rs=stmt.executeQuery(consulta);
+            while (rs.next()) {
+                System.out.println(rs.getString("Nome"));
+            }
+            Desconectar();
+            return rs;
         }catch(Exception e){
             System.out.println(e);
         }
-
-        
-    }  
+        return null;
+    }
+    
+    
 }  
