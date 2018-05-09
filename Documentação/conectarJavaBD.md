@@ -8,7 +8,7 @@ import java.sql.*;
       try{  
         Class.forName("com.mysql.jdbc.Driver"); //importa o driver necessário para realizar a conexao
         Connection con=DriverManager.getConnection(  
-        "jdbc:mysql://localhost:3306/sonoo","root","root"); //3 parametros: url, user, senha
+        "jdbc:mysql://localhost:3306/nomeDoSeuBancoDeDados","userID","password"); //3 parametros: url, user, senha
 
         //exemplo de requisição
         Statement stmt=con.createStatement();  
@@ -22,7 +22,8 @@ import java.sql.*;
   }  
 }  
 ```
-
+O objeto *statement* será utilizado para realizar as queries, enquanto que o *resultset* guardará o valor de retorno da consulta.
+O *resultset* funciona como um cursor (iterador) para a sua tabela de retorno. Ele iterará linha por linha.
 Uma observação importante é que na linha Class.forName... ,ele importa o driver responsável por estabelecer a conexão entre o JAVA e o banco de dados. O que acontece é que nem sempre esse arquivo fará parte da sua biblioteca de JAVA. Dessa forma, você precisa:
  - baixar o [Connector/J](https://dev.mysql.com/downloads/connector/j/8.0.html) e extrair seus arquivos.
  - Navegar nas pastas e encontrar o arquivo JAR do connector.
