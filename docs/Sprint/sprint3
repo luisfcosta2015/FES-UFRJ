@@ -1,23 +1,49 @@
 SPRINT REVIEW
   O que deveria ter sido feito
-  Historias da Sprint:
-    *Eu como administrador quero poder gerar novos perfis 
-    (tipo de conta) a fim de que possa dar acesso a outras pessoas de acordo com seu nível de acesso.
-      Tarefas:
-        *Criar opcao de cadastro de usuarios ligado ao banco de dados
-        *Conseguir fazer modificacoes no banco de dados no cadastro de escolas
+  Tarefas Realizadas na Sprint:
+      Histórias:
+        * Eu como diretor quero cadastrar os dados da minha escola de forma a não ter que ficar repetindo-os em todos os relatórios. (Done)
+          Tarefas:
+            *Criar interface para cadastrar escola
+            *Criar interface para excluir escola
+            *Conseguir fazer modificacoes no banco de dados no cadastro de escolas
     
-    *Eu como diretor quero poder gerar o relatório de maneira sequencial para ter mais praticidade.
+        * Eu como diretor quero poder gerar o relatório de maneira sequencial para ter mais praticidade. 
+          Tarefas:
+            *Criar as três opções de relatorio
+        * Eu como administrador quero poder gerar novos perfis (tipo de conta) a fim de que possa dar acesso a outras pessoas de 
+        acordo com seu nível de acesso. (Done)
+          Tarefas:
+            *Criar interface de cadastro de usuários
       
       
 SPRINT PLANNING
   Histórias ainda não finalizadas na sprint anterior
-    *Eu como diretor quero poder gerar o relatório de maneira sequencial para ter mais praticidade.
-    
     *Eu como diretor quero poder lancar os cardapios por dia para que no final do mes nao tenha trabalho acumulado
-    
+     Tarefas:
+      *Configurar a opcao do cardapio
+      *Mandar para o banco de dados
+      
     *Eu como diretor gostaria de lançar diretamente os itens usados no cardápio para que não gaste tempo procurando um a um na tabela.
-    
+     Tarefas:
+      *Criar a tela de itens com um dropdown funcional
+      *Pegar os itens que aparecem no dropdown do banco de dados
+      
+    *Eu como usuário gostaria que todos os arquivos fossem salvos em um banco de dados para centralizar a informação.
+     Tarefas:
+      *Criar uma classe para centralizar a comunicação com o banco
+      *Conectar todas as partes ate o momento ao banco de dados
+      *Colocar o banco de dados na amazon
+      
+      *Eu como diretor quero poder editar dados já lançados para que não tenha que gerar um novo relatório do zero em caso de erro.
+       Tarefas:
+        *Criar uma classe que represente um relatorio
+        *Criar uma interface que mostre uma lista dos relatorios existentes (pegos do banco de dados)
+      
+  RETROSPECTIVA
+    Plataforma para fazer o burndown chart muito complicada, a partir dessa sprint usaremos a planilha oferecida pelo professor
+  
+  Anotações:
     DAO PADRAO PARA MEXER EM BANCO DE DADOS.
     colocar o bd na amazon https://aws.amazon.com/pt/rds/mysql/
     
