@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/FES/Merenda/src/merenda/CadastroPessoa.java</file>
             <file>file:/C:/FES/Merenda/src/merenda/Conexao.java</file>
             <file>file:/C:/FES/Merenda/src/merenda/Principal.java</file>
             <file>file:/C:/FES/Merenda/src/merenda/Login.java</file>
+=======
+            <file>file:/home/victor/Documents/Fes/FES-UFRJ/Merenda/src/Model/Conectar.java</file>
+            <file>file:/home/victor/Documents/Fes/FES-UFRJ/Merenda/src/merenda/Conexao.java</file>
+            <file>file:/home/victor/Documents/Fes/FES-UFRJ/Merenda/src/merenda/CadastroEscola.java</file>
+            <file>file:/home/victor/Documents/Fes/FES-UFRJ/Merenda/src/merenda/Login.java</file>
+>>>>>>> origin/XtremeGoHorse
         </group>
     </open-files>
 </project-private>
