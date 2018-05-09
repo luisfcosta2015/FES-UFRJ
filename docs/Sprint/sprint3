@@ -1,0 +1,25 @@
+SPRINT REVIEW
+  O que deveria ter sido feito
+  Historias da Sprint:
+    *Eu como administrador quero poder gerar novos perfis 
+    (tipo de conta) a fim de que possa dar acesso a outras pessoas de acordo com seu nível de acesso.
+      Tarefas:
+        *Criar opcao de cadastro de usuarios ligado ao banco de dados
+        *Conseguir fazer modificacoes no banco de dados no cadastro de escolas
+    
+    *Eu como diretor quero poder gerar o relatório de maneira sequencial para ter mais praticidade.
+      
+      
+SPRINT PLANNING
+  Histórias ainda não finalizadas na sprint anterior
+    *Eu como diretor quero poder gerar o relatório de maneira sequencial para ter mais praticidade.
+    
+    *Eu como diretor quero poder lancar os cardapios por dia para que no final do mes nao tenha trabalho acumulado
+    
+    *Eu como diretor gostaria de lançar diretamente os itens usados no cardápio para que não gaste tempo procurando um a um na tabela.
+    
+    DAO PADRAO PARA MEXER EM BANCO DE DADOS.
+    colocar o bd na amazon https://aws.amazon.com/pt/rds/mysql/
+    
+    
+    
