@@ -24,7 +24,11 @@ public class Principal extends javax.swing.JFrame {
     
     Login login;
     TelaCardapio cardapio;
+<<<<<<< HEAD
     CapaRelatorio capa;
+=======
+    TelaCadastro cadastro;
+>>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,10 +58,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton2.setText("Criar Relatorio");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 criarRelatorio(evt);
+=======
+        jButton2.setText("Cadastrar Usuario");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+>>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
             }
         });
 
@@ -93,17 +104,21 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addComponent(jButton5))
-                        .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                .addGap(90, 90, 90))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)
+                                .addGap(71, 71, 71)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4)
                             .addComponent(jButton7))))
                 .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 145, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(campoNome)
                 .addGap(145, 145, 145))
         );
@@ -113,20 +128,20 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(sair)
                 .addGap(31, 31, 31)
                 .addComponent(campoNome)
-                .addGap(73, 73, 73)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
                     .addComponent(jButton4)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton4, jButton5, jButton6, jButton7});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton4, jButton5, jButton6, jButton7});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,6 +162,7 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+<<<<<<< HEAD
     private void criarRelatorio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarRelatorio
         capa = new CapaRelatorio(this.usuario);
         capa.setLocationRelativeTo(null);
@@ -154,6 +170,15 @@ public class Principal extends javax.swing.JFrame {
         capa.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_criarRelatorio
+=======
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        cadastro=new TelaCadastro(usuario);
+        cadastro.setLocationRelativeTo(null);
+        cadastro.setVisible(true);
+        cadastro.setResizable(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+>>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
 
     /**
      * @param args the command line arguments

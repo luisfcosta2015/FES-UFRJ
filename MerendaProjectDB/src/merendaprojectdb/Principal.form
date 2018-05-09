@@ -38,12 +38,18 @@
                           <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="jButton6" pref="92" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
@@ -53,7 +59,7 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="145" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="campoNome" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
           </Group>
@@ -65,19 +71,19 @@
               <Component id="sair" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="campoNome" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton4" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" linkSize="1" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
+                  <Component id="jButton2" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton5" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton6" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton7" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,11 +99,22 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
+<<<<<<< HEAD
         <Property name="text" type="java.lang.String" value="Criar Relatorio"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="criarRelatorio"/>
       </Events>
+=======
+        <Property name="text" type="java.lang.String" value="Cadastrar Usuario"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
+      </AuxValues>
+>>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
