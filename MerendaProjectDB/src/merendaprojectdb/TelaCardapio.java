@@ -27,16 +27,21 @@ public class TelaCardapio extends javax.swing.JFrame {
     Cardapio cardapio;
     Principal principal;
     String usuario;
+    ItensRelatorio itensRel;
+    int ano;
+    int mes;
 
     
-    public TelaCardapio(String nome) {
+    public TelaCardapio(String nome, int ano, int mes) {
         initComponents();
-        usuario=nome;
+        this.ano = ano;
+        this.mes = mes;
+        usuario = nome;
         DateFormat df = new SimpleDateFormat("dd/MM");
         
         DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
-        Date dataAtual = new Date();
-        cardapio = new Cardapio(dataAtual.getMonth(),dataAtual.getYear()+1900);
+        
+        cardapio = new Cardapio(mes,ano+1900);
         ArrayList<Date> dias = cardapio.getList();
         System.out.println("oi");
         for(Date data : dias)
@@ -61,6 +66,7 @@ public class TelaCardapio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+        proxButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -82,13 +88,22 @@ public class TelaCardapio extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabela);
 
+        proxButton.setText("Próximo");
+        proxButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proxButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(proxButton)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,7 +111,9 @@ public class TelaCardapio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(proxButton)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 30)); // NOI18N
@@ -164,6 +181,15 @@ public class TelaCardapio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void proxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proxButtonActionPerformed
+        // salva de alguma forma o que foi feito
+        itensRel = new ItensRelatorio(usuario);
+        itensRel.setLocationRelativeTo(null);
+        itensRel.setVisible(true);
+        itensRel.setResizable(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_proxButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -174,6 +200,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton proxButton;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

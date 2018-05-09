@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
     
     Login login;
     TelaCardapio cardapio;
+    CapaRelatorio capa;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,7 +54,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Criar Relatorio");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarRelatorio(evt);
+            }
+        });
 
         jButton4.setText("jButton4");
 
@@ -134,12 +140,20 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        cardapio=new TelaCardapio(usuario);
+        cardapio = new TelaCardapio(usuario,2018,10);
         cardapio.setLocationRelativeTo(null);
         cardapio.setVisible(true);
         cardapio.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void criarRelatorio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarRelatorio
+        capa = new CapaRelatorio(this.usuario);
+        capa.setLocationRelativeTo(null);
+        capa.setVisible(true);
+        capa.setResizable(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_criarRelatorio
 
     /**
      * @param args the command line arguments
