@@ -126,6 +126,14 @@ public class Conexao {
         return query_update(query);
     }
     
+        public boolean cadastra_alimento(String Produto, String Fornecedor, String Marca, char Perecivel){
+        
+        String query = "INSERT INTO alimentos (Produto,Fornecedor,Marca,Perecivel) VALUES";
+        query += "('"+ Produto +"', " + "\'" + Fornecedor + "\',\'" + Marca + "\',\'" + Perecivel + "\')" ;
+        
+        return query_update(query);
+    }
+    
     
 /*
     // EXEMPLO DE SELECT
