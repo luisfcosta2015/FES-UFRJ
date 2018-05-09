@@ -24,11 +24,7 @@ public class Principal extends javax.swing.JFrame {
     
     Login login;
     TelaCardapio cardapio;
-<<<<<<< HEAD
-    CapaRelatorio capa;
-=======
     TelaCadastro cadastro;
->>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,17 +54,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-<<<<<<< HEAD
-        jButton2.setText("Criar Relatorio");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                criarRelatorio(evt);
-=======
         jButton2.setText("Cadastrar Usuario");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
->>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
             }
         });
 
@@ -155,22 +144,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        cardapio = new TelaCardapio(usuario,2018,10);
+        cardapio=new TelaCardapio(usuario, 2018, 10);
         cardapio.setLocationRelativeTo(null);
         cardapio.setVisible(true);
         cardapio.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-<<<<<<< HEAD
-    private void criarRelatorio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarRelatorio
-        capa = new CapaRelatorio(this.usuario);
-        capa.setLocationRelativeTo(null);
-        capa.setVisible(true);
-        capa.setResizable(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_criarRelatorio
-=======
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         cadastro=new TelaCadastro(usuario);
         cadastro.setLocationRelativeTo(null);
@@ -178,7 +158,6 @@ public class Principal extends javax.swing.JFrame {
         cadastro.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
->>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
 
     /**
      * @param args the command line arguments

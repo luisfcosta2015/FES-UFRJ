@@ -99,13 +99,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-<<<<<<< HEAD
-        <Property name="text" type="java.lang.String" value="Criar Relatorio"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="criarRelatorio"/>
-      </Events>
-=======
         <Property name="text" type="java.lang.String" value="Cadastrar Usuario"/>
       </Properties>
       <Events>
@@ -114,7 +107,6 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
       </AuxValues>
->>>>>>> 9427ae122c316c4e60353a2d88a3c7a31adce996
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>

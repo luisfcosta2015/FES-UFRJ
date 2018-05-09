@@ -17,8 +17,8 @@ public class ItensRelatorio extends javax.swing.JFrame {
      * Creates new form ItensRelatorio
      */
     public ItensRelatorio(String nome) {
-        /*usuario = nome;
-        initComponents();*/
+        usuario = nome;
+        initComponents();
     }
     
     private void criaLista() {
