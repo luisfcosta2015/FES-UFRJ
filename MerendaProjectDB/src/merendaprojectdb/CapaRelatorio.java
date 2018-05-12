@@ -17,6 +17,7 @@ public class CapaRelatorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaAlunos = new javax.swing.JTable();
@@ -26,10 +27,12 @@ public class CapaRelatorio extends javax.swing.JFrame {
         mes = new java.awt.TextField();
         ano = new java.awt.TextField();
 
+        jToggleButton1.setText("jToggleButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setLabelFor(mes);
-        jLabel1.setText("Mes");
+        jLabel1.setText("Mes ex: 3");
 
         tabelaAlunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,9 +69,8 @@ public class CapaRelatorio extends javax.swing.JFrame {
         });
 
         jLabel3.setLabelFor(ano);
-        jLabel3.setText("Ano");
+        jLabel3.setText("Ano ex: 2018");
 
-        mes.setText("ex: 3");
         mes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mesActionPerformed(evt);
@@ -76,7 +78,6 @@ public class CapaRelatorio extends javax.swing.JFrame {
         });
 
         ano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        ano.setText("ex:5");
         ano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anoActionPerformed(evt);
@@ -100,8 +101,8 @@ public class CapaRelatorio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
+                            .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(ano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -158,6 +159,7 @@ public class CapaRelatorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private java.awt.TextField mes;
     private javax.swing.JButton proxButton;
     private javax.swing.JTable tabelaAlunos;

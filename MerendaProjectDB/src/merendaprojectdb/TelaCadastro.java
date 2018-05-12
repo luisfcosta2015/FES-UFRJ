@@ -176,8 +176,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         System.out.println(email);
         System.out.println(tipo);
         System.out.println(escola);
-        
-        
+        // atualiza o banco de dados
+        Usuario usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo, BdManager.findEscolaUnidade(""+escola));
+        BdManager.cadastraUser(usuarioNovo);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

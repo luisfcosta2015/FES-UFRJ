@@ -23,7 +23,7 @@ public class Principal extends javax.swing.JFrame {
     }
     
     Login login;
-    TelaCardapio cardapio;
+    CapaRelatorio capa;
     TelaCadastro cadastro;
 
     /**
@@ -47,7 +47,7 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(150, 240, 200));
 
-        jButton1.setText("Cardápio");
+        jButton1.setText("Criar Relatorio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -96,7 +96,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
-                                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(90, 90, 90))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -144,10 +144,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        cardapio=new TelaCardapio(usuario, 2018, 10);
-        cardapio.setLocationRelativeTo(null);
-        cardapio.setVisible(true);
-        cardapio.setResizable(true);
+        capa=new CapaRelatorio(usuario);
+        capa.setLocationRelativeTo(null);
+        capa.setVisible(true);
+        capa.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

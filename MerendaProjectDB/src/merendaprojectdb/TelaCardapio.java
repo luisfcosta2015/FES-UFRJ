@@ -24,6 +24,7 @@ public class TelaCardapio extends javax.swing.JFrame {
      * Creates new form Cardapio
      */
     
+    Calendario calendario;
     Cardapio cardapio;
     Principal principal;
     String usuario;
@@ -41,17 +42,14 @@ public class TelaCardapio extends javax.swing.JFrame {
         
         DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
         
-        cardapio = new Cardapio(mes,ano+1900);
-        ArrayList<Date> dias = cardapio.getList();
+        calendario = new Calendario(mes,ano+1900);
+        ArrayList<Date> dias = calendario.getList();
         System.out.println("oi");
         for(Date data : dias)
         {
             Object[] dado = {df.format(data)};
             tabelinha.addRow(dado);
-            System.out.println(df.format(data));
         }
-        
-        
     }
     
     /**
@@ -183,6 +181,13 @@ public class TelaCardapio extends javax.swing.JFrame {
 
     private void proxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proxButtonActionPerformed
         // salva de alguma forma o que foi feito
+        DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+        cardapio = new Cardapio(calendario);
+        for(int i=0; i < tabelinha.getRowCount(); i++) {
+            cardapio.setCardapio(i, ""+tabelinha.getValueAt(i, 1));
+            System.out.println(""+tabelinha.getValueAt(i, 1));
+        }
+        
         itensRel = new ItensRelatorio(usuario);
         itensRel.setLocationRelativeTo(null);
         itensRel.setVisible(true);

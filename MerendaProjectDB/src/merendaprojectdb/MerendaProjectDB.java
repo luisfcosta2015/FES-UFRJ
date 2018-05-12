@@ -22,7 +22,7 @@ public class MerendaProjectDB {
         Itens itens;
         Login login  = new Login();
         DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
-        Cardapio cardapio = new Cardapio(1,2018);
+        Calendario cardapio = new Calendario(1,2018);
         Escola escola = new Escola("ESTADO DO RIO DE JANEIRO","PREFEITURA DE DUQUE DE CAXIAS",
         "SECRETARIA MUNICIPAL DE EDUCAÇÃO", "SUBSECRETARIA DE EDUCAÇÃO EM INFRAESTRUTURA...", 
         "DEPARTAMENTO DE INFRAESTRUTURA EDUCACIONAL", 33151750, "E.M. ANA DE SOUSA HERDY", "(21)3656-0364");
