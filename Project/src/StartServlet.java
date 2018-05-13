@@ -1,3 +1,4 @@
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +15,9 @@ import javax.sql.DataSource;
 
 
 
-public class ParametersController extends HttpServlet{
+public class StartServlet extends HttpServlet{
 
-    protected DBHelper db = new DBHelper();
-    public ParametersController(){
+    public StartServlet(){
         super();
     }
 
@@ -199,35 +199,48 @@ public class ParametersController extends HttpServlet{
             throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
-        String tipo;
-        tipo = request.getParameter("tipo");
-        switch (tipo){
-            case "escola":
-                out.println(getEscolas());
-                break;
-            case "ano":
-                out.println(getAnos(request.getParameter("escola")));
-                break;
-            case "turmas":
-                out.println(getTurmas(request.getParameter("escola"),request.getParameter("ano")));
-                break;
-            default:
-                out.println("{Error: Incorrect Type of Parameter}");
+
+        //ServletOutputStream sos = response.getOutputStream();
+
+        //double radius =  Double.parseDouble(request.getParameter("rad"));
+        String text = request.getParameter("text");
+
+        //  reading from submit buttons
+        String str1 = request.getParameter("a1");       //  AREA submit button
+        String str2 = request.getParameter("p1");       //  PERIMETER submit button
+
+        out.println("<body>" +
+                "<h3>Using Multiple Submit Buttons in a Single Form</h3>" +
+                "<form method=\"post\" action=\"http://localhost:8080/st\"> <b>");
+
+        out.println("Enter Radius <input type=\"text\" name=\"text\"><br>" +
+                "<input type=\"submit\" value=\"A number\" name=\"p1\">" +
+                "<input type=\"submit\" value=\"What you have written\" name=\"a1\"> </b>" +
+                " </form>" +
+                "</body>");
+
+
+
+        out.println("<h3>");
+
+        if(str2 != null)                            // if AREA is clicked
+        {
+            out.println("You clicked " + str1 + " submit button<br>");
+            out.println("Here you have "+15+"</h2>");
+        }
+        if(str1 != null)                       // if PERIMETER is clicked
+        {
+            out.println("You clicked " + str2 + " submit button<br>");
+            out.println("<h2>You have written </h2>" +
+                    "<h2>"+text.toString()+"</h2>")  ;
         }
 
-
+        out.println("</h3>");
         out.close( );
 
     }
-    protected String getEscolas(){
-        return db.query("SELECT DISTINCT nome_escola FROM escola;");
-    }
-    protected String getAnos(String escola){
-        return db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" ;");
-    }
-    protected String getTurmas(String escola, String ano){
-        return db.query("SELECT DISTINCT * from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" AND ano="+ano+" ;");
-    }
+
+
 
 
 

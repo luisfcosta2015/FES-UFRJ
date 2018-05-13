@@ -8,7 +8,6 @@ public class DBHelper {
     private final String USERNAME = "fugzjqzd";
     private final String PASSWORD = "YdCGgBtsj2HcFB-lsq5G54kPBq4TBWXE";
 
-
     public static void main(String[] args) throws Exception{
         DBHelper dbh = new DBHelper();
         System.out.println(dbh.connect());
@@ -35,26 +34,18 @@ public class DBHelper {
         }
     }
 
-    public String query(String sql){
-        String result = new String();
-
+    public Object query(String sql){
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            result+="[";
             while (rs.next()) {
                 System.out.print("Column 1 returned ");
                 System.out.println(rs.getString(1));
-                result += rs.getString(1);
-                if(!rs.isLast()){
-                    result+=",";
-                }
             }
-            result+="]";
             rs.close();
             st.close();
 
-            return result;
+            return null;
         }catch(SQLException e){
             e.printStackTrace();
             return null;

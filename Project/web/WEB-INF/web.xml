@@ -23,12 +23,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ParametersController</servlet-name>
-        <servlet-class>ParametersController</servlet-class>
+        <servlet-name>TEST</servlet-name>
+        <servlet-class>StartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ParametersController</servlet-name>
-        <url-pattern>/ParametersController</url-pattern>
+        <servlet-name>TEST</servlet-name>
+        <url-pattern>/st</url-pattern>
     </servlet-mapping>
 
     <resource-ref>
