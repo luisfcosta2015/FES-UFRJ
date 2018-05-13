@@ -1,6 +1,6 @@
 Arquivo de teste
 com várias
 linhas
-E com algumas substituições como essa aqui muito §substituicao
-Olha que §substituicao:
-SELECT Nome FROM Professor WHERE Disciplina='§materia';
+E com algumas substituições como essa aqui muito §substituicao§
+Olha que §substituicao§:
+SELECT Nome FROM Professor WHERE Disciplina='§materia§';
