@@ -7,8 +7,10 @@ function comm(url,data,success,fail){
     }).done(success).fail(fail);
 }
 
-function getSessionData(){
-    comm("parametersTest",{},function (response) {
+function get(){
+    comm("parametersController",{
+
+    },function (response) {
         console.log(response)
     },function (response) {
         console.log(response);
