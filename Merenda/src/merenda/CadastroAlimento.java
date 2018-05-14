@@ -33,29 +33,15 @@ public class CadastroAlimento extends javax.swing.JFrame {
     private void initComponents() {
 
         txtPro = new javax.swing.JTextField();
-        txtFor = new javax.swing.JTextField();
-        txtMar = new javax.swing.JTextField();
-        boxPer = new javax.swing.JCheckBox();
         btnVoltar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtQnt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        boxUnid = new javax.swing.JCheckBox();
+        boxKilo = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        txtFor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtForActionPerformed(evt);
-            }
-        });
-
-        boxPer.setText("Perecivel");
-        boxPer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boxPerActionPerformed(evt);
-            }
-        });
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,11 +57,19 @@ public class CadastroAlimento extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Produto");
+        jLabel1.setText("Nome");
 
-        jLabel2.setText("Fornecedor");
+        txtQnt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQntActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Marca");
+        jLabel2.setText("Quantidade que atende");
+
+        boxUnid.setText("Unidade");
+
+        boxKilo.setText("Kilo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,99 +78,100 @@ public class CadastroAlimento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtPro)
-                                .addComponent(txtFor)
-                                .addComponent(txtMar, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                            .addComponent(jLabel1)
-                            .addComponent(boxPer))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(boxUnid)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
                         .addGap(39, 39, 39))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtQnt)
+                            .addComponent(txtPro, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boxKilo)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtQnt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(boxKilo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(boxPer)))
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxUnid))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtForActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtForActionPerformed
-
-    private void boxPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxPerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boxPerActionPerformed
-
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        String Produto = txtPro.getText();
-        String Fornecedor = txtFor.getText();
-        String Marca = txtMar.getText();
-        char Perecivel = 'N';
-        if(boxPer.isBorderPaintedFlat()){
-            Perecivel = 'S';
+        String Nome = txtPro.getText();
+        String Quantidade = txtQnt.getText();
+        char tipo = 'k';
+        int contador = 0;
+        if(boxKilo. isSelected()){
+            tipo = 'k';
+            contador++;
         }
+        if(boxUnid. isSelected()){
+            tipo = 'u';
+            contador++;
+        }
+
         
         boolean tem_erro = false;
         String erros = "";
-        
-        if (Produto.length() >= 30 || Produto.length() == 0){
+        if (contador != 1){
+            tem_erro = true;
+            System.out.println(contador);
+            erros += "Tipo do produto invalido\n";
+        }
+        if (Nome.length() > 80 || Nome.length() == 0){
             tem_erro = true;
             erros += "Nome do produto invalido\n";              
         }
-        if (Fornecedor.length() >= 30 || Fornecedor.length() == 0){
-            tem_erro = true;
-            erros += "Nome do fornecedor invalido\n";              
+        if(Quantidade != null){
+            try {
+                Integer teste = new Integer(Quantidade);
+            } catch (NumberFormatException exception) {
+                /* tratamento para porta inválida:
+                 * JOptionPane.showMessageDialog(null,"Invalid Port Adress!"); */
+                erros += "Quantidade de alunos que atende é invalida\n";      
+            }
+        }else{
+            erros += "Quantidade de alunos que atende é invalida\n";              
+ 
         }
-        if (Marca.length() >= 30 || Marca.length() == 0){
-            tem_erro = true;
-            erros += "Nome da Marca invalida\n";               
-        }
-            
+        
         if (tem_erro){
             //mensagem de erro
             JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
             // executa a query
             Conexao con = new Conexao();
-            if (con.cadastra_alimento(Produto,Fornecedor,Marca,Perecivel)){
+            if (con.cadastra_alimento(Nome,Quantidade,tipo)){
                 JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
             } else {
                 JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -195,6 +190,10 @@ public class CadastroAlimento extends javax.swing.JFrame {
         this.setVisible(false);
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void txtQntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQntActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQntActionPerformed
 
     
 
@@ -225,6 +224,7 @@ public class CadastroAlimento extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CadastroAlimento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -233,14 +233,13 @@ public class CadastroAlimento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox boxPer;
+    private javax.swing.JCheckBox boxKilo;
+    private javax.swing.JCheckBox boxUnid;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtFor;
-    private javax.swing.JTextField txtMar;
     private javax.swing.JTextField txtPro;
+    private javax.swing.JTextField txtQnt;
     // End of variables declaration//GEN-END:variables
 }

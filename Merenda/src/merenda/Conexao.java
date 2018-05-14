@@ -35,7 +35,7 @@ public class Conexao {
             //System.out.println("usuario: " + usuario);
             //System.out.println("senha: " + senha);
             
-            String query = "SELECT * FROM pessoa p where p.usuario=\'" + usuario + "\' and p.senha=\'" + senha + "\';";
+            String query = "SELECT * FROM usuario p where p.nome=\'" + usuario + "\' and p.senha=\'" + senha + "\';";
 
             // create the java statement, execute the query, and get a java resultset
             Statement st = conn.createStatement();
@@ -44,8 +44,8 @@ public class Conexao {
             // iterate through the java resultset
             if (rs.next()){    
                 logou = true;
-                int id = rs.getInt("id");
-                int funcao = rs.getInt("funcao_id");
+                int id = rs.getInt("id_usuario");
+                int funcao = rs.getInt("id_funcao");
             
                 Sessao.createInstance(id, funcao);    
             }
@@ -136,6 +136,14 @@ public class Conexao {
         } else {
             return false;
         }
+        
+        return query_update(query);
+    }
+    
+    public boolean cadastra_alimento(String nome, String quantidade, char tipo){
+        
+        String query = "INSERT INTO item (nome,tipo,qtd_atende) VALUES";
+        query += "('"+ nome +"', " + "\'" + tipo + "\',\'" + quantidade + "\')" ;
         
         return query_update(query);
     }
