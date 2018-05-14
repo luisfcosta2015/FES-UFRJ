@@ -73,7 +73,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem4.setText("Alimento");
+        jMenuItem4.setText("Instituição");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -129,7 +129,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        CadastroAlimento tela = new CadastroAlimento();
+        CadastroInstituicao tela = new CadastroInstituicao();
         
         tela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         tela.pack();
@@ -137,7 +137,7 @@ public class Principal extends javax.swing.JFrame {
         tela.setLocation(dim.width/2-tela.getSize().width/2, dim.height/2-tela.getSize().height/2);
         
         this.setVisible(false);
-        tela.setVisible(true);        // TODO add your handling code here:
+        tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

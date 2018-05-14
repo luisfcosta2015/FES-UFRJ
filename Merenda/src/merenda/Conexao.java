@@ -32,8 +32,8 @@ public class Conexao {
         try {
             Connection conn = getConnection();
             
-            System.out.println("usuario: " + usuario);
-            System.out.println("senha: " + senha);
+            //System.out.println("usuario: " + usuario);
+            //System.out.println("senha: " + senha);
             
             String query = "SELECT * FROM pessoa p where p.usuario=\'" + usuario + "\' and p.senha=\'" + senha + "\';";
 
@@ -126,10 +126,16 @@ public class Conexao {
         return query_update(query);
     }
     
-        public boolean cadastra_alimento(String Produto, String Fornecedor, String Marca, char Perecivel){
+    public boolean cadastra_escola(String nome, String endereco, String INEP, String qntAlunos, String telefone, String diretor){
         
-        String query = "INSERT INTO alimentos (Produto,Fornecedor,Marca,Perecivel) VALUES";
-        query += "('"+ Produto +"', " + "\'" + Fornecedor + "\',\'" + Marca + "\',\'" + Perecivel + "\')" ;
+        String query = null;
+        if (diretor == null){
+            query = "INSERT INTO instituicao (nome, endereco, INEP, qntAlunos, telefone) VALUES";
+            query += "(\'" + nome +"\', " + "\'" + endereco + "\',\'" + INEP + "\'," + qntAlunos;
+            query += ",\'" + telefone +"\')" ;
+        } else {
+            return false;
+        }
         
         return query_update(query);
     }
