@@ -8,7 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Merenda_escolar.jar" size="3136" download="eager" />
+    <jar href="Merenda_escolar.jar" size="30220" download="eager" />
+    <jar href="lib\Merenda_escolar.jar" size="11540" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Merenda_escolar" >
     <param name="requiredFXVersion" value="8.0+"/>
