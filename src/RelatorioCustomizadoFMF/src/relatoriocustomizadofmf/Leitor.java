@@ -10,7 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Set;
+import java.util.HashSet;
 /**
  *
  * @author lucca
@@ -20,15 +21,15 @@ public class Leitor {
     public static String getConsulta(String path, Map<String,String> valores){
         String linha = "";
         
-        //Recuperando a String do arquivo
+        // Recuperando a String do arquivo
         try {
             FileReader arq = new FileReader(path);
             BufferedReader lerArq = new BufferedReader(arq);
 
             String temp_linha = lerArq.readLine();
-            linha = temp_linha + "\n"; // lê a primeira linha
+            linha = temp_linha + "\n"; // le a primeira linha
             while (true) {
-              temp_linha = lerArq.readLine(); // lê da segunda até a última linha
+              temp_linha = lerArq.readLine(); // le da segunda ate a ultima linha
               if(temp_linha==null){break;}
               linha+= temp_linha+ "\n";
             }
@@ -43,19 +44,17 @@ public class Leitor {
         for (Map.Entry<String, String> entry : valores.entrySet()){
             String palavra_chave = entry.getKey();
             String valor = entry.getValue();
-            linha = linha.replace("§"+palavra_chave, valor); 
+            linha = linha.replace("$"+palavra_chave+"$", valor); 
         }
         
         
         return linha;
     }
     
-    static Map<String, String> getAtributos(String path) {
+    public static Set<String> getAtributos(String path) {
         String linha = "";
-        Map<String,String> atributos = new HashMap<>();
+        Set<String> atributos = new HashSet<>();
         
-        //entao tentei ler caracter por caracter mas a classe Buffer nao tem isso, so ler uma linha de cada vez
-        //nao mudei o algoritmo do Ducca de ler o arquivo, so tratei a String toda no final
         try {
             FileReader arq = new FileReader(path);
             BufferedReader lerArq = new BufferedReader(arq);
@@ -77,14 +76,14 @@ public class Leitor {
         int i;
         String palavra_chave="";
         for(i=0;i < vetor.length;i++){
-            if(vetor[i]=='§'){
+            if(vetor[i]=='$'){
                 i++;
-                while(i < vetor.length && vetor[i] != '§'){ // pega cada caracter da palavra até achar um space
-                    palavra_chave+=vetor[i];                    //talvez tenhamos q rever o q marca o fim de uma palavra chave
-                      i++;      
+                while(i < vetor.length && vetor[i] != '$'){
+                    palavra_chave+=vetor[i];
+                    i++;      
                 }
-                atributos.put(palavra_chave, null);
-                System.out.println(palavra_chave); //print de teste
+                atributos.add(palavra_chave);
+                // System.out.println(palavra_chave);
                 palavra_chave=""; //reset a string p/ proxima iteracao
             }
         }

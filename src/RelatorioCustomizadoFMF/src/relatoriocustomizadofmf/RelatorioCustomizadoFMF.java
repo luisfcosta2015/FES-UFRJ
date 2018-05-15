@@ -19,6 +19,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  *
@@ -35,14 +37,14 @@ public class RelatorioCustomizadoFMF extends Application {
             
             @Override
             public void handle(ActionEvent event) {
-                Map<String, String> valores = new HashMap<String, String>(); 
-               
-                valores=Leitor.getAtributos("../data/teste.txt"); //valores agr é um mapa no qual todas as chaves são atributos
-                                                                  //porem os valores são null
+                Set<String> valores = new HashSet<String>(); 
+                String path = "../data/teste.txt";
                 
+                TemplateStatement stmt = new TemplateStatement(path);
+                System.out.println(Leitor.getConsulta(path,stmt.mapeiaAtributos()));
                           
                 //String resultado = Leitor.getConsulta("../data/teste.txt", valores);
-                //BD.query("SELECT Nome FROM Professor WHERE Disciplina='Matemática III';");
+                //BD.query("SELECT Nome FROM Professor WHERE Disciplina='Matematica III';");
                 //System.out.println(resultado);
             } 
         });
