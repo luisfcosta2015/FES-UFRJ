@@ -1,0 +1,20 @@
+{
+  "static_field": [
+    {
+      "key": "A",
+      "value": "0"
+    },
+    {
+      "key": "B",
+      "value": "${A}1"
+    },
+    {
+      "key": "C",
+      "value": "${B}2"
+    }
+  ],
+  "dynamic_field": {
+    "key": "D,E,F",
+    "value": "${A} ${B} ${C}"
+  }
+}
