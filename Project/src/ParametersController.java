@@ -27,48 +27,40 @@ public class ParametersController extends HttpServlet{
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String tipo;
+        tipo = request.getParameter("tipo");
 
-//        PrintWriter out = response.getWriter();
-//        String tipo;
-//        tipo = request.getParameter("tipo");
-
-        List list = new ArrayList();
-        list.add("item1");
-        list.add(1);
-        list.add("item3");
-
-        String json = new Gson().toJson(list);
+        String json="";
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
+
+        switch (tipo){
+            case "escola":
+                json = new Gson().toJson(getEscolas());
+                break;
+            case "ano":
+                json = new Gson().toJson(getAnos(request.getParameter("escola")));
+                break;
+            case "turmas":
+                json = new Gson().toJson(getTurmas(request.getParameter("escola"),request.getParameter("ano")));
+                break;
+            default:
+                json = "{Error: \"Incorrect Type of Parameter\"}";
+        }
+
         response.getWriter().write(json);
 
-
-//        switch (tipo){
-//            case "escola":
-//                out.println(getEscolas());
-//                break;
-//            case "ano":
-//                out.println(getAnos(request.getParameter("escola")));
-//                break;
-//            case "turmas":
-//                out.println(getTurmas(request.getParameter("escola"),request.getParameter("ano")));
-//                break;
-//            default:
-//                out.println("{Error: Incorrect Type of Parameter}");
-//        }
-//
-
     }
-//    protected String getEscolas(){
-//        return db.query("SELECT DISTINCT nome_escola FROM escola;");
-//    }
-//    protected String getAnos(String escola){
-//        return db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" ;");
-//    }
-//    protected String getTurmas(String escola, String ano){
-//        return db.query("SELECT DISTINCT * from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" AND ano="+ano+" ;");
-//    }
+    public ArrayList<ArrayList> getEscolas(){
+        return db.query("SELECT DISTINCT nome_escola FROM escola;");
+    }
+    public ArrayList<ArrayList> getAnos(String escola){
+        return db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" ;");
+    }
+    public ArrayList<ArrayList> getTurmas(String escola, String ano){
+        return db.query("SELECT DISTINCT * from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" AND ano="+ano+" ;");
+    }
 
 
 

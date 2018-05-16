@@ -1,5 +1,3 @@
-import com.google.gson.Gson;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,8 +13,6 @@ public class DBHelper {
     public static void main(String[] args) throws Exception{
         DBHelper dbh = new DBHelper();
         System.out.println(dbh.connect());
-        String a = new Gson().toJson(dbh.query("SELECT DISTINCT nome_escola FROM escola;"));
-        System.out.println(a);
     }
 
 
@@ -46,7 +42,7 @@ public class DBHelper {
             ResultSet rs = st.executeQuery(sql);
             int ncolumn = rs.getMetaData().getColumnCount();
             while (rs.next()) {
-                ArrayList row = new ArrayList();
+                ArrayList<String> row = new ArrayList<>();
                 for(int i=1;i<=ncolumn;i++){
                     row.add(rs.getString(i));
                 }
