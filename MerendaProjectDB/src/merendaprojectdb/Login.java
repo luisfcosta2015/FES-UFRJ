@@ -24,6 +24,7 @@ public class Login extends javax.swing.JFrame {
     
     Principal diretor;
     TelaCardapio cardapio;
+    ItensRelatorio itens;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,7 +111,12 @@ public class Login extends javax.swing.JFrame {
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Usuario errado, tente\n Usuario: Diretor\nSenha:1234");
+            itens=new ItensRelatorio(campoUsuario.getText().intern());
+            itens.setLocationRelativeTo(null);
+            itens.setVisible(true);
+            itens.setResizable(true);
+            this.setVisible(false);
+            //JOptionPane.showMessageDialog(null,"Usuario errado, tente\n Usuario: Diretor\nSenha:1234");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

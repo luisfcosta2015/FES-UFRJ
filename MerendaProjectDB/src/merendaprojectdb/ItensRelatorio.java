@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package merendaprojectdb;
-
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author joycinha
@@ -13,17 +14,24 @@ public class ItensRelatorio extends javax.swing.JFrame {
     
     String usuario;
     Principal principal;
+    DefaultListModel modelList = new DefaultListModel();
     /**
      * Creates new form ItensRelatorio
      */
     public ItensRelatorio(String nome) {
         usuario = nome;
+        
+        
         initComponents();
+        
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
+        modelo.addElement("thiago");
+        // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
     }
     
     private void criaLista() {
-       this.itens.removeAll();
-        this.itens.addItem(usuario);
+       this.tipoItem.removeAll();
+        this.tipoItem.addItem(usuario);
     }
 
     /**
@@ -35,16 +43,31 @@ public class ItensRelatorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        itens = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        tipoItem = new javax.swing.JComboBox<>();
+        quantItem = new javax.swing.JTextField();
+        unidadeItem = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         voltarAoMenu = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         criaLista();
-        itens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "banana", "maçã", "Item 3", "Item 4" }));
-        itens.addActionListener(new java.awt.event.ActionListener() {
+        tipoItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "banana", "maçã", "Item 3", "Item 4" }));
+        tipoItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itensActionPerformed(evt);
+                tipoItemActionPerformed(evt);
+            }
+        });
+
+        unidadeItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "g", "Kg", "Uni.", "Duz.", " " }));
+
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -55,38 +78,77 @@ public class ItensRelatorio extends javax.swing.JFrame {
             }
         });
 
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item", "Quantidade", "Unidade", "Excluir"
+            }
+        ));
+        jScrollPane1.setViewportView(tabela);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(voltarAoMenu))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(quantItem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(111, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addComponent(voltarAoMenu))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(itens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(229, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(voltarAoMenu)
-                .addGap(42, 42, 42))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(itens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
-                .addComponent(voltarAoMenu)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itensActionPerformed
+    private void tipoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_itensActionPerformed
+    }//GEN-LAST:event_tipoItemActionPerformed
 
     private void voltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAoMenuActionPerformed
         // TODO add your handling code here:
+        
+        // aqui tem que colocar pra pegar o que ta na tabela e jogar pro banco
+        
         principal=new Principal(usuario);
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
@@ -94,8 +156,23 @@ public class ItensRelatorio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_voltarAoMenuActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+        tabelinha.addRow(new Object[] {tipoItem.getSelectedItem(), quantItem.getText(), unidadeItem.getSelectedItem()});
+        
+        
+    
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> itens;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField quantItem;
+    private javax.swing.JTable tabela;
+    private javax.swing.JComboBox<String> tipoItem;
+    private javax.swing.JComboBox<String> unidadeItem;
     private javax.swing.JButton voltarAoMenu;
     // End of variables declaration//GEN-END:variables
 }
