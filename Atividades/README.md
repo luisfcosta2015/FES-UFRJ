@@ -1,1 +1,0 @@
-Pasta destinada a conter todo o tipo de atividade passada na sala de aula, como por exemplo as reações.
