@@ -28,25 +28,28 @@
         <a href="#" class="brand-logo center">Logo</a>
     </div>
 </nav>
+<div class="progress hide">
+    <div class="indeterminate"></div>
+</div>
 <form action="">
     <div data-filterTask="" class="container" style="margin-top: 10px">
         <!-- Page Content goes here -->
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <select data-filter="escolaNome">
-                    <option value="1">Option 1</option>
+                <select data-filter="escola" disabled>
+                    <option value="" disabled selected>Selecione...</option>
                 </select>
-                <label>Nome da Escola</label>
+                <label>Escola</label>
             </div>
             <div class="input-field col s12 m6 l6">
-                <select data-filter="ano">
-                    <option value="1">Option 1</option>
+                <select data-filter="ano" disabled>
+                    <option value=""  disabled selected>Selecione...</option>
                 </select>
                 <label>Ano letivo</label>
             </div>
             <div class="input-field col s12 m6 l6">
-                <select data-filter="turma">
-                    <option value="1">Option 1</option>
+                <select data-filter="turma" disabled>
+                    <option value=""  disabled selected>Selecione...</option>
                 </select>
                 <label>Turma</label>
             </div>

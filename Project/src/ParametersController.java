@@ -27,6 +27,7 @@ public class ParametersController extends HttpServlet{
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        this.db.connect();
         String tipo;
         tipo = request.getParameter("tipo");
 
@@ -36,10 +37,10 @@ public class ParametersController extends HttpServlet{
         response.setCharacterEncoding("UTF-8");
 
         switch (tipo){
-            case "escola":
+            case "escolas":
                 json = new Gson().toJson(getEscolas());
                 break;
-            case "ano":
+            case "anos":
                 json = new Gson().toJson(getAnos(request.getParameter("escola")));
                 break;
             case "turmas":
@@ -52,16 +53,13 @@ public class ParametersController extends HttpServlet{
         response.getWriter().write(json);
 
     }
-    public ArrayList<ArrayList> getEscolas(){
-        return db.query("SELECT DISTINCT nome_escola FROM escola;");
+    private ArrayList<ArrayList> getEscolas(){
+        return this.db.query("SELECT DISTINCT nome_escola FROM escola;");
     }
-    public ArrayList<ArrayList> getAnos(String escola){
-        return db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" ;");
+    private ArrayList<ArrayList> getAnos(String escola){
+        return this.db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = '"+escola+"' ;");
     }
-    public ArrayList<ArrayList> getTurmas(String escola, String ano){
-        return db.query("SELECT DISTINCT * from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = "+escola+" AND ano="+ano+" ;");
+    private ArrayList<ArrayList> getTurmas(String escola, String ano){
+        return this.db.query("SELECT DISTINCT nome_turma from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = '"+escola+"' AND ano='"+ano+"' ;");
     }
-
-
-
 }
