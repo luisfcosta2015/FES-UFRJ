@@ -4,11 +4,11 @@ Sprint Backlog
 Xiao e Caiafa 
    Banco mais robusto para testes futuros -3
    Função gerar query -2
-   Função seleciona campos do BD -2
-   encerrar conexao -1
+   Função seleciona campos do BD - 2    
+   encerrar conexao -3 
   
-   Janela Vazia -2
-   Menu Superior -3
+   Janela Vazia -2    
+   Menu Superior -3   
    Check Box (left) -1
    Tela de Visualização em tempo real (center) -5
    Editor (rigth) -1
@@ -26,4 +26,29 @@ Gustavo e André
      Relatório 7 - 1
      Criar BurnDown para visualização - 1
      Add BurnDownChart na wiki - 1
+     
+     
+O que foi feito?
+  Gustavo e André
+     Gera Relatório em PDF
+       Tabela - 2                                           ok
+       Add Header - 2                                       ok
+       Add Footer - 1                                       ok
+     Documentação
+       Sprint planning no branch do time como markdown - 1  ok
+       Relatório 7 - 1                                      ok
+       Criar BurnDown para visualização - 1                 ok
+       Add BurnDownChart na wiki - 1                        ok
+
+  Xiao e Caiafa 
+     Função seleciona campos do BD -2                       ok
+     encerrar conexao - 3                                   ok
+
+     Janela Vazia -2                                        ok
+     Menu Superior -3                                       ok
+     
+     
+Revisão:
+trabalha em duplas funcionou melhor(andré e Gustavo),fizemos os relatóriose pesquisamos e testamos algumas funções do I-text
+Caiafa pesquisou sobre o banco de dados e sobre a integração com Java, para podermos puxar as informações do banco para o relatório.
 
