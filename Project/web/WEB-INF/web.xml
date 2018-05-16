@@ -23,6 +23,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ReportController</servlet-name>
+        <servlet-class>ReportController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportController</servlet-name>
+        <url-pattern>/generateReport</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>TEST</servlet-name>
         <servlet-class>StartServlet</servlet-class>
     </servlet>
