@@ -12,7 +12,7 @@
 
 | Membro | Atividade | Pontos Estimados |
 | :---:     |     :---:     |      :---:  |       
-| Lucas e Thiago |  Ler arquivo de consulta e retornar lista de atributos | 5 |
+| Lucas e Matheus |  Ler arquivo de consulta e retornar lista de atributos | 5 |
 | Lucca | Usar lista de atributos para criar formulário a ser preenchido pelo usuário, retornando um Map | 8 |
 | Lucca | Documentar Recursos JavaFX | 3 |
 | Matheus e Thiago | Criar a classe de Modelo | 5 |
