@@ -10,10 +10,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableSet;
 /**
  *
  * @author Cliente
@@ -31,6 +34,11 @@ public class TelaCardapio extends javax.swing.JFrame {
     ItensRelatorio itensRel;
     int ano;
     int mes;
+    DefaultTableModel tabelinha;
+    ArrayList<Date>datasExcluidas;
+    // Collection of items currently selected via checkboxes in the table 
+    // This will be passed to the TableCell implementation.
+    // ObservableSet<Object> selectedItems = FXCollections.observableSet();
 
     
     public TelaCardapio(String nome, int ano, int mes) {
@@ -40,7 +48,7 @@ public class TelaCardapio extends javax.swing.JFrame {
         usuario = nome;
         DateFormat df = new SimpleDateFormat("dd/MM");
         
-        DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+        tabelinha = (DefaultTableModel) tabela.getModel();
         
         calendario = new Calendario(mes,ano+1900);
         ArrayList<Date> dias = calendario.getList();
@@ -65,6 +73,10 @@ public class TelaCardapio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         proxButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        linha = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        excluir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -93,15 +105,38 @@ public class TelaCardapio extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("excluir elemento");
+
+        jLabel4.setText("linha");
+
+        excluir.setText("Excluir");
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(proxButton)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(linha, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(proxButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(excluir)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,9 +144,19 @@ public class TelaCardapio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(proxButton)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(proxButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(linha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(excluir))))
+                .addGap(0, 101, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 30)); // NOI18N
@@ -181,11 +226,10 @@ public class TelaCardapio extends javax.swing.JFrame {
 
     private void proxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proxButtonActionPerformed
         // salva de alguma forma o que foi feito
-        DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
         cardapio = new Cardapio(calendario);
-        for(int i=0; i < tabelinha.getRowCount(); i++) {
-            cardapio.setCardapio(i, ""+tabelinha.getValueAt(i, 1));
-            System.out.println(""+tabelinha.getValueAt(i, 1));
+        for(int i=0; i < this.tabelinha.getRowCount(); i++) {
+            cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
+            System.out.println(""+this.tabelinha.getValueAt(i, 1));
         }
         
         itensRel = new ItensRelatorio(usuario);
@@ -195,16 +239,43 @@ public class TelaCardapio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_proxButtonActionPerformed
 
+    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(!this.linha.getText().isEmpty()) {
+                int lin = Integer.parseInt(this.linha.getText());
+                if(lin < this.tabelinha.getRowCount()) {
+                    DateFormat df = new SimpleDateFormat("dd/MM");
+                    Date data = df.parse(this.tabelinha.getValueAt(lin, 0).toString());
+                    calendario.remove(data);
+                    tabelinha.removeRow(lin);
+                    return;
+                }
+                System.out.println("numero da linha invalido");
+                return;
+            }
+            System.out.println("linha em branco");
+            return;
+        }
+        catch (ParseException e) {
+            System.out.println("erro no parse da data");
+        }
+    }//GEN-LAST:event_excluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton excluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField linha;
     private javax.swing.JButton proxButton;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
