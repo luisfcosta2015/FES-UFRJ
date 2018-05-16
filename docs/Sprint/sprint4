@@ -1,0 +1,44 @@
+Retrospectiva:
+    Gabriel tem muitas materias e essa semana está overjob com trabalhos
+    Joyce ficou muito doente de quara feira até hoje, mas conseguiu fazer sua parte
+    Vitor teve complicações técnicas com seu computador mas estudou como fazer 
+    Thiago tava com a Joyce indo em médico mas fez coisas no ultimo dia
+    
+    Dúvidas
+        Como fazer testes na interface (Simular interação do usuário com a interface)
+
+Review
+  Joyce:
+      A tela de cardapio agora recebe as entradas do cardapio por dia e armazena num formato de dupla <Date,String> e permite a exclusão de
+      linhas mesmo que ainda precise de melhorias nesta ultima 
+  Thiago:
+      A tela de itens de relatório agora consegue receber uma lista pré-estabelecida via código, permitindo que a lista venha direto do 
+      banco e adicionar o item selecionado numa tabela com itens selecionados. As funcionalidades de excluir itens dessa tabela e de mandar
+      para o banco de dados ainda precisa ser implementada.
+  Vitor:
+      O mySQL deu problema em seu computador então ele não conseguiu implementar a concecção com o banco de dado como planejada na sprint
+      então o mesmo pesquisou sobre o banco de dados da amazon (que é inviável de usar por só ser grátis por um mês) e estudou sobre como
+      fazer sua parte.
+  Gabriel:
+      Não fez nada por motivos de trabalhos na faculdade.
+      
+ Sprint Planning
+  Histórias ainda não finalizadas na sprint anterior
+    *Eu como diretor gostaria de lançar diretamente os itens usados no cardápio para que não gaste tempo procurando um a um na tabela.
+     Tarefas:
+        *Pegar os itens que aparecem no dropdown do banco de dados
+      
+    *Eu como usuário gostaria que todos os arquivos fossem salvos em um banco de dados para centralizar a informação.
+     Tarefas:
+        *Conectar todas as partes ate o momento ao banco de dados
+        *Conectar todas as partes ao banco de dados
+      
+      
+    *Eu como diretor quero poder editar dados já lançados para que não tenha que gerar um novo relatório do zero em caso de erro.
+       Tarefas:
+          *Criar uma classe que represente um relatorio
+          *Criar uma interface que mostre uma lista dos relatorios existentes (pegos do banco de dados)
+          *Criar opção editar relatorio
+   
+  
+      
