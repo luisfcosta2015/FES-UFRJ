@@ -14,12 +14,21 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ParametersTest</servlet-name>
-        <servlet-class>ParametersTest</servlet-class>
+        <servlet-name>ParametersController</servlet-name>
+        <servlet-class>ParametersController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ParametersTest</servlet-name>
-        <url-pattern>/parametersTest</url-pattern>
+        <servlet-name>ParametersController</servlet-name>
+        <url-pattern>/sendParameters</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReportController</servlet-name>
+        <servlet-class>ReportController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportController</servlet-name>
+        <url-pattern>/generateReport</url-pattern>
     </servlet-mapping>
 
     <servlet>

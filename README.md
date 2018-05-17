@@ -85,7 +85,7 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 | Matheus Vinicius Figueiredo | GAARA VS ROCKLEE.WMV
 | Henrique Vermelho de Toledo | GAARA VS ROCKLEE.WMV
 | Xiao Yong Kong | LECHUGA
-| Michel Vinicius | LECHUGA
+| Michel Caiafa | LECHUGA
 | Gustavo de Assis Siqueira | LECHUGA
 | André Figueiredo Muniz | LECHUGA
 | Tomaz Cuber Guimarães | GALINE
@@ -94,8 +94,9 @@ Ao final da disciplina, os alunos devem liberar na versão Comunidade do softwar
 | Aline Freire de Rezende | GALINE
 | Filipe José Maciel Ramalho | SSL
 | Gibrain da Silva Oliveira | SSL
-| Henrique Fernandes Fagundes | SSL
+| Henrique Fernandes Rodrigues| SSL
 | Caio Rodrigues Dias de Jesus | SSL
+| Níkolas Ribeiro Curitnhas Pimentel | SSL
 | Gabriel Dias da Sousa Mattos | CELTA 80Km/h
 | Vitor Mattos Milioni | CELTA 80Km/h
 | Thiago Outeiro Damasceno | CELTA 80Km/h

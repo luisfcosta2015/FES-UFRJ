@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DBHelper {
 
@@ -8,10 +9,10 @@ public class DBHelper {
     private final String USERNAME = "fugzjqzd";
     private final String PASSWORD = "YdCGgBtsj2HcFB-lsq5G54kPBq4TBWXE";
 
+
     public static void main(String[] args) throws Exception{
         DBHelper dbh = new DBHelper();
         System.out.println(dbh.connect());
-
     }
 
 
@@ -34,18 +35,22 @@ public class DBHelper {
         }
     }
 
-    public Object query(String sql){
+    public ArrayList<ArrayList> query(String sql){
+        ArrayList<ArrayList> result = new ArrayList<>();
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery(sql);
+            int ncolumn = rs.getMetaData().getColumnCount();
             while (rs.next()) {
-                System.out.print("Column 1 returned ");
-                System.out.println(rs.getString(1));
+                ArrayList<String> row = new ArrayList<>();
+                for(int i=1;i<=ncolumn;i++){
+                    row.add(rs.getString(i));
+                }
+                result.add(row);
             }
             rs.close();
             st.close();
-
-            return null;
+            return result;
         }catch(SQLException e){
             e.printStackTrace();
             return null;

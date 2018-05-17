@@ -28,33 +28,36 @@
         <a href="#" class="brand-logo center">Logo</a>
     </div>
 </nav>
-<form action="">
-    <div data-filterTask="" class="container" style="margin-top: 10px">
+<div class="progress hide">
+    <div class="indeterminate"></div>
+</div>
+<form data-filterTask="" action="generateReport" method="post">
+    <div class="container" style="margin-top: 10px">
         <!-- Page Content goes here -->
         <div class="row">
             <div class="input-field col s12 m6 l6">
-                <select data-filter="escolaNome">
-                    <option value="1">Option 1</option>
+                <select name="escola" data-filter="escola" disabled>
+                    <option value="" disabled selected>Selecione...</option>
                 </select>
-                <label>Nome da Escola</label>
+                <label>Escola</label>
             </div>
             <div class="input-field col s12 m6 l6">
-                <select data-filter="ano">
-                    <option value="1">Option 1</option>
+                <select name="ano" data-filter="ano" disabled>
+                    <option value=""  disabled selected>Selecione...</option>
                 </select>
                 <label>Ano letivo</label>
             </div>
             <div class="input-field col s12 m6 l6">
-                <select data-filter="turma">
-                    <option value="1">Option 1</option>
+                <select name="turma" data-filter="turma" disabled>
+                    <option value=""  disabled selected>Selecione...</option>
                 </select>
                 <label>Turma</label>
             </div>
         </div>
         <div class="fixed-action-btn">
-            <a onclick="sendFilterTask()" class="btn-floating btn-large red">
+            <button type="submit" class="btn-floating btn-large red">
                 <i class="material-icons">play_arrow</i>
-            </a>
+            </button>
         </div>
     </div>
 </form>
