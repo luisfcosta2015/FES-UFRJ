@@ -1,0 +1,44 @@
+@font-face {
+	src: url("../font/OpenSansCondensed-Light.ttf");
+}
+
+.text {
+	-fx-font-family: "Open Sans Condensed Light";
+}
+
+.titulo {
+	-fx-font-size: 65px;
+	-fx-text-fill: #41848F;
+	-fx-background-color: #EEEEEE;
+}
+
+.subtitulo {
+	-fx-font-size: 40px;
+	-fx-text-fill: black;
+}
+
+.margens {
+	-fx-background-color: #EEEEEE;
+}
+
+.conteudo {
+	-fx-background-color: #D9D9D9;
+}
+
+.botao {
+	-fx-background-color: #C4C4C4;
+	-fx-text-fill: black;
+	-fx-font-size: 30px;
+}
+
+.botao:hover {
+	-fx-background-color: #41848F;
+	-fx-text-fill: #C4C4C4;
+	-fx-font-size: 30px;
+}
+
+.botao:pressed {
+	-fx-background-color: #C4C4C4;
+	-fx-text-fill: black;
+	-fx-font-size: 30px;
+}
