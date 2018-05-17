@@ -101,7 +101,7 @@
   <tr>
     <th> Atividade </th>
     <th> Horas Previstas </th>
-   	</th> Horas gastas </th>
+   	<th> Horas gastas </th>
     <th> Membro </th>
   </tr>
   <tr>
