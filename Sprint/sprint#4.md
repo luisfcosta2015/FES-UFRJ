@@ -39,12 +39,12 @@
   </tr>
   <tr>
     <td> Gráfico de Burndown da Primeira Sprint </td>
-    <td> </td>
+    <td> 1 hora </td>
     <td> Aline </td>
   </tr>
   <tr>
     <td> Gráfico de Burndown da Primeira Sprint </td>
-    <td> </td>
+    <td> 1 hora </td>
     <td> Aline </td>
   </tr>
   <tr>
@@ -83,8 +83,8 @@
   </tr>
   <tr>
     <td> Gráfico de Burndown da Primeira Sprint </td>
-    <td> </td>
-    <td> </td>
+    <td> 1 hora </td>
+    <td> 1 hora </td>
     <td> Aline </td>
   </tr>
   <tr>
