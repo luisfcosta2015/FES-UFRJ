@@ -1,0 +1,16 @@
+package br.com.fes.relatorio.factory;
+
+import java.util.Properties;
+
+public class Configuration {
+
+	public static String DAO;	
+	
+	
+	Properties prop = new Properties();
+	
+	
+	
+	
+	
+}

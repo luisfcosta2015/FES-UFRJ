@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-i18n-es.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-util.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat7-websocket.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/catalina.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-i18n-fr.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/catalina-tribes.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/ecj-4.4.2.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/catalina-ant.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-api.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/jasper-el.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/annotations-api.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-coyote.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/relatorios/WebContent/WEB-INF/lib/javax.faces.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/html_basic.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/jsf_core.tld" project="relatorios"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/mojarra_ext.taglib.xml" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/mojarra_ext.tld" project="relatorios"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="/relatorios/WebContent/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="relatorios"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-jdbc.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-dbcp.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/libs/mysql-connector-java-5.1.41/mysql-connector-java-5.1.41-bin.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/jsp-api.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/websocket-api.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/el-api.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/relatorios/WebContent/WEB-INF/lib/mysql-connector-java-5.1.41-bin.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/catalina-ha.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/jasper.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/tomcat-i18n-ja.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/server/apache-tomcat-7.0.75/lib/servlet-api.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification"/>
+  <core validator-id="jboss.jsf.core"/>
+  <el/>
+ </validation>
+ <aliases/>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsf/composite">
+   <prefix>h</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+ </uris>
+</kb-project>
