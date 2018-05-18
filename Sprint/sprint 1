@@ -1,0 +1,18 @@
+Reunião feita no dia 18-04-2018 durante a aula de laboratório
+Sprint #1 - BackLog
+
+Criar um banco de dados com as tabelas:
+   alunos(matrícula, Nome, data de nascimento, escola, serie).
+   notas(aluno_matricula, portugues, matematica, fisica, quimica,
+       filosofia, historia, geografia, ingles, educacao_fisica)
+   Popular o banco com alunos e suas notas.
+   Integrar Banco com Java
+
+Criar BurnDown Chart
+
+Escolher Biblioteca Gráfica Java.
+
+Review
+
+Durante a Sprint #1, os alunos do grupo estiveram estudando sobre os métodos ágeis
+que seriam aplicados nos sprints.

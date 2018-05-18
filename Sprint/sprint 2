@@ -1,0 +1,47 @@
+Reunião feita no dia 25-04-2018 de 22:00 as 22:30
+Sprint #2 - BackLog
+Michel
+
+Preparar ambiente.
+   Instalar banco e IDE.
+   Criar tutorial de instalação do ambiente.
+
+Xiao
+
+Criar um banco de dados com as tabelas:
+   alunos(matrícula, Nome, data de nascimento, escola, serie).
+   notas(aluno_matricula, portugues, matematica, fisica, quimica,filosofia, 
+       historia, geografia, ingles, educacao_fisica)
+   Popular o banco com alunos e suas notas.
+   Integrar Banco com Java
+
+André:
+
+Ajeita trello
+Criar BurnDown Chart
+
+Gustavo:
+
+Atualizar wiki:
+   Reações das semanas 3, 4, 5.
+   Product Backlog
+   Sprint #0 Backlog
+   Sprint #0 Review
+   Sprint #1 Backlog
+   Sprint #1 Review
+   Sprint #2 Backlog
+   Protótipo da tela.
+   Modelo relacional do banco.
+   BurnDown chart
+   Sail Boat
+Escolher Biblioteca Gráfica Java.
+
+André, Xiao, Gustavo, Michel: 
+   http://www.desenvolvimentoagil.com.br/scrum
+
+Review
+
+Durante o Sprint #2, os integrantes do grupo conseguiram realizar as tarefas com sobra no 
+tempo estipulado de 3:30h por semana. Foi decidido então ajustar para um sistema de pontos/min,
+onde cada 30 min representam 1 ponto. Além disso, estipulamos uma quantidade mínima (7 pontos),
+ideal (10 pontos) e máxima (12 pontos) a serem entregues por semana.
