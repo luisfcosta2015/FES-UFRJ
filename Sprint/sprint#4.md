@@ -5,10 +5,7 @@
 <ul><p align="justify">Como usuário quero poder ver a tela principal do sistema</p></ul>
 <ul> <p align="justify">Como usuário quero poder acessar a outra página a a partir da página</p></ul>
 
-<h2> Sprint Backlog e Planejamento </h2>
-
-<h3> Planejamento </h3>
-<p align="justify">Tendo em vista que dois integrante, Aline e Tomaz, tem prova de Computadores e programação essa semana, as atividades alocadas para eles foram triviais e simples. Para Aline sendo o burndown chart, pois ela compreendeu essa etapa e já tem estruturado como deveria ser, o mesmo para o Tomaz e o funcionamento do Dynamic Reports. Já o Gilberto, como tem um trabalho para entregar de outra disciplina, foi alocado em dupla com uma tarefa com o Tomaz, que seria entender fazer o dump do Banco de Dados, e fazer o layout do relatório para gerar a partir do código.  Já a Larissa, por ter mais tempo hábil, ficou encarregada com a parte de documentação, atualização da wiki e terminar as partes de interface e de navegação necessária de páginas.</p>
+<h2> Sprint Backlog </h2>
 
 <h3> Sprint atual </h3>
 <table>
@@ -138,3 +135,5 @@
 <h2> Revisão </h2>
 <p align="justify">Nessa semana fomos capaz de mostrar a interface e explicar melhor a ideia de MVP para representante da prefeitura de Caxias. Ela, de maneira geral, parece satisfeita com a nossa concepção de MVP e com a interface produzida, concordando que parece estar de acordo para suprir algumas necessidades da prefeitura.</p>
 
+<h2> Planejamento para a próxima sprint</h2>
+<p align="justify">Tendo em vista que dois integrante, Aline e Tomaz, tem prova de Computadores e programação essa semana, as atividades alocadas para eles foram triviais e simples. Para Aline sendo o burndown chart, pois ela compreendeu essa etapa e já tem estruturado como deveria ser, o mesmo para o Tomaz e o funcionamento do Dynamic Reports. Já o Gilberto, como tem um trabalho para entregar de outra disciplina, foi alocado em dupla com uma tarefa com o Tomaz, que seria entender fazer o dump do Banco de Dados, e fazer o layout do relatório para gerar a partir do código.  Já a Larissa, por ter mais tempo hábil, ficou encarregada com a parte de documentação, atualização da wiki e terminar as partes de interface e de navegação necessária de páginas.</p>
