@@ -1,6 +1,7 @@
-package sample.Home;
+package front.Home;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ public class HomeController {
      * Método faz com que vá da páigina Principal para a página de geração de relatório
      *
      */
+    @FXML
     public void trocaPagina(ActionEvent e) throws IOException {
         Parent pagRelatorioParent = FXMLLoader.load(getClass().getResource("../PagRelatorio/PagRelatorio.fxml"));
         Scene pagRelatorioScene = new Scene(pagRelatorioParent);

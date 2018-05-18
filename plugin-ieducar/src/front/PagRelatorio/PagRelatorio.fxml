@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="700.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@pag-relatorio.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PagRelatorio.PagRelatorioController">
+<BorderPane maxHeight="700.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@pag-relatorio.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.PagRelatorio.PagRelatorioController">
    <left>
       <Pane maxHeight="700.0" maxWidth="50.0" prefHeight="700.0" prefWidth="50.0" styleClass="margens" BorderPane.alignment="CENTER" />
    </left>
@@ -22,9 +22,9 @@
       <Pane styleClass="conteudo" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="44.0" layoutY="45.0" styleClass="titulo-topico" text="Escolha a Escola" />
-            <MenuButton layoutX="43.0" layoutY="115.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="813.0" styleClass="form-select" text="Escolher Escola">
+            <MenuButton fx:id="selector_escola" layoutX="43.0" layoutY="115.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="813.0" styleClass="form-select" text="Escolher Escola">
               <items>
-                <MenuItem styleClass="item" mnemonicParsing="false" text="Action 1" />
+                <MenuItem fx:id="item_escola" styleClass="item" mnemonicParsing="false" text="Action 1" />
                 <MenuItem styleClass="item" mnemonicParsing="false" text="Action 2" />
               </items>
             </MenuButton>

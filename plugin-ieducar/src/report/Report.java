@@ -1,3 +1,6 @@
+//Antes estava foram da pasta, mas eu não souber lidar, desculpa
+package report;
+
 import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 
 import net.sf.dynamicreports.report.datasource.DRDataSource;
@@ -6,8 +9,9 @@ import net.sf.jasperreports.engine.JRDataSource;
 
 public class Report {
 
-    public Report(){ build(); }
-    private void build() {
+    public Report(){ //build();
+    }
+    public void build() { //ANTES -> era private
         try {
             report()
                     .columns(
@@ -34,8 +38,8 @@ public class Report {
         return dataSource;
     }
 
-    public static void main(String[] args){
-        new Report();
-    }
+    //public static void main(String[] args){
+      //  new Report();
+    //}
 }
 
