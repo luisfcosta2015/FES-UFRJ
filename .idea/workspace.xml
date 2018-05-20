@@ -73,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PagRelatorioController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PagRelatorioController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/PagRelatorio/PagRelatorioController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="549">
               <caret line="94" column="79" lean-forward="false" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -87,14 +87,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PagRelatorio.fxml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PagRelatorio.fxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/PagRelatorio/PagRelatorio.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="29" column="136" lean-forward="false" selection-start-line="29" selection-start-column="136" selection-end-line="29" selection-end-column="136" />
+            <state relative-caret-position="78">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -387,12 +387,12 @@
       <workItem from="1526605997127" duration="388000" />
       <workItem from="1526612332192" duration="2976000" />
       <workItem from="1526615978257" duration="2291000" />
-      <workItem from="1526848312487" duration="8972000" />
+      <workItem from="1526848312487" duration="9220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43272000" />
+    <option name="totallyTimeSpent" value="43520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="229" y="122" width="1853" height="1055" extended-state="6" />
@@ -736,17 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/PagRelatorio/PagRelatorio.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="29" column="136" lean-forward="false" selection-start-line="29" selection-start-column="136" selection-end-line="29" selection-end-column="136" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Home/home-style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -757,13 +746,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/PagRelatorio/PagRelatorioController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="549">
           <caret line="94" column="79" lean-forward="false" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2827#2828#0" expanded="true" />
             <element signature="e#2870#2871#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/PagRelatorio/PagRelatorio.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
