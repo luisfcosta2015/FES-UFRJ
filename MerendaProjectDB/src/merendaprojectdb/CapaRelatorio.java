@@ -36,17 +36,18 @@ public class CapaRelatorio extends javax.swing.JFrame {
 
         tabelaAlunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"PRÉ ESCOLAR", null, null, null, null},
-                {"FUNDAMENTAL", null, null, null, null},
-                {"JOVENS E ADULT", null, null, null, null},
-                {"ENSINO ESP", null, null, null, null}
+                {"PRÉ ESCOLAR", null, null, null, null, null, null, null, null},
+                {"FUNDAMENTAL", null, null, null, null, null, null, null, null},
+                {"JOVENS E ADULT", null, null, null, null, null, null, null, null},
+                {"ENSINO ESP", null, null, null, null, null, null, null, null},
+                {"Total", null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Serie", "1º turno", "2º turno", "3º turno", "4º turno"
+                "Modalidade", "1º turno", "2º turno", "3º turno", "4º turno", "Total Matriculados", "Total atendidosl", "Nº dias de distribuição de refeição", "Total de refeições servidas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -56,6 +57,14 @@ public class CapaRelatorio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelaAlunos);
         if (tabelaAlunos.getColumnModel().getColumnCount() > 0) {
             tabelaAlunos.getColumnModel().getColumn(0).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(1).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(2).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(3).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(4).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(5).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(6).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(7).setResizable(false);
+            tabelaAlunos.getColumnModel().getColumn(8).setResizable(false);
         }
 
         jLabel2.setLabelFor(tabelaAlunos);
@@ -88,12 +97,6 @@ public class CapaRelatorio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(proxButton, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -107,6 +110,11 @@ public class CapaRelatorio extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(ano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(395, Short.MAX_VALUE)
+                .addComponent(proxButton)
+                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,8 +130,8 @@ public class CapaRelatorio extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(proxButton)
                 .addGap(21, 21, 21))
         );
