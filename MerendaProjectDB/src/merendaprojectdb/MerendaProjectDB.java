@@ -38,12 +38,12 @@ public class MerendaProjectDB {
         
         
        try{
-            String host = "jdbc:mysql://localhost:3306/";
+            String host = "jdbc:mysql://localhost:3306/merendafes";
             String username = "root";
             String password = "@Vitor1997";
             con = DriverManager.getConnection(host, username, password);
             Map map = con.getTypeMap();
-            ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento) values(?,?,?,?,?,?,?,?)");
+           /* ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento) values(?,?,?,?,?,?,?,?)");
             ps.setInt(1, escola.getINEP());
             ps.setString(2, escola.getUnidade());
             ps.setString(3, escola.getTelefone());
@@ -52,7 +52,7 @@ public class MerendaProjectDB {
             ps.setString(6, escola.getSecretaria());
             ps.setString(7, escola.getSubsecretaria());
             ps.setString(8, escola.getDepartamento());
-            ps.execute();
+            ps.execute();*/
             
        }
        catch(SQLException err)
