@@ -12,13 +12,15 @@ package merendaprojectdb;
  */
 public class Relatorio {
     Cardapio cardapio;
+    CapaDados capa;
     
-    public Relatorio(Cardapio cardapio) {
-        
+    public Relatorio(Cardapio cardapio, CapaDados capa) {
+        this.capa = capa;
+        this.cardapio = cardapio;
     }
     
-    public void getCapaRelatorio() {
-        
+    public CapaDados getCapaRelatorio() {
+        return this.capa;
     }
     public Cardapio getCardapioRelatorio() {
         return this.cardapio;
