@@ -19,10 +19,11 @@ public class Escola {
     private String departamento;
     //dados
     private int INEP;
+    private String diretoria;
     private String unidade;
     private String telefone;
     Escola(String estado, String prefeitura, String secretaria, String subsecretaria, 
-            String departamento, int INEP, String unidade, String telefone) {
+            String departamento, int INEP, String diretoria, String unidade, String telefone) {
         this.estado = estado;
         this.prefeitura = prefeitura;
         this.secretaria = secretaria;
@@ -50,6 +51,10 @@ public class Escola {
     public void changeINEP(int inep) {
         this.INEP = inep;
     }
+    
+    public void changeDiretoria(String diretoria) {
+        this.diretoria = diretoria;
+    }
     public void changeUnidade(String unidade) {
         this.unidade = unidade;
     }
@@ -76,6 +81,10 @@ public class Escola {
     }
     public String getUnidade() {
         return this.unidade;
+    }
+    
+    public String getDiretoria() {
+        return this.diretoria;
     }
     public String getTelefone() {
         return this.telefone;

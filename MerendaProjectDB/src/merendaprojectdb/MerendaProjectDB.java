@@ -25,7 +25,7 @@ public class MerendaProjectDB {
         Calendario cardapio = new Calendario(1,2018);
         Escola escola = new Escola("ESTADO DO RIO DE JANEIRO","PREFEITURA DE DUQUE DE CAXIAS",
         "SECRETARIA MUNICIPAL DE EDUCAÇÃO", "SUBSECRETARIA DE EDUCAÇÃO EM INFRAESTRUTURA...", 
-        "DEPARTAMENTO DE INFRAESTRUTURA EDUCACIONAL", 33151750, "E.M. ANA DE SOUSA HERDY", "(21)3656-0364");
+        "DEPARTAMENTO DE INFRAESTRUTURA EDUCACIONAL", 33151750, "Luana Lopes", "E.M. ANA DE SOUSA HERDY", "(21)3656-0364");
         itens = new Itens();
         //so pra ter um valor inicial
         itens.add(new ItemComida("banana", "kg"));

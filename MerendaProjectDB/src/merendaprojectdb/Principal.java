@@ -25,6 +25,7 @@ public class Principal extends javax.swing.JFrame {
     Login login;
     CapaRelatorio capa;
     TelaCadastro cadastro;
+    TelaEscola escola;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +62,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Gerenciar Escola");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("jButton5");
 
@@ -97,14 +103,14 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(90, 90, 90))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(jButton7))
+                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
-                                .addGap(71, 71, 71)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
-                            .addComponent(jButton7))))
+                                .addGap(31, 31, 31)
+                                .addComponent(jButton4)))
+                        .addGap(40, 40, 40)))
                 .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -158,6 +164,14 @@ public class Principal extends javax.swing.JFrame {
         cadastro.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        escola=new TelaEscola(usuario);
+        escola.setLocationRelativeTo(null);
+        escola.setVisible(true);
+        escola.setResizable(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -25,6 +25,11 @@ public class BdManager {
         return false;
     }
     
+    static boolean cadastraEscola(Escola escola){
+        //TODO
+        return false;
+    }
+    
     static Escola findEscolaUnidade(String unidade) {
         return null;
     }
