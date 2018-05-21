@@ -50,5 +50,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="com.itextpdf:html2pdf:2.0.2" level="project" />
+    <orderEntry type="library" name="jsoup-1.11.3" level="project" />
   </component>
 </module>
