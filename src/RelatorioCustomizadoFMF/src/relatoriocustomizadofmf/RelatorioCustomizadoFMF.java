@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -29,10 +31,11 @@ import java.util.HashSet;
 public class RelatorioCustomizadoFMF extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         MysqlCon BD = new MysqlCon();
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
+        
+        /*Button btn = new Button();
+        btn.setText("Criar Template34454534");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
@@ -40,23 +43,28 @@ public class RelatorioCustomizadoFMF extends Application {
                 Set<String> valores = new HashSet<String>(); 
                 String path = "../data/teste.txt";
                 
-                TemplateStatement stmt = new TemplateStatement(path);
-                System.out.println(Leitor.getConsulta(path,stmt.mapeiaAtributos()));
+                TelaTemplate telatemplate = new TelaTemplate(primaryStage);
+                //TemplateStatement stmt = new TemplateStatement(path);
+                
+                //System.out.println(Leitor.getConsulta(path,stmt.mapeiaAtributos()));
                           
                 //String resultado = Leitor.getConsulta("../data/teste.txt", valores);
                 //BD.query("SELECT Nome FROM Professor WHERE Disciplina='Matematica III';");
                 //System.out.println(resultado);
             } 
-        });
+        });*/ 
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        Pane root= FXMLLoader.load(getClass().getResource("Layout_TelaPrincipal.fxml"));
         
-        Scene scene = new Scene(root, 300, 250);
+        //Pane root = new StackPane();
+        //root.getChildren().add(btn);
         
-        primaryStage.setTitle("Hello World!");
+        Scene scene = new Scene(root, 800, 600);
+        
+        primaryStage.setTitle("Tela Principal");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
     }
 
     /**
