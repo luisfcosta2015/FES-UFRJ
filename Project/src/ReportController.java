@@ -23,6 +23,7 @@ public class ReportController extends HttpServlet {
         String baseUri = getServletContext().getRealPath("").split("out")[0];
         baseUri = baseUri+Paths.get("res/reportsTemplates");
 
+//        File htmlSource = new File(baseUri+"/Listagem_Nominal_com_Situacao.html");
         File htmlSource = new File(baseUri+"/Diario_de_Classe.html");
         File pdfDest = new File(baseUri+"/output.pdf");
         // pdfHTML specific code

@@ -24,6 +24,9 @@
         tr.dias td{
             padding: 10px;
         }
+        .footer::after,.firstFooter::after{
+            content: "Página " counter(page) " de " counter(pages);
+        }
     </style>
 </head>
 <body>
@@ -73,7 +76,7 @@
             </tr>
         </table>
     </div>
-    <div class="header">yyy</div>
+    <div class="header"></div>
     <section class="content">
         <h3 style="text-align: center">Diário de Classe</h3>
         <table>
@@ -102,191 +105,21 @@
                 </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
+                <tr>
+                    <td>${codIeducar}</td>
+                    <td>${nomeAluno}</td>
 
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr> <tr>
-                <td>${codIeducar}</td>
-                <td>${nomeAluno}</td>
-
-                <td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-                <td></td>
-                <td></td>
-            </tr>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
     </section>
-    <div class="footer">OoooI</div>
-    <div class="firstFooter">ajahjaOOOiii</div>
+    <div class="footer"></div>
+    <div class="firstFooter"></div>
 </body>
 </html>

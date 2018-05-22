@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listagem Nominal com Situação</title>
+    <link rel="stylesheet" href="mainConfig/mainConfig.css">
+    <style>
+        .content table{
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .content thead{
+            font-weight: bold;
+        }
+        .content thead tr td{
+            padding: 5px;
+            border-bottom: 3px solid black;
+            border-top: 3px solid black;
+        }
+        .content tbody tr td{
+            padding: 3px;
+            border-bottom: 1px solid black;
+        }
+        body{
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10pt;
+        }
+        .logo-prefa{
+            width: 80px;
+        }
+        header>div{
+            float: left;
+            padding: 10px;
+           
+        }
+        header::after{
+            content: "";
+            display: block;
+            clear: both;
+            width: 100%;
+        }
+        .doc-title{
+            text-align: center;
+        }
+        tr.dias td{
+            padding: 10px;
+        }
+        .footer::after,.firstFooter::after{
+            content: "Página " counter(page) " de " counter(pages);
+        }
+    </style>
+</head>
+<body>
+    <div class='firstHeader'>
+        <table style="text-align: left">
+            <tr >
+                <td rowspan="6">
+                    <img class="logo-prefa" style="margin-right: 20px" src="mainConfig/logo.png" alt="Prefeitura de Caxias">
+                </td>
+                <td colspan="2">
+                    ESTADO DO RIO DE JANEIRO
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    PREFEITURA MUNICIPAL DE DUQUE DE CAXIAS<br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    SECRETARIA MUNICIPAL DE EDUCAÇÃO
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <strong>${escolaNome}</strong>
+                </td>
+            </tr>
+            <tr height="50">
+                    <td width="200">
+                        <strong>Ano:</strong> ${year}
+                    </td>
+                    <td width="200">
+                        <strong>Turma:</strong> ${escolaTurma}
+                    </td>
+                    <td width="200" colspan="2">
+                        ${escolaCiclo}
+                    </td>
+                    <td width="200" colspan="2">
+                            <strong>INEP:</strong>   ${inep}
+                    </td>
+                </tr>
+        </table>
+    </div>
+   <div class="header"></div>
+    <section class="content">
+        <h2 class="doc-title">Listagem Nominal com Situação</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td width="40">
+                        Código i-Educar
+                    </td>
+                    <td >
+                        Nome do Aluno
+                    </td>
+                    <td width="300">
+                        Situação
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                        <td>${codIeducar}</td>
+                        <td>${nomeAluno}</td>
+                        <td>${Situacao}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <div class="footer"></div>
+    <div class="firstFooter"></div>
+</body>
+</html>
