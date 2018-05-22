@@ -1,21 +1,19 @@
-# Sprint Planning
+# Sprint #1 Planning
 
 ## Introdução
 
 - **Início**: 18/04
-- **Término**: 25/04
+- **Término**: 24/04
 
 ## Histórias
 
-- Como funcionário quero poder fazer login
-- Como funcionário quero visualizar as informações sobre alimentos
+- Nenhuma
 
 ## Sprint Backlog:
 
 | Atividade                                | Tempo Estimado | Membro(s)     |
 |:----------------------------------------:|:--------------:|:-------------:|
 | Reação 5                                 | 15 minutos     | Daniel        |
-| Sail Boat do Time                        | 40 minutos     | Hiromi        |
 | Instalar e configurar IDE                | 40 minutos     | Todos         |
 | Montar e integrar banco de dados         | 2 horas        | João e Daniel |
 
@@ -24,11 +22,10 @@
 
 ### Atividades Concluídas
 
-| Atividade                                | Tempo Estimado | Tempo Real | Membro(s)     |
-|:----------------------------------------:|:--------------:|:----------:|:-------------:|
-| Reação 5                                 | 15 minutos     | 20 minutos | Daniel        |
-| Sail Boat do Time                        | 40 minutos     | 40 minutos | Hiromi        |
-| Instalar e configurar IDE                | 40 minutos     | 1 hora     | João e Daniel |
+| Atividade                                | Tempo Estimado | Tempo Real      | Membro(s)     |
+|:----------------------------------------:|:--------------:|:---------------:|:-------------:|
+| Reação 5                                 | 15 minutos     | 20 minutos      | Daniel        |
+| Instalar e configurar IDE                | 40 minutos     | 1 hora          | João e Daniel |
 
 
 ### Atividades Não Concluídas
@@ -44,7 +41,6 @@ A sprint não foi produtiva devido ao não planejamento e definição explícita
 ### FeedBack dos Membros
 
 - **Daniel**: A semana foi muita atarefada com tarefas de outras disciplinas e por isso não foi possível dedicar o tempo devido ao projeto.
-
 - **João**:
 - **François**:
 - **Hiromi**:
