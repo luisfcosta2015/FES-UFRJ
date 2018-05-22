@@ -2,8 +2,8 @@
 
 ## Introdução
 
-- **Início**: 18/04
-- **Término**: 24/04
+- **Início**: 25/04
+- **Término**: 01/05
 
 ## Histórias
 
