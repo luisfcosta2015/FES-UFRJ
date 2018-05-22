@@ -7,8 +7,7 @@
 
 ## Histórias
 
-- Como funcionário quero poder fazer login
-- Como funcionário quero visualizar as informações sobre alimentos
+- Nenhuma
 
 ## Sprint Backlog:
 
