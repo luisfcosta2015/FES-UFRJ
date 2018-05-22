@@ -1,17 +1,16 @@
-﻿# Sprint Planning
+# Sprint Planning
 
 ## Introdução
 
-| Início | Término |
-|:------:|:-------:|
-| 18/04  | 25/04   |
+- **Início**: 18/04
+- **Término**: 25/04
 
 ## Histórias
 
 - Como funcionário quero poder fazer login
 - Como funcionário quero visualizar as informações sobre alimentos
 
-## Sprint BackLog:
+## Sprint Backlog:
 
 | Atividade                                | Tempo Estimado | Membro(s)     |
 |:----------------------------------------:|:--------------:|:-------------:|
@@ -44,13 +43,11 @@ A sprint não foi produtiva devido ao não planejamento e definição explícita
 
 ### FeedBack dos Membros
 
-**Daniel**
+- **Daniel**: A semana foi muita atarefada com tarefas de outras disciplinas e por isso não foi possível dedicar o tempo devido ao projeto.
 
-**João**
-
-**François**
-
-**Hiromi**
+- **João**:
+- **François**:
+- **Hiromi**:
 
 ## Planejamento para próxima sprint
 
