@@ -1,0 +1,7 @@
+127.0.0.1 - - [18/May/2018:18:17:46 -0300] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [18/May/2018:18:17:47 -0300] "GET /relatorios/WEB-INF/web.xml HTTP/1.1" 404 949
+127.0.0.1 - - [18/May/2018:18:18:11 -0300] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [18/May/2018:18:18:12 -0300] "GET /relatorios/faces/Filtro.xhtml HTTP/1.1" 200 1130
+0:0:0:0:0:0:0:1 - - [18/May/2018:18:20:16 -0300] "GET /relatorios/faces/Filtro.xhtml HTTP/1.1" 500 5393
+0:0:0:0:0:0:0:1 - - [18/May/2018:18:20:31 -0300] "GET /relatorios/faces/Filtro.xhtml HTTP/1.1" 500 5393
+0:0:0:0:0:0:0:1 - - [18/May/2018:18:21:15 -0300] "GET /relatorios/faces/Filtro.xhtml HTTP/1.1" 200 1123

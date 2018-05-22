@@ -1,0 +1,4 @@
+2018-05-22 20:06:45,959 [Worker-60] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/glassfish/javax.faces/2.1.6/javax.faces-2.1.6-sources.jar
+2018-05-22 20:06:47,456 [Worker-60] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/glassfish/javax.faces/2.1.6/javax.faces-2.1.6-sources.jar
+2018-05-22 20:06:49,944 [Worker-58] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-coyote/7.0.75/tomcat-coyote-7.0.75-sources.jar
+2018-05-22 20:06:51,086 [Worker-58] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-coyote/7.0.75/tomcat-coyote-7.0.75-sources.jar
