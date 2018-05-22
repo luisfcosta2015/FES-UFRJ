@@ -1,7 +1,7 @@
 # Sobre a Sprint #2
 
 * Data de início: 26/04
-* Data de conclusão: 03/05
+* Data de conclusão: 02/05
 
 ## Tarefa Atrasada: 
 
