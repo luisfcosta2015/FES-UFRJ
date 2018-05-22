@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class RSSQLObject {
 
-    class RSSQLField{
+    public class RSSQLField{
 
         String key;
         String value;
@@ -14,6 +14,14 @@ public class RSSQLObject {
         RSSQLField(String key, String value){
             this.key = key;
             this.value = value;
+        }
+
+        public String getKey(){
+            return this.key;
+        }
+
+        public String getValue(){
+            return this.value;
         }
 
     }
@@ -24,6 +32,14 @@ public class RSSQLObject {
     // default constructor for GSON
     public RSSQLObject(){
 
+    }
+
+    public ArrayList<RSSQLField> getStaticFields(){
+        return this.static_field;
+    }
+
+    public RSSQLField getDynamicField(){
+        return this.dynamic_field;
     }
 
     @Override
