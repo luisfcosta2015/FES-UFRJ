@@ -128,7 +128,7 @@
   <tr>
     <th> Atividade </th>
     <th> Horas Previstas </th>
-   	</th> Horas gastas </th>
+   	<th> Horas gastas </th>
     <th> Membro </th>
   </tr>
   <tr>
@@ -158,7 +158,7 @@
   <tr>
     <td>Montar dump do DB localmente</td>
     <td>1 hora</td>
-    <td> 4 horas </td>
+    <td> 4 horas, porém não foi possível acabar </td>
     <td>Tomaz e Gilberto</td>
   </tr>
   <tr>
@@ -204,7 +204,7 @@ Durante essa Sprint assumi mais tarefas, que inicialmente pensei serem triviais,
 
 <h2> Revisão </h2>
 <p align="justify">
-
+Devivo a ausencia da Poliana, por conta de transito, não foi possível realizar a revisão da semana.
 </p>
 
 <h2> Planejamento para a próxima sprint</h2>
