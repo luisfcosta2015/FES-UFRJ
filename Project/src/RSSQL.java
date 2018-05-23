@@ -25,11 +25,24 @@ public class RSSQL {
         Gson gson = new Gson();
         mRSO = gson.fromJson(sb.toString(),RSSQLObject.class);
 
-        for(RSSQLObject.RSSQLField key: mRSO.getStaticFields()){
+        for(RSSQLObject.RSSQLField field: mRSO.getStaticFields()){
+            String query = field.getValue();
+            for(String key:namespace.keySet()){
+                query = query.replace("${"+key+"}",namespace.get(key));
+            }
 
+            String result;
+            if(query.startsWith("sql:")){
+                DBHelper db = new DBHelper();
+                db.connect();
+                result = db.querySingleData(query.replace("sql:",""));
+            }else{
+                result = query;
+            }
+            namespace.put(field.getKey(), result);
         }
 
-
+        System.out.println(namespace);
 
     }
 }
