@@ -31,7 +31,7 @@
                       <EmptySpace pref="185" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btnVoltar" max="32767" attributes="0"/>
-                          <Component id="btnCadastrar" pref="101" max="32767" attributes="0"/>
+                          <Component id="btnCadastrar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>

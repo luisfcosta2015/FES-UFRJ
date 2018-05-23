@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
-import static merenda.CadastroPessoa.isNumeric;
+import static merenda.CadastroUsuario.isNumeric;
 
 /**
  *
