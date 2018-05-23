@@ -120,6 +120,24 @@
     <td> 3 horas </td>
     <td>Larisa</td>
   </tr>
+    <tr>
+    <td>Burndown Chart da Terceira Sprint</td>
+    <td>1 hora</td>
+    <td>1 hora</td>
+    <td>Aline</td>
+  </tr>
+  <tr>
+    <td>Burndownchart da Quarta sprint</td>
+    <td>1 hora</td>
+    <td>1 hora</td>
+    <td>Aline</td>
+  </tr>
+  <tr>
+    <td>Texto na wiki sobre a dificuldade com o Burndown chart</td>
+    <td>1 hora</td>
+    <td>1 hora</td>
+    <td>Aline</td>
+  </tr>
 </table> 
 
 <h3> Atividades Não concluidas </h3>
@@ -130,24 +148,6 @@
     <th> Horas Previstas </th>
    	<th> Horas gastas </th>
     <th> Membro </th>
-  </tr>
-  <tr>
-    <td>Burndown Chart da Terceira Sprint</td>
-    <td>1 hora</td>
-    <td> ? </td>
-    <td>Aline</td>
-  </tr>
-  <tr>
-    <td>Burndownchart da Quarta sprint</td>
-    <td>1 hora</td>
-    <td> ? </td>
-    <td>Aline</td>
-  </tr>
-  <tr>
-    <td>Texto na wiki sobre a dificuldade com o Burndown chart</td>
-    <td>1 hora</td>
-    <td> ? </td>
-    <td>Aline</td>
   </tr>
   <tr>
     <td>Criar Layout de relatório</td>
@@ -185,7 +185,8 @@
 <h3> Feedback dos membros</h3>
 <h4> Aline </h4>
 
-<p align="justify"> </p>
+<p align="justify"> 
+Durante essa sprint decidi fazer menos coisas, principalmente por ter outros compromissos. Notei que eu estava me sobrecarregando e não estava rendendo. Com essa decisão, conseguir seguir o planejado, terminando a sprint de forma satisfatória e com o planejamento 100% concluido.</p>
 
 <h4> Gilberto </h4>
 
