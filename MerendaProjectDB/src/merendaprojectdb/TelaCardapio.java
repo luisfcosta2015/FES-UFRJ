@@ -229,7 +229,6 @@ public class TelaCardapio extends javax.swing.JFrame {
         cardapio = new Cardapio(calendario);
         for(int i=0; i < this.tabelinha.getRowCount(); i++) {
             cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
-            System.out.println(""+this.tabelinha.getValueAt(i, 1));
         }
         
         itensRel = new ItensRelatorio(usuario);
