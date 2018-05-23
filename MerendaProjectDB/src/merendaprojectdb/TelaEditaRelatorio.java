@@ -18,9 +18,12 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
      * Creates new form TelaEditaRelatorio
      */
     CapaDados capa;
+    Relatorio relatorio;
     DefaultTableModel tabelaMatricula;
+    TelaEditaCardapio editaCardapio;
     public TelaEditaRelatorio(Relatorio relatorio) {
         initComponents();
+        this.relatorio = relatorio;
         this.capa = relatorio.getCapaRelatorio();
         this.tabelaMatricula = (DefaultTableModel) tabelaMatriculados.getModel();
         inicializaTabela();
@@ -50,7 +53,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMatriculados = new javax.swing.JTable();
-        nextButton = new javax.swing.JButton();
+        proximoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,10 +79,10 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaMatriculados);
 
-        nextButton.setText("Proximo");
-        nextButton.addActionListener(new java.awt.event.ActionListener() {
+        proximoButton.setText("Proximo");
+        proximoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButtonActionPerformed(evt);
+                proximoButtonActionPerformed(evt);
             }
         });
 
@@ -92,7 +95,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
                 .addGap(0, 20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nextButton)
+                .addComponent(proximoButton)
                 .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
@@ -101,7 +104,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(nextButton)
+                .addComponent(proximoButton)
                 .addContainerGap())
         );
 
@@ -111,7 +114,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
     /**Método chamado em resposta ao botao next. Atualiza o campo CapaDados do Relatorio recebido
      * @author Joyce Brum
      */
-    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+    private void proximoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximoButtonActionPerformed
         int [] turnos = new int[4];
         int atendidos;
         int numDias;
@@ -123,12 +126,17 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
             numDias = (Integer)this.tabelaMatricula.getValueAt(i, 7);
             this.capa.setVetorMatriculados(i, turnos, atendidos, numDias);
         }
-    }//GEN-LAST:event_nextButtonActionPerformed
+        this.editaCardapio = new TelaEditaCardapio(this.relatorio);
+        this.editaCardapio.setLocationRelativeTo(null);
+        this.editaCardapio.setVisible(true);
+        this.editaCardapio.setResizable(true);
+        dispose();
+    }//GEN-LAST:event_proximoButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton nextButton;
+    private javax.swing.JButton proximoButton;
     private javax.swing.JTable tabelaMatriculados;
     // End of variables declaration//GEN-END:variables
 }

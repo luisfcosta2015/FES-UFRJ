@@ -26,6 +26,7 @@ public class Principal extends javax.swing.JFrame {
     CapaRelatorio capa;
     TelaCadastro cadastro;
     TelaEscola escola;
+    TelaListaRelatorios listaRelatorios;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +40,7 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        edita = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         sair = new javax.swing.JLabel();
@@ -69,7 +70,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("jButton5");
+        edita.setText("Editar Relatório");
+        edita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editaActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("jButton6");
 
@@ -98,7 +104,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(jButton5))
+                            .addComponent(edita))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
@@ -130,13 +136,13 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                    .addComponent(edita)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton4, jButton5, jButton6, jButton7});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {edita, jButton1, jButton4, jButton6, jButton7});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,6 +179,16 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void editaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaActionPerformed
+        // TODO add your handling code here:
+        this.listaRelatorios = new TelaListaRelatorios();
+        this.listaRelatorios.setLocationRelativeTo(null);
+        this.listaRelatorios.setVisible(true);
+        this.listaRelatorios.setResizable(true);
+        dispose();
+        //this.setVisible(false);
+    }//GEN-LAST:event_editaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,10 +196,10 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel campoNome;
+    private javax.swing.JButton edita;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel sair;
