@@ -2,8 +2,8 @@
 
 ## Introdução
 
-- **Início**: 02/05
-- **Término**: 08/05
+- **Início**: 25/04
+- **Término**: 01/05
 
 ## Histórias
 
@@ -14,11 +14,11 @@
 | Atividade                                | Tempo Estimado | Membro(s)     |
 |:----------------------------------------:|:--------------:|:-------------:|
 | Reação 6                                 | 20 minutos     | Daniel        |
-| Sail Boat do Time                        | 40 minutos     | Hiromi        |
+| Instalar e configurar IDE                | 40 minutos     | Todos         |
 | Criar gráfico burndown                   | 40 minutos     | Daniel        |
 | Criar mockups do sistema                 | 1 hora         | François      |
 | Criar diagrama ER                        | 40 minutos     | Todos         |
-
+| Sail Boat do Time                        | 40 minutos     | Hiromi        |
 
 ## Retrospectiva
 
@@ -27,10 +27,10 @@
 | Atividade                                | Tempo Estimado | Tempo Real 		  | Membro(s)     |
 |:----------------------------------------:|:--------------:|:-------------------:|:-------------:|
 | Reação 6                                 | 20 minutos     | 20 minutos 		  | Daniel        |
-| Sail Boat do Time                        | 40 minutos     | 40 minutos 		  | Hiromi        |
+| Instalar e configurar IDE                | 40 minutos     | 1 hora              | Todos         |
 | Criar mockups do sistema                 | 1 hora         | 1 hora              | François      |
 | Criar diagrama ER                        | 40 minutos     | 1 hora e 30 minutos | Todos         |
-
+| Sail Boat do Time                        | 40 minutos     | 40 minutos     	  | Hiromi        |
 
 ### Atividades Não Concluídas
 
@@ -40,7 +40,7 @@
 
 ## Revisão
 
-
+A sprint foi mais produtiva que a anterior e o grupo conseguiu dividir melhor as tarefas para completá-las a tempo.
 
 ### FeedBack dos Membros
 

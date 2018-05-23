@@ -1,9 +1,9 @@
-﻿# Sprint #3 Planning
+﻿# Sprint #5 Planning
 
 ## Introdução
 
-- **Início**: 02/05
-- **Término**: 08/05
+- **Início**: 16/05
+- **Término**: 22/05
 
 ## Histórias
 
@@ -12,9 +12,13 @@
 
 ## Sprint Backlog:
 
-| Atividade                                | Tempo Estimado | Membro(s)     |
-|:----------------------------------------:|:--------------:|:-------------:|
-| Reação 7                                 | 20 minutos     | Daniel        |
+| Atividade                                      | Tempo Estimado | Membro(s)     |
+|:----------------------------------------------:|:--------------:|:-------------:|
+| Reação 9                                       | 20 minutos     | Daniel        |
+| Preencher mds das Sprints 1 a 4 no repositório | 1 hora         | Daniel        |	
+| Criar gráfico burndown                         | 40 minutos     | Daniel        |
+| Criar escopo da tela inicial                   | 1 hora         | Hiromi        |
+| Finalizar back-end de login                    | 1 hora         | François      |
 
 
 ## Retrospectiva
@@ -23,7 +27,7 @@
 
 | Atividade                                | Tempo Estimado | Tempo Real 		  | Membro(s)     |
 |:----------------------------------------:|:--------------:|:-------------------:|:-------------:|
-| Reação 7                                 | 20 minutos     | 20 minutos          | Daniel        |
+
 
 
 ### Atividades Não Concluídas
