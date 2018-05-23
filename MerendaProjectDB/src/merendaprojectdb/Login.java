@@ -7,6 +7,7 @@
 package merendaprojectdb;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.Date;
 /**
  *
@@ -18,6 +19,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        
         initComponents();
         //this.getContentPane().setBackground(Color.RED);
     }
@@ -25,6 +27,7 @@ public class Login extends javax.swing.JFrame {
     Principal diretor;
     TelaCardapio cardapio;
     ItensRelatorio itens;
+    BdManager banco;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,7 +104,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(campoUsuario.getText().intern()=="Diretor"&& !campoSenha.getText().isEmpty())
+        if(banco.verificarUser(campoSenha.getText(),campoUsuario.getText())==true)
         {
             diretor=new Principal(campoUsuario.getText().intern());
             diretor.setLocationRelativeTo(null);
@@ -111,12 +114,12 @@ public class Login extends javax.swing.JFrame {
         }
         else
         {
-            itens=new ItensRelatorio(campoUsuario.getText().intern());
-            itens.setLocationRelativeTo(null);
-            itens.setVisible(true);
-            itens.setResizable(true);
-            this.setVisible(false);
-            //JOptionPane.showMessageDialog(null,"Usuario errado, tente\n Usuario: Diretor\nSenha:1234");
+            //itens=new ItensRelatorio(campoUsuario.getText().intern());
+            //itens.setLocationRelativeTo(null);
+            //itens.setVisible(true);
+            //itens.setResizable(true);
+            //this.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Usuario errado, tente\n Usuario: Diretor\nSenha:123");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

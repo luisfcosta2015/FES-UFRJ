@@ -5,6 +5,8 @@
  */
 package merendaprojectdb;
 
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import merendaprojectdb.TelaConfirmarAcao;
 //import telas.Principal;
 
@@ -18,11 +20,23 @@ public class TelaEscola extends javax.swing.JFrame {
     String usuario;
     TelaNovaEscola nova;
     TelaConfirmarAcao deletar;
+    BdManager banco;
     /**
      * Creates new form TelaEscola
      */
     public TelaEscola(String nome) {
         initComponents();
+        carregarEscolas();
+    }
+    
+    private void carregarEscolas(){
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) nomeUnidade.getModel();
+        ArrayList<Escola> escolas=banco.pegarEscolas();
+        
+        for(int i=0;i<escolas.size();i++)
+        {
+            modelo.addElement(escolas.get(i).getUnidade());
+        }
     }
 
     /**
@@ -81,7 +95,7 @@ public class TelaEscola extends javax.swing.JFrame {
                 .addGap(38, 38, 38))
         );
 
-        nomeUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        nomeUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a escola" }));
         nomeUnidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeUnidadeActionPerformed(evt);
@@ -116,12 +130,9 @@ public class TelaEscola extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

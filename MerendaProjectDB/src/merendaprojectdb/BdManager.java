@@ -7,6 +7,7 @@ package merendaprojectdb;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.sql.SQLException;
 /**
  *
@@ -24,13 +25,61 @@ public class BdManager {
         // TODO
         return false;
     }
-    
-    static boolean cadastraEscola(Escola escola){
+    static boolean verificarUser(String senha, String user){
+        
         //TODO
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(new Usuario("João","Diretor","123","","",new Escola(""+"","", "", "", "", 123, "", "", "")));
+        usuarios.add(new Usuario("João","admin","321","","",new Escola(""+"","", "", "", "", 123, "", "", "")));
+        usuarios.add(new Usuario("João","outro","12345678","","",new Escola(""+"","", "", "", "", 123, "", "", "")));
+        //entre isso aqui vai receber o array com todos os usuarios
+        
+        for(int i=0;i<usuarios.size();i++)
+        {
+            System.out.println(usuarios.get(i).user.equals(user));
+            if(usuarios.get(i).user.equals(user) && usuarios.get(i).senha.equals(senha))
+            {
+                return true;
+            }
+        }
+        
         return false;
     }
-    
+    static boolean cadastraEscola(Escola escola){
+        //TODO
+        //aqui o codigo recebera uma escola e adicionará ela as escolas cadastradas no banco
+        return true;
+    }
+    static ArrayList pegarEscolas(){
+        //aqui tem que retornar todas as escolas cadastradas no sistema em um arrayList
+        // TODO
+        ArrayList<Escola> escolas = new ArrayList<>();
+        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tia totoca", ""));
+        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tia maria", ""));
+        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tio Pedrão", ""));
+        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tio Carlão", ""));
+        
+        return escolas;
+    }
+    static boolean AdicionarItemListaCardapio(String Item){
+        //TODO
+        //aqui o codigo recebera um item e adcionará ele aos itens que podem ser usados no cardapio, esse item será pego com
+        //o metodo "pegarItensDoCardapio"
+        
+        
+        return true;
+    }
     static Escola findEscolaUnidade(String unidade) {
         return null;
+    }
+    static ArrayList pegarItensDoCardapio() {
+        //aqui tem que retornar todos os itens do cardapio mas como não sei o que fazer, to retornando coisas aleatorias
+        //tem que retornar em um array List
+        // TODO
+        ArrayList<String> itens = new ArrayList<>();
+        itens.add("batata");
+        itens.add("feijão");
+        itens.add("macarrão");
+        return itens;
     }
 }

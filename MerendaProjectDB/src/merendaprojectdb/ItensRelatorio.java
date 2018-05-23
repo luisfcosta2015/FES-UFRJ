@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package merendaprojectdb;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -14,6 +15,7 @@ public class ItensRelatorio extends javax.swing.JFrame {
     
     String usuario;
     Principal principal;
+    BdManager banco;
     DefaultListModel modelList = new DefaultListModel();
     /**
      * Creates new form ItensRelatorio
@@ -23,9 +25,8 @@ public class ItensRelatorio extends javax.swing.JFrame {
         
         
         initComponents();
+        carregarItens();
         
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
-        modelo.addElement("thiago");
         // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
     }
     
@@ -47,15 +48,18 @@ public class ItensRelatorio extends javax.swing.JFrame {
         tipoItem = new javax.swing.JComboBox<>();
         quantItem = new javax.swing.JTextField();
         unidadeItem = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        AdicionarParaALista = new javax.swing.JButton();
         voltarAoMenu = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+        novoItem = new javax.swing.JTextField();
+        AdicionarItens = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         criaLista();
-        tipoItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "banana", "maçã", "Item 3", "Item 4" }));
+        tipoItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Item" }));
         tipoItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoItemActionPerformed(evt);
@@ -64,10 +68,10 @@ public class ItensRelatorio extends javax.swing.JFrame {
 
         unidadeItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "g", "Kg", "Uni.", "Duz.", " " }));
 
-        jButton1.setText("+");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AdicionarParaALista.setText("+");
+        AdicionarParaALista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AdicionarParaAListaActionPerformed(evt);
             }
         });
 
@@ -88,6 +92,15 @@ public class ItensRelatorio extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabela);
 
+        AdicionarItens.setText("Adicionar");
+        AdicionarItens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdicionarItensActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Adicionar novo tipo de Item");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,17 +112,26 @@ public class ItensRelatorio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(quantItem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(novoItem, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(AdicionarItens))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(quantItem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(AdicionarParaALista))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(80, 80, 80)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,10 +141,16 @@ public class ItensRelatorio extends javax.swing.JFrame {
                     .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(quantItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(44, 44, 44)
+                    .addComponent(AdicionarParaALista))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(novoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AdicionarItens))
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(voltarAoMenu))
         );
 
@@ -156,19 +184,40 @@ public class ItensRelatorio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_voltarAoMenuActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
-        tabelinha.addRow(new Object[] {tipoItem.getSelectedItem(), quantItem.getText(), unidadeItem.getSelectedItem()});
-        
-        
-    
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void AdicionarParaAListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarParaAListaActionPerformed
+        if(tipoItem.getSelectedItem()!="Selecione o Item" && !quantItem.getText().equals(""))
+        {
+            DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+            tabelinha.addRow(new Object[] {tipoItem.getSelectedItem(), quantItem.getText(), unidadeItem.getSelectedItem()});
+        }
+    }//GEN-LAST:event_AdicionarParaAListaActionPerformed
 
+    private void AdicionarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarItensActionPerformed
+        
+        String newItem = novoItem.getText();
+        banco.AdicionarItemListaCardapio(newItem);
+        carregarItens();
+        
+    }//GEN-LAST:event_AdicionarItensActionPerformed
+
+    private void carregarItens(){
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
+        //modelo.addElement("thiago");
+        
+        ArrayList<String> itens=banco.pegarItensDoCardapio();
+        for(int i=0;i<itens.size();i++)
+        {
+            modelo.addElement(itens.get(i));
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton AdicionarItens;
+    private javax.swing.JButton AdicionarParaALista;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField novoItem;
     private javax.swing.JTextField quantItem;
     private javax.swing.JTable tabela;
     private javax.swing.JComboBox<String> tipoItem;
