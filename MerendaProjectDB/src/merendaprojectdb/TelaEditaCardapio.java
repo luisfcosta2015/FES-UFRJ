@@ -169,6 +169,9 @@ public class TelaEditaCardapio extends javax.swing.JFrame {
 
     private void proximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximoActionPerformed
         // TODO add your handling code here:
+        for(int i=0; i < this.tabelaModel.getRowCount(); i++) {
+            this.cardapio.setCardapio(i, ""+ this.tabelaModel.getValueAt(i, 1));
+        }
         this.principal = new Principal("joyce");
         this.principal.setLocationRelativeTo(null);
         this.principal.setVisible(true);
