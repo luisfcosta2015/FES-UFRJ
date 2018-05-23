@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Cardapio {
     
-    ArrayList<DuplaDataCardapio> cardapioList;
+    private ArrayList<DuplaDataCardapio> cardapioList;
     
     public Cardapio(Calendario calendar) {
         cardapioList = new ArrayList<DuplaDataCardapio>();
@@ -34,5 +34,19 @@ public class Cardapio {
     }
     public void setCardapio(int pos, String valor) {
         cardapioList.get(pos).setCardapioDoDia(valor);
+    }
+    
+    public ArrayList<DuplaDataCardapio> getList() {
+        return this.cardapioList;
+    }
+    
+    public boolean remove(Date data) {
+        for(DuplaDataCardapio dupla: cardapioList) {
+            if(dupla.data.compareTo(data)==0) {
+                cardapioList.remove(dupla);
+                return true;
+            }
+        }
+        return false;
     }
 }
