@@ -20,7 +20,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
     CapaDados capa;
     Relatorio relatorio;
     DefaultTableModel tabelaMatricula;
-    TelaEditaCardapio editaCardapio;
+    TelaCardapio editaCardapio;
     public TelaEditaRelatorio(Relatorio relatorio) {
         initComponents();
         this.relatorio = relatorio;
@@ -126,7 +126,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
             numDias = (Integer)this.tabelaMatricula.getValueAt(i, 7);
             this.capa.setVetorMatriculados(i, turnos, atendidos, numDias);
         }
-        this.editaCardapio = new TelaEditaCardapio(this.relatorio);
+        this.editaCardapio = new TelaCardapio(this.relatorio);
         this.editaCardapio.setLocationRelativeTo(null);
         this.editaCardapio.setVisible(true);
         this.editaCardapio.setResizable(true);

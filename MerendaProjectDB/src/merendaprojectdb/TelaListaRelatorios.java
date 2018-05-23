@@ -16,6 +16,7 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
     TelaEditaRelatorio editaRelatorio;
     Relatorio relatorioSelecionado;
     BdManager banco;
+    DefaultListModel modeloLista;
     /**
      * Creates new form TelaListaRelatorios
      */
@@ -36,15 +37,15 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         //TEM QUE CONSERTAR AQUI PELO AMOR DE DEUS
         // TO CANSADO DEMAIS PRA ACHAR O ERRO
         
-        /*System.out.println("oiiii");
-        DefaultListModel modelo = (DefaultListModel) listaRelatorios.getModel();
+        System.out.println("oiiii");
+        this.modeloLista = (DefaultListModel) this.listaRelatorios.getModel();
         System.out.println("oiiii");
         ArrayList<Relatorio> relatorios=banco.getRelatoriosExistentes();
         System.out.println("oiiii");
         for(int i=0;i<relatorios.size();i++)
         {
-            modelo.addElement(relatorios.get(i).getTitulo());
-        }System.out.println("oiiii");*/
+            this.modeloLista.addElement(relatorios.get(i).getTitulo());
+        }System.out.println("oiiii");
         
         
     }

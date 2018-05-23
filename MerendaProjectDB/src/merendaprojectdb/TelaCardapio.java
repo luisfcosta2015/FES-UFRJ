@@ -26,7 +26,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     /**
      * Creates new form Cardapio
      */
-    
+    private boolean editando;
     Calendario calendario;
     Cardapio cardapio;
     Principal principal;
@@ -36,6 +36,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     int mes;
     DefaultTableModel tabelinha;
     ArrayList<Date>datasExcluidas;
+    Relatorio relatorio;
     // Collection of items currently selected via checkboxes in the table 
     // This will be passed to the TableCell implementation.
     // ObservableSet<Object> selectedItems = FXCollections.observableSet();
@@ -57,6 +58,25 @@ public class TelaCardapio extends javax.swing.JFrame {
         {
             Object[] dado = {df.format(data)};
             tabelinha.addRow(dado);
+        }
+    }
+    
+    /**
+     * Creates new form TelaEditaCardapio
+     */
+    public TelaCardapio(Relatorio relatorio) {
+        initComponents();
+        this.editando = true;
+        this.relatorio = relatorio;
+        this.cardapio = relatorio.getCardapioRelatorio();
+        tabelinha = (DefaultTableModel) tabela.getModel();
+        DateFormat df = new SimpleDateFormat("dd/MM");
+        ArrayList<DuplaDataCardapio> cardapioList = cardapio.getList();
+        for(DuplaDataCardapio dupla : cardapioList) {
+            Object[] obj = new Object[2];
+            obj[0] = df.format(dupla.data);
+            obj[1] = dupla.cardapioDoDia;
+            tabelinha.addRow(obj);
         }
     }
     
@@ -226,6 +246,17 @@ public class TelaCardapio extends javax.swing.JFrame {
 
     private void proxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proxButtonActionPerformed
         // salva de alguma forma o que foi feito
+        if(this.editando) {
+            for(int i=0; i < this.tabelinha.getRowCount(); i++) {
+                this.cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
+            }   
+            itensRel = new ItensRelatorio(usuario);
+            itensRel.setLocationRelativeTo(null);
+            itensRel.setVisible(true);
+            itensRel.setResizable(true);
+            this.setVisible(false);
+            return;
+        }
         cardapio = new Cardapio(calendario);
         for(int i=0; i < this.tabelinha.getRowCount(); i++) {
             cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
@@ -240,6 +271,28 @@ public class TelaCardapio extends javax.swing.JFrame {
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
         // TODO add your handling code here:
+        if(this.editando) {
+            try {
+                if(!this.linha.getText().isEmpty()) {
+                    int lin = Integer.parseInt(this.linha.getText());
+                    if(lin < this.tabelinha.getRowCount()) {
+                        DateFormat df = new SimpleDateFormat("dd/MM");
+                        Date data = df.parse(this.tabelinha.getValueAt(lin, 0).toString());
+                        this.cardapio.remove(data);
+                        tabelinha.removeRow(lin);
+                        return;
+                    }
+                    System.out.println("numero da linha invalido");
+                    return;
+                }
+                System.out.println("linha em branco");
+                return;
+            }
+            catch (ParseException e) {
+                System.out.println("erro no parse da data");
+                return;
+            }
+        }
         try {
             if(!this.linha.getText().isEmpty()) {
                 int lin = Integer.parseInt(this.linha.getText());
