@@ -13,10 +13,12 @@ package merendaprojectdb;
 public class Relatorio {
     Cardapio cardapio;
     CapaDados capa;
+    String titulo;
     
-    public Relatorio(Cardapio cardapio, CapaDados capa) {
+    public Relatorio(Cardapio cardapio, CapaDados capa, String nome) {
         this.capa = capa;
         this.cardapio = cardapio;
+        this.titulo = nome;
     }
     
     public CapaDados getCapaRelatorio() {
@@ -27,5 +29,8 @@ public class Relatorio {
     }
     public void getListaComidaRelatorio() {
         
+    }
+    public String getTitulo(){
+        return this.titulo;
     }
 }

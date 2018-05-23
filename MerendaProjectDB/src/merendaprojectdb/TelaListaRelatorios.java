@@ -5,6 +5,8 @@
  */
 package merendaprojectdb;
 
+import java.util.ArrayList;
+import javax.swing.*;
 /**
  *
  * @author joycinha
@@ -13,18 +15,38 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
     
     TelaEditaRelatorio editaRelatorio;
     Relatorio relatorioSelecionado;
+    BdManager banco;
     /**
      * Creates new form TelaListaRelatorios
      */
     public TelaListaRelatorios() {
         initComponents();
+        carregarLista();
         Cardapio cardapio = new Cardapio(new Calendario(5,2018));
         CapaDados capa = new CapaDados();
         int[] turnos;
         turnos = new int[] {10,20,30,40};
         capa.setVetorMatriculados(0, turnos, 20, 30);
         capa.setVetorMatriculados(1,new int[] {8,51,35,12},32,15);
-        relatorioSelecionado = new Relatorio(cardapio, capa);
+        relatorioSelecionado = new Relatorio(cardapio, capa, "nome");
+    }
+    private void carregarLista()
+    {
+        
+        //TEM QUE CONSERTAR AQUI PELO AMOR DE DEUS
+        // TO CANSADO DEMAIS PRA ACHAR O ERRO
+        
+        /*System.out.println("oiiii");
+        DefaultListModel modelo = (DefaultListModel) listaRelatorios.getModel();
+        System.out.println("oiiii");
+        ArrayList<Relatorio> relatorios=banco.getRelatoriosExistentes();
+        System.out.println("oiiii");
+        for(int i=0;i<relatorios.size();i++)
+        {
+            modelo.addElement(relatorios.get(i).getTitulo());
+        }System.out.println("oiiii");*/
+        
+        
     }
 
     /**
@@ -36,18 +58,11 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaRelatorios = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -56,25 +71,32 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
             }
         });
 
+        listaRelatorios.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "ITEM1", "ITEM2", "ITEM3" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listaRelatorios);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(291, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(48, 48, 48))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addComponent(jButton1)
                 .addGap(26, 26, 26))
         );
@@ -93,7 +115,7 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> listaRelatorios;
     // End of variables declaration//GEN-END:variables
 }

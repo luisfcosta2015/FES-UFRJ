@@ -82,4 +82,20 @@ public class BdManager {
         itens.add("macarrão");
         return itens;
     }
+    static ArrayList getRelatoriosExistentes(){
+        //TODO
+        //aqui tem que retornar em um arrayList todos(ou talvez os mais recentes) os relatorios
+        
+        ArrayList<Relatorio> relatorios = new ArrayList<>();
+        
+        relatorios.add(new Relatorio(new Cardapio(new Calendario(1,2018)),new CapaDados(),"Relatorio 01/2018"));
+        relatorios.add(new Relatorio(new Cardapio(new Calendario(2,2018)),new CapaDados(),"Relatorio 02/2018"));
+        relatorios.add(new Relatorio(new Cardapio(new Calendario(3,2018)),new CapaDados(),"Relatorio 03/2018"));
+        relatorios.add(new Relatorio(new Cardapio(new Calendario(4,2018)),new CapaDados(),"Relatorio 04/2018"));
+        relatorios.add(new Relatorio(new Cardapio(new Calendario(5,2018)),new CapaDados(),"Relatorio 05/2018"));
+        relatorios.add(new Relatorio(new Cardapio(new Calendario(6,2018)),new CapaDados(),"Relatorio 06/2018"));
+        
+        return relatorios;
+        
+    }
 }

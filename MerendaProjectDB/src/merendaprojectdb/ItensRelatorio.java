@@ -30,6 +30,17 @@ public class ItensRelatorio extends javax.swing.JFrame {
         // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
     }
     
+    private void carregarItens(){
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
+        //modelo.addElement("thiago");
+        
+        ArrayList<String> itens=banco.pegarItensDoCardapio();
+        for(int i=0;i<itens.size();i++)
+        {
+            modelo.addElement(itens.get(i));
+        }
+    }
+    
     private void criaLista() {
        this.tipoItem.removeAll();
         this.tipoItem.addItem(usuario);
@@ -200,16 +211,6 @@ public class ItensRelatorio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_AdicionarItensActionPerformed
 
-    private void carregarItens(){
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
-        //modelo.addElement("thiago");
-        
-        ArrayList<String> itens=banco.pegarItensDoCardapio();
-        for(int i=0;i<itens.size();i++)
-        {
-            modelo.addElement(itens.get(i));
-        }
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdicionarItens;
