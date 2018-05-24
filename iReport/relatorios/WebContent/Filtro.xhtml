@@ -4,12 +4,28 @@
 	xmlns:h="http://java.sun.com/jsf/html"	
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Filtro</title>
-	<script language="javascript" src="resources/js/Funcoes.js"></script>
+		
+	<link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+	
+	<script language="javascript" src="resources/js/Funcoes.js"/>
+	
 </h:head>
 <body>
+	<div class="header">
+	  <img src="resources/img/logo.png" height="200px" width="500px"/>
+	  <div class="header-right">
+	    <a class="active" href="#home">Filtro</a>
+	    <a href="Contact.xhtml">Contact</a>
+<!-- 	    <a href="#about">About</a>
+ -->	  </div>
+	</div>
+	<br/>
 	<form>
 		<h:panelGrid columns = "2">
 			<h:outputLabel value = "Matrícula: "/>
@@ -31,9 +47,12 @@
 		
 			<h:outputLabel value = "Série: " />
 			<h:inputText maxlength="12" size="17" />
-			
+			<br/>
 			<h:commandButton onclick="confirmButton()" value="Buscar" />
 		</h:panelGrid>
 	</form>
+	<div class="footer">
+		<font color="black">Projetos feito meramente para fins acadêmicos</font>
+	</div>
 </body>
 </html>

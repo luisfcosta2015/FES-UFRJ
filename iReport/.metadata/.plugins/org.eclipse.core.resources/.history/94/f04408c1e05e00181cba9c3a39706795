@@ -1,0 +1,26 @@
+.header img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+header {
+    background-color: pink;
+}
+
+header h1 {
+    margin: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+	background-image:url("header.png");
+	height:70px;
+	width:110%;
+	margin:-10px;
+}
