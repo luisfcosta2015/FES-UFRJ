@@ -25,3 +25,34 @@ Gera Relatório em PDF
      gera pdf à partir do banco - 8
      First Page Header - 1
      Last Page Footer - 1
+     
+     
+     
+O que foi feito
+
+Xiao e Gustavo 
+   Interface Grafica
+     Design da tela - 5                                 OK
+     Javascript da pág - 5                              OK
+     Botões necessários(Em análise) - 3                 OK
+     Filtro - 1                                         OK
+Caiafa e André
+   Gera Relatório em PDF
+     gera pdf à partir do banco - 8                     OK
+     First Page Header - 1                              OK
+     Last Page Footer - 1                               OK
+
+
+
+Revisão da Sprint 
+Demos grandes saltos com a interface grafica e a geração e conexão dos relatorios com o banco, 
+estamos caminhando para realizar a integração em 2 sprints, e finalizar o software para entrega inicial.
+Conseguimos gerar um PDF a partir de uma tabela do Banco.E criamos a tela para o usuário.
+Dessa vez, o trabalho em duplas não deu certo.
+Gustavo ficou doente, andré tem 2 porovas.
+
+
+
+
+
+

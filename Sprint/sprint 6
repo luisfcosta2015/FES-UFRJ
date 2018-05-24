@@ -1,0 +1,33 @@
+Sprint 6:
+Sprint Backlog
+
+Xiao
+   Interface Grafica
+     Header & footer - 2r
+     Editor (rigth) -1r
+     Tela de Visualização em tempo real (center) - 8r
+    
+Gustavo e Caiafa
+Documentação
+   Relatório 8 - 1r
+   Relatório 9 - 1
+Banco mais robusto para testes futuros -3r
+  Fazer o banco atender requisitos dos relatórios mais utilizados. - 2
+  Popular o banco - 2
+  Função gerar query -2r 
+Teste (estudar) - 5
+  
+
+André
+Gera Relatório em PDF
+    Criar Footer com Data/hora da geração do relatório e numero da página. -1
+    Criar template dos relatórios mais usados
+      - Listagem Nominal com Situação (Cod i-educar , Nome completo em caixa alta, situação[APROVADO,RETIDO,ABANDONO,TRANSFERIDO]) -2
+      - Listagem de Alunos com faltas por bimestre(Cod i-educar, Nome completo , 1ºB, 2ºB, 3ºB, 4ºB, Total de Faltas, situação) -2
+      - Ata de Resultados Finais(Cod i-educar, nome completo.(Linguagens, Ciencias, ciencias sociais, %frequencia, resultado final) -2
+      - Declaração de escolaridade(Nome completo, codigo, Identidade, NIS, 
+            nome da mae, nome do pai, data de nascimento, local de nascimento,
+            Grau de escolaridade[ensino fundamental, ensino medio ...], serie, turma. - 1
+Teste (estudar)- 3
+      
+      
