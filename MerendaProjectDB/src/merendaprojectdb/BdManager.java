@@ -14,16 +14,32 @@ import java.sql.SQLException;
  * @author joycinha
  */
 public class BdManager {
-    public static String host;
-    public static String username;
-    public static String password;
+    public static String host = "jdbc:mysql://localhost:3306/merendafes";
+    public static String username = "root";
+    public static String password = "@Vitor1997";
     private static Connection con;
     
     public BdManager() {} //TODO
     
-    static boolean cadastraUser(Usuario user) {
-        // TODO
-        return false;
+    static boolean cadastraUser(Usuario user) { 
+        PreparedStatement ps = null;
+        
+       
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo,inep) values(?,?,?,?,?,?)");
+            ps.setString(1, user.nome);
+            ps.setString(1, user.user);
+            ps.setString(1, user.senha);
+            ps.setString(1, user.email) ;
+            ps.setString(1, user.tipo) ;
+            ps.setInt(1, user.escola.getINEP());
+            return true;
+        }catch (SQLException err)
+       {
+           System.out.println(err.getMessage());
+           return false;
+       }
     }
     static boolean verificarUser(String senha, String user){
         
@@ -46,9 +62,28 @@ public class BdManager {
         return false;
     }
     static boolean cadastraEscola(Escola escola){
-        //TODO
+        PreparedStatement ps = null;
+        try{ 
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento) values(?,?,?,?,?,?,?,?)");
+            ps.setInt(1, escola.getINEP());
+            ps.setString(2, escola.getUnidade());
+            ps.setString(3, escola.getTelefone());
+            ps.setString(4, escola.getEstado());
+            ps.setString(5, escola.getPrefeitura());
+            ps.setString(6, escola.getSecretaria());
+            ps.setString(7, escola.getSubsecretaria());
+            ps.setString(8, escola.getDepartamento());
+            ps.execute();
+            return true; 
+            
+        }
+       catch(SQLException err)
+       {
+           System.out.println(err.getMessage());
+           return false;
+       }
         //aqui o codigo recebera uma escola e adicionará ela as escolas cadastradas no banco
-        return true;
     }
     static ArrayList pegarEscolas(){
         //aqui tem que retornar todas as escolas cadastradas no sistema em um arrayList
