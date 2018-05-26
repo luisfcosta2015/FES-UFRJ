@@ -1,4 +1,4 @@
-package MysqlCon;
+package FMF.models;
 
 import java.sql.*;  
 

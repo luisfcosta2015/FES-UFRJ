@@ -1,4 +1,4 @@
-package relatoriocustomizadofmf;
+package FMF.models;
 
 import java.util.Scanner;
 import java.util.Set;
