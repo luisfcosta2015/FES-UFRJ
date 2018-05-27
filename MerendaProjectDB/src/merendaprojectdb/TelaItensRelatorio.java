@@ -34,7 +34,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         carregarItens();
         this.capa = capa;
         this.cardapio = cardapio;
-        this.editando = true;
+        this.editando = false;
         this.nomeRel = nomeRel;
         
         // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
@@ -45,7 +45,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         initComponents();
         carregarItens();
         carregarTabela();
-        this.editando = false;
+        this.editando = true;
     }
     private void carregarTabela() {
         DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
@@ -205,13 +205,22 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void tipoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoItemActionPerformed
-
+    private void criaItensLista() {
+        DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+        for(int i = 0; i < tabelinha.getRowCount(); i++) {
+            String item = tabelinha.getValueAt(i, 0).toString();
+            int quant = Integer.parseInt(tabelinha.getValueAt(i,1).toString());
+            String unidade = tabelinha.getValueAt(i, 2).toString();
+        }
+    }
     private void voltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAoMenuActionPerformed
         // TODO add your handling code here:
         
         // aqui tem que colocar pra pegar o que ta na tabela e jogar pro banco
-        if(this.editando) {
-            //Relatorio relatorio = new Relatorio (this.cardapio, this.capaDados, this.nomeRel, itens)
+        if(!this.editando) {
+            criaItensLista();
+            this.relatorio = new Relatorio (this.cardapio, this.capa, this.nomeRel, itens);
+            BdManager.adicionarRelatorio(this.relatorio);
         }
         principal=new Principal(usuario);
         principal.setLocationRelativeTo(null);

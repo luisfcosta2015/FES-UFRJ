@@ -111,28 +111,54 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    /**Método chamado em resposta ao botao next. Atualiza o campo CapaDados do Relatorio recebido
+    /**Método para atualizacao da tabela de alunos matriculados
      * @author Joyce Brum
      */
-    private void proximoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximoButtonActionPerformed
+    private void atualizaCapaDados() {
         int [] turnos = new int[4];
         int atendidos;
         int numDias;
         for(int i = 0; i < this.tabelaMatricula.getRowCount(); i++) {
             for(int j = 1; j < 5; j++) {
-                turnos[j-1] = (Integer)this.tabelaMatricula.getValueAt(i, j);
+                if(this.tabelaMatricula.getValueAt(i, j) != null) {
+                    String valor = this.tabelaMatricula.getValueAt(i, j). toString(); 
+                    turnos[j-1] = Integer.parseInt(valor);
+                }
+                else {
+                    turnos[j-1] = 0;
+                }
+                
             }
-            atendidos = (Integer)this.tabelaMatricula.getValueAt(i, 6);
-            numDias = (Integer)this.tabelaMatricula.getValueAt(i, 7);
+            if(this.tabelaMatricula.getValueAt(i, 6) != null) {
+                String valor = this.tabelaMatricula.getValueAt(i, 6).toString();
+                atendidos = Integer.parseInt(valor);
+            }
+            else {
+                atendidos = 0;
+            }
+            if(this.tabelaMatricula.getValueAt(i, 7) != null) {
+                String valor = this.tabelaMatricula.getValueAt(i, 7).toString();
+                numDias = Integer.parseInt(valor);
+            }
+            else {
+                numDias = 0;
+            }
             this.capa.setVetorMatriculados(i, turnos, atendidos, numDias);
         }
+    }
+    
+    /**Método chamado em resposta ao botao next. Atualiza o campo CapaDados do Relatorio recebido
+     * @author Joyce Brum
+     */
+    private void proximoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximoButtonActionPerformed
+        atualizaCapaDados();
         this.editaCardapio = new TelaCardapio(this.relatorio);
         this.editaCardapio.setLocationRelativeTo(null);
         this.editaCardapio.setVisible(true);
         this.editaCardapio.setResizable(true);
         dispose();
     }//GEN-LAST:event_proximoButtonActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

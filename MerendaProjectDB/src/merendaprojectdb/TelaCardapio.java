@@ -263,7 +263,7 @@ public class TelaCardapio extends javax.swing.JFrame {
         for(int i=0; i < this.tabelinha.getRowCount(); i++) {
             cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
         }
-        
+        System.out.println("Relatorio " + this.mes +"/" + this.ano);
         itensRel = new TelaItensRelatorio(usuario, "Relatorio " + this.mes +"/" + this.ano, this.capa, this.cardapio);
         itensRel.setLocationRelativeTo(null);
         itensRel.setVisible(true);

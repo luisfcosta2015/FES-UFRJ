@@ -1,12 +1,17 @@
 package merendaprojectdb;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class TelaCapaRelatorio extends javax.swing.JFrame {
     String usuario;
     TelaCardapio cardapio;
     private CapaDados capa;
+    private DefaultTableModel tabelaMatricula;
     public TelaCapaRelatorio(String nome) {
-        this.usuario = nome;
         initComponents();
+        this.tabelaMatricula = (DefaultTableModel) tabelaMatriculados.getModel();
+        this.usuario = nome;
     }
 
     /**
@@ -21,7 +26,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaAlunos = new javax.swing.JTable();
+        tabelaMatriculados = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         proxButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -35,7 +40,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         jLabel1.setLabelFor(mes);
         jLabel1.setText("Mes ex: 3");
 
-        tabelaAlunos.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaMatriculados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"PRÉ ESCOLAR", null, null, null, null, null, null, null, null},
                 {"FUNDAMENTAL", null, null, null, null, null, null, null, null},
@@ -55,20 +60,20 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabelaAlunos);
-        if (tabelaAlunos.getColumnModel().getColumnCount() > 0) {
-            tabelaAlunos.getColumnModel().getColumn(0).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(1).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(2).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(3).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(4).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(5).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(6).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(7).setResizable(false);
-            tabelaAlunos.getColumnModel().getColumn(8).setResizable(false);
+        jScrollPane1.setViewportView(tabelaMatriculados);
+        if (tabelaMatriculados.getColumnModel().getColumnCount() > 0) {
+            tabelaMatriculados.getColumnModel().getColumn(0).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(1).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(2).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(3).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(4).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(5).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(6).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(7).setResizable(false);
+            tabelaMatriculados.getColumnModel().getColumn(8).setResizable(false);
         }
 
-        jLabel2.setLabelFor(tabelaAlunos);
+        jLabel2.setLabelFor(tabelaMatriculados);
         jLabel2.setText("Alunos Matriculador");
 
         proxButton.setText("Próximo");
@@ -81,6 +86,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         jLabel3.setLabelFor(ano);
         jLabel3.setText("Ano ex: 2018");
 
+        mes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         mes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mesActionPerformed(evt);
@@ -139,17 +145,66 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**Método para atualizar a variavel capa com os valores contidos na tabelaMatricula
+     * @author Joyce Brum
+     */
+    private void atualizaCapaDados() {
+        int [] turnos = new int[4];
+        int atendidos;
+        int numDias;
+        for(int i = 0; i < this.tabelaMatricula.getRowCount(); i++) {
+            for(int j = 1; j < 5; j++) {
+                if(this.tabelaMatricula.getValueAt(i, j) != null) {
+                    String valor = this.tabelaMatricula.getValueAt(i, j). toString(); 
+                    turnos[j-1] = Integer.parseInt(valor);
+                }
+                else {
+                    turnos[j-1] = 0;
+                }
+                
+            }
+            if(this.tabelaMatricula.getValueAt(i, 6) != null) {
+                String valor = this.tabelaMatricula.getValueAt(i, 6).toString();
+                atendidos = Integer.parseInt(valor);
+            }
+            else {
+                atendidos = 0;
+            }
+            if(this.tabelaMatricula.getValueAt(i, 7) != null) {
+                String valor = this.tabelaMatricula.getValueAt(i, 7).toString();
+                numDias = Integer.parseInt(valor);
+            }
+            else {
+                numDias = 0;
+            }
+            this.capa.setVetorMatriculados(i, turnos, atendidos, numDias);
+        }
+    }
+    
     private void proximaPagina(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaPagina
-        int ano = Integer.parseInt(this.ano.getText().intern());
-        int mes = Integer.parseInt(this.mes.getText().intern());
+        //String var = "aa13b";
+        //var = var.replace("[a-zA-Z]", "");
+        //System.out.println(var);
+        if(this.mes.getText().intern() == null || this.mes.getText().intern() == "") {
+            JOptionPane.showMessageDialog(null,"Campo mes obrigatório");
+            return;
+        }
+        
+        if(this.ano.getText().intern() == null || this.ano.getText().intern() == "") {
+            JOptionPane.showMessageDialog(null,"Campo ano obrigatório");
+            return;
+        }
+        
+        int ano = Integer.parseInt(this.ano.getText());
+        int mes = Integer.parseInt(this.mes.getText());
         this.capa = new CapaDados();
-        //pegar a tabela
+        atualizaCapaDados();
         cardapio=new TelaCardapio(usuario, ano, mes-1, this.capa);
         cardapio.setLocationRelativeTo(null);
         cardapio.setVisible(true);
         cardapio.setResizable(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_proximaPagina
 
     private void mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesActionPerformed
@@ -173,6 +228,6 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private java.awt.TextField mes;
     private javax.swing.JButton proxButton;
-    private javax.swing.JTable tabelaAlunos;
+    private javax.swing.JTable tabelaMatriculados;
     // End of variables declaration//GEN-END:variables
 }
