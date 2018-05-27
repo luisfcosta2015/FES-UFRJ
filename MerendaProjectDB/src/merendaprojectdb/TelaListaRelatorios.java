@@ -25,11 +25,13 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         carregarLista();
         Cardapio cardapio = new Cardapio(new Calendario(5,2018));
         CapaDados capa = new CapaDados();
+        ArrayList<ItemComida> itens = new ArrayList<>();
+        itens.add(new ItemComida("Abacaxi", 10, "kg"));
         int[] turnos;
         turnos = new int[] {10,20,30,40};
         capa.setVetorMatriculados(0, turnos, 20, 30);
         capa.setVetorMatriculados(1,new int[] {8,51,35,12},32,15);
-        relatorioSelecionado = new Relatorio(cardapio, capa, "nome");
+        relatorioSelecionado = new Relatorio(cardapio, capa, "nome", itens);
     }
     private void carregarLista()
     {
@@ -37,15 +39,14 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         //TEM QUE CONSERTAR AQUI PELO AMOR DE DEUS
         // TO CANSADO DEMAIS PRA ACHAR O ERRO
         
-        System.out.println("oiiii");
+        this.listaRelatorios.setModel(new DefaultListModel());
         this.modeloLista = (DefaultListModel) this.listaRelatorios.getModel();
-        System.out.println("oiiii");
-        ArrayList<Relatorio> relatorios=banco.getRelatoriosExistentes();
-        System.out.println("oiiii");
+        ArrayList<Relatorio> relatorios = BdManager.getRelatoriosExistentes();
+        System.out.println(relatorios);
         for(int i=0;i<relatorios.size();i++)
         {
             this.modeloLista.addElement(relatorios.get(i).getTitulo());
-        }System.out.println("oiiii");
+        }
         
         
     }

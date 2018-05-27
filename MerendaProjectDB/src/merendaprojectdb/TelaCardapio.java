@@ -29,9 +29,10 @@ public class TelaCardapio extends javax.swing.JFrame {
     private boolean editando;
     Calendario calendario;
     Cardapio cardapio;
+    CapaDados capa;
     Principal principal;
     String usuario;
-    ItensRelatorio itensRel;
+    TelaItensRelatorio itensRel;
     int ano;
     int mes;
     DefaultTableModel tabelinha;
@@ -42,8 +43,9 @@ public class TelaCardapio extends javax.swing.JFrame {
     // ObservableSet<Object> selectedItems = FXCollections.observableSet();
 
     
-    public TelaCardapio(String nome, int ano, int mes) {
+    public TelaCardapio(String nome, int ano, int mes, CapaDados capa) {
         initComponents();
+        this.capa = capa;
         this.ano = ano;
         this.mes = mes;
         usuario = nome;
@@ -250,11 +252,11 @@ public class TelaCardapio extends javax.swing.JFrame {
             for(int i=0; i < this.tabelinha.getRowCount(); i++) {
                 this.cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
             }   
-            itensRel = new ItensRelatorio(usuario);
+            itensRel = new TelaItensRelatorio(this.relatorio);
             itensRel.setLocationRelativeTo(null);
             itensRel.setVisible(true);
             itensRel.setResizable(true);
-            this.setVisible(false);
+            this.dispose();
             return;
         }
         cardapio = new Cardapio(calendario);
@@ -262,7 +264,7 @@ public class TelaCardapio extends javax.swing.JFrame {
             cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
         }
         
-        itensRel = new ItensRelatorio(usuario);
+        itensRel = new TelaItensRelatorio(usuario, "Relatorio " + this.mes +"/" + this.ano, this.capa, this.cardapio);
         itensRel.setLocationRelativeTo(null);
         itensRel.setVisible(true);
         itensRel.setResizable(true);

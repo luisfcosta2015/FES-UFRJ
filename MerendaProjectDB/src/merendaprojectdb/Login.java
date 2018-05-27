@@ -26,7 +26,7 @@ public class Login extends javax.swing.JFrame {
     
     Principal diretor;
     TelaCardapio cardapio;
-    ItensRelatorio itens;
+    TelaItensRelatorio itens;
     BdManager banco;
 
     /**

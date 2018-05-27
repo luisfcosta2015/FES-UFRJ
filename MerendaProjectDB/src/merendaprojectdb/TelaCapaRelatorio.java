@@ -1,9 +1,10 @@
 package merendaprojectdb;
 
-public class CapaRelatorio extends javax.swing.JFrame {
+public class TelaCapaRelatorio extends javax.swing.JFrame {
     String usuario;
     TelaCardapio cardapio;
-    public CapaRelatorio(String nome) {
+    private CapaDados capa;
+    public TelaCapaRelatorio(String nome) {
         this.usuario = nome;
         initComponents();
     }
@@ -142,7 +143,9 @@ public class CapaRelatorio extends javax.swing.JFrame {
     private void proximaPagina(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaPagina
         int ano = Integer.parseInt(this.ano.getText().intern());
         int mes = Integer.parseInt(this.mes.getText().intern());
-        cardapio=new TelaCardapio(usuario, ano, mes-1);
+        this.capa = new CapaDados();
+        //pegar a tabela
+        cardapio=new TelaCardapio(usuario, ano, mes-1, this.capa);
         cardapio.setLocationRelativeTo(null);
         cardapio.setVisible(true);
         cardapio.setResizable(true);

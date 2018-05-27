@@ -23,7 +23,7 @@ public class Principal extends javax.swing.JFrame {
     }
     
     Login login;
-    CapaRelatorio capa;
+    TelaCapaRelatorio capa;
     TelaCadastro cadastro;
     TelaEscola escola;
     TelaListaRelatorios listaRelatorios;
@@ -37,9 +37,9 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        criarRelatorio = new javax.swing.JButton();
+        CadastroUser = new javax.swing.JButton();
+        CadastroEscola = new javax.swing.JButton();
         edita = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -49,21 +49,24 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(150, 240, 200));
 
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        criarRelatorio.setText("Criar Relatorio");
+        criarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                criarRelatorioActionPerformed(evt);
             }
         });
 
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        CadastroUser.setText("Cadastrar Usuario");
+        CadastroUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                CadastroUserActionPerformed(evt);
             }
         });
 
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        CadastroEscola.setText("Cadastrar Escola");
+        CadastroEscola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                CadastroEscolaActionPerformed(evt);
             }
         });
 
@@ -105,7 +108,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(criarRelatorio)
                             .addComponent(edita))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -114,10 +117,10 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(90, 90, 90)
                                 .addComponent(jButton7))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(CadastroUser)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton4)))
+                                .addComponent(CadastroEscola)))
                         .addGap(40, 40, 40)))
                 .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -133,9 +136,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(campoNome)
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CadastroEscola)
+                    .addComponent(criarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CadastroUser, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edita)
@@ -144,7 +147,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {edita, jButton1, jButton4, jButton6, jButton7});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {CadastroEscola, criarRelatorio, edita, jButton6, jButton7});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,29 +160,29 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_sairMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        capa=new CapaRelatorio(usuario);
+    private void criarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarRelatorioActionPerformed
+        capa=new TelaCapaRelatorio(usuario);
         capa.setLocationRelativeTo(null);
         capa.setVisible(true);
         capa.setResizable(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_criarRelatorioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void CadastroUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroUserActionPerformed
         cadastro=new TelaCadastro(usuario);
         cadastro.setLocationRelativeTo(null);
         cadastro.setVisible(true);
         cadastro.setResizable(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_CadastroUserActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void CadastroEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroEscolaActionPerformed
         escola=new TelaEscola(usuario);
         escola.setLocationRelativeTo(null);
         escola.setVisible(true);
         escola.setResizable(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_CadastroEscolaActionPerformed
 
     private void editaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaActionPerformed
         // TODO add your handling code here:
@@ -201,11 +204,11 @@ public class Principal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CadastroEscola;
+    private javax.swing.JButton CadastroUser;
     private javax.swing.JLabel campoNome;
+    private javax.swing.JButton criarRelatorio;
     private javax.swing.JButton edita;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel sair;

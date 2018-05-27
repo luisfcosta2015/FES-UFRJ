@@ -18,22 +18,13 @@ public class MerendaProjectDB {
     public static void main(String[] args) {
         
         PreparedStatement ps = null;
-        Connection con; 
-        Itens itens;
+        Connection con;
         Login login  = new Login();
         DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
         Calendario cardapio = new Calendario(1,2018);
         Escola escola = new Escola("ESTADO DO RIO DE JANEIRO","PREFEITURA DE DUQUE DE CAXIAS",
         "SECRETARIA MUNICIPAL DE EDUCAÇÃO", "SUBSECRETARIA DE EDUCAÇÃO EM INFRAESTRUTURA...", 
         "DEPARTAMENTO DE INFRAESTRUTURA EDUCACIONAL", 33151750, "Luana Lopes", "E.M. ANA DE SOUSA HERDY", "(21)3656-0364");
-        itens = new Itens();
-        //so pra ter um valor inicial
-        itens.add(new ItemComida("banana", "kg"));
-        itens.add(new ItemComida("pera", "kg"));
-        itens.add(new ItemComida("uva", "kg"));
-        itens.add(new ItemComida("maçã", "kg"));
-        itens.add(new ItemComida("abacaxi", "kg"));
-        
         login.setVisible(true);
         
         

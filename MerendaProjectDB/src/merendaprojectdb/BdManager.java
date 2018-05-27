@@ -18,9 +18,11 @@ public class BdManager {
     public static String username = "root";
     public static String password = "@Vitor1997";
     private static Connection con;
+    //fake variaveis para fingir comunicacao com o banco
+    private static ArrayList<Relatorio> relatorios = new ArrayList<>();
     
-    public BdManager() {} //TODO
-    
+    public BdManager() {
+    } //TODO
     static boolean cadastraUser(Usuario user) { 
         PreparedStatement ps = null;
         
@@ -120,17 +122,20 @@ public class BdManager {
     static ArrayList getRelatoriosExistentes(){
         //TODO
         //aqui tem que retornar em um arrayList todos(ou talvez os mais recentes) os relatorios
+        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(1,2018)),new CapaDados(),"Relatorio 01/2018", new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(2,2018)),new CapaDados(),"Relatorio 02/2018", new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(3,2018)),new CapaDados(),"Relatorio 03/2018", new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(4,2018)),new CapaDados(),"Relatorio 04/2018", new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(5,2018)),new CapaDados(),"Relatorio 05/2018", new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(6,2018)),new CapaDados(),"Relatorio 06/2018", new ArrayList<ItemComida>()));
+    
+        return BdManager.relatorios;
         
-        ArrayList<Relatorio> relatorios = new ArrayList<>();
-        
-        relatorios.add(new Relatorio(new Cardapio(new Calendario(1,2018)),new CapaDados(),"Relatorio 01/2018"));
-        relatorios.add(new Relatorio(new Cardapio(new Calendario(2,2018)),new CapaDados(),"Relatorio 02/2018"));
-        relatorios.add(new Relatorio(new Cardapio(new Calendario(3,2018)),new CapaDados(),"Relatorio 03/2018"));
-        relatorios.add(new Relatorio(new Cardapio(new Calendario(4,2018)),new CapaDados(),"Relatorio 04/2018"));
-        relatorios.add(new Relatorio(new Cardapio(new Calendario(5,2018)),new CapaDados(),"Relatorio 05/2018"));
-        relatorios.add(new Relatorio(new Cardapio(new Calendario(6,2018)),new CapaDados(),"Relatorio 06/2018"));
-        
-        return relatorios;
-        
+    }
+    static boolean adicionarRelatorio(Relatorio relatorio) {
+        //simula o comportamento de um banco de dados
+
+        BdManager.relatorios.add(relatorio);
+        return true;
     }
 }

@@ -11,25 +11,48 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author joycinha
  */
-public class ItensRelatorio extends javax.swing.JFrame {
+public class TelaItensRelatorio extends javax.swing.JFrame {
     
     String usuario;
     Principal principal;
     BdManager banco;
     DefaultListModel modelList = new DefaultListModel();
+    private Relatorio relatorio;
+    private CapaDados capa;
+    private Cardapio cardapio;
+    private ArrayList<ItemComida> itens;
+    private boolean editando;
+    private String nomeRel;
     /**
      * Creates new form ItensRelatorio
      */
-    public ItensRelatorio(String nome) {
+    public TelaItensRelatorio(String nome, String nomeRel, CapaDados capa, Cardapio cardapio) {
         usuario = nome;
         
         
         initComponents();
         carregarItens();
+        this.capa = capa;
+        this.cardapio = cardapio;
+        this.editando = true;
+        this.nomeRel = nomeRel;
         
         // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
     }
-    
+    public TelaItensRelatorio(Relatorio relatorio) {
+        this.relatorio = relatorio;
+        this.itens = relatorio.getItensRelatorio();
+        initComponents();
+        carregarItens();
+        carregarTabela();
+        this.editando = false;
+    }
+    private void carregarTabela() {
+        DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+        for(ItemComida item : itens) {
+            tabelinha.addRow(new Object[] {item.tipoItem, item.quant, item.unidade});
+        }
+    }
     private void carregarItens(){
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
         //modelo.addElement("thiago");
@@ -187,7 +210,9 @@ public class ItensRelatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // aqui tem que colocar pra pegar o que ta na tabela e jogar pro banco
-        
+        if(this.editando) {
+            //Relatorio relatorio = new Relatorio (this.cardapio, this.capaDados, this.nomeRel, itens)
+        }
         principal=new Principal(usuario);
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
