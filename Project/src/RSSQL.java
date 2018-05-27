@@ -44,7 +44,7 @@ public class RSSQL {
         dyn_query = replaceKeys(params,dyn_query);
 
         dbHelper = new DBHelper();
-git di
+
         //TODO improve connection policy
         while(!dbHelper.connect());
 
