@@ -35,8 +35,8 @@ public class DBHelper {
         }
     }
 
-    public ArrayList<ArrayList> query(String sql){
-        ArrayList<ArrayList> result = new ArrayList<>();
+    public ArrayList<ArrayList<String>> query(String sql){
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -56,7 +56,5 @@ public class DBHelper {
             return null;
         }
     }
-
-
 
 }

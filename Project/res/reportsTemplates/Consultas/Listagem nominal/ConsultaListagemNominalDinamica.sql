@@ -1,8 +1,6 @@
 SELECT DISTINCT
  a.id_aluno AS cod_ieducar,
  a.nome_aluno,
- 
- a.id_aluno,
  CASE WHEN a.id_aluno > 1 AND a.id_aluno < 21 THEN 'PROMOVIDO'
 	  WHEN a.id_aluno > 20 AND a.id_aluno < 31 THEN 'RETIDO'
 	  WHEN a.id_aluno > 30 AND a.id_aluno < 41  THEN 'EM ANDAMENTO'

@@ -53,13 +53,13 @@ public class ParametersController extends HttpServlet{
         response.getWriter().write(json);
 
     }
-    private ArrayList<ArrayList> getEscolas(){
+    private ArrayList<ArrayList<String>> getEscolas(){
         return this.db.query("SELECT DISTINCT nome_escola FROM escola;");
     }
-    private ArrayList<ArrayList> getAnos(String escola){
+    private ArrayList<ArrayList<String>> getAnos(String escola){
         return this.db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = '"+escola+"' ;");
     }
-    private ArrayList<ArrayList> getTurmas(String escola, String ano){
+    private ArrayList<ArrayList<String>> getTurmas(String escola, String ano){
         return this.db.query("SELECT DISTINCT nome_turma from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = '"+escola+"' AND ano='"+ano+"' ;");
     }
 }
