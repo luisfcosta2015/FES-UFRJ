@@ -57,13 +57,4 @@ public class DBHelper {
         }
     }
 
-    public String querySingleData(String sql){
-
-        ArrayList<ArrayList<String>> result = query(sql);
-        return result.get(0).get(0);
-
-    }
-
-
-
 }

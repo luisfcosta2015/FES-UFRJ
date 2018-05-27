@@ -6,39 +6,39 @@ import java.util.ArrayList;
 
 public class RSSQLObject {
 
-    public class RSSQLField{
+    public class RSSQLField {
 
         String key;
         String value;
 
-        RSSQLField(String key, String value){
+        RSSQLField(String key, String value) {
             this.key = key;
             this.value = value;
         }
 
-        public String getKey(){
+        public String getKey() {
             return this.key;
         }
 
-        public String getValue(){
+        public String getValue() {
             return this.value;
         }
 
     }
 
-    ArrayList<RSSQLField> static_field;
+    RSSQLField static_field;
     RSSQLField dynamic_field;
 
     // default constructor for GSON
-    public RSSQLObject(){
+    public RSSQLObject() {
 
     }
 
-    public ArrayList<RSSQLField> getStaticFields(){
+    public RSSQLField getStaticField() {
         return this.static_field;
     }
 
-    public RSSQLField getDynamicField(){
+    public RSSQLField getDynamicField() {
         return this.dynamic_field;
     }
 

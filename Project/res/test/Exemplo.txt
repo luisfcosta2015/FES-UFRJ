@@ -1,34 +1,14 @@
 vem do php:
-{
-  "static_field": [
-    {
-      "key": "report_type",
-      "value": "0"
-    },
-    {
-      "key": "idescola",
-      "value": "1001"
-    },
-    {
-      "key": "idturma",
-      "value": "22"
-    }
-  ]
-}
+um hash
 
 imagine que precisamos do nome que nao vem como parametro
 
 {
-  "static_field": [
+  "static_field":
     {
-      "key": "nomeescola",
-      "value": "select name where escola.id=${idescola}"
+      "key": "nomeescola,addrescola",
+      "value": "select nameescola,addrescola where escola.id=${idescola}"
     },
-    {
-      "key": "addrescola",
-      "value": "select endereco where escola.id=${idescola}"
-    },
-  ],
   "dynamic_field": {
     "key": "id,nome,situacao",
     "value": "select ..."
