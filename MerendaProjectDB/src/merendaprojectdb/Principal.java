@@ -21,7 +21,7 @@ public class Principal extends javax.swing.JFrame {
         usuario=nome;
         campoNome.setText("ola "+nome);
     }
-    
+    Exportador teste = new Exportador();
     Login login;
     TelaCapaRelatorio capa;
     TelaCadastro cadastro;
@@ -77,14 +77,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("jButton6");
+        jButton6.setText("gerar ODS");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        jButton7.setText("jButton7");
+        jButton7.setText("não clicar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         sair.setText("sair");
         sair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -195,8 +200,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_editaActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        teste.exportarODS();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        teste.exportarPDF();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
