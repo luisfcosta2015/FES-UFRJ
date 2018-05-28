@@ -220,6 +220,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         if(!this.editando) {
             criaItensLista();
             this.relatorio = new Relatorio (this.cardapio, this.capa, this.nomeRel, itens);
+            Principal.relatorioCorrente = this.relatorio;
             BdManager.adicionarRelatorio(this.relatorio);
         }
         principal=new Principal(usuario);
