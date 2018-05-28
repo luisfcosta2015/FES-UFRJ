@@ -10,6 +10,7 @@ import com.itextpdf.text.*;
 
 import java.awt.Graphics2D;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -18,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.jdom.JDOMException;
 
 import org.jopendocument.dom.ODPackage;
 import org.jopendocument.dom.ODSingleXMLDocument;
@@ -69,90 +71,19 @@ public class Exportador {
     }
     
     
-    public void exportarPDF(){
+    public void exportarODT(){
         try{
-            /*System.out.println("passei0");
-            final OpenDocument doc = new OpenDocument();
             
-            System.out.println("passei0.5");
-            doc.loadFrom("arquivos/teste2.ods");
+            File f1 = new File("arquivos/vazio.odt");
+            ODSingleXMLDocument p1 = ODSingleXMLDocument.createFromPackage(f1);
+            
+            
+            File f2 = new File("arquivos/teste2.ods");
+            ODSingleXMLDocument p2 = ODSingleXMLDocument.createFromPackage(f2);
 
-            // Open the PDF document
-            System.out.println("passei1");
-            Document document = new Document(PageSize.A4);
-            File outFile = new File("invoice.pdf");
-            
-            System.out.println("passei2");
-
-            PdfDocument pdf = new PdfDocument();
-
-            document.addDocListener(pdf);
-            
-            System.out.println("passei3");
-
-            FileOutputStream fileOutputStream = new FileOutputStream(outFile);
-            PdfWriter writer = PdfWriter.getInstance(pdf, fileOutputStream);
-            pdf.addWriter(writer);
-            
-            System.out.println("passei4");
-
-            document.open();
-            
-            System.out.println("passei5");
-
-            // Create a template and a Graphics2D object 
-            Rectangle pageSize = document.getPageSize();
-            int w = (int) (pageSize.getWidth() * 0.9);
-            int h = (int) (pageSize.getHeight() * 0.95);
-            PdfContentByte cb = writer.getDirectContent();
-            PdfTemplate tp = cb.createTemplate(w, h);
-            
-            System.out.println("passei6");
-
-            Graphics2D g2 = tp.createPrinterGraphics(w, h, null);
-            // If you want to prevent copy/paste, you can use
-            // g2 = tp.createGraphicsShapes(w, h, true, 0.9f);
-
-            tp.setWidth(w);
-            tp.setHeight(h);
-            
-            System.out.println("passei7");
-
-            // Configure the renderer
-            ODTRenderer renderer = new ODTRenderer(doc);
-            System.out.println("passeiA");
-            renderer.setIgnoreMargins(true);
-            System.out.println("passeiB");
-            renderer.setPaintMaxResolution(true);
-
-            
-            System.out.println("passei8");
-            // Scale the renderer to fit width
-            renderer.setResizeFactor(renderer.getPrintWidth() / w);
-            // Render
-            renderer.paintComponent(g2);
-            g2.dispose();
-            
-            System.out.println("passei9");
-
-            // Add our spreadsheet in the middle of the page
-            float offsetX = (pageSize.getWidth() - w) / 2;
-            float offsetY = (pageSize.getHeight() - h) / 2;
-            cb.addTemplate(tp, offsetX, offsetY);
-            
-            System.out.println("passei10");
-            // Close the PDF document
-            document.close();*/
-            System.out.println("passei");
-            ODPackage p = new ODPackage(new File("arquivos/teste.odt")); 
-            ODSingleXMLDocument doc = p.toSingle();
-            
-            System.out.println("passei");
-            ODPackage a = new ODPackage(new File("arquivos/teste2.ods")); 
-            ODSingleXMLDocument thiago = a.toSingle();
-            System.out.println("passei");
-            
-            doc.add(thiago);
+            p1.add(p2,false);
+            p1.saveToPackageAs(new File("arquivos/Final"));
+            System.out.println("terimnou");
         }
         catch (IllegalArgumentException e) {
             //ErrorManager.showErrorMessage("createOdt", e.toString());
@@ -161,6 +92,78 @@ public class Exportador {
         catch (IOException e) {
             //ErrorManager.showErrorMessage("createOdt", e.toString());
             System.out.println("vosh2");
+        } catch (JDOMException ex) {
+            System.out.println("vosh3");
+            
+        } 
+    }
+    
+    public void exportarPDF(){
+        try{
+            
+            // Load the ODS file
+            System.out.println("passei0");
+            final OpenDocument doc = new OpenDocument();
+            System.out.println("passei1");
+            doc.loadFrom("arquivos/teste2.ods");
+            System.out.println("passei2");
+
+            // Open the PDF document
+            Document document = new Document(PageSize.A4);
+            File outFile = new File("arquivos/invoice.pdf");
+
+            PdfDocument pdf = new PdfDocument();
+
+            document.addDocListener(pdf);
+
+            FileOutputStream fileOutputStream = new FileOutputStream(outFile);
+            PdfWriter writer = PdfWriter.getInstance(pdf, fileOutputStream);
+            pdf.addWriter(writer);
+
+            document.open();
+
+            // Create a template and a Graphics2D object 
+            Rectangle pageSize = document.getPageSize();
+            int w = (int) (pageSize.getWidth() * 0.9);
+            int h = (int) (pageSize.getHeight() * 0.95);
+            PdfContentByte cb = writer.getDirectContent();
+            PdfTemplate tp = cb.createTemplate(w, h);
+
+            Graphics2D g2 = tp.createPrinterGraphics(w, h, null);
+            // If you want to prevent copy/paste, you can use
+            // g2 = tp.createGraphicsShapes(w, h, true, 0.9f);
+
+            tp.setWidth(w);
+            tp.setHeight(h);
+
+            // Configure the renderer
+            System.out.println("passei3");
+            ODTRenderer renderer = new ODTRenderer(doc);
+            System.out.println("passei4");
+            renderer.setIgnoreMargins(true);
+            renderer.setPaintMaxResolution(true);
+
+            // Scale the renderer to fit width
+            renderer.setResizeFactor(renderer.getPrintWidth() / w);
+            // Render
+            renderer.paintComponent(g2);
+            g2.dispose();
+
+            // Add our spreadsheet in the middle of the page
+            float offsetX = (pageSize.getWidth() - w) / 2;
+            float offsetY = (pageSize.getHeight() - h) / 2;
+            cb.addTemplate(tp, offsetX, offsetY);
+            // Close the PDF document
+            document.close();
+            
+            
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("vosh");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     

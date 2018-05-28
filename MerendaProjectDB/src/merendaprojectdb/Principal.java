@@ -16,12 +16,12 @@ public class Principal extends javax.swing.JFrame {
      */
     public static Relatorio relatorioCorrente;
     private String usuario;
-    private Exportador teste = new Exportador();
     private Login login;
     private TelaCapaRelatorio capa;
     private TelaCadastro cadastro;
     private TelaEscola escola;
     private TelaListaRelatorios listaRelatorios;
+    private TelaGerarArquivos geradorArquivos;
     
     public Principal(String nome) {
         initComponents();
@@ -80,14 +80,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Gerar Ods");
+        jButton5.setText("Gerar Relatórios");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Nao clickar");
+        jButton6.setText("Vazio");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -212,13 +212,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Button4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        teste.exportarODS();
+            geradorArquivos=new TelaGerarArquivos();
+            geradorArquivos.setLocationRelativeTo(null);
+            geradorArquivos.setVisible(true);
+            geradorArquivos.setResizable(true);
+            this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        teste.exportarPDF();
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
