@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="background" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FMF.controllers.PopupGerarRelController">
+   <children>
+      <Button fx:id="fecharBtn" layoutX="-1.0" layoutY="-1.0" mnemonicParsing="false" onAction="#fecharAct" text="Fechar" />
+      <Button fx:id="gerarBtn" layoutX="166.0" layoutY="245.0" mnemonicParsing="false" onAction="#gerarAct" text="Gerar" />
+   </children>
+</AnchorPane>

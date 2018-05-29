@@ -6,8 +6,15 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -40,7 +47,8 @@ public class IndexController implements Initializable {
     }
 
     public void editarRelAct() throws IOException{
-        //TODO
+        //TODO        
+
     }
     public void addAtribAct() throws IOException{
         //TODO
