@@ -36,7 +36,6 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
         
         for(int i=0; i < this.tabelaMatricula.getRowCount(); i++) {
             for(int j=1; j < this.tabelaMatricula.getColumnCount(); j++) {
-                System.out.println(capa.getValueAt(i, j-1));
                 tabelaMatricula.setValueAt(capa.getValueAt(i,j-1), i, j);
             }
         }

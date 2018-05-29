@@ -49,7 +49,13 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     }
     private void carregarTabela() {
         DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+        if(itens == null) {
+            return;
+        }
         for(ItemComida item : itens) {
+            if(item == null) {
+                continue;
+            }
             tabelinha.addRow(new Object[] {item.tipoItem, item.quant, item.unidade});
         }
     }

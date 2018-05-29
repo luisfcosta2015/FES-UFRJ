@@ -42,7 +42,6 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         this.listaRelatorios.setModel(new DefaultListModel());
         this.modeloLista = (DefaultListModel) this.listaRelatorios.getModel();
         ArrayList<Relatorio> relatorios = BdManager.getRelatoriosExistentes();
-        System.out.println(relatorios);
         for(int i=0;i<relatorios.size();i++)
         {
             this.modeloLista.addElement(relatorios.get(i).getTitulo());
