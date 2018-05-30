@@ -7,6 +7,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.HTML;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -46,25 +47,36 @@ public class ReportController extends HttpServlet {
         //response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().println(request.getParameter("escola")+request.getParameter("ano")+request.getParameter("turma"));
+
+
         try {
-            reqProc(request);
+            reqProc(request);//chama os procedimentos para processar os requerimentos vindos da página
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-//        response.getWriter().write("");
     }
 
     protected void reqProc(HttpServletRequest request) throws Exception {//Realiza todos os procedimentos após a request vinda da página
-        HashMap<String,String> stResults;
+        HashMap<String,String> stMap;//Mapa dos dados estáticos
+        //inicialização inicial forçada pela sintaxe
+        String[] dynamK ; //chaves dos dados dinâmicos
+        String[][] dynamResult ;//os dados dinâmicos em si
+        HTMLReplacer htmlR;
+        HashMap<String,String> namespace = new HashMap<>();
 
-        String[] dynamK = new String[0];
-        String[][] dynamResult = new String[0][];
+
 
         procParams(request);
-        tarefaBanco(dynamK,dynamResult);
-        stResults=rssql.getStaticResults();
+
+
+        tarefaBanco();
+        dynamK=rssql.getDynamicKeys();
+        dynamResult=rssql.getDynamicResults();
+        stMap=rssql.getStaticResults();
+        //System.out.println(stMap.entrySet().iterator().next());
+
+        criaNamespace(stMap,dynamK,dynamResult,namespace);
 
     }
 
@@ -82,12 +94,16 @@ public class ReportController extends HttpServlet {
 
     }
 
-    protected void tarefaBanco(String[] dynamK, String[][] dynamResult) throws Exception {
-        rssql = new RSSQL("rssql.json",params);
+    protected void tarefaBanco() throws Exception {
+        rssql = new RSSQL("test/rssql.json",params);//ocorre erro
 
 
-        dynamK=rssql.getDynamicKeys();
-        dynamResult=rssql.getDynamicResults();
+    }
+
+    protected void criaNamespace(HashMap<String,String> staticData, String[] dynamK, String[][] dynamResult, HashMap<String,String> namespace){//Cria o namespace para seguir com o HTMLReplacer
+        namespace.putAll(staticData);
+       // namespace.put(dynamK, dynamResult);
+
     }
 
 
