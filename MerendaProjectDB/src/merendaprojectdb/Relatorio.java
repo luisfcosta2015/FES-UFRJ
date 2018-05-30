@@ -17,6 +17,8 @@ public class Relatorio {
     private CapaDados capa;
     private ArrayList<ItemComida> itens;
     private String titulo;
+    public int mes;
+    public int ano;
     
     public Relatorio(Cardapio cardapio, CapaDados capa, String nome, ArrayList<ItemComida> itens) {
         this.capa = capa;

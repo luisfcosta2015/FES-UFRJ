@@ -22,35 +22,40 @@ public class BdManager {
     private static ArrayList<Relatorio> relatorios = new ArrayList<>();
     
     public BdManager() {
+        
     } //TODO
     static boolean cadastraUser(Usuario user) { 
         PreparedStatement ps = null;
-        
        
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo,inep) values(?,?,?,?,?,?)");
             ps.setString(1, user.nome);
-            ps.setString(1, user.user);
-            ps.setString(1, user.senha);
-            ps.setString(1, user.email) ;
-            ps.setString(1, user.tipo) ;
-            ps.setInt(1, user.escola.getINEP());
+            ps.setString(2, user.user);
+            ps.setString(3, user.senha);
+            ps.setString(4, user.email) ;
+            ps.setString(5, user.tipo) ;
+            ps.setInt(6, user.escola.getINEP());
+            ps.execute();
             return true;
-        }catch (SQLException err)
-       {
+        }
+        catch (SQLException err) {
            System.out.println(err.getMessage());
            return false;
-       }
+        }
     }
+    static Usuario findUser(String username) {
+        return new Usuario("joyce", "Diretor", "123", "email@email.com", "Diretor");
+    }
+    
     static boolean verificarUser(String senha, String user){
         
         //TODO
         ArrayList<Usuario> usuarios = new ArrayList<>();
-        usuarios.add(new Usuario("João","Diretor","123","","",new Escola(""+"","", "", "", "", 123, "", "", "")));
-        usuarios.add(new Usuario("João","admin","321","","",new Escola(""+"","", "", "", "", 123, "", "", "")));
-        usuarios.add(new Usuario("João","outro","12345678","","",new Escola(""+"","", "", "", "", 123, "", "", "")));
-        //entre isso aqui vai receber o array com todos os usuarios
+        usuarios.add(new Usuario("João","Diretor","123","",""));
+        usuarios.add(new Usuario("João","admin","321","",""));
+        usuarios.add(new Usuario("João","outro","12345678","",""));
+        //entre isso aqui vai receber o array com todos os usuarios   REMOVER*/
         
         for(int i=0;i<usuarios.size();i++)
         {
@@ -92,7 +97,7 @@ public class BdManager {
         // TODO
         ArrayList<Escola> escolas = new ArrayList<>();
         escolas.add(new Escola(""+"","", "", "", "", 1, "", "tia totoca", ""));
-        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tia maria", ""));
+        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tia vitor", ""));
         escolas.add(new Escola(""+"","", "", "", "", 1, "", "tio Pedrão", ""));
         escolas.add(new Escola(""+"","", "", "", "", 1, "", "tio Carlão", ""));
         
@@ -117,6 +122,17 @@ public class BdManager {
         itens.add("batata");
         itens.add("feijão");
         itens.add("macarrão");
+        itens.add("abacate");
+        itens.add("Laranja");
+        itens.add("miojo");
+        itens.add("banana");
+        itens.add("abacaxi");
+        itens.add("amora");
+        itens.add("aipo");
+        itens.add("beringela");
+        itens.add("zebra");
+        itens.add("carne");
+        itens.add("vitor");
         return itens;
     }
     static ArrayList getRelatoriosExistentes(){

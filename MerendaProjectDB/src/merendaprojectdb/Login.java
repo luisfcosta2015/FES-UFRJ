@@ -106,7 +106,8 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(banco.verificarUser(campoSenha.getText(),campoUsuario.getText())==true)
         {
-            diretor=new Principal(campoUsuario.getText().intern());
+            Principal.usuarioLogado = BdManager.findUser("Diretor");
+            diretor = new Principal(campoUsuario.getText().intern());
             diretor.setLocationRelativeTo(null);
             diretor.setVisible(true);
             diretor.setResizable(true);

@@ -1,3 +1,5 @@
+CREATE SCHEMA `merendafes` ;
+
 CREATE TABLE `escola` (
  
  `inep` int(10) unsigned NOT NULL,
@@ -19,5 +21,44 @@ CREATE TABLE `escola` (
  PRIMARY KEY (`inep`),
  
  UNIQUE KEY `inep_UNIQUE` (`inep`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+CREATE TABLE `usuario` (
+
+
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+
+
+  `nome` varchar(45) NOT NULL,
+
+
+  `usuario` varchar(45) NOT NULL,
+
+
+  `senha` varchar(45) NOT NULL,
+
+
+  `email` varchar(45) NOT NULL,
+
+
+  `tipo` varchar(45) NOT NULL,
+
+
+  `inep` int(11) NOT NULL,
+
+
+  PRIMARY KEY (`id`),
+
+
+  UNIQUE KEY `id_UNIQUE` (`id`),
+
+
+  UNIQUE KEY `usuario_UNIQUE` (`usuario`),
+
+
+  UNIQUE KEY `email_UNIQUE` (`email`)
+
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1

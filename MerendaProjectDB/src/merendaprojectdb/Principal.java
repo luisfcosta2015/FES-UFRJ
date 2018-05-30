@@ -15,6 +15,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form PrincipalDiretor
      */
     public static Relatorio relatorioCorrente;
+    public static Usuario usuarioLogado; 
     private String usuario;
     
     Usuario user;

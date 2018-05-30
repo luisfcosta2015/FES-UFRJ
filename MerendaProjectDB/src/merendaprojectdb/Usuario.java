@@ -28,19 +28,19 @@ public class Usuario {
     UsuarioDir dir;
     UsuarioLei lei;
     
-    public Usuario(String nome, String user, String senha, String email, String tipo, Escola escola) {
+    public Usuario(String nome, String user, String senha, String email, String tipo) {
         this.nome = nome;
         this.user = user;
         this.senha = senha;
         this.email = email;
         this.tipo = tipo;
-        this.escola = escola;
         
         setPermits();
     }
     
     private void setPermits(){
     if (tipo == "Administrador"){
+        this.adm = new UsuarioAdm();
         canNewReport = adm.canNewReport;
         canWriteReport = adm.canWriteReport;
         canSeeReport = adm.canSeeReport;
@@ -49,6 +49,7 @@ public class Usuario {
         canWritePermit = adm.canWritePermit;
     }
     else if(tipo == "Diretor"){
+        this.dir = new UsuarioDir();
         canNewReport = dir.canNewReport;
         canWriteReport = dir.canWriteReport;
         canSeeReport = dir.canSeeReport;
@@ -57,6 +58,7 @@ public class Usuario {
         canWritePermit = dir.canWritePermit;
     }
     else{
+        this.lei = new UsuarioLei();
         canNewReport = lei.canNewReport;
         canWriteReport = lei.canWriteReport;
         canSeeReport = lei.canSeeReport;

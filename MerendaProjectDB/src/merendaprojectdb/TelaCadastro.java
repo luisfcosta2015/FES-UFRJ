@@ -70,7 +70,11 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        campoEscola.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha a Escola:", "Tia Totoca", "Tia Maria", "Tio Philip", "Tio Pedro" }));
+        campoEscola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoEscolaActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Criar Cadastro:");
 
@@ -182,7 +186,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         System.out.println(tipo);
         System.out.println(escola);
         // atualiza o banco de dados
-        Usuario usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo, BdManager.findEscolaUnidade(""+escola));
+        Usuario usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo);
         BdManager.cadastraUser(usuarioNovo);
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -198,6 +202,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void campoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTipoActionPerformed
+
+    private void campoEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEscolaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoEscolaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
