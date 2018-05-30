@@ -32,6 +32,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -43,8 +44,15 @@ public class Principal extends javax.swing.JFrame {
 =======
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+<<<<<<< HEAD
         jMenuItem4 = new javax.swing.JMenuItem();
 >>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
+=======
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+
+        jMenuItem5.setText("jMenuItem5");
+>>>>>>> fed7943618287173d856435b8508bbfbd0e63bfd
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,6 +106,22 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem4);
 
+        jMenuItem6.setText("Item");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem4.setText("Instituição");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
         jMenuBar1.add(jMenu2);
 >>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
 
@@ -121,8 +145,13 @@ public class Principal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+<<<<<<< HEAD
     private void menuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuarioActionPerformed
         CadastroPessoa tela = new CadastroPessoa();
+=======
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        CadastroUsuario tela = new CadastroUsuario();
+>>>>>>> fed7943618287173d856435b8508bbfbd0e63bfd
         
         tela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         tela.pack();
@@ -147,12 +176,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void menuItemInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInstituicaoActionPerformed
         CadastroInstituicao tela = new CadastroInstituicao();
 =======
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         CadastroAlimento tela = new CadastroAlimento();
 >>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
+=======
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        CadastroInstituicao tela = new CadastroInstituicao();
+>>>>>>> fed7943618287173d856435b8508bbfbd0e63bfd
         
         tela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         tela.pack();
@@ -161,12 +195,29 @@ public class Principal extends javax.swing.JFrame {
         
         this.setVisible(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
         tela.setVisible(true);
     }//GEN-LAST:event_menuItemInstituicaoActionPerformed
 =======
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 >>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
+=======
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        CadastroItem tela = new CadastroItem();
+        
+        tela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        tela.pack();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        tela.setLocation(dim.width/2-tela.getSize().width/2, dim.height/2-tela.getSize().height/2);
+        
+        this.setVisible(false);
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+>>>>>>> fed7943618287173d856435b8508bbfbd0e63bfd
 
     /**
      * @param args the command line arguments
@@ -208,6 +259,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenuItem menuItemInstituicao;
@@ -215,5 +267,10 @@ public class Principal extends javax.swing.JFrame {
 =======
     private javax.swing.JMenuItem jMenuItem4;
 >>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
+=======
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+>>>>>>> fed7943618287173d856435b8508bbfbd0e63bfd
     // End of variables declaration//GEN-END:variables
 }
