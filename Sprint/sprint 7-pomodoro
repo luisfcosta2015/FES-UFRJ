@@ -2,10 +2,13 @@ Sprint 7-pomodoro:
 Sprint Backlog
 
 Xiao
-
-     Tela de Visualização em tempo real (center) - 8
     
-Gustavo e Caiafa
+Gustavo
+Analisar a possiblidade de usar o dump do I-educar
+     Conexao com o banco do I-educar
+
+
+Caiafa
 Documentação
 
 Banco mais robusto para testes futuros -3
@@ -15,15 +18,12 @@ Banco mais robusto para testes futuros -3
 Teste (estudar) - 5
   
 
-André
+<h1>André<\h1>
 Gera Relatório em PDF
     Criar Footer com Data/hora da geração do relatório e numero da página. -1
     Criar template dos relatórios mais usados
-      - Listagem Nominal com Situação (Cod i-educar , Nome completo em caixa alta, situação[APROVADO,RETIDO,ABANDONO,TRANSFERIDO]) -2
-      - Listagem de Alunos com faltas por bimestre(Cod i-educar, Nome completo , 1ºB, 2ºB, 3ºB, 4ºB, Total de Faltas, situação) -2
-      - Ata de Resultados Finais(Cod i-educar, nome completo.(Linguagens, Ciencias, ciencias sociais, %frequencia, resultado final) -2
       - Declaração de escolaridade(Nome completo, codigo, Identidade, NIS, 
-            nome da mae, nome do pai, data de nascimento, local de nascimento,
-            Grau de escolaridade[ensino fundamental, ensino medio ...], serie, turma. - 1
+                                   nome da mae, nome do pai, data de nascimento, local de nascimento,
+                                   Grau de escolaridade[ensino fundamental, ensino medio ...], serie, turma. - 1
 Teste (estudar)- 3
       
