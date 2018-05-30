@@ -64,6 +64,11 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         campoTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolher tipo:", "Administrador", "Diretor", "Leitor" }));
         campoTipo.setToolTipText("");
+        campoTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTipoActionPerformed(evt);
+            }
+        });
 
         campoEscola.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha a Escola:", "Tia Totoca", "Tia Maria", "Tio Philip", "Tio Pedro" }));
 
@@ -189,6 +194,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         principal.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void campoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

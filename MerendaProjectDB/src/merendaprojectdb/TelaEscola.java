@@ -7,7 +7,7 @@ package merendaprojectdb;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import merendaprojectdb.TelaConfirmarAcao;
+//import merendaprojectdb.TelaConfirmarAcao;
 //import telas.Principal;
 
 /**

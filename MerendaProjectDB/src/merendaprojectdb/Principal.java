@@ -16,18 +16,63 @@ public class Principal extends javax.swing.JFrame {
      */
     public static Relatorio relatorioCorrente;
     private String usuario;
+    
+    Usuario user;
+    
     private Login login;
     private TelaCapaRelatorio capa;
     private TelaCadastro cadastro;
     private TelaEscola escola;
     private TelaListaRelatorios listaRelatorios;
     private TelaGerarArquivos geradorArquivos;
+    private TelaPermissao permission;
     
     public Principal(String nome) {
         initComponents();
         usuario=nome;
-        campoNome.setText("ola "+nome);
+        campoNome.setText("ola "+usuario);
     }
+    
+    
+    /*  public Principal(Usuario user) {
+        initComponents();
+        usuario = user.getNome();
+        campoNome.setText("ola "+usuario);
+        
+        if(user.getWP()==false){
+            jButton6.setVisible(false);
+            jButton6.setEnabled(false);
+        }
+        
+        if(user.getWR()==false){
+            Button4.setVisible(false);
+            Button4.setEnabled(false);
+        }
+    
+        if(user.getNR()==false){
+            Button1.setVisible(false);
+            Button1.setEnabled(false);
+        }
+        
+        if(user.getSR()==false){
+            jButton5.setVisible(false);
+            jButton5.setEnabled(false);
+        }
+        
+        if(user.getTipo()=="Adminstrador"){
+            Button2.setVisible(true);
+            Button2.setVisible(true);
+        }else{
+            Button2.setVisible(false);
+            Button2.setVisible(false);
+        }
+        
+        if(user.getWS()==false){
+            Button3.setVisible(false);
+            Button3.setEnabled(false);
+        }
+    }
+     */
     
 
     /**
@@ -87,7 +132,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Vazio");
+        jButton6.setText("Atualizar Permissões");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -129,17 +174,19 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(81, 81, 81)
-                                .addComponent(jButton6)
-                                .addGap(17, 17, 17))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(campoNome)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Button2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Button3)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Button2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(42, 42, 42)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(40, 40, 40)))
                 .addGap(27, 27, 27))
         );
@@ -220,8 +267,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        
+            permission=new TelaPermissao();
+            permission.setLocationRelativeTo(null);
+            permission.setVisible(true);
+            permission.setResizable(true);
+            this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

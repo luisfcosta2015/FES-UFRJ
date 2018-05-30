@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package merendaprojectdb;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +23,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private ArrayList<ItemComida> itens;
     private boolean editando;
     private String nomeRel;
-    private ArrayList<String> itensCardapio;
     /**
      * Creates new form ItensRelatorio
      */
@@ -65,10 +63,10 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
         //modelo.addElement("thiago");
         
-        itensCardapio = banco.pegarItensDoCardapio();
-        for(int i=0;i<itensCardapio.size();i++)
+        ArrayList<String> itens=banco.pegarItensDoCardapio();
+        for(int i=0;i<itens.size();i++)
         {
-            modelo.addElement(itensCardapio.get(i));
+            modelo.addElement(itens.get(i));
         }
     }
     
@@ -102,19 +100,9 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
 
         criaLista();
         tipoItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Item" }));
-        tipoItem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tipoItemMouseClicked(evt);
-            }
-        });
         tipoItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoItemActionPerformed(evt);
-            }
-        });
-        tipoItem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tipoItemKeyTyped(evt);
             }
         });
 
@@ -263,43 +251,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         carregarItens();
         
     }//GEN-LAST:event_AdicionarItensActionPerformed
-
-    private void tipoItemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tipoItemKeyTyped
-        //System.out.println(evt);
-    }//GEN-LAST:event_tipoItemKeyTyped
-
-    private void tipoItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipoItemMouseClicked
-        ArrayList<String> itensCardapio = this.itensCardapio;
-        tipoItem.addKeyListener(new java.awt.event.KeyAdapter() {
-              public void keyPressed(java.awt.event.KeyEvent evt) {
-                int i;
-                ArrayList<String> temp = new ArrayList<>();
-                System.out.println(evt);
-                for(i=0;i<itensCardapio.size();i++)
-                {
-                    String item = itensCardapio.get(i);
-                    char letra = item.charAt(0);
-                    int ascii=(int)letra;
-                    System.out.println(letra);
-                    System.out.println(ascii);
-                    if(ascii==evt.getKeyCode() || ascii-32==evt.getKeyCode())
-                    {
-                        temp.add(itensCardapio.get(i));
-                    }
-                }
-                if(!temp.isEmpty())
-                {
-                    DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
-                    modelo.removeAllElements();
-                    modelo.addElement("Selecione o Item");
-                    for(i=0;i<temp.size();i++)
-                    {
-                        modelo.addElement(temp.get(i));
-                    }
-                }
-              }
-          });
-    }//GEN-LAST:event_tipoItemMouseClicked
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
