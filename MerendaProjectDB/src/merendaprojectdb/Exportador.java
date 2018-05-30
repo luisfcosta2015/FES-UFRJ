@@ -27,7 +27,6 @@ import org.jopendocument.dom.OOUtils;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 import org.jopendocument.dom.text.Heading;
-import org.jopendocument.dom.text.Paragraph;
 import org.jopendocument.model.OpenDocument;
 import org.jopendocument.renderer.ODTRenderer;
 /**
@@ -99,14 +98,21 @@ public class Exportador {
     }
     
     public void exportarPDF(){
+        Document document = new Document();
         try{
-            
+            /*
             // Load the ODS file
             System.out.println("passei0");
-            final OpenDocument doc = new OpenDocument();
+            File f2 = new File("arquivos/teste.odt"); 
+            System.out.println("passei0.5");
+            OpenDocument thiago = new OpenDocument();
+            System.out.println("passei0.7");
+            thiago.loadFrom(f2);
+            System.out.println("passei0.");
+            
+            OpenDocument doc = new OpenDocument(f2);
             System.out.println("passei1");
-            doc.loadFrom("arquivos/teste2.ods");
-            System.out.println("passei2");
+
 
             // Open the PDF document
             Document document = new Document(PageSize.A4);
@@ -164,7 +170,21 @@ public class Exportador {
             Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DocumentException ex) {
             Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        } */
+            
+            
+                PdfWriter.getInstance(document, new FileOutputStream("arquivos/teste.pdf"));
+                document.open();
+                document.add(new Paragraph("isso é um teste"));
+        }
+        catch (DocumentException de) {
+           System.err.println(de.getMessage());
+       } 
+        catch (IOException ioe) {
+           System.err.println(ioe.getMessage());
+       }
+       document.close();
+       
     }
     
 }

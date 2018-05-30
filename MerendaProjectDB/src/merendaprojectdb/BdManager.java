@@ -117,6 +117,16 @@ public class BdManager {
         itens.add("batata");
         itens.add("feijão");
         itens.add("macarrão");
+        itens.add("abacate");
+        itens.add("abacaxi");
+        itens.add("tomate");
+        itens.add("amendoim");
+        itens.add("miojo");
+        itens.add("alecrim");
+        itens.add("amaciante");
+        itens.add("nabo");
+        itens.add("ameixa");
+        itens.add("cebola");
         return itens;
     }
     static ArrayList getRelatoriosExistentes(){
