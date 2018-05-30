@@ -33,15 +33,22 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuArquivo = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+<<<<<<< HEAD
+        menuCadastrar = new javax.swing.JMenu();
+        menuItemUsuario = new javax.swing.JMenuItem();
+        menuItemInstituicao = new javax.swing.JMenuItem();
+=======
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+>>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Arquivo");
+        menuArquivo.setText("Arquivo");
 
         jMenuItem3.setText("Logout");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +56,7 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        menuArquivo.add(jMenuItem3);
 
         jMenuItem1.setText("Sair");
         jMenuItem1.setToolTipText("");
@@ -58,21 +65,41 @@ public class Principal extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuArquivo.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuArquivo);
 
-        jMenu2.setText("Cadastrar");
+        menuCadastrar.setText("Cadastrar");
 
-        jMenuItem2.setText("Usuário");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuItemUsuario.setText("Usuário");
+        menuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuItemUsuarioActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        menuCadastrar.add(menuItemUsuario);
+
+<<<<<<< HEAD
+        menuItemInstituicao.setText("Instituição");
+        menuItemInstituicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemInstituicaoActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(menuItemInstituicao);
+
+        jMenuBar1.add(menuCadastrar);
+=======
+        jMenuItem4.setText("Alimento");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
+>>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
 
         setJMenuBar(jMenuBar1);
 
@@ -94,7 +121,7 @@ public class Principal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuarioActionPerformed
         CadastroPessoa tela = new CadastroPessoa();
         
         tela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -104,7 +131,7 @@ public class Principal extends javax.swing.JFrame {
         
         this.setVisible(false);
         tela.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuItemUsuarioActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Sessao.destroy();
@@ -118,6 +145,28 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(false);        
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+<<<<<<< HEAD
+    private void menuItemInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInstituicaoActionPerformed
+        CadastroInstituicao tela = new CadastroInstituicao();
+=======
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        CadastroAlimento tela = new CadastroAlimento();
+>>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
+        
+        tela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        tela.pack();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        tela.setLocation(dim.width/2-tela.getSize().width/2, dim.height/2-tela.getSize().height/2);
+        
+        this.setVisible(false);
+<<<<<<< HEAD
+        tela.setVisible(true);
+    }//GEN-LAST:event_menuItemInstituicaoActionPerformed
+=======
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+>>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
 
     /**
      * @param args the command line arguments
@@ -155,11 +204,16 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+<<<<<<< HEAD
+    private javax.swing.JMenu menuArquivo;
+    private javax.swing.JMenu menuCadastrar;
+    private javax.swing.JMenuItem menuItemInstituicao;
+    private javax.swing.JMenuItem menuItemUsuario;
+=======
+    private javax.swing.JMenuItem jMenuItem4;
+>>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
     // End of variables declaration//GEN-END:variables
 }

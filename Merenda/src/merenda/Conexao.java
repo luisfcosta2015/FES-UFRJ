@@ -32,8 +32,8 @@ public class Conexao {
         try {
             Connection conn = getConnection();
             
-            System.out.println("usuario: " + usuario);
-            System.out.println("senha: " + senha);
+            //System.out.println("usuario: " + usuario);
+            //System.out.println("senha: " + senha);
             
             String query = "SELECT * FROM pessoa p where p.usuario=\'" + usuario + "\' and p.senha=\'" + senha + "\';";
 
@@ -122,6 +122,27 @@ public class Conexao {
         String query = "INSERT INTO pessoa (funcao_id, nome, cpf, usuario, senha, oficio, depto) VALUES";
         query += "("+ funcao_id +", " + "\'" + nome + "\',\'" + cpf + "\',\'" + usuario + "\',\'" ;
         query += senha +"\',\'" + oficio + "\',\'" + depto + "\')" ;
+        
+        return query_update(query);
+    }
+    
+<<<<<<< HEAD
+    public boolean cadastra_escola(String nome, String endereco, String INEP, String qntAlunos, String telefone, String diretor){
+        
+        String query = null;
+        if (diretor == null){
+            query = "INSERT INTO instituicao (nome, endereco, INEP, qntAlunos, telefone) VALUES";
+            query += "(\'" + nome +"\', " + "\'" + endereco + "\',\'" + INEP + "\'," + qntAlunos;
+            query += ",\'" + telefone +"\')" ;
+        } else {
+            return false;
+        }
+=======
+        public boolean cadastra_alimento(String Produto, String Fornecedor, String Marca, char Perecivel){
+        
+        String query = "INSERT INTO alimentos (Produto,Fornecedor,Marca,Perecivel) VALUES";
+        query += "('"+ Produto +"', " + "\'" + Fornecedor + "\',\'" + Marca + "\',\'" + Perecivel + "\')" ;
+>>>>>>> 4ef6f8e9f341701f5f1fa3728ab30e1387da52de
         
         return query_update(query);
     }
