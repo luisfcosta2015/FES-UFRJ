@@ -47,7 +47,8 @@ public class IndexController implements Initializable {
     }
 
     public void editarRelAct() throws IOException{
-        //TODO        
+        AnchorPane x = (AnchorPane) FXMLLoader.load(getClass().getResource("/FMF/views/CriarEditarRel.fxml"));
+        background.getChildren().setAll(x);       
 
     }
     public void addAtribAct() throws IOException{
