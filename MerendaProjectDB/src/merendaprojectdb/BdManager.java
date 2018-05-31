@@ -35,7 +35,7 @@ public class BdManager {
             ps.setString(3, user.senha);
             ps.setString(4, user.email) ;
             ps.setString(5, user.tipo) ;
-            ps.setInt(6, user.escola.getINEP());
+            ps.setInt(6, 10);
             ps.execute();
             return true;
         }

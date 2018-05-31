@@ -21,26 +21,55 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
     Relatorio relatorio;
     DefaultTableModel tabelaMatricula;
     TelaCardapio editaCardapio;
+    private DefaultTableModel tabelaDesjejum;
+    private DefaultTableModel tabelaMaisEducacao1;
+    private DefaultTableModel tabelaMaisEducacao2;
+    private DefaultTableModel tabelaTotal;
     public TelaEditaRelatorio(Relatorio relatorio) {
         initComponents();
         this.relatorio = relatorio;
         this.capa = relatorio.getCapaRelatorio();
         this.tabelaMatricula = (DefaultTableModel) tabelaMatriculados.getModel();
-        inicializaTabela();
+        inicializaMatriculados();
+        this.tabelaDesjejum = (DefaultTableModel) this.desjejumTable.getModel();
+        inicializaDesjejum();
+        this.tabelaMaisEducacao1 = (DefaultTableModel) this.maisEducacaoTurno1.getModel();
+        inicializaMaisEducacao1();
+        this.tabelaMaisEducacao2 = (DefaultTableModel) this.maisEducacaoTurno2.getModel();
+        inicializaMaisEducacao2();
+        this.tabelaTotal = (DefaultTableModel) this.totalTable.getModel();
+        this.tabelaTotal.setValueAt(this.capa.getTotalServido(), 0, 0);
     }
     
     /**Método para inicialização da tabela de alunos matriculados com os valores já contidos no Relatorio
      * @author Joyce Brum
      */
-    private void inicializaTabela() {
-        
+    private void inicializaMatriculados() {
         for(int i=0; i < this.tabelaMatricula.getRowCount(); i++) {
             for(int j=1; j < this.tabelaMatricula.getColumnCount(); j++) {
                 tabelaMatricula.setValueAt(capa.getValueAt(i,j-1), i, j);
             }
         }
     }
-
+    private void inicializaDesjejum() {
+        this.tabelaDesjejum.setValueAt(this.capa.alunosAtendidosDesjejum, 0, 0);
+        this.tabelaDesjejum.setValueAt(this.capa.desjejumTotalMensalServido, 0, 1);
+    }
+    private void inicializaMaisEducacao1() {
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].matriculados, 0,1);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].atendidos, 0,2);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].numDias, 0,3);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].totalDesjejum , 0,4);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].totalLanche , 0,5);
+    }
+    private void inicializaMaisEducacao2() {
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].matriculados, 0,1);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].atendidos, 0,2);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].numDias, 0,3);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].totalDesjejum, 0,5);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].totalLanche, 0,5);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.getTotalMaisEducacao() , 0,6);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +82,15 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMatriculados = new javax.swing.JTable();
         proximoButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        desjejumTable = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        maisEducacaoTurno1 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        totalTable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        maisEducacaoTurno2 = new javax.swing.JTable();
+        campoNome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,26 +123,150 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
             }
         });
 
+        desjejumTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null}
+            },
+            new String [] {
+                "Alunos Atendidos", "Total mensal servido"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(desjejumTable);
+
+        maisEducacaoTurno1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Mais Educação", null, null, null, null, null}
+            },
+            new String [] {
+                "Matriculados", "1º turno Matriculado", "1° turno Atendido", "Dias Distribuicao", "Total Desj. Servido", "Total lanche Servido"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(maisEducacaoTurno1);
+
+        totalTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null}
+            },
+            new String [] {
+                "Total mensal servido - Desjejum + Mais Ed."
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(totalTable);
+
+        maisEducacaoTurno2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Mais Educação", null, null, null, null, null, null}
+            },
+            new String [] {
+                "Matriculados", "2º turno Matriculado", "2° turno Atendido", "Dias Distribuicao", "Total Desj. Servido", "Total lanche Servido", "Total Mais Educ."
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(maisEducacaoTurno2);
+
+        campoNome.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
+        campoNome.setText("Editando Capa");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(117, 117, 117)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(proximoButton)
                 .addGap(46, 46, 46))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(campoNome)
+                .addGap(276, 276, 276))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addContainerGap()
+                .addComponent(campoNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(proximoButton)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(proximoButton)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,7 +275,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
     /**Método para atualizacao da tabela de alunos matriculados
      * @author Joyce Brum
      */
-    private void atualizaCapaDados() {
+    private void atualizaVetorMatriculados() {
         int [] turnos = new int[4];
         int atendidos;
         int numDias;
@@ -145,6 +307,66 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
             this.capa.setVetorMatriculados(i, turnos, atendidos, numDias);
         }
     }
+    /**Método para atualizar a variavel capa com os valores contidos na tabela Desjejum
+     * @author Joyce Brum
+     */
+    private void atualizaDesjejum() {
+        int alunosAtendidos  = 0;
+        int totalServido = 0;
+        if(this.tabelaDesjejum.getValueAt(0, 0) != null) {
+            alunosAtendidos = ((Integer)this.tabelaDesjejum.getValueAt(0, 0)).intValue();
+        }
+        if(this.tabelaDesjejum.getValueAt(0, 1) != null) {
+            totalServido = ((Integer)this.tabelaDesjejum.getValueAt(0, 1)).intValue();
+        }
+        this.capa.setDesjejum(alunosAtendidos, totalServido);
+    }
+    /**Método para atualizar a variavel capa com os valores contidos na tabela 
+     * Mais Educacao dos turnos 1 e 2
+     * @author Joyce Brum
+     */
+    private void atualizaMaisEducacao1() {
+        int [] valores = new int[5];
+        for(int i = 1; i< this.tabelaMaisEducacao1.getColumnCount(); i++) {
+            if(i > 5) {
+                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
+                continue;
+            }
+            if(this.tabelaMaisEducacao1.getValueAt(0, i) != null) {
+                valores[i-1] = ((Integer)this.tabelaMaisEducacao1.getValueAt(0, i)).intValue();
+            }
+            else {
+                valores[i-1] = 0;
+            }
+        }
+        this.capa.setVetorMaisEducacao(0, valores[0], valores[1], valores[2], valores[3], valores[4]);
+    }
+    private void atualizaMaisEducacao2() {
+        int [] valores = new int[5];
+        for(int i = 1; i< this.tabelaMaisEducacao2.getColumnCount(); i++) {
+            if(i > 5) {
+                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
+                continue;
+            }
+            if(this.tabelaMaisEducacao2.getValueAt(0, i) != null) {
+                valores[i-1] = ((Integer)this.tabelaMaisEducacao2.getValueAt(0, i)).intValue();
+            }
+            else {
+                valores[i-1] = 0;
+            }
+        }
+        this.capa.setVetorMaisEducacao(1, valores[0], valores[1], valores[2], valores[3], valores[4]);
+    }
+    private void atualizaTotal() {
+        this.tabelaTotal.setValueAt(this.capa.getTotalServido(), 0, 0);
+    }
+    private void atualizaCapaDados() {
+        atualizaVetorMatriculados();
+        atualizaDesjejum();
+        atualizaMaisEducacao1();
+        atualizaMaisEducacao2();
+        atualizaTotal();
+    }
     
     /**Método chamado em resposta ao botao next. Atualiza o campo CapaDados do Relatorio recebido
      * @author Joyce Brum
@@ -160,8 +382,17 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel campoNome;
+    private javax.swing.JTable desjejumTable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable maisEducacaoTurno1;
+    private javax.swing.JTable maisEducacaoTurno2;
     private javax.swing.JButton proximoButton;
     private javax.swing.JTable tabelaMatriculados;
+    private javax.swing.JTable totalTable;
     // End of variables declaration//GEN-END:variables
 }

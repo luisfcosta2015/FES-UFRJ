@@ -8,9 +8,17 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
     TelaCardapio cardapio;
     private CapaDados capa;
     private DefaultTableModel tabelaMatricula;
+    private DefaultTableModel tabelaDesjejum;
+    private DefaultTableModel tabelaMaisEducacao1;
+    private DefaultTableModel tabelaMaisEducacao2;
+    private DefaultTableModel tabelaTotal;
     public TelaCapaRelatorio(String nome) {
         initComponents();
         this.tabelaMatricula = (DefaultTableModel) tabelaMatriculados.getModel();
+        this.tabelaDesjejum = (DefaultTableModel) this.desjejumTable.getModel();
+        this.tabelaMaisEducacao1 = (DefaultTableModel) this.maisEducacaoTurno1.getModel();
+        this.tabelaMaisEducacao2 = (DefaultTableModel) this.maisEducacaoTurno2.getModel();
+        this.tabelaTotal = (DefaultTableModel) this.totalTable.getModel();
         this.usuario = nome;
     }
 
@@ -40,7 +48,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         maisEducacaoTurno1 = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        totalTable = new javax.swing.JTable();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -178,7 +186,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(maisEducacaoTurno1);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        totalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null}
             },
@@ -189,12 +197,19 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane5.setViewportView(jTable4);
+        jScrollPane5.setViewportView(totalTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,14 +230,8 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                                     .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(207, 207, 207)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(244, 244, 244)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 154, Short.MAX_VALUE))
+                                .addComponent(jLabel2)))
+                        .addGap(0, 367, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
@@ -234,9 +243,20 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                 .addGap(119, 119, 119))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,9 +275,9 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,16 +325,65 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
             this.capa.setVetorMatriculados(i, turnos, atendidos, numDias);
         }
     }
+    /**Método para atualizar a variavel capa com os valores contidos na tabela Desjejum
+     * @author Joyce Brum
+     */
     private void atualizaDesjejum() {
-        
+        int alunosAtendidos  = 0;
+        int totalServido = 0;
+        if(this.tabelaDesjejum.getValueAt(0, 0) != null) {
+            alunosAtendidos = ((Integer)this.tabelaDesjejum.getValueAt(0, 0)).intValue();
+        }
+        if(this.tabelaDesjejum.getValueAt(0, 1) != null) {
+            totalServido = ((Integer)this.tabelaDesjejum.getValueAt(0, 1)).intValue();
+        }
+        this.capa.setDesjejum(alunosAtendidos, totalServido);
     }
-    private void atualizaMaisEducacao() {
-        
+    /**Método para atualizar a variavel capa com os valores contidos na tabela 
+     * Mais Educacao dos turnos 1 e 2
+     * @author Joyce Brum
+     */
+    private void atualizaMaisEducacao1() {
+        int [] valores = new int[5];
+        for(int i = 1; i< this.tabelaMaisEducacao1.getColumnCount(); i++) {
+            if(i > 5) {
+                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
+                continue;
+            }
+            if(this.tabelaMaisEducacao1.getValueAt(0, i) != null) {
+                valores[i-1] = ((Integer)this.tabelaMaisEducacao1.getValueAt(0, i)).intValue();
+            }
+            else {
+                valores[i-1] = 0;
+            }
+        }
+        this.capa.setVetorMaisEducacao(0, valores[0], valores[1], valores[2], valores[3], valores[4]);
+    }
+    private void atualizaMaisEducacao2() {
+        int [] valores = new int[5];
+        for(int i = 1; i< this.tabelaMaisEducacao2.getColumnCount(); i++) {
+            if(i > 5) {
+                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
+                continue;
+            }
+            if(this.tabelaMaisEducacao2.getValueAt(0, i) != null) {
+                valores[i-1] = ((Integer)this.tabelaMaisEducacao2.getValueAt(0, i)).intValue();
+            }
+            else {
+                valores[i-1] = 0;
+            }
+        }
+        this.capa.setVetorMaisEducacao(1, valores[0], valores[1], valores[2], valores[3], valores[4]);
+    }
+    private void atualizaTotal() {
+        this.tabelaTotal.setValueAt(this.capa.getTotalServido(), 0, 0);
     }
     private void atualizaCapaDados() {
         atualizaVetorMatriculados();
         atualizaDesjejum();
-        atualizaMaisEducacao();
+        atualizaMaisEducacao1();
+        atualizaMaisEducacao2();
+        atualizaTotal();
     }
     private void proximaPagina(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaPagina
         //String var = "aa13b";
@@ -365,12 +434,12 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable4;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable maisEducacaoTurno1;
     private javax.swing.JTable maisEducacaoTurno2;
     private java.awt.TextField mes;
     private javax.swing.JButton proxButton;
     private javax.swing.JTable tabelaMatriculados;
+    private javax.swing.JTable totalTable;
     // End of variables declaration//GEN-END:variables
 }

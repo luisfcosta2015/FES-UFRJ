@@ -77,7 +77,12 @@ public class TelaCardapio extends javax.swing.JFrame {
         for(DuplaDataCardapio dupla : cardapioList) {
             Object[] obj = new Object[2];
             obj[0] = df.format(dupla.data);
-            obj[1] = dupla.cardapioDoDia;
+            if(dupla.cardapioDoDia != null ) {
+                obj[1] = dupla.cardapioDoDia;
+            }
+            else {
+                obj[1] = "";
+            }
             tabelinha.addRow(obj);
         }
     }

@@ -22,7 +22,7 @@ CREATE TABLE `escola` (
  
  UNIQUE KEY `inep_UNIQUE` (`inep`)
 
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE `usuario` (

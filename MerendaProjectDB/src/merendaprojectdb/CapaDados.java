@@ -12,21 +12,25 @@ package merendaprojectdb;
 public class CapaDados {
     private int colunas = 8;
     private int modalidades = 4;
-    public RefeicoesDados[] refeicoes = new RefeicoesDados[modalidades];
+    private RefeicoesDados[] refeicoes = new RefeicoesDados[modalidades];
     private int[] totalRefeicoes = new int[colunas]; //a penultima posicao nao importa pois sera "-----"
     
     //variaveis referentes ao desjejum
-    private int desjejumTotalMensalServido;
-    private int alunosAtendidosDesjejum;
+    public int desjejumTotalMensalServido;
+    public int alunosAtendidosDesjejum;
     
     //variaveis referentes ao desjejum e lanche do mais educação
-    private MaisEducacao[] maisEducacao = new MaisEducacao[2];
+    public MaisEducacao[] maisEducacao = new MaisEducacao[2];
     private int totalMaisEducacao;
     
     private int totalServido; //desjejumTotalMensalServido + totalMaisEducacao
     
     public CapaDados() {
+        this.totalServido = 0;
+        this.desjejumTotalMensalServido = 0;
+        this.totalMaisEducacao = 0;
         zeraVetor();
+        zeraMaisEducacao();
     }
     
     /**Método para setar uma linha inteira da matriz, cujo formato é o mesmo da 
@@ -58,6 +62,14 @@ public class CapaDados {
         for(int i = 0; i < this.colunas; i++) {
             this.totalRefeicoes[i] = 0;
         }
+    }
+    /**Método para zerar o vetor MaisEducacao
+     * @author Joyce Brum
+     */
+    private void zeraMaisEducacao() {
+        this.maisEducacao[0] = new MaisEducacao(0, 0, 0, 0, 0);
+        this.maisEducacao[1] = new MaisEducacao(0, 0, 0, 0, 0);
+
     }
      /**Método para calcular o vetor com os valores totais por coluna
      * @author Joyce Brum
@@ -124,5 +136,13 @@ public class CapaDados {
     public void setDesjejum(int alunosAtendidosDesjejum, int desjejumTotalMensalServido) {
         this.alunosAtendidosDesjejum = alunosAtendidosDesjejum;
         this.desjejumTotalMensalServido = desjejumTotalMensalServido;
+    }
+    
+    public int getTotalServido() {
+        this.totalServido = this.desjejumTotalMensalServido + this.totalMaisEducacao;
+        return this.totalServido;
+    }
+    public int getTotalMaisEducacao() {
+        return this.totalMaisEducacao;
     }
 }
