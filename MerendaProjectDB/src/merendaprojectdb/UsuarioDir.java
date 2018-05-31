@@ -19,7 +19,7 @@ public class UsuarioDir {
     boolean canWritePermit;
     
     UsuarioDir(){
-        canNewReport = false;
+        canNewReport = true;
         canWriteReport = true;
         canSeeReport = true;
         canWriteSchool = false;

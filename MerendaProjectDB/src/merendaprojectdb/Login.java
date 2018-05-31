@@ -24,7 +24,7 @@ public class Login extends javax.swing.JFrame {
         //this.getContentPane().setBackground(Color.RED);
     }
     
-    Principal diretor;
+    Principal principal;
     TelaCardapio cardapio;
     TelaItensRelatorio itens;
     BdManager banco;
@@ -106,12 +106,12 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(banco.verificarUser(campoSenha.getText(),campoUsuario.getText())==true)
         {
-            Principal.usuarioLogado = BdManager.findUser("Diretor");
-            diretor = new Principal(campoUsuario.getText().intern());
-            diretor.setLocationRelativeTo(null);
-            diretor.setVisible(true);
-            diretor.setResizable(true);
-            this.setVisible(false);
+            Principal.usuarioLogado = BdManager.findUser(this.campoUsuario.getText());
+            principal = new Principal();
+            principal.setLocationRelativeTo(null);
+            principal.setVisible(true);
+            principal.setResizable(true);
+            this.dispose();
         }
         else
         {

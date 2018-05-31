@@ -325,19 +325,8 @@ public class TelaNovaEscola extends javax.swing.JFrame {
         String unidade = campoUnidade.getText();
         String ddd  = campoDDD.getText();
         String tel  = campoTel.getText();
-        
         String telefone = ddd+tel;
-        
-        System.out.println(pref);
-        System.out.println(sec);
-        System.out.println(subsec);
-        System.out.println(dept);
-        System.out.println(inep);
-        System.out.println(estado);
-        System.out.println(diretoria);
-        System.out.println(unidade);
-        System.out.println(telefone);
-        
+
         int inepFinal = Integer.parseInt(inep);
         
         // atualiza o banco de dados

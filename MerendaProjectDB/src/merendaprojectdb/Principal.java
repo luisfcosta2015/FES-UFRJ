@@ -18,8 +18,6 @@ public class Principal extends javax.swing.JFrame {
     public static Usuario usuarioLogado; 
     private String usuario;
     
-    Usuario user;
-    
     private Login login;
     private TelaCapaRelatorio capa;
     private TelaCadastro cadastro;
@@ -27,53 +25,75 @@ public class Principal extends javax.swing.JFrame {
     private TelaListaRelatorios listaRelatorios;
     private TelaGerarArquivos geradorArquivos;
     private TelaPermissao permission;
-    
-    public Principal(String nome) {
+    private String[] operacoes = new String[7];
+    public Principal() {
         initComponents();
-        usuario=nome;
-        campoNome.setText("ola "+usuario);
+        if(this.usuarioLogado == null) {
+            System.out.println("Usuario deve ser setado antes da inicialização da classe Principal");
+        }
+        else {
+            campoNome.setText("ola " + usuarioLogado.nome);
+            setButtons();
+        }
     }
     
-    
-    /*  public Principal(Usuario user) {
-        initComponents();
-        usuario = user.getNome();
-        campoNome.setText("ola "+usuario);
-        
-        if(user.getWP()==false){
-            jButton6.setVisible(false);
-            jButton6.setEnabled(false);
-        }
-        
-        if(user.getWR()==false){
-            Button4.setVisible(false);
-            Button4.setEnabled(false);
-        }
-    
-        if(user.getNR()==false){
-            Button1.setVisible(false);
-            Button1.setEnabled(false);
-        }
-        
-        if(user.getSR()==false){
-            jButton5.setVisible(false);
-            jButton5.setEnabled(false);
-        }
-        
-        if(user.getTipo()=="Adminstrador"){
-            Button2.setVisible(true);
-            Button2.setVisible(true);
-        }else{
-            Button2.setVisible(false);
-            Button2.setVisible(false);
-        }
-        
-        if(user.getWS()==false){
-            Button3.setVisible(false);
-            Button3.setEnabled(false);
-        }
-    }
+    /**
+     * Esse método e chamado para definir as funcionalidades de cada botão.
      */
+    private void setButtons() {
+        javax.swing.JButton[] buttons = new javax.swing.JButton[7];
+        buttons[0] = this.jButton1;
+        buttons[1] = this.jButton2;
+        buttons[2] = this.jButton3;
+        buttons[3] = this.jButton4;
+        buttons[4] = this.jButton5;
+        buttons[5] = this.jButton6;
+        buttons[6] = this.jButton7;
+        int i = 0;
+        if(usuarioLogado.getWP()== true){
+            this.operacoes[i] = "editarPermissoes";
+            buttons[i].setText("Editar Permissoes");
+            i++;
+        }
+        
+        if(usuarioLogado.getWR()== true){
+            this.operacoes[i]= "editarRelatorio";
+            buttons[i].setText("Editar Relatorio");
+            i++;
+            this.operacoes[i] = "editarRelatorioCorrente";
+            buttons[i].setText("Editar Corrente");
+            i++;
+        }
+    
+        if(usuarioLogado.getNR()==true){
+            this.operacoes[i] = "novoRelatorio";
+            buttons[i].setText("Criar Relatorio");
+            i++;
+        }
+        
+        if(usuarioLogado.getSR()==true){
+            this.operacoes[i] = "verRelatorio";
+            buttons[i].setText("Ver Relatorio");
+            i++;
+        }
+        
+        if(usuarioLogado.getTipo()=="Adminstrador"){
+            this.operacoes[i] = "cadastrarUsuario";
+            buttons[i].setText("Cadastrar Usuario");
+            i++;
+        }
+        
+        if(usuarioLogado.getWS()==true){
+            this.operacoes[i] = "cadastrarEscola";
+            buttons[i].setText("Cadastrar Escola");
+            i++;
+        }
+        for(; i < 7; i++) {
+            this.operacoes[i] = "";
+            buttons[i].setVisible(false);
+            buttons[i].setEnabled(false);
+        }
+    }
     
 
     /**
@@ -85,10 +105,10 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Button1 = new javax.swing.JButton();
-        Button2 = new javax.swing.JButton();
-        Button3 = new javax.swing.JButton();
-        Button4 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         sair = new javax.swing.JLabel();
@@ -98,31 +118,31 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(150, 240, 200));
 
-        Button1.setText("Criar Relatorio");
-        Button1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Criar Relatorio");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        Button2.setText("Cadastrar Usuario");
-        Button2.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Cadastrar Usuario");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button2ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        Button3.setText("Cadastrar Escola");
-        Button3.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Cadastrar Escola");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button3ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        Button4.setText("Editar Relatório");
-        Button4.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("Editar Relatório");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button4ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -169,8 +189,8 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Button1)
-                            .addComponent(Button4)
+                            .addComponent(jButton1)
+                            .addComponent(jButton4)
                             .addComponent(jButton7))
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,13 +200,13 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Button2)
+                                        .addComponent(jButton2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(42, 42, 42)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(40, 40, 40)))
                 .addGap(27, 27, 27))
@@ -199,12 +219,12 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(campoNome)
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Button3)
-                    .addComponent(Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Button4)
+                    .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
                 .addGap(18, 18, 18)
@@ -212,7 +232,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Button1, Button3, Button4, jButton5, jButton6});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton3, jButton4, jButton5, jButton6});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,64 +244,141 @@ public class Principal extends javax.swing.JFrame {
         login.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_sairMouseClicked
+    private void buttonActionPerformedSwitch(int button) {
+        switch(this.operacoes[button]){
+            case "editarPermissoes":
+                permission=new TelaPermissao();
+                permission.setLocationRelativeTo(null);
+                permission.setVisible(true);
+                permission.setResizable(true);
+                this.dispose();
+                break;
+            case "editarRelatorio":
+                this.listaRelatorios = new TelaListaRelatorios();
+                this.listaRelatorios.setLocationRelativeTo(null);
+                this.listaRelatorios.setVisible(true);
+                this.listaRelatorios.setResizable(true);
+                dispose();
+                break;
+            case "editarRelatorioCorrente":
+                TelaEditaRelatorio edita = new TelaEditaRelatorio(Principal.relatorioCorrente);
+                edita.setLocationRelativeTo(null);
+                edita.setVisible(true);
+                edita.setResizable(true);
+                this.dispose();
+                break;
+            case "novoRelatorio":
+                capa=new TelaCapaRelatorio(usuario);
+                capa.setLocationRelativeTo(null);
+                capa.setVisible(true);
+                capa.setResizable(true);
+                this.setVisible(false);
+                break;
+            case "verRelatorio":
+                this.listaRelatorios = new TelaListaRelatorios();
+                this.listaRelatorios.setLocationRelativeTo(null);
+                this.listaRelatorios.setVisible(true);
+                this.listaRelatorios.setResizable(true);
+                dispose();
+                break;
+            case "cadastrarUsuario":
+                cadastro=new TelaCadastro(usuario);
+                cadastro.setLocationRelativeTo(null);
+                cadastro.setVisible(true);
+                cadastro.setResizable(true);
+                this.setVisible(false);
+                break;
+            case "cadastrarEscola":
+                escola=new TelaEscola(usuario);
+                escola.setLocationRelativeTo(null);
+                escola.setVisible(true);
+                escola.setResizable(true);
+                this.setVisible(false);
+                break;
+            default:
+                break;
+        }
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(this.operacoes[0]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
-        capa=new TelaCapaRelatorio(usuario);
-        capa.setLocationRelativeTo(null);
-        capa.setVisible(true);
-        capa.setResizable(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_Button1ActionPerformed
-
-    private void Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2ActionPerformed
-        cadastro=new TelaCadastro(usuario);
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(this.operacoes[1]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(1);
+        /*cadastro=new TelaCadastro(usuario);
         cadastro.setLocationRelativeTo(null);
         cadastro.setVisible(true);
         cadastro.setResizable(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_Button2ActionPerformed
+        this.setVisible(false);*/
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void Button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button3ActionPerformed
-        escola=new TelaEscola(usuario);
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(this.operacoes[2]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(2);
+        /*escola=new TelaEscola(usuario);
         escola.setLocationRelativeTo(null);
         escola.setVisible(true);
         escola.setResizable(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_Button3ActionPerformed
+        this.setVisible(false);*/
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void Button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        this.listaRelatorios = new TelaListaRelatorios();
+        if(this.operacoes[3]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(3);
+        /*this.listaRelatorios = new TelaListaRelatorios();
         this.listaRelatorios.setLocationRelativeTo(null);
         this.listaRelatorios.setVisible(true);
         this.listaRelatorios.setResizable(true);
-        dispose();
+        dispose();*/
         //this.setVisible(false);
-    }//GEN-LAST:event_Button4ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-            geradorArquivos=new TelaGerarArquivos();
-            geradorArquivos.setLocationRelativeTo(null);
-            geradorArquivos.setVisible(true);
-            geradorArquivos.setResizable(true);
-            this.setVisible(false);
+        if(this.operacoes[4]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(4);
+        /*geradorArquivos=new TelaGerarArquivos();
+        geradorArquivos.setLocationRelativeTo(null);
+        geradorArquivos.setVisible(true);
+        geradorArquivos.setResizable(true);
+        this.setVisible(false);*/
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-            permission=new TelaPermissao();
-            permission.setLocationRelativeTo(null);
-            permission.setVisible(true);
-            permission.setResizable(true);
-            this.setVisible(false);
+        if(this.operacoes[5]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(5);
+        /*permission=new TelaPermissao();
+        permission.setLocationRelativeTo(null);
+        permission.setVisible(true);
+        permission.setResizable(true);
+        this.setVisible(false);*/
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        TelaEditaRelatorio edita = new TelaEditaRelatorio(Principal.relatorioCorrente);
+        if(this.operacoes[6]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(6);
+        /*TelaEditaRelatorio edita = new TelaEditaRelatorio(Principal.relatorioCorrente);
         edita.setLocationRelativeTo(null);
         edita.setVisible(true);
         edita.setResizable(true);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -290,11 +387,11 @@ public class Principal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button1;
-    private javax.swing.JButton Button2;
-    private javax.swing.JButton Button3;
-    private javax.swing.JButton Button4;
     private javax.swing.JLabel campoNome;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

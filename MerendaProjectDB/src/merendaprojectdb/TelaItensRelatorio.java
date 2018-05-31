@@ -229,7 +229,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             Principal.relatorioCorrente = this.relatorio;
             BdManager.adicionarRelatorio(this.relatorio);
         }
-        principal=new Principal(usuario);
+        principal=new Principal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

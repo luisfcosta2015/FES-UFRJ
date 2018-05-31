@@ -92,6 +92,7 @@ public class BdManager {
        }
         //aqui o codigo recebera uma escola e adicionará ela as escolas cadastradas no banco
     }
+    
     static ArrayList pegarEscolas(){
         //aqui tem que retornar todas as escolas cadastradas no sistema em um arrayList
         // TODO
