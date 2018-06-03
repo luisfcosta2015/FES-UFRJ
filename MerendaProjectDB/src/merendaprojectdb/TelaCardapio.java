@@ -244,7 +244,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaPropertyChange
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        principal=new Principal(usuario);
+        principal=new Principal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

@@ -172,7 +172,7 @@ public class TelaEscola extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        principal=new Principal(usuario);
+        principal=new Principal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

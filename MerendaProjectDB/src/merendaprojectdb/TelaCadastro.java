@@ -192,7 +192,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        principal=new Principal(usuario);
+        principal=new Principal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);
