@@ -17,6 +17,7 @@ public class UsuarioDir {
     boolean canSeeReport;
     boolean canSeeSchool;
     boolean canWritePermit;
+    boolean canAddUser;
     
     UsuarioDir(){
         canNewReport = true;
@@ -25,6 +26,7 @@ public class UsuarioDir {
         canWriteSchool = false;
         canSeeSchool = true;
         canWritePermit = false;  
+      canAddUser =false;
     }
     
     public void setNR(boolean m){

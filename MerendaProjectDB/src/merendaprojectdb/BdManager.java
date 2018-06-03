@@ -7,6 +7,7 @@ package merendaprojectdb;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.SQLException;
 /**
@@ -29,13 +30,12 @@ public class BdManager {
        
         try{
             con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo,inep) values(?,?,?,?,?,?)");
+            ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo) values(?,?,?,?,?)");
             ps.setString(1, user.nome);
             ps.setString(2, user.user);
             ps.setString(3, user.senha);
             ps.setString(4, user.email) ;
             ps.setString(5, user.tipo) ;
-            ps.setInt(6, 10);
             ps.execute();
             return true;
         }
@@ -44,29 +44,65 @@ public class BdManager {
            return false;
         }
     }
-    static Usuario findUser(String username) {
-        return new Usuario("joyce", "Diretor", "123", "email@email.com", "Diretor");
+    static Usuario findUser(String user) {    
+        PreparedStatement ps = null;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from usuario where usuario like ?");
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                String usuario = rs.getString("usuario");
+                String nome = rs.getString("nome");
+                String senha = rs.getString("senha");
+                String tipo = rs.getString("tipo");
+                String email = rs.getString("email");
+            
+                rs.close();
+                ps.close();
+                con.close();
+                return new Usuario(nome, usuario, senha, email, tipo);
+            }
+            return null;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return null;
+        }
+        //return new Usuario("joyce", "Diretor", "123", "email@email.com", "Administrador");
     }
-    
     static boolean verificarUser(String senha, String user){
         
-        //TODO
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-        usuarios.add(new Usuario("João","Diretor","123","",""));
-        usuarios.add(new Usuario("João","admin","321","",""));
-        usuarios.add(new Usuario("João","outro","12345678","",""));
-        //entre isso aqui vai receber o array com todos os usuarios   REMOVER*/
-        
-        for(int i=0;i<usuarios.size();i++)
-        {
-            System.out.println(usuarios.get(i).user.equals(user));
-            if(usuarios.get(i).user.equals(user) && usuarios.get(i).senha.equals(senha))
+         PreparedStatement ps = null;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from usuario where usuario like ?");
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
             {
-                return true;
+                String pass = rs.getString("senha");
+                
+            
+                rs.close();
+                ps.close();
+                con.close();
+                if(senha.equals(pass))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            return false;
         }
-        
-        return false;
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
     }
     static boolean cadastraEscola(Escola escola){
         PreparedStatement ps = null;
@@ -93,6 +129,8 @@ public class BdManager {
         //aqui o codigo recebera uma escola e adicionará ela as escolas cadastradas no banco
     }
     
+    
+    // daqui pra baixo ainda nao está conectado ao banco
     static ArrayList pegarEscolas(){
         //aqui tem que retornar todas as escolas cadastradas no sistema em um arrayList
         // TODO

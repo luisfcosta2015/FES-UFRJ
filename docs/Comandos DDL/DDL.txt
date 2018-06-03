@@ -46,9 +46,6 @@ CREATE TABLE `usuario` (
   `tipo` varchar(45) NOT NULL,
 
 
-  `inep` int(11) NOT NULL,
-
-
   PRIMARY KEY (`id`),
 
 
@@ -62,3 +59,4 @@ CREATE TABLE `usuario` (
 
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+INSERT INTO usuario(nome,usuario,senha,email,tipo) values('Thiago','topd','123','topd@seila.com','Administrador');

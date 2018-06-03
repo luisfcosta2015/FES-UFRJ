@@ -50,13 +50,13 @@ public class Principal extends javax.swing.JFrame {
         buttons[5] = this.jButton6;
         buttons[6] = this.jButton7;
         int i = 0;
-        if(usuarioLogado.getWP()== true){
+        if(usuarioLogado.canWritePermit()== true){
             this.operacoes[i] = "editarPermissoes";
             buttons[i].setText("Editar Permissoes");
             i++;
         }
         
-        if(usuarioLogado.getWR()== true){
+        if(usuarioLogado.canWriteReport()== true){
             this.operacoes[i]= "editarRelatorio";
             buttons[i].setText("Editar Relatorio");
             i++;
@@ -65,27 +65,32 @@ public class Principal extends javax.swing.JFrame {
             i++;
         }
     
-        if(usuarioLogado.getNR()==true){
+        if(usuarioLogado.canNewReport()==true){
             this.operacoes[i] = "novoRelatorio";
             buttons[i].setText("Criar Relatorio");
             i++;
         }
         
-        if(usuarioLogado.getSR()==true){
+        if(usuarioLogado.canSeeReport()==true){
             this.operacoes[i] = "verRelatorio";
             buttons[i].setText("Ver Relatorio");
             i++;
         }
         
-        if(usuarioLogado.getTipo()=="Adminstrador"){
+        /*if(usuarioLogado.getTipo()=="Adminstrador"){
             this.operacoes[i] = "cadastrarUsuario";
             buttons[i].setText("Cadastrar Usuario");
             i++;
-        }
+        }*/
         
-        if(usuarioLogado.getWS()==true){
+        if(usuarioLogado.canWriteSchool()==true){
             this.operacoes[i] = "cadastrarEscola";
             buttons[i].setText("Cadastrar Escola");
+            i++;
+        }
+        if(usuarioLogado.canAddUser()==true){
+            this.operacoes[i]="cadastrarUsuario";
+            buttons[i].setText("Cadastrar Usuario");
             i++;
         }
         for(; i < 7; i++) {

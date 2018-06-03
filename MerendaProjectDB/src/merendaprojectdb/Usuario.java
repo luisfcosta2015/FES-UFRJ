@@ -23,6 +23,7 @@ public class Usuario {
     boolean canSeeReport;
     boolean canSeeSchool;
     boolean canWritePermit;
+    boolean canAddUser;
     
     UsuarioAdm adm;
     UsuarioDir dir;
@@ -39,7 +40,12 @@ public class Usuario {
     }
     
     private void setPermits(){
-    if (tipo == "Administrador"){
+        System.out.println("oiiiii");
+        System.out.println(tipo);
+        System.out.println("Administrador");
+       
+    if (tipo.equals("Administrador")){
+        System.out.println("AAAAAAAAA");
         this.adm = new UsuarioAdm();
         canNewReport = adm.canNewReport;
         canWriteReport = adm.canWriteReport;
@@ -47,8 +53,9 @@ public class Usuario {
         canWriteSchool = adm.canWriteSchool;
         canSeeSchool = adm.canSeeSchool;
         canWritePermit = adm.canWritePermit;
+        canAddUser = adm.canAddUser;
     }
-    else if(tipo == "Diretor"){
+    else if(tipo.equals("Diretor")){
         this.dir = new UsuarioDir();
         canNewReport = dir.canNewReport;
         canWriteReport = dir.canWriteReport;
@@ -56,8 +63,9 @@ public class Usuario {
         canWriteSchool = dir.canWriteSchool;
         canSeeSchool = dir.canSeeSchool;
         canWritePermit = dir.canWritePermit;
+        canAddUser = dir.canAddUser;
     }
-    else{
+    else if(tipo.equals("Leitor")){
         this.lei = new UsuarioLei();
         canNewReport = lei.canNewReport;
         canWriteReport = lei.canWriteReport;
@@ -65,6 +73,7 @@ public class Usuario {
         canWriteSchool = lei.canWriteSchool;
         canSeeSchool = lei.canSeeSchool;
         canWritePermit = lei.canWritePermit;
+        canAddUser = lei.canAddUser;
     }
     }
     
@@ -76,28 +85,31 @@ public class Usuario {
         return tipo;
     }
     
-    public boolean getNR(){
+    public boolean canNewReport(){
         return canNewReport;
     }
     
-    public boolean getWR(){
+    public boolean canWriteReport(){
         return canWriteReport;
     }
     
-    public boolean getSR(){
+    public boolean canSeeReport(){
         return canSeeReport;
     }
     
-    public boolean getWS(){
+    public boolean canWriteSchool(){
         return canWriteSchool;
     }
     
-    public boolean getSS(){
+    public boolean canSeeSchool(){
         return canSeeSchool;
     }
     
-    public boolean getWP(){
+    public boolean canWritePermit(){
         return canWritePermit;
+    }
+    public boolean canAddUser(){
+        return canAddUser;
     }
     
     

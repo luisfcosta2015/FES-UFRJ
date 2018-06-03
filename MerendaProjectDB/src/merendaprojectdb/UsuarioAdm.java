@@ -17,6 +17,7 @@ public class UsuarioAdm {
     boolean canSeeReport;
     boolean canSeeSchool;
     boolean canWritePermit;
+    boolean canAddUser;
     
     UsuarioAdm(){
       canNewReport = true;
@@ -24,7 +25,8 @@ public class UsuarioAdm {
       canSeeReport = true;
       canWriteSchool = true;
       canSeeSchool = true;
-      canWritePermit = true;  
+      canWritePermit = true;
+      canAddUser =true;  
     }
     
     

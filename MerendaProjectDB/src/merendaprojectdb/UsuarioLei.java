@@ -17,6 +17,7 @@ public class UsuarioLei {
     boolean canSeeReport;
     boolean canSeeSchool;
     boolean canWritePermit;
+    boolean canAddUser;
     
     UsuarioLei(){
         canNewReport = false;
@@ -25,6 +26,7 @@ public class UsuarioLei {
         canWriteSchool = false;
         canSeeSchool = true;
         canWritePermit = false;  
+      canAddUser =false;
     }
     
     public void setNR(boolean m){
