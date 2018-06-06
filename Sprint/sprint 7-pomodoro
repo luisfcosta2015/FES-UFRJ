@@ -2,28 +2,32 @@ Sprint 7-pomodoro:
 Sprint Backlog
 
 Xiao
-    
+   Função gerar query -2  ok
+   Analisar a possiblidade de usar o dump do I-educar 4
 Gustavo
-Analisar a possiblidade de usar o dump do I-educar
-     Conexao com o banco do I-educar
-
-
+   Analisar a possiblidade de usar o dump do I-educar 1 ok
+    Conexao com o banco do I-educar (não feito)
+    Teste (estudar) - 5 ok
+    Documentação ok
 Caiafa
-Documentação
+ gri gri gri
 
-Banco mais robusto para testes futuros -3
-  Fazer o banco atender requisitos dos relatórios mais utilizados. - 2
-  Popular o banco - 2
-  Função gerar query -2
-Teste (estudar) - 5
+   
+/*  //Decidimos usar o dump do postgre
+ *Banco mais robusto para testes futuros -3   (não feito) 
+ *Fazer o banco atender requisitos dos relatórios mais utilizados. - 2  (não feito)
+ *Popular o banco - 2   (não feito)
+*/
+Teste (estudar) - 5 (não feito)
   
 
 <h1>André</h1>
-Gera Relatório em PDF
-    Criar Footer com Data/hora da geração do relatório e numero da página. -1
-    Criar template dos relatórios mais usados
-      - Declaração de escolaridade(Nome completo, codigo, Identidade, NIS, 
-                                   nome da mae, nome do pai, data de nascimento, local de nascimento,
-                                   Grau de escolaridade[ensino fundamental, ensino medio ...], serie, turma. - 1
-Teste (estudar)- 3
+Gera Relatório em PDF 
+    Criar Footer com Data/hora da geração do relatório e numero da página. -1   (não feito)
+    Criar template dos relatórios mais usados  (não feito)
+      - Declaração de escolaridade(Nome completo, codigo, Identidade, NIS,  (não feito)
+                                   nome da mae, nome do pai, data de nascimento, local de nascimento, (não feito)
+                                   Grau de escolaridade[ensino fundamental, ensino medio ...], serie, turma. - 1 (não feito)
+    (Código em C e conversão para Java) (ok)
+Teste (estudar)- 3 ok
       
