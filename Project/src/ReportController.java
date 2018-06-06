@@ -24,7 +24,7 @@ public class ReportController extends HttpServlet {
     public ReportController(){
         super();
     }
-    
+
     protected  void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
         String baseUri = getServletContext().getRealPath("").split("out")[0];
