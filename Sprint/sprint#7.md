@@ -3,7 +3,7 @@
 <p align="justify"> A sprint#7 se deu inicio no HackComb, com a lista do Pomodoro </p>
 <h2> Histórias da Sprint </h2>
 
-<ul>  </ul>
+<ul>Como usuário quero ver gráfico de pizza e de barra no relatório.  </ul>
 <ul> </ul>
 
 <h2> Sprint Backlog </h2>
