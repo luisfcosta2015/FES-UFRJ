@@ -52,8 +52,3 @@
 
 ## Planejamento para próxima sprint
 
-- Criar banco na aplicação
-- Finalizar tela de relatório
-- Finalizar tela de formulário de cadastro
-- Corrigir tamanhos dos paineis
-- Finalizar tela de formulário de alteração
