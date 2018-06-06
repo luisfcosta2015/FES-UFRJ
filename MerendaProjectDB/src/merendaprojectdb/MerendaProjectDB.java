@@ -19,7 +19,7 @@ public class MerendaProjectDB {
         
         PreparedStatement ps = null;
         Connection con;
-        Login login  = new Login();
+        TelaLogin login  = new TelaLogin();
         DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
         Calendario cardapio = new Calendario(1,2018);
         Escola escola = new Escola("ESTADO DO RIO DE JANEIRO","PREFEITURA DE DUQUE DE CAXIAS",

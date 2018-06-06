@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class TelaItensRelatorio extends javax.swing.JFrame {
     
     String usuario;
-    Principal principal;
+    TelaPrincipal principal;
     BdManager banco;
     DefaultListModel modelList = new DefaultListModel();
     private Relatorio relatorio;
@@ -62,8 +62,9 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void carregarItens(){
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
         //modelo.addElement("thiago");
-        
-        ArrayList<String> itens=banco.pegarItensDoCardapio();
+        ArrayList<String> itens = new ArrayList();
+        itens=banco.pegarItensDoCardapio();
+        modelo.removeAllElements();
         for(int i=0;i<itens.size();i++)
         {
             modelo.addElement(itens.get(i));
@@ -226,10 +227,10 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         if(!this.editando) {
             criaItensLista();
             this.relatorio = new Relatorio (this.cardapio, this.capa, this.nomeRel, itens);
-            Principal.relatorioCorrente = this.relatorio;
+            TelaPrincipal.relatorioCorrente = this.relatorio;
             BdManager.adicionarRelatorio(this.relatorio);
         }
-        principal=new Principal();
+        principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);
@@ -247,8 +248,19 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void AdicionarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarItensActionPerformed
         
         String newItem = novoItem.getText();
-        banco.AdicionarItemListaCardapio(newItem);
-        carregarItens();
+        if(banco.VerificarItemExistente(newItem)) // retorna true se o item ja existe
+        {
+            novoItem.setText("");
+            JOptionPane.showMessageDialog(null,"Esse item já existe na Lista, procure-o na lista acima :3");
+        }
+        else
+        {
+            banco.AdicionarItemListaCardapio(newItem);
+            carregarItens();
+            novoItem.setText("");
+            JOptionPane.showMessageDialog(null,"Item adicionado com sucesso :3");
+        }
+        
         
     }//GEN-LAST:event_AdicionarItensActionPerformed
 

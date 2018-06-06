@@ -21,7 +21,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         usuario=nome;
     }
     
-    Principal principal;
+    TelaPrincipal principal;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,7 +192,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        principal=new Principal();
+        principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

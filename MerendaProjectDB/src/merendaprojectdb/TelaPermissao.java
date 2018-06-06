@@ -17,7 +17,7 @@ public class TelaPermissao extends javax.swing.JFrame {
     String usuario;
     
     String tipo;
-    Principal principal;
+    TelaPrincipal principal;
     
     UsuarioAdm adm;
     UsuarioDir dir;
@@ -213,7 +213,7 @@ public class TelaPermissao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        principal=new Principal(usuario);
+        principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

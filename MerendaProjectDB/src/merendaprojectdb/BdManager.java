@@ -74,7 +74,7 @@ public class BdManager {
     }
     static boolean verificarUser(String senha, String user){
         
-         PreparedStatement ps = null;
+        PreparedStatement ps = null;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from usuario where usuario like ?");
@@ -108,7 +108,7 @@ public class BdManager {
         PreparedStatement ps = null;
         try{ 
             con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento) values(?,?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento, diretoria) values(?,?,?,?,?,?,?,?,?)");
             ps.setInt(1, escola.getINEP());
             ps.setString(2, escola.getUnidade());
             ps.setString(3, escola.getTelefone());
@@ -117,6 +117,7 @@ public class BdManager {
             ps.setString(6, escola.getSecretaria());
             ps.setString(7, escola.getSubsecretaria());
             ps.setString(8, escola.getDepartamento());
+            ps.setString(9, escola.getDiretoria());
             ps.execute();
             return true; 
             
@@ -128,51 +129,121 @@ public class BdManager {
        }
         //aqui o codigo recebera uma escola e adicionará ela as escolas cadastradas no banco
     }
-    
-    
-    // daqui pra baixo ainda nao está conectado ao banco
-    static ArrayList pegarEscolas(){
-        //aqui tem que retornar todas as escolas cadastradas no sistema em um arrayList
-        // TODO
-        ArrayList<Escola> escolas = new ArrayList<>();
-        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tia totoca", ""));
-        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tia vitor", ""));
-        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tio Pedrão", ""));
-        escolas.add(new Escola(""+"","", "", "", "", 1, "", "tio Carlão", ""));
-        
-        return escolas;
-    }
     static boolean AdicionarItemListaCardapio(String Item){
-        //TODO
-        //aqui o codigo recebera um item e adcionará ele aos itens que podem ser usados no cardapio, esse item será pego com
-        //o metodo "pegarItensDoCardapio"
         
-        
-        return true;
+        PreparedStatement ps = null;
+       
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into itens(nome) values(?)");
+            ps.setString(1, Item);
+            ps.execute();
+            return true;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
     }
-    static Escola findEscolaUnidade(String unidade) {
-        return null;
+    static boolean VerificarItemExistente(String item){
+        PreparedStatement ps = null;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from itens where nome like ?");
+            ps.setString(1, item);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
     }
     static ArrayList pegarItensDoCardapio() {
-        //aqui tem que retornar todos os itens do cardapio mas como não sei o que fazer, to retornando coisas aleatorias
-        //tem que retornar em um array List
+        PreparedStatement ps = null;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from itens");
+            ResultSet rs = ps.executeQuery();
+            ArrayList<String> itens = new ArrayList<>();
+            
+            while(rs.next())
+            {
+                System.out.println(rs.getString("nome"));
+                itens.add(rs.getString("nome"));
+            }
+            return itens;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return null;
+        }
+    }
+    static ArrayList pegarEscolas(){
+        
+        PreparedStatement ps = null;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from escola");
+            ResultSet rs = ps.executeQuery();
+            ArrayList<Escola> escolas = new ArrayList<>();
+            
+            while(rs.next())
+            {
+                String estado = rs.getString("estado");
+                String prefeitura = rs.getString("prefeitura");
+                String secretaria = rs.getString("secretaria");
+                String subsecretaria = rs.getString("subsecretaria");
+                String departamento = rs.getString("departamento");
+                String diretoria = rs.getString("diretoria"); // ops
+                String unidade = rs.getString("unidade");
+                String telefone = rs.getString("telefone");
+                int inep = rs.getInt("inep");
+                
+                escolas.add(new Escola(estado, prefeitura, secretaria, subsecretaria, departamento, inep, diretoria, unidade, telefone));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+            return escolas;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return null;
+        }
+        //aqui tem que retornar todas as escolas cadastradas no sistema em um arrayList
         // TODO
-        ArrayList<String> itens = new ArrayList<>();
-        itens.add("batata");
-        itens.add("feijão");
-        itens.add("macarrão");
-        itens.add("abacate");
-        itens.add("Laranja");
-        itens.add("miojo");
-        itens.add("banana");
-        itens.add("abacaxi");
-        itens.add("amora");
-        itens.add("aipo");
-        itens.add("beringela");
-        itens.add("zebra");
-        itens.add("carne");
-        itens.add("vitor");
-        return itens;
+    }
+    static boolean verificaEscola(String inep){
+       PreparedStatement ps = null;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from escola where inep like ?");
+            ps.setString(1, inep);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                rs.close();
+                ps.close();
+                con.close();
+                return true;
+            }
+            return false;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
+    // daqui pra baixo ainda nao está conectado ao banco
+    
+    static Escola findEscolaUnidade(String unidade) {
+        return null;
     }
     static ArrayList getRelatoriosExistentes(){
         //TODO

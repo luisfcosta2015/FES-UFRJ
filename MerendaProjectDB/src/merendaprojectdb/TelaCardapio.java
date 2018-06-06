@@ -30,7 +30,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     Calendario calendario;
     Cardapio cardapio;
     CapaDados capa;
-    Principal principal;
+    TelaPrincipal principal;
     String usuario;
     TelaItensRelatorio itensRel;
     int ano;
@@ -244,7 +244,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaPropertyChange
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        principal=new Principal();
+        principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

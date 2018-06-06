@@ -16,7 +16,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class TelaEscola extends javax.swing.JFrame {
 
-    Principal principal;
+    TelaPrincipal principal;
     String usuario;
     TelaNovaEscola nova;
     TelaConfirmarAcao deletar;
@@ -172,7 +172,7 @@ public class TelaEscola extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        principal=new Principal();
+        principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

@@ -5,6 +5,8 @@
  */
 package merendaprojectdb;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gdsm
@@ -315,23 +317,58 @@ public class TelaNovaEscola extends javax.swing.JFrame {
     }//GEN-LAST:event_campoDDDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Object estado = campoEstado.getSelectedItem();
-        String pref = campoPrefeitura.getText();
-        String sec = campoSec.getText();
-        String subsec = campoSubSec.getText();
-        String dept = campoDept.getText();
-        String inep  = campoINEP.getText();
-        String diretoria = campoDiretoria.getText();
-        String unidade = campoUnidade.getText();
-        String ddd  = campoDDD.getText();
-        String tel  = campoTel.getText();
-        String telefone = ddd+tel;
+        if(campoSec.getText().equals("") || 
+                campoPrefeitura.getText().equals("") || 
+                campoSubSec.getText().equals("") ||
+                campoDept.getText().equals("") || 
+                campoINEP.getText().equals("") || 
+                campoDiretoria.getText().equals("") || 
+                campoUnidade.getText().equals("") || 
+                campoDDD.getText().equals("") || 
+                campoTel.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Esta Faltando algum dado T-T");
+        }
+        else
+        {
+            
+            if(BdManager.verificaEscola(campoINEP.getText()))
+            {
+                JOptionPane.showMessageDialog(null,"Esta escola já existe no banco o.O");
+            }
+            else
+            {
+                Object estado = campoEstado.getSelectedItem();
+                String pref = campoPrefeitura.getText();
+                String sec = campoSec.getText();
+                String subsec = campoSubSec.getText();
+                String dept = campoDept.getText();
+                String inep  = campoINEP.getText();
+                String diretoria = campoDiretoria.getText();
+                String unidade = campoUnidade.getText();
+                String ddd  = campoDDD.getText();
+                String tel  = campoTel.getText();
+                String telefone = ddd+tel;
 
-        int inepFinal = Integer.parseInt(inep);
+                int inepFinal = Integer.parseInt(inep);
+
+                // atualiza o banco de dados
+                Escola escolaNova = new Escola(""+estado,pref, sec, subsec, dept, inepFinal, diretoria, unidade, telefone);
+                BdManager.cadastraEscola(escolaNova);
+
+                campoPrefeitura.setText("");
+                campoSec.setText("");
+                campoSubSec.setText("");
+                campoDept.setText("");
+                campoINEP.setText("");
+                campoDiretoria.setText("");
+                campoUnidade.setText("");
+                campoDDD.setText("");
+                campoTel.setText("");
+                JOptionPane.showMessageDialog(null,"Escola criada com sucesso :3");
+            }
+        }
         
-        // atualiza o banco de dados
-        Escola escolaNova = new Escola(""+estado,pref, sec, subsec, dept, inepFinal, diretoria, unidade, telefone);
-        BdManager.cadastraEscola(escolaNova);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

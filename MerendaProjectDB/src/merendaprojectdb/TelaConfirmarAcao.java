@@ -15,7 +15,7 @@ package merendaprojectdb;
 public class TelaConfirmarAcao extends javax.swing.JFrame {
 
     String usuario;
-    Principal principal;
+    TelaPrincipal principal;
     TelaEscola escola;
     /**
      * Creates new form TelaConfirmarAcao
@@ -103,7 +103,7 @@ public class TelaConfirmarAcao extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        principal=new Principal();
+        principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);

@@ -9,7 +9,7 @@ package merendaprojectdb;
  *
  * @author Cliente
  */
-public class Principal extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form PrincipalDiretor
@@ -18,7 +18,7 @@ public class Principal extends javax.swing.JFrame {
     public static Usuario usuarioLogado; 
     private String usuario;
     
-    private Login login;
+    private TelaLogin login;
     private TelaCapaRelatorio capa;
     private TelaCadastro cadastro;
     private TelaEscola escola;
@@ -26,7 +26,7 @@ public class Principal extends javax.swing.JFrame {
     private TelaGerarArquivos geradorArquivos;
     private TelaPermissao permission;
     private String[] operacoes = new String[7];
-    public Principal() {
+    public TelaPrincipal() {
         initComponents();
         if(this.usuarioLogado == null) {
             System.out.println("Usuario deve ser setado antes da inicialização da classe Principal");
@@ -243,7 +243,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
-        login=new Login();
+        login=new TelaLogin();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
         login.setResizable(true);
@@ -266,7 +266,7 @@ public class Principal extends javax.swing.JFrame {
                 dispose();
                 break;
             case "editarRelatorioCorrente":
-                TelaEditaRelatorio edita = new TelaEditaRelatorio(Principal.relatorioCorrente);
+                TelaEditaRelatorio edita = new TelaEditaRelatorio(TelaPrincipal.relatorioCorrente);
                 edita.setLocationRelativeTo(null);
                 edita.setVisible(true);
                 edita.setResizable(true);

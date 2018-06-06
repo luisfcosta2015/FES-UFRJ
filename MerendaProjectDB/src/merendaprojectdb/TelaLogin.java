@@ -13,18 +13,18 @@ import java.util.Date;
  *
  * @author Cliente
  */
-public class Login extends javax.swing.JFrame {
+public class TelaLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public TelaLogin() {
         
         initComponents();
         //this.getContentPane().setBackground(Color.RED);
     }
     
-    Principal principal;
+    TelaPrincipal principal;
     TelaCardapio cardapio;
     TelaItensRelatorio itens;
     BdManager banco;
@@ -106,8 +106,8 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(banco.verificarUser(campoSenha.getText().intern(),campoUsuario.getText())==true)
         {
-            Principal.usuarioLogado = BdManager.findUser(this.campoUsuario.getText());
-            principal = new Principal();
+            TelaPrincipal.usuarioLogado = BdManager.findUser(this.campoUsuario.getText());
+            principal = new TelaPrincipal();
             principal.setLocationRelativeTo(null);
             principal.setVisible(true);
             principal.setResizable(true);
