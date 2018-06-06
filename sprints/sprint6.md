@@ -9,7 +9,7 @@
 
 - Como funcionário quero poder fazer login
 - Como funcionário quero visualizar as informações sobre alimentos
-- Como secretário quero cadastrar as informações sobre cada escola.
+- Como secretário quero cadastrar as informações sobre cada escola
 
 ## Sprint Backlog:
 
