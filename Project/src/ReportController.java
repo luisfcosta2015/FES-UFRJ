@@ -8,14 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.text.html.HTML;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 
 public class ReportController extends HttpServlet {
     protected DBHelper db = new DBHelper();
@@ -64,19 +62,37 @@ public class ReportController extends HttpServlet {
         String[][] dynamResult ;//os dados dinâmicos em si
         HTMLReplacer htmlR;
         HashMap<String,String> namespace = new HashMap<>();
-
+        //String querySt = new Scanner(new File("C:\\Users\\00\\Documents\\Programação\\FES-UFRJ\\Project\\res\\reportsTemplates\\Consultas\\Diario de Classes\\DiarioDeClassesEstatica.sql")).useDelimiter("\\A").next();
+        //String queryDy = new Scanner(new File("C:\\Users\\00\\Documents\\Programação\\FES-UFRJ\\Project\\res\\reportsTemplates\\Consultas\\Diario de Classes\\DiarioDeClassesDinamica.sql")).useDelimiter("\\A").next();
+        String q1;
+        String q2;
 
 
         procParams(request);
 
 
         tarefaBanco();
-        dynamK=rssql.getDynamicKeys();
+
+
+        dynamK=rssql.getDynamicKeys();//funcionando obtendo as chaves dinâmicas
+
+
+        q1=rssql.querySt;//query estática com variáveis não substituídas
+        q2=rssql.queryDy;//query dinâmica com variáveis não substituídas
+
+        //System.out.println(rssql.getStaticResults().size());
+
+
+        //getStaticResults contém nulos nos resultados
+        //getDynamicResults contém nulos nos resultados
         dynamResult=rssql.getDynamicResults();
+
         stMap=rssql.getStaticResults();
+
+
         //System.out.println(stMap.entrySet().iterator().next());
 
-        criaNamespace(stMap,dynamK,dynamResult,namespace);
+        //criaNamespace(stMap,dynamK,dynamResult,namespace);
 
     }
 
@@ -95,7 +111,7 @@ public class ReportController extends HttpServlet {
     }
 
     protected void tarefaBanco() throws Exception {
-        rssql = new RSSQL("test/rssql.json",params);//ocorre erro
+        rssql = new RSSQL("C:/Users/00/Documents/Programação/FES-UFRJ/Project/res/test/rssql.json",params);//funcionando, mas não ideal
 
 
     }

@@ -12,8 +12,8 @@ import org.jsoup.select.Elements;
 public class HTMLReplacer {
 	
 	
-	public HTMLReplacer(String filename, HashMap<String, Object> namespace) {
-		
+	public HTMLReplacer(String filename, HashMap<String, Object> namespace) {//Recebe o map com a consulta sem substituir as variáveis e o modelo html
+		                                                                     //O mesmo Irá substituir os campos com as variáveis finais das consultas
 		File in = new File(filename);
 		Document doc;
 		Pattern p = Pattern.compile("(?!\\$\\{)[a-zA-Z][a-zA-Z0-9\\_]*(?=\\})");

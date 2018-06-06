@@ -18,6 +18,10 @@ public class RSSQL {
 
     DBHelper dbHelper;
 
+
+    String querySt;
+    String queryDy;
+
     // r = RSSQL("modelo1.rssql",{"idescola":10, ...
     // r.
 
@@ -39,10 +43,10 @@ public class RSSQL {
 
         String sta_query = mRSO.getStaticField().getValue();
         sta_query = replaceKeys(params,sta_query);
-
+        querySt=sta_query;//o valor de sta_query estava sendo perdido
         String dyn_query = mRSO.getDynamicField().getValue();
         dyn_query = replaceKeys(params,dyn_query);
-
+        queryDy=dyn_query;//o valor de dyn_query estava sendo perdido
         dbHelper = new DBHelper();
 
         //TODO improve connection policy
@@ -85,6 +89,7 @@ public class RSSQL {
 
         HashMap<String,String> ret = new HashMap<>();
         for(int i = 0; i < sta_keys.length; i++){
+            System.out.println(sta_keys[i]+"  "+sta_values[i]);
             ret.put(sta_keys[i],sta_values[i]);
         }
         return ret;
@@ -98,6 +103,7 @@ public class RSSQL {
 
 
     public String[][] getDynamicResults(){
+
 
         return dyn_values;
 
