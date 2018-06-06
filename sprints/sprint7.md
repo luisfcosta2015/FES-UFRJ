@@ -1,4 +1,4 @@
-﻿# Sprint #5 Planning
+﻿# Sprint #7 Planning
 
 ## Introdução
 
