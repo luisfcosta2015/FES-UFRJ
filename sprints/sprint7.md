@@ -59,11 +59,10 @@ Nenhum trabalho pôde ser feito devido a dificuldades externas.
 
 ## Planejamento para próxima sprint
 
-Reação 12
-Criar banco na aplicação
-Finalizar tela de relatório
-Finalizar tela de formulário de cadastro
-Corrigir tamanhos dos paineis
-Finalizar tela de formulário de alteração
-Iniciar elaboração dos testes
-
+- Reação 12
+- Criar banco na aplicação
+- Finalizar tela de relatório
+- Finalizar tela de formulário de cadastro
+- Corrigir tamanhos dos paineis
+- Finalizar tela de formulário de alteração
+- Iniciar elaboração dos testes
