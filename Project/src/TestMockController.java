@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class ParametersController extends HttpServlet{
+public class TestMockController extends HttpServlet{
 
     protected DBHelper db = new DBHelper();
-    public ParametersController(){
+    public TestMockController(){
         super();
     }
 
@@ -42,15 +42,16 @@ public class ParametersController extends HttpServlet{
         }
 
         response.getWriter().write(json);
+        db.close();
 
     }
     private ArrayList<ArrayList<String>> getEscolas(){
-        return this.db.query("SELECT DISTINCT nome_escola FROM escola;");
+        return this.db.query("SELECT DISTINCT nome_escola FROM escola");
     }
     private ArrayList<ArrayList<String>> getAnos(String escola){
-        return this.db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = '"+escola+"' ;");
+        return this.db.query("SELECT DISTINCT ano from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = ?",escola);
     }
     private ArrayList<ArrayList<String>> getTurmas(String escola, String ano){
-        return this.db.query("SELECT DISTINCT nome_turma from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = '"+escola+"' AND ano='"+ano+"' ;");
+        return this.db.query("SELECT DISTINCT nome_turma from turma INNER JOIN escola ON (turma.fk_escola=escola.id_escola) WHERE nome_escola = ? AND ano=?",escola,Integer.parseInt(ano));
     }
 }

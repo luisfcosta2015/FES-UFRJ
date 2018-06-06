@@ -21,7 +21,7 @@
 
     <servlet>
         <servlet-name>ParametersController</servlet-name>
-        <servlet-class>ParametersController</servlet-class>
+        <servlet-class>TestMockController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ParametersController</servlet-name>

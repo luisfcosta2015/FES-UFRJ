@@ -14,9 +14,12 @@ public class Dotenv {
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
+                String[] comments = line.split("#");
+                if(comments[0].length()>0){
+                    String[] vars = comments[0].split("\\s*=\\s*");
+                    System.setProperty(vars[0],vars[1]);
+                }
 
-                String[] vars = line.split("\\s*=\\s*");
-               System.setProperty(vars[0],vars[1]);
             }
             fileReader.close();
         } catch (IOException e) {
