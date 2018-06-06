@@ -133,7 +133,10 @@ Logo, a HackComb foi extramente gratificante e engrandecedora para mim, enquanto
 <p align="justify"></p>
 
 <h2> Revisão </h2>
-<p align="justify"></p>
+<p align="justify">
+Essa semana conseguimos relaizar a revisao com o clinete, de forma geral a Poli ficou satisifeita, porem apontou algumas modificaoces que poderiam ser feitas, principalmente na parte de interface:
+  <li> Deixar as fontes mais amigaveis, menos agressivas </li>
+</p>
 
 <h2> Planejamento para a próxima sprint</h2>
 <p align="justify">Para a proxima Sprint iremos colocar as atividades que faltaram e tentar focar com os testes.</p>
