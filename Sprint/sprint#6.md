@@ -70,6 +70,11 @@
     <td>1 hora</td>
     <td>Aline</td>
   </tr>
+  <tr>
+    <td>Burndown Chart da Quinta Sprint</td>
+    <td>1 hora</td>
+    <td>Aline</td>
+  </tr>
 </table> 
 
 <h2> Retrospectiva </h2>
@@ -94,6 +99,11 @@
   </tr>
   <tr>
     <td>Texto na wiki sobre a dificuldade com o Burndown chart</td>
+    <td>1 hora</td>
+    <td>Aline</td>
+  </tr>
+  <tr>
+    <td>Burndown Chart da Quinta Sprint</td>
     <td>1 hora</td>
     <td>Aline</td>
   </tr>
