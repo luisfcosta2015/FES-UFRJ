@@ -15,15 +15,12 @@
 
 | Atividade                                      | Tempo Estimado | Membro(s)     |
 |:----------------------------------------------:|:--------------:|:-------------:|
-| Reação 9                                       | 20 minutos     | Daniel        |
-| Preencher mds das Sprints 1 a 4 no repositório | 1 hora         | Daniel        |	
-| Criar gráfico burndown                         | 40 minutos     | Daniel        |
-| Finalizar verificação de login                 | 1 hora         | François      |
-| Criar histórias de usuário                     | 1 hora         | João          |
-| Corrigir diagrama de classes                   | 10 minutos     | João          |
-| Quebrar tarefas do backlog                     | 40 minutos     | João          |
-| Tela de relatório                              | 1 hora         | Hiromi        |
-| Tela de formulário de cadastro                 | 1 hora         | Hiromi        |
+| Reação 10                                      | 20 minutos     | Daniel        |
+| Criar banco na aplicação                       |          |         |	
+| Finalizar tela de relatório                    |      |         |
+| Finalizar tela de formulário de cadastro       |          |       |
+| Corrigir tamanhos dos paineis                  |          |           |
+| Finalizar tela de formulário de alteração      |      |           |
 
 ## Retrospectiva
 
