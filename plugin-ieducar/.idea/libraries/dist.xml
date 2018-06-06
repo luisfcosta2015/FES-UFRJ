@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="dist">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../libs/dynamicreports-5.1.0/dist" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../libs/dynamicreports-5.1.0/dist" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../libs/dynamicreports-5.1.0/dist" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../libs/dynamicreports-5.1.0/dist" recursive="false" type="SOURCES" />
+  </library>
+</component>
