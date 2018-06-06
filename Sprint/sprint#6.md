@@ -90,20 +90,24 @@
   <tr>
     <td> Compreender JUnit </td>
     <td>  3 horas </td>
+    <td> 3 horas </td>
     <td> Larissa </td>
   </tr>
   <tr>
     <td>  Reação 21/05 - 23/05 </td>
     <td>  1 hora </td>
+    <td> 1 hora </td>
     <td>  Larissa </td>
   </tr>
   <tr>
     <td>Texto na wiki sobre a dificuldade com o Burndown chart</td>
     <td>1 hora</td>
+    <td>1 hora</td>
     <td>Aline</td>
   </tr>
   <tr>
     <td>Burndown Chart da Quinta Sprint</td>
+    <td>1 hora</td>
     <td>1 hora</td>
     <td>Aline</td>
   </tr>
@@ -121,41 +125,49 @@
     <tr>
     <td> Estruturar Gráfico para geração de Gráfico </td>
     <td> 3 horas </td>
+    <td> -- </td>
     <td> Larissa </td>
   </tr>
   <tr>
     <td>Montar dump do DB localmente</td>
     <td>3 hora</td>
+    <td> -- </td>
     <td>Tomaz</td>
   </tr>
   <tr>
     <td>Incluir gráfico de Pizza no relatório de teste</td>
     <td>1 hora</td>
+    <td> -- </td>
     <td>Tomaz</td>
   </tr>
   <tr>
     <td>Incluir gráfico de barra no relatório de teste</td>
     <td>1 hora</td>
+    <td> -- </td>
     <td>Tomaz</td>
   </tr>
   <tr>
     <td> Tutorial como restaurar o dump do BD  </td>
     <td>  2 horas </td>
+    <td> -- </td>
     <td>  Tomaz </td>
   </tr>
   <tr>
     <td>Entender relatórios AdHoc</td>
     <td>3 horas</td>
+    <td> -- </td>
     <td>Gilberto</td>
   </tr>
   <tr>
     <td>Criar Layout de relatório</td>
     <td>2 horas</td>
+    <td> -- </td>
     <td>Gilberto</td>
   </tr>
   <tr>
     <td> Fazer uma classe conectora com o BD </td>
     <td> 2 horas </td>
+    <td> -- </td>
     <td>  Gilberto </td>
   </tr>
   <tr>
@@ -163,6 +175,7 @@
 
 <h3> Feedback dos membros</h3>
 <h4> Aline </h4>
+<p align="justify">Devido à minha falta no planejamento da Sprint e falta de comunicação da minha parte, eu peguei menos atividades do que seria ideal. Mas executei todas as tarefas de forma satisfatória. Na próxima Sprint a intenção é pegar o máximo de atividades possível para equilibrar com as minhas outras obrigações externas à disciplina. </p>
 
 <p align="justify"> </p>
 
