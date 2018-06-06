@@ -22,36 +22,6 @@ public class MerendaProjectDB {
         TelaLogin login  = new TelaLogin();
         DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
         Calendario cardapio = new Calendario(1,2018);
-        Escola escola = new Escola("ESTADO DO RIO DE JANEIRO","PREFEITURA DE DUQUE DE CAXIAS",
-        "SECRETARIA MUNICIPAL DE EDUCAÇÃO", "SUBSECRETARIA DE EDUCAÇÃO EM INFRAESTRUTURA...", 
-        "DEPARTAMENTO DE INFRAESTRUTURA EDUCACIONAL", 33151750, "Luana Lopes", "E.M. ANA DE SOUSA HERDY", "(21)3656-0364");
         login.setVisible(true);
-        
-        
-       try{
-            String host = "jdbc:mysql://localhost:3306/merendafes";
-            String username = "root";
-            String password = "@Vitor1997";
-            con = DriverManager.getConnection(host, username, password);
-            Map map = con.getTypeMap();
-           /* ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento) values(?,?,?,?,?,?,?,?)");
-            ps.setInt(1, escola.getINEP());
-            ps.setString(2, escola.getUnidade());
-            ps.setString(3, escola.getTelefone());
-            ps.setString(4, escola.getEstado());
-            ps.setString(5, escola.getPrefeitura());
-            ps.setString(6, escola.getSecretaria());
-            ps.setString(7, escola.getSubsecretaria());
-            ps.setString(8, escola.getDepartamento());
-            ps.execute();*/
-            
-       }
-       catch(SQLException err)
-       {
-           System.out.println(err.getMessage());
-       }
-
-   
-    }
-    
+    } 
 }
