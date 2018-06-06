@@ -81,19 +81,11 @@ public class PagRelatorioController {
     @FXML
     public void geraRelatorio(ChoiceBox<String> box_escola, ChoiceBox<String> box_turma, ChoiceBox<String> box_grafico) {
         escola = getChoice(box_escola);
-        System.out.println(escola);
-
         turma = getChoice(box_turma);
-        System.out.println(turma);
-
         grafico = getChoice(box_grafico);
-        System.out.println(grafico);
 
-        System.out.println("Gerando relatório");
-        relatorio.build();
+        relatorio.build(escola, turma, grafico);
 
-        //Caso queira criar um relatório com as informações que vieram do front
-        //relatorio.build(escola, turma, grafico)
     }
 
     private String getChoice(ChoiceBox<String> choiceBox) {

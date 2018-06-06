@@ -9,11 +9,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.11" level="project" />
-    <orderEntry type="module" module-name="legacy" />
-    <orderEntry type="module" module-name="protocol-impl" />
+    <orderEntry type="module" module-name="user-impl" />
     <orderEntry type="module" module-name="core-api" />
     <orderEntry type="module" module-name="user-api" />
+    <orderEntry type="module" module-name="protocol-impl" />
     <orderEntry type="module" module-name="test" />
-    <orderEntry type="module" module-name="user-impl" />
+    <orderEntry type="module" module-name="legacy" />
   </component>
 </module>
