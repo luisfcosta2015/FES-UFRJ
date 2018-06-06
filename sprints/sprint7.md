@@ -16,7 +16,7 @@
 
 | Atividade                                      | Tempo Estimado | Membro(s)         |
 |:----------------------------------------------:|:--------------:|:-----------------:|
-| Reação 10                                      | 20 minutos     | Daniel            |
+| Reação 11                                      | 20 minutos     | Daniel            |
 | Criar banco na aplicação                       | 2 horas        | Daniel e François |	
 | Finalizar tela de relatório                    | 30 minutos     | Hiromi            |
 | Finalizar tela de formulário de cadastro       | 30 minutos     | Hiromi            |
