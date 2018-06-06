@@ -45,6 +45,11 @@
     <td>1 hora</td>
     <td>Tomaz</td>
   </tr>
+  <tr>
+    <td>Burndown Chart da Sexta Sprint</td>
+    <td>1 hora</td>
+    <td>Aline</td>
+  </tr>
 </table> 
 
 <h2> Retrospectiva </h2>
@@ -108,6 +113,12 @@
     <td>1 hora</td>
     <td> -- </td>
     <td>Tomaz</td>
+  </tr>
+  <tr>
+    <td>Burndown Chart da Sexta Sprint</td>
+    <td>1 hora</td>
+    <td> -- </td>
+    <td>Aline</td>
   </tr>
 
 </table> 
