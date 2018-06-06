@@ -10,6 +10,8 @@
           <element id="file-copy" path="$PROJECT_DIR$/lib/gson-2.6.2.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/lib/postgresql-42.2.2.jar" />
           <element id="library" level="project" name="com.itextpdf:html2pdf:2.0.2" />
+          <element id="library" level="project" name="itext" />
+          <element id="library" level="project" name="jsoup-1.11.3" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Project/web/Web" />

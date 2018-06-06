@@ -26,7 +26,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.7" level="application_server_libraries" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 9.0.7" level="application_server_libraries" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -50,7 +50,9 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="com.itextpdf:html2pdf:2.0.2" level="project" />
+    <orderEntry type="library" exported="" name="com.itextpdf:html2pdf:2.0.2" level="project" />
     <orderEntry type="library" name="jsoup-1.11.3" level="project" />
+    <orderEntry type="library" name="itext" level="project" />
+    <orderEntry type="library" name="servlet-api" level="application" />
   </component>
 </module>

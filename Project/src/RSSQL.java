@@ -1,6 +1,6 @@
 import com.google.gson.Gson;
+import sslRel.config.DBHelper;
 import model.RSSQLObject;
-import model.RSSQLObject.RSSQLField;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -51,3 +51,7 @@ fabric.properties
 .idea/httpRequests
 
 Project/\.idea/workspace\.xml
+Project/**/DBHelper_test*
+
+
+

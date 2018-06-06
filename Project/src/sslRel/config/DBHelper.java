@@ -1,22 +1,20 @@
+package sslRel.config;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DBHelper {
-
     Connection db;
-    private final String DB_NAME = "fugzjqzd";
-    private final String URL = "jdbc:postgresql://elmer.db.elephantsql.com:5432/"+DB_NAME;
-    private final String USERNAME = "fugzjqzd";
-    private final String PASSWORD = "YdCGgBtsj2HcFB-lsq5G54kPBq4TBWXE";
-
-
-    public static void main(String[] args) throws Exception{
-        DBHelper dbh = new DBHelper();
-        System.out.println(dbh.connect());
-    }
-
+    protected String DB_NAME;
+    protected String URL;
+    protected String USERNAME;
+    protected String PASSWORD;
 
     public DBHelper(){
+        this.DB_NAME= System.getProperty("DB_NAME");
+        this.URL = System.getProperty("DB_URL_ROOT")+this.DB_NAME;
+        this.USERNAME = System.getProperty("DB_USER");
+        this.PASSWORD = System.getProperty("DB_PASS");
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e){
@@ -24,7 +22,6 @@ public class DBHelper {
             System.exit(1);
         }
     }
-
     public boolean connect() {
         try {
             this.db = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -38,7 +35,8 @@ public class DBHelper {
     public ArrayList<ArrayList<String>> query(String sql){
         ArrayList<ArrayList<String>> result = new ArrayList<>();
         try {
-            Statement st = db.createStatement();
+
+            Statement st = this.db.createStatement();
             ResultSet rs = st.executeQuery(sql);
             int ncolumn = rs.getMetaData().getColumnCount();
             while (rs.next()) {
