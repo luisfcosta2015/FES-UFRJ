@@ -13,14 +13,14 @@
 
 ## Sprint Backlog:
 
-| Atividade                                      | Tempo Estimado | Membro(s)     |
-|:----------------------------------------------:|:--------------:|:-------------:|
-| Reação 10                                      | 20 minutos     | Daniel        |
-| Criar banco na aplicação                       |          |         |	
-| Finalizar tela de relatório                    |      |         |
-| Finalizar tela de formulário de cadastro       |          |       |
-| Corrigir tamanhos dos paineis                  |          |           |
-| Finalizar tela de formulário de alteração      |      |           |
+| Atividade                                      | Tempo Estimado | Membro(s)         |
+|:----------------------------------------------:|:--------------:|:-----------------:|
+| Reação 10                                      | 20 minutos     | Daniel            |
+| Criar banco na aplicação                       | 2 horas        | Daniel e François |	
+| Finalizar tela de relatório                    | 30 minutos     | Hiromi            |
+| Finalizar tela de formulário de cadastro       | 30 minutos     | Hiromi            |
+| Corrigir tamanhos dos paineis                  | 30 minutos     | François          |
+| Finalizar tela de formulário de alteração      | 30 minutos     | João              |
 
 ## Retrospectiva
 
@@ -30,14 +30,14 @@
 
 ### Atividades Não Concluídas
 
-| Atividade                                      | Tempo Estimado | Membro(s)     |
-|:----------------------------------------------:|:--------------:|:-------------:|
-| Reação 10                                      | 20 minutos     | Daniel        |
-| Criar banco na aplicação                       |          |         |	
-| Finalizar tela de relatório                    |      |         |
-| Finalizar tela de formulário de cadastro       |          |       |
-| Corrigir tamanhos dos paineis                  |          |           |
-| Finalizar tela de formulário de alteração      |      |           |
+| Atividade                                      | Tempo Estimado | Membro(s)         |
+|:----------------------------------------------:|:--------------:|:-----------------:|
+| Reação 10                                      | 20 minutos     | Daniel            |
+| Criar banco na aplicação                       | 2 horas        | Daniel e François |	
+| Finalizar tela de relatório                    | 30 minutos     | Hiromi            |
+| Finalizar tela de formulário de cadastro       | 30 minutos     | Hiromi            |
+| Corrigir tamanhos dos paineis                  | 30 minutos     | François          |
+| Finalizar tela de formulário de alteração      | 30 minutos     | João              |
 
 ## Revisão
 
