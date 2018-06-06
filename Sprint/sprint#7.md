@@ -73,12 +73,6 @@
     <td> 4 horas </td>
     <td>  Larissa </td>
   </tr>
-  <tr>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-    <td>  </td>
-  </tr>
 </table> 
 
 <h3> Atividades Não concluidas </h3>
