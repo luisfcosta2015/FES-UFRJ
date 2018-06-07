@@ -5,6 +5,8 @@
  */
 package merendaprojectdb;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Cliente
@@ -16,6 +18,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public static Relatorio relatorioCorrente;
     public static Usuario usuarioLogado; 
+    public static Escola escolaAtual=null;
     private String usuario;
     
     private TelaLogin login;
@@ -26,6 +29,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private TelaGerarArquivos geradorArquivos;
     private TelaPermissao permission;
     private String[] operacoes = new String[7];
+    private BdManager banco;
+    private TelaTrocarDeEscola trocaDeEscola;
+    
     public TelaPrincipal() {
         initComponents();
         if(this.usuarioLogado == null) {
@@ -35,6 +41,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             campoNome.setText("ola " + usuarioLogado.nome);
             setButtons();
         }
+        if(escolaAtual==null)
+        {
+            setNomeEscola();
+        }
+        nomeEscolaAtual.setText(escolaAtual.getUnidade());
     }
     
     /**
@@ -99,7 +110,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             buttons[i].setEnabled(false);
         }
     }
-    
+    private void setNomeEscola(){
+        ArrayList<Escola> escolas = banco.pegarEscolas();
+        escolaAtual=escolas.get(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,6 +133,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         sair = new javax.swing.JLabel();
         campoNome = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        nomeEscolaAtual = new javax.swing.JLabel();
+        botãoAlterarEscola = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(150, 240, 200));
@@ -172,7 +189,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        campoNome.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
+        campoNome.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         campoNome.setText("ola Diretor");
 
         jButton7.setText("Corrente");
@@ -182,27 +199,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Você está na Escola");
+
+        nomeEscolaAtual.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nomeEscolaAtual.setText("jLabel2");
+
+        botãoAlterarEscola.setText("Aletrar Escola");
+        botãoAlterarEscola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botãoAlterarEscolaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(sair))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton4)
-                            .addComponent(jButton7))
-                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(campoNome)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton4)
+                                    .addComponent(jButton7)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton2)
@@ -212,17 +244,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                         .addGap(42, 42, 42)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(40, 40, 40)))
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(40, 40, 40))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nomeEscolaAtual)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botãoAlterarEscola)))))
                 .addGap(27, 27, 27))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sair)
-                .addGap(26, 26, 26)
-                .addComponent(campoNome)
-                .addGap(73, 73, 73)
+                .addGap(4, 4, 4)
+                .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(nomeEscolaAtual)
+                    .addComponent(botãoAlterarEscola))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,7 +280,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton6))
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton3, jButton4, jButton5, jButton6});
@@ -304,13 +350,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 break;
         }
     }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(this.operacoes[0]=="") {
             return;
         }
         buttonActionPerformedSwitch(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(this.operacoes[1]=="") {
             return;
@@ -322,7 +368,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cadastro.setResizable(true);
         this.setVisible(false);*/
     }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(this.operacoes[2]=="") {
             return;
@@ -334,7 +379,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         escola.setResizable(true);
         this.setVisible(false);*/
     }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         if(this.operacoes[3]=="") {
@@ -348,7 +392,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         dispose();*/
         //this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if(this.operacoes[4]=="") {
             return;
@@ -360,7 +403,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         geradorArquivos.setResizable(true);
         this.setVisible(false);*/
     }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if(this.operacoes[5]=="") {
             return;
@@ -372,7 +414,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         permission.setResizable(true);
         this.setVisible(false);*/
     }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         if(this.operacoes[6]=="") {
@@ -386,12 +427,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.dispose();*/
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void botãoAlterarEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botãoAlterarEscolaActionPerformed
+        ArrayList<Escola> escolas = banco.pegarEscolas();
+        trocaDeEscola=new TelaTrocarDeEscola(escolas);
+        trocaDeEscola.setLocationRelativeTo(null);
+        trocaDeEscola.setVisible(true);
+        trocaDeEscola.setResizable(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botãoAlterarEscolaActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botãoAlterarEscola;
     private javax.swing.JLabel campoNome;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -400,6 +451,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel nomeEscolaAtual;
     private javax.swing.JLabel sair;
     // End of variables declaration//GEN-END:variables
 }

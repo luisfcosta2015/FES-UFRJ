@@ -239,12 +239,40 @@ public class BdManager {
            return false;
         }
     }
+    static Escola findEscolaUnidade(String inep) {
+        PreparedStatement ps = null;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from escola where inep like ?");
+            ps.setString(1, inep);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                String estado = rs.getString("estado");
+                String prefeitura = rs.getString("prefeitura");
+                String secretaria = rs.getString("secretaria");
+                String subsecretaria = rs.getString("subsecretaria");
+                String departamento = rs.getString("departamento");
+                int INEP = Integer.parseInt(rs.getString("inep"));
+                String diretoria = rs.getString("diretoria");
+                String unidade = rs.getString("unidade");
+                String telefone = rs.getString("telefone");
+                
+                rs.close();
+                ps.close();
+                con.close();
+                return new Escola(estado, prefeitura, secretaria, subsecretaria, departamento, INEP, diretoria, unidade, telefone);
+            }
+            return null;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return null;
+        }
+    }
     
     // daqui pra baixo ainda nao está conectado ao banco
     
-    static Escola findEscolaUnidade(String unidade) {
-        return null;
-    }
     static ArrayList getRelatoriosExistentes(){
         //TODO
         //aqui tem que retornar em um arrayList todos(ou talvez os mais recentes) os relatorios
