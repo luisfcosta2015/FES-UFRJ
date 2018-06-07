@@ -25,19 +25,9 @@ public class StartServlet extends HttpServlet{
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        if(Permission.check(request)){
-            json = "{\"token\": \"foi\"}";
-        }else{
-            json = "{\"token\": \"não foi\"}";
-        }
+        json = "{\"token\": \""+Permission.isNotGuest(request)+"\"}";
 
         response.getWriter().write(json);
 
-
     }
-
-
-
-
-
 }
