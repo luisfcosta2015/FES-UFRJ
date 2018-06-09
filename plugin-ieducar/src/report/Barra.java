@@ -45,7 +45,7 @@ public class Barra {
                 .setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 
         //Gráfico que mostra a quantidade de alunos na série errada!
-        Bar3DChartBuilder graficoBarraErrados = cht.bar3DChart()
+        Bar3DChartBuilder graficoBarra = cht.bar3DChart()
                 .setTitle("Alunos na série errada")
                 .setCategory(turmaColuna) //Eixo X
                 .addSerie(cht.serie(quantidadeCerta), cht.serie(quantidadeErrada));
@@ -64,7 +64,7 @@ public class Barra {
 
                     .title(cmp.text("Relatório sobre " + escola + " da turma " + turma))
                     .pageFooter(cmp.pageXofY())
-                    .summary(graficoBarraErrados)
+                    .summary(graficoBarra)
                     .setDataSource(createDataSource(turma))
                     .show();
 
@@ -100,23 +100,7 @@ public class Barra {
 
         return dataSource;
     }
-
-    private int verificaAluno() {
-        int quarta_serie = 7;
-        int idade_aluno1 = 6;
-        int idade_aluno2 = 9;
-        int cont = 0;
-
-        if (idade_aluno1 > quarta_serie) {
-            cont++;
-        }
-
-        if (idade_aluno2 > quarta_serie) {
-            cont++;
-        }
-
-        return cont++;
-    }
+    
 
     public static void main(String[] args) {
         //Barra b = new Barra();
