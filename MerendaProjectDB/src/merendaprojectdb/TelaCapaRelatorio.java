@@ -401,7 +401,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         int mes = Integer.parseInt(this.mes.getText());
         this.capa = new CapaDados();
         atualizaCapaDados();
-        cardapio=new TelaCardapio(usuario, ano, mes-1, this.capa);
+        cardapio=new TelaCardapio(ano, mes-1, this.capa);
         cardapio.setLocationRelativeTo(null);
         cardapio.setVisible(true);
         cardapio.setResizable(true);

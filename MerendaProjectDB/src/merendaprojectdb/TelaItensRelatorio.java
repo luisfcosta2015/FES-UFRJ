@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaItensRelatorio extends javax.swing.JFrame {
     
-    String usuario;
     TelaPrincipal principal;
     BdManager banco;
     DefaultListModel modelList = new DefaultListModel();
@@ -26,9 +25,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     /**
      * Creates new form ItensRelatorio
      */
-    public TelaItensRelatorio(String nome, String nomeRel, CapaDados capa, Cardapio cardapio) {
-        usuario = nome;
-        
+    public TelaItensRelatorio(String nomeRel, CapaDados capa, Cardapio cardapio) {        
         
         initComponents();
         carregarItens();
@@ -73,7 +70,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     
     private void criaLista() {
        this.tipoItem.removeAll();
-        this.tipoItem.addItem(usuario);
     }
 
     /**

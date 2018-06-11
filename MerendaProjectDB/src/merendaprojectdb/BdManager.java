@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.SQLException;
+import com.google.gson.Gson;
 /**
  *
  * @author joycinha
@@ -306,9 +307,71 @@ public class BdManager {
         return BdManager.relatorios;
         
     }
+    
+    static String cardapioToJson(Cardapio cardapio) {
+        Gson gson = new Gson();
+        String cardapioToJson = gson.toJson(cardapio);
+        
+        return cardapioToJson.toString();
+    }
+    
+    static Cardapio jsonToCardapio(String jsonString) {
+        Gson gson = new Gson();
+        Cardapio cardapio = gson.fromJson(jsonString, Cardapio.class);
+        return cardapio;
+    }
+    
+    static boolean adicionarCapaDados(CapaDados capa){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into capaDados(idCapa, preTurno1, preTurno2, preTurno3, preTurno4, preAtendidos, "
+                    + "preNumDias, fundTurno1, fundTurno2, fundTurno3, fundTurno4, fundAtendidos, fundNumDias, jovensTurno1,"
+                    + " jovensTurno2, jovensTurno3, jovensTurno4, jovensAtendidos, jovensNumDias, espTurno1, espTurno2,"
+                    + "espTurno3, espTurno4, espAtendidos, espNumDias, totalDesjejumServido, totalMensalDesjejumServido, "
+                    + "maisEduc1Matriculados, maisEduc1Atendidos, maisEduc1Dias, maisEduc2Matriculados, maisEduc2Atendidos, "
+                    + "MaisEduc2Dias) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+                    + ", ?, ?, ?, ?, ?)");
+                int posInicial = 2;
+                for(int modalidade = 0; modalidade < 4; modalidade++) {
+                    int j = 0;
+                    for(int i = posInicial; i < (posInicial + 6); i++) {
+                        if(j == 4) {
+                            j = 5;
+                        }
+                        ps.setInt(i, capa.getValueAt(modalidade, j));
+                        j++;
+                    }
+                    posInicial += 6;
+                }
+                ps.setInt(26, capa.alunosAtendidosDesjejum);
+                ps.setInt(27, capa.desjejumTotalMensalServido);
+                for(int i = 0; i < 2; i++) {
+                    //to do
+                }
+                    
+            return true;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
     static boolean adicionarRelatorio(Relatorio relatorio) {
         //simula o comportamento de um banco de dados
-
+        /*PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into relatorio(capa, mes, ano, titulo, cardapio) values(?, ?, ?, ?, ?)");
+            ps.setInt(3, relatorio.);
+            ps.execute();
+            return true;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }*/
         BdManager.relatorios.add(relatorio);
         return true;
     }

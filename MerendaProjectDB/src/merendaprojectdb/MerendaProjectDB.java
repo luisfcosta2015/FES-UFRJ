@@ -21,7 +21,8 @@ public class MerendaProjectDB {
         Connection con;
         TelaLogin login  = new TelaLogin();
         DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
-        Calendario cardapio = new Calendario(1,2018);
+        Calendario calendario = new Calendario(1,2018);
+        Cardapio cardapio = new Cardapio(calendario);
         login.setVisible(true);
     } 
 }
