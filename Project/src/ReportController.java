@@ -51,7 +51,7 @@ public class ReportController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        db.close();
     }
 
 

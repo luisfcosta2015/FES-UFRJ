@@ -35,7 +35,7 @@ public class Permission {
         }else{
            num = Integer.parseInt(db.query((numQuery+mainFunc),"%"+_action+"%",user_id,A,B).get(0).get(0));
         }
-
+        db.close();
         return num > 0;
     }
 
@@ -63,6 +63,7 @@ public class Permission {
         DBHelper db = new DBHelper();
         db.connect();
         db.query("DELETE FROM acesso.sslrel_tokens WHERE token=? OR (created_at >= NOW() - INTERVAL '3 minutes')",_token);
+        db.close();
         return true;
     }
 }

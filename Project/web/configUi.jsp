@@ -70,7 +70,7 @@
 
                 </div>
                 <div class="input-container">
-                    <input type="button" class="btn btn-primary" value="Submit">
+                    <input id="saveJobEdit" type="button" class="btn btn-primary" value="SalvaJob">
                 </div>
             </form>
         </div>

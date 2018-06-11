@@ -36,6 +36,7 @@ public class RSSQL {
         sta_values = new String[sta_keys.length];
         dyn_keys = mRSO.getDynamicField().getKey().split(",");
 
+/*TODO: Quando abre uma conexão tem que fechar ao terminar de usá-la. O banco ta reclamando por causa das conexões que abrem e não fecham*/
 //        dbHelper = new DBHelper();
 //        dbHelper.connect();
     }
@@ -104,11 +105,6 @@ public class RSSQL {
 
         return dyn_values;
 
-    }
-
-    public static void main(String[] args) throws Exception {
-        RSSQL rssql = new RSSQL(System.getProperty("user.dir")+"/res/test/ListagemNominal.rssql.json");
-        System.out.println(rssql.getStaticKeys()[0]);
     }
 
 }
