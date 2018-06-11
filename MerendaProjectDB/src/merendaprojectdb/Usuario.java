@@ -10,20 +10,21 @@ package merendaprojectdb;
  * @author joycinha
  */
 public class Usuario {
-    String nome;
-    String user;
-    String senha;
-    String email;
-    String tipo; 
-    Escola escola;
+    public Relatorio relatorioCorrente=null;
+    private String nome;
+    private String user;
+    private String senha;
+    private String email;
+    private String tipo; 
+    private Escola escola;
     
-    boolean canNewReport;
-    boolean canWriteReport;
-    boolean canWriteSchool;
-    boolean canSeeReport;
-    boolean canSeeSchool;
-    boolean canWritePermit;
-    boolean canAddUser;
+    private boolean canNewReport;
+    private boolean canWriteReport;
+    private boolean canWriteSchool;
+    private boolean canSeeReport;
+    private boolean canSeeSchool;
+    private boolean canWritePermit;
+    private boolean canAddUser;
     
     UsuarioAdm adm;
     UsuarioDir dir;
@@ -39,50 +40,91 @@ public class Usuario {
         setPermits();
     }
     
-    private void setPermits(){
-        System.out.println("oiiiii");
-        System.out.println(tipo);
-        System.out.println("Administrador");
-       
-    if (tipo.equals("Administrador")){
-        System.out.println("AAAAAAAAA");
-        this.adm = new UsuarioAdm();
-        canNewReport = adm.canNewReport;
-        canWriteReport = adm.canWriteReport;
-        canSeeReport = adm.canSeeReport;
-        canWriteSchool = adm.canWriteSchool;
-        canSeeSchool = adm.canSeeSchool;
-        canWritePermit = adm.canWritePermit;
-        canAddUser = adm.canAddUser;
+    public Usuario(String nome, String user, String senha, String email, String tipo, Escola escola) {
+        this.nome = nome;
+        this.user = user;
+        this.senha = senha;
+        this.email = email;
+        this.tipo = tipo;
+        this.escola = escola;
+        
+        setPermits();
     }
-    else if(tipo.equals("Diretor")){
-        this.dir = new UsuarioDir();
-        canNewReport = dir.canNewReport;
-        canWriteReport = dir.canWriteReport;
-        canSeeReport = dir.canSeeReport;
-        canWriteSchool = dir.canWriteSchool;
-        canSeeSchool = dir.canSeeSchool;
-        canWritePermit = dir.canWritePermit;
-        canAddUser = dir.canAddUser;
-    }
-    else if(tipo.equals("Leitor")){
-        this.lei = new UsuarioLei();
-        canNewReport = lei.canNewReport;
-        canWriteReport = lei.canWriteReport;
-        canSeeReport = lei.canSeeReport;
-        canWriteSchool = lei.canWriteSchool;
-        canSeeSchool = lei.canSeeSchool;
-        canWritePermit = lei.canWritePermit;
-        canAddUser = lei.canAddUser;
-    }
+    
+    private void setPermits(){       
+        if (tipo.equals("Administrador")){
+            this.adm = new UsuarioAdm();
+            this.canNewReport = adm.canNewReport;
+            this.canWriteReport = adm.canWriteReport;
+            this.canSeeReport = adm.canSeeReport;
+            this.canWriteSchool = adm.canWriteSchool;
+            this.canSeeSchool = adm.canSeeSchool;
+            this.canWritePermit = adm.canWritePermit;
+            this.canAddUser = adm.canAddUser;
+        }
+        else if(tipo.equals("Diretor")){
+            this.dir = new UsuarioDir();
+            this.canNewReport = dir.canNewReport;
+            this.canWriteReport = dir.canWriteReport;
+            this.canSeeReport = dir.canSeeReport;
+            this.canWriteSchool = dir.canWriteSchool;
+            this.canSeeSchool = dir.canSeeSchool;
+            this.canWritePermit = dir.canWritePermit;
+            this.canAddUser = dir.canAddUser;
+        }
+        else if(tipo.equals("Leitor")){
+            this.lei = new UsuarioLei();
+            this.canNewReport = lei.canNewReport;
+            this.canWriteReport = lei.canWriteReport;
+            this.canSeeReport = lei.canSeeReport;
+            this.canWriteSchool = lei.canWriteSchool;
+            this.canSeeSchool = lei.canSeeSchool;
+            this.canWritePermit = lei.canWritePermit;
+            this.canAddUser = lei.canAddUser;
+        }
     }
     
     public String getNome(){
         return nome;
     }
     
+    public String getEmail() {
+        return this.email;
+    }
+    
+    public String getUser() {
+        return this.user;
+    }
+    
     public String getTipo(){
         return tipo;
+    }
+    
+    public String getSenha() {
+        return this.senha;
+    }
+    
+    public Escola getEscola() {
+        return this.escola;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setUser(String user) {
+        this.user = user;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    public boolean setEscola(Escola escola) {
+        if(this.escola != null) {
+            this.escola = escola;
+            return true;
+        }
+        return false;
     }
     
     public boolean canNewReport(){

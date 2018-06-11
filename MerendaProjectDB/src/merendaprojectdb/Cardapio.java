@@ -15,12 +15,14 @@ import java.util.Date;
 public class Cardapio {
     
     private ArrayList<DuplaDataCardapio> cardapioList;
+    private Calendario calendario;
     
     public Cardapio(Calendario calendar) {
         cardapioList = new ArrayList<DuplaDataCardapio>();
         for(Date dt: calendar.getList()) {
             cardapioList.add(new DuplaDataCardapio(dt,""));
         }
+        this.calendario = calendar;
     }
     
     public boolean setCardapio(Date dt, String valor) {
@@ -48,5 +50,11 @@ public class Cardapio {
             }
         }
         return false;
+    }
+    public int getMes() {
+        return this.calendario.getMes();
+    }
+    public int getAno() {
+        return this.calendario.getAno();
     }
 }

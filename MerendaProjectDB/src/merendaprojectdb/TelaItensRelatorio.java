@@ -226,8 +226,9 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         // aqui tem que colocar pra pegar o que ta na tabela e jogar pro banco
         if(!this.editando) {
             criaItensLista();
-            this.relatorio = new Relatorio (this.cardapio, this.capa, this.nomeRel, itens);
-            TelaPrincipal.relatorioCorrente = this.relatorio;
+            this.relatorio = new Relatorio (this.cardapio.getMes(), this.cardapio.getAno(), 
+                    this.nomeRel, TelaPrincipal.escolaAtual, this.cardapio, this.capa, itens);
+            TelaPrincipal.usuarioLogado.relatorioCorrente = this.relatorio;
             BdManager.adicionarRelatorio(this.relatorio);
         }
         principal=new TelaPrincipal();

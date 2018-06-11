@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaCapaRelatorio extends javax.swing.JFrame {
-    String usuario;
     TelaCardapio cardapio;
     private CapaDados capa;
     private DefaultTableModel tabelaMatricula;
@@ -12,14 +11,13 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
     private DefaultTableModel tabelaMaisEducacao1;
     private DefaultTableModel tabelaMaisEducacao2;
     private DefaultTableModel tabelaTotal;
-    public TelaCapaRelatorio(String nome) {
+    public TelaCapaRelatorio() {
         initComponents();
         this.tabelaMatricula = (DefaultTableModel) tabelaMatriculados.getModel();
         this.tabelaDesjejum = (DefaultTableModel) this.desjejumTable.getModel();
         this.tabelaMaisEducacao1 = (DefaultTableModel) this.maisEducacaoTurno1.getModel();
         this.tabelaMaisEducacao2 = (DefaultTableModel) this.maisEducacaoTurno2.getModel();
         this.tabelaTotal = (DefaultTableModel) this.totalTable.getModel();
-        this.usuario = nome;
     }
 
     /**

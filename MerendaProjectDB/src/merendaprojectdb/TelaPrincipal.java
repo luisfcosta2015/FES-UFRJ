@@ -6,6 +6,7 @@
 package merendaprojectdb;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +17,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalDiretor
      */
-    public static Relatorio relatorioCorrente;
-    public static Usuario usuarioLogado; 
+    public static Usuario usuarioLogado;
     public static Escola escolaAtual=null;
     private String usuario;
     
@@ -38,7 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             System.out.println("Usuario deve ser setado antes da inicialização da classe Principal");
         }
         else {
-            campoNome.setText("ola " + usuarioLogado.nome);
+            campoNome.setText("ola " + usuarioLogado.getNome());
             setButtons();
         }
         if(escolaAtual==null)
@@ -312,14 +312,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 dispose();
                 break;
             case "editarRelatorioCorrente":
-                TelaEditaRelatorio edita = new TelaEditaRelatorio(TelaPrincipal.relatorioCorrente);
-                edita.setLocationRelativeTo(null);
-                edita.setVisible(true);
-                edita.setResizable(true);
-                this.dispose();
-                break;
+                if(TelaPrincipal.usuarioLogado.relatorioCorrente != null ) {
+                    TelaEditaRelatorio edita = new TelaEditaRelatorio(TelaPrincipal.usuarioLogado.relatorioCorrente);
+                    edita.setLocationRelativeTo(null);
+                    edita.setVisible(true);
+                    edita.setResizable(true);
+                    this.dispose();
+                    break; 
+                }
+                else {
+                     JOptionPane.showMessageDialog(null,"Não existe nenhum relatorio para editar no momento");
+                     break;
+                }
+                
             case "novoRelatorio":
-                capa=new TelaCapaRelatorio(usuario);
+                capa = new TelaCapaRelatorio();
                 capa.setLocationRelativeTo(null);
                 capa.setVisible(true);
                 capa.setResizable(true);

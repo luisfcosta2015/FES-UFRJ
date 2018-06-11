@@ -17,14 +17,18 @@ public class Relatorio {
     private CapaDados capa;
     private ArrayList<ItemComida> itens;
     private String titulo;
-    public int mes;
-    public int ano;
+    private int mes;
+    private int ano;
+    private Escola escola;
     
-    public Relatorio(Cardapio cardapio, CapaDados capa, String nome, ArrayList<ItemComida> itens) {
+    public Relatorio(int mes, int ano, String nome, Escola escola, Cardapio cardapio, CapaDados capa, ArrayList<ItemComida> itens) {
         this.capa = capa;
         this.cardapio = cardapio;
         this.titulo = nome;
         this.itens = itens;
+        this.mes = mes;
+        this.ano = ano;
+        this.escola = escola;
     }
     
     public CapaDados getCapaRelatorio() {
@@ -38,5 +42,12 @@ public class Relatorio {
     }
     public String getTitulo(){
         return this.titulo;
+    }
+    public boolean setEscola(Escola escola) {
+        if(escola != null) {
+            this.escola = escola;
+            return true;
+        }
+        return false;
     }
 }

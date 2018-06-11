@@ -26,26 +26,46 @@ public class BdManager {
         
     } //TODO
     static boolean cadastraUser(Usuario user) { 
-        PreparedStatement ps = null;
-       
-        try{
-            con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo) values(?,?,?,?,?)");
-            ps.setString(1, user.nome);
-            ps.setString(2, user.user);
-            ps.setString(3, user.senha);
-            ps.setString(4, user.email) ;
-            ps.setString(5, user.tipo) ;
-            ps.execute();
-            return true;
+        PreparedStatement ps;
+        if(TelaPrincipal.usuarioLogado.getEscola() != null) {
+            try{
+                con = DriverManager.getConnection(host, username, password);
+                ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo,escola) values(?,?,?,?,?,?)");
+                ps.setString(1, user.getNome());
+                ps.setString(2, user.getUser());
+                ps.setString(3, user.getSenha());
+                ps.setString(4, user.getEmail()) ;
+                ps.setString(5, user.getTipo()) ;
+                ps.setInt(6, TelaPrincipal.usuarioLogado.getEscola().getINEP());
+                ps.execute();
+                return true;
+            }
+            catch (SQLException err) {
+               System.out.println(err.getMessage());
+               return false;
+            }
         }
-        catch (SQLException err) {
-           System.out.println(err.getMessage());
-           return false;
+        else {
+            try{
+                con = DriverManager.getConnection(host, username, password);
+                ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo) values(?,?,?,?,?)");
+                ps.setString(1, user.getNome());
+                ps.setString(2, user.getUser());
+                ps.setString(3, user.getSenha());
+                ps.setString(4, user.getEmail()) ;
+                ps.setString(5, user.getTipo()) ;
+                ps.execute();
+                return true;
+            }
+            catch (SQLException err) {
+               System.out.println(err.getMessage());
+               return false;
+            }
         }
+        
     }
     static Usuario findUser(String user) {    
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from usuario where usuario like ?");
@@ -74,7 +94,7 @@ public class BdManager {
     }
     static boolean verificarUser(String senha, String user){
         
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from usuario where usuario like ?");
@@ -88,14 +108,8 @@ public class BdManager {
                 rs.close();
                 ps.close();
                 con.close();
-                if(senha.equals(pass))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return senha.equals(pass);
+                
             }
             return false;
         }
@@ -105,7 +119,7 @@ public class BdManager {
         }
     }
     static boolean cadastraEscola(Escola escola){
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try{ 
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento, diretoria) values(?,?,?,?,?,?,?,?,?)");
@@ -131,7 +145,7 @@ public class BdManager {
     }
     static boolean AdicionarItemListaCardapio(String Item){
         
-        PreparedStatement ps = null;
+        PreparedStatement ps;
        
         try{
             con = DriverManager.getConnection(host, username, password);
@@ -146,7 +160,7 @@ public class BdManager {
         }
     }
     static boolean VerificarItemExistente(String item){
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from itens where nome like ?");
@@ -164,7 +178,7 @@ public class BdManager {
         }
     }
     static ArrayList pegarItensDoCardapio() {
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from itens");
@@ -185,7 +199,7 @@ public class BdManager {
     }
     static ArrayList pegarEscolas(){
         
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from escola");
@@ -219,7 +233,7 @@ public class BdManager {
         // TODO
     }
     static boolean verificaEscola(String inep){
-       PreparedStatement ps = null;
+       PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from escola where inep like ?");
@@ -239,12 +253,12 @@ public class BdManager {
            return false;
         }
     }
-    static Escola findEscolaUnidade(String inep) {
-        PreparedStatement ps = null;
+    static Escola findEscola(int inep) {
+        PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from escola where inep like ?");
-            ps.setString(1, inep);
+            ps.setInt(1, inep);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -253,7 +267,7 @@ public class BdManager {
                 String secretaria = rs.getString("secretaria");
                 String subsecretaria = rs.getString("subsecretaria");
                 String departamento = rs.getString("departamento");
-                int INEP = Integer.parseInt(rs.getString("inep"));
+                int INEP = rs.getInt("inep");
                 String diretoria = rs.getString("diretoria");
                 String unidade = rs.getString("unidade");
                 String telefone = rs.getString("telefone");
@@ -276,12 +290,18 @@ public class BdManager {
     static ArrayList getRelatoriosExistentes(){
         //TODO
         //aqui tem que retornar em um arrayList todos(ou talvez os mais recentes) os relatorios
-        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(1,2018)),new CapaDados(),"Relatorio 01/2018", new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(2,2018)),new CapaDados(),"Relatorio 02/2018", new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(3,2018)),new CapaDados(),"Relatorio 03/2018", new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(4,2018)),new CapaDados(),"Relatorio 04/2018", new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(5,2018)),new CapaDados(),"Relatorio 05/2018", new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(new Cardapio(new Calendario(6,2018)),new CapaDados(),"Relatorio 06/2018", new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(1,2018,"Relatorio 01/2018", TelaPrincipal.usuarioLogado.getEscola(), 
+                new Cardapio(new Calendario(1,2018)),new CapaDados(), new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(2,2018,"Relatorio 02/2018", TelaPrincipal.usuarioLogado.getEscola(), 
+                new Cardapio(new Calendario(2,2018)),new CapaDados(), new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(3,2018, "Relatorio 03/2018", TelaPrincipal.usuarioLogado.getEscola(), 
+                new Cardapio(new Calendario(3,2018)),new CapaDados(), new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(4,2018, "Relatorio 04/2018", TelaPrincipal.usuarioLogado.getEscola(), 
+                new Cardapio(new Calendario(4,2018)),new CapaDados(), new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(5,2018,"Relatorio 05/2018", TelaPrincipal.usuarioLogado.getEscola(), 
+                new Cardapio(new Calendario(5,2018)),new CapaDados(), new ArrayList<ItemComida>()));
+        BdManager.relatorios.add(new Relatorio(6,2018, "Relatorio 01/2018", TelaPrincipal.usuarioLogado.getEscola(), 
+                new Cardapio(new Calendario(6,2018)),new CapaDados(), new ArrayList<ItemComida>()));
     
         return BdManager.relatorios;
         

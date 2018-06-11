@@ -20,8 +20,8 @@ public class Calendario {
     private Date inicial;
     private Date fim;
     private Calendar calendario;
-    int mes;
-    int ano;
+    private int mes;
+    private int ano;
     
     Calendario(int mes, int ano) {
         calendario = Calendar.getInstance();
@@ -55,6 +55,12 @@ public class Calendario {
     }
     public boolean remove(Date data) {
         return this.datas.remove(data);
+    }
+    public int getMes() {
+        return this.mes;
+    }
+    public int getAno() {
+        return this.ano;
     }
     
 }
