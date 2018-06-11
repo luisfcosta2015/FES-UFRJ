@@ -1,5 +1,5 @@
 import com.google.gson.Gson;
-import sslRel.config.DBHelper;
+import sslRel.helpers.DBHelper;
 import model.RSSQLObject;
 
 import java.io.File;

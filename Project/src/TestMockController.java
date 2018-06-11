@@ -1,5 +1,5 @@
 import com.google.gson.Gson;
-import sslRel.config.DBHelper;
+import sslRel.helpers.DBHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

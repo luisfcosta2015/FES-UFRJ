@@ -1,7 +1,8 @@
-package sslRel.config;
+package sslRel.helpers;
+
+import sslRel.helpers.DBHelper;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Array;
 
 public class Permission {
 

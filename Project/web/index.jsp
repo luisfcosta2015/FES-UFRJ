@@ -4,7 +4,5 @@
     <title>$Title$</title>
   </head>
   <body>
-   Hello
-  $END$
   </body>
 </html>

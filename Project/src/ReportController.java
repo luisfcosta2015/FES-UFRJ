@@ -1,6 +1,6 @@
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
-import sslRel.config.DBHelper;
+import sslRel.helpers.DBHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,8 +30,8 @@ public class ReportController extends HttpServlet {
         String baseUri = getServletContext().getRealPath("").split("out")[0];
         baseUri = baseUri+Paths.get("res/reportsTemplates");
 
-//        File htmlSource = new File(baseUri+"/Listagem_Nominal_com_Situacao.html");
-        File htmlSource = new File(baseUri+"/Diario_de_Classe.html");
+//        File htmlSource = new File(baseUri+"/ListagemNominal.html");
+        File htmlSource = new File(baseUri+"/DiarioDeClasse.html");
         File pdfDest = new File(baseUri+"/output.pdf");
         // pdfHTML specific code
         ConverterProperties converterProperties = new ConverterProperties();
@@ -66,8 +66,8 @@ public class ReportController extends HttpServlet {
         HashMap<String,String> namespace = new HashMap<>();
 
 
-        //String querySt = new Scanner(new File("C:\\Users\\00\\Documents\\Programação\\FES-UFRJ\\Project\\res\\reportsTemplates\\Consultas\\Diario de Classes\\DiarioDeClassesEstatica.sql")).useDelimiter("\\A").next();
-        //String queryDy = new Scanner(new File("C:\\Users\\00\\Documents\\Programação\\FES-UFRJ\\Project\\res\\reportsTemplates\\Consultas\\Diario de Classes\\DiarioDeClassesDinamica.sql")).useDelimiter("\\A").next();
+        //String querySt = new Scanner(new File("C:\\Users\\00\\Documents\\Programação\\FES-UFRJ\\Project\\res\\reportsTemplates\\Consultas\\DiarioDeClasses\\DiarioDeClasses.static.sql")).useDelimiter("\\A").next();
+        //String queryDy = new Scanner(new File("C:\\Users\\00\\Documents\\Programação\\FES-UFRJ\\Project\\res\\reportsTemplates\\Consultas\\DiarioDeClasses\\DiarioDeClasses.din.sql")).useDelimiter("\\A").next();
         String q1;
         String q2;
 

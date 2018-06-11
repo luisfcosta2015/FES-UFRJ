@@ -6,7 +6,7 @@
 
     <listener>
         <listener-class>
-            sslRel.config.DotenvContextListener
+            sslRel.config.ContextListener
         </listener-class>
     </listener>
 
@@ -38,13 +38,23 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>TEST</servlet-name>
-        <servlet-class>StartServlet</servlet-class>
+        <servlet-name>configServlet</servlet-name>
+        <servlet-class>ConfigServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TEST</servlet-name>
-        <url-pattern>/st</url-pattern>
+        <servlet-name>configServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>configUi</servlet-name>
+        <jsp-file>/configUi.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>configUi</servlet-name>
+        <url-pattern>/config/ui</url-pattern>
+    </servlet-mapping>
+
 
     <resource-ref>
         <description>postgreSQL Datasource</description>

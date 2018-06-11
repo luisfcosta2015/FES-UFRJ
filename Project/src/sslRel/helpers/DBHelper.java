@@ -1,4 +1,4 @@
-package sslRel.config;
+package sslRel.helpers;
 
 import java.sql.*;
 import java.util.ArrayList;
