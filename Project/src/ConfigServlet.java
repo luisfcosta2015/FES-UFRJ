@@ -51,19 +51,21 @@ public class ConfigServlet extends HttpServlet{
         response.getWriter().write("{\"jobs\":"+dirsJson+selected+"}");
     }
 
-    public void getJobParams(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void getJobParams(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        Resource res = new Resource();
 
         String jobFolder = request.getParameter("job");
 
+        res.findResource(new File(System.getProperty("reportsTemplates")+"/"+jobFolder),"rssql.json",false);
+
         JobManager jobManager = new JobManager();
         Map<String,JobManager.JobFormat> jobs = jobManager.getJobs();
-        String jsonOut="{\"msg\":\"Erro: Não foi encontrado o Job pesquisado\"}";
+        String jsonOut;
 
         JobManager.JobFormat job = new JobManager.JobFormat();
 
         if(jobs!=null){
             Set<String> keys = jobs.keySet();
-
             for(String key:keys){
                 JobManager.JobFormat listedJob = jobs.get(key);
                 if(listedJob.folder.equals(jobFolder)){
@@ -73,12 +75,25 @@ public class ConfigServlet extends HttpServlet{
             }
         }
 
+        if((res.files!=null)&&(!res.files.isEmpty())) {
+            String rssqlFile = res.files.get(0).getCanonicalPath();
+            RSSQL rssql = new RSSQL(rssqlFile);
+            String[] staticKeys = rssql.getStaticKeys();
+            if (job.params == null) job.params = new HashMap<>();
 
-        //TODO chamar Replacement specifier e casar ele com params pra mandar pro front-end;
+            for (String key : staticKeys) {
+                if (job.params.get(key) == null) {
+                    job.params.put(key, "");
+                }
+            }
+            jsonOut= new Gson().toJson(job.params);
+        }else if(job.params==null){
+            jsonOut="{\"msg\":\"Não Há parâmetros\"}";
+        }else{
+            jsonOut= new Gson().toJson(job.params);
+        }
 
 
-
-        jsonOut= new Gson().toJson(job.params);
         response.getWriter().write(jsonOut);
     }
 
@@ -93,7 +108,7 @@ public class ConfigServlet extends HttpServlet{
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(Permission.isAny(request)){
+        if(Permission.isSuperAdmin(request)){
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             String action = request.getParameter("action");
@@ -101,7 +116,17 @@ public class ConfigServlet extends HttpServlet{
             switch (action){
                 case "getJobs":this.listPaths(request,response);break;
                 case "saveJob":this.saveJob(request,response);break;
-                case "getJob":this.getJobParams(request,response);break;
+                case "getJob":
+                    try {
+                        this.getJobParams(request,response);
+                    } catch (Exception e) {
+                        StringBuilder msg = new StringBuilder();
+                        for(StackTraceElement m:e.getStackTrace()){
+                            msg.append(m);
+                        }
+                        response.getWriter().write("{\"msg\":\""+msg+"\"}");
+                    }
+                    break;
                 case "openConfig":response.getWriter().write("{\"openUI\":true}");break;
                 default:response.getWriter().write("{\"error\":\"Não foi possível encontrar função\"}");break;
             }

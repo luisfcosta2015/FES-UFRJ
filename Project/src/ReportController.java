@@ -109,7 +109,8 @@ public class ReportController extends HttpServlet {
     }
 
     protected void tarefaBanco() throws Exception {
-        rssql = new RSSQL(System.getProperty("RootProject")+"/res/test/rssql.json",params);
+        rssql = new RSSQL(System.getProperty("reportsTemplates")+"/ListagemNominal/ListagemNominal.rssql.json");
+        rssql.loadQuery(params);
     }
 
     protected void criaNamespace(HashMap<String,String> staticData, String[] dynamK, String[][] dynamResult, HashMap<String,String> namespace){//Cria o namespace para seguir com o HTMLReplacer

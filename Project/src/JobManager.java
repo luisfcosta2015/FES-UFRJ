@@ -94,12 +94,5 @@ public class JobManager {
         public String folder;
         public HashMap<String,String> params;
     }
-    public static void main(String[] args) throws IOException {
-        JobManager j = new JobManager(System.getProperty("user.dir")+"/res/mainConfig/jobs.json");
-
-        j.saveJob("ttttyeuueue/yryyry","meu arquivo3","{\"param1\":\"se1\",\"param2\":\"set3\"}");
-
-        System.out.println(j.getJobByURL(j.listJobsURLs()[0]).params.get("param1"));
-    }
 
 }

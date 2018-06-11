@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% if(sslRel.helpers.Permission.isAny(request)){ %>
+<% if(sslRel.helpers.Permission.isSuperAdmin(request)){ %>
 <% String urlRoot = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort(); %>
 <link rel="stylesheet" href="<%=urlRoot+"/config.css"%>">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -20,9 +20,9 @@
 <!--MODELOS DE INPUT-->
 
 <div data-model="buttonchoice" class="input-container">
-    <a class="btn-choice btn " href="">
-        <div class="java-name">JavaName</div> :
-        <div class="html-name">HtmlName</div>
+    <a data-match="true" class="btn-choice btn " href="#">
+        <div class="java-name"></div> :
+        <div class="html-name"></div>
     </a>
     <span class="msg-box"></span>
 </div>
@@ -67,7 +67,7 @@
                     <span class="msg-box"></span>
                 </div>
                 <div id="choices">
-                    
+
                 </div>
                 <div class="input-container">
                     <input type="button" class="btn btn-primary" value="Submit">

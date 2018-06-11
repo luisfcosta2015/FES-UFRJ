@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import sslRel.helpers.DBHelper;
 import model.RSSQLObject;
+import sslRel.helpers.Resource;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,10 +12,10 @@ public class RSSQL {
 
     RSSQLObject mRSO;
 
-    String[] dyn_keys;
-    String[][] dyn_values;
-    String[] sta_keys;
-    String[] sta_values;
+    public String[] dyn_keys;
+    public String[][] dyn_values;
+    public String[] sta_keys;
+    public String[] sta_values;
 
     DBHelper dbHelper;
 
@@ -25,32 +26,25 @@ public class RSSQL {
     // r = RSSQL("modelo1.rssql",{"idescola":10, ...
     // r.
 
-    public RSSQL(String filename, HashMap<String,String> params) throws Exception{
+    public RSSQL(String filename) throws Exception{
 
-        File file = new File(filename);
-        Scanner scanner = new Scanner(file);
-        StringBuilder sb = new StringBuilder();
-        while(scanner.hasNext()){
-            sb.append(scanner.nextLine());
-        }
-
+        String sb = Resource.getFileContent(new File(filename));
         Gson gson = new Gson();
-        mRSO = gson.fromJson(sb.toString(),RSSQLObject.class);
+        mRSO = gson.fromJson(sb,RSSQLObject.class);
 
         sta_keys = mRSO.getStaticField().getKey().split(",");
         sta_values = new String[sta_keys.length];
         dyn_keys = mRSO.getDynamicField().getKey().split(",");
 
-        String sta_query = mRSO.getStaticField().getValue();
-        sta_query = replaceKeys(params,sta_query);
-        querySt=sta_query;//o valor de sta_query estava sendo perdido
-        String dyn_query = mRSO.getDynamicField().getValue();
-        dyn_query = replaceKeys(params,dyn_query);
-        queryDy=dyn_query;//o valor de dyn_query estava sendo perdido
-        dbHelper = new DBHelper();
+//        dbHelper = new DBHelper();
+//        dbHelper.connect();
+    }
 
-        //TODO improve connection policy
-        while(!dbHelper.connect());
+    public void loadQuery(HashMap<String,String> params){
+        String sta_query = mRSO.getStaticField().getValue();
+        querySt = replaceKeys(params,sta_query);
+        String dyn_query = mRSO.getDynamicField().getValue();
+        queryDy = replaceKeys(params,dyn_query);
 
     }
 
@@ -100,7 +94,10 @@ public class RSSQL {
 
         return dyn_keys.clone();
     }
+    public String[] getStaticKeys(){
 
+        return sta_keys.clone();
+    }
 
     public String[][] getDynamicResults(){
 
@@ -109,6 +106,9 @@ public class RSSQL {
 
     }
 
-
+    public static void main(String[] args) throws Exception {
+        RSSQL rssql = new RSSQL(System.getProperty("user.dir")+"/res/test/ListagemNominal.rssql.json");
+        System.out.println(rssql.getStaticKeys()[0]);
+    }
 
 }

@@ -25,7 +25,7 @@ public class Permission {
         DBHelper db = new DBHelper();
         db.connect();
         int user_id = Integer.parseInt(db.query("SELECT * FROM acesso.sslrel_tokens WHERE token=?",_token).get(0).get(0));
-        db.query("DELETE FROM acesso.sslrel_tokens WHERE token=?",_token);
+        db.query("DELETE FROM acesso.sslrel_tokens WHERE token=? OR (created_at >= NOW() - INTERVAL '3 minutes')",_token);
 
         String numQuery = "SELECT count(func.ref_ref_cod_pessoa_fj) FROM portal.menu_funcionario as func JOIN portal.menu_submenu as menu ON func.ref_cod_menu_submenu=menu.cod_menu_submenu WHERE menu.arquivo like ? AND func.ref_ref_cod_pessoa_fj=? AND ";
 
@@ -59,6 +59,10 @@ public class Permission {
         return !isGuest(request);
     }
     public static boolean isAny(HttpServletRequest request){//Mesmo que ((Cadastrar==1) OR (Cadastrar==0) OR (Excluir==1) OR (Excluir==0))
+        String _token = request.getParameter("_token");
+        DBHelper db = new DBHelper();
+        db.connect();
+        db.query("DELETE FROM acesso.sslrel_tokens WHERE token=? OR (created_at >= NOW() - INTERVAL '3 minutes')",_token);
         return true;
     }
 }
