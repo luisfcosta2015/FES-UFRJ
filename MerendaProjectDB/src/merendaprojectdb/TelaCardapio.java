@@ -41,7 +41,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     // This will be passed to the TableCell implementation.
     // ObservableSet<Object> selectedItems = FXCollections.observableSet();
 
-    
+    //mes de 0 a 11
     public TelaCardapio(int ano, int mes, CapaDados capa) {
         initComponents();
         this.capa = capa;
@@ -53,7 +53,6 @@ public class TelaCardapio extends javax.swing.JFrame {
         
         calendario = new Calendario(mes,ano+1900);
         ArrayList<Date> dias = calendario.getList();
-        System.out.println("oi");
         for(Date data : dias)
         {
             Object[] dado = {df.format(data)};
@@ -242,11 +241,11 @@ public class TelaCardapio extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaPropertyChange
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        principal=new TelaPrincipal();
+        /*principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);
-        this.setVisible(false);
+        this.setVisible(false);*/
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void proxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proxButtonActionPerformed
@@ -264,9 +263,11 @@ public class TelaCardapio extends javax.swing.JFrame {
         }
         cardapio = new Cardapio(calendario);
         for(int i=0; i < this.tabelinha.getRowCount(); i++) {
-            cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
+            if(this.tabelinha.getValueAt(i, 1) != null) {
+                cardapio.setCardapio(i, this.tabelinha.getValueAt(i, 1).toString());
+            }
         }
-        itensRel = new TelaItensRelatorio("Relatorio " + this.mes +"/" + this.ano, this.capa, this.cardapio);
+        itensRel = new TelaItensRelatorio("Relatorio " + this.mes + 1 + "/" + this.ano, this.capa, this.cardapio);
         itensRel.setLocationRelativeTo(null);
         itensRel.setVisible(true);
         itensRel.setResizable(true);

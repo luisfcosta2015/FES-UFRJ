@@ -345,7 +345,6 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         int [] valores = new int[5];
         for(int i = 1; i< this.tabelaMaisEducacao1.getColumnCount(); i++) {
             if(i > 5) {
-                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
                 continue;
             }
             if(this.tabelaMaisEducacao1.getValueAt(0, i) != null) {
@@ -355,13 +354,12 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                 valores[i-1] = 0;
             }
         }
-        this.capa.setVetorMaisEducacao(0, valores[0], valores[1], valores[2], valores[3], valores[4]);
+        this.capa.setVetorMaisEducacao(0, valores[0], valores[1], valores[2]);
     }
     private void atualizaMaisEducacao2() {
         int [] valores = new int[5];
         for(int i = 1; i< this.tabelaMaisEducacao2.getColumnCount(); i++) {
             if(i > 5) {
-                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
                 continue;
             }
             if(this.tabelaMaisEducacao2.getValueAt(0, i) != null) {
@@ -371,7 +369,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                 valores[i-1] = 0;
             }
         }
-        this.capa.setVetorMaisEducacao(1, valores[0], valores[1], valores[2], valores[3], valores[4]);
+        this.capa.setVetorMaisEducacao(1, valores[0], valores[1], valores[2]);
     }
     private void atualizaTotal() {
         this.tabelaTotal.setValueAt(this.capa.getTotalServido(), 0, 0);

@@ -5,4 +5,13 @@ como fazer um insert de usuario
 INSERT INTO usuario(nome,usuario,senha,email,tipo) values('Thiago','topd','123','topd@seila.com','Administrador');
 
 como fazer um insert de relatorio
-INSERT INTO relatorio(capa,mes,ano,titulo) values((SELECT idCapa FROM capadados WHERE preTurno1=10),'2', '2018','relatorio lindao');
+INSERT INTO relatorio(capa,mes,ano,titulo) values((SELECT idCapa FROM capadados 
+WHERE preTurno1=10),'2', '2018','relatorio lindao');
+
+
+apagar tudo de uma tabela sem safe mode
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM capadados;
+
+SET SQL_SAFE_UPDATES = 1;

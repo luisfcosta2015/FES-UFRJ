@@ -25,6 +25,11 @@ public class Cardapio {
         this.calendario = calendar;
     }
     
+    public Cardapio(ArrayList<DuplaDataCardapio> cardapio) {
+        this.cardapioList = cardapio;
+        //to do construir calendario a partir do cardapio
+    }
+    
     public boolean setCardapio(Date dt, String valor) {
         for(DuplaDataCardapio dupla: cardapioList) {
             if(dupla.data.compareTo(dt)==0) {
@@ -53,9 +58,15 @@ public class Cardapio {
     }
     
     public int getMes() {
-        return this.calendario.getMes();
+        if(calendario!= null) {
+            return this.calendario.getMes();
+        }
+        return this.cardapioList.get(0).data.getMonth();
     }
     public int getAno() {
-        return this.calendario.getAno();
+        if(calendario!= null) {
+            return this.calendario.getAno();
+        }
+        return this.cardapioList.get(0).data.getDate();
     }
 }

@@ -121,15 +121,14 @@ public class CapaDados {
         return 0;
     }
     
-    public void setVetorMaisEducacao(int turno, int matriculados, int atendidos, int numDias, 
-            int totalDesjejum, int totalLanche) {
+    public void setVetorMaisEducacao(int turno, int matriculados, int atendidos, int numDias) {
         if(this.maisEducacao[turno] == null) {
             this.maisEducacao[turno] = new MaisEducacao(matriculados, atendidos, numDias, 
-            totalDesjejum, totalLanche);
+            atendidos*numDias, atendidos*numDias);
         }
         else {
             this.maisEducacao[turno].changeAll(matriculados, atendidos, numDias, 
-            totalDesjejum, totalLanche);
+            atendidos*numDias, atendidos*numDias);
         }
     }
     

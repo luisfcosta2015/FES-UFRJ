@@ -15,8 +15,8 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
     
     TelaEditaRelatorio editaRelatorio;
     Relatorio relatorioSelecionado;
-    BdManager banco;
     DefaultListModel modeloLista;
+    private ArrayList<Relatorio> relatorios;
     /**
      * Creates new form TelaListaRelatorios
      */
@@ -42,7 +42,7 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         
         this.listaRelatorios.setModel(new DefaultListModel());
         this.modeloLista = (DefaultListModel) this.listaRelatorios.getModel();
-        ArrayList<Relatorio> relatorios = BdManager.getRelatoriosExistentes();
+        relatorios = BdManager.getRelatoriosExistentes();
         for(int i=0;i<relatorios.size();i++)
         {
             this.modeloLista.addElement(relatorios.get(i).getTitulo());
@@ -108,6 +108,11 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(this.listaRelatorios.getSelectedIndex()== -1) {
+            JOptionPane.showMessageDialog(null,"Selecione um relatorio");
+        }
+        int index = this.listaRelatorios.getSelectedIndex();
+        this.relatorioSelecionado = relatorios.get(index);
         this.editaRelatorio = new TelaEditaRelatorio(this.relatorioSelecionado);
         this.editaRelatorio.setLocationRelativeTo(null);
         this.editaRelatorio.setVisible(true);

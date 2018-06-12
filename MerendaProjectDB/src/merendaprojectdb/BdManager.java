@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.SQLException;
 import com.google.gson.Gson;
+import java.sql.Statement;
 /**
  *
  * @author joycinha
@@ -65,6 +66,7 @@ public class BdManager {
         }
         
     }
+    
     static Usuario findUser(String user) {    
         PreparedStatement ps;
         try{
@@ -93,6 +95,7 @@ public class BdManager {
         }
         //return new Usuario("joyce", "Diretor", "123", "email@email.com", "Administrador");
     }
+    
     static boolean verificarUser(String senha, String user){
         
         PreparedStatement ps;
@@ -119,6 +122,7 @@ public class BdManager {
            return false;
         }
     }
+    
     static boolean cadastraEscola(Escola escola){
         PreparedStatement ps;
         try{ 
@@ -144,6 +148,7 @@ public class BdManager {
        }
         //aqui o codigo recebera uma escola e adicionará ela as escolas cadastradas no banco
     }
+    
     static boolean AdicionarItemListaCardapio(String Item){
         
         PreparedStatement ps;
@@ -160,6 +165,7 @@ public class BdManager {
            return false;
         }
     }
+    
     static boolean VerificarItemExistente(String item){
         PreparedStatement ps;
         try{
@@ -178,6 +184,7 @@ public class BdManager {
            return false;
         }
     }
+    
     static ArrayList pegarItensDoCardapio() {
         PreparedStatement ps;
         try{
@@ -188,7 +195,6 @@ public class BdManager {
             
             while(rs.next())
             {
-                System.out.println(rs.getString("nome"));
                 itens.add(rs.getString("nome"));
             }
             return itens;
@@ -198,6 +204,7 @@ public class BdManager {
            return null;
         }
     }
+    
     static ArrayList pegarEscolas(){
         
         PreparedStatement ps;
@@ -233,6 +240,7 @@ public class BdManager {
         //aqui tem que retornar todas as escolas cadastradas no sistema em um arrayList
         // TODO
     }
+    
     static boolean verificaEscola(String inep){
        PreparedStatement ps;
         try{
@@ -254,6 +262,7 @@ public class BdManager {
            return false;
         }
     }
+    
     static Escola findEscola(int inep) {
         PreparedStatement ps;
         try{
@@ -261,7 +270,7 @@ public class BdManager {
             ps = con.prepareStatement("select * from escola where inep like ?");
             ps.setInt(1, inep);
             ResultSet rs = ps.executeQuery();
-            while(rs.next())
+            if(rs.next())
             {
                 String estado = rs.getString("estado");
                 String prefeitura = rs.getString("prefeitura");
@@ -286,53 +295,60 @@ public class BdManager {
         }
     }
     
-    // daqui pra baixo ainda nao está conectado ao banco
-    
-    static ArrayList getRelatoriosExistentes(){
-        //TODO
-        //aqui tem que retornar em um arrayList todos(ou talvez os mais recentes) os relatorios
-        BdManager.relatorios.add(new Relatorio(1,2018,"Relatorio 01/2018", TelaPrincipal.usuarioLogado.getEscola(), 
-                new Cardapio(new Calendario(1,2018)),new CapaDados(), new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(2,2018,"Relatorio 02/2018", TelaPrincipal.usuarioLogado.getEscola(), 
-                new Cardapio(new Calendario(2,2018)),new CapaDados(), new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(3,2018, "Relatorio 03/2018", TelaPrincipal.usuarioLogado.getEscola(), 
-                new Cardapio(new Calendario(3,2018)),new CapaDados(), new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(4,2018, "Relatorio 04/2018", TelaPrincipal.usuarioLogado.getEscola(), 
-                new Cardapio(new Calendario(4,2018)),new CapaDados(), new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(5,2018,"Relatorio 05/2018", TelaPrincipal.usuarioLogado.getEscola(), 
-                new Cardapio(new Calendario(5,2018)),new CapaDados(), new ArrayList<ItemComida>()));
-        BdManager.relatorios.add(new Relatorio(6,2018, "Relatorio 01/2018", TelaPrincipal.usuarioLogado.getEscola(), 
-                new Cardapio(new Calendario(6,2018)),new CapaDados(), new ArrayList<ItemComida>()));
-    
-        return BdManager.relatorios;
-        
-    }
-    
-    static String cardapioToJson(Cardapio cardapio) {
-        Gson gson = new Gson();
-        String cardapioToJson = gson.toJson(cardapio);
-        
-        return cardapioToJson.toString();
-    }
-    
-    static Cardapio jsonToCardapio(String jsonString) {
-        Gson gson = new Gson();
-        Cardapio cardapio = gson.fromJson(jsonString, Cardapio.class);
-        return cardapio;
-    }
-    
-    static boolean adicionarCapaDados(CapaDados capa){
+    static ArrayList<Relatorio> getRelatoriosExistentes(){
+        ArrayList<Relatorio> relatorios = new ArrayList<Relatorio>();
         PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into capaDados(idCapa, preTurno1, preTurno2, preTurno3, preTurno4, preAtendidos, "
+            ps = con.prepareStatement("select * from relatorios where inep like ?");
+            if(TelaPrincipal.usuarioLogado == null || TelaPrincipal.escolaAtual == null) {
+                System.out.println("nenhuma escola selecionada para o usuário");
+                return relatorios;
+            }
+            ps.setInt(1, TelaPrincipal.escolaAtual.getINEP());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                String jsonString = rs.getString("relatorioJson");
+                Relatorio relatorio = jsonToRelatorio(jsonString);
+                relatorios.add(relatorio);
+                rs.close();
+                ps.close();
+                con.close();
+            }
+            return relatorios;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return relatorios;
+        }
+    }
+    
+    static String toJson(Relatorio relatorio) {
+        Gson gson = new Gson();
+        String rel = gson.toJson(relatorio);
+        return rel;
+    }
+    
+    static Relatorio jsonToRelatorio(String jsonString) {
+        Gson gson = new Gson();
+        Relatorio relatorio = gson.fromJson(jsonString, Relatorio.class);
+        return relatorio;
+    }
+    
+    /*static int adicionarCapaDados(CapaDados capa){
+        PreparedStatement ps;
+        int resultado = -1;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into capaDados(preTurno1, preTurno2, preTurno3, preTurno4, preAtendidos, "
                     + "preNumDias, fundTurno1, fundTurno2, fundTurno3, fundTurno4, fundAtendidos, fundNumDias, jovensTurno1,"
                     + " jovensTurno2, jovensTurno3, jovensTurno4, jovensAtendidos, jovensNumDias, espTurno1, espTurno2,"
                     + "espTurno3, espTurno4, espAtendidos, espNumDias, totalDesjejumServido, totalMensalDesjejumServido, "
                     + "maisEduc1Matriculados, maisEduc1Atendidos, maisEduc1Dias, maisEduc2Matriculados, maisEduc2Atendidos, "
-                    + "MaisEduc2Dias) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
-                    + ", ?, ?, ?, ?, ?)");
-                int posInicial = 2;
+                    + "MaisEduc2Dias) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+                    + ", ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                int posInicial = 1;
                 for(int modalidade = 0; modalidade < 4; modalidade++) {
                     int j = 0;
                     for(int i = posInicial; i < (posInicial + 6); i++) {
@@ -344,35 +360,62 @@ public class BdManager {
                     }
                     posInicial += 6;
                 }
-                ps.setInt(26, capa.alunosAtendidosDesjejum);
-                ps.setInt(27, capa.desjejumTotalMensalServido);
+                ps.setInt(25, capa.alunosAtendidosDesjejum);
+                ps.setInt(26, capa.desjejumTotalMensalServido);
+                posInicial = 27;
                 for(int i = 0; i < 2; i++) {
-                    //to do
+                    ps.setInt(posInicial, capa.maisEducacao[i].matriculados);
+                    posInicial++;
+                    ps.setInt(posInicial, capa.maisEducacao[i].atendidos);
+                    posInicial++;
+                    ps.setInt(posInicial, capa.maisEducacao[i].numDias);
+                    posInicial++;
                 }
-                    
-            return true;
+                ps.execute();
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()){
+                    resultado = rs.getInt(1);
+                }
+                rs.close();
+
+                ps.close();
+                return resultado;
         }
         catch (SQLException err) {
            System.out.println(err.getMessage());
-           return false;
+           return resultado;
         }
-    }
+    }*/
     
     static boolean adicionarRelatorio(Relatorio relatorio) {
         //simula o comportamento de um banco de dados
-        /*PreparedStatement ps;
+        PreparedStatement ps;
+        /*int chaveCapa = adicionarCapaDados(relatorio.getCapaRelatorio());
+        if(chaveCapa == -1 ) {
+            return false;
+        }*/
         try{
             con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into relatorio(capa, mes, ano, titulo, cardapio) values(?, ?, ?, ?, ?)");
-            ps.setInt(3, relatorio.);
+            /*ps = con.prepareStatement("insert into relatorio(capa, mes, ano, titulo, cardapio) values(?, ?, ?, ?, ?)");
+            ps.setInt(1, chaveCapa);
+            ps.setInt(2, relatorio.getMes());
+            ps.setInt(3, relatorio.getAno());
+            ps.setString(4, relatorio.getTitulo());
+            ps.setString(5, cardapioToJson(relatorio.getCardapioRelatorio()));
+            ps.setString(5, )*/
+            ps = con.prepareStatement("insert into relatorios(relatorioJson, inep, mes, ano) values(?, ?, ?, ?)");
+            ps.setString(1, toJson(relatorio));
+            ps.setInt(2, relatorio.getEscola().getINEP());
+            ps.setInt(3, relatorio.getMes());
+            ps.setInt(4, relatorio.getAno());
             ps.execute();
+            ps.close();
+            con.close();
             return true;
         }
         catch (SQLException err) {
            System.out.println(err.getMessage());
            return false;
-        }*/
-        BdManager.relatorios.add(relatorio);
-        return true;
+        }
     }
 }

@@ -50,4 +50,14 @@ public class Relatorio {
         }
         return false;
     }
+    public int getMes() {
+        return this.mes;
+    }
+    public int getAno() {
+        return this.ano;
+    }
+    
+    public Escola getEscola() {
+        return this.escola;
+    }
 }
