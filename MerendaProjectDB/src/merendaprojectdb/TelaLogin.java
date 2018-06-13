@@ -39,7 +39,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        entrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         campoUsuario = new javax.swing.JTextField();
         campoSenha = new javax.swing.JPasswordField();
@@ -50,11 +50,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("Senha");
 
-        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 30)); // NOI18N
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        entrar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 30)); // NOI18N
+        entrar.setText("Entrar");
+        entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                entrarActionPerformed(evt);
             }
         });
 
@@ -64,6 +64,17 @@ public class TelaLogin extends javax.swing.JFrame {
         campoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUsuarioActionPerformed(evt);
+            }
+        });
+        campoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoUsuarioKeyPressed(evt);
+            }
+        });
+
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoSenhaKeyPressed(evt);
             }
         });
 
@@ -77,7 +88,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1)
+                    .addComponent(entrar)
                     .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
@@ -96,14 +107,15 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                .addComponent(entrar)
                 .addGap(89, 89, 89))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+    public void verificaLogin()
+    {
         if(banco.verificarUser(campoSenha.getText().intern(),campoUsuario.getText())==true)
         {
             TelaPrincipal.usuarioLogado = BdManager.findUser(this.campoUsuario.getText());
@@ -122,11 +134,30 @@ public class TelaLogin extends javax.swing.JFrame {
             //this.setVisible(false);
             JOptionPane.showMessageDialog(null,"Usuario errado, tente\n Usuario: Diretor\nSenha:123");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
+        verificaLogin();
+    }//GEN-LAST:event_entrarActionPerformed
 
+    
+    
     private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoUsuarioActionPerformed
+
+    private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
+        if(evt.getKeyCode()==10)
+        {
+            verificaLogin();
+        }
+    }//GEN-LAST:event_campoSenhaKeyPressed
+
+    private void campoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUsuarioKeyPressed
+        if(evt.getKeyCode()==10)
+        {
+            verificaLogin();
+        }
+    }//GEN-LAST:event_campoUsuarioKeyPressed
 
     /**
      * @param args the command line arguments
@@ -135,7 +166,7 @@ public class TelaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton entrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

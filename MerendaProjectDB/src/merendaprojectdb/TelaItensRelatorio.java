@@ -33,6 +33,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         this.cardapio = cardapio;
         this.editando = false;
         this.nomeRel = nomeRel;
+        this.itens = new ArrayList<ItemComida>();
         
         // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
     }
@@ -222,10 +223,15 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         // aqui tem que colocar pra pegar o que ta na tabela e jogar pro banco
         if(!this.editando) {
             criaItensLista();
-            this.relatorio = new Relatorio (this.cardapio.getMes(), this.cardapio.getAno(), 
-                    this.nomeRel, TelaPrincipal.escolaAtual, this.cardapio, this.capa, itens);
+            this.relatorio = new Relatorio (this.cardapio.getMes(), this.cardapio.getAno(),this.nomeRel, 
+                                            TelaPrincipal.escolaAtual, this.cardapio, this.capa, itens);
             TelaPrincipal.usuarioLogado.relatorioCorrente = this.relatorio;
             BdManager.adicionarRelatorio(this.relatorio);
+            
+        }
+        else
+        {
+            BdManager.alterarRelatorio(this.relatorio);
         }
         principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
@@ -239,6 +245,11 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         {
             DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
             tabelinha.addRow(new Object[] {tipoItem.getSelectedItem(), quantItem.getText(), unidadeItem.getSelectedItem()});
+            String nome = tipoItem.getSelectedItem().toString();
+            int quant = Integer.parseInt(quantItem.getText());
+            String unidade = unidadeItem.getSelectedItem().toString();
+            ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), Integer.parseInt(quantItem.getText()), unidadeItem.getSelectedItem().toString());
+            this.itens.add(item);
         }
     }//GEN-LAST:event_AdicionarParaAListaActionPerformed
 

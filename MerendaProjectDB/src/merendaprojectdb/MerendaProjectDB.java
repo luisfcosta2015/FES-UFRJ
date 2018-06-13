@@ -23,6 +23,7 @@ public class MerendaProjectDB {
         DateFormat df = new SimpleDateFormat ("dd/MM/yyyy");
         Calendario calendario = new Calendario(1,2018);
         Cardapio cardapio = new Cardapio(calendario);
+        login.setLocationRelativeTo(null);
         login.setVisible(true);
     } 
 }

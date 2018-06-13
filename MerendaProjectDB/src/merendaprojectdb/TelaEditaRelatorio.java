@@ -329,7 +329,6 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
         int [] valores = new int[5];
         for(int i = 1; i< this.tabelaMaisEducacao1.getColumnCount(); i++) {
             if(i > 5) {
-                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
                 continue;
             }
             if(this.tabelaMaisEducacao1.getValueAt(0, i) != null) {
@@ -345,7 +344,6 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
         int [] valores = new int[5];
         for(int i = 1; i< this.tabelaMaisEducacao2.getColumnCount(); i++) {
             if(i > 5) {
-                System.out.println("Erro ao atualizar capa sobre Mais Educação"); 
                 continue;
             }
             if(this.tabelaMaisEducacao2.getValueAt(0, i) != null) {

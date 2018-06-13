@@ -32,7 +32,7 @@
                   <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="campoUsuario" linkSize="2" alignment="2" min="-2" pref="128" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="entrar" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="campoSenha" linkSize="2" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="141" max="32767" attributes="0"/>
@@ -51,7 +51,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="campoSenha" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="entrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -66,7 +66,7 @@
         <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="entrar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tw Cen MT Condensed Extra Bold" size="30" style="0"/>
@@ -74,7 +74,7 @@
         <Property name="text" type="java.lang.String" value="Entrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="entrarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -88,9 +88,13 @@
     <Component class="javax.swing.JTextField" name="campoUsuario">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoUsuarioActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoUsuarioKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="campoSenha">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoSenhaKeyPressed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

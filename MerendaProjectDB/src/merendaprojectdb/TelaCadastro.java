@@ -46,7 +46,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         campoEscola = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        volta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,10 +85,10 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("voltar");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        volta.setText("voltar");
+        volta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                voltaMouseClicked(evt);
             }
         });
 
@@ -122,7 +122,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(164, 164, 164)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addComponent(volta)
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -134,7 +134,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel8)))
+                        .addComponent(volta)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -191,13 +191,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+    private void voltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltaMouseClicked
         principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jLabel8MouseClicked
+    }//GEN-LAST:event_voltaMouseClicked
 
     private void campoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoActionPerformed
         // TODO add your handling code here:
@@ -223,6 +223,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel volta;
     // End of variables declaration//GEN-END:variables
 }
