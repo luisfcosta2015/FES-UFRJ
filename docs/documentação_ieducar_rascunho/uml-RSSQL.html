@@ -10,20 +10,22 @@ RSSQL</title></head><body bgcolor=#ffffff text=#000000vlink=#330000 alink=#33004
 <table border=0 width=100% cellpadding=0 cellspacing=0><tr><td bgcolor=#7dfff1><table border cellspacing=0 cellpadding=0 width=100%><tr><td>
 <a href=RSSQL.html>RSSQL</a>
 </td></tr><tr><td>
- <a href=RSSQL.html#dbHelper>dbHelper</a> :<a href=uml-DBHelper.html>DBHelper</a><br>
+ <a href=RSSQL.html#dbHelper>dbHelper</a> :<a href=sslRel/helpers/uml-DBHelper.html>DBHelper</a><br>
  <a href=RSSQL.html#mRSO>mRSO</a> :<a href=model/uml-RSSQLObject.html>RSSQLObject</a><br>
- <a href=RSSQL.html#dyn_keys>dyn_keys</a> :<a href=java/lang/uml-String.html>String</a>[]<br>
- <a href=RSSQL.html#dyn_values>dyn_values</a> :<a href=java/lang/uml-String.html>String</a>[][]<br>
- <a href=RSSQL.html#sta_keys>sta_keys</a> :<a href=java/lang/uml-String.html>String</a>[]<br>
- <a href=RSSQL.html#sta_values>sta_values</a> :<a href=java/lang/uml-String.html>String</a>[]<br>
++<a href=RSSQL.html#dyn_keys>dyn_keys</a> :<a href=java/lang/uml-String.html>String</a>[]<br>
++<a href=RSSQL.html#dyn_values>dyn_values</a> :<a href=java/lang/uml-String.html>String</a>[][]<br>
++<a href=RSSQL.html#sta_keys>sta_keys</a> :<a href=java/lang/uml-String.html>String</a>[]<br>
++<a href=RSSQL.html#sta_values>sta_values</a> :<a href=java/lang/uml-String.html>String</a>[]<br>
  <a href=RSSQL.html#querySt>querySt</a> :<a href=java/lang/uml-String.html>String</a><br>
  <a href=RSSQL.html#queryDy>queryDy</a> :<a href=java/lang/uml-String.html>String</a><br>
 </td></tr><tr><td>
-+<a href=RSSQL.html#RSSQL(java.lang.String,)>RSSQL</a>(<a href=java/lang/uml-String.html>String</a> filename, <a href=java/util/uml-HashMap.html>HashMap</a>&lt;String,String&gt; params)<br>
++<a href=RSSQL.html#RSSQL(java.lang.String)>RSSQL</a>(<a href=java/lang/uml-String.html>String</a> filename)<br>
++<a href=RSSQL.html#loadQuery()>loadQuery</a>(<a href=java/util/uml-HashMap.html>HashMap</a>&lt;String,String&gt; params) :void<br>
 -<a href=RSSQL.html#replaceKeys(,java.lang.String)>replaceKeys</a>(<a href=java/util/uml-HashMap.html>HashMap</a>&lt;String,String&gt; map, <a href=java/lang/uml-String.html>String</a> query) :<a href=java/lang/uml-String.html>String</a><br>
 +<a href=RSSQL.html#queryFields(java.lang.String,java.lang.String)>queryFields</a>(<a href=java/lang/uml-String.html>String</a> sta_query, <a href=java/lang/uml-String.html>String</a> dyn_query) :boolean<br>
 +<a href=RSSQL.html#getStaticResults()>getStaticResults</a>() :<a href=java/util/uml-HashMap.html>HashMap</a>&lt;String,String&gt;<br>
 +<a href=RSSQL.html#getDynamicKeys()>getDynamicKeys</a>() :<a href=java/lang/uml-String.html>String</a>[]<br>
++<a href=RSSQL.html#getStaticKeys()>getStaticKeys</a>() :<a href=java/lang/uml-String.html>String</a>[]<br>
 +<a href=RSSQL.html#getDynamicResults()>getDynamicResults</a>() :<a href=java/lang/uml-String.html>String</a>[][]<br>
 </td></tr></table></td></tr>
 </table>
