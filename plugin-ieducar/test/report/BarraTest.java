@@ -2,25 +2,19 @@ package report;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
-public class ReportTest {
+public class BarraTest {
 
-    Report relatorio;
+    Barra barra;
 
     @Before
     public void setUp() throws Exception {
-        relatorio = new Report();
-    }
-
-    @Test
-    public void buildTest() {
-
+       barra = new Barra();
     }
 
     @Test
     public void createDataSourceTest() {
-
+        assertNotNull(barra.createDataSource("Turma 1"));
     }
 }

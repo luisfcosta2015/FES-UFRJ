@@ -73,10 +73,9 @@ public class Barra {
         }
     }
 
-    private JRDataSource createDataSource(String turma) {
+    public JRDataSource createDataSource(String turma) {
         DRDataSource dataSource = new DRDataSource("aluno", "idade", "turma", "registro", "qtdCerta", "qtdErrada");
         //Pensando na Quarta série
-
 
         for (int i = 0; i < intArray.length; i++) {
             if (intArray[i] > 7) {
@@ -89,18 +88,9 @@ public class Barra {
             }
         }
 
-        /*
-        dataSource.add("Aluno 1", 1, "Quarta Série", "ABC", 1);
-        dataSource.add("Aluno 1", 4, "Quarta Série", "ABC", 1);
-        dataSource.add("Aluno 1", 10, "Quarta Série", "ABC", 1);
-        dataSource.add("Aluno 1", 11, "Quarta Série", "ABC", 1);
-        dataSource.add("Aluno 1", 11, "Quarta Série", "ABC", 1);
-        */
-
-
         return dataSource;
     }
-    
+
 
     public static void main(String[] args) {
         //Barra b = new Barra();
