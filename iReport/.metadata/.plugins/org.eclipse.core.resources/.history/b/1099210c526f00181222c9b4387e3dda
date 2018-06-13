@@ -1,0 +1,8 @@
+package br.com.fes.relatorios.domain;
+
+
+@ManagedBean(name = "MBAlunos")
+@ViewScoped
+public class AlunosBean {
+
+}

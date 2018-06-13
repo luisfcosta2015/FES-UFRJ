@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      <h:form>
+      	<p:menubar>
+      		<p:submenu label="Home">
+      			<p:menuitem value="Janela Principal" action="Default.xhtml"/>
+      		</p:submenu>
+      		
+      		<p:submenu label="Consultar">
+      			<p:menuitem value="FES" action="Consultar.xhtml"/>      		
+      		</p:submenu>
+      		
+      		<p:submenu label="Registrar">
+      			<p:menuitem value="Roupas" action="Filtro.xhtml"/>
+      		</p:submenu>
+      	</p:menubar>
+      </h:form>
+</ui:composition>
