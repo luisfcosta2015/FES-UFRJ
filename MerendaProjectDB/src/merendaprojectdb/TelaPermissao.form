@@ -31,29 +31,37 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="campoTipo" min="-2" pref="138" max="-2" attributes="0"/>
-                  <Component id="canNewUser" min="-2" max="-2" attributes="0"/>
-                  <Component id="canChangePerm" min="-2" max="-2" attributes="0"/>
-                  <Component id="canNewReport" min="-2" max="-2" attributes="0"/>
-                  <Component id="canChangeReport" min="-2" max="-2" attributes="0"/>
-                  <Component id="canGetReport" min="-2" max="-2" attributes="0"/>
-                  <Component id="canNewSchool" min="-2" max="-2" attributes="0"/>
-                  <Component id="canChangeSchool" min="-2" max="-2" attributes="0"/>
-                  <Component id="canGetSchool" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="133" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="campoTipo" min="-2" pref="138" max="-2" attributes="0"/>
+                          <Component id="canNewUser" min="-2" max="-2" attributes="0"/>
+                          <Component id="canChangePerm" min="-2" max="-2" attributes="0"/>
+                          <Component id="canNewReport" min="-2" max="-2" attributes="0"/>
+                          <Component id="canChangeReport" min="-2" max="-2" attributes="0"/>
+                          <Component id="canGetReport" min="-2" max="-2" attributes="0"/>
+                          <Component id="canNewSchool" min="-2" max="-2" attributes="0"/>
+                          <Component id="canChangeSchool" min="-2" max="-2" attributes="0"/>
+                          <Component id="canGetSchool" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="133" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,9 +106,11 @@
                       <Component id="canChangeSchool" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="canGetSchool" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -218,6 +228,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="canGetSchoolActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alterar Valores Padr&#xe3;o"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

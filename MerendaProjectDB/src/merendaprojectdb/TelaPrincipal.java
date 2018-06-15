@@ -23,6 +23,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     private TelaLogin login;
     private TelaCapaRelatorio capa;
+    private TelaMesAno mesAno;
     private TelaCadastro cadastro;
     private TelaEscola escola;
     private TelaListaRelatorios listaRelatorios;
@@ -326,10 +327,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
                 
             case "novoRelatorio":
-                capa = new TelaCapaRelatorio();
-                capa.setLocationRelativeTo(null);
-                capa.setVisible(true);
-                capa.setResizable(true);
+                mesAno = new TelaMesAno();
+                mesAno.setLocationRelativeTo(null);
+                mesAno.setVisible(true);
+                mesAno.setResizable(true);
                 this.setVisible(false);
                 break;
             case "verRelatorio":

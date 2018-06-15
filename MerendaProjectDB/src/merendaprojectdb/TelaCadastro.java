@@ -49,6 +49,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         volta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 300));
 
         jLabel1.setText("nome de usuario:");
 

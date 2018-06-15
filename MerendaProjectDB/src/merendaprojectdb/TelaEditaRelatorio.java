@@ -25,6 +25,7 @@ public class TelaEditaRelatorio extends javax.swing.JFrame {
     private DefaultTableModel tabelaMaisEducacao1;
     private DefaultTableModel tabelaMaisEducacao2;
     private DefaultTableModel tabelaTotal;
+    
     public TelaEditaRelatorio(Relatorio relatorio) {
         initComponents();
         this.relatorio = relatorio;

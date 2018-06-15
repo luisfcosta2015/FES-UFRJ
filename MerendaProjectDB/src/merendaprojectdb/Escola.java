@@ -30,6 +30,7 @@ public class Escola {
         this.subsecretaria = subsecretaria;
         this.departamento = departamento;
         this.INEP = INEP;
+        this.diretoria=diretoria;
         this.unidade = unidade;
         this.telefone = telefone;
     }
@@ -82,7 +83,6 @@ public class Escola {
     public String getUnidade() {
         return this.unidade;
     }
-    
     public String getDiretoria() {
         return this.diretoria;
     }

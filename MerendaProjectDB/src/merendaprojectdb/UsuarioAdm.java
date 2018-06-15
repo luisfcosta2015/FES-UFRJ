@@ -30,19 +30,19 @@ public class UsuarioAdm {
     }
     
     
-    public void setNR(boolean m){
+    public void canNewReport(boolean m){
         canNewReport = m;
     }
     
-    public void setWR(boolean m){
+    public void canWriteReport(boolean m){
         canWriteReport = m;
     }
     
-    public void setSR(boolean m){
+    public void canSeeReport(boolean m){
         canSeeReport = m;
     }
     
-    public void setWS(boolean m){
+    public void canWriteSchool(boolean m){
         canWriteSchool = m;
     }
     

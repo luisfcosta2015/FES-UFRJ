@@ -356,11 +356,11 @@ public class BdManager {
                     return id;
                 }
             }
-            return 0;
+            return -1;
         }
         catch (SQLException err) {
            System.out.println(err.getMessage());
-           return 0;
+           return -1;
         }
     }
     static boolean alterarRelatorio (Relatorio relatorio){
@@ -391,5 +391,41 @@ public class BdManager {
         Gson gson = new Gson();
         Relatorio relatorio = gson.fromJson(jsonString, Relatorio.class);
         return relatorio;
+    }
+    static Double getPorcentagem (){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from valores_padrao where id like ?");
+            ps.setInt(1, 1);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+            
+                rs.close();
+                ps.close();
+                con.close();
+                return rs.getDouble("porcentagem");
+            }
+            return -1.0;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return -1.0;
+        }
+    }
+    static boolean setPorcentagem(double porcento){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into valores_padrao(porcentagem) values(?)");
+            ps.setDouble(1, porcento);
+            ps.execute();
+            return true;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
     }
 }

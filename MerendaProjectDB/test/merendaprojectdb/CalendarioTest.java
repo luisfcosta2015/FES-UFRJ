@@ -6,6 +6,7 @@
 package merendaprojectdb;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,6 +21,14 @@ import static org.junit.Assert.*;
  */
 public class CalendarioTest {
     
+    private Calendario calendario;
+    private Calendar calendar;
+    private int ano;
+    private int mes;
+    private Date inicial;
+    private Date fim;
+
+    
     public CalendarioTest() {
     }
     
@@ -33,6 +42,16 @@ public class CalendarioTest {
     
     @Before
     public void setUp() {
+        calendar = Calendar.getInstance();
+        this.calendario= new Calendario(5,2018+1900);
+        this.ano=2018;
+        this.mes=5;
+        this.inicial = new Date(ano-1900, mes, 1);
+        this.calendar.setTime(this.inicial);
+        //dt.setDate(calendario.getActualMaximum(this.mes));
+        this.fim = new Date(ano-1900, mes,calendar.getActualMaximum(calendar.DAY_OF_MONTH));
+        
+        
     }
     
     @After
@@ -44,13 +63,19 @@ public class CalendarioTest {
      */
     @Test
     public void testGetList() {
-        System.out.println("getList");
-        Calendario instance = null;
-        ArrayList<Date> expResult = null;
-        ArrayList<Date> result = instance.getList();
+        ArrayList<Date> datas = new ArrayList<>();
+
+        for(Date dt = this.inicial; dt.compareTo(this.fim) <= 0;) {
+            if(calendar.get(calendar.DAY_OF_WEEK) != 1 && calendar.get(calendar.DAY_OF_WEEK) != 7) {
+                datas.add(new Date(dt.getTime()));
+            }
+        }
+        
+        
+        
+        ArrayList<Date> expResult = datas;
+        ArrayList<Date> result = calendario.getList();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
