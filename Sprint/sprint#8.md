@@ -82,36 +82,34 @@
   </tr>
     <tr>
     <td>  Reação 04/06 - 06/06 </td>
-    <td>  1 horas </td>
+    <td>  1 hora </td>
+    <td> 1 hora </td>
     <td>  Larissa </td>
   </tr>
   <tr>
     <td> Update para o layout da sprint#8 </td>
-    <td>  1 horas </td>
+    <td>  1 hora </td>
+    <td> 30 min </td>
     <td>  Larissa </td>
   </tr>
   <tr>
     <td> Atividade Eber - casos de uso do projeto </td>
     <td> 2 horas </td>
+    <td> 1 hora </td>
     <td> Larissa </td>
   </tr>
     <tr>
     <td>Burndown Chart da Sexta Sprint</td>
     <td>1 hora</td>
+    <td> 1 hora </td>
     <td>Aline</td>
   </tr>
     <tr>
     <td>Burndown Chart da Sétima Sprint</td>
     <td>1 hora</td>
+    <td> 1 hora </td>
     <td>Aline</td>
   </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-
 </table>
 
 <h3> Atividades Não concluidas </h3>
@@ -123,29 +121,34 @@
     <th> Horas gastas </th>
     <th> Membro </th>
   </tr>
-    <tr>
+  <tr>
     <td>Incluir grafico de pizza no relatório Teste</td>
     <td>1 hora</td>
+    <td> -- </td>
     <td>Aline</td>
   </tr>
     <tr>
     <td>Tutorial de Como restaura o dump do BD</td>
     <td>1 hora</td>
+    <td> -- </td>
     <td>Tomaz</td>
   </tr>
   <tr>
     <td>Montar o dump do BD</td>
     <td>1 hora</td>
+    <td> -- </td>
     <td>Tomaz</td>
   </tr>
   <tr>
     <td>Montar layout final com AdHoc</td>
     <td>2 hora</td>
+    <td> -- </td>
     <td>Gilberto</td>
   </tr>
   <tr>
     <td>Exportar layout final em .odt</td>
     <td>1 hora</td>
+    <td> -- </td>
     <td>Gilberto</td>
   </tr>
 
