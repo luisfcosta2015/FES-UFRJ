@@ -86,7 +86,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gerarODSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODSActionPerformed
-        exportador.exportarODS();
+        //exportador.exportarODS();
     }//GEN-LAST:event_gerarODSActionPerformed
 
     private void gerarODTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODTActionPerformed

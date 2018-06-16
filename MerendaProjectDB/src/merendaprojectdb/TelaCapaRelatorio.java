@@ -11,15 +11,36 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
     private DefaultTableModel tabelaMaisEducacao1;
     private DefaultTableModel tabelaMaisEducacao2;
     private DefaultTableModel tabelaTotal;
-    public TelaCapaRelatorio() {
+    private Relatorio relatorio;
+    private int ano;
+    private int mes;
+    private boolean editando = false;
+    public TelaCapaRelatorio(int mes, int ano) {
         initComponents();
+        this.mes = mes;
+        this.ano = ano;
         this.tabelaMatricula = (DefaultTableModel) tabelaMatriculados.getModel();
         this.tabelaDesjejum = (DefaultTableModel) this.desjejumTable.getModel();
         this.tabelaMaisEducacao1 = (DefaultTableModel) this.maisEducacaoTurno1.getModel();
         this.tabelaMaisEducacao2 = (DefaultTableModel) this.maisEducacaoTurno2.getModel();
         this.tabelaTotal = (DefaultTableModel) this.totalTable.getModel();
     }
-
+    public TelaCapaRelatorio(Relatorio relatorio) {
+        initComponents();
+        this.editando = true;
+        this.relatorio = relatorio;
+        this.capa = relatorio.getCapaRelatorio();
+        this.tabelaMatricula = (DefaultTableModel) tabelaMatriculados.getModel();
+        inicializaMatriculados();
+        this.tabelaDesjejum = (DefaultTableModel) this.desjejumTable.getModel();
+        inicializaDesjejum();
+        this.tabelaMaisEducacao1 = (DefaultTableModel) this.maisEducacaoTurno1.getModel();
+        inicializaMaisEducacao1();
+        this.tabelaMaisEducacao2 = (DefaultTableModel) this.maisEducacaoTurno2.getModel();
+        inicializaMaisEducacao2();
+        this.tabelaTotal = (DefaultTableModel) this.totalTable.getModel();
+        this.tabelaTotal.setValueAt(this.capa.getTotalServido(), 0, 0);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,14 +51,10 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMatriculados = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         proxButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        mes = new java.awt.TextField();
-        ano = new java.awt.TextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         desjejumTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -51,9 +68,6 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setLabelFor(mes);
-        jLabel1.setText("Mes ex: 3");
 
         tabelaMatriculados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,23 +105,6 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         proxButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 proximaPagina(evt);
-            }
-        });
-
-        jLabel3.setLabelFor(ano);
-        jLabel3.setText("Ano ex: 2018");
-
-        mes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        mes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mesActionPerformed(evt);
-            }
-        });
-
-        ano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        ano.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anoActionPerformed(evt);
             }
         });
 
@@ -214,80 +211,86 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(207, 207, 207)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 367, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(proxButton)
-                .addGap(119, 119, 119))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(302, 302, 302)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(75, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(proxButton)
+                .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel2)
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(proxButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(proxButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    /**Método para inicialização da tabela de alunos matriculados com os valores já contidos no Relatorio
+     * @author Joyce Brum
+     */
+    private void inicializaMatriculados() {
+        for(int i=0; i < this.tabelaMatricula.getRowCount(); i++) {
+            for(int j=1; j < this.tabelaMatricula.getColumnCount(); j++) {
+                tabelaMatricula.setValueAt(capa.getValueAt(i,j-1), i, j);
+            }
+        }
+    }
+    private void inicializaDesjejum() {
+        this.tabelaDesjejum.setValueAt(this.capa.alunosAtendidosDesjejum, 0, 0);
+        this.tabelaDesjejum.setValueAt(this.capa.desjejumTotalMensalServido, 0, 1);
+    }
+    private void inicializaMaisEducacao1() {
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].matriculados, 0,1);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].atendidos, 0,2);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].numDias, 0,3);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].totalDesjejum , 0,4);
+        this.tabelaMaisEducacao1.setValueAt(this.capa.maisEducacao[0].totalLanche , 0,5);
+    }
+    private void inicializaMaisEducacao2() {
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].matriculados, 0,1);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].atendidos, 0,2);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].numDias, 0,3);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].totalDesjejum, 0,5);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.maisEducacao[0].totalLanche, 0,5);
+        this.tabelaMaisEducacao2.setValueAt(this.capa.getTotalMaisEducacao() , 0,6);
+    }
     /**Método para atualizar a variavel capa com os valores contidos na tabelaMatricula
      * @author Joyce Brum
      */
@@ -385,45 +388,31 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         //String var = "aa13b";
         //var = var.replace("[a-zA-Z]", "");
         //System.out.println(var);
-        if(this.mes.getText().intern() == null || this.mes.getText().intern() == "") {
-            JOptionPane.showMessageDialog(null,"Campo mes obrigatório");
+        if(this.editando) {
+             atualizaCapaDados();
+            this.cardapio = new TelaCardapio(this.relatorio);
+            this.cardapio.setLocationRelativeTo(null);
+            this.cardapio.setVisible(true);
+            this.cardapio.setResizable(true);
+            dispose();
             return;
         }
-        
-        if(this.ano.getText().intern() == null || this.ano.getText().intern() == "") {
-            JOptionPane.showMessageDialog(null,"Campo ano obrigatório");
-            return;
-        }
-        
-        int ano = Integer.parseInt(this.ano.getText());
-        int mes = Integer.parseInt(this.mes.getText());
         this.capa = new CapaDados();
         atualizaCapaDados();
-        cardapio=new TelaCardapio(ano, mes-1, this.capa);
+        cardapio=new TelaCardapio(this.ano, this.mes-1, this.capa);
         cardapio.setLocationRelativeTo(null);
         cardapio.setVisible(true);
         cardapio.setResizable(true);
         this.dispose();
     }//GEN-LAST:event_proximaPagina
 
-    private void mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mesActionPerformed
-
-    private void anoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_anoActionPerformed
-
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.TextField ano;
     private javax.swing.JTable desjejumTable;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -433,7 +422,6 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable maisEducacaoTurno1;
     private javax.swing.JTable maisEducacaoTurno2;
-    private java.awt.TextField mes;
     private javax.swing.JButton proxButton;
     private javax.swing.JTable tabelaMatriculados;
     private javax.swing.JTable totalTable;

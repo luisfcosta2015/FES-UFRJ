@@ -12,7 +12,7 @@ package merendaprojectdb;
 public class CapaDados {
     private int colunas = 8;
     private int modalidades = 4;
-    private RefeicoesDados[] refeicoes = new RefeicoesDados[modalidades];
+    public RefeicoesDados[] refeicoes = new RefeicoesDados[modalidades];
     private int[] totalRefeicoes = new int[colunas]; //a penultima posicao nao importa pois sera "-----"
     
     //variaveis referentes ao desjejum

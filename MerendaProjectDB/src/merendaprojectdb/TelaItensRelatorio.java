@@ -231,6 +231,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         }
         else
         {
+            System.out.println("alterando relatorio");
             BdManager.alterarRelatorio(this.relatorio);
         }
         principal=new TelaPrincipal();

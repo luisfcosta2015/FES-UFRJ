@@ -39,23 +39,31 @@ public class Exportador {
     public Exportador(){
         
     }
+    private void setVetorMatriculados(Object[][] data, Relatorio relatorio, int pos, String modalidade) {
+        data[pos] = new Object[] { modalidade , relatorio.getCapaRelatorio().refeicoes[pos].turnos[0],
+                relatorio.getCapaRelatorio().refeicoes[pos].turnos[1], relatorio.getCapaRelatorio().refeicoes[pos].turnos[2],
+                relatorio.getCapaRelatorio().refeicoes[pos].turnos[3], relatorio.getCapaRelatorio().refeicoes[pos].totalMatriculados,
+                relatorio.getCapaRelatorio().refeicoes[pos].atendidos, relatorio.getCapaRelatorio().refeicoes[pos].numDias,
+                relatorio.getCapaRelatorio().refeicoes[pos].totalRefeicoes};
+    }
     
-    public void exportarODS(){
+    public void exportarODS(Relatorio relatorio){
+        String fileName = relatorio.getTitulo();
         try{
-            Object[][] data = new Object[6][2];
-            data[0] = new Object[] { "January", 1 };
-            data[1] = new Object[] { "February", 3 };
-            data[2] = new Object[] { "March", 8 };
-            data[3] = new Object[] { "April", 10 };
-            data[4] = new Object[] { "May", 15 };
-            data[5] = new Object[] { "June", 18 };
-
-            String[] columns = new String[] { "Month", "Temp" };
-
+            Object[][] data = new Object[5][9];
+            String[] columns = new String[] { "Modalidade de Ensino", "1 turno", "2 turno", "3 turno", "4 turno",
+                "Total Matriculados", "Total Atendidos 86%", "Número de dias de distribuição de refeições", 
+                "Total de refeições servidas"
+            };
+            setVetorMatriculados(data, relatorio, 0, "Pré Escola");
+            setVetorMatriculados(data, relatorio, 1, "Ensino Fundamental");
+            setVetorMatriculados(data, relatorio, 2, "Ensino Médio");
+            setVetorMatriculados(data, relatorio, 4, "Jovens e Adultos");
+            
             TableModel model = new DefaultTableModel(data, columns);  
 
             // Save the data to an ODS file and open it.
-            File file = new File("arquivos/teste2.ods");
+            File file = new File("arquivos/" + fileName + ".ods");
             SpreadSheet.createEmpty(model).saveAs(file);
             System.out.println("fim");
 

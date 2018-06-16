@@ -13,7 +13,7 @@ import javax.swing.*;
  */
 public class TelaListaRelatorios extends javax.swing.JFrame {
     
-    TelaEditaRelatorio editaRelatorio;
+    TelaCapaRelatorio editaRelatorio;
     Relatorio relatorioSelecionado;
     DefaultListModel modeloLista;
     TelaPrincipal principal;
@@ -125,10 +125,11 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.listaRelatorios.getSelectedIndex()== -1) {
             JOptionPane.showMessageDialog(null,"Selecione um relatorio");
+            return;
         }
         int index = this.listaRelatorios.getSelectedIndex();
         this.relatorioSelecionado = relatorios.get(index);
-        this.editaRelatorio = new TelaEditaRelatorio(this.relatorioSelecionado);
+        this.editaRelatorio = new TelaCapaRelatorio(this.relatorioSelecionado);
         this.editaRelatorio.setLocationRelativeTo(null);
         this.editaRelatorio.setVisible(true);
         this.editaRelatorio.setResizable(true);

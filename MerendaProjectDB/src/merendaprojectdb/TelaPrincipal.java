@@ -314,7 +314,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 break;
             case "editarRelatorioCorrente":
                 if(TelaPrincipal.usuarioLogado.relatorioCorrente != null ) {
-                    TelaEditaRelatorio edita = new TelaEditaRelatorio(TelaPrincipal.usuarioLogado.relatorioCorrente);
+                    TelaCapaRelatorio edita = new TelaCapaRelatorio(TelaPrincipal.usuarioLogado.relatorioCorrente);
                     edita.setLocationRelativeTo(null);
                     edita.setVisible(true);
                     edita.setResizable(true);
