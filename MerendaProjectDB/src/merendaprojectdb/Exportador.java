@@ -49,8 +49,9 @@ public class Exportador {
     
     public void exportarODS(Relatorio relatorio){
         String fileName = relatorio.getTitulo();
+        //System.out.println(fileName);
         try{
-            Object[][] data = new Object[5][9];
+            Object[][] data = new Object[6][9];
             String[] columns = new String[] { "Modalidade de Ensino", "1 turno", "2 turno", "3 turno", "4 turno",
                 "Total Matriculados", "Total Atendidos 86%", "Número de dias de distribuição de refeições", 
                 "Total de refeições servidas"
@@ -58,15 +59,19 @@ public class Exportador {
             setVetorMatriculados(data, relatorio, 0, "Pré Escola");
             setVetorMatriculados(data, relatorio, 1, "Ensino Fundamental");
             setVetorMatriculados(data, relatorio, 2, "Ensino Médio");
-            setVetorMatriculados(data, relatorio, 4, "Jovens e Adultos");
+            setVetorMatriculados(data, relatorio, 3, "Jovens e Adultos");
+            data[5] = new Object[] {};
             
-            TableModel model = new DefaultTableModel(data, columns);  
-
+            //tabela sobre total desjejum
+            
+            TableModel model = new DefaultTableModel(data, columns);
             // Save the data to an ODS file and open it.
             File file = new File("arquivos/" + fileName + ".ods");
             SpreadSheet.createEmpty(model).saveAs(file);
-            System.out.println("fim");
-
+            
+            File f1 = new File("template/ooo2flyer_p1.odt");
+            ODSingleXMLDocument p1 = ODSingleXMLDocument.createFromPackage(file);
+            // System.out.println(p1);
             //OOUtils.open(file);
         }
           
@@ -75,6 +80,9 @@ public class Exportador {
         } 
         catch (IOException e) {
             System.out.println("vish2");
+        }
+        catch(JDOMException e) {
+            System.out.println(e.getMessage());
         }
     }
     

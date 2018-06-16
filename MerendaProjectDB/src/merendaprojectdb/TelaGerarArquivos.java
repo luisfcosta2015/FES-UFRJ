@@ -14,8 +14,10 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     /**
      * Creates new form TelaGerarArquivos
      */
-    public TelaGerarArquivos() {
+    private Relatorio relatorio;
+    public TelaGerarArquivos(Relatorio relatorio) {
         initComponents();
+        this.relatorio = relatorio;
     }
     
     Exportador exportador = new Exportador();
@@ -86,7 +88,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gerarODSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODSActionPerformed
-        //exportador.exportarODS();
+        exportador.exportarODS(this.relatorio);
     }//GEN-LAST:event_gerarODSActionPerformed
 
     private void gerarODTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODTActionPerformed
