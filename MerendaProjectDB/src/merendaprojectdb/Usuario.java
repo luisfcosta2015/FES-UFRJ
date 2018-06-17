@@ -18,6 +18,9 @@ public class Usuario {
     private String tipo; 
     private Escola escola;
     
+    TiposDeUsuario usertier;
+    Permissoes permits;
+    /*
     private boolean canNewReport;
     private boolean canWriteReport;
     private boolean canWriteSchool;
@@ -28,7 +31,7 @@ public class Usuario {
     
     UsuarioAdm adm;
     UsuarioDir dir;
-    UsuarioLei lei;
+    UsuarioLei lei;*/
     
     public Usuario(String nome, String user, String senha, String email, String tipo) {
         this.nome = nome;
@@ -36,6 +39,8 @@ public class Usuario {
         this.senha = senha;
         this.email = email;
         this.tipo = tipo;
+        this.usertier = new TiposDeUsuario();
+        this.permits = new Permissoes();
         
         setPermits();
     }
@@ -47,41 +52,19 @@ public class Usuario {
         this.email = email;
         this.tipo = tipo;
         this.escola = escola;
+        this.usertier = new TiposDeUsuario();
+        this.permits = new Permissoes();
         
         setPermits();
     }
     
     private void setPermits(){       
-        if (tipo.equals("Administrador")){
-            this.adm = new UsuarioAdm();
-            this.canNewReport = adm.canNewReport;
-            this.canWriteReport = adm.canWriteReport;
-            this.canSeeReport = adm.canSeeReport;
-            this.canWriteSchool = adm.canWriteSchool;
-            this.canSeeSchool = adm.canSeeSchool;
-            this.canWritePermit = adm.canWritePermit;
-            this.canAddUser = adm.canAddUser;
-        }
-        else if(tipo.equals("Diretor")){
-            this.dir = new UsuarioDir();
-            this.canNewReport = dir.canNewReport;
-            this.canWriteReport = dir.canWriteReport;
-            this.canSeeReport = dir.canSeeReport;
-            this.canWriteSchool = dir.canWriteSchool;
-            this.canSeeSchool = dir.canSeeSchool;
-            this.canWritePermit = dir.canWritePermit;
-            this.canAddUser = dir.canAddUser;
-        }
-        else if(tipo.equals("Leitor")){
-            this.lei = new UsuarioLei();
-            this.canNewReport = lei.canNewReport;
-            this.canWriteReport = lei.canWriteReport;
-            this.canSeeReport = lei.canSeeReport;
-            this.canWriteSchool = lei.canWriteSchool;
-            this.canSeeSchool = lei.canSeeSchool;
-            this.canWritePermit = lei.canWritePermit;
-            this.canAddUser = lei.canAddUser;
-        }
+        if (tipo.equals("Administrador"))
+            this.permits = this.usertier.getAdmPermits();            
+        else if(tipo.equals("Diretor"))
+            this.permits = this.usertier.getDirPermits();
+        else if(tipo.equals("Leitor"))
+            this.permits = this.usertier.getLeitorPermits();
     }
     
     public String getNome(){
@@ -128,30 +111,30 @@ public class Usuario {
     }
     
     public boolean canNewReport(){
-        return canNewReport;
+        return permits.canNewReport;
     }
     
     public boolean canWriteReport(){
-        return canWriteReport;
+        return permits.canWriteReport;
     }
     
     public boolean canSeeReport(){
-        return canSeeReport;
+        return permits.canSeeReport;
     }
     
     public boolean canWriteSchool(){
-        return canWriteSchool;
+        return permits.canWriteSchool;
     }
     
     public boolean canSeeSchool(){
-        return canSeeSchool;
+        return permits.canSeeSchool;
     }
     
     public boolean canWritePermit(){
-        return canWritePermit;
+        return permits.canWritePermit;
     }
     public boolean canAddUser(){
-        return canAddUser;
+        return permits.canAddUser;
     }
     
     

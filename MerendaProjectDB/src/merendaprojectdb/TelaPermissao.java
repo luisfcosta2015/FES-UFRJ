@@ -19,13 +19,18 @@ public class TelaPermissao extends javax.swing.JFrame {
     String tipo;
     TelaPrincipal principal;
     
-    UsuarioAdm adm;
+    TiposDeUsuario usertier;
+    Permissoes permits;
+    
+    /*UsuarioAdm adm;
     UsuarioDir dir;
-    UsuarioLei lei;
+    UsuarioLei lei;*/
     
     public TelaPermissao() {
         initComponents();
         //usuario=nome;
+        this.usertier = new TiposDeUsuario();
+        this.permits = new Permissoes();
     }
 
     /**
@@ -286,32 +291,37 @@ public class TelaPermissao extends javax.swing.JFrame {
         
         if(tipo=="Administrador"){
            // UsuarioAdm adm;
-            adm.canNewReport(newrp);
-            adm.canWriteReport(getrp);
-            adm.canSeeReport(seerp);
-            adm.canWriteSchool(newsc);
-            adm.setSS(seesc);
-            adm.setWP(newpm);
+           usertier.setPermissoesAdm(newrp, getrp, seerp, newsc, seesc, newpm, true); 
+           /*usertier.adm.canNewReport(newrp);
+            usertier.adm.canWriteReport(getrp);
+            usertier.adm.canSeeReport(seerp);
+            usertier.adm.canWriteSchool(newsc);
+            usertier.adm.canSeeSchool(seesc);
+            usertier.adm.canWritePermit(newpm);*/
         }
         
         if(tipo=="Diretor"){
            // UsuarioDir dir;
-            dir.setNR(newrp);
-            dir.setWR(getrp);
-            dir.setSR(seerp);
-            dir.setWS(newsc);
-            dir.setSS(seesc);
-            dir.setWP(newpm);
+            usertier.setPermissoesDir(newrp, getrp, seerp, newsc, seesc, newpm, false);
+            /*usertier.dir.canNewReport(newrp);
+            usertier.dir.canWriteReport(getrp);
+            usertier.dir.canSeeReport(seerp);
+            usertier.dir.canWriteSchool(newsc);
+            usertier.dir.canSeeSchool(seesc);
+            usertier.dir.canWritePermit(newpm);*/
         }
         
         if(tipo=="Leitor"){
+            usertier.setPermissoesLeitor(newrp, getrp, seerp, newsc, seesc, newpm, false);
          //   UsuarioLei lei;
-            lei.setNR(newrp);
-            lei.setWR(getrp);
-            lei.setSR(seerp);
-            lei.setWS(newsc);
-            lei.setSS(seesc);
-            lei.setWP(newpm);
+           
+         
+         /*lei.canNewReport(newrp);
+            lei.canWriteReport(getrp);
+            lei.canSeeReport(seerp);
+            lei.canWriteSchool(newsc);
+            lei.canSeeSchool(seesc);
+            lei.canWritePermit(newpm);*/
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
