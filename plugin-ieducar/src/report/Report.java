@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 public class Report {
 
     Barra relatorioBarra = new Barra();
+    Pizza relatorioPizza = new Pizza();
 
     public Report(){ //build();
     }
@@ -25,10 +26,10 @@ public class Report {
     public void build(String escola, String turma, String grafico) {
         if (grafico == "Barra") {
             relatorioBarra.buildBarra(escola, turma);
-        }
-
-        else {
-            System.out.println("Ops, ainda não implementamos o de pizza");
+        } else if (grafico == "Pizza") {
+            relatorioPizza.buildPizza(escola, turma);
+        } else {
+            System.out.println("Um tipo inválido de gráfico foi selecionado.");
         }
     }
 
