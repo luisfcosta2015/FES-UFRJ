@@ -17,6 +17,7 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
     Relatorio relatorioSelecionado;
     DefaultListModel modeloLista;
     TelaPrincipal principal;
+    //BdManager banco;
     private ArrayList<Relatorio> relatorios;
     /**
      * Creates new form TelaListaRelatorios
@@ -66,6 +67,9 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         listaRelatorios = new javax.swing.JList<>();
         voltar = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        mesSelect = new javax.swing.JComboBox<>();
+        anoSelect = new javax.swing.JComboBox<>();
+        pesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,31 +101,56 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
             }
         });
 
+        mesSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ" }));
+
+        anoSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035" }));
+        anoSelect.setName(""); // NOI18N
+
+        pesquisar.setText("Pesquisar");
+        pesquisar.setActionCommand("pesquisar");
+        pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
+                .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(voltar)
-                        .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mesSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(anoSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pesquisar)
+                        .addGap(74, 74, 74))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton2)
+                            .addGap(21, 21, 21))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(voltar)
+                            .addContainerGap()))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(voltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mesSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anoSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pesquisar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,11 +200,80 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
+        Object mestemp = mesSelect.getSelectedItem();
+        Object anotemp = anoSelect.getSelectedItem();
+        
+        String mes = ""+mestemp;
+        String ano = ""+anotemp;
+        
+        int mesNum;
+        
+        switch(mes){
+            case "JAN":
+                mesNum=1;
+                break;
+            case "FEV":
+                mesNum=2;
+                break;
+            case "MAR":
+                mesNum=3;
+                break;
+            case "ABR":
+                mesNum=4;
+                break;
+            case "MAI":
+                mesNum=5;
+                break;
+            case "JUN":
+                mesNum=6;
+                break;
+            case "JUL":
+                mesNum=7;
+                break;
+            case "AGO":
+                mesNum=8;
+                break;
+            case "SET":
+                mesNum=9;
+                break;
+            case "OUT":
+                mesNum=10;
+                break;
+            case "NOV":
+                mesNum=11;
+                break;
+            case "DEZ":
+                mesNum=12;
+                break;
+            default:
+                mesNum=0;
+        }
+       
+        int anoNum=0; 
+        if(!ano.equals("----"))
+            anoNum= Integer.parseInt(ano);
+        
+        //busca mes e ano especifico
+        this.listaRelatorios.setModel(new DefaultListModel());
+        this.modeloLista = (DefaultListModel) this.listaRelatorios.getModel();
+        relatorios = BdManager.getRelatoriosSelecionados(mesNum,anoNum);
+        for(int i=0;i<relatorios.size();i++)
+        {
+            this.modeloLista.addElement(relatorios.get(i).getTitulo());
+        }               
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_pesquisarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> anoSelect;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> listaRelatorios;
+    private javax.swing.JComboBox<String> mesSelect;
+    private javax.swing.JButton pesquisar;
     private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }

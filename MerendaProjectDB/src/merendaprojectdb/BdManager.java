@@ -343,7 +343,33 @@ public class BdManager {
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-                
+                //apenas o mes
+                if(ano==0){
+                    String messtr = rs.getString("mes");
+                    int mestemp = Integer.parseInt(messtr);
+                    
+                    if(mestemp==mes)
+                    {
+                        int id = rs.getInt("idRelatorio");
+                        rs.close();
+                        ps.close();
+                        con.close();
+                        return id;
+                    }
+                }
+                //apenas o ano
+                if(mes==0){
+                    int anotemp = rs.getInt("ano");
+                    if(anotemp==ano)
+                    {
+                        int id = rs.getInt("idRelatorio");
+                        rs.close();
+                        ps.close();
+                        con.close();
+                        return id;
+                    }
+                }
+                //mes e ano
                 String messtr = rs.getString("mes");
                 int mestemp = Integer.parseInt(messtr);
                 int anotemp = rs.getInt("ano");
@@ -363,6 +389,74 @@ public class BdManager {
            return -1;
         }
     }
+    
+    static ArrayList<Relatorio> getRelatoriosSelecionados(int mes, int ano){
+        ArrayList<Relatorio> relatoriosSelecionados = new ArrayList<Relatorio>();
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from relatorios where inep like ?");
+            if(TelaPrincipal.usuarioLogado == null || TelaPrincipal.escolaAtual == null) {
+                System.out.println("nenhuma escola selecionada para o usuário");
+                return relatoriosSelecionados;
+            }
+            ps.setInt(1, TelaPrincipal.escolaAtual.getINEP());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                String jsonString = rs.getString("relatorioJson");
+                Relatorio relatorio = jsonToRelatorio(jsonString);
+                //apenas o mes
+                if(ano==0){
+                    String messtr = rs.getString("mes");
+                    int mestemp = Integer.parseInt(messtr);
+                    
+                    if(mestemp==mes)
+                    {
+                        int id = rs.getInt("idRelatorio");
+                        rs.close();
+                        ps.close();
+                        con.close();
+                        relatoriosSelecionados.add(relatorio);
+                    }
+                }
+                //apenas o ano
+                if(mes==0){
+                    int anotemp = rs.getInt("ano");
+                    if(anotemp==ano)
+                    {
+                        int id = rs.getInt("idRelatorio");
+                        rs.close();
+                        ps.close();
+                        con.close();
+                        relatoriosSelecionados.add(relatorio);
+                    }
+                }
+                //mes e ano
+                String messtr = rs.getString("mes");
+                int mestemp = Integer.parseInt(messtr);
+                int anotemp = rs.getInt("ano");
+                if(mestemp==mes && anotemp==ano)
+                {
+                    int id = rs.getInt("idRelatorio");
+                    rs.close();
+                    ps.close();
+                    con.close();
+                    relatoriosSelecionados.add(relatorio);
+                }   
+                
+            }
+            rs.close();
+                ps.close();
+                con.close();
+            return relatoriosSelecionados;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return relatoriosSelecionados;
+        }
+    }
+    
     static boolean alterarRelatorio (Relatorio relatorio){
         int relId = findIdRelatorio(relatorio.getEscola().getINEP(), relatorio.getMes(), relatorio.getAno());
         PreparedStatement ps;
