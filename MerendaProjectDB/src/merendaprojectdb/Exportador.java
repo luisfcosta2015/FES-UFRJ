@@ -67,12 +67,25 @@ public class Exportador {
             TableModel model = new DefaultTableModel(data, columns);
             // Save the data to an ODS file and open it.
             File file = new File("arquivos/" + fileName + ".ods");
-            SpreadSheet.createEmpty(model).saveAs(file);
+            File fileEstilos = new File("arquivos/estilos.ods");
+            SpreadSheet spread = SpreadSheet.createEmpty(model);
+            Sheet sheet = spread.getSheet(0);
+            System.out.println("!!");
+            spread.addSheet("arquivos/estilos.ods");
+            System.out.println("!!");
+            Sheet sheetEstilos = SpreadSheet.createFromFile(fileEstilos).getSheet(0);
+            
+            sheetEstilos.getCellAt("A1").getStyle();
+            System.out.println("!!");
+            spread.saveAs(file);
+            System.out.println("!!");
+            
+            
             
             File f1 = new File("template/ooo2flyer_p1.odt");
             ODSingleXMLDocument p1 = ODSingleXMLDocument.createFromPackage(file);
             // System.out.println(p1);
-            //OOUtils.open(file);
+            OOUtils.open(file);
         }
           
         catch (IllegalArgumentException e) {

@@ -121,7 +121,7 @@ public class TelaMesAno extends javax.swing.JFrame {
         }
         if(BdManager.findIdRelatorio(TelaPrincipal.escolaAtual.getINEP(), Integer.parseInt(campoMes.getText())-1, Integer.parseInt(campoAno.getText())+1900) ==-1)
         {
-            TelaCapaRelatorio capa = new TelaCapaRelatorio(Integer.parseInt(this.campoMes.getText())-1, Integer.parseInt(campoAno.getText()));
+            TelaCapaRelatorio capa = new TelaCapaRelatorio(Integer.parseInt(this.campoMes.getText()), Integer.parseInt(campoAno.getText()));
             capa.setLocationRelativeTo(null);
             capa.setVisible(true);
             capa.setResizable(true);

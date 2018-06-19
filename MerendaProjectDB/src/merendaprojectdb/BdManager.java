@@ -27,6 +27,7 @@ public class BdManager {
     public BdManager() {
         
     } //TODO
+    //USER
     static boolean cadastraUser(Usuario user) { 
         PreparedStatement ps;
         if(TelaPrincipal.usuarioLogado.getEscola() != null) {
@@ -120,6 +121,7 @@ public class BdManager {
            return false;
         }
     }
+    //ESCOLA    
     static boolean cadastraEscola(Escola escola){
         PreparedStatement ps;
         try{ 
@@ -144,59 +146,6 @@ public class BdManager {
            return false;
        }
         //aqui o codigo recebera uma escola e adicionará ela as escolas cadastradas no banco
-    }
-    static boolean AdicionarItemListaCardapio(String Item){
-        
-        PreparedStatement ps;
-       
-        try{
-            con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into itens(nome) values(?)");
-            ps.setString(1, Item);
-            ps.execute();
-            return true;
-        }
-        catch (SQLException err) {
-           System.out.println(err.getMessage());
-           return false;
-        }
-    }
-    static boolean VerificarItemExistente(String item){
-        PreparedStatement ps;
-        try{
-            con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("select * from itens where nome like ?");
-            ps.setString(1, item);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next())
-            {
-                return true;
-            }
-            return false;
-        }
-        catch (SQLException err) {
-           System.out.println(err.getMessage());
-           return false;
-        }
-    }
-    static ArrayList pegarItensDoCardapio() {
-        PreparedStatement ps;
-        try{
-            con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("select * from itens");
-            ResultSet rs = ps.executeQuery();
-            ArrayList<String> itens = new ArrayList<>();
-            
-            while(rs.next())
-            {
-                itens.add(rs.getString("nome"));
-            }
-            return itens;
-        }
-        catch (SQLException err) {
-           System.out.println(err.getMessage());
-           return null;
-        }
     }
     static ArrayList<Escola> pegarEscolas(){
         
@@ -285,6 +234,61 @@ public class BdManager {
            return null;
         }
     }
+    //ITENS
+    static boolean AdicionarItemListaCardapio(String Item){
+        
+        PreparedStatement ps;
+       
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("insert into itens(nome) values(?)");
+            ps.setString(1, Item);
+            ps.execute();
+            return true;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    static boolean VerificarItemExistente(String item){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from itens where nome like ?");
+            ps.setString(1, item);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    static ArrayList pegarItensDoCardapio() {
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from itens");
+            ResultSet rs = ps.executeQuery();
+            ArrayList<String> itens = new ArrayList<>();
+            
+            while(rs.next())
+            {
+                itens.add(rs.getString("nome"));
+            }
+            return itens;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return null;
+        }
+    }
+    //RELATORIO
     static ArrayList<Relatorio> getRelatoriosExistentes(){
         ArrayList<Relatorio> relatorios = new ArrayList<Relatorio>();
         PreparedStatement ps;
@@ -389,7 +393,6 @@ public class BdManager {
            return -1;
         }
     }
-    
     static ArrayList<Relatorio> getRelatoriosSelecionados(int mes, int ano){
         ArrayList<Relatorio> relatoriosSelecionados = new ArrayList<Relatorio>();
         PreparedStatement ps;
@@ -414,21 +417,15 @@ public class BdManager {
                     if(mestemp==mes)
                     {
                         int id = rs.getInt("idRelatorio");
-                        rs.close();
-                        ps.close();
-                        con.close();
                         relatoriosSelecionados.add(relatorio);
                     }
                 }
                 //apenas o ano
-                if(mes==0){
+                if(mes==-1){
                     int anotemp = rs.getInt("ano");
                     if(anotemp==ano)
                     {
                         int id = rs.getInt("idRelatorio");
-                        rs.close();
-                        ps.close();
-                        con.close();
                         relatoriosSelecionados.add(relatorio);
                     }
                 }
@@ -439,16 +436,13 @@ public class BdManager {
                 if(mestemp==mes && anotemp==ano)
                 {
                     int id = rs.getInt("idRelatorio");
-                    rs.close();
-                    ps.close();
-                    con.close();
                     relatoriosSelecionados.add(relatorio);
                 }   
                 
             }
             rs.close();
-                ps.close();
-                con.close();
+            ps.close();
+            con.close();
             return relatoriosSelecionados;
         }
         catch (SQLException err) {
@@ -456,7 +450,6 @@ public class BdManager {
            return relatoriosSelecionados;
         }
     }
-    
     static boolean alterarRelatorio (Relatorio relatorio){
         int relId = findIdRelatorio(relatorio.getEscola().getINEP(), relatorio.getMes(), relatorio.getAno());
         PreparedStatement ps;
@@ -486,6 +479,7 @@ public class BdManager {
         Relatorio relatorio = gson.fromJson(jsonString, Relatorio.class);
         return relatorio;
     }
+    //VALORES PADRÂO
     static Double getPorcentagem (){
         PreparedStatement ps;
         try{
@@ -495,11 +489,11 @@ public class BdManager {
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
-            
+                Double resultado = rs.getDouble("porcentagem");
                 rs.close();
                 ps.close();
                 con.close();
-                return rs.getDouble("porcentagem");
+                return resultado;
             }
             return -1.0;
         }
@@ -512,9 +506,12 @@ public class BdManager {
         PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into valores_padrao(porcentagem) values(?)");
+            ps = con.prepareStatement("update valores_padrao set porcentagem = ? where id = ?");
             ps.setDouble(1, porcento);
+            ps.setInt(2,1);
             ps.execute();
+            ps.close();
+            con.close();
             return true;
         }
         catch (SQLException err) {

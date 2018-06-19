@@ -5,6 +5,8 @@
  */
 package merendaprojectdb;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thiago
@@ -14,13 +16,12 @@ public class TelaEditarPadrões extends javax.swing.JFrame {
     /**
      * Creates new form TelaEditarPadrões
      */
-    
-    public static int porcent;
+    TelaPrincipal principal;
+    public static Double porcent;
     
     public TelaEditarPadrões() {
         initComponents();
-        String valor=BdManager.getPorcentagem().toString();
-        porcentagem.setText(valor);
+        porcentagem.setText(porcent.toString());
     }
 
     /**
@@ -35,6 +36,8 @@ public class TelaEditarPadrões extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         porcentagem = new javax.swing.JTextField();
+        salvarPorcentagem = new javax.swing.JButton();
+        voltar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +46,20 @@ public class TelaEditarPadrões extends javax.swing.JFrame {
 
         jLabel2.setText("porcentagem louca:");
 
+        salvarPorcentagem.setText("salvar");
+        salvarPorcentagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarPorcentagemActionPerformed(evt);
+            }
+        });
+
+        voltar.setText("voltar");
+        voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voltarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -50,29 +67,60 @@ public class TelaEditarPadrões extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(182, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(156, 156, 156)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(salvarPorcentagem)))
+                        .addGap(0, 122, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(voltar)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addComponent(voltar)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(203, Short.MAX_VALUE))
+                    .addComponent(porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salvarPorcentagem))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void salvarPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarPorcentagemActionPerformed
+        Double novaPorcent=Double.parseDouble(porcentagem.getText());
+        porcent=novaPorcent;
+        if(BdManager.setPorcentagem(novaPorcent))
+        {
+            JOptionPane.showMessageDialog(null,"porcentagem salva no banco");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"ocorreu algum erro, a porcentagem não foi salva");
+        }
+    }//GEN-LAST:event_salvarPorcentagemActionPerformed
+
+    private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        principal=new TelaPrincipal();
+        principal.setLocationRelativeTo(null);
+        principal.setVisible(true);
+        principal.setResizable(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_voltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -82,5 +130,7 @@ public class TelaEditarPadrões extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField porcentagem;
+    private javax.swing.JButton salvarPorcentagem;
+    private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }

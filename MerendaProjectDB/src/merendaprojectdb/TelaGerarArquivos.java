@@ -15,6 +15,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
      * Creates new form TelaGerarArquivos
      */
     private Relatorio relatorio;
+    private TelaListaRelatorios listaRelatorios;
     public TelaGerarArquivos(Relatorio relatorio) {
         initComponents();
         this.relatorio = relatorio;
@@ -33,6 +34,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
         gerarODS = new javax.swing.JButton();
         gerarODT = new javax.swing.JButton();
         gerarPDF = new javax.swing.JButton();
+        voltar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +59,13 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             }
         });
 
+        voltar.setText("voltar");
+        voltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                voltarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,11 +80,16 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
                 .addGap(160, 160, 160)
                 .addComponent(gerarPDF)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(voltar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addComponent(voltar)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gerarODS)
                     .addComponent(gerarODT))
@@ -99,6 +113,14 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
         exportador.exportarPDF();
     }//GEN-LAST:event_gerarPDFActionPerformed
 
+    private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        this.listaRelatorios = new TelaListaRelatorios();
+        this.listaRelatorios.setLocationRelativeTo(null);
+        this.listaRelatorios.setVisible(true);
+        this.listaRelatorios.setResizable(true);
+        dispose();
+    }//GEN-LAST:event_voltarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -107,5 +129,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     private javax.swing.JButton gerarODS;
     private javax.swing.JButton gerarODT;
     private javax.swing.JButton gerarPDF;
+    private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }
