@@ -33,6 +33,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private BdManager banco;
     private TelaTrocarDeEscola trocaDeEscola;
     
+    private TiposDeUsuario tipos = new TiposDeUsuario();
+    
     public TelaPrincipal() {
         initComponents();
         if(this.usuarioLogado == null) {
@@ -62,13 +64,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttons[5] = this.jButton6;
         buttons[6] = this.jButton7;
         int i = 0;
-        if(usuarioLogado.canWritePermit()== true){
+        Permissoes permissoes;
+        if(usuarioLogado.getTipo().equals("Diretor")) {
+            permissoes = this.tipos.getDirPermits();
+        } else if(usuarioLogado.getTipo().equals("Administrador")) {
+            permissoes = this.tipos.getAdmPermits();
+        } else {
+            permissoes = this.tipos.getLeitorPermits();
+        }
+        if(permissoes.canWritePermit == true){
             this.operacoes[i] = "editarPermissoes";
             buttons[i].setText("Editar Permissoes");
             i++;
         }
         
-        if(usuarioLogado.canWriteReport()== true){
+        if(permissoes.canWriteReport == true){
             this.operacoes[i]= "editarRelatorio";
             buttons[i].setText("Editar Relatorio");
             i++;
@@ -77,13 +87,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             i++;
         }
     
-        if(usuarioLogado.canNewReport()==true){
+        if(permissoes.canNewReport==true){
             this.operacoes[i] = "novoRelatorio";
             buttons[i].setText("Criar Relatorio");
             i++;
         }
         
-        if(usuarioLogado.canSeeReport()==true){
+        if(permissoes.canSeeReport ==true){
             this.operacoes[i] = "verRelatorio";
             buttons[i].setText("Ver Relatorio");
             i++;
@@ -95,12 +105,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             i++;
         }*/
         
-        if(usuarioLogado.canWriteSchool()==true){
+        if(permissoes.canWriteSchool ==true){
             this.operacoes[i] = "cadastrarEscola";
             buttons[i].setText("Cadastrar Escola");
             i++;
         }
-        if(usuarioLogado.canAddUser()==true){
+        if(permissoes.canAddUser==true){
             this.operacoes[i]="cadastrarUsuario";
             buttons[i].setText("Cadastrar Usuario");
             i++;

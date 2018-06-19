@@ -10,13 +10,13 @@ package merendaprojectdb;
  * @author gdsm
  */
 public class Permissoes {
-    boolean canNewReport;
-    boolean canWriteReport;
-    boolean canWriteSchool;
-    boolean canSeeReport;
-    boolean canSeeSchool;
-    boolean canWritePermit;
-    boolean canAddUser;
+    public boolean canNewReport;
+    public boolean canWriteReport;
+    public boolean canWriteSchool;
+    public boolean canSeeReport;
+    public boolean canSeeSchool;
+    public boolean canWritePermit;
+    public boolean canAddUser;
     
     /*public Permissoes(boolean newReport, boolean writeReport, boolean writeSchool,
             boolean seeReport, boolean seeSchool, boolean writePermit, boolean addUser){*/

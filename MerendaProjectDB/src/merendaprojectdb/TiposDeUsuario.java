@@ -16,20 +16,29 @@ public class TiposDeUsuario {
     private Permissoes adm;
     
     public TiposDeUsuario(){
-        setPermissoesAdm(true, true, true, true, true, true, true);
-        setPermissoesLeitor(false, false, true, false, true, false, false);
-        setPermissoesDir(true, true, true, false, true, false, false);
+        if( dir == null ) {
+            dir = new Permissoes();
+            setPermissoesDir(true, true, true, false, true, false, false);
+        }
+        if( adm == null ) {
+            adm = new Permissoes();
+            setPermissoesAdm(true, true, true, true, true, true);
+        }
+        if( leitor == null ) {
+            leitor = new Permissoes();
+            setPermissoesLeitor(false, false, true, false, true, false, false);
+        }    
     }
     
-    public void setPermissoesAdm(boolean nr, boolean wr, boolean sr, boolean ws, 
-            boolean ss, boolean wp, boolean au){
-        adm.canNewReport(nr);
-        adm.canWriteReport(wr);
-        adm.canSeeReport(sr);
-        adm.canWriteSchool(ws);
-        adm.canSeeSchool(ss);
-        adm.canWritePermit(wp);
-        adm.canAddUser(au);       
+    public void setPermissoesAdm(boolean newReport, boolean writeReport, boolean seeReport, boolean writeSchool, 
+            boolean seeSchool, boolean addUser){
+        adm.canNewReport(newReport);
+        adm.canWriteReport(writeReport);
+        adm.canSeeReport(seeReport);
+        adm.canWriteSchool(writeSchool);
+        adm.canSeeSchool(seeSchool);
+        adm.canWritePermit(true);
+        adm.canAddUser(addUser);       
     }
     
     public Permissoes getAdmPermits(){

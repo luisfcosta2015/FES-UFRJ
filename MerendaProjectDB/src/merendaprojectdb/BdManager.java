@@ -198,7 +198,7 @@ public class BdManager {
            return null;
         }
     }
-    static ArrayList pegarEscolas(){
+    static ArrayList<Escola> pegarEscolas(){
         
         PreparedStatement ps;
         try{

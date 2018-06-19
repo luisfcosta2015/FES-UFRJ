@@ -17,9 +17,6 @@ public class Usuario {
     private String email;
     private String tipo; 
     private Escola escola;
-    
-    TiposDeUsuario usertier;
-    Permissoes permits;
     /*
     private boolean canNewReport;
     private boolean canWriteReport;
@@ -39,10 +36,6 @@ public class Usuario {
         this.senha = senha;
         this.email = email;
         this.tipo = tipo;
-        this.usertier = new TiposDeUsuario();
-        this.permits = new Permissoes();
-        
-        setPermits();
     }
     
     public Usuario(String nome, String user, String senha, String email, String tipo, Escola escola) {
@@ -52,19 +45,6 @@ public class Usuario {
         this.email = email;
         this.tipo = tipo;
         this.escola = escola;
-        this.usertier = new TiposDeUsuario();
-        this.permits = new Permissoes();
-        
-        setPermits();
-    }
-    
-    private void setPermits(){       
-        if (tipo.equals("Administrador"))
-            this.permits = this.usertier.getAdmPermits();            
-        else if(tipo.equals("Diretor"))
-            this.permits = this.usertier.getDirPermits();
-        else if(tipo.equals("Leitor"))
-            this.permits = this.usertier.getLeitorPermits();
     }
     
     public String getNome(){
@@ -109,34 +89,4 @@ public class Usuario {
         }
         return false;
     }
-    
-    public boolean canNewReport(){
-        return permits.canNewReport;
-    }
-    
-    public boolean canWriteReport(){
-        return permits.canWriteReport;
-    }
-    
-    public boolean canSeeReport(){
-        return permits.canSeeReport;
-    }
-    
-    public boolean canWriteSchool(){
-        return permits.canWriteSchool;
-    }
-    
-    public boolean canSeeSchool(){
-        return permits.canSeeSchool;
-    }
-    
-    public boolean canWritePermit(){
-        return permits.canWritePermit;
-    }
-    public boolean canAddUser(){
-        return permits.canAddUser;
-    }
-    
-    
-    
 }

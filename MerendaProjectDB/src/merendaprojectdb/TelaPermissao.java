@@ -291,7 +291,7 @@ public class TelaPermissao extends javax.swing.JFrame {
         
         if(tipo=="Administrador"){
            // UsuarioAdm adm;
-           usertier.setPermissoesAdm(newrp, getrp, seerp, newsc, seesc, newpm, true); 
+           usertier.setPermissoesAdm(newrp, getrp, seerp, newsc, seesc, true); 
            /*usertier.adm.canNewReport(newrp);
             usertier.adm.canWriteReport(getrp);
             usertier.adm.canSeeReport(seerp);
