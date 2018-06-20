@@ -6,11 +6,11 @@ import static org.junit.Assert.*;
 
 public class BarraTest {
 
-    Barra barra;
+    BarraIdade barra;
 
     @Before
     public void setUp() throws Exception {
-       barra = new Barra();
+       barra = new BarraIdade();
     }
 
     @Test

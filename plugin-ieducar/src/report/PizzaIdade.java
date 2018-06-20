@@ -16,11 +16,11 @@ import java.awt.*;
 import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 import static net.sf.dynamicreports.report.builder.DynamicReports.stl;
 
-public class Pizza {
+public class PizzaIdade {
     int[] intArray = new int[3];
     int errado;
     int certo;
-    public Pizza() {
+    public PizzaIdade() {
         intArray[0] = 1; //Escola 0
         intArray[1] = 5; //Escola 0
         intArray[2] = 10; //Escola 1
@@ -99,7 +99,7 @@ public class Pizza {
     }
 
     public static void main(String[] args) {
-        //Pizza p = new Pizza();
+        //PizzaIdade p = new PizzaIdade();
         //p.buildPizza();
     }
 

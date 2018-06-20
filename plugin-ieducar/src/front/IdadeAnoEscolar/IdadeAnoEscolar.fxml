@@ -10,7 +10,7 @@
 <?import javafx.scene.image.*?>
 
 
-<BorderPane maxHeight="700.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@pag-relatorio.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.PagRelatorio.PagRelatorioController">
+<BorderPane maxHeight="700.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@idade-anoEscolar.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.IdadeAnoEscolar.IdadeAnoEscolarController">
    <left>
       <Pane maxHeight="700.0" maxWidth="50.0" prefHeight="700.0" prefWidth="50.0" styleClass="margens" BorderPane.alignment="CENTER" />
    </left>

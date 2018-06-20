@@ -1,4 +1,4 @@
-package front.PagRelatorio;
+package front.IdadeAnoEscolar;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import report.Report;
 import java.io.IOException;
 
-public class PagRelatorioController {
+public class IdadeAnoEscolarController {
 
     @FXML
     private Button gera_relatorio;
@@ -84,7 +84,7 @@ public class PagRelatorioController {
         turma = getChoice(box_turma);
         grafico = getChoice(box_grafico);
 
-        relatorio.build(escola, turma, grafico);
+        relatorio.buildIdadeAnoEscolar(escola, turma, grafico);
 
     }
 

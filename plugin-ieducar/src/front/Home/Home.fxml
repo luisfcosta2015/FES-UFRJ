@@ -23,7 +23,8 @@
          <children>
             <Label layoutX="41.0" layoutY="108.0" styleClass="subtitulo" text="Gerar Relatório" />
             <Label layoutX="506.0" layoutY="108.0" styleClass="subtitulo" text="Exemplo" />
-            <Button layoutX="121.0" layoutY="254.0" mnemonicParsing="false" onAction="#trocaPagina" styleClass="botao" text="Relação Aluno / Ano escolar" />
+            <Button layoutX="121.0" layoutY="254.0" mnemonicParsing="false" onAction="#trocaIdadeAnoEscolar" styleClass="botao" text="Relação Aluno / Ano escolar" />
+            <Button layoutX="121.0" layoutY="425.0" mnemonicParsing="false" onAction="#trocaGeneroAnoEscolar" styleClass="botao" text="Relação Gênero / Ano escolar" />
             <ImageView fitHeight="310.0" fitWidth="242.0" layoutX="533.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/relatorio.jpg" />

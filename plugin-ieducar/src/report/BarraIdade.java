@@ -15,11 +15,11 @@ import java.awt.*;
 import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 import static net.sf.dynamicreports.report.builder.DynamicReports.stl;
 
-public class Barra {
+public class BarraIdade {
 
     int[] intArray = new int[3];
 
-    public Barra() {
+    public BarraIdade() {
         intArray[0] = 1;
         intArray[1] = 11;
         intArray[2] = 10;
@@ -92,9 +92,9 @@ public class Barra {
     }
 
 
-    public static void main(String[] args) {
-        Barra b = new Barra();
-        b.buildBarra("Escola", "Turma");
-    }
+    //public static void main(String[] args) {
+      //  BarraIdade b = new BarraIdade();
+        //b.buildBarra("Escola", "Turma");
+    //}
 
 }

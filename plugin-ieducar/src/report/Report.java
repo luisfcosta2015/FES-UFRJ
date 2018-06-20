@@ -17,17 +17,17 @@ import java.math.BigDecimal;
 
 public class Report {
 
-    Barra relatorioBarra = new Barra();
-    Pizza relatorioPizza = new Pizza();
+    BarraIdade relatorioIdadeAnoBarra = new BarraIdade();
+    PizzaIdade relatorioIdadeAnoPizza = new PizzaIdade();
 
     public Report(){ //build();
     }
 
-    public void build(String escola, String turma, String grafico) {
+    public void buildIdadeAnoEscolar(String escola, String turma, String grafico) {
         if (grafico == "Barra") {
-            relatorioBarra.buildBarra(escola, turma);
+            relatorioIdadeAnoBarra.buildBarra(escola, turma);
         } else if (grafico == "Pizza") {
-            relatorioPizza.buildPizza(escola, turma);
+            relatorioIdadeAnoPizza.buildPizza(escola, turma);
         } else {
             System.out.println("Um tipo inválido de gráfico foi selecionado.");
         }
