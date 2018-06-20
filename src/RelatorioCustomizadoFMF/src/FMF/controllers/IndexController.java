@@ -51,7 +51,7 @@ public class IndexController implements Initializable {
         background.getChildren().setAll(x);       
 
     }
-    public void addAtribAct() throws IOException{
+    public void deleteRelAct() throws IOException{
         //TODO
     }
     

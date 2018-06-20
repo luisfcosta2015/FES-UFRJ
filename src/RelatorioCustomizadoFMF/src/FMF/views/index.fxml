@@ -16,7 +16,7 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
-      <Button fx:id="addAtribBtn" layoutX="5.0" layoutY="122.0" mnemonicParsing="false" onAction="#addAtribAct" prefHeight="50.0" prefWidth="170.0" text="Adicionar Atributos">
+      <Button fx:id="deleteRelBtn" layoutX="5.0" layoutY="122.0" mnemonicParsing="false" onAction="#deletarRelAct" prefHeight="50.0" prefWidth="170.0" text="Deletar Relatório">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
