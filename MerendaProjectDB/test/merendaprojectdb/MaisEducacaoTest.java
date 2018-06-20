@@ -1,0 +1,56 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package merendaprojectdb;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Vitor
+ */
+public class MaisEducacaoTest {
+    private MaisEducacao instance;
+    
+    public MaisEducacaoTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+        instance = new MaisEducacao(1,2,3,4,5);
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of changeAll method, of class MaisEducacao.
+     */
+    @Test
+    public void testChangeAll() {
+        System.out.println("changeAll");
+        instance.changeAll(5, 3, 4, 2, 1);
+        assertEquals(5, instance.matriculados);
+        assertEquals(3, instance.atendidos);
+        assertEquals(4, instance.numDias);
+        assertEquals(2, instance.totalDesjejum);
+        assertEquals(1, instance.totalLanche);
+    }
+    
+}
