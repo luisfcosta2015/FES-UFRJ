@@ -5,6 +5,8 @@
  */
 package merendaprojectdb;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thiago
@@ -15,14 +17,17 @@ public class TelaCadastro extends javax.swing.JFrame {
      * Creates new form cadastroTela
      */
     
-    String usuario;
-    public TelaCadastro(String nome) {
+    public TelaCadastro() {
         initComponents();
-        usuario=nome;
     }
     
     TelaPrincipal principal;
 
+    
+    public boolean verificaPreenchimento(Usuario user) {
+        //TODO
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,24 +177,21 @@ public class TelaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                
+       
         String nome = campoNome.getText();
         String user = campoUser.getText();
         String senha = campoSenha.getText();
         String email = campoEmail.getText();
         Object tipo = campoTipo.getSelectedItem();
         Object escola = campoEscola.getSelectedItem();
-        
-        System.out.println(nome);
-        System.out.println(user);
-        System.out.println(senha);
-        System.out.println(email);
-        System.out.println(tipo);
-        System.out.println(escola);
         // atualiza o banco de dados
         Usuario usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo);
-        BdManager.cadastraUser(usuarioNovo);
-        
+        if(verificaPreenchimento(usuarioNovo)) {
+            BdManager.cadastraUser(usuarioNovo);
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Todos os campos são de preenchimento obrigatório");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void voltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltaMouseClicked

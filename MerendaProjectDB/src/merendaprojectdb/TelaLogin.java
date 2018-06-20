@@ -113,8 +113,13 @@ public class TelaLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void verificaLogin()
+    public void setSenha(String senha) {
+        this.campoSenha.setText(senha);
+    }
+    public void setUser(String user) {
+        this.campoUsuario.setText(user);
+    }
+    public boolean verificaLogin()
     {
         if(banco.verificarUser(campoSenha.getText().intern(),campoUsuario.getText())==true)
         {
@@ -124,6 +129,7 @@ public class TelaLogin extends javax.swing.JFrame {
             principal.setVisible(true);
             principal.setResizable(true);
             this.dispose();
+            return true;
         }
         else
         {
@@ -133,6 +139,7 @@ public class TelaLogin extends javax.swing.JFrame {
             //itens.setResizable(true);
             //this.setVisible(false);
             JOptionPane.showMessageDialog(null,"Usuario errado, tente\n Usuario: Diretor\nSenha:123");
+            return false;
         }
     }
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed

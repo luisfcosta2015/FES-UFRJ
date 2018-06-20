@@ -368,7 +368,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 dispose();
                 break;
             case "cadastrarUsuario":
-                cadastro=new TelaCadastro(usuario);
+                cadastro=new TelaCadastro();
                 cadastro.setLocationRelativeTo(null);
                 cadastro.setVisible(true);
                 cadastro.setResizable(true);
