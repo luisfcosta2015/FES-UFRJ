@@ -93,8 +93,8 @@ public class Barra {
 
 
     public static void main(String[] args) {
-        //Barra b = new Barra();
-        //b.buildBarra();
+        Barra b = new Barra();
+        b.buildBarra("Escola", "Turma");
     }
 
 }

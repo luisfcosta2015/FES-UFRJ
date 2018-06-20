@@ -1,5 +1,6 @@
 package report;
 
+import net.sf.dynamicreports.report.builder.chart.Pie3DChartBuilder;
 import net.sf.dynamicreports.report.builder.chart.PieChartBuilder;
 import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
 import net.sf.dynamicreports.report.builder.style.StyleBuilder;
@@ -17,11 +18,15 @@ import static net.sf.dynamicreports.report.builder.DynamicReports.stl;
 
 public class Pizza {
     int[] intArray = new int[3];
-
+    int errado;
+    int certo;
     public Pizza() {
-        intArray[0] = 1;
-        intArray[1] = 11;
-        intArray[2] = 10;
+        intArray[0] = 1; //Escola 0
+        intArray[1] = 5; //Escola 0
+        intArray[2] = 10; //Escola 1
+
+        certo = 0;
+        errado = 0;
     }
 
     public void buildPizza(String escola, String turma) {
@@ -32,10 +37,14 @@ public class Pizza {
                 .setBackgroundColor(Color.LIGHT_GRAY);
 
         TextColumnBuilder<String> turmaColuna = col.column("Turma", "turma", type.stringType()).setStyle(boldStyle);
+        TextColumnBuilder<String> verificaColuna = col.column("Verifica", "verifica", type.stringType()).setStyle(boldStyle);
         TextColumnBuilder<Integer> idadeColuna = col.column("Idade", "idade", type.integerType());
 
-        TextColumnBuilder<Integer> quantidadeCerta = col.column("Alunos Certos", "qtdCerta", type.integerType());
-        TextColumnBuilder<Integer> quantidadeErrada = col.column("Alunos Errados", "qtdErrada", type.integerType());
+
+        //TextColumnBuilder<Integer> quantidadeCerta = col.column("Alunos Certos", "qtdCerta", type.integerType());
+        //TextColumnBuilder<Integer> quantidadeErrada = col.column("Alunos Errados", "qtdErrada", type.integerType());
+        TextColumnBuilder<Integer> quantidade = col.column("Alunos Errados", "qtd", type.integerType());
+
 
         TextColumnBuilder<String> alunoColuna = col.column("Aluno", "aluno", type.stringType());
         TextColumnBuilder<String> registroColuna = col.column("Registro", "registro", type.stringType());
@@ -43,10 +52,10 @@ public class Pizza {
                 .setFixedColumns(2)
                 .setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 
-        PieChartBuilder graficoPizza = cht.pieChart()
+        Pie3DChartBuilder graficoPizza = cht.pie3DChart()
                 .setTitle("Alunos na série errada")
-                .setKey(turmaColuna)
-                .series(cht.serie(quantidadeCerta), cht.serie(quantidadeErrada));
+                .setKey(verificaColuna)
+                .series(cht.serie(quantidade));
 
         try {
             report()
@@ -55,14 +64,14 @@ public class Pizza {
                     .highlightDetailEvenRows()
 
                     .columns(// add columns
-                            rowNumberColumn, alunoColuna, idadeColuna, turmaColuna, registroColuna)
+                            verificaColuna, quantidade)
 
 
 
-                    .title(cmp.text("Relatório sobre " + escola + " da turma " + turma))
+                    .title(cmp.text("Relatório sobre "))
                     .pageFooter(cmp.pageXofY())
                     .summary(graficoPizza)
-                    .setDataSource(createDataSource(turma))
+                    .setDataSource(createDataSource())
                     .show();
 
         } catch (DRException e) {
@@ -70,24 +79,28 @@ public class Pizza {
         }
     }
 
-    public JRDataSource createDataSource(String turma) {
-        DRDataSource dataSource = new DRDataSource("aluno", "idade", "turma", "registro", "qtdCerta", "qtdErrada");
-        //Pensando na Quarta série
+    public JRDataSource createDataSource() {
+        DRDataSource dataSource = new DRDataSource("verifica", "qtd");
+
 
         for (int i = 0; i < intArray.length; i++) {
             if (intArray[i] > 7) {
-                dataSource.add("Aluno 1", intArray[i], turma, "ABC", 0, 1);
+                errado = errado + 1;
+                //dataSource.add("Aluno 1", intArray[i], "turma", "ABC");
             } else {
-                dataSource.add("Aluno 1", intArray[i], turma, "ABC", 1, 0);
+                certo = certo + 1;
+                //dataSource.add("Aluno 1", intArray[i], "turma", "ABC");
             }
         }
 
+        dataSource.add("Quantidade na série Certa", certo);
+        dataSource.add("Quantidade na série errada", errado);
         return dataSource;
     }
 
     public static void main(String[] args) {
-        Pizza p = new Pizza();
-        p.buildPizza("Escola", "Turma");
+        //Pizza p = new Pizza();
+        //p.buildPizza();
     }
 
 }
