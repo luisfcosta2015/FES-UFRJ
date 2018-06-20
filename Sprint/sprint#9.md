@@ -188,7 +188,7 @@ Essa semana me comprometi com coisas mais complexas que envolviam programação 
 <h4> Larissa </h4>
 
 <p align="justify">
-Dado que muitas das minhasa tividades essa semana serem de docuentação tive êxito em concluir as atividades sem grandes problemas, porém a parte de testes ainda ficou comprometida, por conta de provas e outeas matérias. Além disso, ao final da Sprint pude auxiliar os outros membros a consertar erros no projeto do gráfico de Pizza.
+Dado que muitas das minhasa tividades essa semana serem de docuentação tive êxito em concluir as atividades sem grandes problemas, porém a parte de testes ainda ficou comprometida, por conta de provas e outras matérias. Além disso, ao final da Sprint pude auxiliar os outros membros a consertar erros no projeto do gráfico de Pizza.
 </p>
 
 <h4> Tomaz </h4>
