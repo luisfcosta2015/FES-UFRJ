@@ -34,6 +34,11 @@
     <td>  1 hora </td>
     <td> Aline </td>
   </tr>
+   <tr>
+    <td>  Casos de uso do relatório Gênero/Ano Escolar </td>
+    <td>  2 horas </td>
+    <td> Aline </td>
+  </tr>
   <tr>
     <td>  Documentar AdHoc na Wiki </td>
     <td>  1 hora </td>
