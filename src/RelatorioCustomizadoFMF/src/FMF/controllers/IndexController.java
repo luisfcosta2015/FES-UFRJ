@@ -30,7 +30,7 @@ public class IndexController implements Initializable {
     private Button editarRelBtn;
 
     @FXML
-    private Button addAtribBtn;
+    private Button deleteRelBtn;
 
     @FXML
     private AnchorPane background;

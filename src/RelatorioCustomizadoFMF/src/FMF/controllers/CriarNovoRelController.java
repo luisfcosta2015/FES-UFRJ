@@ -5,13 +5,19 @@
  */
 package FMF.controllers;
 
+
+import FMF.models.Modelo;
+import FMF.models.Relatorios;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -26,6 +32,13 @@ public class CriarNovoRelController implements Initializable {
     
     @FXML
     private Button confirmabtn;
+    
+    @FXML
+    private TextField CampoNomeModelo, CampoNomeArqConsulta;
+    
+    
+    
+  
 
     /**
      * Initializes the controller class.
@@ -41,8 +54,10 @@ public class CriarNovoRelController implements Initializable {
     }
     
     public void confirmaAct(){
-        //TODO
-        System.out.println("TODO");
+       Relatorios relatorios = new Relatorios(Relatorios.nomeArqModelos);
+       relatorios.criarModelo(CampoNomeModelo.getText(), CampoNomeArqConsulta.getText());
+        //criarRelatorio(..., ...);
+        
         
     }
     

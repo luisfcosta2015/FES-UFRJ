@@ -4,15 +4,12 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Modelo {
-	private Set<TemplateStatement> templates;
+	private TemplateStatement template;
 	private String nome;
 
-	public Modelo(String nome) {
-		this.templates = new HashSet<>();
+	public Modelo(String nome, TemplateStatement template) {
 		this.nome = nome;
+                this.template = template;
 	}
 	
-	public void addTemplate(TemplateStatement stmt) {
-		templates.add(stmt);
-	}
 }
