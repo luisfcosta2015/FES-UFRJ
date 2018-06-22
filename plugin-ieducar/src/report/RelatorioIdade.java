@@ -28,13 +28,17 @@ public class RelatorioIdade {
     private int errado;
     private int certo;
 
+    private boolean gerado;
 
-    RelatorioIdade(String e,String t) {
+
+    public RelatorioIdade(String e, String t) {
         this.escola = e;
         this.turma = t;
 
         this.errado = 0;
         this.certo = 0;
+
+        this.gerado = false;
 
         intArray[0] = 1;
         intArray[1] = 11;
@@ -74,7 +78,7 @@ public class RelatorioIdade {
             .setKey(verificaColuna)
             .series(cht.serie(quantidadeTotal));
 
-    public void buildBarra() {
+    public boolean buildBarra() {
         try {
             report()
                     .setColumnTitleStyle(columnTitleStyle)
@@ -92,12 +96,16 @@ public class RelatorioIdade {
                     .setDataSource(createBarraSource())
                     .show();
 
+            this.gerado = true;
+
         } catch (DRException e) {
             e.printStackTrace();
         }
+
+        return this.gerado;
     }
 
-    private JRDataSource createBarraSource() {
+    public JRDataSource createBarraSource() {
         DRDataSource dataSource = new DRDataSource("aluno", "idade", "turma", "registro", "qtdCerta", "qtdErrada");
         //Pensando na Quarta série
 
@@ -113,8 +121,7 @@ public class RelatorioIdade {
         return dataSource;
     }
 
-    public void buildPizza() {
-        System.out.println("OI");
+    public boolean buildPizza() {
         try {
             report()
                     .setColumnTitleStyle(columnTitleStyle)
@@ -130,12 +137,16 @@ public class RelatorioIdade {
                     .setDataSource(createPizzaSource())
                     .show();
 
+            this.gerado = true;
+
         } catch (DRException e) {
             e.printStackTrace();
         }
+
+        return this.gerado;
     }
 
-    private JRDataSource createPizzaSource() {
+    public JRDataSource createPizzaSource() {
         DRDataSource dataSource = new DRDataSource("verifica", "qtdTotal");
 
 

@@ -11,7 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-import report.Report;
+import report.RelatorioIdade;
+
 import java.io.IOException;
 
 public class IdadeAnoEscolarController {
@@ -36,8 +37,6 @@ public class IdadeAnoEscolarController {
     private String escola;
     private String turma;
     private String grafico;
-
-    Report relatorio = new Report();
 
 
     /**
@@ -79,16 +78,31 @@ public class IdadeAnoEscolarController {
      *
      */
     @FXML
-    public void geraRelatorio(ChoiceBox<String> box_escola, ChoiceBox<String> box_turma, ChoiceBox<String> box_grafico) {
+    public String geraRelatorio(ChoiceBox<String> box_escola, ChoiceBox<String> box_turma, ChoiceBox<String> box_grafico) {
+
         escola = getChoice(box_escola);
         turma = getChoice(box_turma);
         grafico = getChoice(box_grafico);
 
-        relatorio.buildIdadeAnoEscolar(escola, turma, grafico);
+        System.out.println(escola);
+
+        RelatorioIdade relatorioIdade = new RelatorioIdade(escola, turma);
+
+        if (grafico.equals("Barra")) {
+            relatorioIdade.buildBarra();
+        } else if (grafico.equals("Pizza")) {
+            relatorioIdade.buildPizza();
+        } else {
+            System.out.println("Um tipo inválido de gráfico foi selecionado.");
+        }
+
+        //relatorio.buildIdadeAnoEscolar(escola, turma, grafico);
+
+        return grafico;
 
     }
 
-    private String getChoice(ChoiceBox<String> choiceBox) {
+    public String getChoice(ChoiceBox<String> choiceBox) {
         return choiceBox.getValue();
     }
 

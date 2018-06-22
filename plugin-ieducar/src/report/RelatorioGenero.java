@@ -23,17 +23,21 @@ public class RelatorioGenero {
     private String escola;
     private String turma;
 
-    private int m; // Somatório de meninos
-    private int f; //Somatório de meninas
+    private int masculino; // Somatório de meninos
+    private int feminino; //Somatório de meninas
+
+    private boolean gerado;
 
     private String[] genero = new String[3];
 
-    RelatorioGenero(String e, String t) {
+    public RelatorioGenero(String e, String t) {
         this.escola = e;
         this.turma = t;
 
-        this.m = 0;
-        this.f = 0;
+        this.masculino = 0;
+        this.feminino = 0;
+
+        this.gerado = false;
 
         this.genero[0] = "Feminino";
         this.genero[1] = "Feminino";
@@ -50,8 +54,8 @@ public class RelatorioGenero {
 
     private TextColumnBuilder<String> generoColuna = col.column("Gênero", "genero", type.stringType()).setStyle(boldCenteredStyle); //key grafico de pizza
     private TextColumnBuilder<Integer> quantidade = col.column("Alunos Errados", "qtd", type.integerType()); //Guardar o somatório de meninos e meninas para o gráfico de pizza
-    private TextColumnBuilder<Integer> masculinoColuna = col.column("Masculino", "masculino", type.integerType()); //key grafico de barra
-    private TextColumnBuilder<Integer> femininoColuna = col.column("Feminino", "feminino", type.integerType()); //key grafico de barra
+    private TextColumnBuilder<Integer> masculinoColuna = col.column("Masculino", "qtdMasculino", type.integerType()); //key grafico de barra
+    private TextColumnBuilder<Integer> femininoColuna = col.column("Feminino", "qtdFeminino", type.integerType()); //key grafico de barra
 
 
     private TextColumnBuilder<String> alunoColuna = col.column("Aluno", "aluno", type.stringType()).setStyle(boldCenteredStyle);
@@ -72,7 +76,7 @@ public class RelatorioGenero {
             .setKey(generoColuna)
             .series(cht.serie(quantidade));
 
-    public void buildBarra() {
+    public boolean buildBarra() {
         try {
             report()
                     .setColumnTitleStyle(columnTitleStyle)
@@ -90,13 +94,17 @@ public class RelatorioGenero {
                     .setDataSource(createBarraSource())
                     .show();
 
+            this.gerado = true;
+
         } catch (DRException e) {
             e.printStackTrace();
         }
+
+        return this.gerado;
     }
 
-    private JRDataSource createBarraSource() {
-        DRDataSource dataSource = new DRDataSource("aluno", "genero", "turma", "registro", "feminino", "masculino");
+    public JRDataSource createBarraSource() {
+        DRDataSource dataSource = new DRDataSource("aluno", "genero", "turma", "registro", "qtdFeminino", "qtdMasculino");
         //Pensando na Quarta série
 
         for (String g : this.genero) {
@@ -112,7 +120,7 @@ public class RelatorioGenero {
     }
 
 
-    public void buildPizza() {
+    public boolean buildPizza() {
         try {
             report()
                     .setColumnTitleStyle(columnTitleStyle)
@@ -130,25 +138,29 @@ public class RelatorioGenero {
                     .setDataSource(createPizzaSource())
                     .show();
 
+            this.gerado = true;
+
         } catch (DRException e) {
             e.printStackTrace();
         }
+
+        return this.gerado;
     }
 
-    private JRDataSource createPizzaSource() {
+    public JRDataSource createPizzaSource() {
         DRDataSource dataSource = new DRDataSource("genero", "qtd");
 
         for (String g : this.genero) {
             if (g.equals("Feminino")) {
-                this.f = this.f + 1;
+                this.feminino = this.feminino + 1;
             } else {
-                this.m = this.m + 1;
+                this.masculino = this.masculino + 1;
 
             }
         }
 
-        dataSource.add("Meninas na Turma", this.f);
-        dataSource.add("Meninos na Turma", this.m);
+        dataSource.add("Meninas na Turma", this.feminino);
+        dataSource.add("Meninos na Turma", this.masculino);
         return dataSource;
     }
 }

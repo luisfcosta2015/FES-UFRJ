@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-import report.Report;
+import report.RelatorioGenero;
 
 import java.io.IOException;
 
@@ -56,7 +56,6 @@ public class GeneroAnoEscolarController {
         gera_relatorio.setOnAction(e -> geraRelatorio(box_escola, box_turma, box_grafico));
     }
 
-    Report relatorio = new Report();
     /**
      * Método para voltar para página Home
      *
@@ -83,7 +82,16 @@ public class GeneroAnoEscolarController {
         turma = getChoice(box_turma);
         grafico = getChoice(box_grafico);
 
-        relatorio.buildGeneroAnoEscolar(escola, turma, grafico);
+        RelatorioGenero relatorioGenero = new RelatorioGenero(escola, turma);
+        if (grafico.equals("Barra")) {
+            relatorioGenero.buildBarra();
+        } else if (grafico.equals("Pizza")) {
+            relatorioGenero.buildPizza();
+        } else {
+            System.out.println("Um tipo inválido de gráfico foi selecionado.");
+        }
+
+        //relatorio.buildGeneroAnoEscolar(escola, turma, grafico);
 
     }
 
