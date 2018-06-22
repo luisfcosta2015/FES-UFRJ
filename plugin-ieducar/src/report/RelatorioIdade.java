@@ -15,29 +15,30 @@ import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 import static net.sf.dynamicreports.report.builder.DynamicReports.cht;
 
 /**
- * Classe para mostrar o gráfico comparativo do gênero em cada turma
+ * Classe para gerar relatório do gráfico comparativo das Idades dos alunos a sua sére
  *
  */
-public class RelatorioGenero {
+public class RelatorioIdade {
 
     private String escola;
     private String turma;
 
-    private int m; // Somatório de meninos
-    private int f; //Somatório de meninas
+    private int[] intArray = new int[3];
 
-    private String[] genero = new String[3];
+    private int errado;
+    private int certo;
 
-    RelatorioGenero(String e, String t) {
+
+    RelatorioIdade(String e,String t) {
         this.escola = e;
         this.turma = t;
 
-        this.m = 0;
-        this.f = 0;
+        this.errado = 0;
+        this.certo = 0;
 
-        this.genero[0] = "Feminino";
-        this.genero[1] = "Feminino";
-        this.genero[2] = "Feminino";
+        intArray[0] = 1;
+        intArray[1] = 11;
+        intArray[2] = 10;
     }
 
     private StyleBuilder boldStyle = stl.style().bold();
@@ -47,11 +48,12 @@ public class RelatorioGenero {
             .setBackgroundColor(Color.LIGHT_GRAY);
 
     private TextColumnBuilder<String> turmaColuna = col.column("Turma", "turma", type.stringType()).setStyle(boldCenteredStyle);
+    private TextColumnBuilder<Integer> idadeColuna = col.column("Idade", "idade", type.integerType()).setStyle(boldCenteredStyle);
+    private TextColumnBuilder<String> verificaColuna = col.column("Verifica", "verifica", type.stringType()).setStyle(boldStyle); //Coluna para diferenciar o certo e o errad
 
-    private TextColumnBuilder<String> generoColuna = col.column("Gênero", "genero", type.stringType()).setStyle(boldCenteredStyle); //key grafico de pizza
-    private TextColumnBuilder<Integer> quantidade = col.column("Alunos Errados", "qtd", type.integerType()); //Guardar o somatório de meninos e meninas para o gráfico de pizza
-    private TextColumnBuilder<Integer> masculinoColuna = col.column("Masculino", "masculino", type.integerType()); //key grafico de barra
-    private TextColumnBuilder<Integer> femininoColuna = col.column("Feminino", "feminino", type.integerType()); //key grafico de barra
+    private TextColumnBuilder<Integer> quantidadeCerta = col.column("Alunos Certos", "qtdCerta", type.integerType()); //Para o cálculo do gráfico de barra
+    private TextColumnBuilder<Integer> quantidadeErrada = col.column("Alunos Errados", "qtdErrada", type.integerType()); //Para o cálculo do gráfico de barra
+    private TextColumnBuilder<Integer> quantidadeTotal = col.column("Alunos Errados", "qtdTotal", type.integerType()); // Para guardar o somatório do gráfico de pizza
 
 
     private TextColumnBuilder<String> alunoColuna = col.column("Aluno", "aluno", type.stringType()).setStyle(boldCenteredStyle);
@@ -60,17 +62,17 @@ public class RelatorioGenero {
             .setFixedColumns(2)
             .setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
 
-    //Gráfco de Barra
+    //Gráfico de barra
     private Bar3DChartBuilder graficoBarra = cht.bar3DChart()
-            .setTitle("Comparativo entre menino e meninas nas turmas")
+            .setTitle("Alunos na série errada")
             .setCategory(turmaColuna) //Eixo X
-            .addSerie(cht.serie(femininoColuna), cht.serie(masculinoColuna));
+            .addSerie(cht.serie(quantidadeCerta), cht.serie(quantidadeErrada));
 
     //Gráfico de Pizza
     private Pie3DChartBuilder graficoPizza = cht.pie3DChart()
             .setTitle("Alunos na série errada")
-            .setKey(generoColuna)
-            .series(cht.serie(quantidade));
+            .setKey(verificaColuna)
+            .series(cht.serie(quantidadeTotal));
 
     public void buildBarra() {
         try {
@@ -80,11 +82,11 @@ public class RelatorioGenero {
                     .highlightDetailEvenRows()
 
                     .columns(// add columns
-                            rowNumberColumn, alunoColuna, generoColuna, turmaColuna, registroColuna)
+                            rowNumberColumn, alunoColuna, idadeColuna, turmaColuna, registroColuna)
 
 
 
-                    .title(cmp.text("Relatório sobre " + this.escola + " da turma " + this.turma))
+                    .title(cmp.text("Relatório sobre " + escola + " da turma " + turma))
                     .pageFooter(cmp.pageXofY())
                     .summary(graficoBarra)
                     .setDataSource(createBarraSource())
@@ -96,14 +98,14 @@ public class RelatorioGenero {
     }
 
     private JRDataSource createBarraSource() {
-        DRDataSource dataSource = new DRDataSource("aluno", "genero", "turma", "registro", "feminino", "masculino");
+        DRDataSource dataSource = new DRDataSource("aluno", "idade", "turma", "registro", "qtdCerta", "qtdErrada");
         //Pensando na Quarta série
 
-        for (String g : this.genero) {
-            if (g.equals("Feminino")) {
-                dataSource.add("Aluno 1", "Feminino", this.turma, "ABC", 1, 0);
+        for (int anIntArray : intArray) {
+            if (anIntArray > 7) {
+                dataSource.add("Aluno 1", anIntArray, this.turma, "ABC", 0, 1);
             } else {
-                dataSource.add("Aluno 1", "Masculino", this.turma, "ABC", 0, 1);
+                dataSource.add("Aluno 1", anIntArray, this.turma, "ABC", 1, 0);
 
             }
         }
@@ -111,8 +113,8 @@ public class RelatorioGenero {
         return dataSource;
     }
 
-
     public void buildPizza() {
+        System.out.println("OI");
         try {
             report()
                     .setColumnTitleStyle(columnTitleStyle)
@@ -120,9 +122,7 @@ public class RelatorioGenero {
                     .highlightDetailEvenRows()
 
                     .columns(// add columns
-                            generoColuna, quantidade)
-
-
+                            verificaColuna, quantidadeTotal)
 
                     .title(cmp.text("Relatório sobre "))
                     .pageFooter(cmp.pageXofY())
@@ -136,19 +136,19 @@ public class RelatorioGenero {
     }
 
     private JRDataSource createPizzaSource() {
-        DRDataSource dataSource = new DRDataSource("genero", "qtd");
+        DRDataSource dataSource = new DRDataSource("verifica", "qtdTotal");
 
-        for (String g : this.genero) {
-            if (g.equals("Feminino")) {
-                this.f = this.f + 1;
+
+        for (int anIntArray : intArray) {
+            if (anIntArray > 7) {
+                this.errado = this.errado + 1;
             } else {
-                this.m = this.m + 1;
-
+                this.certo = this.certo + 1;
             }
         }
 
-        dataSource.add("Meninas na Turma", this.f);
-        dataSource.add("Meninos na Turma", this.m);
+        dataSource.add("Quantidade na série Certa", certo);
+        dataSource.add("Quantidade na série errada", errado);
         return dataSource;
     }
 }

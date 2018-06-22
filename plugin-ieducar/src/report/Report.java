@@ -20,24 +20,23 @@ public class Report {
     BarraIdade relatorioIdadeAnoBarra = new BarraIdade();
     PizzaIdade relatorioIdadeAnoPizza = new PizzaIdade();
 
-    RelatorioGenero relatorioGenero;
-
 
     public Report(){ //build();
     }
 
     public void buildIdadeAnoEscolar(String escola, String turma, String grafico) {
+        RelatorioIdade relatorioIdade = new RelatorioIdade(escola, turma);
         if (grafico.equals("Barra")) {
-            relatorioIdadeAnoBarra.buildBarra(escola, turma);
+            relatorioIdade.buildBarra();
         } else if (grafico.equals("Pizza")) {
-            relatorioIdadeAnoPizza.buildPizza(escola, turma);
+            relatorioIdade.buildPizza();
         } else {
             System.out.println("Um tipo inválido de gráfico foi selecionado.");
         }
     }
 
     public void buildGeneroAnoEscolar(String escola, String turma, String grafico) {
-        relatorioGenero = new RelatorioGenero(escola, turma);
+        RelatorioGenero relatorioGenero = new RelatorioGenero(escola, turma);
         if (grafico.equals("Barra")) {
             relatorioGenero.buildBarra();
         } else if (grafico.equals("Pizza")) {
