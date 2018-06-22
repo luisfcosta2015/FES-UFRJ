@@ -83,7 +83,7 @@ public class GeneroAnoEscolarController {
         turma = getChoice(box_turma);
         grafico = getChoice(box_grafico);
 
-        relatorio.buildIdadeAnoEscolar(escola, turma, grafico);
+        relatorio.buildGeneroAnoEscolar(escola, turma, grafico);
 
     }
 

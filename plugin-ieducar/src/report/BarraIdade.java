@@ -26,6 +26,7 @@ public class BarraIdade {
     }
 
     public void buildBarra(String escola, String turma) {
+
         StyleBuilder boldStyle = stl.style().bold();
         StyleBuilder boldCenteredStyle = stl.style(boldStyle).setHorizontalTextAlignment(HorizontalTextAlignment.CENTER);
         StyleBuilder columnTitleStyle = stl.style(boldCenteredStyle)
