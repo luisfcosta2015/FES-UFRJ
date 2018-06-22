@@ -30,76 +30,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneroAnoEscolarController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GeneroAnoEscolarController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="55" column="64" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="64" />
+            <state relative-caret-position="515">
+              <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IdadeAnoEscolarController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-673">
-              <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-              <folding>
-                <element signature="e#2969#2970#0" expanded="true" />
-                <element signature="e#3012#3013#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IdadeAnoEscolarControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/front/IdadeAnoEscolarControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RelatorioGeneroTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioGeneroTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#410#411#0" expanded="true" />
-                <element signature="e#470#471#0" expanded="true" />
-                <element signature="e#523#524#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
-                <element signature="e#629#630#0" expanded="true" />
-                <element signature="e#687#688#0" expanded="true" />
-                <element signature="e#733#734#0" expanded="true" />
-                <element signature="e#791#792#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RelatorioIdadeTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioIdadeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
-              <folding>
-                <element signature="e#348#349#0" expanded="true" />
-                <element signature="e#408#409#0" expanded="true" />
-                <element signature="e#460#461#0" expanded="true" />
-                <element signature="e#520#521#0" expanded="true" />
-                <element signature="e#566#567#0" expanded="true" />
-                <element signature="e#624#625#0" expanded="true" />
-                <element signature="e#670#671#0" expanded="true" />
-                <element signature="e#728#729#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -150,10 +86,10 @@
         <option value="$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioIdadeTest.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioGenero.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioGeneroTest.java" />
-        <option value="$PROJECT_DIR$/plugin-ieducar/test/front/IdadeAnoEscolarControllerTest.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/Report.java" />
-        <option value="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/test/front/IdadeAnoEscolarControllerTest.java" />
       </list>
     </option>
   </component>
@@ -230,7 +166,7 @@
               <item name="FES-UFRJ" type="b2602c69:ProjectViewProjectNode" />
               <item name="plugin-ieducar" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -273,7 +209,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -469,8 +405,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.geraRelatorioTest" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.RelatorioGeneroTest" />
@@ -509,14 +445,11 @@
       <workItem from="1529453874632" duration="4836000" />
       <workItem from="1529522716212" duration="3044000" />
       <workItem from="1529631759731" duration="6155000" />
-      <workItem from="1529667660899" duration="4698000" />
+      <workItem from="1529667660899" duration="5508000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="IdadeAnoEscolarControllerTest - 2018.06.22 at 10h 14m 39s.xml">
-      <configuration name="IdadeAnoEscolarControllerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="IdadeAnoEscolarControllerTest - 2018.06.22 at 10h 15m 02s.xml">
       <configuration name="IdadeAnoEscolarControllerTest" configurationId="JUnit" />
     </history-entry>
@@ -541,12 +474,15 @@
     <history-entry file="IdadeAnoEscolarControllerTest_getChoiceTest - 2018.06.22 at 10h 28m 50s.xml">
       <configuration name="IdadeAnoEscolarControllerTest.getChoiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RelatorioGeneroTest - 2018.06.22 at 09h 57m 14s.xml">
-      <configuration name="RelatorioGeneroTest" configurationId="JUnit" />
+    <history-entry file="IdadeAnoEscolarControllerTest_getChoiceTest - 2018.06.22 at 10h 46m 23s.xml">
+      <configuration name="IdadeAnoEscolarControllerTest.getChoiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IdadeAnoEscolarControllerTest_getChoiceTest - 2018.06.22 at 10h 49m 50s.xml">
+      <configuration name="IdadeAnoEscolarControllerTest.getChoiceTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53459000" />
+    <option name="totallyTimeSpent" value="54269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="229" y="122" width="1853" height="1055" extended-state="6" />
@@ -561,7 +497,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32665965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32665965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973558" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -627,18 +563,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -945,28 +874,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/front/IdadeAnoEscolarControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="55" column="64" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="64" />
-          <folding />
+        <state relative-caret-position="425">
+          <caret line="34" column="62" lean-forward="false" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioGeneroTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-673">
-          <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+        <state relative-caret-position="90">
+          <caret line="14" column="63" lean-forward="true" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
           <folding>
-            <element signature="e#2969#2970#0" expanded="true" />
-            <element signature="e#3012#3013#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#687#688#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioIdadeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-108">
           <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
           <folding>
             <element signature="e#348#349#0" expanded="true" />
@@ -981,31 +921,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/front/IdadeAnoEscolarControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/front/GeneroAnoEscolaControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="36">
+          <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1123">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2991#2992#0" expanded="true" />
+            <element signature="e#3034#3035#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioGeneroTest.java">
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#410#411#0" expanded="true" />
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="515">
+          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

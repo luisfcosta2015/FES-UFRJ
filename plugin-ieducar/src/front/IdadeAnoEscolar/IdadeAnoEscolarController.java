@@ -45,7 +45,8 @@ public class IdadeAnoEscolarController {
      */
     @FXML
     private void initialize() {
-        box_escola.setValue("Todas as escolas");
+        box_escola.setValue("Escola 2");
+        System.out.println();
         box_escola.setItems(lista_escolas);
 
         box_turma.setValue("Todas as turmas");

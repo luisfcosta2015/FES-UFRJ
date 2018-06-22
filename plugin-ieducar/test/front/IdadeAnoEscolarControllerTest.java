@@ -30,4 +30,8 @@ public class IdadeAnoEscolarControllerTest {
         box_test.setItems(lista_test);
     }
 
+    @Test
+    public void getChoiceTest() {
+        assertEquals("Escola 0", controller.getChoice(box_test));
+    }
 }
