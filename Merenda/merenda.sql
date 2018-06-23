@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `merenda` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `merenda`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: merenda
@@ -23,15 +25,15 @@ DROP TABLE IF EXISTS `alimento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alimento` (
-  `id_item` int(11) NOT NULL AUTO_INCREMENT,
+  `id_alimento` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `perecivel` tinyint(4) DEFAULT NULL,
   `qtd_atende` int(11) DEFAULT NULL,
   `medida` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fornecedor` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `marca` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id_item`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id_alimento`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +42,7 @@ CREATE TABLE `alimento` (
 
 LOCK TABLES `alimento` WRITE;
 /*!40000 ALTER TABLE `alimento` DISABLE KEYS */;
-INSERT INTO `alimento` VALUES (1,'Côco',1,1,'Unidade','Coe locow','Doidera');
+INSERT INTO `alimento` VALUES (3,'Banana',1,60,'Quilograma (kg)','lulul','caquita');
 /*!40000 ALTER TABLE `alimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,8 +63,8 @@ CREATE TABLE `cardapio` (
   `janta` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_cardapio`),
   KEY `fk_cardapio_instituicao_idx` (`id_instituicao`),
-  CONSTRAINT `fk_cardapio_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id_instituicao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  CONSTRAINT `fk_cardapio_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id_instituicao`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,8 +73,40 @@ CREATE TABLE `cardapio` (
 
 LOCK TABLES `cardapio` WRITE;
 /*!40000 ALTER TABLE `cardapio` DISABLE KEYS */;
-INSERT INTO `cardapio` VALUES (1,1,'19/06/2018','Biscoito','Biscoito','Café com Leite e pão',''),(2,1,'20/06/2018','','','',''),(3,1,'21/06/2018','ABC','DEF','GHI','JKL'),(4,1,'22/06/2018','ABC','DEF','',''),(5,1,'22/06/2018','asdfafsd','asfdafsd','afsfdsasdfa',NULL);
 /*!40000 ALTER TABLE `cardapio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `conta`
+--
+
+DROP TABLE IF EXISTS `conta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `conta` (
+  `id_pessoa` int(11) NOT NULL,
+  `id_instituicao` int(11) NOT NULL,
+  `id_tipo_conta` int(11) DEFAULT NULL,
+  `matricula` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usuario` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `senha` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id_pessoa`,`id_instituicao`),
+  KEY `fk_conta_instituicao_idx` (`id_instituicao`),
+  KEY `fk_conta_tipo_idx` (`id_tipo_conta`),
+  CONSTRAINT `fk_conta_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id_instituicao`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `fk_conta_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `fk_conta_tipo` FOREIGN KEY (`id_tipo_conta`) REFERENCES `tipo_conta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `conta`
+--
+
+LOCK TABLES `conta` WRITE;
+/*!40000 ALTER TABLE `conta` DISABLE KEYS */;
+INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','root');
+/*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -194,30 +228,6 @@ LOCK TABLES `estoque` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `funcao`
---
-
-DROP TABLE IF EXISTS `funcao`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `funcao` (
-  `id` int(11) NOT NULL,
-  `descricao` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `funcao`
---
-
-LOCK TABLES `funcao` WRITE;
-/*!40000 ALTER TABLE `funcao` DISABLE KEYS */;
-INSERT INTO `funcao` VALUES (1,'Administrador'),(2,'Diretor'),(3,'Leitor');
-/*!40000 ALTER TABLE `funcao` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `instituicao`
 --
 
@@ -230,15 +240,12 @@ CREATE TABLE `instituicao` (
   `nome` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `inep` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
   `endereco` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `id_diretor` int(11) DEFAULT NULL,
   `qtd_alunos` int(11) DEFAULT NULL,
   `telefone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_instituicao`,`id_tipo`),
-  KEY `fk_instituicao_pessoa_idx` (`id_diretor`),
   KEY `fk_instituicao_tipo_idx` (`id_tipo`),
-  CONSTRAINT `fk_instituicao_pessoa` FOREIGN KEY (`id_diretor`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_instituicao_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  CONSTRAINT `fk_instituicao_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +254,7 @@ CREATE TABLE `instituicao` (
 
 LOCK TABLES `instituicao` WRITE;
 /*!40000 ALTER TABLE `instituicao` DISABLE KEYS */;
-INSERT INTO `instituicao` VALUES (1,2,'asdffads','01234567','sdfaasfd',5,10,'1010001000');
+INSERT INTO `instituicao` VALUES (1,1,'sdaffads','12345678','Rua da Gazela',50,'2140028922'),(2,4,'Colegin do titio','12345678','Rua da Jaca 186 223',600,'2140028923');
 /*!40000 ALTER TABLE `instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +273,7 @@ CREATE TABLE `lote` (
   `data_validade` date DEFAULT NULL,
   PRIMARY KEY (`id_lote`),
   KEY `fk_lote_item1_idx` (`id_item`),
-  CONSTRAINT `fk_lote_item1` FOREIGN KEY (`id_item`) REFERENCES `alimento` (`id_item`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_lote_item1` FOREIGN KEY (`id_item`) REFERENCES `alimento` (`id_alimento`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -312,15 +319,9 @@ DROP TABLE IF EXISTS `pessoa`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pessoa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_funcao` int(11) NOT NULL,
   `nome` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cpf` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `matricula` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `usuario` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `senha` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`,`id_funcao`),
-  KEY `fk_pessoa_funcao_idx` (`id_funcao`),
-  CONSTRAINT `fk_pessoa_funcao` FOREIGN KEY (`id_funcao`) REFERENCES `funcao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -330,7 +331,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,1,'Andre','10010011010',NULL,'root','root'),(3,1,'sfdaf','10010010010',NULL,'root2','root2'),(4,1,'asfdasf','10010010010','1001001001','root3','root3'),(5,2,'Fernando Sabugo Montoyo Dontoyo','15015015015','1501501501','diretor','diretor'),(6,1,'Lucas','10010010010','1234567890','root4','root4');
+INSERT INTO `pessoa` VALUES (1,'Andre','10010010010'),(2,'Bruna','20020020020');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,13 +361,13 @@ LOCK TABLES `saida` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tipo`
+-- Table structure for table `tipo_conta`
 --
 
-DROP TABLE IF EXISTS `tipo`;
+DROP TABLE IF EXISTS `tipo_conta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tipo` (
+CREATE TABLE `tipo_conta` (
   `id` int(11) NOT NULL,
   `descricao` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -374,13 +375,37 @@ CREATE TABLE `tipo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tipo`
+-- Dumping data for table `tipo_conta`
 --
 
-LOCK TABLES `tipo` WRITE;
-/*!40000 ALTER TABLE `tipo` DISABLE KEYS */;
-INSERT INTO `tipo` VALUES (1,'Secretaria de Educação'),(2,'Escola Tipo A'),(3,'Escola Tipo B'),(4,'Escola Tipo C');
-/*!40000 ALTER TABLE `tipo` ENABLE KEYS */;
+LOCK TABLES `tipo_conta` WRITE;
+/*!40000 ALTER TABLE `tipo_conta` DISABLE KEYS */;
+INSERT INTO `tipo_conta` VALUES (1,'Administrador'),(2,'Diretor'),(3,'Leitor');
+/*!40000 ALTER TABLE `tipo_conta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tipo_instituicao`
+--
+
+DROP TABLE IF EXISTS `tipo_instituicao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipo_instituicao` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_instituicao`
+--
+
+LOCK TABLES `tipo_instituicao` WRITE;
+/*!40000 ALTER TABLE `tipo_instituicao` DISABLE KEYS */;
+INSERT INTO `tipo_instituicao` VALUES (1,'Secretaria de Educação'),(2,'Escola Tipo A'),(3,'Escola Tipo B'),(4,'Escola Tipo C');
+/*!40000 ALTER TABLE `tipo_instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -400,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-19 23:03:31
+-- Dump completed on 2018-06-23 16:56:19

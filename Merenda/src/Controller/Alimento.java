@@ -14,7 +14,7 @@ import java.util.Map;
  * @author Andre
  */
 public class Alimento {
-    private int id_item, qtd_atende;
+    private int id_alimento, qtd_atende;
     private boolean perecivel;
     private String nome, marca, fornecedor, medida;        
     
@@ -47,8 +47,29 @@ public class Alimento {
         return new Conexao().query_update(query);
     } 
     
+    public boolean deletar(){
+        String query = "DELETE FROM alimento WHERE id_alimento=" + getId_alimento();
+        
+        return new Conexao().query_update(query);
+    }
+    
+    public boolean update(){
+        String query = "UPDATE alimento SET"
+                + " nome=\'" + getNome() + "\'"
+                + ", fornecedor=\'" + getFornecedor()+ "\'"
+                + ", marca=\'" + getMarca() + "\'"
+                + ", medida=\'" + getMedida()+ "\'"
+                + ", perecivel=" + (isPerecivel()? 1 : 0)
+                + ", qtd_atende=" + getQtd_atende()             
+                + " WHERE id_alimento=" + getId_alimento();
+        
+        //System.out.println(query);
+        
+        return new Conexao().query_update(query);
+    }
+    
     public void popular(Map<String, Object> m){
-        setId_item((int)m.get("id_item"));
+        setId_alimento((int)m.get("id_alimento"));
         setQtd_atende((int)m.get("qtd_atende"));
         setNome(String.valueOf(m.get("nome")));
         setPerecivel((int)m.get("perecivel") != 0);        
@@ -70,12 +91,12 @@ public class Alimento {
         }
     }  
 
-    public int getId_item() {
-        return id_item;
+    public int getId_alimento() {
+        return id_alimento;
     }
 
-    public void setId_item(int id_item) {
-        this.id_item = id_item;
+    public void setId_alimento(int id_alimento) {
+        this.id_alimento = id_alimento;
     }
 
     public int getQtd_atende() {

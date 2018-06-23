@@ -54,8 +54,8 @@ public class CadastroCardapio extends javax.swing.JFrame {
         chkJanta = new javax.swing.JCheckBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mItemPrincipal = new javax.swing.JMenuItem();
+        mItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,21 +107,21 @@ public class CadastroCardapio extends javax.swing.JFrame {
 
         jMenu1.setText("Arquivo");
 
-        jMenuItem2.setText("Menu Principal");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mItemPrincipal.setText("Menu Principal");
+        mItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mItemPrincipalActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(mItemPrincipal);
 
-        jMenuItem1.setText("Sair");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mItemSair.setText("Sair");
+        mItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mItemSairActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(mItemSair);
 
         jMenuBar1.add(jMenu1);
 
@@ -200,14 +200,14 @@ public class CadastroCardapio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void mItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSairActionPerformed
+        if (Model.Auxiliar.confirmarSaida()) System.exit(0);
+    }//GEN-LAST:event_mItemSairActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
         this.setVisible(false);
         Auxiliar.trocarTela(new PrincipalDir());
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_mItemPrincipalActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         Cardapio c = new Cardapio();
@@ -242,11 +242,13 @@ public class CadastroCardapio extends javax.swing.JFrame {
             c.setJanta(txtJanta.getText());
         }
         
-        int id_inst = new Instituicao().instituicaoPorId(Sessao.getInstance().getId());
-        if (id_inst == -1){
+        Instituicao i = new Instituicao();
+        i.instituicaoPorId(Sessao.getInstance().getId());
+        
+        if (i.instituicaoPorId(Sessao.getInstance().getId()) == false){
             erros += "Usuário não é diretor de nenhuma instituição ou de mais de uma\n";
         } else {
-            c.setId_instituicao(id_inst);
+            c.setId_instituicao(Sessao.getInstance().getId());
         }
         
         if (!erros.equals("")){
@@ -325,12 +327,12 @@ public class CadastroCardapio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel lblAlmoco;
     private javax.swing.JLabel lblJanta;
     private javax.swing.JLabel lblLancheDaManha;
     private javax.swing.JLabel lblLancheDaTarde;
+    private javax.swing.JMenuItem mItemPrincipal;
+    private javax.swing.JMenuItem mItemSair;
     private javax.swing.JTextField txtAlmoco;
     private javax.swing.JTextField txtJanta;
     private javax.swing.JTextField txtLancheDaManha;

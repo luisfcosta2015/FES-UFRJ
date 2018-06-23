@@ -39,8 +39,8 @@ public class Login extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
         passSenha = new javax.swing.JPasswordField();
+        btnLogin = new javax.swing.JButton();
         mBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mItemConectar = new javax.swing.JMenuItem();
@@ -52,13 +52,6 @@ public class Login extends javax.swing.JFrame {
 
         lblSenha.setText("Senha");
 
-        btnLogin.setText("Login");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-
         passSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passSenhaActionPerformed(evt);
@@ -67,6 +60,13 @@ public class Login extends javax.swing.JFrame {
         passSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 passSenhaKeyPressed(evt);
+            }
+        });
+
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -108,12 +108,12 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(lblUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,7 +123,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(passSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(btnLogin)
-                .addGap(52, 52, 52))
+                .addGap(70, 70, 70))
         );
 
         pack();
@@ -143,20 +143,24 @@ public class Login extends javax.swing.JFrame {
         if ( con.login(txtUsuario.getText(),Auxiliar.criptografar(String.valueOf(passSenha.getPassword()))) ){    
             Sessao sessao = Sessao.getInstance();
             System.out.println("Login bem-sucedido: " + sessao.getId() + " " + sessao.getFuncao());   
-            if (sessao.getFuncao() == 1){
-                // ADMINISTRADOR
-                this.setVisible(false);
-                Auxiliar.trocarTela(new PrincipalAdm());
-            } else if (sessao.getFuncao() == 2){
-                // DIRETOR
-                this.setVisible(false);
-                Auxiliar.trocarTela(new PrincipalDir());                
-            } else {                
-                JOptionPane.showMessageDialog(this, "Sistema ainda não suporta função: " + Auxiliar.getPermission(), "Erro", JOptionPane.ERROR_MESSAGE);
-                Sessao.destroy();
+            switch (sessao.getFuncao()) {
+                case 1:
+                    // ADMINISTRADOR
+                    this.setVisible(false);
+                    Auxiliar.trocarTela(new PrincipalAdm());
+                    break;
+                case 2:
+                    // DIRETOR
+                    this.setVisible(false);
+                    Auxiliar.trocarTela(new PrincipalDir());
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Sistema ainda não suporta função: " + Auxiliar.getPermission(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    Sessao.destroy();
+                    break;
             }
         } else {
-            System.out.println("Login falhou!");                              
+            JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos", "Erro", JOptionPane.ERROR_MESSAGE);                         
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

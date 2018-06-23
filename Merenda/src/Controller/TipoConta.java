@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author Andre
  */
-public class Funcao {
+public class TipoConta {
     private int id;
     private String descricao;
 
@@ -38,10 +38,7 @@ public class Funcao {
         setDescricao( String.valueOf(m.get("descricao")));
     }
     
-    public boolean funcaoPorId(int id){
-        
-        String query = "SELECT * FROM funcao f where f.id=" + id;
-        
+    public boolean pesquisaEPopula(String query){
         Conexao con = new Conexao();
         
         List<Map<String, Object>> lst = con.query_select(query);
@@ -50,6 +47,13 @@ public class Funcao {
             return true;
         } else {
             return false;
-        }   
+        }
+    }
+    
+    public boolean tipoContaPorId(int id){
+        
+        String query = "SELECT * FROM tipo_conta t where t.id=" + id;
+        
+        return pesquisaEPopula(query);
     }
 }

@@ -19,9 +19,27 @@ import javax.swing.WindowConstants;
  */
 public class CadastroAlimento extends javax.swing.JFrame {
 
+    boolean editmode = false;
+    Alimento a1;
     /**
      * Creates new form CadastroAlimento
      */
+    
+    public void reset(){
+        txtFornecedor.setText("");
+        txtMarca.setText("");
+        txtNome.setText("");
+        txtQtdAtende.setText("");
+        cmbMedida.setSelectedIndex(-1);
+        chkPerecivel.setSelected(false);
+        btnDeletar.setEnabled(false);
+        btnEditar.setEnabled(false);
+        btnCadastrar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+        editmode = false;
+        a1 = null;
+    }
+    
     public CadastroAlimento() {
         initComponents();
     }
@@ -50,6 +68,7 @@ public class CadastroAlimento extends javax.swing.JFrame {
         btnDeletar = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mItemPrincipal = new javax.swing.JMenuItem();
@@ -91,6 +110,7 @@ public class CadastroAlimento extends javax.swing.JFrame {
 
         lblQtdAtende.setText("Qtd. de alunos que atende");
 
+        btnDeletar.setEnabled(false);
         btnDeletar.setLabel("Deletar");
         btnDeletar.setPreferredSize(new java.awt.Dimension(90, 25));
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,10 +128,19 @@ public class CadastroAlimento extends javax.swing.JFrame {
         });
 
         btnEditar.setText("Editar");
+        btnEditar.setEnabled(false);
         btnEditar.setPreferredSize(new java.awt.Dimension(90, 25));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnLimpar.setText("Limpar");
+        btnLimpar.setPreferredSize(new java.awt.Dimension(90, 25));
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
             }
         });
 
@@ -145,35 +174,40 @@ public class CadastroAlimento extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel2)
-                    .addComponent(txtFornecedor)
-                    .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(lblNome)
-                    .addComponent(jLabel3)
-                    .addComponent(txtMarca))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(chkPerecivel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblMedida)
-                        .addComponent(lblQtdAtende)
-                        .addComponent(txtQtdAtende)
-                        .addComponent(cmbMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(txtFornecedor)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(lblNome)
+                            .addComponent(jLabel3)
+                            .addComponent(txtMarca))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(chkPerecivel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMedida)
+                            .addComponent(lblQtdAtende)
+                            .addComponent(txtQtdAtende)
+                            .addComponent(cmbMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(lblNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,13 +231,16 @@ public class CadastroAlimento extends javax.swing.JFrame {
                         .addComponent(lblQtdAtende)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtQtdAtende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -218,10 +255,15 @@ public class CadastroAlimento extends javax.swing.JFrame {
     }//GEN-LAST:event_chkPerecivelActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        if (editmode){
+            JOptionPane.showMessageDialog(this, "Modo de edição não permite cadastros", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         Alimento a = new Alimento();
         a.setNome(txtNome.getText());
         a.setFornecedor(txtFornecedor.getText());
-        a.setMarca(txtFornecedor.getText());
+        a.setMarca(txtMarca.getText());
         a.setMedida(String.valueOf(cmbMedida.getSelectedItem()));
         a.setPerecivel(chkPerecivel.isSelected());
         // <= 0 não passa na validação
@@ -246,7 +288,14 @@ public class CadastroAlimento extends javax.swing.JFrame {
     }//GEN-LAST:event_mItemSairActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        // TODO add your handling code here:
+        if (!editmode){
+            JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
+        } else if (a1 == null){
+            JOptionPane.showMessageDialog(this, "Não há alimento carregado para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
+        } else if (a1.deletar()){            
+            JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            reset();
+        }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -258,21 +307,78 @@ public class CadastroAlimento extends javax.swing.JFrame {
         
         Alimento a = new Alimento();
         if (a.consultarPorNome(nome)){
-        
-        } else {
+            editmode = true;
+            txtFornecedor.setText(a.getFornecedor());
+            txtMarca.setText(a.getMarca());
+            txtNome.setText(a.getNome());
+            int i;
+            for (i = 0; i < cmbMedida.getItemCount(); i++){
+                if (String.valueOf(cmbMedida.getItemAt(i)).equals(a.getMedida())){
+                    cmbMedida.setSelectedIndex(i);
+                    break;
+                }
+            }
+            if (i == cmbMedida.getItemCount()){
+                JOptionPane.showMessageDialog(this, "Medida não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);   
+            }
+            chkPerecivel.setSelected(a.isPerecivel());
+            txtQtdAtende.setText(String.valueOf(a.getQtd_atende()));
             
+            
+            btnCadastrar.setEnabled(false);
+            btnDeletar.setEnabled(true);
+            btnEditar.setEnabled(true);
+            btnPesquisar.setEnabled(false);
+            a1 = a;
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum ou mais de um alimento encontrado", "Erro", JOptionPane.ERROR_MESSAGE);               
         }
         
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        if (!editmode){
+            JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Alimento a = new Alimento();
+        a.setNome(txtNome.getText());
+        a.setFornecedor(txtFornecedor.getText());
+        a.setMarca(txtMarca.getText());
+        a.setMedida(String.valueOf(cmbMedida.getSelectedItem()));
+        a.setPerecivel(chkPerecivel.isSelected());
+        // <= 0 não passa na validação
+        a.setQtd_atende(Auxiliar.isNumeric(txtQtdAtende.getText()) ? Integer.valueOf(txtQtdAtende.getText()) : -1);
+        
+        String erros = a.validar();
+        
+        if (!erros.equals("")){
+            //mensagem de erro
+            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // coloca todos os campos de a em a1, menos o id
+            int id = a1.getId_alimento();
+            a1 = a;
+            a1.setId_alimento(id);
+            if (a1.update()){
+                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            reset();
+        } 
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
         this.setVisible(false);
         Auxiliar.trocarTela(new PrincipalAdm());
     }//GEN-LAST:event_mItemPrincipalActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        reset();
+    }//GEN-LAST:event_btnLimparActionPerformed
   
 
 
@@ -313,6 +419,7 @@ public class CadastroAlimento extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JCheckBox chkPerecivel;
     private javax.swing.JComboBox<String> cmbMedida;

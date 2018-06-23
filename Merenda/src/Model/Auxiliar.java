@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.Funcao;
+import Controller.TipoConta;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -77,11 +77,10 @@ public class Auxiliar {
     }
     
     // RETORNA PERMISSÃO 
-    // TODO: E COLÉGIO?
     public static String getPermission(){
-        Funcao f = new Funcao();
-        if (f.funcaoPorId(Sessao.getInstance().getFuncao())){
-            return f.getDescricao();
+        TipoConta tc = new TipoConta();
+        if (tc.tipoContaPorId(Sessao.getInstance().getFuncao())){
+            return tc.getDescricao();
         } else {
             Auxiliar.DBError("Id não encontrado");    
             return null;

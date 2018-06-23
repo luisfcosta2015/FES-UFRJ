@@ -33,27 +33,19 @@ public class PrincipalAdm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        mItemTeste = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenuBar();
+        menuArquivo = new javax.swing.JMenu();
         mItemLogout = new javax.swing.JMenuItem();
         mItemSair = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuCadastrar = new javax.swing.JMenu();
         mItemPessoa = new javax.swing.JMenuItem();
+        mItemConta = new javax.swing.JMenuItem();
         mItemInstituicao = new javax.swing.JMenuItem();
         mItemAlimento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Arquivo");
-
-        mItemTeste.setText("Teste");
-        mItemTeste.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemTesteActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mItemTeste);
+        menuArquivo.setText("Arquivo");
 
         mItemLogout.setText("Logout");
         mItemLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +53,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
                 mItemLogoutActionPerformed(evt);
             }
         });
-        jMenu1.add(mItemLogout);
+        menuArquivo.add(mItemLogout);
 
         mItemSair.setText("Sair");
         mItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -69,11 +61,11 @@ public class PrincipalAdm extends javax.swing.JFrame {
                 mItemSairActionPerformed(evt);
             }
         });
-        jMenu1.add(mItemSair);
+        menuArquivo.add(mItemSair);
 
-        jMenuBar1.add(jMenu1);
+        menuBar.add(menuArquivo);
 
-        jMenu2.setText("Cadastrar");
+        menuCadastrar.setText("Cadastrar");
 
         mItemPessoa.setText("Pessoa");
         mItemPessoa.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +73,15 @@ public class PrincipalAdm extends javax.swing.JFrame {
                 mItemPessoaActionPerformed(evt);
             }
         });
-        jMenu2.add(mItemPessoa);
+        menuCadastrar.add(mItemPessoa);
+
+        mItemConta.setText("Conta");
+        mItemConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemContaActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemConta);
 
         mItemInstituicao.setText("Instituição");
         mItemInstituicao.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
                 mItemInstituicaoActionPerformed(evt);
             }
         });
-        jMenu2.add(mItemInstituicao);
+        menuCadastrar.add(mItemInstituicao);
 
         mItemAlimento.setText("Alimento");
         mItemAlimento.addActionListener(new java.awt.event.ActionListener() {
@@ -97,11 +97,11 @@ public class PrincipalAdm extends javax.swing.JFrame {
                 mItemAlimentoActionPerformed(evt);
             }
         });
-        jMenu2.add(mItemAlimento);
+        menuCadastrar.add(mItemAlimento);
 
-        jMenuBar1.add(jMenu2);
+        menuBar.add(menuCadastrar);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,10 +142,10 @@ public class PrincipalAdm extends javax.swing.JFrame {
         Auxiliar.trocarTela(new CadastroAlimento());    
     }//GEN-LAST:event_mItemAlimentoActionPerformed
 
-    private void mItemTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemTesteActionPerformed
-        CadastroPessoa c = new CadastroPessoa();
-        this.add(c,BorderLayout.CENTER); 
-    }//GEN-LAST:event_mItemTesteActionPerformed
+    private void mItemContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemContaActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroConta());    
+    }//GEN-LAST:event_mItemContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,14 +184,14 @@ public class PrincipalAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mItemAlimento;
+    private javax.swing.JMenuItem mItemConta;
     private javax.swing.JMenuItem mItemInstituicao;
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemPessoa;
     private javax.swing.JMenuItem mItemSair;
-    private javax.swing.JMenuItem mItemTeste;
+    private javax.swing.JMenu menuArquivo;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuCadastrar;
     // End of variables declaration//GEN-END:variables
 }

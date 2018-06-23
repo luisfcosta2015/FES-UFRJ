@@ -23,6 +23,27 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     private int idDiretor = -1;    
     private String oldTxtDiretor;
     List<Map<String, Object>> inst;
+    boolean editmode = false;
+    Instituicao i1;
+    /**
+     * Creates new form CadastroAlimento
+     */
+    
+    public void reset(){
+        txtDiretor.setText("");
+        txtEndereco.setText("");
+        txtINEP.setText("");
+        txtQtdAlunos.setText("");
+        txtTelefone.setText("");
+        txtNome.setText("");
+        cmbTipo.setSelectedIndex(-1);
+        btnDeletar.setEnabled(false);
+        btnEditar.setEnabled(false);
+        btnCadastrar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+        editmode = false;
+        i1 = null;
+    }
     
     public CadastroInstituicao() {
         initComponents();
@@ -43,32 +64,38 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtINEP = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtQtdAlunos = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        txtDiretor = new javax.swing.JTextField();
-        btnCadastrar = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
-        chkDiretor = new javax.swing.JCheckBox();
-        btnPesquisaDiretor = new javax.swing.JButton();
-        lblPesquisaDiretor = new javax.swing.JLabel();
         lblTipo = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        txtQtdAlunos = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtDiretor = new javax.swing.JTextField();
+        btnPesquisaDiretor = new javax.swing.JButton();
+        chkDiretor = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
+        txtINEP = new javax.swing.JTextField();
+        btnCadastrar = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        lblPesquisaDiretor = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        mItemPrincipal = new javax.swing.JMenuItem();
         mItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setText("Cadastro de Instituição");
 
         jLabel3.setText("Nome da Instituição");
 
@@ -87,20 +114,37 @@ public class CadastroInstituicao extends javax.swing.JFrame {
 
         txtTelefone.setToolTipText("Ex..: 21 1122-1122");
 
-        jLabel6.setText("INEP");
-
-        txtINEP.setToolTipText("Ex: 123456789");
-
-        jLabel11.setText("Diretor");
+        lblTipo.setText("Tipo da Instituição");
 
         jLabel1.setText("Número de alunos:");
 
         txtQtdAlunos.setToolTipText("Ex.: 152");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel7.setText("Cadastro de Instituição");
+        jLabel11.setText("Diretor");
 
         txtDiretor.setToolTipText("Ex.: 25");
+        txtDiretor.setEnabled(false);
+
+        btnPesquisaDiretor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pesquisa_diretor.png"))); // NOI18N
+        btnPesquisaDiretor.setEnabled(false);
+        btnPesquisaDiretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaDiretorActionPerformed(evt);
+            }
+        });
+
+        chkDiretor.setSelected(true);
+        chkDiretor.setText("Cadastrar sem diretor");
+        chkDiretor.setEnabled(false);
+        chkDiretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDiretorActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("INEP");
+
+        txtINEP.setToolTipText("Ex: 123456789");
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,130 +153,48 @@ public class CadastroInstituicao extends javax.swing.JFrame {
             }
         });
 
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        chkDiretor.setText("Cadastrar sem diretor");
-        chkDiretor.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletar.setText("Deletar");
+        btnDeletar.setEnabled(false);
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkDiretorActionPerformed(evt);
+                btnDeletarActionPerformed(evt);
             }
         });
 
-        btnPesquisaDiretor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/pesquisa_diretor.png"))); // NOI18N
-        btnPesquisaDiretor.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisaDiretorActionPerformed(evt);
+                btnLimparActionPerformed(evt);
             }
         });
 
-        lblTipo.setText("Tipo da Instituição");
+        btnEditar.setText("Editar");
+        btnEditar.setEnabled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(chkDiretor)
-                                        .addGap(21, 21, 21))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addComponent(btnPesquisaDiretor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtQtdAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel11))
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtINEP, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTipo)
-                            .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTipo)
-                        .addGap(35, 35, 35)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(13, 13, 13)
-                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtQtdAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPesquisaDiretor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkDiretor)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtINEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        lblPesquisaDiretor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblPesquisaDiretor.setEnabled(false);
 
         jMenu1.setText("Arquivo");
+
+        mItemPrincipal.setText("Menu Principal");
+        mItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemPrincipal);
 
         mItemSair.setText("Sair");
         mItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -251,16 +213,108 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)))
+                .addGap(164, 164, 164))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(txtEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtINEP, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(txtNome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkDiretor)
+                    .addComponent(txtQtdAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblTipo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cmbTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDiretor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtINEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtQtdAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(chkDiretor)
+                        .addGap(48, 48, 48)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57))
         );
 
         pack();
@@ -295,7 +349,7 @@ public class CadastroInstituicao extends javax.swing.JFrame {
             erros += "Quantidade de alunos invalida\n";
         
         if (cmbTipo.getSelectedIndex() == -1)
-            erros += "Selecione um tipo de escola\n";    
+            erros += "Selecione um tipo de instituição\n";    
         else 
             i.setId_tipo((int)inst.get(cmbTipo.getSelectedIndex()).get("id")); 
         
@@ -313,17 +367,13 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        this.setVisible(false);
-        Auxiliar.trocarTela(new PrincipalAdm());
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void chkDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDiretorActionPerformed
-        // TODO add your handling code here:
+        txtDiretor.setEnabled(!chkDiretor.isSelected());
+        btnPesquisaDiretor.setEnabled(!chkDiretor.isSelected());
     }//GEN-LAST:event_chkDiretorActionPerformed
 
     private void btnPesquisaDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaDiretorActionPerformed
@@ -339,13 +389,13 @@ public class CadastroInstituicao extends javax.swing.JFrame {
             Pessoa p = new Pessoa();
             if (!p.pessoaPorId(Integer.parseInt(txt))){
                 JOptionPane.showMessageDialog(this, "ID: Nenhum diretor encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
-                java.net.URL imgURL = getClass().getResource("images/failure.png");
+                java.net.URL imgURL = getClass().getResource("/images/failure.png");
                 ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Não Encontrado");
                 lblPesquisaDiretor.setIcon(icon);            
             } else {
                 idDiretor = p.getId();
                 oldTxtDiretor = txt;
-                java.net.URL imgURL = getClass().getResource("images/success.png");
+                java.net.URL imgURL = getClass().getResource("/images/success.png");
                 ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Encontrado");
                 lblPesquisaDiretor.setIcon(icon);
                 txtDiretor.setEnabled(false);       
@@ -355,19 +405,118 @@ public class CadastroInstituicao extends javax.swing.JFrame {
             Pessoa p = new Pessoa();
             if (!p.pessoaPorNome(txt)){                
                 JOptionPane.showMessageDialog(this, "Nome: Nenhum ou mais de um diretor encontrado", "Erro", JOptionPane.ERROR_MESSAGE);                
-                java.net.URL imgURL = getClass().getResource("images/failure.png");
+                java.net.URL imgURL = getClass().getResource("/images/failure.png");
                 ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Não Encontrado");
                 lblPesquisaDiretor.setIcon(icon);             
             } else { 
                 idDiretor = p.getId();
                 oldTxtDiretor = txt;
-                java.net.URL imgURL = getClass().getResource("images/success.png");
+                java.net.URL imgURL = getClass().getResource("/images/success.png");
                 ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Encontrado");
                 lblPesquisaDiretor.setIcon(icon);
                 txtDiretor.setEnabled(false);                   
             }
         }
     }//GEN-LAST:event_btnPesquisaDiretorActionPerformed
+
+    private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
+        this.setVisible(false);
+        Auxiliar.trocarTela(new PrincipalAdm());
+    }//GEN-LAST:event_mItemPrincipalActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        reset();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        String nome = txtNome.getText();
+        if (nome.length() == 0 || nome.length() >= 30){
+            JOptionPane.showMessageDialog(this, "Nome de instutuição inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
+            return;
+        }
+        
+        Instituicao i = new Instituicao();
+        if (i.instituicaoPorNome(nome)){
+            editmode = true;
+            txtEndereco.setText(i.getEndereco());
+            txtINEP.setText(i.getInep());
+            txtNome.setText(i.getNome());
+            txtQtdAlunos.setText(String.valueOf(i.getQtd_alunos()));
+            txtTelefone.setText(i.getTelefone());
+            int j;
+            for (j = 0; j < cmbTipo.getItemCount(); j++){
+                if ((int)inst.get(j).get("id") == i.getId_tipo()){
+                    cmbTipo.setSelectedIndex(j);
+                    break;
+                }
+            }
+            if (j == cmbTipo.getItemCount()){
+                JOptionPane.showMessageDialog(this, "Tipo de instituição não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);   
+            }
+            
+            
+            btnCadastrar.setEnabled(false);
+            btnDeletar.setEnabled(true);
+            btnEditar.setEnabled(true);
+            btnPesquisar.setEnabled(false);
+            i1 = i;            
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhuma ou mais de uma instituição encontrada", "Erro", JOptionPane.ERROR_MESSAGE);               
+        }
+        
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        if (!editmode){
+            JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
+        } else if (i1 == null){
+            JOptionPane.showMessageDialog(this, "Não há instituição carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
+        } else if (i1.deletar()){            
+            JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            reset();
+        }
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (!editmode){
+            JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Instituicao i = new Instituicao();
+        String erros = "";
+        i.setNome(txtNome.getText());
+        i.setInep(txtINEP.getText());
+        i.setTelefone(txtTelefone.getText());
+        i.setQtd_alunos(
+                (Auxiliar.isNumeric(txtQtdAlunos.getText())) ? 
+                Integer.valueOf(txtQtdAlunos.getText()) : -1);
+        i.setEndereco(txtEndereco.getText());
+        
+        
+        if (!Auxiliar.isNumeric(txtQtdAlunos.getText()))
+            erros += "Quantidade de alunos invalida\n";
+        
+        if (cmbTipo.getSelectedIndex() == -1)
+            erros += "Selecione um tipo de instituição\n";    
+        else 
+            i.setId_tipo((int)inst.get(cmbTipo.getSelectedIndex()).get("id")); 
+        
+        
+        if (!(erros += i.validar()).equals("")){
+            // mensagem de erro
+            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+        } else{
+            int id = i1.getId_instituicao();
+            i1 = i;
+            i1.setId_instituicao(id);
+            if (i.update())
+                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
+            else
+                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+            reset();
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,8 +558,11 @@ public class CadastroInstituicao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisaDiretor;
-    private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JCheckBox chkDiretor;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JLabel jLabel1;
@@ -422,9 +574,9 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblPesquisaDiretor;
     private javax.swing.JLabel lblTipo;
+    private javax.swing.JMenuItem mItemPrincipal;
     private javax.swing.JMenuItem mItemSair;
     private javax.swing.JTextField txtDiretor;
     private javax.swing.JTextField txtEndereco;

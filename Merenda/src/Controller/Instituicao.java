@@ -33,6 +33,47 @@ public class Instituicao {
         
         return new Conexao().query_update(query);
     }
+     
+    public boolean deletar(){
+        String query = "DELETE FROM instituicao WHERE id_instituicao=" + getId_instituicao();
+        
+        return new Conexao().query_update(query);
+    }
+    
+    public boolean update(){
+        String query = "UPDATE instituicao SET"
+                + " nome=\'" + getNome() + "\'"
+                + ", inep=\'" + getInep()+ "\'"
+                + ", endereco=\'" + getEndereco()+ "\'"
+                + ", telefone=\'" + getTelefone() + "\'"
+                + ", qtd_alunos=" + getQtd_alunos()
+                + ", id_tipo=" + getId_tipo()
+                + " WHERE id_instituicao=" + getId_instituicao();
+        
+        //System.out.println(query);
+        
+        return new Conexao().query_update(query);
+    }
+     
+    public void popular(Map<String, Object> m){
+        setEndereco(String.valueOf(m.get("endereco")));
+        setId_instituicao((int)m.get("id_instituicao"));
+        setId_tipo((int)m.get("id_tipo"));
+        setInep(String.valueOf(m.get("inep")));
+        setNome(String.valueOf(m.get("nome")));
+        setQtd_alunos((int)m.get("qtd_alunos"));
+        setTelefone(String.valueOf(m.get("telefone")));
+    }
+    
+    public boolean instituicaoPorNome(String nome){
+        String query = "SELECT * FROM instituicao i where i.nome like \'" + nome + "%\'";
+        return pesquisaEPopula(query);
+    } 
+    
+    public boolean instituicaoPorId(int id){
+        String query = "SELECT * FROM instituicao i where i.id_instituicao=" + id;
+        return pesquisaEPopula(query);
+    } 
     
     public String validar(){
         String erros = "";
@@ -58,19 +99,20 @@ public class Instituicao {
         
         return erros;
     }
+
     
-    public int instituicaoPorId(int id_diretor){
-        String query = "SELECT id_instituicao FROM instituicao i where i.id_diretor=" + id_diretor;
+    public boolean pesquisaEPopula(String query){
         Conexao con = new Conexao();
         
         List<Map<String, Object>> lst = con.query_select(query);
         if (lst.size() == 1){
-            return (int)lst.get(0).get("id_instituicao");
+            popular(lst.get(0));
+            return true;
         } else {
-            return -1;
+            return false;
         }
     }
-
+    
     public int getId_instituicao() {
         return id_instituicao;
     }

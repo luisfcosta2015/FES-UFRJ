@@ -16,6 +16,19 @@ import javax.swing.JOptionPane;
 public class CadastroPessoa extends javax.swing.JFrame {
     
     
+    boolean editmode = false;
+    Pessoa p1;
+    
+    public void reset(){
+        txtNome.setText("");
+        txtCpf.setText("");
+        btnDeletar.setEnabled(false);
+        btnEditar.setEnabled(false);
+        btnCadastrar.setEnabled(true);
+        btnPesquisar.setEnabled(true);
+        editmode = false;
+        p1 = null;
+    }
 
     /**
      * Creates new form CadastroUsuario
@@ -37,21 +50,15 @@ public class CadastroPessoa extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        passSenha = new javax.swing.JPasswordField();
-        lblFuncao = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
-        btnVoltar = new javax.swing.JButton();
-        cmbFuncao = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        txtMatricula = new javax.swing.JTextField();
-        passConfSenha = new javax.swing.JPasswordField();
-        jLabel9 = new javax.swing.JLabel();
+        btnPesquisar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        mItemPrincipal = new javax.swing.JMenuItem();
         mItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,12 +73,6 @@ public class CadastroPessoa extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Usuário");
-
-        jLabel4.setText("Senha");
-
-        lblFuncao.setText("Permissão");
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Cadastro de Pessoa");
 
@@ -82,32 +83,45 @@ public class CadastroPessoa extends javax.swing.JFrame {
             }
         });
 
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        cmbFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Diretor", "Leitor" }));
-        cmbFuncao.setSelectedIndex(-1);
-        cmbFuncao.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbFuncaoActionPerformed(evt);
+                btnLimparActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Matrícula");
-
-        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletar.setText("Deletar");
+        btnDeletar.setEnabled(false);
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatriculaActionPerformed(evt);
+                btnDeletarActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Confirmação da Senha");
+        btnEditar.setText("Editar");
+        btnEditar.setEnabled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Arquivo");
+
+        mItemPrincipal.setText("Menu Principal");
+        mItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemPrincipal);
 
         mItemSair.setText("Sair");
         mItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -126,36 +140,29 @@ public class CadastroPessoa extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8)
-                                .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblFuncao)
-                                    .addComponent(cmbFuncao, 0, 180, Short.MAX_VALUE)))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(passSenha)
-                                .addComponent(txtUsuario)
-                                .addComponent(jLabel9)
-                                .addComponent(passConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 50, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,40 +174,19 @@ public class CadastroPessoa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblFuncao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -214,31 +200,13 @@ public class CadastroPessoa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCpfActionPerformed
 
-    private void cmbFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFuncaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbFuncaoActionPerformed
-
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         Pessoa p = new Pessoa();
-        p.setId_funcao(cmbFuncao.getSelectedIndex() + 1);
         p.setNome(txtNome.getText());
         p.setCpf(txtCpf.getText());
-        p.setUsuario(txtUsuario.getText());
-        p.setSenha(Auxiliar.criptografar(String.valueOf(passSenha.getPassword())));
-        p.setMatricula(txtMatricula.getText());
-        
-        String senha = String.valueOf(passSenha.getPassword());
-        String confSenha = String.valueOf(passConfSenha.getPassword());
         
         String erros = "";
-                        
-        if (confSenha.length() >= 255 || confSenha.length() == 0)
-            erros += "Confirmação de Senha inválida\n";    
         
-        if (!senha.equals(confSenha))
-            erros += "Senha e confirmação de senha diferentes\n";
-            
-        // se há erros computados na validação da classe ou erros da confirmação de senha feitos na view
         if (!(erros += p.validar()).equals("")){
             // mensagem de erro
             JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -252,14 +220,76 @@ public class CadastroPessoa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+    private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
         this.setVisible(false);
         Auxiliar.trocarTela(new PrincipalAdm());
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    }//GEN-LAST:event_mItemPrincipalActionPerformed
 
-    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatriculaActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        String nome = txtNome.getText();
+        if (nome.length() == 0 || nome.length() >= 100){
+            JOptionPane.showMessageDialog(this, "Nome inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
+            return;
+        }
+        
+        Pessoa p = new Pessoa();
+        if (p.pessoaPorNome(nome)){
+            editmode = true;
+            txtCpf.setText(p.getCpf());
+            txtNome.setText(p.getNome());
+            
+            
+            btnCadastrar.setEnabled(false);
+            btnDeletar.setEnabled(true);
+            btnEditar.setEnabled(true);
+            btnPesquisar.setEnabled(false);
+            p1 = p;            
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhuma ou mais de uma pessoa encontrada", "Erro", JOptionPane.ERROR_MESSAGE);               
+        }       
+
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        reset();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        if (!editmode){
+            JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
+        } else if (p1 == null){
+            JOptionPane.showMessageDialog(this, "Não há pessoa carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
+        } else if (p1.deletar()){            
+            JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            reset();
+        }
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (!editmode){
+            JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Pessoa p = new Pessoa();
+        String erros = "";
+        p.setNome(txtNome.getText());
+        p.setCpf(txtCpf.getText());        
+        
+        if (!(erros += p.validar()).equals("")){
+            // mensagem de erro
+            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+        } else{
+            int id = p1.getId();
+            p1 = p;
+            p1.setId(id);
+            if (p1.update())
+                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
+            else
+                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+            reset();
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,24 +335,18 @@ public class CadastroPessoa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<String> cmbFuncao;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel lblFuncao;
+    private javax.swing.JMenuItem mItemPrincipal;
     private javax.swing.JMenuItem mItemSair;
-    private javax.swing.JPasswordField passConfSenha;
-    private javax.swing.JPasswordField passSenha;
     private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
