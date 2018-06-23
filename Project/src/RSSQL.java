@@ -46,7 +46,6 @@ public class RSSQL {
         querySt = replaceKeys(params,sta_query);
         String dyn_query = mRSO.getDynamicField().getValue();
         queryDy = replaceKeys(params,dyn_query);
-
     }
 
     private String replaceKeys(HashMap<String,String> map, String query){
@@ -77,7 +76,6 @@ public class RSSQL {
         }
 
         return true;
-
     }
 
     public HashMap<String,String> getStaticResults(){

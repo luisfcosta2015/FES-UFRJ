@@ -1,6 +1,8 @@
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 import sslRel.helpers.DBHelper;
+import sslRel.helpers.Permission;
+import sslRel.helpers.Resource;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,13 +17,14 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
-public class ReportController extends HttpServlet {
+public class Orquestrador extends HttpServlet {
     private DBHelper db = new DBHelper();
     private RSSQL rssql;
     private HashMap<String,String> params;
 
-    public ReportController(){
+    public Orquestrador(){
         super();
     }
 
@@ -31,27 +34,30 @@ public class ReportController extends HttpServlet {
         baseUri = baseUri+Paths.get("res/reportsTemplates");
 
 //        File htmlSource = new File(baseUri+"/ListagemNominal.html");
-        File htmlSource = new File(baseUri+"/DiarioDeClasse.html");
+        File htmlSource = new File(baseUri+"/DiarioDeClasses/DiarioDeClasse.html");
         File pdfDest = new File(baseUri+"/output.pdf");
         // pdfHTML specific code
         ConverterProperties converterProperties = new ConverterProperties();
         converterProperties.setBaseUri(baseUri);
         HtmlConverter.convertToPdf(new FileInputStream(htmlSource), new FileOutputStream(pdfDest), converterProperties);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        this.db.connect();
-        //response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().println(request.getParameter("escola")+request.getParameter("ano")+request.getParameter("turma"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        if(Permission.isAny(request)){
+            System.out.println("Passou");
+            this.db.connect();
+            //response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
 
-        try {
-            reqProc(request);//chama os procedimentos para processar os requerimentos vindos da página
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                reqProc(request);//chama os procedimentos para processar os requerimentos vindos da página
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            db.close();
+        }else{
+            throw new ServletException("Usuário não Permitido");
         }
-        db.close();
     }
 
 
@@ -71,9 +77,7 @@ public class ReportController extends HttpServlet {
         String q1;
         String q2;
 
-        procParams(request);
-
-        tarefaBanco();
+        RSSQL rssql =  procParams(request);
 
         dynamK=rssql.getDynamicKeys();//funcionando obtendo as chaves dinâmicas
 
@@ -95,23 +99,26 @@ public class ReportController extends HttpServlet {
     }
 
 
-    protected void procParams(HttpServletRequest request){
-        params = new HashMap<>();
-        Map<String, String[]> parameters;
+    protected RSSQL procParams(HttpServletRequest request) throws Exception {
+        JobManager jobManager = new JobManager();
 
-        Iterator<String> iterator;
-        parameters=request.getParameterMap();
-        iterator=parameters.keySet().iterator();
-        while (iterator.hasNext()){
-            params.put(iterator.next(),"");//prepara o HashMap params para ser utilizado no RSSQL
-        }
+            HashMap<String,String> params = new HashMap<>();
+            JobManager.JobFormat job = jobManager.getJobByURL(request.getParameter("_urlaction"));
+            Set<String> keys = job.params.keySet();
+            for(String key:keys){
+                params.put(key,request.getParameter(job.params.get(key)));
+                System.out.println(key+","+params.get(key));
+            }
 
+
+//            Resource resource = new Resource();
+
+//            resource.findResource(new File(System.getProperty("reportsTemplates")+"/"+job.folder),".rssql.json",false);
+//            rssql = new RSSQL(resource.files.get(0).getCanonicalPath());
+//
+            return rssql;
     }
 
-    protected void tarefaBanco() throws Exception {
-        rssql = new RSSQL(System.getProperty("reportsTemplates")+"/ListagemNominal/ListagemNominal.rssql.json");
-        rssql.loadQuery(params);
-    }
 
     protected void criaNamespace(HashMap<String,String> staticData, String[] dynamK, String[][] dynamResult, HashMap<String,String> namespace){//Cria o namespace para seguir com o HTMLReplacer
         namespace.putAll(staticData);

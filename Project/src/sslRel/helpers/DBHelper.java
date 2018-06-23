@@ -11,7 +11,7 @@ public class DBHelper {
     private Connection conn;
 
     public DBHelper(){
-        this.URL = System.getProperty("DB_URL_ROOT")+"/"+System.getProperty("DB_NAME");
+        this.URL = System.getProperty("DB_URL_ROOT")+System.getProperty("file.separator")+System.getProperty("DB_NAME");
         this.USERNAME = System.getProperty("DB_USER");
         this.PASSWORD = System.getProperty("DB_PASS");
         try {

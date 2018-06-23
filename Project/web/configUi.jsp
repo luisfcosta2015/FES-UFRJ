@@ -16,7 +16,6 @@
     </div>
 </div>
 
-
 <!--MODELOS DE INPUT-->
 
 <div data-model="buttonchoice" class="input-container">

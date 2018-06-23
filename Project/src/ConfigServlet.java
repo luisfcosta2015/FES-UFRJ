@@ -98,12 +98,23 @@ public class ConfigServlet extends HttpServlet{
     }
 
     public void saveJob(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
         JobManager jobManager = new JobManager();
         String url = request.getParameter("_urlaction");
         String params = request.getParameter("params");
         String jobFolder = request.getParameter("job");
         jobManager.saveJob(url,jobFolder,params);
         response.getWriter().write("{\"msg\":\"Sucesso ao criar Job\"}");
+    }
+
+    public void deleteJob(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        JobManager jobManager = new JobManager();
+        String url = request.getParameter("_urlaction");
+        String params = request.getParameter("params");
+        String jobFolder = request.getParameter("job");
+
+        //jobManager.deleteJob(url,jobFolder,params);
+        response.getWriter().write("{\"msg\":\"Sucesso ao deletar Job\"}");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -116,6 +127,7 @@ public class ConfigServlet extends HttpServlet{
             switch (action){
                 case "getJobs":this.listPaths(request,response);break;
                 case "saveJob":this.saveJob(request,response);break;
+                case "deleteJob":this.deleteJob(request,response);
                 case "getJob":
                     try {
                         this.getJobParams(request,response);

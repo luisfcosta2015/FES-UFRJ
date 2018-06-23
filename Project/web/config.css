@@ -328,6 +328,15 @@ body.SSLRelUIopen .menu-icon-open{
     display: none;
 }
 
+/*Conserto de bug na posição do Menu superior
+.clLevel0border{
+    transition: margin-left 300ms linear;
+}
+body.SSLRelUIopen .clLevel0border{
+    margin-left: 250px;
+}
+/**********************************************/
+
 .menu-icon-open:after{
     content: "SSLRel";
     font-size: 9pt;
@@ -348,3 +357,14 @@ body.SSLRelUIopen .menu-icon-open{
     font-size: 10pt !important;
     padding: 3px;
 }
+
+td[SSLhiddenElements]{
+    padding-left: 20px;
+}
+td[SSLhiddenElements] button{
+    border: 1px solid #495057 !important;
+    border-radius: 3px;
+    margin: 5px !important;
+    padding: 4px !important;
+}
+

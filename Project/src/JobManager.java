@@ -72,7 +72,7 @@ public class JobManager {
 
     }
 
-    public JobFormat getJobByURL(String url){
+    public JobFormat getJobByURL(String url)throws NullPointerException{
         return this.jobsContent.get(url);
     }
 
@@ -87,6 +87,7 @@ public class JobManager {
         job.folder=folder;
         this.jobsContent.put(url,job);
         String json = new Gson().toJson(this.jobsContent);
+        System.out.println(json);
         Resource.setFileContent(this.jobsFile,json);
     }
 
