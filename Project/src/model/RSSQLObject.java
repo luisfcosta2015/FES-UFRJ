@@ -25,7 +25,6 @@ public class RSSQLObject {
         }
 
     }
-
     RSSQLField static_field;
     RSSQLField dynamic_field;
 
@@ -37,6 +36,7 @@ public class RSSQLObject {
     public RSSQLField getStaticField() {
         return this.static_field;
     }
+
 
     public RSSQLField getDynamicField() {
         return this.dynamic_field;

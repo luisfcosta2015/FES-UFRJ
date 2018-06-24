@@ -1,3 +1,4 @@
+/*
 package Tests;
 import junit.framework.TestCase;
 import sslRel.helpers.DBHelper;
@@ -18,3 +19,4 @@ public class Tests extends TestCase {
 
     }
 }
+*/

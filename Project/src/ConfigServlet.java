@@ -21,18 +21,6 @@ public class ConfigServlet extends HttpServlet{
         super();
     }
 
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        StringBuilder content= new StringBuilder();
-        String folder = "DiarioDeClasses";
-        File path = new File(System.getProperty("reportsTemplates")+"/"+folder);
-        Resource f = new Resource();
-        f.findResource(path,".html",false);
-        ArrayList<File> files = f.files;
-        File file = files.get(0);
-        PdfReport.generate(response,folder,Resource.getFileContent(file));
-    }
-
     public void listPaths(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String url = request.getParameter("_urlaction");
         JobManager jobManager = new JobManager();
@@ -43,7 +31,7 @@ public class ConfigServlet extends HttpServlet{
         if(keys!=null){
             for (String key :keys) {
                 if(key.equals(url)){
-                    selected = ",\"selected\":"+ jobManager.getJobByURL(url).folder;
+                    selected = ",\"selected\":\""+ jobManager.getJobByURL(url).folder+"\"";
                 }
             }
         }
@@ -75,13 +63,14 @@ public class ConfigServlet extends HttpServlet{
             }
         }
 
+
         if((res.files!=null)&&(!res.files.isEmpty())) {
             String rssqlFile = res.files.get(0).getCanonicalPath();
             RSSQL rssql = new RSSQL(rssqlFile);
-            String[] staticKeys = rssql.getStaticKeys();
+            ArrayList<String> inputKeys = rssql.inputs;
             if (job.params == null) job.params = new HashMap<>();
 
-            for (String key : staticKeys) {
+            for (String key : inputKeys) {
                 if (job.params.get(key) == null) {
                     job.params.put(key, "");
                 }
@@ -92,8 +81,6 @@ public class ConfigServlet extends HttpServlet{
         }else{
             jsonOut= new Gson().toJson(job.params);
         }
-
-
         response.getWriter().write(jsonOut);
     }
 

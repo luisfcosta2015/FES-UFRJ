@@ -1,6 +1,10 @@
 package sslRel.helpers;
 
+import org.postgresql.util.PSQLException;
+
 import java.sql.*;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class DBHelper {
@@ -41,6 +45,34 @@ public class DBHelper {
         return true;
     }
 
+    public static Object convertTypes(String input){
+        Object output = new Object();
+        try {
+            output = NumberFormat.getInstance().parse(input);
+        } catch (Exception e) {
+            try {
+                SimpleDateFormat format = new java.text.SimpleDateFormat("HH:mm:ss.SSSSSS");
+                output = format.parse(input);
+            } catch (Exception e2) {
+                try {
+                    SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                    format.parse(input);
+                } catch (Exception e3) {
+                    try {
+                        SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
+                        format.parse(input);
+                    } catch (Exception e4) {
+                        try {
+                            output = Boolean.valueOf(input);
+                        } catch (Exception e5) {
+                            output=input;
+                        }
+                    }
+                }
+            }
+        }
+        return output;
+    }
 
     public ArrayList<ArrayList<String>> query(String sql,Object... param){
         ArrayList<ArrayList<String>> result = new ArrayList<>();
@@ -50,22 +82,31 @@ public class DBHelper {
             for(int i=0;i<param.length;i++){
                 st.setObject( i+1,param[i]);
             }
-            ResultSet rs = st.executeQuery();
-            int ncolumn = rs.getMetaData().getColumnCount();
-            while (rs.next()) {
-                ArrayList<String> row = new ArrayList<>();
-                for(int i=1;i<=ncolumn;i++){
-                    row.add(rs.getString(i));
+            try {
+                ResultSet rs = st.executeQuery();
+                int ncolumn = rs.getMetaData().getColumnCount();
+                while (rs.next()) {
+                    ArrayList<String> row = new ArrayList<>();
+                    for(int i=1;i<=ncolumn;i++){
+                        row.add(rs.getString(i));
+                    }
+                    result.add(row);
                 }
-                result.add(row);
+                rs.close();
+                st.close();
+                return result;
+            }catch (PSQLException e){
+                if(e.getMessage().equals("No results were returned by the query.")){
+                    return null;
+                }else{
+                    System.err.println(e.getMessage());
+                }
             }
-            rs.close();
-            st.close();
-            return result;
         }catch(SQLException e){
             e.printStackTrace();
             return null;
         }
+        return null;
     }
 
 }
