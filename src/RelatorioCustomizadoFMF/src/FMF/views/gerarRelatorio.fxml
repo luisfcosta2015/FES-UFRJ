@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -18,10 +16,5 @@
       <Text layoutX="133.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório Escolhido:" textAlignment="RIGHT" wrappingWidth="149.7294921875" />
       <Text fx:id="RelatorioEscolhido" layoutX="288.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="223.7294921875" />
       <Button fx:id="gerarBtn" layoutX="247.0" layoutY="349.0" mnemonicParsing="false" onAction="#gerarAct" text="Gerar" />
-      <ScrollPane hbarPolicy="ALWAYS" layoutX="82.0" layoutY="100.0" prefHeight="120.0" prefWidth="439.0">
-         <content>
-            <HBox fx:id="listaModelos" />
-         </content>
-      </ScrollPane>
    </children>
 </AnchorPane>

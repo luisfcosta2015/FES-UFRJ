@@ -21,6 +21,9 @@ public class MiniaturaController implements Initializable {
 
     @FXML
     private Text titulo;
+
+    @FXML
+    private Text addRel;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -29,6 +32,7 @@ public class MiniaturaController implements Initializable {
     
     public void setTitle(String txt){
         titulo.setText(txt);
+        addRel.setVisible(false);
     }
     
 }

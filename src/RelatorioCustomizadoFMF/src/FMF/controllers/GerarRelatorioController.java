@@ -8,6 +8,7 @@ package FMF.controllers;
 import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -28,6 +30,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Pair;
 
 /**
  * FXML Controller class
@@ -46,36 +49,36 @@ public class GerarRelatorioController implements Initializable {
     private Button gerarBtn;
 
     @FXML
-    private HBox listaModelos;
-
-    @FXML
     private Text RelatorioEscolhido;    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        listaModelos.setSpacing(10);
+        // TODO: Iterar sobre o array global de modelos, obter o título a partir da classe modelo e usá-lo pra setar
         
-        try {
-            // TODO: Iterar sobre o array global de modelos, obter o título a partir da classe modelo e usá-lo pra setar
-            for(Integer i=0;i<10;i++){
-                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/FMF/views/Miniatura.fxml"));
-                Pane p1 = (Pane) loader1.load();
-                MiniaturaController mini1 = loader1.<MiniaturaController>getController();
-                String title;
-                title = "Teste "+ i.toString();
-                mini1.setTitle(title);
-                p1.setOnMousePressed(new EventHandler<MouseEvent>() {
+        List<Pair< String,EventHandler<? super MouseEvent> > > miniaturas = new ArrayList<>();
+        for(Integer i=0;i<10;i++){
+            String title = "Teste "+ i.toString();
+            miniaturas.add(new Pair<>(title, new EventHandler<MouseEvent>() {
 
                     @Override
                     public void handle(MouseEvent event) {
                         RelatorioEscolhido.setText(title);
                     }
-                });
-                listaModelos.getChildren().add(p1);
-            }
-        } catch (IOException ex) {
-            System.out.println(ex);
+            }));
         }
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FMF/views/DeslizadorMiniaturas.fxml"));
+            ScrollPane SP = (ScrollPane) loader.load();
+            DeslizadorMiniaturasController deslizador = loader.<DeslizadorMiniaturasController>getController();
+            deslizador.setMiniaturas(miniaturas);
+            background.getChildren().add(SP);
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
     }    
     
     public void voltarAct() throws IOException{

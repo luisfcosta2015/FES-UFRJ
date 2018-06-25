@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane hbarPolicy="ALWAYS" layoutX="82.0" layoutY="100.0" prefHeight="120.0" prefWidth="439.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FMF.controllers.DeslizadorMiniaturasController">
+   <content>
+      <HBox fx:id="listaMiniaturas" />
+   </content>
+</ScrollPane>

@@ -7,12 +7,20 @@ package FMF.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Pair;
 
 /**
  * FXML Controller class
@@ -24,9 +32,7 @@ public class CriarEditarRelController implements Initializable {
     @FXML
     private AnchorPane background;
     @FXML
-    private Button criabtn;
-    @FXML
-    private Button editarbtn;
+    private Button editarCriarbtn;
     /**
      * Initializes the controller class.
      * 
@@ -34,6 +40,35 @@ public class CriarEditarRelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        List<Pair< String,EventHandler<? super MouseEvent> > > miniaturas = new ArrayList<>();
+        for(Integer i=0;i<10;i++){
+            String title = "Teste "+ i.toString();
+            miniaturas.add(new Pair<>(title, new EventHandler<MouseEvent>() {
+
+                    @Override
+                    public void handle(MouseEvent event) {
+                        editarCriarbtn.setText("Editar : " +title);
+                    }
+            }));
+        }
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FMF/views/DeslizadorMiniaturas.fxml"));
+            ScrollPane SP = (ScrollPane) loader.load();
+            DeslizadorMiniaturasController deslizador = loader.<DeslizadorMiniaturasController>getController();
+            deslizador.setMiniaturas(miniaturas, new EventHandler<MouseEvent>() {
+
+                    @Override
+                    public void handle(MouseEvent event) {
+                        editarCriarbtn.setText("Criar Novo Relatório");
+                    }
+            });
+            background.getChildren().add(SP);
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
     public void voltarAct() throws IOException{ //estou voltando a tela inicial
