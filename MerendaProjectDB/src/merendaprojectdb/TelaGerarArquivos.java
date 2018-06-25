@@ -56,8 +56,8 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
         gerarODT = new javax.swing.JButton();
         gerarPDF = new javax.swing.JButton();
         voltar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        teste1 = new javax.swing.JButton();
+        teste2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,17 +89,17 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("teste");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        teste1.setText("teste");
+        teste1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                teste1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("teste2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        teste2.setText("teste2");
+        teste2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                teste2ActionPerformed(evt);
             }
         });
 
@@ -119,9 +119,9 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(jButton1)
+                        .addComponent(teste1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(teste2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(gerarODS)
@@ -141,8 +141,8 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
                 .addComponent(gerarPDF)
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(teste1)
+                    .addComponent(teste2))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -169,7 +169,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_voltarMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void teste1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teste1ActionPerformed
 
         try {
             System.out.println("1");
@@ -183,6 +183,11 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             System.out.println("4");
             table.applyStyle(template);
             System.out.println("5");
+            
+            table.getCellByPosition(1, 0).setDoubleValue(23.0);
+            doc.save("ttestefinal.odt");
+            System.out.println("6");
+            
 
             // add image
             //outputOdt.newImage(new URI("odf-logo.png"));
@@ -218,9 +223,9 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             System.err.println("ERROR: unable to create output file.");
             System.err.println(e);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_teste1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void teste2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teste2ActionPerformed
        
         try
         {
@@ -234,7 +239,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             Logger.getLogger(TelaGerarArquivos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_teste2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,8 +249,8 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     private javax.swing.JButton gerarODS;
     private javax.swing.JButton gerarODT;
     private javax.swing.JButton gerarPDF;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton teste1;
+    private javax.swing.JButton teste2;
     private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }
