@@ -93,6 +93,16 @@ public class JobManager {
         Resource.setFileContent(this.jobsFile,json);
     }
 
+    public boolean clearJob(String url) throws IOException {
+        if(this.jobsContent.containsKey(url)){
+            this.jobsContent.remove(url);
+            String json = new Gson().toJson(this.jobsContent);
+            Resource.setFileContent(this.jobsFile,json);
+            return true;
+        }
+        return false;
+    }
+
     public static class JobFormat{
         public String folder;
         public HashMap<String,String> params;

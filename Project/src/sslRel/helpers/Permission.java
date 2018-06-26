@@ -20,7 +20,6 @@ public class Permission {
 
        String mainFunc = "(func.cadastra=? AND func.exclui=?)";
        String adminFunc= "("+mainFunc+"OR"+mainFunc+")";
-
         DBHelper db = new DBHelper();
         db.connect();
         int user_id = Integer.parseInt(db.query("SELECT * FROM acesso.sslrel_tokens WHERE token=?",_token).get(0).get(0));
