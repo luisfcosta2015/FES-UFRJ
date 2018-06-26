@@ -41,17 +41,17 @@ public class CapaDados {
      * @param atendidos int - numero de alunos atendidos
      * @param numDias int - numero de dias em que foram servidos refeições
      */
-    public void setVetorMatriculados(int identificador, int[] turnos, int atendidos, int numDias) {
+    public void setVetorMatriculados(int identificador, int[] turnos, int numDias) {
         if(identificador >= 4) {
             return;
         }
         if(this.refeicoes[identificador] == null){
             this.refeicoes[identificador] = new RefeicoesDados(turnos[0], turnos[1],
-            turnos[2], turnos[3], atendidos, numDias);
+            turnos[2], turnos[3], numDias);
         }
         else {
             this.refeicoes[identificador].changeAll(turnos[0], turnos[1],
-            turnos[2], turnos[3], atendidos, numDias);
+            turnos[2], turnos[3], numDias);
         }
         calculaTotal();
     }

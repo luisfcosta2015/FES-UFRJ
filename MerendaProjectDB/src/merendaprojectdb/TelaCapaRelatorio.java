@@ -323,7 +323,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
             else {
                 numDias = 0;
             }
-            this.capa.setVetorMatriculados(i, turnos, atendidos, numDias);
+            this.capa.setVetorMatriculados(i, turnos, numDias);
         }
     }
     /**Método para atualizar a variavel capa com os valores contidos na tabela Desjejum

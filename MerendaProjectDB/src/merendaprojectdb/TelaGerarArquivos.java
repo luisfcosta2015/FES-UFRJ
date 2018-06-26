@@ -10,11 +10,14 @@ import java.io.InputStream;
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jopendocument.dom.OOUtils;
 import org.odftoolkit.odfdom.type.Color;
 import org.odftoolkit.simple.Document;
 import org.odftoolkit.simple.TextDocument;
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Cell;
+import org.odftoolkit.simple.table.Column;
+import org.odftoolkit.simple.table.Row;
 import org.odftoolkit.simple.table.Table;
 import org.odftoolkit.simple.table.TableTemplate;
 import org.odftoolkit.simple.text.list.List;
@@ -154,7 +157,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }//GEN-LAST:event_gerarODSActionPerformed
 
     private void gerarODTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODTActionPerformed
-        exportador.exportarODT();
+        exportador.exportarODT(relatorio);
     }//GEN-LAST:event_gerarODTActionPerformed
 
     private void gerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPDFActionPerformed
@@ -172,53 +175,65 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     private void teste1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teste1ActionPerformed
 
         try {
-            System.out.println("1");
-            Document doc = TextDocument.loadDocument("teste2.odt");
-            System.out.println("2");
-            InputStream oi = new FileInputStream("teste1.odt");
-            System.out.println("2.5");
-            TableTemplate template = doc.LoadTableTemplateFromForeignTable(oi, "template");
-            System.out.println("3");
-            Table table = doc.getTableByName("pipoca");
-            System.out.println("4");
-            table.applyStyle(template);
-            System.out.println("5");
-            
-            table.getCellByPosition(1, 0).setDoubleValue(23.0);
-            doc.save("ttestefinal.odt");
-            System.out.println("6");
-            
-
-            // add image
-            //outputOdt.newImage(new URI("odf-logo.png"));
-
-            // add paragraph
-            //outputOdt.addParagraph("Hello World, Hello Simple ODF!");
-
-            // add list
-            //outputOdt.addParagraph("The following is a list.");
-            //List list = outputOdt.addList();
-            /*String[] items = {"item1", "item2", "item3"};
-            list.addItems(items);
-
-            // add table
-            Table table = outputOdt.addTable(2, 2);
-            Cell cell = table.getCellByPosition(0, 0);
-            cell.setStringValue("Hello World!");
-
-            outputOdt.save("HelloWorld.odt");
-            System.out.println("0");
+            CapaDados capaDados = relatorio.getCapaRelatorio();
             SpreadsheetDocument doc = SpreadsheetDocument.newSpreadsheetDocument();
-            System.out.println("1");
-            Table sheet = doc.getSheetByIndex(0);
-            System.out.println("2");
-            sheet.getCellByPosition(0, 0).setStringValue("Betrag");
-            System.out.println("3");
-            sheet.getCellByPosition(1, 0).setDoubleValue(23.0);
-            System.out.println("4");
-            doc.save("HelloWorld.ods");
-            System.out.println("5");
-              */          
+            SpreadsheetDocument modelo = SpreadsheetDocument.loadDocument("modelo.ods");
+            Table capa = modelo.getTableByName("Capa");
+            
+            doc.removeSheet(0);
+            
+            System.out.println(TelaPrincipal.escolaAtual.getUnidade());
+            System.out.println(relatorio.getEscola().getUnidade());
+            
+            
+            capa.getCellByPosition(1, 3).setStringValue(relatorio.getEscola().getUnidade());
+            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()-1900));
+            capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
+            capa.getCellByPosition(1, 5).setStringValue(relatorio.getEscola().getTelefone());
+            capa.getCellByPosition(7, 5).setStringValue(""+relatorio.getEscola().getINEP());
+            
+            for(int i=11;i<16;i++)
+            {
+                for(int j=2;j<10;j++)
+                {
+                    capa.getCellByPosition(j, i).setStringValue(""+capaDados.getValueAt(i-11, j-2));
+                }
+            }
+            System.out.println(capaDados.getValueAt(1, 5));
+            capa.getCellByPosition(2, 17).setStringValue(""+capaDados.alunosAtendidosDesjejum);
+            capa.getCellByPosition(6, 17).setStringValue(""+capaDados.desjejumTotalMensalServido);
+            
+            capa.getCellByPosition(2,21).setStringValue(""+capaDados.maisEducacao[0].matriculados);
+            capa.getCellByPosition(4,21).setStringValue(""+capaDados.maisEducacao[0].atendidos);
+            capa.getCellByPosition(6,21).setStringValue(""+capaDados.maisEducacao[0].numDias);
+            capa.getCellByPosition(7,21).setStringValue(""+capaDados.maisEducacao[0].totalDesjejum);
+            capa.getCellByPosition(8,21).setStringValue(""+capaDados.maisEducacao[0].totalLanche);
+            
+            capa.getCellByPosition(2,24).setStringValue(""+capaDados.maisEducacao[1].matriculados);
+            capa.getCellByPosition(4,24).setStringValue(""+capaDados.maisEducacao[1].atendidos);
+            capa.getCellByPosition(6,24).setStringValue(""+capaDados.maisEducacao[1].numDias);
+            capa.getCellByPosition(8,24).setStringValue(""+capaDados.maisEducacao[1].totalLanche);
+            capa.getCellByPosition(9,24).setStringValue(""+capaDados.getTotalMaisEducacao());
+            
+            capa.getCellByPosition(2,26).setStringValue(""+capaDados.getTotalServido());
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            doc.appendSheet(capa, "capa");
+            doc.save("ttestefinal.ods");
+            System.out.println("Fim");
+            File file = new File("ttestefinal.ods");
+            OOUtils.open(file);
+            
         } catch (Exception e) {
             System.err.println("ERROR: unable to create output file.");
             System.err.println(e);
@@ -254,3 +269,47 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+ /*Document doc = SpreadsheetDocument.loadDocument("teste2.odt");
+            InputStream oi = new FileInputStream("teste1.odt");
+            TableTemplate template = doc.LoadTableTemplateFromForeignTable(oi, "template");
+            Table table = doc.getTableByName("pipoca");
+            table.applyStyle(template);
+            Column coluna = table.getColumnByIndex(1);
+            coluna.setWidth(40);
+            table.getCellByPosition(1, 0).setDoubleValue(23.0);
+            doc.save("ttestefinal.odt");*/
+            
+
+            // add image
+            //outputOdt.newImage(new URI("odf-logo.png"));
+
+            // add paragraph
+            //outputOdt.addParagraph("Hello World, Hello Simple ODF!");
+
+            // add list
+            //outputOdt.addParagraph("The following is a list.");
+            //List list = outputOdt.addList();
+            /*String[] items = {"item1", "item2", "item3"};
+            list.addItems(items);
+
+            // add table
+            Table table = outputOdt.addTable(2, 2);
+            Cell cell = table.getCellByPosition(0, 0);
+            cell.setStringValue("Hello World!");
+
+            outputOdt.save("HelloWorld.odt");
+            System.out.println("0");
+            SpreadsheetDocument doc = SpreadsheetDocument.newSpreadsheetDocument();
+            System.out.println("1");
+            Table sheet = doc.getSheetByIndex(0);
+            System.out.println("2");
+            sheet.getCellByPosition(0, 0).setStringValue("Betrag");
+            System.out.println("3");
+            sheet.getCellByPosition(1, 0).setDoubleValue(23.0);
+            System.out.println("4");
+            doc.save("HelloWorld.ods");
+            System.out.println("5");
+              */

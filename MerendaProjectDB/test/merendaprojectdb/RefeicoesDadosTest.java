@@ -31,7 +31,7 @@ public class RefeicoesDadosTest {
     
     @Before
     public void setUp() {
-        this.dados = new RefeicoesDados(15,20,85,30,15,10);
+        this.dados = new RefeicoesDados(15,20,85,30,10);
     }
     
     @After
@@ -50,7 +50,7 @@ public class RefeicoesDadosTest {
         int turno4 = 0;
         int atendidos = 0;
         int numDias = 0;
-        this.dados.changeAll(turno1, turno2, turno3, turno4, atendidos, numDias);
+        this.dados.changeAll(turno1, turno2, turno3, turno4, numDias);
         assertEquals(turno1, this.dados.turnos[0]);
         assertEquals(turno2, this.dados.turnos[1]);
         assertEquals(turno3, this.dados.turnos[2]);
