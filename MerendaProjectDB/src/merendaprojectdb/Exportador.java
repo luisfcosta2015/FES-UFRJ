@@ -10,9 +10,11 @@ import com.itextpdf.text.*;
 
 import java.awt.Graphics2D;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.logging.ErrorManager;
 import java.util.logging.Level;
@@ -30,14 +32,28 @@ import org.jopendocument.dom.text.Heading;
 import org.jopendocument.dom.text.Paragraph;
 import org.jopendocument.model.OpenDocument;
 import org.jopendocument.renderer.ODTRenderer;
+
+import java.net.URI;
+import org.odftoolkit.simple.SpreadsheetDocument;
+
+import org.odftoolkit.simple.TextDocument;
+import org.odftoolkit.simple.table.Cell;
+import org.odftoolkit.simple.table.Table;
+import org.odftoolkit.simple.text.list.List;
 /**
  *
  * @author thiago
  */
 public class Exportador {
-    
+    public String documentTemplateName;
+    public String tableMatriculadosName;
+    public String logoAdress;
+    public String pastaDeRepositorioParaSalvar;
     public Exportador(){
-        
+        this.documentTemplateName = "teste1.odt";
+        this.tableMatriculadosName = "template";
+        this.logoAdress = "./imagens/logo.png";
+        this.pastaDeRepositorioParaSalvar = "./arquivos/";
     }
     private void setVetorMatriculados(Object[][] data, Relatorio relatorio, int pos, String modalidade) {
         data[pos] = new Object[] { modalidade , relatorio.getCapaRelatorio().refeicoes[pos].turnos[0],
@@ -47,7 +63,7 @@ public class Exportador {
                 relatorio.getCapaRelatorio().refeicoes[pos].totalRefeicoes};
     }
     
-    public void exportarODS(Relatorio relatorio){
+    public String exportarODS(Relatorio relatorio){
         String fileName = relatorio.getTitulo();
         //System.out.println(fileName);
         try{
@@ -97,34 +113,133 @@ public class Exportador {
         catch(JDOMException e) {
             System.out.println(e.getMessage());
         }
+        return "";
     }
     
+    private void cabecalho(TextDocument outputOdt, Relatorio relatorio) throws Exception {
+        // add image
+        outputOdt.newImage(new URI(this.logoAdress));
+
+        // add paragraph
+        Escola escola = relatorio.getEscola();
+        outputOdt.addParagraph(escola.getEstado());
+        outputOdt.addParagraph(escola.getPrefeitura());
+        outputOdt.addParagraph(escola.getSecretaria());
+        outputOdt.addParagraph(escola.getSubsecretaria());
+        outputOdt.addParagraph(escola.getDepartamento());
+        outputOdt.addParagraph(escola.getDiretoria());
+    }
+    private void matriculadosFixedCampos(Table table) {
+        Cell cell = table.getCellByPosition(0, 0);
+        cell.setStringValue("ALUNOS MATRICULADOS");
+        cell = table.getCellByPosition(5,0);
+        cell.setStringValue("TOTAL MATRICULADOS");
+        cell = table.getCellByPosition(6,0);
+        cell.setStringValue("TOTAL ATENDIDOS 86%");
+        cell = table.getCellByPosition(7,0);
+        cell.setStringValue("Nº DE DIAS DE DISTRIBUIÇÃO DE REFEIÇÃO");
+        cell = table.getCellByPosition(8,0);
+        cell.setStringValue("TOTAL DE REFEICOES SERVIDAS");
+        
+        cell = table.getCellByPosition(0,1);
+        cell.setStringValue("MODALIDADE DE ENSINO");
+        cell = table.getCellByPosition(0,2);
+        cell.setStringValue("PRÉ ESCOLAR");
+        cell = table.getCellByPosition(0,3);
+        cell.setStringValue("ENSINO FUNDAMENTAL");
+        cell = table.getCellByPosition(0,4);
+        cell.setStringValue("JOVENS E ADULTOS");
+        cell = table.getCellByPosition(0,5);
+        cell.setStringValue("ENSINO ESPECIAL");
+        cell = table.getCellByPosition(0,6);
+        cell.setStringValue("TOTAL");
+        
+        cell = table.getCellByPosition(1,1);
+        cell.setStringValue("1º TURNO");
+        cell = table.getCellByPosition(2,1);
+        cell.setStringValue("2º TURNO");
+        cell = table.getCellByPosition(3,1);
+        cell.setStringValue("3º TURNO");
+        cell = table.getCellByPosition(4,1);
+        cell.setStringValue("4º TURNO");
+    }
+    private void setDesjejumTable(Table desjejum, CapaDados capa) {
+        Cell cell = desjejum.getCellByPosition(0,0);
+        cell.setStringValue("DESJEJUM - ALUNOS ATENDIDOS 86%");
+        cell = desjejum.getCellByPosition(1,0);
+        cell.setStringValue(Integer.toString(capa.alunosAtendidosDesjejum));
+        cell = desjejum.getCellByPosition(2,0);
+        cell.setStringValue("TOTAL MENSAL DESJEJUM SERVIDO");
+        cell = desjejum.getCellByPosition(3,0);
+        cell.setStringValue(Integer.toString(capa.desjejumTotalMensalServido));
+    }
+    private void setMaisEduc(Table maisEduc1, Table maisEduc2, CapaDados capa) {
+        Cell cell = maisEduc1.getCellByPosition(0,0);
+        cell.setStringValue("Matriculados");
+        cell = maisEduc1.getCellByPosition(1,0);
+        cell.setStringValue("1º turno Matriculados");
+        cell = maisEduc1.getCellByPosition(2,0);
+        cell.setStringValue("1º turno Atendidos");
+        cell = maisEduc1.getCellByPosition(3,0);
+        cell.setStringValue("Dias Distribuição Mais Educação");
+        cell = maisEduc1.getCellByPosition(4,0);
+        cell.setStringValue("Total Desjejum Servido");
+        cell = maisEduc1.getCellByPosition(5,0);
+        cell.setStringValue("Total Lanche Servido");
+        
+        cell = maisEduc2.getCellByPosition(0,0);
+        cell.setStringValue("Matriculados");
+        cell = maisEduc2.getCellByPosition(1,0);
+        cell.setStringValue("1º turno Matriculados");
+        cell = maisEduc2.getCellByPosition(2,0);
+        cell.setStringValue("1º turno Atendidos");
+        cell = maisEduc2.getCellByPosition(3,0);
+        cell.setStringValue("Dias Distribuição Mais Educação");
+        cell = maisEduc2.getCellByPosition(4,0);
+        cell.setStringValue("Total Desjejum Servido");
+        cell = maisEduc2.getCellByPosition(5,0);
+        cell.setStringValue("Total Lanche Servido");
+        cell = maisEduc2.getCellByPosition(6,0);
+        cell.setStringValue("Total Mais Educação");
+        
+    }
     
-    public void exportarODT(){
+    public void exportarODT(Relatorio relatorio){
+        String fileName = relatorio.getTitulo().replace('/', '-');
+        fileName = fileName.replaceAll(" ", "");
+        fileName = fileName + ".odt";
+        String fileAdress = this.pastaDeRepositorioParaSalvar + fileName;
         try{
+            TextDocument outputOdt = TextDocument.newTextDocument();
+            outputOdt.save(fileAdress);
+            File f1 = new File(fileAdress);
             
-            File f1 = new File("arquivos/vazio.odt");
             ODSingleXMLDocument p1 = ODSingleXMLDocument.createFromPackage(f1);
-            
-            
-            File f2 = new File("arquivos/teste2.ods");
+
+            String adressOds = exportarODS(relatorio);
+            File f2 = new File(adressOds);
             ODSingleXMLDocument p2 = ODSingleXMLDocument.createFromPackage(f2);
 
             p1.add(p2,false);
-            p1.saveToPackageAs(new File("arquivos/Final"));
-            System.out.println("terimnou");
+            p1.saveToPackageAs(new File(fileAdress));
+            f2.delete();
         }
         catch (IllegalArgumentException e) {
             //ErrorManager.showErrorMessage("createOdt", e.toString());
-            System.out.println("vosh");
+            System.out.println(e.toString());
         } 
         catch (IOException e) {
             //ErrorManager.showErrorMessage("createOdt", e.toString());
-            System.out.println("vosh2");
-        } catch (JDOMException ex) {
-            System.out.println("vosh3");
+            System.out.println(e.toString());
+        } 
+        catch (JDOMException ex) {
+            System.out.println(ex.toString());
             
         } 
+        catch (Exception e) {
+            System.out.println(e.toString());
+        } 
+            
     }
     
     public void exportarPDF(){
