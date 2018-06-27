@@ -11,7 +11,8 @@ public class PdfReport {
     public static void generate(HttpServletResponse response,String reportFolderName,String htmlText) throws IOException, ServletException{
         ConverterProperties properties = new ConverterProperties();
         String baseReportPath = System.getProperty("reportsTemplates");
-        properties.setBaseUri(baseReportPath+System.getProperty("file.separator")+reportFolderName);
+        String baseURI = baseReportPath+System.getProperty("file.separator")+reportFolderName;
+        properties.setBaseUri(baseURI);
         ServletOutputStream out = response.getOutputStream();
         HtmlConverter.convertToPdf(htmlText, out,properties);
     }

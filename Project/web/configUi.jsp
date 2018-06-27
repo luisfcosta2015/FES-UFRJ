@@ -16,6 +16,23 @@
     </div>
 </div>
 
+<div id="sslModalWrapper">
+    <div class="sslModal">
+        <header>
+            <div class="titleModal">
+            </div>
+            <div class="closeBtn">
+                <i class="fas fa-times"></i>
+            </div>
+        </header>
+        <section>
+        </section>
+        <footer>
+            <input class="btn btn-primary" type="button" value="Sim">
+            <input class="btn btn-secondary" type="button" value="Não">
+        </footer>
+    </div>
+</div>
 
 <!--MODELOS DE INPUT-->
 
@@ -30,10 +47,10 @@
 <!-------------------->
 <div class="SSLRel">
     <header>
-        <h5>
+        <h5 class="app-title">
             SSLRel
         </h5>
-       <%-- <div class="nav">
+        <div class="nav">
             <ul>
                 <li>
                     <a href="#" data-section="criar" selected="true">Criar</a>
@@ -42,10 +59,10 @@
                     <a href="#" data-section="editar">Editar</a>
                 </li>
             </ul>
-        </div>--%>
+        </div>
     </header>
     <div class="container">
-        <%--<div class="section criar" selected="true">
+        <div class="section criar" selected="true">
             <form action="">
                 <div class="input-container">
                     <label for="JobNameCreate">Job Name:</label>
@@ -55,11 +72,11 @@
                     <input type="button" class="btn btn-primary" value="Submit">
                 </div>
             </form>
-        </div>--%>
-        <div class="section editar" selected="true">
+        </div>
+        <div class="section editar">
             <form action="">
                 <div class="input-container">
-                    <label for="jobNameEdit">Job Name:</label>
+                    <label for="jobNameEdit">Job Model:</label>
                     <div class="input-container">
                         <select id="jobNameEdit" class="custom-select" name="">
                         </select>
@@ -70,7 +87,10 @@
 
                 </div>
                 <div class="input-container">
-                    <input id="saveJobEdit" type="button" class="btn btn-primary" value="SalvaJob">
+                    <input id="saveJobEdit" type="button" class="btn btn-primary" value="Salvar Job">
+                </div>
+                <div class="input-container">
+                    <input id="clearJobEdit" type="button" class="btn btn-secondary" value="Limpar Job">
                 </div>
             </form>
         </div>

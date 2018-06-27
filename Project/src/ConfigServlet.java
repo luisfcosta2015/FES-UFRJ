@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,19 +23,7 @@ public class ConfigServlet extends HttpServlet{
         super();
     }
 
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        StringBuilder content= new StringBuilder();
-        String folder = "DiarioDeClasses";
-        File path = new File(System.getProperty("reportsTemplates")+"/"+folder);
-        Resource f = new Resource();
-        f.findResource(path,".html",false);
-        ArrayList<File> files = f.files;
-        File file = files.get(0);
-        PdfReport.generate(response,folder,Resource.getFileContent(file));
-    }
-
-    public void listPaths(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public String listPaths(HttpServletRequest request) throws IOException {
         String url = request.getParameter("_urlaction");
         JobManager jobManager = new JobManager();
         ArrayList<File> dirs = jobManager.listAllDirectories();
@@ -43,15 +33,17 @@ public class ConfigServlet extends HttpServlet{
         if(keys!=null){
             for (String key :keys) {
                 if(key.equals(url)){
-                    selected = ",\"selected\":"+ jobManager.getJobByURL(url).folder;
+                    selected = ",\"selected\":\""+jobManager.getJobByURL(url).folder+"\"";
                 }
             }
         }
 
-        response.getWriter().write("{\"jobs\":"+dirsJson+selected+"}");
+
+
+        return "{\"jobs\":"+dirsJson+selected+"}";
     }
 
-    public void getJobParams(HttpServletRequest request,HttpServletResponse response) throws Exception {
+    public String getJobParams(HttpServletRequest request) throws Exception {
         Resource res = new Resource();
 
         String jobFolder = request.getParameter("job");
@@ -64,24 +56,26 @@ public class ConfigServlet extends HttpServlet{
 
         JobManager.JobFormat job = new JobManager.JobFormat();
 
+
         if(jobs!=null){
             Set<String> keys = jobs.keySet();
             for(String key:keys){
                 JobManager.JobFormat listedJob = jobs.get(key);
-                if(listedJob.folder.equals(jobFolder)){
+                if(listedJob.folder.equals(jobFolder)&&key.equals(request.getParameter("_urlaction"))){
                     job = listedJob;
                     break;
                 }
             }
         }
 
+
         if((res.files!=null)&&(!res.files.isEmpty())) {
             String rssqlFile = res.files.get(0).getCanonicalPath();
             RSSQL rssql = new RSSQL(rssqlFile);
-            String[] staticKeys = rssql.getStaticKeys();
+            ArrayList<String> inputKeys = rssql.inputs;
             if (job.params == null) job.params = new HashMap<>();
 
-            for (String key : staticKeys) {
+            for (String key : inputKeys) {
                 if (job.params.get(key) == null) {
                     job.params.put(key, "");
                 }
@@ -92,18 +86,35 @@ public class ConfigServlet extends HttpServlet{
         }else{
             jsonOut= new Gson().toJson(job.params);
         }
-
-
-        response.getWriter().write(jsonOut);
+        return jsonOut;
     }
 
-    public void saveJob(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public String saveJob(HttpServletRequest request) throws IOException {
+
         JobManager jobManager = new JobManager();
         String url = request.getParameter("_urlaction");
         String params = request.getParameter("params");
         String jobFolder = request.getParameter("job");
         jobManager.saveJob(url,jobFolder,params);
-        response.getWriter().write("{\"msg\":\"Sucesso ao criar Job\"}");
+        return "{\"msg\":\"Sucesso ao salvar Job\"}";
+    }
+
+    public String clearJob(HttpServletRequest request) throws IOException {
+        JobManager jobManager = new JobManager();
+        String url = request.getParameter("_urlaction");
+
+        if(jobManager.clearJob(url))return "{\"msg\":\"Sucesso ao deletar Job\"}";
+        else return  "{\"msg\":\"Essa página não tinha job\"}";
+
+    }
+
+    public String deleteJob(HttpServletRequest request) throws IOException {
+        JobManager jobManager = new JobManager();
+        String url = request.getParameter("_urlaction");
+
+        if(jobManager.clearJob(url))return "{\"msg\":\"Sucesso ao deletar Job\"}";
+        else return  "{\"msg\":\"Essa página não tinha job\"}";
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -112,24 +123,27 @@ public class ConfigServlet extends HttpServlet{
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             String action = request.getParameter("action");
-
+            PrintWriter writer = response.getWriter();
+            String out;
             switch (action){
-                case "getJobs":this.listPaths(request,response);break;
-                case "saveJob":this.saveJob(request,response);break;
+                case "getJobs":out = this.listPaths(request);break;
+                case "saveJob":out = this.saveJob(request);break;
+                case "clearJob":out = this.clearJob(request);break;
                 case "getJob":
                     try {
-                        this.getJobParams(request,response);
+                        out = this.getJobParams(request);
                     } catch (Exception e) {
                         StringBuilder msg = new StringBuilder();
                         for(StackTraceElement m:e.getStackTrace()){
                             msg.append(m);
                         }
-                        response.getWriter().write("{\"msg\":\""+msg+"\"}");
+                        out = "{\"msg\":\""+msg+"\"}";
                     }
                     break;
-                case "openConfig":response.getWriter().write("{\"openUI\":true}");break;
-                default:response.getWriter().write("{\"error\":\"Não foi possível encontrar função\"}");break;
+                case "openConfig":out = "{\"openUI\":true}";break;
+                default:out = "{\"error\":\"Não foi possível encontrar função\"}";break;
             }
+            writer.write(out);
         }else{
             throw new ServletException("Você não tem permissão para executar esta ação");
         }
