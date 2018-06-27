@@ -34,6 +34,9 @@ import org.jopendocument.model.OpenDocument;
 import org.jopendocument.renderer.ODTRenderer;
 
 import java.net.URI;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import org.odftoolkit.simple.SpreadsheetDocument;
 
 import org.odftoolkit.simple.TextDocument;
@@ -49,11 +52,15 @@ public class Exportador {
     public String tableMatriculadosName;
     public String logoAdress;
     public String pastaDeRepositorioParaSalvar;
+    public String modeloOds;
+    public String modeloCardapio;
     public Exportador(){
         this.documentTemplateName = "teste1.odt";
         this.tableMatriculadosName = "template";
         this.logoAdress = "./imagens/logo.png";
         this.pastaDeRepositorioParaSalvar = "./arquivos/";
+        this.modeloOds = "./arquivos/template/Modelo.ods";
+        this.modeloCardapio = "./arquivos/template/ModeloCardapio.ods";
     }
     private void setVetorMatriculados(Object[][] data, Relatorio relatorio, int pos, String modalidade) {
         data[pos] = new Object[] { modalidade , relatorio.getCapaRelatorio().refeicoes[pos].turnos[0],
@@ -62,167 +69,135 @@ public class Exportador {
                 relatorio.getCapaRelatorio().refeicoes[pos].atendidos, relatorio.getCapaRelatorio().refeicoes[pos].numDias,
                 relatorio.getCapaRelatorio().refeicoes[pos].totalRefeicoes};
     }
-    
-    public String exportarODS(Relatorio relatorio){
-        String fileName = relatorio.getTitulo();
-        //System.out.println(fileName);
-        try{
-            Object[][] data = new Object[6][9];
-            String[] columns = new String[] { "Modalidade de Ensino", "1 turno", "2 turno", "3 turno", "4 turno",
-                "Total Matriculados", "Total Atendidos 86%", "Número de dias de distribuição de refeições", 
-                "Total de refeições servidas"
-            };
-            setVetorMatriculados(data, relatorio, 0, "Pré Escola");
-            setVetorMatriculados(data, relatorio, 1, "Ensino Fundamental");
-            setVetorMatriculados(data, relatorio, 2, "Ensino Médio");
-            setVetorMatriculados(data, relatorio, 3, "Jovens e Adultos");
-            data[5] = new Object[] {};
-            
-            //tabela sobre total desjejum
-            
-            TableModel model = new DefaultTableModel(data, columns);
-            // Save the data to an ODS file and open it.
-            File file = new File("arquivos/" + fileName + ".ods");
-            File fileEstilos = new File("arquivos/estilos.ods");
-            SpreadSheet spread = SpreadSheet.createEmpty(model);
-            Sheet sheet = spread.getSheet(0);
-            System.out.println("!!");
-            spread.addSheet("arquivos/estilos.ods");
-            System.out.println("!!");
-            Sheet sheetEstilos = SpreadSheet.createFromFile(fileEstilos).getSheet(0);
-            
-            sheetEstilos.getCellAt("A1").getStyle();
-            System.out.println("!!");
-            spread.saveAs(file);
-            System.out.println("!!");
-            
-            
-            
-            File f1 = new File("template/ooo2flyer_p1.odt");
-            ODSingleXMLDocument p1 = ODSingleXMLDocument.createFromPackage(file);
-            // System.out.println(p1);
-            OOUtils.open(file);
-        }
-          
-        catch (IllegalArgumentException e) {
-            System.out.println("vish");
-        } 
-        catch (IOException e) {
-            System.out.println("vish2");
-        }
-        catch(JDOMException e) {
-            System.out.println(e.getMessage());
-        }
-        return "";
-    }
-    
-    private void cabecalho(TextDocument outputOdt, Relatorio relatorio) throws Exception {
-        // add image
-        outputOdt.newImage(new URI(this.logoAdress));
-
-        // add paragraph
-        Escola escola = relatorio.getEscola();
-        outputOdt.addParagraph(escola.getEstado());
-        outputOdt.addParagraph(escola.getPrefeitura());
-        outputOdt.addParagraph(escola.getSecretaria());
-        outputOdt.addParagraph(escola.getSubsecretaria());
-        outputOdt.addParagraph(escola.getDepartamento());
-        outputOdt.addParagraph(escola.getDiretoria());
-    }
-    private void matriculadosFixedCampos(Table table) {
-        Cell cell = table.getCellByPosition(0, 0);
-        cell.setStringValue("ALUNOS MATRICULADOS");
-        cell = table.getCellByPosition(5,0);
-        cell.setStringValue("TOTAL MATRICULADOS");
-        cell = table.getCellByPosition(6,0);
-        cell.setStringValue("TOTAL ATENDIDOS 86%");
-        cell = table.getCellByPosition(7,0);
-        cell.setStringValue("Nº DE DIAS DE DISTRIBUIÇÃO DE REFEIÇÃO");
-        cell = table.getCellByPosition(8,0);
-        cell.setStringValue("TOTAL DE REFEICOES SERVIDAS");
-        
-        cell = table.getCellByPosition(0,1);
-        cell.setStringValue("MODALIDADE DE ENSINO");
-        cell = table.getCellByPosition(0,2);
-        cell.setStringValue("PRÉ ESCOLAR");
-        cell = table.getCellByPosition(0,3);
-        cell.setStringValue("ENSINO FUNDAMENTAL");
-        cell = table.getCellByPosition(0,4);
-        cell.setStringValue("JOVENS E ADULTOS");
-        cell = table.getCellByPosition(0,5);
-        cell.setStringValue("ENSINO ESPECIAL");
-        cell = table.getCellByPosition(0,6);
-        cell.setStringValue("TOTAL");
-        
-        cell = table.getCellByPosition(1,1);
-        cell.setStringValue("1º TURNO");
-        cell = table.getCellByPosition(2,1);
-        cell.setStringValue("2º TURNO");
-        cell = table.getCellByPosition(3,1);
-        cell.setStringValue("3º TURNO");
-        cell = table.getCellByPosition(4,1);
-        cell.setStringValue("4º TURNO");
-    }
-    private void setDesjejumTable(Table desjejum, CapaDados capa) {
-        Cell cell = desjejum.getCellByPosition(0,0);
-        cell.setStringValue("DESJEJUM - ALUNOS ATENDIDOS 86%");
-        cell = desjejum.getCellByPosition(1,0);
-        cell.setStringValue(Integer.toString(capa.alunosAtendidosDesjejum));
-        cell = desjejum.getCellByPosition(2,0);
-        cell.setStringValue("TOTAL MENSAL DESJEJUM SERVIDO");
-        cell = desjejum.getCellByPosition(3,0);
-        cell.setStringValue(Integer.toString(capa.desjejumTotalMensalServido));
-    }
-    private void setMaisEduc(Table maisEduc1, Table maisEduc2, CapaDados capa) {
-        Cell cell = maisEduc1.getCellByPosition(0,0);
-        cell.setStringValue("Matriculados");
-        cell = maisEduc1.getCellByPosition(1,0);
-        cell.setStringValue("1º turno Matriculados");
-        cell = maisEduc1.getCellByPosition(2,0);
-        cell.setStringValue("1º turno Atendidos");
-        cell = maisEduc1.getCellByPosition(3,0);
-        cell.setStringValue("Dias Distribuição Mais Educação");
-        cell = maisEduc1.getCellByPosition(4,0);
-        cell.setStringValue("Total Desjejum Servido");
-        cell = maisEduc1.getCellByPosition(5,0);
-        cell.setStringValue("Total Lanche Servido");
-        
-        cell = maisEduc2.getCellByPosition(0,0);
-        cell.setStringValue("Matriculados");
-        cell = maisEduc2.getCellByPosition(1,0);
-        cell.setStringValue("1º turno Matriculados");
-        cell = maisEduc2.getCellByPosition(2,0);
-        cell.setStringValue("1º turno Atendidos");
-        cell = maisEduc2.getCellByPosition(3,0);
-        cell.setStringValue("Dias Distribuição Mais Educação");
-        cell = maisEduc2.getCellByPosition(4,0);
-        cell.setStringValue("Total Desjejum Servido");
-        cell = maisEduc2.getCellByPosition(5,0);
-        cell.setStringValue("Total Lanche Servido");
-        cell = maisEduc2.getCellByPosition(6,0);
-        cell.setStringValue("Total Mais Educação");
-        
-    }
-    
-    public void exportarODT(Relatorio relatorio){
+    public String getFileName(Relatorio relatorio, String tipo) {
         String fileName = relatorio.getTitulo().replace('/', '-');
+        String pasta =(relatorio.getAno()-1900)+"/";
         fileName = fileName.replaceAll(" ", "");
-        fileName = fileName + ".odt";
-        String fileAdress = this.pastaDeRepositorioParaSalvar + fileName;
+        fileName = fileName + tipo;
+        return this.pastaDeRepositorioParaSalvar + pasta + fileName;
+    }
+      
+    public SpreadsheetDocument gerarArquivo(Relatorio relatorio, String fileAdress){
+        try {
+            // INICIO CAPA
+            CapaDados capaDados = relatorio.getCapaRelatorio();
+            SpreadsheetDocument doc = SpreadsheetDocument.newSpreadsheetDocument();
+            SpreadsheetDocument modelo = SpreadsheetDocument.loadDocument(this.modeloOds);
+            Table capa = modelo.getTableByName("Capa");
+            
+            doc.removeSheet(0);   
+            capa.getCellByPosition(1, 3).setStringValue(relatorio.getEscola().getUnidade());
+            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()-1900));
+            capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
+            capa.getCellByPosition(1, 5).setStringValue(relatorio.getEscola().getTelefone());
+            capa.getCellByPosition(7, 5).setStringValue(""+relatorio.getEscola().getINEP());
+            for(int i=11;i<16;i++)
+            {
+                for(int j=2;j<10;j++)
+                {
+                    capa.getCellByPosition(j, i).setStringValue(""+capaDados.getValueAt(i-11, j-2));
+                }
+            }
+            capa.getCellByPosition(2, 17).setStringValue(""+capaDados.alunosAtendidosDesjejum);
+            capa.getCellByPosition(6, 17).setStringValue(""+capaDados.desjejumTotalMensalServido);
+            
+            capa.getCellByPosition(2,21).setStringValue(""+capaDados.maisEducacao[0].matriculados);
+            capa.getCellByPosition(4,21).setStringValue(""+capaDados.maisEducacao[0].atendidos);
+            capa.getCellByPosition(6,21).setStringValue(""+capaDados.maisEducacao[0].numDias);
+            capa.getCellByPosition(7,21).setStringValue(""+capaDados.maisEducacao[0].totalDesjejum);
+            capa.getCellByPosition(8,21).setStringValue(""+capaDados.maisEducacao[0].totalLanche);
+            
+            capa.getCellByPosition(2,24).setStringValue(""+capaDados.maisEducacao[1].matriculados);
+            capa.getCellByPosition(4,24).setStringValue(""+capaDados.maisEducacao[1].atendidos);
+            capa.getCellByPosition(6,24).setStringValue(""+capaDados.maisEducacao[1].numDias);
+            capa.getCellByPosition(8,24).setStringValue(""+capaDados.maisEducacao[1].totalLanche);
+            capa.getCellByPosition(9,24).setStringValue(""+capaDados.getTotalMaisEducacao());
+            capa.getCellByPosition(2,26).setStringValue(""+capaDados.getTotalServido());
+            doc.appendSheet(capa, "capa");
+            //FIM CAPA
+            //INICIO CARDAPIO
+            
+            Cardapio cardapioRel = relatorio.getCardapioRelatorio();
+            SpreadsheetDocument modeloCardapio = SpreadsheetDocument.loadDocument(this.modeloCardapio);
+            Table cardapio = modeloCardapio.getTableByName("Cardapio");
+            
+            System.out.println(relatorio.getEscola().getDiretoria());
+            
+            cardapio.getCellByPosition(1,2).setStringValue("Unidade: " + relatorio.getEscola().getUnidade()+" / Distrio: ");
+            cardapio.getCellByPosition(1,3).setStringValue("Diretoria: " + relatorio.getEscola().getDiretoria());
+            cardapio.getCellByPosition(1,4).setStringValue("Descrição do cardápio - " + relatorio.getMes() + "/" + relatorio.getAno());
+            
+            DateFormat df = new SimpleDateFormat("dd/MM");
+            ArrayList<DuplaDataCardapio> cardapioList = cardapioRel.getList();
+            int i=6;
+            for(DuplaDataCardapio dupla : cardapioList) {
+                Object[] obj = new Object[2];
+                obj[0] = df.format(dupla.data);
+                if(dupla.cardapioDoDia != null ) {
+                    obj[1] = dupla.cardapioDoDia;
+                }
+                else {
+                    obj[1] = "";
+                }
+                cardapio.getCellByPosition(0,i).setStringValue(""+obj[0]);
+                cardapio.getCellByPosition(1,i).setStringValue(""+obj[1]);
+                i++;
+            }
+            
+            doc.appendSheet(cardapio, "Cardapio");
+            //FIM CARDAPIO
+            return doc;
+            
+        } catch (Exception e) {
+            System.err.println("ERROR: unable to create output file.");
+            System.err.println(e);
+            return null;
+        }
+    }
+    
+    public void exportarODS(Relatorio relatorio){
+        System.out.println("Inicio");
+        String fileAdress = getFileName(relatorio, ".ods");
+        
+        SpreadsheetDocument doc = gerarArquivo(relatorio, fileAdress);
+        try {
+            doc.save(fileAdress);
+
+            File file = new File(fileAdress);
+            System.out.println("Fim");
+            OOUtils.open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void exportarODT(Relatorio relatorio){
+        String fileAdress = getFileName(relatorio, ".odt");
         try{
+            System.out.println("Inicio");
             TextDocument outputOdt = TextDocument.newTextDocument();
             outputOdt.save(fileAdress);
             File f1 = new File(fileAdress);
             
             ODSingleXMLDocument p1 = ODSingleXMLDocument.createFromPackage(f1);
 
-            String adressOds = exportarODS(relatorio);
+            String adressOds = getFileName(relatorio, ".ods");
+            SpreadsheetDocument doc = gerarArquivo(relatorio, fileAdress);
+            doc.save(adressOds);
             File f2 = new File(adressOds);
             ODSingleXMLDocument p2 = ODSingleXMLDocument.createFromPackage(f2);
-
+            
+            SpreadSheet planilhas = SpreadSheet.createFromFile(f2);
+            Sheet capa = planilhas.getSheet("capa");
+            Sheet cardapio = planilhas.getSheet("Cardapio");
+            
             p1.add(p2,false);
             p1.saveToPackageAs(new File(fileAdress));
             f2.delete();
+            System.out.println("Fim");
+            OOUtils.open(f1);
+            
         }
         catch (IllegalArgumentException e) {
             //ErrorManager.showErrorMessage("createOdt", e.toString());

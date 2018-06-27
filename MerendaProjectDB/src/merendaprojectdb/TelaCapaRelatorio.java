@@ -338,7 +338,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         if(this.tabelaDesjejum.getValueAt(0, 1) != null) {
             totalServido = ((Integer)this.tabelaDesjejum.getValueAt(0, 1)).intValue();
         }
-        this.capa.setDesjejum(alunosAtendidos, totalServido);
+        this.capa.setDesjejum(totalServido);
     }
     /**Método para atualizar a variavel capa com os valores contidos na tabela 
      * Mais Educacao dos turnos 1 e 2

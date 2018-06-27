@@ -32,7 +32,7 @@ public class MaisEducacaoTest {
     
     @Before
     public void setUp() {
-        instance = new MaisEducacao(1,2,3,4,5);
+        instance = new MaisEducacao(1,3);
     }
     
     @After
@@ -45,7 +45,7 @@ public class MaisEducacaoTest {
     @Test
     public void testChangeAll() {
         System.out.println("changeAll");
-        instance.changeAll(5, 3, 4, 2, 1);
+        instance.changeAll(5, 4);
         assertEquals(5, instance.matriculados);
         assertEquals(3, instance.atendidos);
         assertEquals(4, instance.numDias);

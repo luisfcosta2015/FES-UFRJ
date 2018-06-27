@@ -32,13 +32,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private String[] operacoes = new String[7];
     private BdManager banco;
     private TelaTrocarDeEscola trocaDeEscola;
-    private TelaEditarPadrões editarPadroes;
+    private TelaEditarPadroes editarPadroes;
     
     private TiposDeUsuario tipos = new TiposDeUsuario();
     
     public TelaPrincipal() {
         initComponents();
-        TelaEditarPadrões.porcent=banco.getPorcentagem();
+        TelaEditarPadroes.porcent=banco.getPorcentagem();
         if(this.usuarioLogado == null) {
             System.out.println("Usuario deve ser setado antes da inicialização da classe Principal");
         }
@@ -472,7 +472,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botãoAlterarEscolaActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        editarPadroes=new TelaEditarPadrões();
+        editarPadroes=new TelaEditarPadroes();
         editarPadroes.setLocationRelativeTo(null);
         editarPadroes.setVisible(true);
         editarPadroes.setResizable(true);

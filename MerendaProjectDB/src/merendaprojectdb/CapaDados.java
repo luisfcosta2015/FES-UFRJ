@@ -67,8 +67,8 @@ public class CapaDados {
      * @author Joyce Brum
      */
     private void zeraMaisEducacao() {
-        this.maisEducacao[0] = new MaisEducacao(0, 0, 0, 0, 0);
-        this.maisEducacao[1] = new MaisEducacao(0, 0, 0, 0, 0);
+        this.maisEducacao[0] = new MaisEducacao(0, 0);
+        this.maisEducacao[1] = new MaisEducacao(0, 0);
 
     }
      /**Método para calcular o vetor com os valores totais por coluna
@@ -123,18 +123,18 @@ public class CapaDados {
     
     public void setVetorMaisEducacao(int turno, int matriculados, int atendidos, int numDias) {
         if(this.maisEducacao[turno] == null) {
-            this.maisEducacao[turno] = new MaisEducacao(matriculados, atendidos, numDias, 
-            atendidos*numDias, atendidos*numDias);
+            this.maisEducacao[turno] = new MaisEducacao(matriculados, numDias);
         }
         else {
-            this.maisEducacao[turno].changeAll(matriculados, atendidos, numDias, 
-            atendidos*numDias, atendidos*numDias);
+            this.maisEducacao[turno].changeAll(matriculados, numDias);
         }
     }
     
-    public void setDesjejum(int alunosAtendidosDesjejum, int desjejumTotalMensalServido) {
-        this.alunosAtendidosDesjejum = alunosAtendidosDesjejum;
-        this.desjejumTotalMensalServido = desjejumTotalMensalServido;
+    public void setDesjejum(int desjejumTotalMensalServido) {
+        this.alunosAtendidosDesjejum = (int)Math.floor(this.totalRefeicoes[0] * TelaEditarPadroes.porcent);
+        for(RefeicoesDados dado : this.refeicoes) {
+            this.desjejumTotalMensalServido += ((int)Math.floor(dado.turnos[0] * TelaEditarPadroes.porcent)) * dado.numDias;
+        }
     }
     
     public int getTotalServido() {

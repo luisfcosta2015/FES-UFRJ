@@ -15,15 +15,15 @@ public class MaisEducacao {
     public int numDias;
     public int totalDesjejum;
     public int totalLanche;
-    public MaisEducacao(int matriculados, int atendidos, int numDias, int totalDesjejum, int totalLanche) {
-        changeAll(matriculados, atendidos, numDias, totalDesjejum, totalLanche);
+    public MaisEducacao(int matriculados, int numDias) {
+        changeAll(matriculados, numDias);
     }
     
-    public void changeAll(int matriculados, int atendidos, int numDias, int totalDesjejum, int totalLanche) {
+    public void changeAll(int matriculados, int numDias) {
         this.matriculados = matriculados;
-        this.atendidos = atendidos;
+        this.atendidos = (int)Math.floor(matriculados * TelaEditarPadroes.porcent);
         this.numDias = numDias;
-        this.totalDesjejum = totalDesjejum;
-        this.totalLanche = totalLanche;
+        this.totalDesjejum = this.atendidos * numDias;
+        this.totalLanche = this.totalDesjejum;
     }
 }

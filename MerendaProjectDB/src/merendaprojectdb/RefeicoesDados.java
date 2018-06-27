@@ -24,7 +24,7 @@ public class RefeicoesDados {
         this.turnos[2] = turno3;
         this.turnos[3] = turno4;
         this.totalMatriculados = turno1 + turno2 + turno3 + turno4;
-        this.atendidos =(int) Math.ceil(totalMatriculados*TelaEditarPadrões.porcent);
+        this.atendidos =(int) Math.floor(totalMatriculados*TelaEditarPadroes.porcent);
         this.numDias = numDias;
         this.totalRefeicoes = atendidos * numDias;
     }
