@@ -27,7 +27,7 @@ public class CalendarioTest {
     private int mes;
     private Date inicial;
     private Date fim;
-
+    private ArrayList<Date> expResult;
     
     public CalendarioTest() {
     }
@@ -42,39 +42,50 @@ public class CalendarioTest {
     
     @Before
     public void setUp() {
-        calendar = Calendar.getInstance();
-        this.calendario= new Calendario(5,2018);
+        System.out.println("setUp");
         this.ano=2018;
         this.mes=5;
-        this.inicial = new Date(ano-1900, mes, 1);
+        calendar = Calendar.getInstance();
+        this.calendario= new Calendario(this.mes, this.ano);
+        this.inicial = new Date(this.ano, this.mes, 1);
         this.calendar.setTime(this.inicial);
+        System.out.println("setUp");
         //dt.setDate(calendario.getActualMaximum(this.mes));
-        this.fim = new Date(ano-1900, mes,calendar.getActualMaximum(calendar.DAY_OF_MONTH));
-        
-        
+        this.fim = new Date(this.ano, mes,calendar.getActualMaximum(calendar.DAY_OF_MONTH));
+        System.out.println("setUp");
+        this.expResult = new ArrayList<>();
+        for(Date dt = this.inicial; dt.compareTo(this.fim) <= 0;) {
+            if(calendar.get(calendar.DAY_OF_WEEK) != 1 && calendar.get(calendar.DAY_OF_WEEK) != 7) {
+                this.expResult.add(new Date(dt.getTime()));
+            }
+            calendar.add(Calendar.DATE, +1);
+            dt = calendar.getTime();
+        }
+        System.out.println("setUp");
     }
     
     @After
     public void tearDown() {
     }
-
+    private boolean compareCalendarList(ArrayList<Date> calendar1, ArrayList<Date> calendar2) {
+        if(calendar1.size() != calendar2.size()) {
+            return false;
+        }
+        for(int i=0; i < calendar1.size(); i++) {
+            if(calendar1.get(i).compareTo(calendar2.get(i)) != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
     /**
      * Test of getList method, of class Calendario.
      */
     @Test
     public void testGetList() {
-        ArrayList<Date> datas = new ArrayList<>();
-        for(Date dt = this.inicial; dt.compareTo(this.fim) <= 0;) {
-            if(calendar.get(calendar.DAY_OF_WEEK) != 1 && calendar.get(calendar.DAY_OF_WEEK) != 7) {
-                datas.add(new Date(dt.getTime()));
-            }
-        }
-        
-        
-        
-        ArrayList<Date> expResult = datas;
+        System.out.println("testGetList");
         ArrayList<Date> result = calendario.getList();
-        assertEquals(expResult, result);
+        assertEquals(compareCalendarList(this.expResult, result), true);
     }
 
     /**
@@ -82,14 +93,11 @@ public class CalendarioTest {
      */
     @Test
     public void testGet() {
-        System.out.println("get");
+        System.out.println("testGet");
         int pos = 0;
-        Calendario instance = null;
-        Date expResult = null;
-        Date result = instance.get(pos);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Date expResult = this.expResult.get(pos);
+        Date result = this.calendario.get(pos);
+        assertEquals(expResult.getTime(), result.getTime());
     }
 
     /**
@@ -97,14 +105,12 @@ public class CalendarioTest {
      */
     @Test
     public void testRemove_int() {
-        System.out.println("remove");
+        System.out.println("testRemoveInt");
         int pos = 0;
-        Calendario instance = null;
-        Date expResult = null;
-        Date result = instance.remove(pos);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Date expResult = this.expResult.get(pos);
+        Date removed = this.calendario.remove(pos);
+        assertEquals(expResult.getTime(), removed.getTime());
+        assertEquals(this.calendario.getList().contains(removed), false);
     }
 
     /**
@@ -112,15 +118,27 @@ public class CalendarioTest {
      */
     @Test
     public void testRemove_Date() {
-        System.out.println("remove");
-        Date data = null;
-        Calendario instance = null;
-        boolean expResult = false;
-        boolean result = instance.remove(data);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-        /*assertEquals(valor que se espera,função(dados de teste));*/
+        System.out.println("testRemoveDate");
+        int pos = 10;
+        Date toBeRemoved = this.calendario.getList().get(pos);
+        boolean result1 = this.calendario.remove(toBeRemoved);
+        assertEquals(true, result1);
+        assertEquals(this.calendario.getList().contains(toBeRemoved), false);
+        
+        Date notExistingDate = new Date(this.ano + 10, this.mes, 1);
+        boolean result = this.calendario.remove(notExistingDate);
+        assertEquals(false, result);
+        assertEquals(this.calendario.getList().contains(notExistingDate), false);
+    }
+    @Test
+    public void testGetAno() {
+        int result = this.calendario.getAno();
+        assertEquals(result, this.ano);
+    }
+    @Test
+    public void testGetMes() {
+        int result = this.calendario.getMes();
+        assertEquals(result, this.mes);
     }
     
 }
