@@ -12,6 +12,9 @@
       <root url="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-googlecharts-5.1.0-sources.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-googlecharts-5.1.0.jar!/" />
+      <root url="file://$PROJECT_DIR$/libs/dynamicreports-5.1.0" />
+    </SOURCES>
   </library>
 </component>

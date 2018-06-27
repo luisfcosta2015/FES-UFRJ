@@ -20,7 +20,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="288">
               <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding>
                 <element signature="e#585#586#0" expanded="true" />
@@ -30,11 +30,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneroAnoEscolarController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
+      <file leaf-file-name="Pie3DChartReport.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Pie3DChartReport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+            <state relative-caret-position="198">
+              <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="30" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RelatorioGenero.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioGenero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RelatorioIdade.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Layout.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/Layout/Layout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -55,6 +87,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>turma</find>
+      <find>CurrencyValueFormatter</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -69,7 +102,6 @@
         <option value="$PROJECT_DIR$/plugin-ieducar/test/report/ReportTest.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/PagRelatorio/PagRelatorioController.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/Barra.java" />
-        <option value="$PROJECT_DIR$/plugin-ieducar/src/report/Pie3DChartReport.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/Pizza.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolar.fxml" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/Home/HomeController.java" />
@@ -82,14 +114,18 @@
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/GeneroAno.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/test/report/BarraTest.java" />
-        <option value="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioIdadeTest.java" />
-        <option value="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioGenero.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/test/report/RelatorioGeneroTest.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/Report.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/test/front/IdadeAnoEscolarControllerTest.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/report/Pie3DChartReport.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/Layout/images/Layout.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/report/Layout.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/Layout/Layout.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioGenero.java" />
       </list>
     </option>
   </component>
@@ -123,9 +159,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,14 +177,7 @@
               <item name="FES-UFRJ" type="b2602c69:ProjectViewProjectNode" />
               <item name="plugin-ieducar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="front" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FES-UFRJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plugin-ieducar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="front" type="462c0819:PsiDirectoryNode" />
-              <item name="Home" type="462c0819:PsiDirectoryNode" />
+              <item name="Layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FES-UFRJ" type="b2602c69:ProjectViewProjectNode" />
@@ -159,27 +187,21 @@
             </path>
             <path>
               <item name="FES-UFRJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plugin-ieducar" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FES-UFRJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plugin-ieducar" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="front" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/dynamicreports-5.1.0" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -189,6 +211,9 @@
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="report" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/plugin-ieducar/src/report/images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -209,7 +234,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -224,6 +249,25 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="front.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="plugin-ieducar" />
+      <envs />
+    </configuration>
+    <configuration name="Pie3DChartReport" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Layout.images.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="report.Pie3DChartReport" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -324,31 +368,6 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="RelatorioGeneroTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="report.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="plugin-ieducar" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="report" />
-      <option name="MAIN_CLASS_NAME" value="report.RelatorioGeneroTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -398,18 +417,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.RelatorioGeneroTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.geraRelatorioTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.geraRelatorioTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Pie3DChartReport" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.geraRelatorioTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.RelatorioGeneroTest" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Pie3DChartReport" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.getChoiceTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest.geraRelatorioTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.IdadeAnoEscolarControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -445,7 +464,8 @@
       <workItem from="1529453874632" duration="4836000" />
       <workItem from="1529522716212" duration="3044000" />
       <workItem from="1529631759731" duration="6155000" />
-      <workItem from="1529667660899" duration="5508000" />
+      <workItem from="1529667660899" duration="6107000" />
+      <workItem from="1530058348549" duration="5342000" />
     </task>
     <servers />
   </component>
@@ -482,7 +502,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54269000" />
+    <option name="totallyTimeSpent" value="60210000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="229" y="122" width="1853" height="1055" extended-state="6" />
@@ -497,13 +517,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32665965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973558" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32665965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12520237" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25634107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -519,6 +538,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32973558" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -568,102 +588,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="44" column="76" lean-forward="true" selection-start-line="44" selection-start-column="76" selection-end-line="44" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="82" column="60" lean-forward="false" selection-start-line="82" selection-start-column="55" selection-end-line="82" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/ReportTest.java" />
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="64" column="55" lean-forward="true" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="32" column="78" lean-forward="false" selection-start-line="32" selection-start-column="78" selection-end-line="32" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -672,21 +597,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/ReportTest.java" />
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="41" column="41" lean-forward="false" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="57" column="79" lean-forward="true" selection-start-line="57" selection-start-column="79" selection-end-line="57" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java" />
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -709,14 +621,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="34" column="8" lean-forward="true" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -739,30 +644,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Grafio.java" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/report/ReportTest.java" />
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Pie3DChartReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="29" column="72" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#531#532#0" expanded="false" />
-            <element signature="e#554#555#0" expanded="false" />
-            <element signature="e#2359#2360#0" expanded="false" />
-            <element signature="e#2397#2398#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Home/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -771,14 +655,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Home/Home.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/idade-anoEscolar.css">
@@ -799,89 +683,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraGenero.java" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolar.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolar.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolar.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
           <caret line="40" column="76" lean-forward="false" selection-start-line="40" selection-start-column="76" selection-end-line="40" selection-end-column="76" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <element signature="e#585#586#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/PizzaGenero.java" />
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="73" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/PizzaIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="59" column="2" lean-forward="false" selection-start-line="59" selection-start-column="2" selection-end-line="78" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioGenero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1333">
-          <caret line="134" column="56" lean-forward="true" selection-start-line="134" selection-start-column="56" selection-end-line="134" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-237">
-          <caret line="126" column="30" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="0" column="9" lean-forward="true" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/BarraIdade.java" />
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/PizzaIdade.java" />
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Report.java" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/test/front/IdadeAnoEscolarControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="34" column="62" lean-forward="false" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#936#937#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#864#865#0" expanded="false" />
+            <element signature="e#936#937#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -891,15 +725,15 @@
         <state relative-caret-position="90">
           <caret line="14" column="63" lean-forward="true" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#410#411#0" expanded="true" />
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#410#411#0" expanded="false" />
+            <element signature="e#470#471#0" expanded="false" />
+            <element signature="e#523#524#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#629#630#0" expanded="false" />
+            <element signature="e#687#688#0" expanded="false" />
+            <element signature="e#733#734#0" expanded="false" />
+            <element signature="e#791#792#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -909,14 +743,14 @@
         <state relative-caret-position="-108">
           <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
           <folding>
-            <element signature="e#348#349#0" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#520#521#0" expanded="true" />
-            <element signature="e#566#567#0" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#670#671#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#348#349#0" expanded="false" />
+            <element signature="e#408#409#0" expanded="false" />
+            <element signature="e#460#461#0" expanded="false" />
+            <element signature="e#520#521#0" expanded="false" />
+            <element signature="e#566#567#0" expanded="false" />
+            <element signature="e#624#625#0" expanded="false" />
+            <element signature="e#670#671#0" expanded="false" />
+            <element signature="e#728#729#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -934,16 +768,162 @@
         <state relative-caret-position="-1123">
           <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
-            <element signature="e#2991#2992#0" expanded="true" />
-            <element signature="e#3034#3035#0" expanded="true" />
+            <element signature="e#2991#2992#0" expanded="false" />
+            <element signature="e#3034#3035#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+        <state relative-caret-position="303">
+          <caret line="72" column="5" lean-forward="false" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0.jar!/net/sf/dynamicreports/examples/images/dynamicreports.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0.jar!/net/sf/dynamicreports/examples/images/map.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0.jar!/net/sf/dynamicreports/examples/images/usb.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0.jar!/net/sf/dynamicreports/examples/images/user_male.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0.jar!/net/sf/dynamicreports/examples/images/pda.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0.jar!/net/sf/dynamicreports/examples/Templates.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="64" column="24" lean-forward="false" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+          <folding>
+            <marker date="1528562582825" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1528562582825" expanded="false" signature="154:1103" ph="..." />
+            <marker date="1528562582825" expanded="true" signature="1983:5464" ph="{...}" />
+            <marker date="1528562582825" expanded="true" signature="5489:5496" ph="{}" />
+            <marker date="1528562582825" expanded="true" signature="5574:5963" ph="{...}" />
+            <marker date="1528562582825" expanded="true" signature="6059:6126" ph="{...}" />
+            <marker date="1528562582825" expanded="true" signature="6188:6376" ph="{...}" />
+            <marker date="1528562582825" expanded="true" signature="6278:6289" ph="{}" />
+            <marker date="1528562582825" expanded="false" signature="6325:6340" ph=" { " />
+            <marker date="1528562582825" expanded="false" signature="6360:6370" ph=" }" />
+            <marker date="1528562582825" expanded="true" signature="6473:6862" ph="{...}" />
+            <marker date="1528562582825" expanded="false" signature="6614:6629" ph=" { " />
+            <marker date="1528562582825" expanded="false" signature="6648:6658" ph=" }" />
+            <marker date="1528562582825" expanded="true" signature="6738:6856" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0-sources.jar!/log4j.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="34" lean-forward="true" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0-sources.jar!/net/sf/dynamicreports/examples/templatedesign/JasperTemplateDesignReport1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="56" column="33" lean-forward="true" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0.jar!/customfonts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/dynamicreports-5.1.0/dist/dynamicreports-examples-5.1.0-sources.jar!/net/sf/dynamicreports/examples/Templates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-853">
+          <caret line="87" column="74" lean-forward="true" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/Pie3DChartReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="30" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="e#585#586#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/Layout/Layout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioGenero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding />
         </state>
       </provider>

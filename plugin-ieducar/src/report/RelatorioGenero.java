@@ -1,5 +1,6 @@
 package report;
 
+import Layout.Layout;
 import net.sf.dynamicreports.report.builder.chart.Bar3DChartBuilder;
 import net.sf.dynamicreports.report.builder.chart.Pie3DChartBuilder;
 import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
@@ -66,19 +67,21 @@ public class RelatorioGenero {
 
     //Gráfco de Barra
     private Bar3DChartBuilder graficoBarra = cht.bar3DChart()
-            .setTitle("Comparativo entre menino e meninas nas turmas")
+            .setTitle("Comparativo entre meninos e meninas nas turmas").setStyle(boldCenteredStyle)
             .setCategory(turmaColuna) //Eixo X
             .addSerie(cht.serie(femininoColuna), cht.serie(masculinoColuna));
 
     //Gráfico de Pizza
     private Pie3DChartBuilder graficoPizza = cht.pie3DChart()
-            .setTitle("Alunos na série errada")
+            .setTitle("Comparativo entre meninas e meninos nas turmas").setStyle(boldCenteredStyle)
             .setKey(generoColuna)
             .series(cht.serie(quantidade));
 
     public boolean buildBarra() {
         try {
             report()
+                    .setTemplate(Layout.reportTemplate)
+                    .title(Layout.createTitleComponent(escola + " - " + turma))
                     .setColumnTitleStyle(columnTitleStyle)
                     .setSubtotalStyle(boldStyle)
                     .highlightDetailEvenRows()
@@ -87,8 +90,6 @@ public class RelatorioGenero {
                             rowNumberColumn, alunoColuna, generoColuna, turmaColuna, registroColuna)
 
 
-
-                    .title(cmp.text("Relatório sobre " + this.escola + " da turma " + this.turma))
                     .pageFooter(cmp.pageXofY())
                     .summary(graficoBarra)
                     .setDataSource(createBarraSource())
@@ -123,6 +124,8 @@ public class RelatorioGenero {
     public boolean buildPizza() {
         try {
             report()
+                    .setTemplate(Layout.reportTemplate)
+                    .title(Layout.createTitleComponent(escola + " - " + turma))
                     .setColumnTitleStyle(columnTitleStyle)
                     .setSubtotalStyle(boldStyle)
                     .highlightDetailEvenRows()
@@ -132,7 +135,6 @@ public class RelatorioGenero {
 
 
 
-                    .title(cmp.text("Relatório sobre "))
                     .pageFooter(cmp.pageXofY())
                     .summary(graficoPizza)
                     .setDataSource(createPizzaSource())

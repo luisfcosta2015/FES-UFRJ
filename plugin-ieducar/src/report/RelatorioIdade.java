@@ -1,5 +1,6 @@
 package report;
 
+import Layout.Layout;
 import net.sf.dynamicreports.report.builder.chart.Bar3DChartBuilder;
 import net.sf.dynamicreports.report.builder.chart.Pie3DChartBuilder;
 import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
@@ -68,19 +69,21 @@ public class RelatorioIdade {
 
     //Gráfico de barra
     private Bar3DChartBuilder graficoBarra = cht.bar3DChart()
-            .setTitle("Alunos na série errada")
+            .setTitle("Comparativo de alunos na série correta").setStyle(boldCenteredStyle)
             .setCategory(turmaColuna) //Eixo X
             .addSerie(cht.serie(quantidadeCerta), cht.serie(quantidadeErrada));
 
     //Gráfico de Pizza
     private Pie3DChartBuilder graficoPizza = cht.pie3DChart()
-            .setTitle("Alunos na série errada")
+            .setTitle("Comparativo de alunos na série correta").setStyle(boldCenteredStyle)
             .setKey(verificaColuna)
             .series(cht.serie(quantidadeTotal));
 
     public boolean buildBarra() {
         try {
             report()
+                    .setTemplate(Layout.reportTemplate)
+                    .title(Layout.createTitleComponent(escola + " - " + turma))
                     .setColumnTitleStyle(columnTitleStyle)
                     .setSubtotalStyle(boldStyle)
                     .highlightDetailEvenRows()
@@ -90,7 +93,6 @@ public class RelatorioIdade {
 
 
 
-                    .title(cmp.text("Relatório sobre " + escola + " da turma " + turma))
                     .pageFooter(cmp.pageXofY())
                     .summary(graficoBarra)
                     .setDataSource(createBarraSource())
@@ -124,6 +126,8 @@ public class RelatorioIdade {
     public boolean buildPizza() {
         try {
             report()
+                    .setTemplate(Layout.reportTemplate)
+                    .title(Layout.createTitleComponent(escola + " - " + turma))
                     .setColumnTitleStyle(columnTitleStyle)
                     .setSubtotalStyle(boldStyle)
                     .highlightDetailEvenRows()
@@ -131,7 +135,6 @@ public class RelatorioIdade {
                     .columns(// add columns
                             verificaColuna, quantidadeTotal)
 
-                    .title(cmp.text("Relatório sobre "))
                     .pageFooter(cmp.pageXofY())
                     .summary(graficoPizza)
                     .setDataSource(createPizzaSource())

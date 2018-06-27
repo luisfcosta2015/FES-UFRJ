@@ -4,6 +4,7 @@ import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 
 import java.math.BigDecimal;
 
+import Layout.Layout;
 import net.sf.dynamicreports.examples.Templates;
 import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
 import net.sf.dynamicreports.report.builder.style.FontBuilder;
@@ -26,9 +27,9 @@ public class Pie3DChartReport {
 
         try {
             report()
-                    .setTemplate(Templates.reportTemplate)
+                    .setTemplate(Layout.reportTemplate)
+                    .title(Layout.createTitleComponent("Pie3DChart"))
                     .columns(itemColumn, quantityColumn, unitPriceColumn)
-                    .title(Templates.createTitleComponent("Pie3DChart"))
                     .summary(
                             cht.pie3DChart()
                                     .setTitle("Pie 3D chart")
