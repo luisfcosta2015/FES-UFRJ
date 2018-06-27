@@ -52,6 +52,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         volta = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 300));
@@ -82,7 +84,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Criar Cadastro:");
+        jLabel7.setText("Gerenciar Cadastro:");
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +97,21 @@ public class TelaCadastro extends javax.swing.JFrame {
         volta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 voltaMouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Alterar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("-");
+        jButton3.setActionCommand("Deletar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -119,15 +136,19 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(campoEmail)
                     .addComponent(campoTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoEscola, 0, 200, Short.MAX_VALUE))
-                .addGap(70, 70, 70))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
+                .addGap(127, 127, 127)
                 .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
                 .addComponent(volta)
                 .addGap(22, 22, 22))
         );
@@ -148,7 +169,8 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(campoUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -167,8 +189,10 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(campoEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoEmail, campoEscola, campoNome, campoSenha, campoTipo, campoUser, jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6});
@@ -201,7 +225,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         principal.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_voltaMouseClicked
-
+    
     private void campoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTipoActionPerformed
@@ -209,6 +233,39 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void campoEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEscolaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoEscolaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // excluir
+        //String nome = campoNome.getText();
+        String user = campoUser.getText();
+        
+        //Usuario usuarioAtual = new Usuario(nome,user, senha, email, ""+tipo);
+        if(BdManager.usuarioExiste(user)) {
+            BdManager.deletarUser(user);
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Usuário inexistente");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // alterar
+        String nome = campoNome.getText();
+        String user = campoUser.getText();
+        String senha = campoSenha.getText();
+        String email = campoEmail.getText();
+        Object tipo = campoTipo.getSelectedItem();
+        Object escola = campoEscola.getSelectedItem();
+        
+        Usuario usuarioAtual = new Usuario(nome,user, senha, email, ""+tipo);
+        if(BdManager.usuarioExiste(user)&& verificaPreenchimento(usuarioAtual)) {
+            BdManager.alterarUser(usuarioAtual, ""+escola);
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Usuário inexistente");
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -219,6 +276,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> campoTipo;
     private javax.swing.JTextField campoUser;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

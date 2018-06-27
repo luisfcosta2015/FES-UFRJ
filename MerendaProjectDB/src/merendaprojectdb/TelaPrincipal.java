@@ -219,7 +219,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         nomeEscolaAtual.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nomeEscolaAtual.setText("jLabel2");
 
-        botãoAlterarEscola.setText("Aletrar Escola");
+        botãoAlterarEscola.setText("Alterar Escola");
         botãoAlterarEscola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botãoAlterarEscolaActionPerformed(evt);

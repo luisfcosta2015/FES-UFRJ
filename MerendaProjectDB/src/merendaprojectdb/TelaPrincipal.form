@@ -220,7 +220,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="bot&#xe3;oAlterarEscola">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Aletrar Escola"/>
+        <Property name="text" type="java.lang.String" value="Alterar Escola"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bot&#xe3;oAlterarEscolaActionPerformed"/>

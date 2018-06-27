@@ -57,6 +57,7 @@ public class BdManager {
                 ps.setString(3, user.getSenha());
                 ps.setString(4, user.getEmail()) ;
                 ps.setString(5, user.getTipo()) ;
+                ps.setInt(6, TelaPrincipal.usuarioLogado.getEscola().getINEP());
                 ps.execute();
                 return true;
             }
@@ -94,6 +95,85 @@ public class BdManager {
            return null;
         }
         //return new Usuario("joyce", "Diretor", "123", "email@email.com", "Administrador");
+    }
+    
+    static boolean alterarUser(Usuario user, String escola){
+        PreparedStatement ps;
+        int INEP = 000;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select inep from escola where unidade like ?");
+            ps.setString(1, escola);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                INEP = rs.getInt("inep");
+                
+                rs.close();
+                ps.close();
+                con.close();
+            }
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+        try{
+            if(INEP==000){
+                return false;
+            }else{
+                con = DriverManager.getConnection(host, username, password);
+                ps = con.prepareStatement("update usuario set nome = ?,senha = ?,email = ?,tipo = ?, escola = ? where usuario = ?");
+                ps.setString(1, user.getNome());
+                ps.setString(6, user.getUser());
+                ps.setString(2, user.getSenha());
+                ps.setString(3, user.getEmail()) ;
+                ps.setString(4, user.getTipo()) ;
+                ps.setInt(5, INEP);
+                ps.execute();
+            return true;
+            }
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
+    static boolean deletarUser(String user){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("delete from usuario where usuario like ?");
+            ps.setString(1, user);
+            ps.execute();
+            return true;
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
+    static boolean usuarioExiste(String user){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE usuario like ?");
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+            //Statement stmt = con.createStatement();
+            //String SQL = "SELECT * FROM usuario WHERE usuario='"+user+"'";
+            
+            //ResultSet rs = stmt.executeQuery(SQL);
+            
+            if(rs.next())
+                return true;
+            else
+                return false;
+            
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
     }
     static boolean verificarUser(String senha, String user){
         
