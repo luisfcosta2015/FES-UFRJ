@@ -54,5 +54,6 @@
     <orderEntry type="library" name="jsoup-1.11.3" level="project" />
     <orderEntry type="library" name="itext" level="project" />
     <orderEntry type="library" name="servlet-api" level="application" />
+    <orderEntry type="library" exported="" name="org.mockito:mockito-all:Latest" level="project" />
   </component>
 </module>
