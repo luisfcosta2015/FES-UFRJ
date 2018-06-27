@@ -26,12 +26,12 @@ public class Calendario {
     Calendario(int mes, int ano) {
         calendario = Calendar.getInstance();
         this.mes = mes;
-        this.ano = ano;
+        this.ano = ano ;
         
-        this.inicial = new Date(ano-1900, mes, 1);
+        this.inicial = new Date(ano, mes, 1);
         calendario.setTime(this.inicial);
         //dt.setDate(calendario.getActualMaximum(this.mes));
-        this.fim = new Date(ano-1900, mes,calendario.getActualMaximum(calendario.DAY_OF_MONTH));
+        this.fim = new Date(ano, mes,calendario.getActualMaximum(calendario.DAY_OF_MONTH));
         montaArray();
     }
     private void montaArray() {

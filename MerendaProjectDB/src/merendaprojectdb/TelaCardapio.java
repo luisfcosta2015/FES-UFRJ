@@ -51,7 +51,7 @@ public class TelaCardapio extends javax.swing.JFrame {
         
         tabelinha = (DefaultTableModel) tabela.getModel();
         
-        calendario = new Calendario(mes,ano+1900);
+        calendario = new Calendario(mes,ano);
         ArrayList<Date> dias = calendario.getList();
         for(Date data : dias)
         {

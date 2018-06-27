@@ -187,7 +187,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             
             
             capa.getCellByPosition(1, 3).setStringValue(relatorio.getEscola().getUnidade());
-            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()-1900));
+            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()));
             capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
             capa.getCellByPosition(1, 5).setStringValue(relatorio.getEscola().getTelefone());
             capa.getCellByPosition(7, 5).setStringValue(""+relatorio.getEscola().getINEP());

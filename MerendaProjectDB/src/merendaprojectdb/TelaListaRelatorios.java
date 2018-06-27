@@ -272,7 +272,7 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         //busca mes e ano especifico
         this.listaRelatorios.setModel(new DefaultListModel());
         this.modeloLista = (DefaultListModel) this.listaRelatorios.getModel();
-        relatorios = BdManager.getRelatoriosSelecionados(mesNum-1,anoNum+1900);
+        relatorios = BdManager.getRelatoriosSelecionados(mesNum-1,anoNum);
         for(int i=0;i<relatorios.size();i++)
         {
             this.modeloLista.addElement(relatorios.get(i).getTitulo());

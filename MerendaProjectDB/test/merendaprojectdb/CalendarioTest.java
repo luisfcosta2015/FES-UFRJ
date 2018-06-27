@@ -43,7 +43,7 @@ public class CalendarioTest {
     @Before
     public void setUp() {
         calendar = Calendar.getInstance();
-        this.calendario= new Calendario(5,2018+1900);
+        this.calendario= new Calendario(5,2018);
         this.ano=2018;
         this.mes=5;
         this.inicial = new Date(ano-1900, mes, 1);
@@ -64,7 +64,6 @@ public class CalendarioTest {
     @Test
     public void testGetList() {
         ArrayList<Date> datas = new ArrayList<>();
-
         for(Date dt = this.inicial; dt.compareTo(this.fim) <= 0;) {
             if(calendar.get(calendar.DAY_OF_WEEK) != 1 && calendar.get(calendar.DAY_OF_WEEK) != 7) {
                 datas.add(new Date(dt.getTime()));
