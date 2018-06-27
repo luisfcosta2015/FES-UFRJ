@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author thiago
  */
-public class TelaEditarPadrões extends javax.swing.JFrame {
+public class TelaEditarPadroes extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaEditarPadrões
@@ -19,7 +19,7 @@ public class TelaEditarPadrões extends javax.swing.JFrame {
     TelaPrincipal principal;
     public static Double porcent;
     
-    public TelaEditarPadrões() {
+    public TelaEditarPadroes() {
         initComponents();
         porcentagem.setText(porcent.toString());
     }

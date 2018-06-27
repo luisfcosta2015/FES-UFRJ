@@ -153,7 +153,9 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gerarODSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODSActionPerformed
+        System.out.println("A");
         exportador.exportarODS(this.relatorio);
+        System.out.println("B");
     }//GEN-LAST:event_gerarODSActionPerformed
 
     private void gerarODTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODTActionPerformed
@@ -216,18 +218,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             capa.getCellByPosition(9,24).setStringValue(""+capaDados.getTotalMaisEducacao());
             
             capa.getCellByPosition(2,26).setStringValue(""+capaDados.getTotalServido());
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             doc.appendSheet(capa, "capa");
             doc.save("ttestefinal.ods");
             System.out.println("Fim");
