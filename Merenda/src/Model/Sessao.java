@@ -13,12 +13,14 @@ public class Sessao {
     
     // Variável estática que conterá a instancia da classe
     private static Sessao instance;
-    private int id;
+    private int id_pessoa;
+    private int id_instituicao;
     private int funcao;
 
     // Construtor privado (suprime o construtor público padrão).
-    private Sessao(int id, int funcao) {
-        this.id = id;
+    private Sessao(int id_pessoa, int id_instituicao, int funcao) {
+        this.id_pessoa = id_pessoa;
+        this.id_instituicao = id_instituicao;
         this.funcao = funcao;
     }
 
@@ -28,17 +30,21 @@ public class Sessao {
         return instance;
     }
     
-    public static void createInstance(int id, int funcao){
+    public static void createInstance(int id_pessoa, int id_instituicao, int funcao){
         if (instance == null)
-            instance = new Sessao(id, funcao);        
+            instance = new Sessao(id_pessoa, id_instituicao, funcao);        
     }
     
     public static void destroy(){
         instance = null;
     }
     
-    public int getId() {
-        return instance.id;
+    public int getIdPessoa() {
+        return instance.id_pessoa;
+    }
+    
+    public int getIdInstituicao() {
+        return instance.id_instituicao;
     }
     
     public int getFuncao() {

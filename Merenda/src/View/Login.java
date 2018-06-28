@@ -142,7 +142,7 @@ public class Login extends javax.swing.JFrame {
         // "" é macete pra converter de char[] pra String
         if ( con.login(txtUsuario.getText(),Auxiliar.criptografar(String.valueOf(passSenha.getPassword()))) ){    
             Sessao sessao = Sessao.getInstance();
-            System.out.println("Login bem-sucedido: " + sessao.getId() + " " + sessao.getFuncao());   
+            System.out.println("Login bem-sucedido: " + sessao.getIdPessoa() + " " + sessao.getFuncao());   
             switch (sessao.getFuncao()) {
                 case 1:
                     // ADMINISTRADOR

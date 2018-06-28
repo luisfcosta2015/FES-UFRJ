@@ -26,6 +26,13 @@ public class CadastroCardapio extends javax.swing.JFrame {
      */
     public CadastroCardapio() {
         initComponents();
+        
+        // ***
+        // Mostrar o nome da instituição ao cadastrar
+        Instituicao I = new Instituicao();
+        I.instituicaoPorId(Sessao.getInstance().getIdInstituicao());
+        lblInsituicao.setText("Instituição : "+I.getNome());
+        // ***
     }
 
     /**
@@ -52,6 +59,7 @@ public class CadastroCardapio extends javax.swing.JFrame {
         chkAlmoco = new javax.swing.JCheckBox();
         chkLancheDaTarde = new javax.swing.JCheckBox();
         chkJanta = new javax.swing.JCheckBox();
+        lblInsituicao = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mItemPrincipal = new javax.swing.JMenuItem();
@@ -105,6 +113,8 @@ public class CadastroCardapio extends javax.swing.JFrame {
             }
         });
 
+        lblInsituicao.setText("Instituição : ?");
+
         jMenu1.setText("Arquivo");
 
         mItemPrincipal.setText("Menu Principal");
@@ -135,14 +145,20 @@ public class CadastroCardapio extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblJanta)
-                            .addComponent(txtLancheDaManha, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                            .addComponent(lblAlmoco)
-                            .addComponent(txtAlmoco)
-                            .addComponent(lblLancheDaTarde)
-                            .addComponent(txtJanta)
-                            .addComponent(txtLancheDaTarde))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblJanta, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLancheDaManha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAlmoco, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAlmoco, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLancheDaTarde, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtJanta, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLancheDaTarde, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblInsituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkLancheDaManha)
@@ -153,21 +169,21 @@ public class CadastroCardapio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLancheDaManha)
-                            .addComponent(jLabel1)
-                            .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(175, 175, 175)
-                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblInsituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addComponent(lblLancheDaManha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -194,7 +210,7 @@ public class CadastroCardapio extends javax.swing.JFrame {
                     .addComponent(chkJanta))
                 .addGap(31, 31, 31)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -243,12 +259,12 @@ public class CadastroCardapio extends javax.swing.JFrame {
         }
         
         Instituicao i = new Instituicao();
-        i.instituicaoPorId(Sessao.getInstance().getId());
+        i.instituicaoPorId(Sessao.getInstance().getIdPessoa());
         
-        if (i.instituicaoPorId(Sessao.getInstance().getId()) == false){
+        if (i.instituicaoPorId(Sessao.getInstance().getIdPessoa()) == false){
             erros += "Usuário não é diretor de nenhuma instituição ou de mais de uma\n";
         } else {
-            c.setId_instituicao(Sessao.getInstance().getId());
+            c.setId_instituicao(Sessao.getInstance().getIdPessoa());
         }
         
         if (!erros.equals("")){
@@ -328,6 +344,7 @@ public class CadastroCardapio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblAlmoco;
+    private javax.swing.JLabel lblInsituicao;
     private javax.swing.JLabel lblJanta;
     private javax.swing.JLabel lblLancheDaManha;
     private javax.swing.JLabel lblLancheDaTarde;
