@@ -2,17 +2,19 @@ package Model;
 
 import Model.Sessao;
 import java.sql.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
  * @author andrecsq
  */
 public class Conexao {
-    
+        
     private List<Map<String, Object>> resultSetToList(ResultSet rs) throws SQLException {
         ResultSetMetaData md = rs.getMetaData();
         int columns = md.getColumnCount();
@@ -37,9 +39,27 @@ public class Conexao {
     
     private static Connection getConnection(){
         try {
-            String DBUrl = "jdbc:mysql://localhost:3306/merenda?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            String DBUser = "root";
-            String DBPass = "root";
+            String DBConfig[] = new String[3];
+            String DBUrl = "";
+            String DBUser = "";
+            String DBPass = "";
+            
+            PrintWriter out = null;
+            try {
+                try (Scanner s = new Scanner(new File("bd.cfg")).useDelimiter("\\Z")) {
+                    String content = s.next();
+                    DBConfig = content.split("\\n");
+                    
+                }
+            } catch (Exception e) {
+                   Auxiliar.DBError(e.getMessage());
+            } finally {
+                if(out != null) {
+                    out.close();
+                }
+            }
+
+            
             return DriverManager.getConnection(DBUrl, DBUser, DBPass);
         } catch (Exception e) {
             Auxiliar.DBError(e.getMessage());
