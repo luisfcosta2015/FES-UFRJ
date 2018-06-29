@@ -38,12 +38,6 @@
         <servlet-name>ReportController</servlet-name>
         <url-pattern>/generateReport</url-pattern>
     </servlet-mapping>
-
-    <error-page>
-        <exception-type>java.lang.Exception</exception-type>
-        <location>/error.jsp</location>
-    </error-page>
-
     <servlet>
         <servlet-name>configServlet</servlet-name>
         <servlet-class>ConfigServlet</servlet-class>

@@ -30,10 +30,8 @@ body.SSLRelUIopen #SSLRelUI{
     z-index: 2000;
     font-family: 'Roboto', sans-serif;
     color: #444444;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    overflow:hidden;
+
 }
 
 
@@ -47,7 +45,10 @@ object, embed {
     outline: 0;
 }
 
-.SSLRel, .container{
+.SSLRel{
+    height: 100%;
+}
+.SSLRel> .container{
     width: 100%;
     padding: 5px;
     display: flex;
@@ -55,6 +56,11 @@ object, embed {
     justify-content: stretch;
     justify-items: stretch;
     align-content: stretch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
 }
 .SSLRel, .section{
     width: 100%;
@@ -131,6 +137,22 @@ object, embed {
 .btn-primary:hover {
     background-color: #546c76;;
     border-color: #546c76;;
+}
+
+
+
+
+
+.btn-generics.focus, .btn-generics:focus {
+    box-shadow: 0 0 0 .2rem rgba(68, 68, 68, 0.5);
+}
+.btn-generics {
+    background-color: #eee;
+    color:#444;
+    border: 1px solid #666;
+}
+.btn-generics:hover {
+    background-color: #aaa;
 }
 
 
@@ -258,7 +280,7 @@ button {
 }
 
 .nav{
-    font-size: 16pt;
+    font-size: 14pt;
     flex-direction: row !important;
     justify-content: stretch;
     width: 100%;
@@ -305,7 +327,7 @@ button {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
-.nav ul li:last-child a{
+.nav ul li:last-child a,#SSLRelUI[data-content="nocontent"] .nav [data-section=criar]{
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
@@ -477,3 +499,81 @@ td[SSLhiddenElements] button{
     margin: 0 5px;
     font-size: 11pt !important;
 }
+
+#SSLRelUI[data-content="nocontent"] .section.editar,
+#SSLRelUI[data-content="nocontent"] .section.excluir,
+#SSLRelUI[data-content="nocontent"] .nav [data-wrappersection=editar],
+#SSLRelUI[data-content="nocontent"] .nav [data-wrappersection=excluir]
+{
+    display: none;
+}
+
+
+
+.msgWrapper{
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(30,30,30,0.99);
+    position: absolute;
+    bottom: -10px;
+    opacity: 0;
+    border-radius: 5px;
+    color: white;
+    text-align: center !important;
+    left: 10px;
+    right: 10px;
+    padding: 10px;
+    font-size: 10pt;
+    font-weight: bold;
+    /*display: none;*/
+    transition: bottom 300ms ease-out, opacity 500ms ease-out, display 0ms linear 300ms;
+}
+
+.msgWrapper.opened{
+    bottom: 10px;
+    opacity: 1;
+    /*display: block;*/
+    transition:bottom 500ms ease-out, opacity 300ms ease-out;
+}
+
+.msgWrapper.msgerror{
+    color: #ff6d5a;
+}
+
+.msgWrapper.msgwarning{
+    color: #ffd95c;
+}
+
+.msgWrapper.msgsuccess{
+    color: #5effa4;
+}
+
+.msgWrapper div{
+    text-align: center;
+    width: 100%;
+}
+.msgWrapper div:first-child{
+    flex-grow: 2;
+}
+.msgWrapper div:last-child{
+    flex-grow: 1;
+}
+.SSLRel .container .section{
+    padding-bottom: 80px;
+}
+
+.file-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+    margin-bottom: 15px;
+}
+
+.file-wrapper label{
+    width: 100%;
+    padding: 7px;
+}
+
+.file-wrapper input[type=file]{
+    display: none;
+}
+

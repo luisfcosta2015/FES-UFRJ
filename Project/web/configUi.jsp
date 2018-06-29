@@ -52,28 +52,45 @@
         </h5>
         <div class="nav">
             <ul>
-                <li>
-                    <a href="#" data-section="criar" selected="true">Criar</a>
+                <li data-wrappersection="criar">
+                    <a href="#" data-section="criar">Criar</a>
                 </li>
-                <li>
-                    <a href="#" data-section="editar">Editar</a>
+                <li  data-wrappersection="editar">
+                    <a href="#" data-section="editar" selected="true">Editar</a>
+                </li>
+                <li data-wrappersection="excluir">
+                    <a href="#" data-section="excluir">Excluir</a>
                 </li>
             </ul>
         </div>
     </header>
     <div class="container">
-        <div class="section criar" selected="true">
-            <form action="">
+        <div class="section criar">
+            <form action=""  enctype="multipart/form-data" method="post">
                 <div class="input-container">
-                    <label for="JobNameCreate">Job Name:</label>
-                    <input class="input-field" id="JobNameCreate" type="text">
+                    <label for="JobNameCreate">Job Model Name:</label>
+                    <input class="input-field" onkeyup="this.parentElement.classList.remove('error')" id="JobNameCreate" name="jobModelName" type="text">
                 </div>
                 <div class="input-container">
-                    <input type="button" class="btn btn-primary" value="Submit">
+                    <label>Arquivo .rssql.json:</label>
+                    <div class="file-wrapper">
+                        <label class=" btn btn-generics" for="rssqlFile">Clique para fazer upload</label>
+                        <input onchange="this.parentElement.querySelector('label').innerHTML=this.files.item(0).name" id="rssqlFile" type="file" name="rssqlFile">
+                    </div>
+                </div>
+                <div class="input-container">
+                    <label for="htmlFile">Arquivo .html:</label>
+                    <div class="file-wrapper">
+                        <label class=" btn btn-generics" for="htmlFile">Clique para fazer upload</label>
+                        <input onchange="this.parentElement.querySelector('label').innerHTML=this.files.item(0).name" id="htmlFile" type="file" name="htmlFile">
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input type="submit" class="btn btn-primary" value="Criar">
                 </div>
             </form>
         </div>
-        <div class="section editar">
+        <div class="section editar"  selected="true">
             <form action="">
                 <div class="input-container">
                     <label for="jobNameEdit">Job Model:</label>
@@ -90,7 +107,23 @@
                     <input id="saveJobEdit" type="button" class="btn btn-primary" value="Salvar Job">
                 </div>
                 <div class="input-container">
-                    <input id="clearJobEdit" type="button" class="btn btn-secondary" value="Limpar Job">
+                    <input id="clearJobEdit" type="button" class="btn btn-secondary" value="Desvincular Job">
+                </div>
+            </form>
+        </div>
+        <div class="section excluir">
+            <form action="" method="post">
+                <div class="input-container">
+                    <label for="jobNameExcluir">Job Model:</label>
+                    <div class="input-container">
+                        <select id="jobNameExcluir" class="custom-select" name="">
+                        </select>
+                    </div>
+                    <span class="msg-box"></span>
+                </div>
+
+                <div class="input-container">
+                    <input id="deleteJob" type="submit" class="btn btn-primary" value="Excluir Job">
                 </div>
             </form>
         </div>

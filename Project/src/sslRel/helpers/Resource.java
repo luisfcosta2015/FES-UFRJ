@@ -2,6 +2,7 @@ package sslRel.helpers;
 
 import sun.misc.Regexp;
 
+import javax.servlet.http.Part;
 import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -49,6 +50,32 @@ public class Resource
         }
     }
 
+
+    public static boolean setFileContent(String path, Part part) throws IOException{
+        FileOutputStream out = null;
+        InputStream fileContent = null;
+        try {
+            out = new FileOutputStream(new File(path));
+            fileContent = part.getInputStream();
+            int size = fileContent.available();
+            int read = 0;
+            final byte[] bytes = new byte[size];
+            while ((read = fileContent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            return true;
+        } catch (FileNotFoundException fne) {
+            return false;
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (fileContent != null) {
+                fileContent.close();
+            }
+        }
+    }
+
     public static void setFileContent(File file,String content) throws IOException{
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -68,5 +95,20 @@ public class Resource
                 ex.printStackTrace();
             }
         }
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i=0; i<children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i] ));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+
+        // The directory is now empty so delete it
+        return dir.delete();
     }
 }
