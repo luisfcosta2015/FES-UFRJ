@@ -147,7 +147,7 @@ object, embed {
     box-shadow: 0 0 0 .2rem rgba(68, 68, 68, 0.5);
 }
 .btn-generics {
-    background-color: #eee;
+    background-color: #ddd;
     color:#444;
     border: 1px solid #666;
 }
@@ -577,3 +577,53 @@ td[SSLhiddenElements] button{
     display: none;
 }
 
+/**************LOADER******************/
+
+.loader{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: inherit;
+    display: none;
+    justify-content: center;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.spinner:before, .spinner:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color:  #546c76;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.spinner:after {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    } 50% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+      }
+}

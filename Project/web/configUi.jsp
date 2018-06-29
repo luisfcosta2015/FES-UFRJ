@@ -15,6 +15,11 @@
         <i class="fas fa-times"></i>
     </div>
 </div>
+<div class="loader">
+    <div class="spinner">
+
+    </div>
+</div>
 
 <div id="sslModalWrapper">
     <div class="sslModal">
