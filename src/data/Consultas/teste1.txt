@@ -1,0 +1,3 @@
+$teste1$
+apenas com alguns $parametros$
+e testes com $barra de espaço e ç$

@@ -91,11 +91,9 @@ public class GerarRelatorioController implements Initializable {
 
         Parent root1 = (Parent) fxmlLoader.load();
 
-        /* TESTE-------------------------------------------
         PopupGerarRelController controller = fxmlLoader.<PopupGerarRelController>getController();
         List<String> messages = Arrays.asList("Matrícula", "Semestre", "CódigoEscola");
         controller.setParams(messages);
-        --------------------------------------------------*/
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
