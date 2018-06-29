@@ -1,0 +1,3 @@
+[submodule "SSLRel"]
+	path = SSLRel
+	url = https://github.com/filipeRmlh/SSLRel.git
