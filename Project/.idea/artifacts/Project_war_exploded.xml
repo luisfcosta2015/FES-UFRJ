@@ -16,7 +16,6 @@
           <element id="library" level="project" name="html2pdf-2.0.2" />
           <element id="library" level="project" name="junit:junit:4.12" />
           <element id="library" level="project" name="mockito-all-1.10.19" />
-          <element id="library" level="project" name="kernel-7.1.2" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Project/web/Web" />

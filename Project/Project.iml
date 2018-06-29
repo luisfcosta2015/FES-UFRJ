@@ -53,6 +53,5 @@
     <orderEntry type="library" exported="" name="html2pdf-2.0.2" level="project" />
     <orderEntry type="library" exported="" name="junit:junit:4.12" level="project" />
     <orderEntry type="library" exported="" name="mockito-all-1.10.19" level="project" />
-    <orderEntry type="library" exported="" name="kernel-7.1.2" level="project" />
   </component>
 </module>
