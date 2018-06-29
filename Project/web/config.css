@@ -334,6 +334,7 @@ button {
 
 
 .menu-icon{
+    border-bottom-right-radius: 3px;
     background-color: #a1b3bd;
     color:white;
     left: 0;
