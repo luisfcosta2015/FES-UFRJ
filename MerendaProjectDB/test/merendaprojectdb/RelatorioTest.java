@@ -74,14 +74,6 @@ public class RelatorioTest {
     }
 
     /**
-     * Test of getItensRelatorio method, of class Relatorio.
-     */
-    @Test
-    public void testGetItensRelatorio() {
-        assertEquals(itensComida, instance.getItensRelatorio());
-    }
-
-    /**
      * Test of getTitulo method, of class Relatorio.
      */
     @Test
