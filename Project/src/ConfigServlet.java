@@ -1,6 +1,5 @@
 
 import com.google.gson.Gson;
-import com.sun.org.apache.xalan.internal.xsltc.dom.SAXImpl;
 import sslRel.helpers.Permission;
 import sslRel.helpers.Resource;
 
@@ -44,11 +43,12 @@ public class ConfigServlet extends HttpServlet{
     }
 
     public String getJobParams(HttpServletRequest request) throws Exception {
+        String fs =System.getProperty("file.separator");
         Resource res = new Resource();
 
         String jobFolder = request.getParameter("job");
 
-        res.findResource(new File(System.getProperty("reportsTemplates")+"/"+jobFolder),"rssql.json",false);
+        res.findResource(new File(System.getProperty("reportsTemplates")+fs+jobFolder),"rssql.json",false);
 
         JobManager jobManager = new JobManager();
         Map<String,JobManager.JobFormat> jobs = jobManager.getJobs();

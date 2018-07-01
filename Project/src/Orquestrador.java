@@ -16,6 +16,7 @@ import java.util.Set;
 public class Orquestrador extends HttpServlet {
     private DBHelper db = new DBHelper();
     private RSSQL rssql;
+    private String fs =System.getProperty("file.separator");
 
     public Orquestrador(){
         super();
@@ -63,7 +64,7 @@ public class Orquestrador extends HttpServlet {
         for(String key:keys){
             params.put(key,request.getParameter(job.params.get(key)));
         }
-        resource.findResource(new File(System.getProperty("reportsTemplates")+"/"+job.folder),".rssql.json",false);
+        resource.findResource(new File(System.getProperty("reportsTemplates")+fs+job.folder),".rssql.json",false);
         String path = resource.files.get(0).getCanonicalPath();
         rssql = new RSSQL(path).loadQuery(params).queryFields();
     }
@@ -71,7 +72,7 @@ public class Orquestrador extends HttpServlet {
     protected String createHTMLReport(HttpServletRequest request, JobManager.JobFormat job) throws IOException {//Procedimento de geração do html
         String html="";
         Resource resource = new Resource();
-        resource.findResource(new File(System.getProperty("reportsTemplates")+"/"+job.folder),".html",false);
+        resource.findResource(new File(System.getProperty("reportsTemplates")+fs+job.folder),".html",false);
         String filename = resource.files.get(0).getCanonicalPath();
 
         HTMLReplacer htmlR = new HTMLReplacer(filename);
