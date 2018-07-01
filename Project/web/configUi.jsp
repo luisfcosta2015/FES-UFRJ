@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% if(sslRel.helpers.Permission.isSuperAdmin(request)){ %>
-<% String urlRoot = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort(); %>
+<% String urlRoot = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath(); %>
 <link rel="stylesheet" href="<%=urlRoot+"/config.css"%>">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <div class="menu-icon-wrapper">
