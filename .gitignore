@@ -30,7 +30,7 @@ cmake-build-release/
 *.iws
 
 # IntelliJ
-out/
+out/production
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

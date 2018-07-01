@@ -163,14 +163,14 @@ Abra a pasta descompactada e abra o seguinte caminho dentro dela.
 
 ``Project/out/sslrel``
 
-Abra o arquivo sslrel.war com seu gerenciador de arquivos compactados e extraia somente o arquivo .env.example
+Abra o arquivo sslrel.war com seu gerenciador de arquivos compactados e extraia somente o arquivo .env.example que se encontra na pasta WEB-INF do arquivo compactado. 
 
 renomeie o .env.example extraido para .env
 
 abra o arquivo .env
 Preencha com as informações do seu Banco de Dados do ieducar.
 
-insira novamente o arquivo .env modificado dentro do arquivo compactado sslrel.war;
+insira novamente o arquivo .env modificado dentro do arquivo compactado sslrel.war no mesmo lugar onde está o .env.example;
 
 Ainda no seu computador, abra a seguinte url no seu navegador:
 
