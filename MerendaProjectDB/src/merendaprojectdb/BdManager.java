@@ -544,6 +544,35 @@ public class BdManager {
            return -1;
         }
     }
+    static Relatorio findRelatorio(int inep, int mes, int ano){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from relatorios where inep like ?");
+            ps.setInt(1, inep);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                String messtr = rs.getString("mes");
+                int mestemp = Integer.parseInt(messtr);
+                int anotemp = rs.getInt("ano");
+                if(mestemp==mes && anotemp==ano)
+                {
+                    String jsonString = rs.getString("relatorioJson");
+                    Relatorio relatorio = jsonToRelatorio(jsonString);
+                    rs.close();
+                    ps.close();
+                    con.close();
+                    return relatorio;
+                }
+            }
+            return null;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return null;
+        }
+    }
     static ArrayList<Relatorio> getRelatoriosSelecionados(int mes, int ano){
         ArrayList<Relatorio> relatoriosSelecionados = new ArrayList<Relatorio>();
         PreparedStatement ps;

@@ -10,7 +10,7 @@ package merendaprojectdb;
  * @author joycinha
  */
 public class Usuario {
-    public Relatorio relatorioCorrente=null;
+    public IdentificacaoRelatorio idRelatorio;
     private String nome;
     private String user;
     private String senha;

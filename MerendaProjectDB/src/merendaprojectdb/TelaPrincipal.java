@@ -324,6 +324,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_sairMouseClicked
     private void buttonActionPerformedSwitch(int button) {
+        System.out.println( button + this.operacoes[button]);
         switch(this.operacoes[button]){
             case "editarPermissoes":
                 permission=new TelaPermissao();
@@ -340,13 +341,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 dispose();
                 break;
             case "editarRelatorioCorrente":
-                if(TelaPrincipal.usuarioLogado.relatorioCorrente != null ) {
-                    TelaCapaRelatorio edita = new TelaCapaRelatorio(TelaPrincipal.usuarioLogado.relatorioCorrente);
-                    edita.setLocationRelativeTo(null);
-                    edita.setVisible(true);
-                    edita.setResizable(true);
-                    this.dispose();
-                    break; 
+                if(TelaPrincipal.usuarioLogado.idRelatorio != null ) {
+                    Relatorio relatorio = BdManager.findRelatorio(TelaPrincipal.usuarioLogado.idRelatorio.inep, 
+                            TelaPrincipal.usuarioLogado.idRelatorio.mes, TelaPrincipal.usuarioLogado.idRelatorio.ano);
+                    if(relatorio != null) {
+                        TelaCapaRelatorio edita = new TelaCapaRelatorio(relatorio);
+                        edita.setLocationRelativeTo(null);
+                        edita.setVisible(true);
+                        edita.setResizable(true);
+                        this.dispose();
+                        break; 
+                    }
+                    else {
+                     JOptionPane.showMessageDialog(null,"Não foi possível pegar o relatório do banco de dados");
+                     break;
+                    }
+                    
                 }
                 else {
                      JOptionPane.showMessageDialog(null,"Não existe nenhum relatorio para editar no momento");

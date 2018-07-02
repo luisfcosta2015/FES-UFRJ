@@ -7,6 +7,7 @@ package merendaprojectdb;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -193,8 +194,13 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
             this.relatorio = new Relatorio (this.cardapio.getMes(), this.cardapio.getAno(),this.nomeRel, 
                                             TelaPrincipal.escolaAtual, this.cardapio, this.capa);
             atualizaListas();
-            TelaPrincipal.usuarioLogado.relatorioCorrente = this.relatorio;
-            BdManager.adicionarRelatorio(this.relatorio);
+            if(BdManager.adicionarRelatorio(this.relatorio)) {
+                TelaPrincipal.usuarioLogado.idRelatorio = new IdentificacaoRelatorio(this.relatorio.getEscola().getINEP(),
+                this.relatorio.getMes(), this.relatorio.getAno());
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Houve um erro ao salvar o relatório no banco");
+            }
         }
         else
         {
@@ -240,11 +246,14 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_semana5ActionPerformed
 
     private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
-        principal=new TelaPrincipal();
-        principal.setLocationRelativeTo(null);
-        principal.setVisible(true);
-        principal.setResizable(true);
+        int i = JOptionPane.showConfirmDialog(null ,"Tem certeza que deseja sair?", "Saída",JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_OPTION) {
+            principal=new TelaPrincipal();
+            principal.setLocationRelativeTo(null);
+            principal.setVisible(true);
+            principal.setResizable(true);
         this.dispose();
+        }        
     }//GEN-LAST:event_voltarMouseClicked
 
 
