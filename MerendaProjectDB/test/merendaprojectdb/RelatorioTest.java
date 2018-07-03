@@ -50,7 +50,7 @@ public class RelatorioTest {
         cardapio = new Cardapio(calendario);
         escola = new Escola("estado", "prefeitura", "secretaria", "subsecretaria","departamento",123,"diretoria","unidade","telefone");
         outraescola= new Escola("oestado", "oprefeitura", "osecretaria", "osubsecretaria","odepartamento",1234,"odiretoria","ounidade","otelefone");
-        instance = new Relatorio(7,2018,"relatorio", escola, cardapio, capaDados, itensComida);
+        instance = new Relatorio(7,2018,"relatorio", escola, cardapio, capaDados);
     }
     
     @After

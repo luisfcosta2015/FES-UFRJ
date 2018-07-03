@@ -13,44 +13,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaItensRelatorio extends javax.swing.JFrame {
     
-    TelaPrincipal principal;
+    TelaSemanasRelatorio semanas;
     BdManager banco;
     DefaultListModel modelList = new DefaultListModel();
-    private Relatorio relatorio;
-    private CapaDados capa;
-    private Cardapio cardapio;
     private ArrayList<ItemComida> itens;
-    private boolean editando;
-    private String nomeRel;
     /**
      * Creates new form ItensRelatorio
      */
-    public TelaItensRelatorio(String nomeRel, CapaDados capa, Cardapio cardapio) {        
-        
-        initComponents();
-        carregarItens();
-        this.capa = capa;
-        this.cardapio = cardapio;
-        this.editando = false;
-        this.nomeRel = nomeRel;
-        this.itens = new ArrayList<ItemComida>();
-        
-        // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
-    }
-    public TelaItensRelatorio(Relatorio relatorio) {
-        this.relatorio = relatorio;
-        this.itens = relatorio.getItensRelatorio();
+    public TelaItensRelatorio(ArrayList<ItemComida> itens, TelaSemanasRelatorio semanas) {
+        this.itens = itens;
         initComponents();
         carregarItens();
         carregarTabela();
-        this.editando = true;
+        this.semanas = semanas;
     }
     private void carregarTabela() {
         DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
-        if(itens == null) {
+        if(this.itens == null) {
             return;
         }
-        for(ItemComida item : itens) {
+        for(ItemComida item : this.itens) {
             if(item == null) {
                 continue;
             }
@@ -61,7 +43,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
         //modelo.addElement("thiago");
         ArrayList<String> itens = new ArrayList();
-        itens=banco.pegarItensDoCardapio();
+        itens = BdManager.pegarItensDoCardapio();
         modelo.removeAllElements();
         for(int i=0;i<itens.size();i++)
         {
@@ -113,7 +95,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             }
         });
 
-        voltarAoMenu.setText("Fim");
+        voltarAoMenu.setText("Voltar");
         voltarAoMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarAoMenuActionPerformed(evt);
@@ -211,34 +193,20 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_tipoItemActionPerformed
     private void criaItensLista() {
         DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
+        this.itens.removeAll(this.itens);
+        System.out.println(this.itens);
         for(int i = 0; i < tabelinha.getRowCount(); i++) {
             String item = tabelinha.getValueAt(i, 0).toString();
             int quant = Integer.parseInt(tabelinha.getValueAt(i,1).toString());
             String unidade = tabelinha.getValueAt(i, 2).toString();
+            this.itens.add(new ItemComida(item, quant, unidade));
         }
+        System.out.println(this.itens);
     }
     private void voltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAoMenuActionPerformed
         // TODO add your handling code here:
-        
-        // aqui tem que colocar pra pegar o que ta na tabela e jogar pro banco
-        if(!this.editando) {
-            criaItensLista();
-            this.relatorio = new Relatorio (this.cardapio.getMes(), this.cardapio.getAno(),this.nomeRel, 
-                                            TelaPrincipal.escolaAtual, this.cardapio, this.capa, itens);
-            TelaPrincipal.usuarioLogado.relatorioCorrente = this.relatorio;
-            BdManager.adicionarRelatorio(this.relatorio);
-            
-        }
-        else
-        {
-            System.out.println("alterando relatorio");
-            BdManager.alterarRelatorio(this.relatorio);
-        }
-        principal=new TelaPrincipal();
-        principal.setLocationRelativeTo(null);
-        principal.setVisible(true);
-        principal.setResizable(true);
-        this.setVisible(false);
+        this.semanas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltarAoMenuActionPerformed
 
     private void AdicionarParaAListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarParaAListaActionPerformed
@@ -257,14 +225,14 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void AdicionarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarItensActionPerformed
         
         String newItem = novoItem.getText();
-        if(banco.VerificarItemExistente(newItem)) // retorna true se o item ja existe
+        if(BdManager.VerificarItemExistente(newItem)) // retorna true se o item ja existe
         {
             novoItem.setText("");
             JOptionPane.showMessageDialog(null,"Esse item já existe na Lista, procure-o na lista acima :3");
         }
         else
         {
-            banco.AdicionarItemListaCardapio(newItem);
+            BdManager.AdicionarItemListaCardapio(newItem);
             carregarItens();
             novoItem.setText("");
             JOptionPane.showMessageDialog(null,"Item adicionado com sucesso :3");
