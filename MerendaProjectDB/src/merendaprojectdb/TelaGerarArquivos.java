@@ -4,8 +4,15 @@
  * and open the template in the editor.
  */
 package merendaprojectdb;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.logging.Level;
@@ -153,9 +160,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gerarODSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODSActionPerformed
-        System.out.println("A");
         exportador.exportarODS(this.relatorio);
-        System.out.println("B");
     }//GEN-LAST:event_gerarODSActionPerformed
 
     private void gerarODTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODTActionPerformed
@@ -163,7 +168,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }//GEN-LAST:event_gerarODTActionPerformed
 
     private void gerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPDFActionPerformed
-        exportador.exportarPDF();
+        exportador.exportarPDF(relatorio);
     }//GEN-LAST:event_gerarPDFActionPerformed
 
     private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
@@ -175,71 +180,36 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarMouseClicked
 
     private void teste1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teste1ActionPerformed
-
-        try {
-            CapaDados capaDados = relatorio.getCapaRelatorio();
-            SpreadsheetDocument doc = SpreadsheetDocument.newSpreadsheetDocument();
-            SpreadsheetDocument modelo = SpreadsheetDocument.loadDocument("modelo.ods");
-            Table capa = modelo.getTableByName("Capa");
-            
-            doc.removeSheet(0);
-            
-            System.out.println(TelaPrincipal.escolaAtual.getUnidade());
-            System.out.println(relatorio.getEscola().getUnidade());
-            
-            
-            capa.getCellByPosition(1, 3).setStringValue(relatorio.getEscola().getUnidade());
-            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()));
-            capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
-            capa.getCellByPosition(1, 5).setStringValue(relatorio.getEscola().getTelefone());
-            capa.getCellByPosition(7, 5).setStringValue(""+relatorio.getEscola().getINEP());
-            
-            for(int i=11;i<16;i++)
-            {
-                for(int j=2;j<10;j++)
-                {
-                    capa.getCellByPosition(j, i).setStringValue(""+capaDados.getValueAt(i-11, j-2));
-                }
-            }
-            System.out.println(capaDados.getValueAt(1, 5));
-            capa.getCellByPosition(2, 17).setStringValue(""+capaDados.alunosAtendidosDesjejum);
-            capa.getCellByPosition(6, 17).setStringValue(""+capaDados.desjejumTotalMensalServido);
-            
-            capa.getCellByPosition(2,21).setStringValue(""+capaDados.maisEducacao[0].matriculados);
-            capa.getCellByPosition(4,21).setStringValue(""+capaDados.maisEducacao[0].atendidos);
-            capa.getCellByPosition(6,21).setStringValue(""+capaDados.maisEducacao[0].numDias);
-            capa.getCellByPosition(7,21).setStringValue(""+capaDados.maisEducacao[0].totalDesjejum);
-            capa.getCellByPosition(8,21).setStringValue(""+capaDados.maisEducacao[0].totalLanche);
-            
-            capa.getCellByPosition(2,24).setStringValue(""+capaDados.maisEducacao[1].matriculados);
-            capa.getCellByPosition(4,24).setStringValue(""+capaDados.maisEducacao[1].atendidos);
-            capa.getCellByPosition(6,24).setStringValue(""+capaDados.maisEducacao[1].numDias);
-            capa.getCellByPosition(8,24).setStringValue(""+capaDados.maisEducacao[1].totalLanche);
-            capa.getCellByPosition(9,24).setStringValue(""+capaDados.getTotalMaisEducacao());
-            
-            capa.getCellByPosition(2,26).setStringValue(""+capaDados.getTotalServido());
-            doc.appendSheet(capa, "capa");
-            doc.save("ttestefinal.ods");
-            System.out.println("Fim");
-            File file = new File("ttestefinal.ods");
-            OOUtils.open(file);
-            
-        } catch (Exception e) {
-            System.err.println("ERROR: unable to create output file.");
-            System.err.println(e);
-        }
+        exportador.teste(relatorio);
+        
     }//GEN-LAST:event_teste1ActionPerformed
 
     private void teste2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teste2ActionPerformed
-       
+        com.itextpdf.text.Document document = new com.itextpdf.text.Document();
         try
         {
-            TextDocument document = TextDocument.newTextDocument();
-            Table table1 = Table.newTable(document);
-
-            table1.setTableName("Table1");
-
-            document.save("teste2.odt");
+           String nomeArquivo = "arquivos/testePDF.pdf";
+            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
+            document.open();
+            
+            PdfPTable table = new PdfPTable(3);
+            PdfPCell header = new PdfPCell(new Paragraph("Algumas Palavaras Reservadas do Java"));
+            header.setColspan(3);
+            table.addCell(header);	
+            table.addCell("abstract");
+            table.addCell("extends");
+            table.addCell("import");
+            table.addCell("while");
+            table.addCell("if");
+            table.addCell("switch");
+            
+            table.addCell("AAAA");
+            table.addCell("BBBB");
+            table.addCell("CCCC");
+            document.add(table);
+            
+          document.close();
+            
         } catch (Exception ex) {
             Logger.getLogger(TelaGerarArquivos.class.getName()).log(Level.SEVERE, null, ex);
         }
