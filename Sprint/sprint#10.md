@@ -123,7 +123,7 @@
   <tr>
     <td> Colocar botão do relatório Gênero/Ano escolar </td>
     <td>  1 hora </td>
-    <td> 1 hora </td>d
+    <td> 1 hora </td>
     <td>  Larissa </td>
   </tr>
   <tr>
