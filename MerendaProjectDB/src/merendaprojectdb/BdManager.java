@@ -82,11 +82,15 @@ public class BdManager {
                 String senha = rs.getString("senha");
                 String tipo = rs.getString("tipo");
                 String email = rs.getString("email");
+                Escola escola = findEscola(rs.getInt("escola"));
             
                 rs.close();
                 ps.close();
                 con.close();
-                return new Usuario(nome, usuario, senha, email, tipo);
+                if(escola != null)
+                    return new Usuario(nome, usuario, senha, email, tipo, escola);
+                else
+                    return new Usuario(nome, usuario, senha, email, tipo);
             }
             return null;
         }
@@ -97,7 +101,42 @@ public class BdManager {
         //return new Usuario("joyce", "Diretor", "123", "email@email.com", "Administrador");
     }
     
-    static boolean alterarUser(Usuario user, String escola){
+    static boolean alterarUser(Usuario user, String user_name){
+        PreparedStatement ps;
+        
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("update usuario set nome = ?, usuario = ?, senha = ?,email = ?,tipo = ?, escola = ? where usuario = ?");
+            ps.setString(1, user.getNome());
+            ps.setString(2, user.getUser());
+            ps.setString(3, user.getSenha());
+            ps.setString(4, user.getEmail()) ;
+            ps.setString(5, user.getTipo()) ;
+            ps.setInt(6, user.getEscola().getINEP());
+            ps.setString(7, user_name); 
+            ps.execute();
+            return true;
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
+    static boolean deletarUser(String user){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("delete from usuario where usuario like ?");
+            ps.setString(1, user);
+            ps.execute();
+            return true;
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
+/*    static boolean alterarUser(Usuario user, String escola){
         PreparedStatement ps;
         int INEP = 000;
         try{
@@ -151,7 +190,7 @@ public class BdManager {
            System.out.println(err.getMessage());
            return false;
         }
-    }
+    }*/
     
     static boolean usuarioExiste(String user){
         PreparedStatement ps;
@@ -289,6 +328,38 @@ public class BdManager {
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from escola where inep like ?");
             ps.setInt(1, inep);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                String estado = rs.getString("estado");
+                String prefeitura = rs.getString("prefeitura");
+                String secretaria = rs.getString("secretaria");
+                String subsecretaria = rs.getString("subsecretaria");
+                String departamento = rs.getString("departamento");
+                int INEP = rs.getInt("inep");
+                String diretoria = rs.getString("diretoria");
+                String unidade = rs.getString("unidade");
+                String telefone = rs.getString("telefone");
+                
+                rs.close();
+                ps.close();
+                con.close();
+                return new Escola(estado, prefeitura, secretaria, subsecretaria, departamento, INEP, diretoria, unidade, telefone);
+            }
+            return null;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return null;
+        }
+    }
+    
+    static Escola findEscola(String nomeEscola) {
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from escola where unidade like ?");
+            ps.setString(1, nomeEscola);
             ResultSet rs = ps.executeQuery();
             if(rs.next())
             {

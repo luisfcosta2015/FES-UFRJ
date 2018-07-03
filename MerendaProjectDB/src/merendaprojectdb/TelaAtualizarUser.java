@@ -11,17 +11,29 @@ import javax.swing.JOptionPane;
  *
  * @author thiago
  */
-public class TelaCadastro extends javax.swing.JFrame {
+public class TelaAtualizarUser extends javax.swing.JFrame {
 
     /**
      * Creates new form cadastroTela
      */
+    TelaPrincipal principal;
+    String username;
+    Usuario user;
     
-    public TelaCadastro() {
+    
+    public TelaAtualizarUser(String u) {
+        username = u;
         initComponents();
+        user = BdManager.findUser(u);
+        campoNome.setText(user.getNome());
+        campoTipo.setSelectedItem(user.getTipo());
+        campoUser.setText(user.getUser());
+        campoSenha.setText(user.getSenha());
+        campoEmail.setText(user.getEmail());
+        if(user.getEscola()!= null)
+            campoEscola.setSelectedItem(user.getEscola().getUnidade());        
     }
     
-    TelaPrincipal principal;
 
     
     public boolean verificaPreenchimento(Usuario user) {
@@ -50,11 +62,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         campoEmail = new javax.swing.JTextField();
         campoEscola = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         volta = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 300));
 
         jLabel1.setText("nome de usuario:");
 
@@ -84,17 +95,17 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabel7.setText("Gerenciar Cadastro:");
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         volta.setText("voltar");
         volta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 voltaMouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Atualizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -103,34 +114,34 @@ public class TelaCadastro extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(99, 99, 99)
-                .addComponent(volta)
-                .addGap(22, 22, 22))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoNome)
-                            .addComponent(campoUser)
-                            .addComponent(campoSenha)
-                            .addComponent(campoEmail)
-                            .addComponent(campoTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoEscola, 0, 200, Short.MAX_VALUE))))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campoNome)
+                    .addComponent(campoUser)
+                    .addComponent(campoSenha)
+                    .addComponent(campoEmail)
+                    .addComponent(campoTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoEscola, 0, 200, Short.MAX_VALUE))
                 .addGap(70, 70, 70))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(99, 99, 99)
+                        .addComponent(volta)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(150, 150, 150))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,33 +178,15 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(campoEscola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jButton2)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoEmail, campoEscola, campoNome, campoSenha, campoTipo, campoUser, jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        String nome = campoNome.getText();
-        String user = campoUser.getText();
-        String senha = campoSenha.getText();
-        String email = campoEmail.getText();
-        Object tipo = campoTipo.getSelectedItem();
-        Object escola = campoEscola.getSelectedItem();
-        // atualiza o banco de dados
-        Usuario usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo);
-        if(verificaPreenchimento(usuarioNovo)) {
-            BdManager.cadastraUser(usuarioNovo);
-        }
-        else {
-            JOptionPane.showMessageDialog(null,"Todos os campos são de preenchimento obrigatório");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void voltaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltaMouseClicked
         principal=new TelaPrincipal();
@@ -211,6 +204,32 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoEscolaActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // alterar
+        String nome = campoNome.getText();
+        String user = campoUser.getText();
+        String senha = campoSenha.getText();
+        String email = campoEmail.getText();
+        Object temptipo = campoTipo.getSelectedItem();
+        Object nomeEscola = campoEscola.getSelectedItem();
+        String tipo = ""+temptipo;
+        
+        Escola escola = BdManager.findEscola(""+nomeEscola);
+        
+        Usuario usuarioAtual = new Usuario(nome,user, senha, email, tipo, escola);
+        if(!tipo.equals("Administrador")&& escola==null){
+            JOptionPane.showMessageDialog(null,"Escola necessária para cadastro");
+        }else{
+            if(BdManager.usuarioExiste(username)&& verificaPreenchimento(usuarioAtual)) {
+                BdManager.alterarUser(usuarioAtual, username);
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Usuário inexistente");
+            }
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoEmail;
@@ -219,7 +238,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField campoSenha;
     private javax.swing.JComboBox<String> campoTipo;
     private javax.swing.JTextField campoUser;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

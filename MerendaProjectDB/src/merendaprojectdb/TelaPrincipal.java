@@ -24,7 +24,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private TelaLogin login;
     private TelaCapaRelatorio capa;
     private TelaMesAno mesAno;
-    private TelaCadastro cadastro;
+    private TelaOpcoesUsuario cadastro;
     private TelaEscola escola;
     private TelaListaRelatorios listaRelatorios;
     private TelaGerarArquivos geradorArquivos;
@@ -113,8 +113,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             i++;
         }
         if(permissoes.canAddUser==true){
-            this.operacoes[i]="cadastrarUsuario";
-            buttons[i].setText("Cadastrar Usuario");
+            this.operacoes[i]="gerenciarUsuario";
+            buttons[i].setText("Gerenciar Usuario");
             i++;
         }
         for(; i < 7; i++) {
@@ -367,8 +367,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 this.listaRelatorios.setResizable(true);
                 dispose();
                 break;
-            case "cadastrarUsuario":
-                cadastro=new TelaCadastro();
+            case "gerenciarUsuario":
+                cadastro=new TelaOpcoesUsuario();
                 cadastro.setLocationRelativeTo(null);
                 cadastro.setVisible(true);
                 cadastro.setResizable(true);
