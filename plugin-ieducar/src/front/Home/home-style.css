@@ -12,6 +12,11 @@
 	-fx-background-color: #EEEEEE;
 }
 
+.footer {
+	-fx-font-size:15px;
+	-fx-text-fill:black;
+}
+
 .subtitulo {
 	-fx-font-size: 40px;
 	-fx-text-fill: black;

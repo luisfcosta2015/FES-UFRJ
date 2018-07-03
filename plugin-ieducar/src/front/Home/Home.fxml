@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@home-style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.Home.HomeController">
+<BorderPane maxHeight="700" maxWidth="1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@home-style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.Home.HomeController">
    <left>
       <Pane maxHeight="700.0" maxWidth="50.0" prefHeight="700.0" prefWidth="50.0" styleClass="margens" BorderPane.alignment="CENTER" />
    </left>
@@ -16,10 +16,16 @@
       <Pane prefHeight="700.0" prefWidth="50.0" styleClass="margens" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane maxHeight="50.0" maxWidth="10000.0" prefHeight="50.0" prefWidth="1000.0" styleClass="margens" BorderPane.alignment="CENTER" />
+      <Pane maxHeight="50.0" maxWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" styleClass="margens" BorderPane.alignment="CENTER">
+       <Label styleClass="footer" text="Equipe Galine">
+           <padding>
+               <Insets left="900.0" />
+           </padding>
+       </Label>
+      </Pane>
    </bottom>
    <center>
-      <Pane styleClass="conteudo" BorderPane.alignment="CENTER">
+      <Pane  maxHeight="600.0" maxWidth="900.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="conteudo" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="41.0" layoutY="108.0" styleClass="subtitulo" text="Gerar Relatório" />
             <Label layoutX="506.0" layoutY="108.0" styleClass="subtitulo" text="Exemplo" />
@@ -34,14 +40,19 @@
       </Pane>
    </center>
    <top>
-      <Pane prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="TOP_CENTER">
+      <Pane maxHeight="50.0" maxWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="titulo" text="Relatório Customizável">
+            <Label styleClass="titulo" text="Relatorios Graficos">
                <padding>
-                  <Insets left="20.0" />
+                  <Insets left="570.0" />
                </padding>
             </Label>
+            <fx:define>
+               <Image fx:id="caxiasImg" url="@../imgs/Brasao-caxias.png"  requestedWidth="151" requestedHeight="80"/>
+            </fx:define>
+             <ImageView image="$caxiasImg"  layoutX="200.0" layoutY="10.0"/>
          </children>
       </Pane>
    </top>
 </BorderPane>
+

@@ -21,7 +21,7 @@
         <Pane maxHeight="50.0" maxWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" styleClass="margens" BorderPane.alignment="CENTER" />
     </bottom>
     <center>
-        <Pane styleClass="conteudo" BorderPane.alignment="CENTER">
+        <Pane maxHeight="600.0" maxWidth="900.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="conteudo" BorderPane.alignment="CENTER">
             <children>
                 <Label layoutX="44.0" layoutY="45.0" styleClass="titulo-topico" text="Escolha a Escola" />
                 <ChoiceBox styleClass="form-select" prefHeight="43.0" prefWidth="813.0" fx:id="box_escola" layoutX="43.0" layoutY="127.0" />
