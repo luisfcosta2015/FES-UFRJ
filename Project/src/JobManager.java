@@ -2,7 +2,6 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import sslRel.helpers.Resource;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class JobManager {
     private Map<String,JobFormat> jobsContent;
 
     public JobManager() throws IOException {
-        this.jobManager(System.getProperty("ResProject")+"/mainConfig/jobs.json");
+        this.jobManager(System.getProperty("ResProject")+ "mainConfig/jobs.json");
     }
 
     public JobManager(String jsonPath) throws  IOException{

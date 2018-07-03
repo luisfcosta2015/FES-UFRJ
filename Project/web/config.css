@@ -14,11 +14,10 @@ body.SSLRelUIopen{
 }
 
 body.SSLRelUIopen #SSLRelUI{
-
     width: 250px;
 }
 
-#SSLRelUI{
+body #SSLRelUI{
     left: 0px;
     transition: width 300ms linear;
     width: 0;
@@ -31,9 +30,7 @@ body.SSLRelUIopen #SSLRelUI{
     font-family: 'Roboto', sans-serif;
     color: #444444;
     overflow:hidden;
-
 }
-
 
 a {
     outline: 0;
@@ -72,11 +69,9 @@ object, embed {
     padding-bottom: 25px;
 }
 
-
 .section:not([selected=true]){
     display: none;
 }
-
 
 .SSLRel header{
     color:#a1b3bd;
@@ -124,8 +119,6 @@ object, embed {
 }
 
 
-
-
 .btn-primary.focus, .btn-primary:focus {
     box-shadow: 0 0 0 .2rem rgba(90,100,255,.5);
 }
@@ -138,9 +131,6 @@ object, embed {
     background-color: #546c76;;
     border-color: #546c76;;
 }
-
-
-
 
 
 .btn-generics.focus, .btn-generics:focus {
@@ -156,8 +146,6 @@ object, embed {
 }
 
 
-
-
 .btn-secondary.focus, .btn-secondary:focus {
     box-shadow: 0 0 0 .2rem rgba(90,100,255,.5);
 }
@@ -170,8 +158,6 @@ object, embed {
     background-color: #5b6172;
     border-color: #5b6172;
 }
-
-
 
 
 .btn:focus, .btn:hover {
