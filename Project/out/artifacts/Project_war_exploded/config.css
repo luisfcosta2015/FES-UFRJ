@@ -1,0 +1,630 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,600');
+
+#SSLRelUI [data-model]{
+    display: none!important;
+}
+
+body{
+    transition:padding-left 300ms linear;
+}
+
+body.SSLRelUIopen{
+    padding-left: 250px;
+}
+
+body.SSLRelUIopen #SSLRelUI{
+
+    width: 250px;
+}
+
+#SSLRelUI{
+    left: 0px;
+    transition: width 300ms linear;
+    width: 0;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+    position: fixed;
+    top:0;
+    z-index: 2000;
+    font-family: 'Roboto', sans-serif;
+    color: #444444;
+    overflow:hidden;
+
+}
+
+
+a {
+    outline: 0;
+}
+input::-moz-focus-inner {
+    border: 0;
+}
+object, embed {
+    outline: 0;
+}
+
+.SSLRel{
+    height: 100%;
+}
+.SSLRel> .container{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    justify-items: stretch;
+    align-content: stretch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+}
+.SSLRel, .section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    justify-items: stretch;
+    align-content: stretch;
+    padding-bottom: 25px;
+}
+
+
+.section:not([selected=true]){
+    display: none;
+}
+
+
+.SSLRel header{
+    color:#a1b3bd;
+    font-size: 20pt;
+    text-align: center;
+    padding: 5px 2%;
+    font-family: 'Dosis', sans-serif;
+}
+.app-title{
+    color:#184e7f;
+}
+
+
+.custom-select {
+    display:block;
+    height: calc(2.25rem);
+    padding: .375rem 1.75rem .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background: transparent url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size: auto auto;
+    background-size: 8px 10px;
+    border: 1px solid #a1b3bd;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.input-container{
+    display: flex;
+    justify-content: stretch;
+    flex-direction: column;
+    width: 100%;
+    padding: 3px 0;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+
+
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 .2rem rgba(90,100,255,.5);
+}
+.btn-primary {
+    color: #fff;
+    background-color: #7a8b95;
+    border-color: #7a8b95;
+}
+.btn-primary:hover {
+    background-color: #546c76;;
+    border-color: #546c76;;
+}
+
+
+
+
+
+.btn-generics.focus, .btn-generics:focus {
+    box-shadow: 0 0 0 .2rem rgba(68, 68, 68, 0.5);
+}
+.btn-generics {
+    background-color: #ddd;
+    color:#444;
+    border: 1px solid #666;
+}
+.btn-generics:hover {
+    background-color: #aaa;
+}
+
+
+
+
+.btn-secondary.focus, .btn-secondary:focus {
+    box-shadow: 0 0 0 .2rem rgba(90,100,255,.5);
+}
+.btn-secondary {
+    color: #fff;
+    background-color: #a2a7bd;
+    border-color: #a2a7bd;
+}
+.btn-secondary:hover {
+    background-color: #5b6172;
+    border-color: #5b6172;
+}
+
+
+
+
+.btn:focus, .btn:hover {
+    text-decoration: none;
+}
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+[type="reset"], [type="submit"], button, html [type="button"] {
+    -webkit-appearance: button;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    border-radius: 0;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.input-field{
+    display:block;
+    height: calc(2.25rem);
+    padding: .375rem 1.75rem .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    border: 1px solid #a1b3bd;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.SSLRel input:not(.btn):focus,.SSLRel select:focus{
+    border-width: 2px;
+}
+
+.text-container{
+    text-align: justify;
+    font-size: 10.5pt;
+
+}
+
+.text-container{
+   text-indent: 15px;
+}
+
+.input-container label{
+    padding: 4px;
+    font-size: 11pt;
+}
+
+.input-container .msg-box{
+    visibility: hidden;
+    height:10pt;
+}
+
+.input-container.error .msg-box{
+    color:tomato;
+    display: inline-block;
+    padding: 3px;
+    font-size: 9pt;
+}
+
+.input-container.error input:not(.btn),.input-container.error select{
+    border: 2px solid tomato;
+}
+.input-container.error{
+    padding: 5px 0!important;
+    font: inherit;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.nav{
+    font-size: 14pt;
+    flex-direction: row !important;
+    justify-content: stretch;
+    width: 100%;
+}
+
+.nav ul{
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    justify-items: stretch;
+}
+
+
+.nav ul li{
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.nav ul li a{
+    display: block;
+    text-decoration: none;
+    background-color: #eee;
+    padding: 5px;
+    color:#444;
+}
+
+.nav ul li a[selected=true]{
+    background-color: #a1b3bd!important;
+    color: white!important;
+}
+
+.nav ul li a:hover,.nav ul li a:focus{
+    background-color: #ddd;
+}
+
+.nav ul li:not(:first-child){
+  border-left: 1px solid #bbb;
+}
+.nav ul li:first-child a{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.nav ul li:last-child a,#SSLRelUI[data-content="nocontent"] .nav [data-section=criar]{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+.menu-icon{
+    border-bottom-right-radius: 3px;
+    background-color: #a1b3bd;
+    color:white;
+    left: 0;
+    top:0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.menu-icon-wrapper{
+    z-index: 2000;
+}
+
+body.SSLRelUIopen .menu-icon:after{
+    content: "";
+    margin: 0;
+}
+
+body.SSLRelUIopen .menu-icon{
+
+}
+body.SSLRelUIopen  .menu-icon:hover{
+    background-color: #546c76;;
+}
+header h5{
+    padding-top: 0;
+    padding-bottom: 10px;
+    margin: 0;
+}
+.menu-icon-open{
+    font-size: 15px;
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+
+body.SSLRelUIopen .menu-icon-open{
+    display: none;
+}
+
+/*Conserto de bug na posição do Menu superior
+.clLevel0border{
+    transition: margin-left 300ms linear;
+}
+body.SSLRelUIopen .clLevel0border{
+    margin-left: 250px;
+}
+/**********************************************/
+
+.menu-icon-open:after{
+    content: "SSLRel";
+    font-size: 9pt;
+    margin-left: 4px;
+}
+
+.menu-icon-open i{
+
+}
+
+.btn-choice{
+    border: 2px solid #a1b3bd;
+    color: #768791;
+}
+
+.btn-choice div{
+    display: inline-flex;
+    font-size: 10pt !important;
+    padding: 3px;
+}
+
+td[SSLhiddenElements]{
+    padding-left: 20px;
+}
+td[SSLhiddenElements] button{
+    border: 1px solid #495057 !important;
+    border-radius: 3px;
+    margin: 5px !important;
+    padding: 4px !important;
+}
+
+#sslModalWrapper[data-show]{
+    display: flex !important;
+}
+
+#sslModalWrapper{
+    display: none;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255,255,255,0.5);
+    position: fixed;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    overflow:hidden;
+}
+
+#sslModalWrapper>.sslModal{
+    align-self: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    background-color: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    border: 1px solid #a1b3bd ;
+    display: flex;
+    justify-content: stretch;
+    flex-direction: column;
+}
+#sslModalWrapper>.sslModal header{
+    width: 100%;
+    display: flex;
+    height: 40px;
+    align-items: center;
+    top: 0;
+    border-bottom: 1px solid #c5d8e2;
+}
+#sslModalWrapper>.sslModal header .closeBtn{
+    width: 40px;
+    height: inherit;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    color: #7b8c96;
+    align-items: center;
+}
+
+#sslModalWrapper>.sslModal header .closeBtn:hover{
+    width: 40px;
+    border-top-right-radius: 10px;
+    background-color: #a1b3bd;
+    color:white;
+}
+
+#sslModalWrapper>.sslModal header .titleModal{
+    flex-grow: 2;
+    padding: 10px;
+    color: #7b8c96;
+}
+
+#sslModalWrapper>.sslModal section{
+    flex-grow: 2;
+    display: flex;
+    max-height: 400px;
+    padding: 20px 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    align-items: center;
+}
+#sslModalWrapper>.sslModal footer{
+    padding: 5px;
+    border-top: 1px solid #c5d8e2;
+    display: none;
+    justify-content: right;
+}
+
+#sslModalWrapper>.sslModal footer input[type=button]{
+    margin: 0 5px;
+    font-size: 11pt !important;
+}
+
+#SSLRelUI[data-content="nocontent"] .section.editar,
+#SSLRelUI[data-content="nocontent"] .section.excluir,
+#SSLRelUI[data-content="nocontent"] .nav [data-wrappersection=editar],
+#SSLRelUI[data-content="nocontent"] .nav [data-wrappersection=excluir]
+{
+    display: none;
+}
+
+
+
+.msgWrapper{
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(30,30,30,0.99);
+    position: absolute;
+    bottom: -10px;
+    opacity: 0;
+    border-radius: 5px;
+    color: white;
+    text-align: center !important;
+    left: 10px;
+    right: 10px;
+    padding: 10px;
+    font-size: 10pt;
+    font-weight: bold;
+    /*display: none;*/
+    transition: bottom 300ms ease-out, opacity 500ms ease-out, display 0ms linear 300ms;
+}
+
+.msgWrapper.opened{
+    bottom: 10px;
+    opacity: 1;
+    /*display: block;*/
+    transition:bottom 500ms ease-out, opacity 300ms ease-out;
+}
+
+.msgWrapper.msgerror{
+    color: #ff6d5a;
+}
+
+.msgWrapper.msgwarning{
+    color: #ffd95c;
+}
+
+.msgWrapper.msgsuccess{
+    color: #5effa4;
+}
+
+.msgWrapper div{
+    text-align: center;
+    width: 100%;
+}
+.msgWrapper div:first-child{
+    flex-grow: 2;
+}
+.msgWrapper div:last-child{
+    flex-grow: 1;
+}
+.SSLRel .container .section{
+    padding-bottom: 80px;
+}
+
+.file-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+    margin-bottom: 15px;
+}
+
+.file-wrapper label{
+    width: 100%;
+    padding: 7px;
+}
+
+.file-wrapper input[type=file]{
+    display: none;
+}
+
+/**************LOADER******************/
+
+.loader{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: inherit;
+    display: none;
+    justify-content: center;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.spinner:before, .spinner:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color:  #546c76;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.spinner:after {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    } 50% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+      }
+}

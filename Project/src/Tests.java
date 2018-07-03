@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.startup.*;
 import org.mockito.internal.matchers.Or;
+import sslRel.helpers.Resource;
 import sun.security.krb5.Config;
 
 import org.apache.tomcat.*;
 
 import static org.mockito.Mockito.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -54,7 +56,7 @@ public class Tests extends TestCase implements ServletContextListener {
         else {
             serv = false;
         }
-        assertEquals(false, serv);
+        assertEquals(false, serv);//Testa inicialização do servlet mock
 
 
 
@@ -105,26 +107,42 @@ public class Tests extends TestCase implements ServletContextListener {
 
     }
 
-    public void testOrquestrador() throws ServletException {
+    public void testOrquestrador() throws ServletException, IOException {
         Orquestrador orq = mock(Orquestrador.class);
+        String doc = new String();
+        JobManager.JobFormat jf = mock(JobManager.JobFormat.class);
+        HttpServletRequest servreq = mock(HttpServletRequest.class);
         orq.init();
+        doc = orq.createHTMLReport(servreq,jf);
+        System.out.println(doc);
+
 
     }
 
-    public void testRSSQL(){
-        RSSQL test = mock(RSSQL.class);
-        RSSQL rssql = mock(RSSQL.class);
-        test=rssql.findInputlist();
+    public void testRSSQL() throws Exception {
+
+        RSSQL rssql;
+        String fs =System.getProperty("file.separator");
+        Resource resource = new Resource();
+        JobManager jobManager = mock(JobManager.class);
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        JobManager.JobFormat job = jobManager.getJobByURL(request.getParameter("_urlaction"));
         boolean test1;
 
-        if(test!=null){
+
+
+        resource.findResource(new File(System.getProperty("reportsTemplates")+fs+job.folder),".rssql.json",false);
+        String path = resource.files.get(0).getCanonicalPath();
+        rssql = new RSSQL(path).loadQuery(job.params).queryFields();
+
+        if(rssql==null){
             test1=true;
         }
         else{
             test1=false;
         }
-
-        assertEquals(true,test1);
+        //configurar dados do banco
+        assertEquals(false,test1);//testa instância do RSSQL
 
 
 
