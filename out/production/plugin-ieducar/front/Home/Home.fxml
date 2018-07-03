@@ -29,11 +29,16 @@
          <children>
             <Label layoutX="41.0" layoutY="108.0" styleClass="subtitulo" text="Gerar Relatório" />
             <Label layoutX="506.0" layoutY="108.0" styleClass="subtitulo" text="Exemplo" />
-            <Button layoutX="121.0" layoutY="254.0" mnemonicParsing="false" onAction="#trocaIdadeAnoEscolar" styleClass="botao" text="Relação Aluno / Ano escolar" />
-            <Button layoutX="121.0" layoutY="425.0" mnemonicParsing="false" onAction="#trocaGeneroAnoEscolar" styleClass="botao" text="Relação Gênero / Ano escolar" />
-            <ImageView fitHeight="310.0" fitWidth="242.0" layoutX="533.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+            <Button layoutX="50.0" layoutY="225.0" mnemonicParsing="false" onAction="#trocaIdadeAnoEscolar" styleClass="botao" text="Relação Aluno / Ano escolar" />
+            <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" onAction="#trocaGeneroAnoEscolar" styleClass="botao" text="Relação Gênero / Ano escolar" />
+            <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="500.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/relatorio.jpg" />
+                  <Image url="@../imgs/barra.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="500.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/pizza.png" />
                </image>
             </ImageView>
          </children>
@@ -42,15 +47,15 @@
    <top>
       <Pane maxHeight="50.0" maxWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="titulo" text="Relatorios Graficos">
+            <Label styleClass="titulo" text="Relatórios Gráficos">
                <padding>
                   <Insets left="570.0" />
                </padding>
             </Label>
             <fx:define>
-               <Image fx:id="caxiasImg" url="@../imgs/Brasao-caxias.png"  requestedWidth="151" requestedHeight="80"/>
+               <Image fx:id="caxiasImg" url="@../imgs/brasao.png"/>
             </fx:define>
-             <ImageView image="$caxiasImg"  layoutX="200.0" layoutY="10.0"/>
+             <ImageView image="$caxiasImg"  layoutX="70.0" layoutY="10.0"/>
          </children>
       </Pane>
    </top>
