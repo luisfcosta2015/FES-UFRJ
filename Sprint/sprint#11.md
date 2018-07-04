@@ -115,13 +115,7 @@
     <td> 2 </td>
     <td>  Gilberto</td>
   </tr>
-  <tr>
-    <td>   </td>
-    <td>   </td>
-    <td>   </td>
-  </tr>
  
-
 </table>
 
 <h3> Atividades Não concluidas </h3>
