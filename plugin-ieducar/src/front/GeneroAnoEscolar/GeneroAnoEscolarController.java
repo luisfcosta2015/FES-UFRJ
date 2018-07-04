@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import report.RelatorioGenero;
 
@@ -44,6 +45,7 @@ public class GeneroAnoEscolarController {
      */
     @FXML
     private void initialize() {
+
         box_escola.setValue("Todas as escolas");
         box_escola.setItems(lista_escolas);
 
@@ -54,6 +56,7 @@ public class GeneroAnoEscolarController {
         box_grafico.setItems(lista_grafico);
 
         gera_relatorio.setOnAction(e -> geraRelatorio(box_escola, box_turma, box_grafico));
+
     }
 
     /**

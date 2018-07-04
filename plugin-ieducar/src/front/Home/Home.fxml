@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
+<?import javafx.scene.control.Hyperlink?>
 <BorderPane maxHeight="700" maxWidth="1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@home-style.css" xmlns="http://javafx.comajavafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.Home.HomeController">
    <left>
       <Pane maxHeight="700.0" maxWidth="50.0" prefHeight="700.0" prefWidth="50.0" styleClass="margens" BorderPane.alignment="CENTER" />
@@ -18,7 +19,7 @@
 
    <bottom>
       <Pane maxHeight="50.0" maxWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" styleClass="margens" BorderPane.alignment="CENTER">
-       <Label styleClass="footer" text="Equipe Galine">
+       <Label fx:id="link" styleClass="footer" text="Equipe Galine">
            <padding>
                <Insets left="900.0" />
            </padding>
@@ -30,8 +31,8 @@
          <children>
             <Label layoutX="41.0" layoutY="108.0" styleClass="subtitulo" text="Gerar Relatório" />
             <Label layoutX="506.0" layoutY="108.0" styleClass="subtitulo" text="Exemplo" />
-            <Button layoutX="50.0" layoutY="225.0" mnemonicParsing="false" onAction="#trocaIdadeAnoEscolar" styleClass="botao" text="Relação Aluno / Ano escolar" />
-            <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" onAction="#trocaGeneroAnoEscolar" styleClass="botao" text="Relação Gênero / Ano escolar" />
+            <Button fx:id="idade" layoutX="50.0" layoutY="225.0" mnemonicParsing="false" onAction="#trocaIdadeAnoEscolar" styleClass="botao" text="Relação Idade / Ano escolar" />
+            <Button fx:id="genero" layoutX="50.0" layoutY="400.0" mnemonicParsing="false" onAction="#trocaGeneroAnoEscolar" styleClass="botao" text="Relação Gênero / Ano escolar" />
             <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="500.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imgs/barra.png" />
