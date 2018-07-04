@@ -2,7 +2,7 @@
 
 <h2> Histórias da Sprint </h2>
 
-<ul>  </ul>
+<ul> Como usuário quero ser capaz de ler um tutorial sobre como usar a aplicação </ul>
 
 
 <h2> Sprint Backlog </h2>
