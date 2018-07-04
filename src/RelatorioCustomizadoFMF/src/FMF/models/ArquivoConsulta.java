@@ -10,7 +10,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -49,9 +51,9 @@ public class ArquivoConsulta {
         return arquivo;
     }
     
-    public Set<String> getAtributos() {
+    public Map<String, String> getAtributos() {
         String texto = this.leArquivo();
-        Set<String> atributos = new HashSet<>();
+        Map<String, String> atributos = new HashMap<>();
         
         char[] vetor;
         vetor = texto.toCharArray(); //converte toda a linha lida em vetor de char, teoricamente cria o vetor como tamanho da string
@@ -64,7 +66,7 @@ public class ArquivoConsulta {
                     palavra_chave+=vetor[i];
                     i++;      
                 }
-                atributos.add(palavra_chave);
+                atributos.put(palavra_chave, "");
                 // System.out.println(palavra_chave);
                 palavra_chave=""; //reset a string p/ proxima iteracao
             }
@@ -73,6 +75,14 @@ public class ArquivoConsulta {
         
         return atributos;
         
+    }
+    
+    public String getConsulta(Map<String, String> valores){
+        String arquivo = leArquivo();
+        for (Map.Entry<String, String> it : valores.entrySet()){
+            arquivo = arquivo.replace("$"+it.getKey()+"$", it.getValue());
+        }
+        return arquivo;
     }
 
     
