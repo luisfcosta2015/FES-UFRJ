@@ -26,7 +26,7 @@
   </tr>
   <tr>
     <td>  Produção de Conhecimento - Tutorial </td>
-    <td>   </td>
+    <td>  1 </td>
     <td>  Aline </td>
   </tr>
   <tr>
