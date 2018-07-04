@@ -38,9 +38,9 @@
    <top>
       <Pane prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="titulo" text="Relatório de Relação Aluno/Ano Escolar">
+            <Label styleClass="titulo" text="Idade/Ano Escolar">
                <padding>
-                  <Insets left="130.0" />
+                  <Insets left="570.0" />
                </padding>
             </Label>
             <fx:define>

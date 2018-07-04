@@ -49,7 +49,7 @@
          <children>
             <Label styleClass="titulo" text="Relatórios Gráficos">
                <padding>
-                  <Insets left="550.0" />
+                  <Insets left="560.0" />
                </padding>
             </Label>
             <fx:define>

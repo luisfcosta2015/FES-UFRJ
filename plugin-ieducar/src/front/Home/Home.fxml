@@ -8,13 +8,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="700" maxWidth="1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@home-style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.Home.HomeController">
+<BorderPane maxHeight="700" maxWidth="1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@home-style.css" xmlns="http://javafx.comajavafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.Home.HomeController">
    <left>
       <Pane maxHeight="700.0" maxWidth="50.0" prefHeight="700.0" prefWidth="50.0" styleClass="margens" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <Pane prefHeight="700.0" prefWidth="50.0" styleClass="margens" BorderPane.alignment="CENTER" />
    </right>
+
    <bottom>
       <Pane maxHeight="50.0" maxWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" styleClass="margens" BorderPane.alignment="CENTER">
        <Label styleClass="footer" text="Equipe Galine">
@@ -49,7 +50,7 @@
          <children>
             <Label styleClass="titulo" text="Relatórios Gráficos">
                <padding>
-                  <Insets left="550.0" />
+                  <Insets left="560.0" />
                </padding>
             </Label>
             <fx:define>
