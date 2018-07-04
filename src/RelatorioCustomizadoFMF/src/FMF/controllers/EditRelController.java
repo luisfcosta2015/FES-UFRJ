@@ -5,6 +5,7 @@
  */
 package FMF.controllers;
 
+import FMF.models.Relatorios;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,8 +39,7 @@ public class EditRelController implements Initializable {
         background.getChildren().setAll(x);
     }
     public void confirmaAct(){
-        // TODO
-        System.out.println("TODO");
+       
     }
     
 }

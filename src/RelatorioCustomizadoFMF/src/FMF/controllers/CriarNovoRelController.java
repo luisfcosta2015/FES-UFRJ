@@ -54,10 +54,7 @@ public class CriarNovoRelController implements Initializable {
     }
     
     public void confirmaAct(){
-       Relatorios relatorios = new Relatorios(Relatorios.nomeArqModelos);
-       relatorios.criarModelo(CampoNomeModelo.getText(), CampoNomeArqConsulta.getText());
-        //criarRelatorio(..., ...);
-        
+          
         
     }
     
