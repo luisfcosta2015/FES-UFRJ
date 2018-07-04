@@ -49,13 +49,13 @@
          <children>
             <Label styleClass="titulo" text="Relatórios Gráficos">
                <padding>
-                  <Insets left="570.0" />
+                  <Insets left="550.0" />
                </padding>
             </Label>
             <fx:define>
                <Image fx:id="caxiasImg" url="@../imgs/brasao.png"/>
             </fx:define>
-             <ImageView image="$caxiasImg"  layoutX="70.0" layoutY="10.0"/>
+             <ImageView image="$caxiasImg"  layoutX="55.0" layoutY="10.0"/>
          </children>
       </Pane>
    </top>
