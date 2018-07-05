@@ -517,7 +517,7 @@ public class CadastroConta extends javax.swing.JFrame {
 
     private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
         this.setVisible(false);
-        Auxiliar.trocarTela(new PrincipalDir());
+        Auxiliar.trocarTela(new PrincipalAdm());
     }//GEN-LAST:event_mItemPrincipalActionPerformed
 
     /**

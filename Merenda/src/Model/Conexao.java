@@ -39,27 +39,23 @@ public class Conexao {
     
     private static Connection getConnection(){
         try {
-            String DBConfig[] = new String[3];
             String DBUrl = "";
             String DBUser = "";
             String DBPass = "";
             
-            PrintWriter out = null;
-            try {
-                try (Scanner s = new Scanner(new File("bd.cfg")).useDelimiter("\\Z")) {
-                    String content = s.next();
-                    DBConfig = content.split("\\n");
-                    
-                }
+            // ***
+            // Pega a Url, usuario e senha do arquivo bd.cfg para realizar
+            // conexão com o BD. A mensagem de erro está relacionada com a
+            // tentativa de conexão com o BD, ou seja, quem emitirá será o
+            // próprio SGBD do MySQL.
+            try (Scanner s = new Scanner(new File("bd.cfg")).useDelimiter("\\n")) {
+                DBUrl = s.next().split("'")[1];
+                DBUser = s.next().split("'")[1];
+                DBPass = s.next().split("'")[1];
             } catch (Exception e) {
                    Auxiliar.DBError(e.getMessage());
-            } finally {
-                if(out != null) {
-                    out.close();
-                }
             }
-
-            
+            // ***
             return DriverManager.getConnection(DBUrl, DBUser, DBPass);
         } catch (Exception e) {
             Auxiliar.DBError(e.getMessage());
@@ -85,10 +81,11 @@ public class Conexao {
             // iterate through the java resultset
             if (rs.next()){    
                 logou = true;
-                int id = rs.getInt("id_pessoa");
+                int id_pessoa = rs.getInt("id_pessoa");
+                int id_instituicao = rs.getInt("id_instituicao");
                 int tipo_conta = rs.getInt("id_tipo_conta");
             
-                Sessao.createInstance(id, tipo_conta);    
+                Sessao.createInstance(id_pessoa, id_instituicao, tipo_conta);    
             }
             
             st.close();  

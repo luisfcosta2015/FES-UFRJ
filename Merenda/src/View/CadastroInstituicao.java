@@ -30,7 +30,7 @@ public class CadastroInstituicao extends javax.swing.JFrame {
      */
     
     public void reset(){
-        txtDiretor.setText("");
+        //txtDiretor.setText("");
         txtEndereco.setText("");
         txtINEP.setText("");
         txtQtdAlunos.setText("");
@@ -76,9 +76,6 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtQtdAlunos = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtDiretor = new javax.swing.JTextField();
-        btnPesquisaDiretor = new javax.swing.JButton();
-        chkDiretor = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         txtINEP = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
@@ -86,7 +83,6 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         btnDeletar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        lblPesquisaDiretor = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mItemPrincipal = new javax.swing.JMenuItem();
@@ -121,26 +117,6 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         txtQtdAlunos.setToolTipText("Ex.: 152");
 
         jLabel11.setText("Diretor");
-
-        txtDiretor.setToolTipText("Ex.: 25");
-        txtDiretor.setEnabled(false);
-
-        btnPesquisaDiretor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pesquisa_diretor.png"))); // NOI18N
-        btnPesquisaDiretor.setEnabled(false);
-        btnPesquisaDiretor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisaDiretorActionPerformed(evt);
-            }
-        });
-
-        chkDiretor.setSelected(true);
-        chkDiretor.setText("Cadastrar sem diretor");
-        chkDiretor.setEnabled(false);
-        chkDiretor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkDiretorActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("INEP");
 
@@ -182,9 +158,6 @@ public class CadastroInstituicao extends javax.swing.JFrame {
                 btnEditarActionPerformed(evt);
             }
         });
-
-        lblPesquisaDiretor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblPesquisaDiretor.setEnabled(false);
 
         jMenu1.setText("Arquivo");
 
@@ -244,20 +217,13 @@ public class CadastroInstituicao extends javax.swing.JFrame {
                     .addComponent(txtNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkDiretor)
                     .addComponent(txtQtdAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(lblTipo)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cmbTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDiretor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(159, 159, 159))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,21 +257,9 @@ public class CadastroInstituicao extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtQtdAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnPesquisaDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(chkDiretor)
-                        .addGap(48, 48, 48)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addGap(110, 110, 110)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,7 +289,7 @@ public class CadastroInstituicao extends javax.swing.JFrame {
                 Integer.valueOf(txtQtdAlunos.getText()) : -1);
         i.setEndereco(txtEndereco.getText());
         
-        if (!chkDiretor.isSelected()){
+        /*if (!chkDiretor.isSelected()){
             if (idDiretor == -1)
                 erros += "É necessário pesquisar o ID ou Nome do diretor antes de cadastrá-lo.\n";
             // SE O CARA DER ALGUM JEITO DE TROCAR O TXT DO DIRETOR MESMO DEPOIS DE TER SETADO ENABLED FALSE
@@ -343,7 +297,7 @@ public class CadastroInstituicao extends javax.swing.JFrame {
                 erros += "Valor inserido em diretor em pesquisa e atual não coincidem.\n"; 
             else
                 i.setId_diretor(idDiretor);            
-        }
+        }*/
         
         if (!Auxiliar.isNumeric(txtQtdAlunos.getText()))
             erros += "Quantidade de alunos invalida\n";
@@ -370,54 +324,6 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void chkDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDiretorActionPerformed
-        txtDiretor.setEnabled(!chkDiretor.isSelected());
-        btnPesquisaDiretor.setEnabled(!chkDiretor.isSelected());
-    }//GEN-LAST:event_chkDiretorActionPerformed
-
-    private void btnPesquisaDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaDiretorActionPerformed
-        String txt = txtDiretor.getText();
-        
-        if (txt.equals("")){
-            JOptionPane.showMessageDialog(this, "Campo \'Diretor\' vazio.", "Erro", JOptionPane.ERROR_MESSAGE);   
-            return;
-        }
-        
-        // SE FOR NÚMERO, PROCURA POR ID
-        if (Auxiliar.isNumeric(txt)){
-            Pessoa p = new Pessoa();
-            if (!p.pessoaPorId(Integer.parseInt(txt))){
-                JOptionPane.showMessageDialog(this, "ID: Nenhum diretor encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
-                java.net.URL imgURL = getClass().getResource("/images/failure.png");
-                ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Não Encontrado");
-                lblPesquisaDiretor.setIcon(icon);            
-            } else {
-                idDiretor = p.getId();
-                oldTxtDiretor = txt;
-                java.net.URL imgURL = getClass().getResource("/images/success.png");
-                ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Encontrado");
-                lblPesquisaDiretor.setIcon(icon);
-                txtDiretor.setEnabled(false);       
-            } 
-        // SE NÃO FOR, PROCURA POR NOME
-        } else {
-            Pessoa p = new Pessoa();
-            if (!p.pessoaPorNome(txt)){                
-                JOptionPane.showMessageDialog(this, "Nome: Nenhum ou mais de um diretor encontrado", "Erro", JOptionPane.ERROR_MESSAGE);                
-                java.net.URL imgURL = getClass().getResource("/images/failure.png");
-                ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Não Encontrado");
-                lblPesquisaDiretor.setIcon(icon);             
-            } else { 
-                idDiretor = p.getId();
-                oldTxtDiretor = txt;
-                java.net.URL imgURL = getClass().getResource("/images/success.png");
-                ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Diretor Encontrado");
-                lblPesquisaDiretor.setIcon(icon);
-                txtDiretor.setEnabled(false);                   
-            }
-        }
-    }//GEN-LAST:event_btnPesquisaDiretorActionPerformed
 
     private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
         this.setVisible(false);
@@ -561,9 +467,7 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnLimpar;
-    private javax.swing.JButton btnPesquisaDiretor;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JCheckBox chkDiretor;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -574,11 +478,9 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel lblPesquisaDiretor;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JMenuItem mItemPrincipal;
     private javax.swing.JMenuItem mItemSair;
-    private javax.swing.JTextField txtDiretor;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtINEP;
     private javax.swing.JTextField txtNome;

@@ -63,7 +63,7 @@ public class Auxiliar {
     // RETORNA NOME DE USUÁRIO PELO ID
     public static String getUser(){        
         Pessoa p = new Pessoa();
-        if (p.pessoaPorId(Sessao.getInstance().getId())){
+        if (p.pessoaPorId(Sessao.getInstance().getIdPessoa())){
             String nome = p.getNome();
             
             // Se o nome for muito grande, só mostra os 20 primeiro caracteres
