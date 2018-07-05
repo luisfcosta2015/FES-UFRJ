@@ -50,6 +50,12 @@
     <td> 1 </td>
     <td> Victor </td>
   </tr> 
+  <tr>
+    <td> Ferramentas de testes </td>
+    <td> 5 horas </td>
+    <td> 2 horas </td>
+    <td> Matheus </td>
+  </tr>
    <tr>
     <td> Atualização do banco. </td>
     <td> 2 </td>
