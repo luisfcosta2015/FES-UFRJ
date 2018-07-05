@@ -1,8 +1,8 @@
-<h1> Sprint 2 </h1>
+<h1> Sprint 4 </h1>
 
 <h2> Histórias da Sprint </h2>
 
-<ul><p align="justify"> Bancos são modelados para atender o sistema de merendas.</p></ul>
+<ul><p align="justify"> Pessoas são criadas no sistema.</p></ul>
 
 <h2> Sprint Backlog </h2>
 
@@ -24,9 +24,14 @@
     <td> Victor </td>
   </tr>
    <tr>
-    <td> Modelagem inicial do banco. </td>
-    <td> 7 horas </td>
-    <td> Gabriel, Matheus, Victor e Gabriel </td>
+    <td> Modelagem de pessoas. </td>
+    <td> 5 horas </td>
+    <td> Gabriel e André </td>
+  </tr>
+  <tr>
+    <td> Interfaces de pessoas. </td>
+    <td> 5 horas </td>
+    <td> Matheus e André </td>
   </tr>
 </table> 
 
@@ -40,36 +45,32 @@
     <th> Membro </th>
   </tr> 
   <tr>
-    <td> Modelagem inicial do banco. </td>
-    <td> 7 </td>
-    <td> 1 </td>
-    <td> Gabriel, Matheus, Victor e Gabriel </td>
-  </tr>
-  <tr>
-    <td> Wiki. </td>
-    <td> 1 </td>
-    <td> 1 </td>
+    <td> Atualizar wiki </td>
+    <td> 1 horas </td>
+    <td> 1 horas </td>
     <td> Victor </td>
   </tr>
-  <tr>	
-    <td> Documentar sprint </td>
-    <td> 1 </td>
-    <td> 0 </td>
-    <td> Victor </td>
-  </tr> 
-</table> 
-
-<h3> Atividades Não concluidas </h3>
-<table>
-  <tr>
-    <td> Sprint. </td>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 1 horas </td>
+    <td> 1 horas </td>
     <td> Victor </td>
   </tr>
    <tr>
-    <td> Modelagem de bancos </td>
-    <td> Matheus, Victor, André e Gabriel. </td>
+    <td> Modelagem de pessoas. </td>
+    <td> 5 horas </td>
+    <td> 5 horas </td>
+    <td> Gabriel e André </td>
   </tr>
+  <tr>
+    <td> Interfaces de pessoas. </td>
+    <td> 5 horas </td>
+    <td> 5 horas </td>
+    <td> Matheus e André </td>
+  </tr>     
 </table> 
+
+<h3> Atividades Não concluidas </h3>
 
 <h3> BurnDown Chart </h3>
 
@@ -78,10 +79,10 @@
 <h3> Feedback dos membros</h3>
 <h4> Victor </h4>
 
-<p align="justify"> Semana que demos mole. </p>
+<p align="justify"> Evoluimos a sprint. Sou o novo scrum master. Antes era o André </p>
 
 <h2> Revisão </h2>
-<p align="justify"> Tomamos um esporro do bem. Nos fez mudar nosso processo e melhorar as coisas. Já tinha grupos com BD feitos no sql e a gente só tinha modelado ele no papel. Demos mole.<p>
+<p align="justify"> Luiz disse que o esporro fez o cavalinho andar.<p>
 
 <h2> Planejamento para a próxima sprint</h2>
 <p align="justify"></p>
