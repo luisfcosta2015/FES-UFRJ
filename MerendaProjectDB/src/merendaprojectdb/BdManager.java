@@ -83,14 +83,23 @@ public class BdManager {
                 String tipo = rs.getString("tipo");
                 String email = rs.getString("email");
                 Escola escola = findEscola(rs.getInt("escola"));
-            
+                String jsonidRel = rs.getString("identificacaoRelatorio");
+                IdentificacaoRelatorio idRel = jsonToIdRel(jsonidRel);
                 rs.close();
                 ps.close();
                 con.close();
-                if(escola != null)
-                    return new Usuario(nome, usuario, senha, email, tipo, escola);
-                else
-                    return new Usuario(nome, usuario, senha, email, tipo);
+                Usuario usuarioRet;
+                if(escola != null) {
+                    usuarioRet = new Usuario(nome, usuario, senha, email, tipo, escola);
+                    usuarioRet.idRelatorio = idRel;
+                    return usuarioRet;
+                }
+                    
+                else {
+                    usuarioRet = new Usuario(nome, usuario, senha, email, tipo);
+                    usuarioRet.idRelatorio = idRel;
+                    return usuarioRet;
+                }
             }
             return null;
         }
@@ -100,7 +109,30 @@ public class BdManager {
         }
         //return new Usuario("joyce", "Diretor", "123", "email@email.com", "Administrador");
     }
-    
+    static boolean alterarRelatorioUser(IdentificacaoRelatorio idRel, Usuario user) {
+        PreparedStatement ps;
+        try {
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("update usuario set identificacaoRelatorio = ? where usuario = ?");
+            ps.setString(1, toJsonIdRelatorio(idRel));
+            ps.setString(2, user.getUser());
+            ps.execute();
+            return true;
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        } 
+    }
+    static String toJsonIdRelatorio(IdentificacaoRelatorio idRel) {
+        Gson gson = new Gson();
+        String rel = gson.toJson(idRel);
+        return rel;
+    }
+    static IdentificacaoRelatorio jsonToIdRel(String jsonString) {
+        Gson gson = new Gson();
+        IdentificacaoRelatorio idRel = gson.fromJson(jsonString, IdentificacaoRelatorio.class);
+        return idRel;
+    }
     static boolean alterarUser(Usuario user, String user_name){
         PreparedStatement ps;
         
@@ -113,7 +145,7 @@ public class BdManager {
             ps.setString(4, user.getEmail()) ;
             ps.setString(5, user.getTipo()) ;
             ps.setInt(6, user.getEscola().getINEP());
-            ps.setString(7, user_name); 
+            ps.setString(7, user_name);
             ps.execute();
             return true;
         }catch (SQLException err) {
@@ -136,61 +168,6 @@ public class BdManager {
         }
     }
     
-/*    static boolean alterarUser(Usuario user, String escola){
-        PreparedStatement ps;
-        int INEP = 000;
-        try{
-            con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("select inep from escola where unidade like ?");
-            ps.setString(1, escola);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next())
-            {
-                INEP = rs.getInt("inep");
-                
-                rs.close();
-                ps.close();
-                con.close();
-            }
-        }
-        catch (SQLException err) {
-           System.out.println(err.getMessage());
-           return false;
-        }
-        try{
-            if(INEP==000){
-                return false;
-            }else{
-                con = DriverManager.getConnection(host, username, password);
-                ps = con.prepareStatement("update usuario set nome = ?,senha = ?,email = ?,tipo = ?, escola = ? where usuario = ?");
-                ps.setString(1, user.getNome());
-                ps.setString(6, user.getUser());
-                ps.setString(2, user.getSenha());
-                ps.setString(3, user.getEmail()) ;
-                ps.setString(4, user.getTipo()) ;
-                ps.setInt(5, INEP);
-                ps.execute();
-            return true;
-            }
-        }catch (SQLException err) {
-           System.out.println(err.getMessage());
-           return false;
-        }
-    }
-    
-    static boolean deletarUser(String user){
-        PreparedStatement ps;
-        try{
-            con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("delete from usuario where usuario like ?");
-            ps.setString(1, user);
-            ps.execute();
-            return true;
-        }catch (SQLException err) {
-           System.out.println(err.getMessage());
-           return false;
-        }
-    }*/
     
     static boolean usuarioExiste(String user){
         PreparedStatement ps;
