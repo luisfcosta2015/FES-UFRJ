@@ -34,6 +34,10 @@ public class CadastroAlimento extends javax.swing.JFrame {
 *
 */
 
+/*
+    Essas funções apenas retornam o botão da tela, para que possa dar doClick nos testes.
+*/    
+    
 public JButton BotaoCadastrar(){ 
     return btnCadastrar;
 } 
@@ -44,11 +48,18 @@ public JButton BotaoPesquisar(){
 public JButton BotaoDeletar(){ 
     return btnDeletar;
 }
-    
+ 
+/*
+    Essa função preenche apenas o campo de nome
+*/
 public void preenchernometest(String nome){
 txtNome.setText(nome);
 }
     
+/*
+    Essa função preenche todos os campos da tela
+*/
+
 public void preenchertest(String nome,String marca,String fornecedor,String quantidade, int medida, boolean perecivel ){
 txtFornecedor.setText(fornecedor);
 txtMarca.setText(marca);
@@ -61,6 +72,10 @@ txtQtdAtende.setText("0");
 cmbMedida.setSelectedIndex(medida);
 chkPerecivel.setSelected(perecivel);
 }
+
+/*
+    Essa função retorna os dados da tela, de acordo com o inteiro mandado.
+*/
 
 public String retornaValores(int qualvalor){
 if(qualvalor== 0){

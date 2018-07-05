@@ -98,6 +98,9 @@ public class Auxiliar {
         return senha;
     }
     
+    /*
+        Essa função cria palavras aleatórias para auxiliar nos testes.
+    */
     public static String CriaPalavra(int tamanho){
         String palavra;
         String[] letrinhas = {"A","B","C","D","E","F","G","H","I","J","K","L","M","O","P","Q","R","S","T","U","V","X","Z"};

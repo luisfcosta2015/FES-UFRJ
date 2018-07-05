@@ -44,6 +44,10 @@ public class CadastroAlimentoTest {
      */
     @Test
     public void testReset() {
+        /*
+            Essa função confere se a função reset funciona,
+        ela escreve dados e depois da reset, caso todos estiverem vazios funcionou.
+        */
         CadastroAlimento cad = new CadastroAlimento();
         cad.preenchertest("nome","marca","fornecedor","123",1,true);
         cad.reset();
@@ -65,11 +69,17 @@ public class CadastroAlimentoTest {
             CadastroAlimento cad = new CadastroAlimento();
             cad.telasInvisiveis();
         for(int loop = 0;loop<50;loop++){
-            /*Como o código vai funcionar
-        
-            Primeiro ira criar uma String para Nome valida
-            escrevera o Nome, e procurara no banco
-            Caso não ache, preenchera no banco de dados com esse nome e outras informações validas
+            /*Como o código funciona:
+            
+                Primeiro ele cria uma palavra aleatória e coloca na caixa do nome
+            Então aperta o botão de pesquisar e copia o que esta escrito na caixa de marca
+            caso tenha algo escrito, então existe algum alimento nesse banco
+            se não, essa palavra não faz parte do banco.
+            
+                Então ele cria outros dados validos e cadastra no banco.
+            Após isso ele da reset e escreve novamente o nome na caixa de nome e pesquisa,
+            ele ira conferir os dados retornados e os dados salvos,
+            caso os dados estejam iguais então está tudo correto, então ele deleta do banco.
             */
             Random ran = new Random();
             String nomenovo;
@@ -119,6 +129,16 @@ public class CadastroAlimentoTest {
     
     @Test
     public void testInvalid() {
+        /*Como o código funciona:
+            
+            Primeiro ele cria um numero randomico para descobrir qual casa será invalida,
+        o que for selecionado sera garantidamente invalido, mas os outros também poderam ser invalidos.
+        Os dados invalidos em sua grande maioria tem duas possibilidades, algo invalido e vazio.
+        
+            Após todos os dados serem escritos eles são cadastrados, mas o esperado que eles não cadastrem.
+        Mas para saber se funcionou se pesquisa o nome, caso encontre ele no banco então deu erro,
+        depois clica no botao deletar para deletar caso seja encontrado.
+            */
         for(int loop = 0;loop<50;loop++){
             CadastroAlimento cad = new CadastroAlimento();
             cad.telasInvisiveis();
