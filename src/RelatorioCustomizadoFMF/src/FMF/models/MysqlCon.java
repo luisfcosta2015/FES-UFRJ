@@ -37,13 +37,8 @@ public class MysqlCon{
     }
     public ResultSet query(String consulta){
         try{
-            Conectar();
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery(consulta);
-            while (rs.next()) {
-                System.out.println(rs.getString("Nome"));
-            }
-            Desconectar();
             return rs;
         }catch(Exception e){
             System.out.println(e);
