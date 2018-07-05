@@ -20,6 +20,7 @@ import javax.swing.WindowConstants;
  */
 public class CadastroAlimento extends javax.swing.JFrame {
 
+    boolean showTela = true;
     boolean editmode = false;
     Alimento a1;
     /**
@@ -82,7 +83,9 @@ return "nada";
 *
 * Aqui estão as funções que auxiliaram os testes
 */
-    
+    public void telasInvisiveis(){
+        showTela = false;
+    }
     
     public void reset(){
         txtFornecedor.setText("");
@@ -315,7 +318,8 @@ return "nada";
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if (editmode){
-            JOptionPane.showMessageDialog(this, "Modo de edição não permite cadastros", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Modo de edição não permite cadastros", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -326,18 +330,24 @@ return "nada";
         a.setMedida(String.valueOf(cmbMedida.getSelectedItem()));
         a.setPerecivel(chkPerecivel.isSelected());
         // <= 0 não passa na validação
-        a.setQtd_atende(Auxiliar.isNumeric(txtQtdAtende.getText()) ? Integer.valueOf(txtQtdAtende.getText()) : -1);
-        
+        if("".equals(txtQtdAtende.getText())){
+            a.setQtd_atende(-1);
+        }else{
+            a.setQtd_atende(Auxiliar.isNumeric(txtQtdAtende.getText()) ? Integer.valueOf(txtQtdAtende.getText()) : -1);
+        }
         String erros = a.validar();
         
         if (!erros.equals("")){
             //mensagem de erro
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
             if (a.cadastrar()){
-                JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
+               if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
             } else {
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                if(showTela==true)    
+                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }        
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -348,11 +358,14 @@ return "nada";
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
         } else if (a1 == null){
-            JOptionPane.showMessageDialog(this, "Não há alimento carregado para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não há alimento carregado para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
         } else if (a1.deletar()){            
-            JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
             reset();
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
@@ -360,7 +373,8 @@ return "nada";
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         String nome = txtNome.getText();
         if (nome.length() == 0 || nome.length() >= 30){
-            JOptionPane.showMessageDialog(this, "Nome do alimento inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nome do alimento inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
             return;
         }
         
@@ -378,7 +392,8 @@ return "nada";
                 }
             }
             if (i == cmbMedida.getItemCount()){
-                JOptionPane.showMessageDialog(this, "Medida não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);   
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Medida não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);   
             }
             chkPerecivel.setSelected(a.isPerecivel());
             txtQtdAtende.setText(String.valueOf(a.getQtd_atende()));
@@ -391,14 +406,16 @@ return "nada";
             a1 = a;
             
         } else {
-            JOptionPane.showMessageDialog(this, "Nenhum ou mais de um alimento encontrado", "Erro", JOptionPane.ERROR_MESSAGE);               
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nenhum ou mais de um alimento encontrado", "Erro", JOptionPane.ERROR_MESSAGE);               
         }
         
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -415,16 +432,19 @@ return "nada";
         
         if (!erros.equals("")){
             //mensagem de erro
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
             // coloca todos os campos de a em a1, menos o id
             int id = a1.getId_alimento();
             a1 = a;
             a1.setId_alimento(id);
             if (a1.update()){
-                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
             } else {
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             }
             reset();
         } 
