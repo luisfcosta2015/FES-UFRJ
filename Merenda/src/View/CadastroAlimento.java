@@ -10,6 +10,7 @@ import Model.Auxiliar;
 import Model.Conexao;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
@@ -23,7 +24,65 @@ public class CadastroAlimento extends javax.swing.JFrame {
     Alimento a1;
     /**
      * Creates new form CadastroAlimento
+     * @return 
      */
+    
+/* Aqui estão as funções que auxiliaram os testes
+*
+*
+*
+*/
+
+public JButton BotaoCadastrar(){ 
+    return btnCadastrar;
+} 
+
+public JButton BotaoPesquisar(){ 
+    return btnPesquisar;
+}
+public JButton BotaoDeletar(){ 
+    return btnDeletar;
+}
+    
+public void preenchernometest(String nome){
+txtNome.setText(nome);
+}
+    
+public void preenchertest(String nome,String marca,String fornecedor,String quantidade, int medida, boolean perecivel ){
+txtFornecedor.setText(fornecedor);
+txtMarca.setText(marca);
+txtNome.setText(nome);
+if(Auxiliar.isNumeric(quantidade)){
+txtQtdAtende.setText(quantidade);
+}else{
+txtQtdAtende.setText("0");
+}
+cmbMedida.setSelectedIndex(medida);
+chkPerecivel.setSelected(perecivel);
+}
+
+public String retornaValores(int qualvalor){
+if(qualvalor== 0){
+return txtNome.getText();
+}
+if(qualvalor== 1){
+return txtMarca.getText();
+}
+if(qualvalor== 2){
+return txtFornecedor.getText();
+}
+if(qualvalor== 3){
+return txtQtdAtende.getText();
+}
+return "nada";
+}
+
+/*
+*
+*
+* Aqui estão as funções que auxiliaram os testes
+*/
+    
     
     public void reset(){
         txtFornecedor.setText("");

@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import Controller.Pessoa;
+import java.util.Random;
 
 public class Auxiliar {
     
@@ -95,6 +96,19 @@ public class Auxiliar {
     // TODO: Criptografia da senha
     public static String criptografar(String senha){
         return senha;
+    }
+    
+    public static String CriaPalavra(int tamanho){
+        String palavra;
+        String[] letrinhas = {"A","B","C","D","E","F","G","H","I","J","K","L","M","O","P","Q","R","S","T","U","V","X","Z"};
+        palavra ="";
+        Random ran = new Random();
+        for(int i = 0;i<tamanho;i++){
+            int k;
+            k = ran.nextInt(letrinhas.length);
+            palavra += letrinhas[k];
+        }
+        return palavra;
     }
     
 }
