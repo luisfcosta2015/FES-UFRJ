@@ -34,9 +34,7 @@ public class CriarNovoRelController implements Initializable {
     private Button confirmabtn;
     
     @FXML
-    private TextField CampoNomeModelo, CampoNomeArqConsulta;
-    
-    
+    private TextField CampoNomeModelo, CampoNomeArqConsulta,CampoDesc,CampoParIN,CampoParOUT,CampoArqPDF;
     
   
 
@@ -54,8 +52,8 @@ public class CriarNovoRelController implements Initializable {
     }
     
     public void confirmaAct(){
-          
-        
+        Relatorios relatorios = new Relatorios();
+        relatorios.addModelo(CampoNomeModelo.getText(), CampoNomeArqConsulta.getText(),CampoParIN.getText(),CampoParOUT.getText(),CampoDesc.getText(),CampoArqPDF.getText());
     }
     
 }
