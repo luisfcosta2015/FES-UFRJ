@@ -30,7 +30,7 @@ public class Alimento {
         if (getMarca().length() >= 30 || getMarca().length() == 0)
             erros += "Marca inválida\n";         
                 
-        if (getMedida().equals(""))
+        if (getMedida().equals("null"))
             erros += "Selecione uma Unidade de Medida\n";                       
         
         if (getQtd_atende() <= 0)
