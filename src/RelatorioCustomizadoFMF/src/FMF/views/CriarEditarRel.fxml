@@ -13,6 +13,6 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Button fx:id="editarCriarbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="337.0" maxWidth="500.0" mnemonicParsing="false" onAction="#EditRel" prefWidth="200.0" text="Escolha um Relatório" textAlignment="CENTER" />
+      <Button fx:id="editarCriarbtn" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="337.0" maxWidth="500.0" mnemonicParsing="false" onAction="#AcaoRel" prefWidth="200.0" text="Escolha um Relatório" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -23,6 +23,10 @@ public class Relatorios  {
         }
     }
     
+    public List<Modelo> getModelos(){
+        return this.lista_modelos;
+    }
+    
     public void addModelo(String nome, String arqConsult, String parametrosIN,String parametrosOUT, String descricao, String arqPDF) {  
         Modelo modelo;           
         try {

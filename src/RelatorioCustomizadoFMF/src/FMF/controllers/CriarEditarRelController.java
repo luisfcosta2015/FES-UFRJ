@@ -5,6 +5,8 @@
  */
 package FMF.controllers;
 
+import FMF.models.Modelo;
+import FMF.models.Relatorios;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ public class CriarEditarRelController implements Initializable {
     private AnchorPane background;
     @FXML
     private Button editarCriarbtn;
+    
+    boolean flag;
     /**
      * Initializes the controller class.
      * 
@@ -40,18 +44,21 @@ public class CriarEditarRelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Relatorios relatorios = new Relatorios();
         
         List<Pair< String,EventHandler<? super MouseEvent> > > miniaturas = new ArrayList<>();
-        for(Integer i=0;i<10;i++){
-            String title = "Teste "+ i.toString();
-            miniaturas.add(new Pair<>(title, new EventHandler<MouseEvent>() {
+        
+        for(Modelo modelo:relatorios.getModelos()){
+            miniaturas.add(new Pair<>(modelo.getNome(), new EventHandler<MouseEvent>() {
 
                     @Override
                     public void handle(MouseEvent event) {
-                        editarCriarbtn.setText("Editar : " +title);
+                        editarCriarbtn.setText("Editar : " + modelo.getNome());
+                        flag=false;
                     }
             }));
         }
+        
         
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FMF/views/DeslizadorMiniaturas.fxml"));
@@ -62,6 +69,7 @@ public class CriarEditarRelController implements Initializable {
                     @Override
                     public void handle(MouseEvent event) {
                         editarCriarbtn.setText("Criar Novo Relatório");
+                        flag=true;
                     }
             });
             background.getChildren().add(SP);
@@ -76,14 +84,15 @@ public class CriarEditarRelController implements Initializable {
         background.getChildren().setAll(x);
     }
     
-    public void CriarNovoRel() throws IOException{
-        AnchorPane x = (AnchorPane) FXMLLoader.load(getClass().getResource("/FMF/views/CriarNovoRel.fxml")); 
-        background.getChildren().setAll(x);
-         
-    }
-    
-    public void EditRel() throws IOException{
-        AnchorPane x = (AnchorPane) FXMLLoader.load(getClass().getResource("/FMF/views/EditRel.fxml")); 
+       
+    public void AcaoRel() throws IOException{
+        AnchorPane x;
+        if(!flag){
+            x = (AnchorPane) FXMLLoader.load(getClass().getResource("/FMF/views/EditRel.fxml")); 
+        }
+        else{
+            x = (AnchorPane) FXMLLoader.load(getClass().getResource("/FMF/views/CriarNovoRel.fxml")); 
+        }
         background.getChildren().setAll(x);
     }
     
