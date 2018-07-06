@@ -1,5 +1,0 @@
-﻿Arquivo de teste
- com varias 
-linhas 
-E com algumas substituicoes como essa aqui muito $substituicao$ Olha que $substituicao$:
-SELECT Nome FROM Professor WHERE Disciplina='$materia$';
