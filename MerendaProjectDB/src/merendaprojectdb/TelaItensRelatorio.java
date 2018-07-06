@@ -36,7 +36,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             if(item == null) {
                 continue;
             }
-            tabelinha.addRow(new Object[] {item.tipoItem, item.quant, item.unidade});
+            tabelinha.addRow(new Object[] {item.tipoItem, item.entrada,item.saida, item.unidade});
         }
     }
     private void carregarItens(){
@@ -66,7 +66,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         tipoItem = new javax.swing.JComboBox<>();
-        quantItem = new javax.swing.JTextField();
+        entradaItem = new javax.swing.JTextField();
         unidadeItem = new javax.swing.JComboBox<>();
         AdicionarParaALista = new javax.swing.JButton();
         voltarAoMenu = new javax.swing.JButton();
@@ -75,6 +75,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         novoItem = new javax.swing.JTextField();
         AdicionarItens = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        saidaItem = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,7 +108,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item", "Quantidade", "Unidade", "Excluir"
+                "Item", "Entrada", "Saida", "Unidade", "Excluir"
             }
         ));
         jScrollPane1.setViewportView(tabela);
@@ -139,29 +140,37 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                                 .addComponent(AdicionarItens))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(quantItem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(entradaItem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(saidaItem, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(11, 11, 11)))
+                                .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(AdicionarParaALista))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {entradaItem, saidaItem});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quantItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entradaItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(unidadeItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AdicionarParaALista))
+                    .addComponent(AdicionarParaALista)
+                    .addComponent(saidaItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(11, 11, 11)
@@ -197,9 +206,10 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         System.out.println(this.itens);
         for(int i = 0; i < tabelinha.getRowCount(); i++) {
             String item = tabelinha.getValueAt(i, 0).toString();
-            int quant = Integer.parseInt(tabelinha.getValueAt(i,1).toString());
-            String unidade = tabelinha.getValueAt(i, 2).toString();
-            this.itens.add(new ItemComida(item, quant, unidade));
+            int entrada = Integer.parseInt(tabelinha.getValueAt(i,1).toString());
+            int saida = Integer.parseInt(tabelinha.getValueAt(i,2).toString());
+            String unidade = tabelinha.getValueAt(i, 3).toString();
+            this.itens.add(new ItemComida(item, entrada,saida , unidade));
         }
         System.out.println(this.itens);
     }
@@ -210,14 +220,15 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarAoMenuActionPerformed
 
     private void AdicionarParaAListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarParaAListaActionPerformed
-        if(tipoItem.getSelectedItem()!="Selecione o Item" && !quantItem.getText().equals(""))
+        if(tipoItem.getSelectedItem()!="Selecione o Item" && !entradaItem.getText().equals(""))
         {
             DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
-            tabelinha.addRow(new Object[] {tipoItem.getSelectedItem(), quantItem.getText(), unidadeItem.getSelectedItem()});
+            tabelinha.addRow(new Object[] {tipoItem.getSelectedItem(), entradaItem.getText(),saidaItem.getText(), unidadeItem.getSelectedItem()});
             String nome = tipoItem.getSelectedItem().toString();
-            int quant = Integer.parseInt(quantItem.getText());
+            int entrada = Integer.parseInt(entradaItem.getText());
+            int saida = Integer.parseInt(saidaItem.getText());
             String unidade = unidadeItem.getSelectedItem().toString();
-            ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), Integer.parseInt(quantItem.getText()), unidadeItem.getSelectedItem().toString());
+            ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), Integer.parseInt(entradaItem.getText()),Integer.parseInt(saidaItem.getText()), unidadeItem.getSelectedItem().toString());
             this.itens.add(item);
         }
     }//GEN-LAST:event_AdicionarParaAListaActionPerformed
@@ -245,11 +256,12 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdicionarItens;
     private javax.swing.JButton AdicionarParaALista;
+    private javax.swing.JTextField entradaItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField novoItem;
-    private javax.swing.JTextField quantItem;
+    private javax.swing.JTextField saidaItem;
     private javax.swing.JTable tabela;
     private javax.swing.JComboBox<String> tipoItem;
     private javax.swing.JComboBox<String> unidadeItem;

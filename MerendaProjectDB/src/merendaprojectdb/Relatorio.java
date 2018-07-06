@@ -20,6 +20,7 @@ public class Relatorio {
     public ArrayList<ItemComida> semana3;
     public ArrayList<ItemComida> semana4;
     public ArrayList<ItemComida> semana5;
+    public ArrayList<ItemComida> estoque;
     private String titulo;
     private int mes;
     private int ano;

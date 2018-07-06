@@ -3,11 +3,13 @@
 
 public class ItemComida {
     public String tipoItem;
-    public int quant;
+    public int entrada;
+    public int saida;
     public String unidade;
-    ItemComida(String tipoItem, int quant, String unidade) {
+    ItemComida(String tipoItem, int entrada,int saida, String unidade) {
         this.tipoItem = tipoItem;
-        this.quant = quant;
+        this.entrada = entrada;
+        this.saida=saida;
         this.unidade = unidade;
     }
 }

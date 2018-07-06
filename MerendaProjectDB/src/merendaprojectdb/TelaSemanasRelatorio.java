@@ -24,6 +24,7 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
     private ArrayList<ItemComida> semana3List;
     private ArrayList<ItemComida> semana4List;
     private ArrayList<ItemComida> semana5List;
+    private ArrayList<ItemComida> estoque;
     private boolean editando;
     private String nomeRel;
     /**
@@ -71,6 +72,8 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
         semana5 = new javax.swing.JButton();
         proximo = new javax.swing.JButton();
         voltar = new javax.swing.JLabel();
+        estoqueButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,6 +127,15 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
             }
         });
 
+        estoqueButton.setText("estoque");
+
+        jButton2.setText("teste");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,24 +146,27 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
                     .addComponent(semana4)
                     .addComponent(semana1))
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(semana2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                .addComponent(semana3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(proximo)))
-                        .addGap(31, 31, 31))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(proximo))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(semana5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(semana2)
+                            .addComponent(semana5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(estoqueButton)
+                            .addComponent(semana3))))
+                .addGap(31, 31, 31))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(voltar)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,8 +181,11 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(semana4)
-                    .addComponent(semana5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                    .addComponent(semana5)
+                    .addComponent(estoqueButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(10, 10, 10)
                 .addComponent(proximo)
                 .addGap(34, 34, 34))
         );
@@ -256,8 +274,14 @@ public class TelaSemanasRelatorio extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_voltarMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton estoqueButton;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton proximo;
     private javax.swing.JButton semana1;
     private javax.swing.JButton semana2;
