@@ -28,7 +28,7 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         Cardapio cardapio = new Cardapio(new Calendario(5,2018));
         CapaDados capa = new CapaDados();
         ArrayList<ItemComida> itens = new ArrayList<>();
-        itens.add(new ItemComida("Abacaxi", 10,5, "kg"));
+        itens.add(new ItemComida("Abacaxi", 10, "kg"));
         int[] turnos;
         turnos = new int[] {10,20,30,40};
         capa.setVetorMatriculados(0, turnos, 30);

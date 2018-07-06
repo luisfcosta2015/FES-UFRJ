@@ -54,20 +54,15 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="143" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <Component id="tipoItem" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="quantItem" min="-2" pref="51" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="entradaItem" linkSize="1" min="-2" pref="51" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="saidaItem" linkSize="1" min="-2" pref="60" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                          <Component id="unidadeItem" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="unidadeItem" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="AdicionarParaALista" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -78,7 +73,7 @@
                           <Component id="jScrollPane1" min="-2" pref="334" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace pref="103" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,10 +83,9 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="tipoItem" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="entradaItem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="quantItem" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="unidadeItem" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="AdicionarParaALista" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="saidaItem" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -125,7 +119,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="entradaItem">
+        <Component class="javax.swing.JTextField" name="quantItem">
         </Component>
         <Component class="javax.swing.JComboBox" name="unidadeItem">
           <Properties>
@@ -169,21 +163,15 @@
             <Component class="javax.swing.JTable" name="tabela">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
+                  <Table columnCount="4" rowCount="0">
                     <Column editable="true" title="Item" type="java.lang.Object"/>
-                    <Column editable="true" title="Entrada" type="java.lang.Object"/>
-                    <Column editable="true" title="Saida" type="java.lang.Object"/>
+                    <Column editable="true" title="Quantidade" type="java.lang.Object"/>
                     <Column editable="true" title="Unidade" type="java.lang.Object"/>
                     <Column editable="true" title="Excluir" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -227,8 +215,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Adicionar novo tipo de Item"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="saidaItem">
         </Component>
       </SubComponents>
     </Container>
