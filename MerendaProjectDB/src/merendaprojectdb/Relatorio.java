@@ -15,15 +15,7 @@ import java.util.ArrayList;
 public class Relatorio {
     private Cardapio cardapio;
     private CapaDados capa;
-<<<<<<< HEAD
     private ArrayList<ItemComida> itens;
-=======
-    public ArrayList<ItemComida> semana1;
-    public ArrayList<ItemComida> semana2;
-    public ArrayList<ItemComida> semana3;
-    public ArrayList<ItemComida> semana4;
-    public ArrayList<ItemComida> semana5;
->>>>>>> parent of 18d5121... comit so pra acertar umas coisas
     private String titulo;
     private int mes;
     private int ano;
