@@ -1,0 +1,3 @@
+NOME=Boletim 4 Bimestres
+TIPO=BODY
+CAMPOS=dia;mes;ano;
