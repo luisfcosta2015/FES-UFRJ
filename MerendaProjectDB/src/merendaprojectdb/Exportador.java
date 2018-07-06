@@ -29,6 +29,7 @@ import org.jopendocument.dom.OOUtils;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 import org.jopendocument.dom.text.Heading;
+import org.jopendocument.dom.text.Paragraph;
 import org.jopendocument.model.OpenDocument;
 import org.jopendocument.renderer.ODTRenderer;
 
@@ -36,12 +37,12 @@ import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import org.odftoolkit.simple.SpreadsheetDocument;
 
 import org.odftoolkit.simple.TextDocument;
 import org.odftoolkit.simple.table.Cell;
 import org.odftoolkit.simple.table.Table;
+import org.odftoolkit.simple.text.list.List;
 /**
  *
  * @author thiago
@@ -209,45 +210,14 @@ public class Exportador {
             
     }
     
-    public void exportarPDF(Relatorio relatorio){
-        
-        Document document = new Document();
-        try {
-            String nomeArquivo = getFileName(relatorio, ".pdf");
-            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
-            document.open();
-
-            // adicionando um parágrafo no documento
-            document.add(new Paragraph("Gerando PDF - Java"));
-            document.newPage();
-            document.add(new Paragraph("Novo parágrafo na nova página"));
-            document.newPage();
-            PdfPTable table = new PdfPTable(3);
-            PdfPCell header = new PdfPCell(new Paragraph("Algumas Palavaras Reservadas do Java"));
-            header.setColspan(3);
-            table.addCell(header);	
-            table.addCell("abstract");
-            table.addCell("extends");
-            table.addCell("import");
-            table.addCell("while");
-            table.addCell("if");
-            table.addCell("switch");
-            document.add(table);
-
-}
-          catch(DocumentException de) {
-              System.err.println(de.getMessage());
-          }
-          catch(IOException ioe) {
-              System.err.println(ioe.getMessage());
-          }
-          document.close();
+    public void exportarPDF(){
+        try{
+            
             // Load the ODS file
-            /*System.out.println("passei0");
+            System.out.println("passei0");
             final OpenDocument doc = new OpenDocument();
             System.out.println("passei1");
-            String nomeArquivo = getFileName(relatorio, ".ods");
-            doc.loadFrom(nomeArquivo);
+            doc.loadFrom("arquivos/teste2.ods");
             System.out.println("passei2");
 
             // Open the PDF document
@@ -306,75 +276,7 @@ public class Exportador {
             Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DocumentException ex) {
             Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
-        } */
+        } 
     }
     
-    public void teste(Relatorio relatorio){
-        com.itextpdf.text.Document document = new com.itextpdf.text.Document();
-        try {
-            String nomeArquivo = "arquivos/testePDF.pdf";
-            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
-            document.open();
-            
-            SpreadsheetDocument doc = gerarArquivo(relatorio, nomeArquivo);
-            List<Table> listaTabelas; 
-            listaTabelas = doc.getTableList();
-            
-            for(int i=0;i<listaTabelas.size();i++)
-            {
-                Table tabela = listaTabelas.get(i);
-                PdfPTable table = new PdfPTable(tabela.getColumnCount());
-                System.out.println(tabela.getColumnCount());
-                System.out.println(tabela.getRowCount());
-                
-                table.setWidths(new int[]{5, 1});
-                int temp =0;
-                
-                for(int j=0;j<tabela.getRowCount(); j++)
-                {
-                    for(int k=0;k<tabela.getColumnCount();k++)
-                    {
-                        
-                        temp++;
-                        String valor = tabela.getCellByPosition(j, k).getDisplayText();
-                        if(j==0 && k==2)
-                        {
-                            PdfPCell header = new PdfPCell(new Paragraph(valor));
-                            header.setColspan(9);
-                            table.addCell(header);
-                            break;
-                        }
-                        table.addCell(valor);
-                    }
-                }
-                System.out.println("AQUI: " + temp);
-                document.add(table); 
-            }
-
-            // adicionando um parágrafo no documento
-            /*document.add(new Paragraph("Gerando PDF - Java"));
-            document.newPage();
-            document.add(new Paragraph("Novo parágrafo na nova página"));
-            document.newPage();
-            PdfPTable table = new PdfPTable(3);
-            PdfPCell header = new PdfPCell(new Paragraph("Algumas Palavaras Reservadas do Java"));
-            header.setColspan(3);
-            table.addCell(header);	
-            table.addCell("abstract");
-            table.addCell("extends");
-            table.addCell("import");
-            table.addCell("while");
-            table.addCell("if");
-            table.addCell("switch");
-            document.add(table);*/
-          document.close();
-
-}
-          catch(DocumentException de) {
-              System.err.println(de.getMessage());
-          }
-          catch(IOException ioe) {
-              System.err.println(ioe.getMessage());
-          }
-    }
 }
