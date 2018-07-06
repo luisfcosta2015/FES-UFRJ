@@ -35,7 +35,11 @@ public class HTMLReplacer {
                 String key = m.group(1);
                 if(key!=null){
                     String value = staticData.get(key);
-                    if(value!=null)staHtml=staHtml.replace("${"+key+"}",value);
+                    if(value!=null){
+                        staHtml=staHtml.replace("${"+key+"}",value);
+                    }else{
+                        staHtml=staHtml.replace("${"+key+"}","---");
+                    }
                 }
             }
             el.html(staHtml);

@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="sslrelTest">
+    <output-path>$PROJECT_DIR$/out/artifacts/sslrelTest</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Project" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/gson-2.6.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/postgresql-42.2.2.jar" />
+          <element id="library" level="project" name="jsoup-1.11.3" />
+          <element id="library" level="project" name="html2pdf-2.0.2" />
+          <element id="library" level="project" name="junit:junit:4.12" />
+          <element id="library" level="project" name="mockito-all-1.10.19" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/.env" />
+        <element id="file-copy" path="$PROJECT_DIR$/.env.example" />
+      </element>
+      <element id="javaee-facet-resources" facet="Project/web/Web" />
+    </root>
+  </artifact>
+</component>

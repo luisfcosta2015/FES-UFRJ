@@ -10,8 +10,6 @@ public class MockTest  {
         boolean con;
 
 
-
-
         DBHelper db = mock(DBHelper.class);
         when(db.connect()).thenReturn(true);
         con=db.connect();

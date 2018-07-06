@@ -1,0 +1,17 @@
+table.sslTable{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+table.sslTable thead{
+    font-weight: bold;
+}
+table.sslTable thead tr td{
+    padding: 5px;
+    border-bottom: 3px solid #333;
+    border-top: 3px solid black;
+}
+table.sslTable tbody tr td{
+    padding: 3px;
+    border-bottom: 1px solid #333;
+}

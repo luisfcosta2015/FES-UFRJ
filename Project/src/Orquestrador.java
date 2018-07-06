@@ -28,32 +28,44 @@ public class Orquestrador extends HttpServlet {
             this.db.connect();
             //response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            try {
-                reqProc(request,response);//chama os procedimentos para processar os requerimentos vindos da página
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            reqProc(request,response);//chama os procedimentos para processar os requerimentos vindos da página
             db.close();
         }else{
-            throw new ServletException("Usuário não Permitido");
+            throw new ServletException("Permissão negada a este usuário");
         }
     }
 
 
-
-
-    protected void reqProc(HttpServletRequest request,HttpServletResponse response) throws Exception {//Realiza todos os procedimentos após a request vinda da página
+    protected void reqProc(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{//Realiza todos os procedimentos após a request vinda da página
         HashMap<String,String> stMap;//Mapa dos dados estáticos
         //inicialização inicial forçada pela sintaxe
         String html;
-        JobManager jobManager = new JobManager();
-        JobManager.JobFormat job = jobManager.getJobByURL(request.getParameter("_urlaction"));//Pega job necessário para tradução de parametros
+        try{
+            JobManager jobManager = new JobManager();
+            JobManager.JobFormat job = jobManager.getJobByURL(request.getParameter("_urlaction"));//Pega job necessário para tradução de parametros
 
-        procParams(request,job); //Pega dados do banco no objeto da classe RSSQL
-        html = this.createHTMLReport(request,job);//Cria String HTML com todos os dados substituidos
+            procParams(request,job); //Pega dados do banco no objeto da classe RSSQL
 
-        PdfReport.generate(response,job.folder,html);
-
+            try {
+                html = this.createHTMLReport(request,job);//Cria String HTML com todos os dados substituidos
+                try {
+                    PdfReport.generate(response, job.folder, html);//Gera PDF
+                }
+                catch(Exception e){
+                    ServletException  ex = new ServletException("Erro ao processar PDF");
+                    ex.setStackTrace(e.getStackTrace());
+                    throw ex;
+                }
+            }catch (Exception e){
+                ServletException  ex = new ServletException("Erro ao tentar substituir parametros no layoutModel");
+                ex.setStackTrace(e.getStackTrace());
+                throw ex;
+            }
+        }catch (Exception e){
+            ServletException ex = new ServletException("Erro ao tentar traduzir/corresponder parametros de consulta");
+            ex.setStackTrace(e.getStackTrace());
+            throw ex;
+        }
     }
 
 

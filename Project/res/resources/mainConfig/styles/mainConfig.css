@@ -1,0 +1,43 @@
+@page{
+    size: landscape;
+    @top-center{
+        margin-right: -33.33%;
+        margin-left: -33.33%;
+        margin-top: 0.5cm;
+        content: element(header);
+    }
+    @bottom-center{
+        margin-right: -33.33%;
+        margin-left: -33.33%;
+        /*margin-bottom: 0.5cm;*/
+        content: element(footer);
+    }
+}
+@page:first {
+    margin-top: 4.5cm;
+    margin-bottom: 2.5cm;
+    @top-center {
+        content: element(firstHeader);
+    }
+    @bottom-center{
+        content: element(firstFooter);
+    }
+}
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+}
+
+div.firstHeader {
+    position: running(firstHeader);
+}
+div.header {
+    position: running(header);
+}
+div.firstFooter {
+    position: running(firstFooter);
+}
+div.footer {
+    position: running(footer);
+}

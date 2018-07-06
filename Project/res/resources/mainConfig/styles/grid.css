@@ -1,0 +1,59 @@
+.container{
+  width: 100%;
+  padding: 0;
+}
+.row{
+  width: 100%;
+    overflow: hidden;
+}
+.row::after, .row::before, .col::after, .col::before{
+  content: "";
+  clear: both;
+  display: block;
+  width: 100%;
+}
+
+.col:not(section){
+  display: block;
+  float: left;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+
+/* Larguras */
+.w1{
+  width: 7.3333%;
+}
+.w2{
+  width: 15.6666%;
+}
+.w3{
+  width: 23.9999%;
+}
+.w4{
+  width: 32.3332%;
+}
+.w5{
+  width: 40.6665%;
+}
+.w6{
+  width: 48.9998%;
+}
+.w7{
+  width: 57.3331%;
+}
+.w8{
+  width: 65.6664%;
+}
+.w9{
+  width: 73.9997%;
+}
+.w10{
+  width: 82.333%;
+}
+.w11{
+  width: 90.6663%;
+}
+.w12{
+  width: 98.9996%;
+}

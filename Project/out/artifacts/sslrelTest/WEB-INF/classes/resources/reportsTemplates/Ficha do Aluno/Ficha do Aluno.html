@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ficha do Aluno</title>
+  <link rel="stylesheet" href="../../mainConfig/styles/mainConfig.css">
+  <link rel="stylesheet" href="../../mainConfig/styles/grid.css">
+  <link rel="stylesheet" href="../../mainConfig/styles/boxes.css">
+  <style>
+      @page{size:portrait !important}
+      .logo-prefa{
+          width: 80px;
+          margin-right: 10px;
+      }
+      .footer::after,.firstFooter::after{
+          content: "Página " counter(page) " de " counter(pages);
+      }
+
+      .cabecalho td{
+        text-align: left;
+        align-content: center;
+        vertical-align: middle;
+      }
+
+      section{border: 2px solid #aaa}
+  </style>
+</head>
+<body class="sta">
+  <div class='firstHeader'>
+    <table class="cabecalho">
+      <tr>
+        <td rowspan="12">
+          <img class="logo-prefa"src="../../mainConfig/img/logo.png" alt="Prefeitura de Caxias">
+        </td>
+        <td class="destaque" colspan="12">
+          ESTADO DO RIO DE JANEIRO
+        </td>
+      </tr>
+      <tr>
+        <td class="destaque" colspan="12">
+          PREFEITURA MUNICIPAL DE DUQUE DE CAXIAS
+        </td>
+      </tr>
+      <tr>
+        <td class="destaque" colspan="12">
+          ${nome_secretaria}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          ${nome_instituicao}
+        </td>
+        <td colspan="3">
+          <span class="destaque">Cidade</span> ${cidade_instituicao}
+        </td>
+        <td colspan="3">
+          <span class="destaque">UF</span> ${uf_instituicao}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          ${nm_escola}
+        </td>
+        <td colspan="3">
+          ${data_atual}
+        </td>
+        <td colspan="3">
+          ${hora_atual}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="header"></div>
+  <div class="content container">
+    <!-- Título do Documento -->
+    <div class="row">
+      <div class="col w12 doc-title">
+        FICHA DO ALUNO
+      </div>
+    </div>
+    <!-- Seção de dados pessoais -->
+    <section>
+      <div class="row">
+        <div class="col w12 sec-title">
+          DADOS PESSOAIS DO ALUNO
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w6">
+          <div class="row lines">
+            <div class="col w12">
+              <label>NOME:</label> ${aluno}
+            </div>
+            <div class="col w6">
+              <label>SEXO:</label> ${sexo}
+            </div>
+            <div class="col w7">
+              <label>NATURALIDADE:</label> ${municipio_nasc}
+            </div>
+            <div class="col w7">
+              <label>NACIONALIDADE:</label> ${nacionalidade}
+            </div>
+            <div class="col w9">
+              <label>RELIGIÃO:</label> ${religiao}
+            </div>
+          </div>
+        </div>
+        <div class="col w4">
+          <div class="row lines">
+            <div class="w12">
+              <label>DATA DE NASCIMENTO:</label> ${data_nasc}
+            </div>
+            <div class="w12">
+              <label>ESTADO CIVIL:</label> ${estado_civil}
+            </div>
+            <div class="w7">
+              <label>ESTADO:</label> ${municipio_uf}
+            </div>
+            <div class="w12">
+              <label>PAÍS DE ORIGEM:</label> ${pais_origem}
+            </div>
+          </div>
+        </div>
+        <div class="col w2 img-container">
+          <img src="${foto}" alt="não há foto do aluno" >
+        </div>
+      </div>
+    </section>
+    <!-- Seção de Filiação -->
+    <section>
+      <div class="row">
+        <div class="col w12 sec-title">
+          FILIAÇÃO
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w12">
+          <div class="row lines">
+            <div class="col w6">
+              <label>NOME DO PAI:</label> ${nm_pai2}
+            </div>
+            <div class="col w4">
+              <label>CPF DO PAI:</label> ${cpf_pai}
+            </div>
+
+            <div class="col w6">
+              <label>NOME DA MÃE:</label> ${nm_mae2}
+            </div>
+            <div class="col w4">
+              <label>CPF DA MÃE:</label> ${cpf_mae}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Seção de Endereço do aluno -->
+    <section>
+      <div class="row">
+        <div class="col w12 sec-title">
+          ENDEREÇO
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w12">
+          <div class="row lines">
+            <div class="col w7">
+              <label>ENDEREÇO:</label> ${logradouro}
+            </div>
+            <div class="col w1">
+              <label>Nº:</label> ${numero}
+            </div>
+            <div class="col w1">
+              <label>LETRA:</label> ${letra}
+            </div>
+            <div class="col w1">
+              <label>BLOCO:</label> ${bloco}
+            </div>
+            <div class="col w1">
+              <label>ANDAR:</label> ${andar}
+            </div>
+            <div class="col w1">
+              <label>APTO:</label> ${apartamento}
+            </div>
+          </div>
+          <div class="row lines">
+            <div class="col w3">
+              <label>BAIRRO:</label> ${bairro}
+            </div>
+            <div class="col w3">
+              <label>CIDADE:</label> ${municipio}
+            </div>
+            <div class="col w3">
+              <label>ESTADO:</label> ${sigla_uf}
+            </div>
+            <div class="col w3">
+              <label>CEP:</label> ${cep}
+            </div>
+          </div>
+          <div class="row lines">
+            <div class="col w12">
+              <label>COMPLEMENTO:</label> ${complemento}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Seção para outras informações Relevantes sobre o Aluno -->
+    <section>
+      <div class="row">
+        <div class="col w12 sec-title">
+          OUTRAS INFORMAÇÕES
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w12">
+          <div class="row lines">
+            <div class="col w6">
+              <label>BENEFÍCIO:</label> ${beneficio}
+            </div>
+            <div class="col w4">
+              <label>ALFABETIZADO:</label> ${alfabetizado}
+            </div>
+            <div class="col w6">
+              <label>TELEFONE:</label> (${ddd}) ${fone}
+            </div>
+            <div class="col w6">
+              <label>EMAIL:</label> ${email}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Seção para descrição das deficiências do aluno(se houver) -->
+    <section>
+      <div class="row">
+        <div class="col w12 sec-title">
+          DEFICIENCIAS
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w12">
+          <div class="row lines">
+            <div class="col w12">
+              <label>DESCRIÇÃO:</label> ${deficiencia}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Seção para os documentos gerais do aluno -->
+    <section>
+      <div class="row">
+        <div class="col w12 sec-title">
+          DOCUMENTOS
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w12">
+          <div class="row lines">
+            <div class="col w6">
+              <label>CPF:</label> ${cpf}
+            </div>
+          </div>
+          <div class="row lines">
+            <div class="col w4">
+              <label>IDENTIDADE:</label> ${rg}
+            </div>
+            <div class="col w4">
+              <label>ÓRGÃO EXP/UF:</label> ${orgao_emissor_rg} / ${sigla_uf_exp_rg}
+            </div>
+            <div class="col w3">
+              <label>DATA:</label> ${data_exp_rg}
+            </div>
+          </div>
+          <div class="row lines">
+            <div class="col w4">
+              <label>TÍTULO ELEITORAL:</label> ${num_tit_eleitor}
+            </div>
+            <div class="col w3">
+              <label>ZONA:</label> ${zona_tit_eleitor}
+            </div>
+            <div class="col w3">
+              <label>SEÇÃO:</label> ${secao_tit_eleitor}
+            </div>
+          </div>
+          <div class="row lines">
+            <div class="col w10">
+              <label>CERTIDÃO:</label>${certidao_nascimento}
+            </div>
+            <div class="col w3">
+              <label>TERMO:</label> ${num_termo}
+            </div>
+            <div class="col w2">
+              <label>LIVRO:</label> ${num_livro}
+            </div>
+            <div class="col w2">
+              <label>FOLHA:</label> ${num_folha}
+            </div>
+            <div class="col w4">
+              <label>CARTÓRIO:</label> ${cartorio_cert_civil}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Dados do responável do aluno -->
+    <section>
+      <div class="row">
+        <div class="col w12 sec-title">
+          DADOS DO RESPONSÁVEL
+        </div>
+      </div>
+      <div class="row">
+        <div class="col w12">
+          <div class="row lines">
+            <div class="col w12">
+              <label>NOME:</label> ${nome_responsavel}
+            </div>
+            <div class="col w3">
+              <label>CPF:</label> ${cpf_responsavel}
+            </div>
+            <div class="col w2">
+              <label>SEXO:</label> ${sexo_responsavel}
+            </div>
+            <div class="col w3">
+              <label>TELEFONE:</label> (${ddd_responsavel}) ${fone_responsavel}
+            </div>
+            <div class="col w4">
+              <label>E-MAIL:</label> ${email_responsavel}
+            </div>
+          </div>
+          <div class="row lines">
+            <div class="col w8">
+              <label>ENDEREÇO:</label> ${logradouro_responsavel}
+            </div>
+            <div class="col w4">
+              <label>BAIRRO:</label> ${bairro_responsavel}
+            </div>
+          </div>
+          <div class="row lines">
+            <div class="col w1">
+              <label>N°</label>${numero_responsavel}
+            </div>
+            <div class="col w3">
+              <label>LETRA:</label> ${letra_responsavel}
+            </div>
+            <div class="col w3">
+              <label>BLOCO:</label> ${bloco_responsavel}
+            </div>
+            <div class="col w3">
+              <label>ANDAR:</label> ${andar_responsavel}
+            </div>
+            <div class="col w2">
+              <label>APTO:</label> ${apartamento_responsavel}
+            </div>
+            <div class="col w3">
+              <label>CIDADE:</label> ${municipio_responsavel}
+            </div>
+            <div class="col w3">
+              <label>ESTADO:</label> ${sigla_uf_responsavel}
+            </div>
+            <div class="col w3">
+              <label>CEP:</label> ${cep_responsavel}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="footer"></div>
+  <div class="firstFooter"></div>
+</body>
+</html>

@@ -81,11 +81,13 @@ public class RSSQL {
             }
         }
         res = dbHelper.query(queryDy.queryString,queryDy.queryParams);
-        dyn_values = new String[res.size()][];
-        for(int i = 0; i < res.size(); i++){
-            dyn_values[i] = new String[res.get(i).size()];
-            for(int j=0; j < res.get(i).size(); j++){
-                dyn_values[i][j] = res.get(i).get(j);
+        if(res!=null){
+            dyn_values = new String[res.size()][];
+            for(int i = 0; i < res.size(); i++){
+                dyn_values[i] = new String[res.get(i).size()];
+                for(int j=0; j < res.get(i).size(); j++){
+                    dyn_values[i][j] = res.get(i).get(j);
+                }
             }
         }
         dbHelper.close();
