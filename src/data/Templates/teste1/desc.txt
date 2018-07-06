@@ -1,0 +1,3 @@
+NOME=Cabeçalho com nome escola
+TIPO=HEADER
+CAMPOS=titulo;nomeescola;

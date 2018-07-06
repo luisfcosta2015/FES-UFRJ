@@ -5,6 +5,7 @@
  */
 package FMF.models;
 
+import FMF.controllers.Leitor;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,29 +31,9 @@ public class ArquivoConsulta {
         BufferedReader reader = new BufferedReader(new FileReader(file));
     }
     
-    private String leArquivo(){
-        String arquivo = "";
-        try {
-            FileReader arq = new FileReader(this.path);
-            BufferedReader lerArq = new BufferedReader(arq);
-
-            String temp_linha = lerArq.readLine();
-            arquivo = temp_linha + "\n"; 
-            while (true) {
-              temp_linha = lerArq.readLine(); 
-              if(temp_linha==null){break;}
-              arquivo+= temp_linha+ "\n";
-            }
-          arq.close();
-        } catch (IOException e) {
-          System.err.printf("Erro na abertura do arquivo: %s.\n",
-          e.getMessage());
-        }
-        return arquivo;
-    }
     
     public Map<String, String> getAtributos() {
-        String texto = this.leArquivo();
+        String texto = Leitor.leArquivo(this.path);
         Map<String, String> atributos = new HashMap<>();
         
         char[] vetor;
@@ -78,7 +59,7 @@ public class ArquivoConsulta {
     }
     
     public String getConsulta(Map<String, String> valores){
-        String arquivo = leArquivo();
+        String arquivo = Leitor.leArquivo(this.path);
         for (Map.Entry<String, String> it : valores.entrySet()){
             arquivo = arquivo.replace("$"+it.getKey()+"$", it.getValue());
         }

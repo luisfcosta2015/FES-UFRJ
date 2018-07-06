@@ -96,7 +96,6 @@ public class GerarRelatorioController implements Initializable {
         controller.setParams(messages);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root1));  
         stage.show();    
 
