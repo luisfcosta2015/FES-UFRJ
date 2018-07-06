@@ -222,15 +222,8 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         DefaultTableModel tabelinha = (DefaultTableModel) tabela.getModel();
         for(int i = 0; i < tabelinha.getRowCount(); i++) {
             String item = tabelinha.getValueAt(i, 0).toString();
-<<<<<<< HEAD
-            int entrada = Integer.parseInt(tabelinha.getValueAt(i,1).toString());
-            int saida = Integer.parseInt(tabelinha.getValueAt(i,2).toString());
-            String unidade = tabelinha.getValueAt(i, 3).toString();
-            this.itens.add(new ItemComida(item, entrada,saida , unidade));
-=======
             int quant = Integer.parseInt(tabelinha.getValueAt(i,1).toString());
             String unidade = tabelinha.getValueAt(i, 2).toString();
->>>>>>> parent of 3412fc2... modificações do joyce
         }
     }
     private void voltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAoMenuActionPerformed
@@ -241,7 +234,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             criaItensLista();
             this.relatorio = new Relatorio (this.cardapio.getMes(), this.cardapio.getAno(),this.nomeRel, 
                                             TelaPrincipal.escolaAtual, this.cardapio, this.capa, itens);
-            TelaPrincipal.usuarioLogado.relatorioCorrente = this.relatorio;
+            TelaPrincipal.usuarioLogado.idRelatorio = new IdentificacaoRelatorio(relatorio.getEscola().getINEP(), relatorio.getMes(), relatorio.getAno());
             BdManager.adicionarRelatorio(this.relatorio);
             
         }
