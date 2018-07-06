@@ -62,6 +62,13 @@ public class Exportador {
         this.modeloOds = "./arquivos/template/Modelo.ods";
         this.modeloCardapio = "./arquivos/template/ModeloCardapio.ods";
     }
+    private void setVetorMatriculados(Object[][] data, Relatorio relatorio, int pos, String modalidade) {
+        data[pos] = new Object[] { modalidade , relatorio.getCapaRelatorio().refeicoes[pos].turnos[0],
+                relatorio.getCapaRelatorio().refeicoes[pos].turnos[1], relatorio.getCapaRelatorio().refeicoes[pos].turnos[2],
+                relatorio.getCapaRelatorio().refeicoes[pos].turnos[3], relatorio.getCapaRelatorio().refeicoes[pos].totalMatriculados,
+                relatorio.getCapaRelatorio().refeicoes[pos].atendidos, relatorio.getCapaRelatorio().refeicoes[pos].numDias,
+                relatorio.getCapaRelatorio().refeicoes[pos].totalRefeicoes};
+    }
     public String getFileName(Relatorio relatorio, String tipo) {
         String fileName = relatorio.getTitulo().replace('/', '-');
         String pasta =(relatorio.getAno()-1900)+"/";

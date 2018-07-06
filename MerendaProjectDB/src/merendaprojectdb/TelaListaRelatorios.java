@@ -34,7 +34,7 @@ public class TelaListaRelatorios extends javax.swing.JFrame {
         capa.setVetorMatriculados(0, turnos, 30);
         capa.setVetorMatriculados(1,new int[] {8,51,35,12},15);
         relatorioSelecionado = new Relatorio(5,2018, "Relatorio lindo", 
-                TelaPrincipal.usuarioLogado.getEscola(), cardapio, capa);
+                TelaPrincipal.usuarioLogado.getEscola(), cardapio, capa, itens);
     }
     private void carregarLista()
     {

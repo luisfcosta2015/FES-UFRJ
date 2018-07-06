@@ -31,7 +31,7 @@ public class TelaCardapio extends javax.swing.JFrame {
     Cardapio cardapio;
     CapaDados capa;
     TelaPrincipal principal;
-    TelaSemanasRelatorio itensRel;
+    TelaItensRelatorio itensRel;
     int ano;
     int mes;
     DefaultTableModel tabelinha;
@@ -187,7 +187,7 @@ public class TelaCardapio extends javax.swing.JFrame {
         jLabel1.setText("Cardápio");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel2.setText("cancelar");
+        jLabel2.setText("voltar");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -199,20 +199,20 @@ public class TelaCardapio extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2)))
+                .addGap(133, 133, 133)
+                .addComponent(jLabel1)
                 .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(38, 38, 38))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
                 .addComponent(jLabel2)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -241,11 +241,11 @@ public class TelaCardapio extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelaPropertyChange
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        principal=new TelaPrincipal();
+        /*principal=new TelaPrincipal();
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
         principal.setResizable(true);
-        this.dispose();
+        this.setVisible(false);*/
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void proxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proxButtonActionPerformed
@@ -254,7 +254,7 @@ public class TelaCardapio extends javax.swing.JFrame {
             for(int i=0; i < this.tabelinha.getRowCount(); i++) {
                 this.cardapio.setCardapio(i, ""+ this.tabelinha.getValueAt(i, 1));
             }   
-            itensRel = new TelaSemanasRelatorio(this.relatorio);
+            itensRel = new TelaItensRelatorio(this.relatorio);
             itensRel.setLocationRelativeTo(null);
             itensRel.setVisible(true);
             itensRel.setResizable(true);
@@ -267,12 +267,11 @@ public class TelaCardapio extends javax.swing.JFrame {
                 cardapio.setCardapio(i, this.tabelinha.getValueAt(i, 1).toString());
             }
         }
-        TelaSemanasRelatorio semanas = new TelaSemanasRelatorio("Relatorio " + (this.mes + 1) + "/" + this.ano,
-                this.capa, this.cardapio);
-        semanas.setLocationRelativeTo(null);
-        semanas.setVisible(true);
-        semanas.setResizable(true);
-        this.dispose();
+        itensRel = new TelaItensRelatorio("Relatorio " + (this.mes + 1) + "/" + this.ano, this.capa, this.cardapio);
+        itensRel.setLocationRelativeTo(null);
+        itensRel.setVisible(true);
+        itensRel.setResizable(true);
+        this.setVisible(false);
     }//GEN-LAST:event_proxButtonActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed

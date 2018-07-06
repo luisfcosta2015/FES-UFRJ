@@ -15,29 +15,29 @@ import java.util.ArrayList;
 public class Relatorio {
     private Cardapio cardapio;
     private CapaDados capa;
+<<<<<<< HEAD
     public ArrayList<ItemComida> semana1;
     public ArrayList<ItemComida> semana2;
     public ArrayList<ItemComida> semana3;
     public ArrayList<ItemComida> semana4;
     public ArrayList<ItemComida> semana5;
     public ArrayList<ItemComida> estoque;
+=======
+    private ArrayList<ItemComida> itens;
+>>>>>>> parent of 3412fc2... modificações do joyce
     private String titulo;
     private int mes;
     private int ano;
     private Escola escola;
     
-    Relatorio(int mes, int ano, String nome, Escola escola, Cardapio cardapio, CapaDados capa) {
+    public Relatorio(int mes, int ano, String nome, Escola escola, Cardapio cardapio, CapaDados capa, ArrayList<ItemComida> itens) {
         this.capa = capa;
         this.cardapio = cardapio;
         this.titulo = nome;
+        this.itens = itens;
         this.mes = mes;
         this.ano = ano;
         this.escola = escola;
-        this.semana1 = new ArrayList<ItemComida>();
-        this.semana2 = new ArrayList<ItemComida>();
-        this.semana3 = new ArrayList<ItemComida>();
-        this.semana4 = new ArrayList<ItemComida>();
-        this.semana5 = new ArrayList<ItemComida>();
     }
     
     public CapaDados getCapaRelatorio() {
@@ -45,6 +45,9 @@ public class Relatorio {
     }
     public Cardapio getCardapioRelatorio() {
         return this.cardapio;
+    }
+    public ArrayList<ItemComida> getItensRelatorio() {
+        return this.itens;
     }
     public String getTitulo(){
         return this.titulo;
