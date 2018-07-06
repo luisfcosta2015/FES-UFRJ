@@ -3,6 +3,7 @@ import com.google.gson.Gson;
 import sslRel.helpers.Permission;
 import sslRel.helpers.Resource;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +16,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+
 @MultipartConfig
-public class ConfigServlet extends HttpServlet{
+public class ConfigServlet extends HttpServlet  {
 
     public ConfigServlet(){
         super();
     }
+
+
 
     public String listPaths(HttpServletRequest request) throws IOException {
         String url = request.getParameter("_urlaction");
@@ -226,4 +230,16 @@ public class ConfigServlet extends HttpServlet{
             throw new ServletException("Permissão Negada!!");
         }
     }
+
+    public ServletContext getContext(){
+        return super.getServletContext();
+    }
+
+    public String getName(){
+        return super.getServletName();
+    }
+    public Class<? extends ConfigServlet> getClasse(){
+        return this.getClass();
+    }
+
 }

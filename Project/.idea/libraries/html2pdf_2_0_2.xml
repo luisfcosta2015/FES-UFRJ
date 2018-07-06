@@ -7,6 +7,7 @@
       <root url="jar://$PROJECT_DIR$/lib/itext/kernel-7.1.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/itext/layout-7.1.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/itext/slf4j-api-1.7.13.jar!/" />
+      <root url="file://$USER_HOME$/Desktop/apache-tomcat-9.0.7-windows-x64/apache-tomcat-9.0.7/lib" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/itext/forms-7.1.2-javadoc.jar!/" />
@@ -22,5 +23,6 @@
       <root url="jar://$PROJECT_DIR$/lib/itext/layout-7.1.2-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/itext/slf4j-api-1.7.13-sources.jar!/" />
     </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Desktop/apache-tomcat-9.0.7-windows-x64/apache-tomcat-9.0.7/lib" recursive="false" />
   </library>
 </component>
