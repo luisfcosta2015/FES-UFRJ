@@ -168,7 +168,7 @@
 <h3> Feedback dos membros</h3>
 <h4> Aline </h4>
 
-<p align="justify"> </p>
+<p align="justify"> Essa semana tive impedimentos sérios de saúde, que acabaram me atrasando nas tarefas, mas no final das contas consegui juntar energias para fazê-las, ainda que no último dia da Sprint 11. Agora que estamos chegando ao final, estou com motivação para concluir o trabalho de forma satisfatória. </p>
 
 <h4> Gilberto </h4>
 
