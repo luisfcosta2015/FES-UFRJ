@@ -33,6 +33,7 @@ public class MaisEducacaoTest {
     @Before
     public void setUp() {
         instance = new MaisEducacao(1,3);
+        TelaEditarPadroes.porcent = 0.85;
     }
     
     @After
@@ -47,10 +48,17 @@ public class MaisEducacaoTest {
         System.out.println("changeAll");
         instance.changeAll(5, 4);
         assertEquals(5, instance.matriculados);
-        assertEquals(3, instance.atendidos);
+        assertEquals(4, instance.atendidos);
         assertEquals(4, instance.numDias);
-        assertEquals(2, instance.totalDesjejum);
-        assertEquals(1, instance.totalLanche);
+        assertEquals(16, instance.totalDesjejum);
+        assertEquals(16, instance.totalLanche);
+        TelaEditarPadroes.porcent = 0.50;
+        instance.changeAll(5, 4);
+        assertEquals(5, instance.matriculados);
+        assertEquals(2, instance.atendidos);
+        assertEquals(4, instance.numDias);
+        assertEquals(8, instance.totalDesjejum);
+        assertEquals(8, instance.totalLanche);
     }
     
 }

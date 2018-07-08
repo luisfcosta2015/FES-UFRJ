@@ -23,9 +23,27 @@ public class TelaCadastro extends javax.swing.JFrame {
     
     TelaPrincipal principal;
 
-    
+    private boolean avaliaString(String value) {
+        int i=0;
+        while(i < value.length()) {
+            if(value.charAt(i) != ' ') {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
     public boolean verificaPreenchimento(Usuario user) {
-        //TODO
+        if(user.getNome()== null || user.getNome()== "" || user.getSenha()== null || user.getSenha()== "" ||
+                 user.getEmail()== null || user.getEmail()== "" || user.getTipo()== null || user.getTipo()== "" ||
+                 user.getUser() == null || user.getUser() == "") {
+            return false;
+        }
+        int i = 0;
+        if(!avaliaString(user.getEmail()) || !avaliaString(user.getNome()) || !avaliaString(user.getSenha()) || 
+                !avaliaString(user.getTipo()) || !avaliaString(user.getUser())) {
+            return false;
+        }
         return true;
     }
     /**
@@ -54,7 +72,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         volta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 300));
 
         jLabel1.setText("nome de usuario:");
 

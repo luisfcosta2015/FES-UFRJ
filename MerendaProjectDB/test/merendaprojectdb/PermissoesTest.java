@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  * @author joycinha
  */
 public class PermissoesTest {
-    private Permissoes instance;
+    
     public PermissoesTest() {
     }
     
@@ -31,7 +31,6 @@ public class PermissoesTest {
     
     @Before
     public void setUp() {
-        instance = new Permissoes();
     }
     
     @After
@@ -44,10 +43,13 @@ public class PermissoesTest {
     @Test
     public void testCanNewReport() {
         System.out.println("canNewReport");
-        instance.canNewReport(false);
-        assertEquals(false,instance.canNewReport);
-        instance.canNewReport(true);
-        assertEquals(true,instance.canNewReport);
+        boolean m = false;
+        Permissoes instance = new Permissoes();
+        instance.canNewReport(m);
+        assertEquals(instance.canNewReport, false);
+        m = true;
+        instance.canNewReport(m);
+        assertEquals(instance.canNewReport, true);
     }
 
     /**
@@ -56,10 +58,13 @@ public class PermissoesTest {
     @Test
     public void testCanWriteReport() {
         System.out.println("canWriteReport");
-        instance.canWriteReport(false);
-        assertEquals(false,instance.canWriteReport);
-        instance.canWriteReport(true);
-        assertEquals(true,instance.canWriteReport);
+        boolean m = false;
+        Permissoes instance = new Permissoes();
+        instance.canWriteReport(m);
+        assertEquals(instance.canWriteReport, false);
+        m = true;
+        instance.canWriteReport(m);
+        assertEquals(instance.canWriteReport, true);
     }
 
     /**
@@ -68,10 +73,13 @@ public class PermissoesTest {
     @Test
     public void testCanSeeReport() {
         System.out.println("canSeeReport");
-        instance.canSeeReport(false);
-        assertEquals(false,instance.canSeeReport);
-        instance.canSeeReport(true);
-        assertEquals(true,instance.canSeeReport);
+        boolean m = false;
+        Permissoes instance = new Permissoes();
+        instance.canSeeReport(m);
+        assertEquals(instance.canSeeReport, false);
+        m = true;
+        instance.canSeeReport(m);
+        assertEquals(instance.canSeeReport, true);
     }
 
     /**
@@ -79,11 +87,13 @@ public class PermissoesTest {
      */
     @Test
     public void testCanWriteSchool() {
-        System.out.println("canWriteSchool");
-        instance.canWriteSchool(false);
-        assertEquals(false,instance.canWriteSchool);
-        instance.canWriteSchool(true);
-        assertEquals(true,instance.canWriteSchool);
+        boolean m = false;
+        Permissoes instance = new Permissoes();
+        instance.canWriteSchool(m);
+        assertEquals(instance.canWriteSchool, false);
+        m = true;
+        instance.canWriteSchool(m);
+        assertEquals(instance.canWriteSchool, true);
     }
 
     /**
@@ -91,11 +101,13 @@ public class PermissoesTest {
      */
     @Test
     public void testCanSeeSchool() {
-        System.out.println("canSeeSchool");
-        instance.canSeeSchool(false);
-        assertEquals(false,instance.canSeeSchool);
-        instance.canSeeSchool(true);
-        assertEquals(true,instance.canSeeSchool);
+        boolean m = false;
+        Permissoes instance = new Permissoes();
+        instance.canSeeSchool(m);
+        assertEquals(instance.canSeeSchool, false);
+        m = true;
+        instance.canSeeSchool(m);
+        assertEquals(instance.canSeeSchool, true);
     }
 
     /**
@@ -103,11 +115,13 @@ public class PermissoesTest {
      */
     @Test
     public void testCanWritePermit() {
-        System.out.println("canWritePermit");
-        instance.canWritePermit(false);
-        assertEquals(false,instance.canWritePermit);
-        instance.canWritePermit(true);
-        assertEquals(true,instance.canWritePermit);
+        boolean m = false;
+        Permissoes instance = new Permissoes();
+        instance.canWritePermit(m);
+        assertEquals(instance.canWritePermit, false);
+        m = true;
+        instance.canWritePermit(m);
+        assertEquals(instance.canWritePermit, true);
     }
 
     /**
@@ -115,11 +129,13 @@ public class PermissoesTest {
      */
     @Test
     public void testCanAddUser() {
-        System.out.println("canAddUser");
-        instance.canAddUser(false);
-        assertEquals(false,instance.canAddUser);
-        instance.canAddUser(true);
-        assertEquals(true,instance.canAddUser);
+        boolean m = false;
+        Permissoes instance = new Permissoes();
+        instance.canAddUser(m);
+        assertEquals(instance.canAddUser, false);
+        m = true;
+        instance.canAddUser(m);
+        assertEquals(instance.canAddUser, true);
     }
     
 }

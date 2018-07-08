@@ -44,12 +44,12 @@ public class RefeicoesDadosTest {
     @Test
     public void testChangeAll() {
         System.out.println("changeAll");
-        int turno1 = 0;
-        int turno2 = 0;
-        int turno3 = 0;
-        int turno4 = 0;
-        int atendidos = 0;
-        int numDias = 0;
+        int turno1 = 5;
+        int turno2 = 5;
+        int turno3 = 5;
+        int turno4 = 5;
+        int atendidos = 17;
+        int numDias = 2;
         this.dados.changeAll(turno1, turno2, turno3, turno4, numDias);
         assertEquals(turno1, this.dados.turnos[0]);
         assertEquals(turno2, this.dados.turnos[1]);
@@ -57,6 +57,7 @@ public class RefeicoesDadosTest {
         assertEquals(turno4, this.dados.turnos[3]);
         assertEquals(atendidos, this.dados.atendidos);
         assertEquals(numDias, this.dados.numDias);
+        
     }
     
 }

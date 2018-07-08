@@ -17,7 +17,7 @@ public class TelaEditarPadroes extends javax.swing.JFrame {
      * Creates new form TelaEditarPadrões
      */
     TelaPrincipal principal;
-    public static Double porcent;
+    public static Double porcent = new Double(0.85);
     
     public TelaEditarPadroes() {
         initComponents();

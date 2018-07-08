@@ -36,6 +36,12 @@ public class TelaCadastroTest {
     
     @Before
     public void setUp() {
+        this.valido = new Usuario("admin", "admin", "admin", "admin", "Administrador");
+        upperCase= new Usuario("ADMIN", "ADMIN", "ADMIN", "admin", "Administrador");
+        userEmBranco = new Usuario("admin", "", "admin", "admin", "Administrador");
+        senhaEmBranco = new Usuario("admin", "admin", "", "admin", "Administrador");
+        emailEmBranco = new Usuario("admin", "admin", "admin", "", "Administrador");
+        nomeEmBranco = new Usuario("", "admin", "admin", "admin", "Administrador");
     }
     
     @After
@@ -44,8 +50,13 @@ public class TelaCadastroTest {
 
     @Test
     public void verificaPreenchimentoTest() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       TelaCadastro instance = new TelaCadastro();
+       assertEquals(instance.verificaPreenchimento(this.valido), true);
+       assertEquals(instance.verificaPreenchimento(this.emailEmBranco), false);
+       assertEquals(instance.verificaPreenchimento(this.nomeEmBranco), false);
+       assertEquals(instance.verificaPreenchimento(this.senhaEmBranco), false);
+       assertEquals(instance.verificaPreenchimento(this.userEmBranco), false);
+       assertEquals(instance.verificaPreenchimento(this.upperCase), true);
     }
     
 }
