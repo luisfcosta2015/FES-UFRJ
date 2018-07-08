@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Auxiliar;
 import Model.Conexao;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,17 @@ import java.util.Map;
 public class Alimento {
     private int id_alimento, qtd_atende;
     private boolean perecivel;
-    private String nome, marca, fornecedor, medida;        
+    private String nome, marca, fornecedor, medida;
+    
+    public Alimento() {
+        this.id_alimento = 0;
+        this.qtd_atende = 0;
+        this.perecivel = false;
+        this.nome = "";
+        this.marca = "";
+        this.fornecedor = "";
+        this.medida = "";
+    }
     
     public String validar(){
         String erros = "";
@@ -69,7 +80,7 @@ public class Alimento {
     }
     
     public void popular(Map<String, Object> m){
-        setId_alimento((int)m.get("id_alimento"));
+        setId_alimento((int)m.get("id"));
         setQtd_atende((int)m.get("qtd_atende"));
         setNome(String.valueOf(m.get("nome")));
         setPerecivel((int)m.get("perecivel") != 0);        
@@ -78,18 +89,30 @@ public class Alimento {
         setMedida(String.valueOf(m.get("medida")));
     }
     
-    public boolean consultarPorNome(String nome){
-        String query = "SELECT * FROM alimento a where a.nome like \'" + nome + "%\'";
-        Conexao con = new Conexao();
+    public boolean consultar_por_id(int id){
+        String query = "SELECT * FROM alimento a where a.id=" + id ;
         
-        List<Map<String, Object>> lst = con.query_select(query);
+        List<Map<String, Object>> lst = Auxiliar.consultar(query);
         if (lst.size() == 1){
             popular(lst.get(0));
             return true;
         } else {
             return false;
         }
-    }  
+    }
+    
+    public boolean consultar_por_nome(String nome){
+        String query = "SELECT * FROM alimento a where a.nome like \'" + nome + "%\'";
+        
+        List<Map<String, Object>> lst = Auxiliar.consultar(query);
+        if (lst.size() == 1){
+            popular(lst.get(0));
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
     public int getId_alimento() {
         return id_alimento;

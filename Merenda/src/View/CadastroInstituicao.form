@@ -94,10 +94,8 @@
                   <Component id="txtQtdAlunos" min="-2" pref="127" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTipo" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="cmbTipo" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="cmbTipo" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
           </Group>

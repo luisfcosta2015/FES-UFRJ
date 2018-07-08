@@ -31,19 +31,11 @@ public class Cardapio {
         return erros;
     }
     
-    // FUNÇÃO AUXILIAR QUE RETORNA NULL SE FOR NULL
-    // SENÃO RETORNA A STRING ENTRE ASPAS
-    public String nullOrQuotes(String s){
-        if (s == null || s.equals("")) return null;
-        System.out.println("passei por aqui com " + s );
-        return "\'" + s + "\'";
-    }
-    
     public boolean cadastrar(){
         
         String query = "INSERT INTO cardapio (id_instituicao, data_cardapio, lanche_manha, almoco, lanche_tarde, janta) VALUES";
-        query += "("+ getId_instituicao()+", " + "\'" + getData_cardapio() + "\'," + nullOrQuotes(getLanche_manha()) + "," + nullOrQuotes(getAlmoco());
-        query += "," + nullOrQuotes(getLanche_tarde()) + "," + nullOrQuotes(getJanta()) +")" ;
+        query += "("+ getId_instituicao()+", " + "\'" + getData_cardapio() + "\'," + Auxiliar.nullOrQuotes(getLanche_manha()) + "," + Auxiliar.nullOrQuotes(getAlmoco());
+        query += "," + Auxiliar.nullOrQuotes(getLanche_tarde()) + "," + Auxiliar.nullOrQuotes(getJanta()) +")" ;
         
         return new Conexao().query_update(query);
     }

@@ -394,7 +394,7 @@ return "nada";
         }
         
         Alimento a = new Alimento();
-        if (a.consultarPorNome(nome)){
+        if (a.consultar_por_nome(nome)){
             editmode = true;
             txtFornecedor.setText(a.getFornecedor());
             txtMarca.setText(a.getMarca());

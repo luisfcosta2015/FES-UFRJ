@@ -1,5 +1,6 @@
 package Model;
 
+import Model.Auxiliar;
 import Model.Sessao;
 import java.sql.*;
 import java.io.*;
@@ -37,7 +38,7 @@ public class Conexao {
             System.out.println("Conectou!!!");    
     }
     
-    private static Connection getConnection(){
+    private static Connection getConnection() {
         try {
             String DBUrl = "";
             String DBUser = "";
@@ -46,8 +47,8 @@ public class Conexao {
             // ***
             // Pega a Url, usuario e senha do arquivo bd.cfg para realizar
             // conexão com o BD. A mensagem de erro está relacionada com a
-            // tentativa de conexão com o BD, ou seja, quem emitirá será o
-            // próprio SGBD do MySQL.
+            // tentativa de ler o arquivo, ou seja, quem emitirá será o
+            // Scanner do Java.
             try (Scanner s = new Scanner(new File("bd.cfg")).useDelimiter("\\n")) {
                 DBUrl = s.next().split("'")[1];
                 DBUser = s.next().split("'")[1];

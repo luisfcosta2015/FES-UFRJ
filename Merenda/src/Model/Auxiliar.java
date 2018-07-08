@@ -3,9 +3,6 @@ package Model;
 import Controller.TipoConta;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import javax.swing.ImageIcon;
@@ -112,6 +109,21 @@ public class Auxiliar {
             palavra += letrinhas[k];
         }
         return palavra;
+    }
+    
+    // FUNÇÃO AUXILIAR QUE RETORNA NULL SE FOR NULL
+    // SENÃO RETORNA A STRING ENTRE ASPAS
+    public static String nullOrQuotes(String s){
+        if (s == null || s.equals("")) return null;
+        System.out.println("passei por aqui com " + s );
+        return "\'" + s + "\'";
+    }
+    
+    // Realiza uma consulta genérica no banco
+    public static List<Map<String, Object>> consultar(String query) {
+        Conexao con = new Conexao();
+        List<Map<String, Object>> lst = con.query_select(query);
+        return lst;
     }
     
 }

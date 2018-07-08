@@ -1,6 +1,5 @@
 package Model;
 
-import Model.Auxiliar;
 import java.awt.*;
 import javax.swing.*;
 import View.Login;
