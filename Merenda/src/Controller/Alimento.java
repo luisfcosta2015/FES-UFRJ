@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.Auxiliar;
+import Model.Auxiliar.PreencheDados;
 import Model.Conexao;
 import java.util.List;
 import java.util.Map;
@@ -79,6 +80,7 @@ public class Alimento {
         return new Conexao().query_update(query);
     }
     
+    /*
     public void popular(Map<String, Object> m){
         setId_alimento((int)m.get("id"));
         setQtd_atende((int)m.get("qtd_atende"));
@@ -87,30 +89,28 @@ public class Alimento {
         setMarca(String.valueOf(m.get("marca")));
         setFornecedor(String.valueOf(m.get("fornecedor")));
         setMedida(String.valueOf(m.get("medida")));
-    }
+    }*/
     
-    public boolean consultar_por_id(int id){
+    Auxiliar.PreencheDados preenche_dados = (m) -> {
+        setId_alimento((int)m.get("id"));
+        setQtd_atende((int)m.get("qtd_atende"));
+        setNome(String.valueOf(m.get("nome")));
+        setPerecivel((int)m.get("perecivel") != 0);        
+        setMarca(String.valueOf(m.get("marca")));
+        setFornecedor(String.valueOf(m.get("fornecedor")));
+        setMedida(String.valueOf(m.get("medida")));
+    };
+    
+    public boolean consultar_por_id(int id) {
         String query = "SELECT * FROM alimento a where a.id=" + id ;
         
-        List<Map<String, Object>> lst = Auxiliar.consultar(query);
-        if (lst.size() == 1){
-            popular(lst.get(0));
-            return true;
-        } else {
-            return false;
-        }
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
     
     public boolean consultar_por_nome(String nome){
         String query = "SELECT * FROM alimento a where a.nome like \'" + nome + "%\'";
         
-        List<Map<String, Object>> lst = Auxiliar.consultar(query);
-        if (lst.size() == 1){
-            popular(lst.get(0));
-            return true;
-        } else {
-            return false;
-        }
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
     
 

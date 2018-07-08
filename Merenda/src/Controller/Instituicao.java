@@ -54,7 +54,8 @@ public class Instituicao {
         
         return new Conexao().query_update(query);
     }
-     
+    
+    /*
     public void popular(Map<String, Object> m){
         setEndereco(String.valueOf(m.get("endereco")));
         setId_instituicao((int)m.get("id_instituicao"));
@@ -63,16 +64,25 @@ public class Instituicao {
         setNome(String.valueOf(m.get("nome")));
         setQtd_alunos((int)m.get("qtd_alunos"));
         setTelefone(String.valueOf(m.get("telefone")));
-    }
+    }*/
+    Auxiliar.PreencheDados preenche_dados = (m) -> {
+        setEndereco(String.valueOf(m.get("endereco")));
+        setId_instituicao((int)m.get("id_instituicao"));
+        setId_tipo((int)m.get("id_tipo"));
+        setInep(String.valueOf(m.get("inep")));
+        setNome(String.valueOf(m.get("nome")));
+        setQtd_alunos((int)m.get("qtd_alunos"));
+        setTelefone(String.valueOf(m.get("telefone")));
+    };
     
     public boolean instituicaoPorNome(String nome){
         String query = "SELECT * FROM instituicao i where i.nome like \'" + nome + "%\'";
-        return pesquisaEPopula(query);
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     } 
     
     public boolean instituicaoPorId(int id){
         String query = "SELECT * FROM instituicao i where i.id_instituicao=" + id;
-        return pesquisaEPopula(query);
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     } 
     
     public String validar(){
@@ -98,19 +108,6 @@ public class Instituicao {
             erros += "Selecione um tipo de escola\n";  
         
         return erros;
-    }
-
-    
-    public boolean pesquisaEPopula(String query){
-        Conexao con = new Conexao();
-        
-        List<Map<String, Object>> lst = con.query_select(query);
-        if (lst.size() == 1){
-            popular(lst.get(0));
-            return true;
-        } else {
-            return false;
-        }
     }
     
     public int getId_instituicao() {

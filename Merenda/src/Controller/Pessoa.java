@@ -59,35 +59,30 @@ public class Pessoa {
         return new Conexao().query_update(query);
     }
     
-    // Retorna true se foi possivel achar uma unica pessoa com esse Id
-    public boolean pessoaPorId(int id){        
-        String query = "SELECT * FROM pessoa p where p.id=" + id;
-        return pesquisaEPopula(query);
-    }    
-    
-    public boolean pessoaPorNome(String nome){        
-        String query = "SELECT * FROM pessoa p where p.nome like \'" + nome + "%\'";
-        return pesquisaEPopula(query);
-    } 
-    
     // Popula a classe a partir de um Map
+    /*
     public void popular(Map<String, Object> m){
         setId((int)m.get("id"));
         setNome(String.valueOf(m.get("nome")));
         setCpf(String.valueOf(m.get("cpf")));
     }
+    */
     
-    public boolean pesquisaEPopula(String query){
-        
-        Conexao con = new Conexao();
-        
-        List<Map<String, Object>> lst = con.query_select(query);
-        if (lst.size() == 1){
-            popular(lst.get(0));
-            return true;
-        } else {
-            return false;
-        }
+    Auxiliar.PreencheDados preenche_dados = (m) -> {
+        setId((int)m.get("id"));
+        setNome(String.valueOf(m.get("nome")));
+        setCpf(String.valueOf(m.get("cpf")));
+    };
+    
+    // Retorna true se foi possivel achar uma unica pessoa com esse Id
+    public boolean pessoaPorId(int id){        
+        String query = "SELECT * FROM pessoa p where p.id=" + id;
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
+    }    
+    
+    public boolean pessoaPorNome(String nome){        
+        String query = "SELECT * FROM pessoa p where p.nome like \'" + nome + "%\'";
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
 
     public void setId(int id) {

@@ -76,6 +76,7 @@ public class Conta {
     }  
     
     // Popula a classe a partir de um Map
+    /*
     public void popular(Map<String, Object> m){
         setId_instituicao((int)m.get("id_instituicao"));
         setId_pessoa((int)m.get("id_pessoa"));
@@ -84,19 +85,20 @@ public class Conta {
         setUsuario(String.valueOf(m.get("usuario")));
         setSenha(String.valueOf(m.get("senha")));
     }
+    */
+    
+    Auxiliar.PreencheDados preenche_dados = (m) -> {
+        setId_instituicao((int)m.get("id_instituicao"));
+        setId_pessoa((int)m.get("id_pessoa"));
+        setId_tipo_conta((int)m.get("id_tipo_conta"));
+        setMatricula(String.valueOf(m.get("matricula")));
+        setUsuario(String.valueOf(m.get("usuario")));
+        setSenha(String.valueOf(m.get("senha")));
+    };
     
     public boolean contaPorId(int id_pessoa, int id_instituicao){
-        
         String query = "SELECT * FROM conta c where c.id_pessoa=" + id_pessoa + " AND c.id_instituicao=" + id_instituicao;
-        Conexao con = new Conexao();
-        
-        List<Map<String, Object>> lst = con.query_select(query);
-        if (lst.size() == 1){
-            popular(lst.get(0));
-            return true;
-        } else {
-            return false;
-        }
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }   
 
     public String getMatricula() {

@@ -39,6 +39,24 @@ public class Cardapio {
         
         return new Conexao().query_update(query);
     }
+    
+    Auxiliar.PreencheDados preenche_dados = (m) -> {
+        /* exemplo de como fazer essa função lambda
+        setId_alimento((int)m.get("id"));
+        setQtd_atende((int)m.get("qtd_atende"));
+        setNome(String.valueOf(m.get("nome")));
+        setPerecivel((int)m.get("perecivel") != 0);        
+        setMarca(String.valueOf(m.get("marca")));
+        setFornecedor(String.valueOf(m.get("fornecedor")));
+        setMedida(String.valueOf(m.get("medida")));
+        */
+    };
+    
+    public boolean consultar_por_x(int x) {
+        String query = /* formata a query e manda bala */"" ;
+        
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
+    }
 
     public int getId_instituicao() {
         return id_instituicao;

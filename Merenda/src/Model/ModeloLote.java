@@ -30,37 +30,6 @@ public class ModeloLote {
         this.data_validade = new Date();
     }
     
-    public void set_id(int novo_id) {
-        this.id = novo_id;
-    }
-    public int get_id() {
-        return this.id;
-    }
-    public void set_id_alimento(int novo_id_alimento) {
-        this.id_alimento = novo_id_alimento;
-    }
-    public int get_id_alimento() {
-        return this.id_alimento;
-    }
-    public void set_preco(float novo_preco) {
-        this.preco = novo_preco;
-    }
-    public float get_preco() {
-        return this.preco;
-    }
-    public void set_qtd_alimento(int novo_qtd_itens) {
-        this.qtd_alimento = novo_qtd_itens;
-    }
-    public int get_qtd_alimento() {
-        return this.qtd_alimento;
-    }
-    public void set_data_validade(Date novo_data_validade) {
-        this.data_validade = novo_data_validade;
-    }
-    public Date get_data_validade() {
-        return this.data_validade;
-    }
-    
     public boolean criar() {
         String query = "INSERT INTO lote (id, id_alimento, preco, qtd_alimento, data_validade) VALUES";
         query += "(" + this.get_id() + ", ";
@@ -73,26 +42,13 @@ public class ModeloLote {
     }
     
     // Popula a classe a partir de um Map
-    public void preenche_dados(Map<String, Object> m) {
+    Auxiliar.PreencheDados preenche_dados = (m) -> {
         this.set_id((int)m.get("id"));
         this.set_id_alimento((int)m.get("id_alimento"));
         this.set_preco((float)m.get("preco"));
         this.set_qtd_alimento((int)m.get("qtd_alimento"));
         this.set_data_validade(new Date(String.valueOf(m.get("data_validade"))));
-    }
-    
-    public boolean consulta_e_preenche(String query){
-        
-        Conexao con = new Conexao();
-        
-        List<Map<String, Object>> lst = con.query_select(query);
-        if (lst.size() == 1){
-            preenche_dados(lst.get(0));
-            return true;
-        } else {
-            return false;
-        }
-    }
+    };
     
     public boolean consultar_do_cadastro_lote(String nome_alimento, int qtd_alimento, String data_de_validade, float preco) {
         String query;
@@ -125,7 +81,7 @@ public class ModeloLote {
             query += " or l.preco="+Float.toString(preco);
         }
         
-        return consulta_e_preenche(query);
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
     
     public boolean atualizar() {
@@ -142,5 +98,36 @@ public class ModeloLote {
         String query = "DELETE FROM lote WHERE id=" + this.get_id();
         
         return new Conexao().query_update(query);
+    }
+    
+    public void set_id(int novo_id) {
+        this.id = novo_id;
+    }
+    public int get_id() {
+        return this.id;
+    }
+    public void set_id_alimento(int novo_id_alimento) {
+        this.id_alimento = novo_id_alimento;
+    }
+    public int get_id_alimento() {
+        return this.id_alimento;
+    }
+    public void set_preco(float novo_preco) {
+        this.preco = novo_preco;
+    }
+    public float get_preco() {
+        return this.preco;
+    }
+    public void set_qtd_alimento(int novo_qtd_itens) {
+        this.qtd_alimento = novo_qtd_itens;
+    }
+    public int get_qtd_alimento() {
+        return this.qtd_alimento;
+    }
+    public void set_data_validade(Date novo_data_validade) {
+        this.data_validade = novo_data_validade;
+    }
+    public Date get_data_validade() {
+        return this.data_validade;
     }
 }

@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Auxiliar;
 import Model.Conexao;
 import java.util.List;
 import java.util.Map;
@@ -33,27 +34,21 @@ public class TipoConta {
         this.descricao = descricao;
     }     
     
+    /*
     public void popular(Map<String, Object> m){
         setId((int)m.get("id"));
         setDescricao( String.valueOf(m.get("descricao")));
     }
-    
-    public boolean pesquisaEPopula(String query){
-        Conexao con = new Conexao();
-        
-        List<Map<String, Object>> lst = con.query_select(query);
-        if (lst.size() == 1){
-            popular(lst.get(0));
-            return true;
-        } else {
-            return false;
-        }
-    }
+    */
+    Auxiliar.PreencheDados preenche_dados = (m) -> {
+        setId((int)m.get("id"));
+        setDescricao( String.valueOf(m.get("descricao")));
+    };
     
     public boolean tipoContaPorId(int id){
         
         String query = "SELECT * FROM tipo_conta t where t.id=" + id;
         
-        return pesquisaEPopula(query);
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
 }

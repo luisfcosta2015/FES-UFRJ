@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import Controller.Pessoa;
 import java.util.Random;
+import java.util.concurrent.Callable;
 
 public class Auxiliar {
     
@@ -126,4 +127,20 @@ public class Auxiliar {
         return lst;
     }
     
+    public static interface PreencheDados {
+        void func(Map<String, Object> m);
+    }
+    
+    public static boolean consulta_e_preenche(String query, PreencheDados preenche_dados) {
+        
+        Conexao con = new Conexao();
+        
+        List<Map<String, Object>> lst = con.query_select(query);
+        if (lst.size() == 1){
+            preenche_dados.func(lst.get(0));
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
