@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package merendaprojectdb;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +36,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         this.editando = false;
         this.nomeRel = nomeRel;
         this.itens = new ArrayList<ItemComida>();
-        
         // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
     }
     public TelaItensRelatorio(Relatorio relatorio) {
@@ -53,13 +54,23 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         if(itens == null) {
             return;
         }
+        int i = 0;
         for(ItemComida item : itens) {
             if(item == null) {
                 continue;
             }
-            tabelinhaEntrada.addRow(new Object[] {item.tipoItem, item.semana1Entrada+item.unidade,item.semana2Entrada+item.unidade,item.semana3Entrada+item.unidade,item.semana4Entrada+item.unidade,item.semana5Entrada+item.unidade, item.remanejamentoEntrada+item.unidade});
-            tabelinhaSaida.addRow(new Object[] {item.tipoItem, item.semana1Saida+item.unidade,item.semana2Saida+item.unidade,item.semana3Saida+item.unidade,item.semana4Saida+item.unidade,item.semana5Saida+item.unidade, item.remanejamentoSaida+item.unidade});
-            tabelinhaTotais.addRow(new Object[] {item.tipoItem, item.estoqueInicial,item.totalEntrada,item.totalSaida ,item.estoqueFinal});
+            tabelinhaEntrada.addRow(new Object[] {item.tipoItem, item.semana1Entrada+item.unidade,
+                item.semana2Entrada+item.unidade,item.semana3Entrada+item.unidade,item.semana4Entrada+item.unidade,
+                item.semana5Entrada+item.unidade, item.remanejamentoEntrada+item.unidade});
+            tabelinhaSaida.addRow(new Object[] {item.tipoItem, item.semana1Saida+item.unidade,item.semana2Saida+
+                    item.unidade,item.semana3Saida+item.unidade,item.semana4Saida+item.unidade,item.semana5Saida+
+                            item.unidade, item.remanejamentoSaida+item.unidade, item.ataSaida});
+            /*BotaoExcluir action = new BotaoExcluir(tabelinhaTotais, tabelinhaSaida, tabelinhaEntrada, i);
+            JButton excluir = new JButton(action);
+            excluir.setVisible(true);*/
+            tabelinhaTotais.addRow(new Object[] {item.tipoItem, item.estoqueInicial,item.totalEntrada,item.totalSaida ,
+                item.estoqueFinal});
+            i++;
         }
     }
     private void carregarItens(){
@@ -78,7 +89,9 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void criaLista() {
        this.tipoItem.removeAll();
     }
-
+    public void excluiLinha(DefaultTableModel tabela, int linha) {
+        tabela.removeRow(linha);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,11 +104,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         tipoItem = new javax.swing.JComboBox<>();
         AdicionarParaALista = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaEntrada = new javax.swing.JTable();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tabelaSaida = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaTotais = new javax.swing.JTable();
         voltarAoMenu = new javax.swing.JButton();
@@ -151,6 +160,11 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaSaida = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabelaEntrada = new javax.swing.JTable();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,40 +183,16 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             }
         });
 
-        tabelaEntrada.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Item", "Semana 1 ", "Semana 2 ", "Semana 3 ", "Semana 4 ", "Semana 5 ", "Remanej. "
-            }
-        ));
-        tabelaEntrada.setPreferredSize(new java.awt.Dimension(2000, 0));
-        tabelaEntrada.setRowHeight(20);
-        jScrollPane1.setViewportView(tabelaEntrada);
-
-        tabelaSaida.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Item", "Semana 1 ", "Semana 2 ", "Semana 3 ", "Semana 4 ", "Semana 5 ", "Remanej. ", "ATA"
-            }
-        ));
-        tabelaSaida.setPreferredSize(new java.awt.Dimension(2000, 0));
-        tabelaSaida.setRowHeight(20);
-        jScrollPane3.setViewportView(tabelaSaida);
-
         tabelaTotais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final"
+                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final", "BotaoExcluir"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false, false, false
+                true, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -210,6 +200,9 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tabelaTotais);
+        if (tabelaTotais.getColumnModel().getColumnCount() > 0) {
+            tabelaTotais.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         voltarAoMenu.setText("Fim");
         voltarAoMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -632,6 +625,44 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel25.setText("Saida:");
 
+        tabelaSaida.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item", "Semana1", "Semana2", "Semana3", "Semana4", "Semana5", "Remanejamento", "ATA saida"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tabelaSaida);
+
+        tabelaEntrada.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item", "Semana1", "Semana2", "Semana3", "Semana4", "Semana5", "Remanejamento"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tabelaEntrada);
+
+        jLabel26.setText("Excluir");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -640,96 +671,104 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(950, 950, 950)
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane3))
-                                    .addComponent(jLabel25))
+                                .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(voltarAoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel24)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel24)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(AdicionarParaALista)))))
-                        .addContainerGap())))
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(AdicionarParaALista))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(voltarAoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(AdicionarParaALista)))
-                        .addGap(15, 15, 15))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(AdicionarParaALista))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(tipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(2, 2, 2)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(voltarAoMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 45, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(voltarAoMenu)
+                                .addGap(24, 24, 24))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addContainerGap())))))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPanel10, jPanel2, jPanel3, jPanel4, jPanel5, jPanel6, jPanel7, jPanel8, jPanel9});
@@ -753,20 +792,12 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void tipoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoItemActionPerformed
-    private void criaItensLista() {
-        DefaultTableModel tabelinha = (DefaultTableModel) tabelaEntrada.getModel();
-        for(int i = 0; i < tabelinha.getRowCount(); i++) {
-            String item = tabelinha.getValueAt(i, 0).toString();
-            int quant = Integer.parseInt(tabelinha.getValueAt(i,1).toString());
-            String unidade = tabelinha.getValueAt(i, 2).toString();
-        }
-    }
+
     private void voltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAoMenuActionPerformed
         // TODO add your handling code here:
         
         // aqui tem que colocar pra pegar o que ta na tabela e jogar pro banco
         if(!this.editando) {
-            //criaItensLista();
             this.relatorio = new Relatorio (this.cardapio.getMes(), this.cardapio.getAno(),this.nomeRel, 
                                             TelaPrincipal.escolaAtual, this.cardapio, this.capa, itens);
             TelaPrincipal.usuarioLogado.idRelatorio = new IdentificacaoRelatorio(relatorio.getEscola().getINEP(), relatorio.getMes(), relatorio.getAno());
@@ -784,28 +815,74 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         principal.setResizable(true);
         this.setVisible(false);
     }//GEN-LAST:event_voltarAoMenuActionPerformed
-
+    private ItemComida verificaItemJaExiste(String tipo) {
+        for(ItemComida item: this.itens) {
+            if(item.tipoItem.compareToIgnoreCase(tipo) == 0) {
+                return item;
+            }
+        }
+        return null;
+    }
     private void AdicionarParaAListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarParaAListaActionPerformed
         if(tipoItem.getSelectedItem()!="Selecione o Item")
-        {
+        {   
             String unidade = unidadeItem.getSelectedItem()+"";
-            
-            
-            int valorEstoqueInicial=Integer.parseInt(estoqueInicial.getText());
-            int semana1Entrada=Integer.parseInt(semana1E.getText());
-            int semana1Saida=Integer.parseInt(semana1S.getText());
-            int semana2Entrada=Integer.parseInt(semana2E.getText());
-            int semana2Saida=Integer.parseInt(semana2S.getText());
-            int semana3Entrada=Integer.parseInt(semana3E.getText());
-            int semana3Saida=Integer.parseInt(semana3S.getText());
-            int semana4Entrada=Integer.parseInt(semana4E.getText());
-            int semana4Saida=Integer.parseInt(semana4S.getText());
-            int semana5Entrada=Integer.parseInt(semana5E.getText());
-            int semana5Saida=Integer.parseInt(semana5S.getText());
-            int remanejamentoEntrada=Integer.parseInt(remanejamentoE.getText());
-            int remanejamentoSaida=Integer.parseInt(remanejamentoS.getText());
-            int ataSaida=Integer.parseInt(ata.getText());
-            
+            String tipoItemString = tipoItem.getSelectedItem() + "";
+            int valorEstoqueInicial;
+            int semana1Entrada;
+            int semana1Saida;
+            int semana2Entrada;
+            int semana2Saida;
+            int semana3Entrada;
+            int semana3Saida;
+            int semana4Entrada;
+            int semana4Saida;
+            int semana5Entrada;
+            int semana5Saida;
+            int remanejamentoEntrada;
+            int remanejamentoSaida;
+            int ataSaida;
+            if(estoqueInicial == null || semana1E == null || semana2E == null || semana3E == null || semana4E == null
+                    || semana5E==null || semana1S ==null || semana2S==null || semana3S == null || semana4S==null || semana5S == null
+                    || this.remanejamentoE ==null || this.remanejamentoS==null || this.ata == null) {
+                int answer = JOptionPane.showConfirmDialog(null,"Os campos não preenchidos serão preenchidos com zero",
+                        "Deseja continuar?",
+                        JOptionPane.YES_NO_OPTION);
+                if(answer == JOptionPane.YES_OPTION) {
+                    valorEstoqueInicial = estoqueInicial != null ? Integer.parseInt(estoqueInicial.getText()) : 0;
+                    semana1Entrada = semana1E != null? Integer.parseInt(semana1E.getText()) : 0;
+                    semana1Saida= semana1S != null ? Integer.parseInt(semana1S.getText()) : 0;
+                    semana2Entrada= semana2E != null ? Integer.parseInt(semana2E.getText()) : 0;
+                    semana2Saida= semana2S != null? Integer.parseInt(semana2S.getText()): 0;
+                    semana3Entrada= semana3E != null? Integer.parseInt(semana3E.getText()): 0;
+                    semana3Saida= semana3S != null? Integer.parseInt(semana3S.getText()): 0;
+                    semana4Entrada= semana4E != null? Integer.parseInt(semana4E.getText()): 0;
+                    semana4Saida= semana4S != null? Integer.parseInt(semana4S.getText()): 0;
+                    semana5Entrada= semana5E != null? Integer.parseInt(semana5E.getText()): 0;
+                    semana5Saida= semana5S != null? Integer.parseInt(semana5S.getText()): 0;
+                    remanejamentoEntrada= this.remanejamentoE != null? Integer.parseInt(remanejamentoE.getText()): 0;
+                    remanejamentoSaida= this.remanejamentoS != null? Integer.parseInt(remanejamentoS.getText()): 0;
+                    ataSaida= this.ata != null? Integer.parseInt(ata.getText()): 0;
+                } else {
+                    return;
+                }
+            }
+            else {
+                valorEstoqueInicial=Integer.parseInt(estoqueInicial.getText());
+                semana1Entrada=Integer.parseInt(semana1E.getText());
+                semana1Saida=Integer.parseInt(semana1S.getText());
+                semana2Entrada=Integer.parseInt(semana2E.getText());
+                semana2Saida=Integer.parseInt(semana2S.getText());
+                semana3Entrada=Integer.parseInt(semana3E.getText());
+                semana3Saida=Integer.parseInt(semana3S.getText());
+                semana4Entrada=Integer.parseInt(semana4E.getText());
+                semana4Saida=Integer.parseInt(semana4S.getText());
+                semana5Entrada=Integer.parseInt(semana5E.getText());
+                semana5Saida=Integer.parseInt(semana5S.getText());
+                remanejamentoEntrada=Integer.parseInt(remanejamentoE.getText());
+                remanejamentoSaida=Integer.parseInt(remanejamentoS.getText());
+                ataSaida=Integer.parseInt(ata.getText());
+            }
             
             int totalEntrada=Integer.parseInt(semana1E.getText())+Integer.parseInt(semana2E.getText())+Integer.parseInt(semana3E.getText())+Integer.parseInt(semana4E.getText())+Integer.parseInt((semana5E.getText()));
             String totalEntradaText=totalEntrada+unidade;
@@ -814,26 +891,30 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             int valorEstoqueFinal=(Integer.parseInt(estoqueInicial.getText())+Integer.parseInt(remanejamentoE.getText())+totalEntrada-Integer.parseInt(remanejamentoS.getText())-Integer.parseInt(ata.getText())-totalSaida);
             String valorEstoqueFinalText=valorEstoqueFinal+unidade;
             
-            
-            System.out.println(valorEstoqueFinal);
-            
-            
-            
             DefaultTableModel tabelinhaEntrada = (DefaultTableModel) tabelaEntrada.getModel();
-            tabelinhaEntrada.addRow(new Object[] {tipoItem.getSelectedItem(),semana1Entrada+unidade,semana2Entrada+unidade,semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});
-            
             DefaultTableModel tabelinhaTotais = (DefaultTableModel) tabelaTotais.getModel();
-            tabelinhaTotais.addRow(new Object[] {tipoItem.getSelectedItem(),valorEstoqueInicial,totalEntradaText, totalSaidaText, valorEstoqueFinalText });
-            
-            
             DefaultTableModel tabelinhaSaida = (DefaultTableModel) tabelaSaida.getModel();
-            tabelinhaSaida.addRow(new Object[] {tipoItem.getSelectedItem(),semana1Saida+unidade,semana2Saida+unidade,semana3Saida+unidade,semana4Saida+unidade,semana5Saida+unidade,remanejamentoSaida+unidade});
             
-            
-            String nome = tipoItem.getSelectedItem().toString();
-            int quant = Integer.parseInt(estoqueInicial.getText());
-            ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), valorEstoqueInicial, semana1Entrada, semana1Saida, semana2Entrada, semana2Saida, semana3Entrada, semana3Saida, semana4Entrada, semana4Saida, semana5Entrada, semana5Saida, remanejamentoEntrada, remanejamentoSaida, ataSaida, totalEntrada, totalSaida, valorEstoqueFinal, unidadeItem.getSelectedItem().toString());
-            this.itens.add(item);
+            if(verificaItemJaExiste(tipoItemString) == null) {
+                /*BotaoExcluir action = new BotaoExcluir(tabelinhaTotais, tabelinhaSaida, tabelinhaEntrada, 
+                        tabelinhaTotais.getRowCount()-1);
+                JButton excluir = new JButton(action);*/
+                tabelinhaEntrada.addRow(new Object[] {tipoItemString,semana1Entrada+unidade,semana2Entrada+unidade,
+                    semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});
+
+                tabelinhaTotais.addRow(new Object[] {tipoItemString,valorEstoqueInicial,totalEntradaText, totalSaidaText, 
+                    valorEstoqueFinalText });
+
+                tabelinhaSaida.addRow(new Object[] {tipoItemString,semana1Saida+unidade,semana2Saida+unidade,
+                    semana3Saida+unidade,semana4Saida+unidade,semana5Saida+unidade,remanejamentoSaida+unidade, ataSaida});
+                String nome = tipoItem.getSelectedItem().toString();
+                int quant = Integer.parseInt(estoqueInicial.getText());
+                ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), valorEstoqueInicial, semana1Entrada, semana1Saida, semana2Entrada, semana2Saida, semana3Entrada, semana3Saida, semana4Entrada, semana4Saida, semana5Entrada, semana5Saida, remanejamentoEntrada, remanejamentoSaida, ataSaida, totalEntrada, totalSaida, valorEstoqueFinal, unidadeItem.getSelectedItem().toString());
+                this.itens.add(item);
+            }
+            else {
+                //soma o item aqui
+            }
         }
     }//GEN-LAST:event_AdicionarParaAListaActionPerformed
 
@@ -893,6 +974,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -911,9 +993,9 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField novoItem;
     private javax.swing.JTextField remanejamentoE;
     private javax.swing.JTextField remanejamentoS;
