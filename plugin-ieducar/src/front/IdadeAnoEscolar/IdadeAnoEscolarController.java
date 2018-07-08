@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import report.DatabaseConnection;
 import report.RelatorioIdade;
 
 import java.io.IOException;
@@ -29,8 +30,11 @@ public class IdadeAnoEscolarController {
     @FXML
     private ChoiceBox box_grafico;
 
-    ObservableList<String> lista_escolas = FXCollections.observableArrayList("Todas as escolas", "Escola 1", "Escola 2", "escola 3");
-    ObservableList<String> lista_turma = FXCollections.observableArrayList("Todas as turmas", "Turma 1", "Turma 2", "Turma 3");
+    DatabaseConnection db = new DatabaseConnection();
+    // ObservableList<String> lista_escolas = FXCollections.observableArrayList("Todas as escolas", "Escola 1", "Escola 2", "escola 3");
+    ObservableList<String> lista_escolas = db.getEscolas();
+    ObservableList<String> lista_turma = FXCollections.observableArrayList("Selecione uma turma", "Turma 1", "Turma 2", "Turma 3");
+    //ObservableList<String> lista_turma = FXCollections.observableArrayList();
     ObservableList<String> lista_grafico = FXCollections.observableArrayList("Pizza", "Barra");
 
 
@@ -45,11 +49,11 @@ public class IdadeAnoEscolarController {
      */
     @FXML
     private void initialize() {
-        box_escola.setValue("Todas as escolas");
+        box_escola.setValue("Selecione uma escola");
         System.out.println();
         box_escola.setItems(lista_escolas);
 
-        box_turma.setValue("Todas as turmas");
+        box_turma.setValue("Selecione uma turma");
         box_turma.setItems(lista_turma);
 
         box_grafico.setValue("Pizza");
