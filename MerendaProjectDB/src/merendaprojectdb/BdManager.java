@@ -717,4 +717,52 @@ public class BdManager {
            return false;
         }
     }
+    static boolean getPermissoes(String usuario, String tipo){
+        
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("select * from permissoes where usuario like ?");
+            ps.setString(1, usuario);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                boolean resultado = rs.getBoolean(tipo);
+                rs.close();
+                ps.close();
+                con.close();
+                return resultado;
+            }
+            return false;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    static boolean setPermissoes(boolean newrp, boolean getrp,boolean seerp,boolean newsc,boolean seesc,boolean newpm,boolean newuser, boolean setPadrao, String usuario){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("update permissoes set canNewReport = ?, canWriteReport = ?, canWriteSchool = ?,canSeeReport = ?,canSeeSchool = ? ,canWritePermit = ?,canAddUser = ?,canSetPadrao = ? where usuario = ?");
+            ps.setBoolean(1, newrp);
+            ps.setBoolean(2, getrp);
+            ps.setBoolean(3, newsc);
+            ps.setBoolean(4, seerp);
+            ps.setBoolean(5, seesc);
+            ps.setBoolean(6, newpm);
+            ps.setBoolean(7, newuser);
+            ps.setBoolean(8, setPadrao);
+            ps.setString(9,usuario);
+            ps.execute();
+            ps.close();
+            con.close();
+            return true;
+        }
+        catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
 }
