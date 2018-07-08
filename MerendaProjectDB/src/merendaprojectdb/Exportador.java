@@ -54,6 +54,7 @@ public class Exportador {
     public String pastaDeRepositorioParaSalvar;
     public String modeloOds;
     public String modeloCardapio;
+    public String modeloItens;
     public Exportador(){
         this.documentTemplateName = "teste1.odt";
         this.tableMatriculadosName = "template";
@@ -61,6 +62,7 @@ public class Exportador {
         this.pastaDeRepositorioParaSalvar = "./arquivos/";
         this.modeloOds = "./arquivos/template/Modelo.ods";
         this.modeloCardapio = "./arquivos/template/ModeloCardapio.ods";
+        this.modeloItens = "./arquivos/template/ModeloItens.ods";
     }
     private void setVetorMatriculados(Object[][] data, Relatorio relatorio, int pos, String modalidade) {
         data[pos] = new Object[] { modalidade , relatorio.getCapaRelatorio().refeicoes[pos].turnos[0],
@@ -71,7 +73,7 @@ public class Exportador {
     }
     public String getFileName(Relatorio relatorio, String tipo) {
         String fileName = relatorio.getTitulo().replace('/', '-');
-        String pasta =(relatorio.getAno()-1900)+"/";
+        String pasta =(relatorio.getAno())+"/";
         fileName = fileName.replaceAll(" ", "");
         fileName = fileName + tipo;
         return this.pastaDeRepositorioParaSalvar + pasta + fileName;
@@ -79,6 +81,7 @@ public class Exportador {
       
     public SpreadsheetDocument gerarArquivo(Relatorio relatorio, String fileAdress){
         try {
+            //capa.getCellByPosition(coluna, linha)
             // INICIO CAPA
             CapaDados capaDados = relatorio.getCapaRelatorio();
             SpreadsheetDocument doc = SpreadsheetDocument.newSpreadsheetDocument();
@@ -87,7 +90,7 @@ public class Exportador {
             
             doc.removeSheet(0);   
             capa.getCellByPosition(1, 3).setStringValue(relatorio.getEscola().getUnidade());
-            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()-1900));
+            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()));
             capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
             capa.getCellByPosition(1, 5).setStringValue(relatorio.getEscola().getTelefone());
             capa.getCellByPosition(7, 5).setStringValue(""+relatorio.getEscola().getINEP());
@@ -146,6 +149,44 @@ public class Exportador {
             
             doc.appendSheet(cardapio, "Cardapio");
             //FIM CARDAPIO
+            //INICIO ITENS
+            ArrayList<ItemComida> itensRel = relatorio.getItensRelatorio();
+            SpreadsheetDocument modeloItens = SpreadsheetDocument.loadDocument(this.modeloItens);
+            Table itensTable = modeloItens.getTableByName("Relatorio Itens");
+            itensTable.getCellByPosition(1, 2).setStringValue("Unidade: " + relatorio.getEscola().getUnidade());
+            itensTable.getCellByPosition(14, 2).setStringValue("Distrio: ");
+            itensTable.getCellByPosition(17, 1).setStringValue("Telefone: " + relatorio.getEscola().getTelefone());
+            itensTable.getCellByPosition(18, 2).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()));
+            i=5;
+            int cont=1;
+            for(ItemComida item : itensRel) {
+                itensTable.getCellByPosition(0, i).setStringValue(cont+"");
+                itensTable.getCellByPosition(1, i).setStringValue(item.tipoItem);
+                itensTable.getCellByPosition(2, i).setStringValue(item.unidade);
+                itensTable.getCellByPosition(3, i).setStringValue(item.estoqueInicial+"");
+                itensTable.getCellByPosition(4, i).setStringValue(item.semana1Entrada+"");
+                itensTable.getCellByPosition(5, i).setStringValue(item.semana1Saida+"");
+                itensTable.getCellByPosition(6, i).setStringValue(item.semana2Entrada+"");
+                itensTable.getCellByPosition(7, i).setStringValue(item.semana2Saida+"");
+                itensTable.getCellByPosition(8, i).setStringValue(item.semana3Entrada+"");
+                itensTable.getCellByPosition(9, i).setStringValue(item.semana3Saida+"");
+                itensTable.getCellByPosition(10, i).setStringValue(item.semana4Entrada+"");
+                itensTable.getCellByPosition(11, i).setStringValue(item.semana4Saida+"");
+                itensTable.getCellByPosition(12, i).setStringValue(item.semana5Entrada+"");
+                itensTable.getCellByPosition(13, i).setStringValue(item.semana5Saida+"");
+                itensTable.getCellByPosition(14, i).setStringValue(item.remanejamentoEntrada+"");
+                itensTable.getCellByPosition(15, i).setStringValue(item.remanejamentoSaida+"");
+                itensTable.getCellByPosition(16, i).setStringValue(item.ataSaida+"");
+                itensTable.getCellByPosition(17, i).setStringValue(item.totalEntrada+"");
+                itensTable.getCellByPosition(18, i).setStringValue(item.totalSaida+"");
+                itensTable.getCellByPosition(19, i).setStringValue(item.estoqueFinal+"");
+                
+                cont++;
+                i++;
+            }
+            
+            doc.appendSheet(itensTable, "Relatorio Itens");
+            
             return doc;
             
         } catch (Exception e) {
