@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class Dados {
 	
-	private Long matrícula;
+	private String matrícula;
 	private String nome;
 	private String idade;
 	private Date dataNascimento;
 	private String escola;
 	private String serie;
 	
-	public Long getMatrícula() {
+	public String getMatrícula() {
 		return matrícula;
 	}
-	public void setMatrícula(long matrícula) {
+	public void setMatrícula(String matrícula) {
 		this.matrícula = matrícula;
 	}
 	public String getNome() {
