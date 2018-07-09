@@ -6,6 +6,7 @@
 
 ### Instalando o Java JRE 8
 ```bash
+sudo su
 cd /usr/local/
 wget --header 'Cookie: oraclelicense=a' http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jre-8u131-linux-x64.tar.gz
 tar -xf jre-8u131-linux-x64.tar.gz && rm -f jre-8u131-linux-x64.tar.gz
@@ -26,7 +27,7 @@ useradd -M -s /bin/nologin -g tomcat -d /usr/local/tomcat tomcat
 
 ```bash
 cd /usr/local/
-wget http://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.0.M21/bin/apache-tomcat-9.0.0.M21.tar.gz
+wget http://ftp.unicamp.br/pub/apache/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.tar.gz
 tar -xvf apache-tomcat-9.0.0.M21.tar.gz
 mv apache-tomcat-9.0.0.M21 tomcat
 rm -f apache-tomcat-9.0.0.M21.tar.gz
@@ -83,6 +84,8 @@ Você verá as configurações de usuários e permissões do Tomcat. Altere conf
 ```xml
 <tomcat-users . . .>
   . . .
+    <role rolename="manager-gui"/>
+    <role rolename="admin-gui"/>
     <user username="admin" password="password" roles="manager-gui,admin-gui"/>
   . . .
 </tomcat-users>
