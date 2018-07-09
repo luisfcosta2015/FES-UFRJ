@@ -22,23 +22,27 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
 
-        listaDeEscolas.add("Selecione uma escola");
-        String query = "SELECT DISTINCT pmieducar.escola.sigla FROM pmieducar.escola";
-        try {
-            rs = st.executeQuery(query);
-            while (rs.next()){
-                listaDeEscolas.add(rs.getString(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         listaDeTurmas.add("Selecione uma turma");
     }
 
     // Método que retorna uma lista de nomes de escolas baseado nas tabelas de instituições e escolas
     public ObservableList<String> getEscolas() {
         return listaDeEscolas;
+    }
+
+    public void gerarListaDeEscolas() {
+        ObservableList<String> novaLista = FXCollections.observableArrayList();
+        novaLista.add("Selecione uma escola");
+        String query = "SELECT DISTINCT pmieducar.escola.sigla FROM pmieducar.escola";
+        try {
+            rs = st.executeQuery(query);
+            while (rs.next()){
+                novaLista.add(rs.getString(1));
+            }
+            listaDeEscolas.setAll(novaLista);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public ObservableList<String> getTurmasPorEscola() {

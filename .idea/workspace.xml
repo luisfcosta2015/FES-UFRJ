@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="225301ad-f8b1-4695-9545-28f432a7b47e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/plugin-ieducar/front/IdadeAnoEscolar/IdadeAnoEscolarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plugin-ieducar/front/IdadeAnoEscolar/IdadeAnoEscolarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/plugin-ieducar/report/RelatorioIdade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/plugin-ieducar/report/RelatorioIdade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plugin-ieducar/src/report/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin-ieducar/src/report/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +24,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="11" column="60" lean-forward="true" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+            <state relative-caret-position="112">
+              <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#560#561#0" expanded="true" />
@@ -41,7 +38,7 @@
       <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Home/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="880">
               <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,15 +47,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IdadeAnoEscolarController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IdadeAnoEscolarController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="63" column="55" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
-              <folding>
-                <element signature="e#3731#3732#0" expanded="true" />
-                <element signature="e#3774#3775#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneroAnoEscolarController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -66,7 +68,7 @@
       <file leaf-file-name="RelatorioIdade.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-826">
+            <state relative-caret-position="-1632">
               <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
             </state>
           </provider>
@@ -75,14 +77,10 @@
       <file leaf-file-name="DatabaseConnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/DatabaseConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+            <state relative-caret-position="122">
+              <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#929#930#0" expanded="true" />
-                <element signature="e#966#967#0" expanded="true" />
-                <element signature="e#1543#1544#0" expanded="true" />
-                <element signature="e#1579#1580#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,7 +133,6 @@
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioGenero.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolar.fxml" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolar.fxml" />
-        <option value="$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/style.css" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/style.css" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/Home/home-style.css" />
@@ -145,6 +142,7 @@
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/report/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java" />
+        <option value="$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java" />
       </list>
     </option>
   </component>
@@ -169,7 +167,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,6 +190,13 @@
               <item name="plugin-ieducar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="front" type="462c0819:PsiDirectoryNode" />
+              <item name="GeneroAnoEscolar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FES-UFRJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plugin-ieducar" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
               <item name="IdadeAnoEscolar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -210,6 +214,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -450,6 +455,7 @@
       <workItem from="1530996267556" duration="10148000" />
       <workItem from="1531068323343" duration="3571000" />
       <workItem from="1531083783964" duration="6810000" />
+      <workItem from="1531101570892" duration="655000" />
     </task>
     <servers />
   </component>
@@ -486,7 +492,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104390000" />
+    <option name="totallyTimeSpent" value="105045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -500,8 +506,8 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32102728" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32905295" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32102728" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
@@ -510,30 +516,29 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39831403" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39831403" />
+      <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32982087" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32982087" />
       <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.32973558" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Designer" order="3" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Spring" order="10" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32349843" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32973558" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Cargo" order="9" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -556,6 +561,7 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32973558" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32982087" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39910313" />
     </layout-to-restore>
@@ -568,7 +574,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -760,23 +766,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding>
-            <element signature="imports" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolar.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
           <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/style.css" />
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/style.css" />
@@ -788,12 +784,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Home/Home.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/idade-anoEscolar.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -803,17 +799,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolar.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="11" column="60" lean-forward="true" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+        <state relative-caret-position="112">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#560#561#0" expanded="true" />
@@ -824,7 +820,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/Home/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="880">
           <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -834,33 +830,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/RelatorioIdade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-826">
+        <state relative-caret-position="-1632">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/report/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+        <state relative-caret-position="122">
+          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#929#930#0" expanded="true" />
-            <element signature="e#966#967#0" expanded="true" />
-            <element signature="e#1543#1544#0" expanded="true" />
-            <element signature="e#1579#1580#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/IdadeAnoEscolar/IdadeAnoEscolarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="63" column="55" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
-          <folding>
-            <element signature="e#3731#3732#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin-ieducar/src/front/GeneroAnoEscolar/GeneroAnoEscolarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
         </state>
       </provider>
     </entry>

@@ -51,11 +51,11 @@ public class IdadeAnoEscolarController {
      */
     @FXML
     private void initialize() {
+        db.gerarListaDeEscolas();
         lista_escolas = db.getEscolas();
         lista_turma = db.getTurmasPorEscola();
 
         box_escola.setValue("Selecione uma escola");
-        System.out.println();
         box_escola.setItems(lista_escolas);
         box_escola.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override

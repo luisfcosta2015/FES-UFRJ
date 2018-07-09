@@ -1,5 +1,7 @@
 package front.GeneroAnoEscolar;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
+import report.DatabaseConnection;
 import report.RelatorioGenero;
 
 import java.io.IOException;
@@ -22,7 +25,7 @@ public class GeneroAnoEscolarController {
     private Button gera_relatorio;
 
     @FXML
-    private ChoiceBox box_escola;
+    private ChoiceBox<String> box_escola;
 
     @FXML
     private ChoiceBox box_turma;
@@ -30,8 +33,10 @@ public class GeneroAnoEscolarController {
     @FXML
     private ChoiceBox box_grafico;
 
-    ObservableList<String> lista_escolas = FXCollections.observableArrayList("Todas as escolas", "Escola 1", "Escola 2", "escola 3");
-    ObservableList<String> lista_turma = FXCollections.observableArrayList("Todas as turmas", "Turma 1", "Turma 2", "Turma 3");
+    DatabaseConnection db = new DatabaseConnection();
+    //ObservableList<String> lista_escolas = FXCollections.observableArrayList("Todas as escolas", "Escola 1", "Escola 2", "escola 3");
+    ObservableList<String> lista_escolas;
+    ObservableList<String> lista_turma = FXCollections.observableArrayList("Selecione uma turma");
     ObservableList<String> lista_grafico = FXCollections.observableArrayList("Pizza", "Barra");
 
 
@@ -45,11 +50,21 @@ public class GeneroAnoEscolarController {
      */
     @FXML
     private void initialize() {
+        db.gerarListaDeEscolas();
+        lista_escolas = db.getEscolas();
+        lista_turma = db.getTurmasPorEscola();
 
-        box_escola.setValue("Todas as escolas");
+        box_escola.setValue("Selecione uma escola");
         box_escola.setItems(lista_escolas);
+        box_escola.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                db.gerarListaDeTurmasPorEscola(box_escola.getItems().get((Integer) t1));
+                box_turma.setValue("Selecione uma turma");
+            }
+        });
 
-        box_turma.setValue("Todas as turmas");
+        box_turma.setValue("Selecione uma turma");
         box_turma.setItems(lista_turma);
 
         box_grafico.setValue("Pizza");
