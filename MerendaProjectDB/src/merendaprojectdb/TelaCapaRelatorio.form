@@ -118,7 +118,7 @@
                 <Column editable="false" title="Total Matriculados" type="java.lang.Integer"/>
                 <Column editable="false" title="Total atendidosl" type="java.lang.Integer"/>
                 <Column editable="true" title="N&#xba; dias de distribui&#xe7;&#xe3;o de refei&#xe7;&#xe3;o" type="java.lang.Integer"/>
-                <Column editable="true" title="Total de refei&#xe7;&#xf5;es servidas" type="java.lang.Integer"/>
+                <Column editable="false" title="Total de refei&#xe7;&#xf5;es servidas" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

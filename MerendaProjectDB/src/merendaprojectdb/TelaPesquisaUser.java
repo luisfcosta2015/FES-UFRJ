@@ -128,9 +128,9 @@ public class TelaPesquisaUser extends javax.swing.JFrame {
         //Usuario usuarioAtual = new Usuario(nome,user, senha, email, ""+tipo);
         if(BdManager.usuarioExiste(user)) {
             atualiza = new TelaAtualizarUser(user);
-            principal.setLocationRelativeTo(null);
-            principal.setVisible(true);
-            principal.setResizable(true);
+            atualiza.setLocationRelativeTo(null);
+            atualiza.setVisible(true);
+            atualiza.setResizable(true);
             this.setVisible(false);
         }
         else {
