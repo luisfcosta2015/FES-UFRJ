@@ -66,8 +66,14 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             tabelinhaSaida.addRow(new Object[] {item.tipoItem, item.semana1Saida+item.unidade,item.semana2Saida+
                     item.unidade,item.semana3Saida+item.unidade,item.semana4Saida+item.unidade,item.semana5Saida+
                             item.unidade, item.remanejamentoSaida+item.unidade, item.ataSaida});
+            /*BotaoExcluir action = new BotaoExcluir(tabelinhaTotais, tabelinhaSaida, tabelinhaEntrada, i);
+            JButton excluir = new JButton(action);
+            excluir.setVisible(true);*/
             tabelinhaTotais.addRow(new Object[] {item.tipoItem, item.estoqueInicial,item.totalEntrada,item.totalSaida ,
                 item.estoqueFinal, i});
+            /*this.tabelaTotais.getColumn("Excluir").setCellRenderer(new JTableButtonRenderer());
+            this.tabelaTotais.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox(), new BotaoExcluir(tabelinhaEntrada, 
+                        tabelinhaSaida, tabelinhaTotais, i)));*/
             i++;
         }
     }
@@ -87,13 +93,18 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void criaLista() {
        this.tipoItem.removeAll();
     }
-    public void excluiLinha(int linha) {
-        DefaultTableModel tabelaTotalModel = (DefaultTableModel)this.tabelaTotais.getModel();
-        ((DefaultTableModel)this.tabelaEntrada.getModel()).removeRow(linha);
-        ((DefaultTableModel)this.tabelaSaida.getModel()).removeRow(linha);
-        tabelaTotalModel.removeRow(linha);
-        for(int i = linha; i < tabelaTotalModel.getRowCount(); i++) {
-            tabelaTotalModel.setValueAt(i, i, 5);
+    public void excluirLinha(int linha) {
+        DefaultTableModel tabelaTotal = (DefaultTableModel) this.tabelaTotais.getModel();
+        DefaultTableModel tabela2 = (DefaultTableModel) this.tabelaEntrada.getModel();
+        DefaultTableModel tabela3 = (DefaultTableModel) this.tabelaSaida.getModel();
+        String tipo = tabelaTotal.getValueAt(linha, 0) + "";
+        ItemComida itemExistente = verificaItemJaExiste(tipo);
+        this.itens.remove(itemExistente);
+        tabelaTotal.removeRow(linha);
+        tabela2.removeRow(linha);
+        tabela3.removeRow(linha);
+        for(int i=linha; i<tabelaTotal.getRowCount(); i++) {
+            tabelaTotal.setValueAt(i, i, 5);
         }
     }
     /**
@@ -169,6 +180,8 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tabelaEntrada = new javax.swing.JTable();
         jLabel26 = new javax.swing.JLabel();
+        linhaValue = new javax.swing.JTextField();
+        excluirBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,7 +205,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final", "Linha"
+                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final", "Excluir"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -667,6 +680,19 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
 
         jLabel26.setText("Excluir");
 
+        linhaValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                linhaValueActionPerformed(evt);
+            }
+        });
+
+        excluirBotao.setText("Excluir");
+        excluirBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirBotaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -714,6 +740,10 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(linhaValue, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(excluirBotao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(voltarAoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
@@ -766,12 +796,17 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                                 .addGap(9, 9, 9)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(voltarAoMenu)
                                 .addGap(24, 24, 24))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel26)
+                                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(linhaValue, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(excluirBotao))
                                 .addContainerGap())))))
         );
 
@@ -810,7 +845,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         }
         else
         {
-            System.out.println("alterando relatorio");
             BdManager.alterarRelatorio(this.relatorio);
         }
         principal=new TelaPrincipal();
@@ -832,94 +866,134 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         {   
             String unidade = unidadeItem.getSelectedItem()+"";
             String tipoItemString = tipoItem.getSelectedItem() + "";
-            int valorEstoqueInicial;
-            int semana1Entrada;
-            int semana1Saida;
-            int semana2Entrada;
-            int semana2Saida;
-            int semana3Entrada;
-            int semana3Saida;
-            int semana4Entrada;
-            int semana4Saida;
-            int semana5Entrada;
-            int semana5Saida;
-            int remanejamentoEntrada;
-            int remanejamentoSaida;
-            int ataSaida;
-            if(estoqueInicial == null || semana1E == null || semana2E == null || semana3E == null || semana4E == null
-                    || semana5E==null || semana1S ==null || semana2S==null || semana3S == null || semana4S==null || semana5S == null
-                    || this.remanejamentoE ==null || this.remanejamentoS==null || this.ata == null) {
-                int answer = JOptionPane.showConfirmDialog(null,"Os campos não preenchidos serão preenchidos com zero",
-                        "Deseja continuar?",
-                        JOptionPane.YES_NO_OPTION);
-                if(answer == JOptionPane.YES_OPTION) {
-                    valorEstoqueInicial = estoqueInicial != null ? Integer.parseInt(estoqueInicial.getText()) : 0;
-                    semana1Entrada = semana1E != null? Integer.parseInt(semana1E.getText()) : 0;
-                    semana1Saida= semana1S != null ? Integer.parseInt(semana1S.getText()) : 0;
-                    semana2Entrada= semana2E != null ? Integer.parseInt(semana2E.getText()) : 0;
-                    semana2Saida= semana2S != null? Integer.parseInt(semana2S.getText()): 0;
-                    semana3Entrada= semana3E != null? Integer.parseInt(semana3E.getText()): 0;
-                    semana3Saida= semana3S != null? Integer.parseInt(semana3S.getText()): 0;
-                    semana4Entrada= semana4E != null? Integer.parseInt(semana4E.getText()): 0;
-                    semana4Saida= semana4S != null? Integer.parseInt(semana4S.getText()): 0;
-                    semana5Entrada= semana5E != null? Integer.parseInt(semana5E.getText()): 0;
-                    semana5Saida= semana5S != null? Integer.parseInt(semana5S.getText()): 0;
-                    remanejamentoEntrada= this.remanejamentoE != null? Integer.parseInt(remanejamentoE.getText()): 0;
-                    remanejamentoSaida= this.remanejamentoS != null? Integer.parseInt(remanejamentoS.getText()): 0;
-                    ataSaida= this.ata != null? Integer.parseInt(ata.getText()): 0;
-                } else {
-                    return;
-                }
-            }
-            else {
-                valorEstoqueInicial=Integer.parseInt(estoqueInicial.getText());
-                semana1Entrada=Integer.parseInt(semana1E.getText());
-                semana1Saida=Integer.parseInt(semana1S.getText());
-                semana2Entrada=Integer.parseInt(semana2E.getText());
-                semana2Saida=Integer.parseInt(semana2S.getText());
-                semana3Entrada=Integer.parseInt(semana3E.getText());
-                semana3Saida=Integer.parseInt(semana3S.getText());
-                semana4Entrada=Integer.parseInt(semana4E.getText());
-                semana4Saida=Integer.parseInt(semana4S.getText());
-                semana5Entrada=Integer.parseInt(semana5E.getText());
-                semana5Saida=Integer.parseInt(semana5S.getText());
-                remanejamentoEntrada=Integer.parseInt(remanejamentoE.getText());
-                remanejamentoSaida=Integer.parseInt(remanejamentoS.getText());
-                ataSaida=Integer.parseInt(ata.getText());
-            }
+            int valorEstoqueInicial = 0;
+            int semana1Entrada = 0;
+            int semana1Saida=  0;
+            int semana2Entrada=  0;
+            int semana2Saida=  0;
+            int semana3Entrada=  0;
+            int semana3Saida=  0;
+            int semana4Entrada=  0;
+            int semana4Saida= 0;
+            int semana5Entrada= 0;
+            int semana5Saida= 0;
+            int remanejamentoEntrada= 0;
+            int remanejamentoSaida= 0;
+            int ataSaida= 0;
             
-            int totalEntrada=Integer.parseInt(semana1E.getText())+Integer.parseInt(semana2E.getText())+Integer.parseInt(semana3E.getText())+Integer.parseInt(semana4E.getText())+Integer.parseInt((semana5E.getText()));
+            if(this.ata.getText().length() > 0) {
+                ataSaida = Integer.parseInt(ata.getText());
+            }
+            if(this.remanejamentoE.getText().length() > 0) {
+                remanejamentoEntrada = Integer.parseInt(remanejamentoE.getText());
+            }
+            if(this.remanejamentoS.getText().length() > 0) {
+                remanejamentoSaida = Integer.parseInt(remanejamentoS.getText());
+            }
+            if( estoqueInicial.getText().length() > 0) {
+                valorEstoqueInicial = Integer.parseInt(estoqueInicial.getText());
+            }
+            if(semana1E.getText().length() > 0) {
+                semana1Entrada = Integer.parseInt(semana1E.getText());
+            }
+            if(semana2E.getText().length() > 0) {
+                semana2Entrada = Integer.parseInt(semana1E.getText());
+            }
+            if(semana3E.getText().length() > 0) {
+                semana3Entrada = Integer.parseInt(semana1E.getText());
+            }
+            if(semana4E.getText().length() > 0) {
+                semana4Entrada = Integer.parseInt(semana1E.getText());
+            }
+            if(semana5E.getText().length() > 0) {
+                semana5Entrada = Integer.parseInt(semana1E.getText());
+            }
+            if(semana1S.getText().length() > 0) {
+                semana1Saida = Integer.parseInt(semana1S.getText());
+            }
+            if(semana2S.getText().length() > 0) {
+                semana2Saida = Integer.parseInt(semana2S.getText());
+            }
+            if(semana3S.getText().length() > 0) {
+                semana3Saida = Integer.parseInt(semana3S.getText());
+            }
+            if(semana4S.getText().length() > 0) {
+                semana4Saida = Integer.parseInt(semana4S.getText());
+            }
+            if(semana5S.getText().length() > 0) {
+                semana5Saida = Integer.parseInt(semana5S.getText());
+            }
+                    
+            int totalEntrada=semana1Entrada+semana2Entrada+semana3Entrada+semana4Entrada+semana5Entrada;
             String totalEntradaText=totalEntrada+unidade;
-            int totalSaida=(Integer.parseInt(semana1S.getText())+Integer.parseInt(semana2S.getText())+Integer.parseInt(semana3S.getText())+Integer.parseInt(semana4S.getText())+Integer.parseInt(semana5S.getText()));
+            int totalSaida= semana1Saida + semana2Saida + semana3Saida + semana4Saida + semana5Saida;
             String totalSaidaText=totalSaida+unidade;
-            int valorEstoqueFinal=(Integer.parseInt(estoqueInicial.getText())+Integer.parseInt(remanejamentoE.getText())+totalEntrada-Integer.parseInt(remanejamentoS.getText())-Integer.parseInt(ata.getText())-totalSaida);
+            int valorEstoqueFinal= valorEstoqueInicial + remanejamentoEntrada + totalEntrada - remanejamentoSaida - ataSaida - totalSaida;
             String valorEstoqueFinalText=valorEstoqueFinal+unidade;
             
             DefaultTableModel tabelinhaEntrada = (DefaultTableModel) tabelaEntrada.getModel();
             DefaultTableModel tabelinhaTotais = (DefaultTableModel) tabelaTotais.getModel();
             DefaultTableModel tabelinhaSaida = (DefaultTableModel) tabelaSaida.getModel();
-            
-            if(verificaItemJaExiste(tipoItemString) == null) {
+            ItemComida itemExistente = verificaItemJaExiste(tipoItemString);
+            if( itemExistente == null) {
                 
                 tabelinhaEntrada.addRow(new Object[] {tipoItemString,semana1Entrada+unidade,semana2Entrada+unidade,
                     semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});
 
                 tabelinhaTotais.addRow(new Object[] {tipoItemString,valorEstoqueInicial,totalEntradaText, totalSaidaText, 
-                    valorEstoqueFinalText, tabelinhaTotais.getRowCount()-1});
+                    valorEstoqueFinalText, tabelinhaTotais.getRowCount()});
 
                 tabelinhaSaida.addRow(new Object[] {tipoItemString,semana1Saida+unidade,semana2Saida+unidade,
                     semana3Saida+unidade,semana4Saida+unidade,semana5Saida+unidade,remanejamentoSaida+unidade, ataSaida});
-                String nome = tipoItem.getSelectedItem().toString();
-                int quant = Integer.parseInt(estoqueInicial.getText());
-                ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), valorEstoqueInicial, semana1Entrada, semana1Saida, semana2Entrada, semana2Saida, semana3Entrada, semana3Saida, semana4Entrada, semana4Saida, semana5Entrada, semana5Saida, remanejamentoEntrada, remanejamentoSaida, ataSaida, totalEntrada, totalSaida, valorEstoqueFinal, unidadeItem.getSelectedItem().toString());
+                
+                ItemComida item = new ItemComida(tipoItemString, valorEstoqueInicial, semana1Entrada, semana1Saida, 
+                        semana2Entrada, semana2Saida, semana3Entrada, semana3Saida, semana4Entrada, semana4Saida, 
+                        semana5Entrada, semana5Saida, remanejamentoEntrada, remanejamentoSaida, ataSaida, totalEntrada, 
+                        totalSaida, valorEstoqueFinal, unidadeItem.getSelectedItem().toString());
                 this.itens.add(item);
+                /*this.tabelaTotais.getColumn("Excluir").setCellRenderer(new JTableButtonRenderer());
+                this.tabelaTotais.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox(), new BotaoExcluir(tabelinhaEntrada, 
+                        tabelinhaSaida, tabelinhaTotais, tabelinhaTotais.getRowCount()-1)));*/
             }
             else {
-                //soma o item aqui
+                itemExistente.estoqueInicial += valorEstoqueInicial;
+                itemExistente.estoqueFinal += valorEstoqueFinal;
+                itemExistente.semana1Entrada += semana1Entrada;
+                itemExistente.semana1Saida +=  semana1Saida;
+                itemExistente.semana2Entrada += semana2Entrada;
+                itemExistente.semana2Saida += semana2Saida;
+                itemExistente.semana3Entrada += semana3Entrada;
+                itemExistente.semana3Saida += semana3Saida;
+                itemExistente.semana4Entrada += semana4Entrada;
+                itemExistente.semana4Saida += semana4Saida;
+                itemExistente.semana5Entrada += semana5Entrada;
+                itemExistente.semana5Saida += semana5Saida;
+                itemExistente.remanejamentoEntrada += remanejamentoEntrada;
+                itemExistente.remanejamentoSaida += remanejamentoSaida;
+                itemExistente.ataSaida += ataSaida;
+                atualizaTabelas(tabelinhaSaida, tabelinhaEntrada, tabelinhaTotais, itemExistente);
             }
         }
     }//GEN-LAST:event_AdicionarParaAListaActionPerformed
-
+    private void atualizaTabelas(DefaultTableModel saida, DefaultTableModel entrada, DefaultTableModel total, ItemComida item) {
+        for(int i=0; i < total.getRowCount(); i++) {
+            String valor = total.getValueAt(i, 0) + "";
+            if(item.tipoItem.compareToIgnoreCase(valor)==0) {
+                total.removeRow(i);
+                saida.removeRow(i);
+                entrada.removeRow(i);
+                total.insertRow(i, new Object[] {item.tipoItem, item.estoqueInicial,item.totalEntrada,item.totalSaida ,
+                    item.estoqueFinal, i});
+                entrada.insertRow(i, new Object[] {item.tipoItem, item.semana1Entrada+item.unidade,
+                    item.semana2Entrada+item.unidade,item.semana3Entrada+item.unidade,item.semana4Entrada+item.unidade,
+                    item.semana5Entrada+item.unidade, item.remanejamentoEntrada+item.unidade});
+                saida.insertRow(i, new Object[] {item.tipoItem, item.semana1Saida+item.unidade,item.semana2Saida+
+                    item.unidade,item.semana3Saida+item.unidade,item.semana4Saida+item.unidade,item.semana5Saida+
+                    item.unidade, item.remanejamentoSaida+item.unidade, item.ataSaida});
+                return;
+            }
+        }
+    }
     private void AdicionarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarItensActionPerformed
         
         String newItem = novoItem.getText();
@@ -951,12 +1025,24 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_estoqueInicialActionPerformed
 
+    private void linhaValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_linhaValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_linhaValueActionPerformed
+
+    private void excluirBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirBotaoActionPerformed
+        if(this.linhaValue == null || this.linhaValue.getText()=="") {
+            return;
+        }
+        excluirLinha(Integer.parseInt(this.linhaValue.getText()));
+    }//GEN-LAST:event_excluirBotaoActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdicionarItens;
     private javax.swing.JButton AdicionarParaALista;
     private javax.swing.JTextField ata;
     private javax.swing.JTextField estoqueInicial;
+    private javax.swing.JButton excluirBotao;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -998,6 +1084,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField linhaValue;
     private javax.swing.JTextField novoItem;
     private javax.swing.JTextField remanejamentoE;
     private javax.swing.JTextField remanejamentoS;
