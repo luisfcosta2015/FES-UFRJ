@@ -5,6 +5,8 @@
  */
 package merendaprojectdb;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gdsm
@@ -31,7 +33,13 @@ public class TelaPermissao extends javax.swing.JFrame {
         //usuario=nome;
         this.usertier = new TiposDeUsuario();
         this.permits = new Permissoes();
-        canNewUser.setSelected(BdManager.getPermissoes("Admin", "canNewUser"));
+        canNewUser.setSelected(BdManager.getPermissoes("Admin", "canAddUser"));
+        canChangeReport.setSelected(BdManager.getPermissoes("Admin", "canWriteReport"));
+        canGetReport.setSelected(BdManager.getPermissoes("Admin", "canSeeReport"));
+        canNewReport.setSelected(BdManager.getPermissoes("Admin", "canNewReport"));
+        canNewSchool.setSelected(BdManager.getPermissoes("Admin", "canWriteSchool"));
+        canChangePerm.setSelected(BdManager.getPermissoes("Admin", "canWritePermit"));
+        canSetPadrao.setSelected(BdManager.getPermissoes("Admin", "canSetPadrao"));
     }
 
     /**
@@ -55,8 +63,6 @@ public class TelaPermissao extends javax.swing.JFrame {
         canChangeReport = new javax.swing.JCheckBox();
         canGetReport = new javax.swing.JCheckBox();
         canNewSchool = new javax.swing.JCheckBox();
-        canChangeSchool = new javax.swing.JCheckBox();
-        canGetSchool = new javax.swing.JCheckBox();
         canSetPadrao = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,25 +130,10 @@ public class TelaPermissao extends javax.swing.JFrame {
             }
         });
 
-        canNewSchool.setText("Cadastrar Escola");
+        canNewSchool.setText("Gerenciar Escola");
         canNewSchool.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 canNewSchoolActionPerformed(evt);
-            }
-        });
-
-        canChangeSchool.setText("Atualizar Escola");
-        canChangeSchool.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                canChangeSchoolActionPerformed(evt);
-            }
-        });
-
-        canGetSchool.setSelected(true);
-        canGetSchool.setText("Ver Escola");
-        canGetSchool.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                canGetSchoolActionPerformed(evt);
             }
         });
 
@@ -165,6 +156,9 @@ public class TelaPermissao extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(canSetPadrao)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -172,8 +166,7 @@ public class TelaPermissao extends javax.swing.JFrame {
                                 .addGap(83, 83, 83)
                                 .addComponent(jLabel8))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(canSetPadrao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton1)))
                         .addGap(28, 28, 28))
                     .addGroup(layout.createSequentialGroup()
@@ -184,9 +177,7 @@ public class TelaPermissao extends javax.swing.JFrame {
                             .addComponent(canNewReport)
                             .addComponent(canChangeReport)
                             .addComponent(canGetReport)
-                            .addComponent(canNewSchool)
-                            .addComponent(canChangeSchool)
-                            .addComponent(canGetSchool))
+                            .addComponent(canNewSchool))
                         .addContainerGap(133, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -222,12 +213,8 @@ public class TelaPermissao extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(canNewSchool)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(canChangeSchool)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(canGetSchool)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(canSetPadrao)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,7 +229,15 @@ public class TelaPermissao extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void campoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoActionPerformed
+        String usuario = campoTipo.getSelectedItem()+"";
         
+        canNewUser.setSelected(BdManager.getPermissoes(usuario, "canAddUser"));
+        canChangeReport.setSelected(BdManager.getPermissoes(usuario, "canWriteReport"));
+        canGetReport.setSelected(BdManager.getPermissoes(usuario, "canSeeReport"));
+        canNewReport.setSelected(BdManager.getPermissoes(usuario, "canNewReport"));
+        canNewSchool.setSelected(BdManager.getPermissoes(usuario, "canWriteSchool"));
+        canChangePerm.setSelected(BdManager.getPermissoes(usuario, "canWritePermit"));
+        canSetPadrao.setSelected(BdManager.getPermissoes(usuario, "canSetPadrao"));
     }//GEN-LAST:event_campoTipoActionPerformed
 
     private void canNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canNewUserActionPerformed
@@ -269,14 +264,6 @@ public class TelaPermissao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_canNewSchoolActionPerformed
 
-    private void canChangeSchoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canChangeSchoolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_canChangeSchoolActionPerformed
-
-    private void canGetSchoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canGetSchoolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_canGetSchoolActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Object type = campoTipo.getSelectedItem();
         tipo = ""+type;
@@ -286,14 +273,13 @@ public class TelaPermissao extends javax.swing.JFrame {
         boolean seerp = canGetReport.isSelected();
         boolean newrp = canNewReport.isSelected();
         boolean newsc = canNewSchool.isSelected();
-        boolean seesc = canGetSchool.isSelected();
         boolean newpm = canChangePerm.isSelected();
         boolean setPadrao = canSetPadrao.isSelected();
         
         
         if(tipo=="Administrador"){
            // UsuarioAdm adm;
-           usertier.setPermissoesAdm(newrp, getrp, seerp, newsc, seesc, true, newuser,setPadrao); 
+           usertier.setPermissoesAdm(newrp, getrp, seerp, newsc, true, newuser,setPadrao); 
            /*usertier.adm.canNewReport(newrp);
             usertier.adm.canWriteReport(getrp);
             usertier.adm.canSeeReport(seerp);
@@ -304,7 +290,7 @@ public class TelaPermissao extends javax.swing.JFrame {
         
         if(tipo=="Diretor"){
            // UsuarioDir dir;
-            usertier.setPermissoesDir(newrp, getrp, seerp, newsc, seesc, newpm, newuser, setPadrao);
+            usertier.setPermissoesDir(newrp, getrp, seerp, newsc, newpm, newuser, setPadrao);
             /*usertier.dir.canNewReport(newrp);
             usertier.dir.canWriteReport(getrp);
             usertier.dir.canSeeReport(seerp);
@@ -314,7 +300,7 @@ public class TelaPermissao extends javax.swing.JFrame {
         }
         
         if(tipo=="Leitor"){
-            usertier.setPermissoesLeitor(newrp, getrp, seerp, newsc, seesc, newpm, newuser, setPadrao);
+            usertier.setPermissoesLeitor(newrp, getrp, seerp, newsc, newpm, newuser, setPadrao);
          //   UsuarioLei lei;
            
          
@@ -325,7 +311,14 @@ public class TelaPermissao extends javax.swing.JFrame {
             lei.canSeeSchool(seesc);
             lei.canWritePermit(newpm);*/
         }
-        BdManager.setPermissoes(newrp, getrp, seerp, newsc, seesc, newpm, newuser, setPadrao,tipo );
+        if(BdManager.setPermissoes(newrp, getrp, seerp, newsc, newpm, newuser, setPadrao,tipo ))
+        {
+            JOptionPane.showMessageDialog(null,"Permissões alteradas com sucesso");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Algo deu errado ao modificar as premissões");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -341,9 +334,7 @@ public class TelaPermissao extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> campoTipo;
     private javax.swing.JCheckBox canChangePerm;
     private javax.swing.JCheckBox canChangeReport;
-    private javax.swing.JCheckBox canChangeSchool;
     private javax.swing.JCheckBox canGetReport;
-    private javax.swing.JCheckBox canGetSchool;
     private javax.swing.JCheckBox canNewReport;
     private javax.swing.JCheckBox canNewSchool;
     private javax.swing.JCheckBox canNewUser;
