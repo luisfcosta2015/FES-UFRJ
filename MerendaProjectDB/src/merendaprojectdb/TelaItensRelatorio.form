@@ -225,7 +225,7 @@
                     <Column editable="false" title="Total Entrada" type="java.lang.Object"/>
                     <Column editable="false" title="Total Saida" type="java.lang.Object"/>
                     <Column editable="false" title="Estoque Final" type="java.lang.Object"/>
-                    <Column editable="false" title="Excluir" type="java.lang.Object"/>
+                    <Column editable="false" title="Linha" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

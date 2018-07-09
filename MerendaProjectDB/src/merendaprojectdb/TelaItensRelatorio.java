@@ -66,11 +66,8 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             tabelinhaSaida.addRow(new Object[] {item.tipoItem, item.semana1Saida+item.unidade,item.semana2Saida+
                     item.unidade,item.semana3Saida+item.unidade,item.semana4Saida+item.unidade,item.semana5Saida+
                             item.unidade, item.remanejamentoSaida+item.unidade, item.ataSaida});
-            /*BotaoExcluir action = new BotaoExcluir(tabelinhaTotais, tabelinhaSaida, tabelinhaEntrada, i);
-            JButton excluir = new JButton(action);
-            excluir.setVisible(true);*/
             tabelinhaTotais.addRow(new Object[] {item.tipoItem, item.estoqueInicial,item.totalEntrada,item.totalSaida ,
-                item.estoqueFinal});
+                item.estoqueFinal, i});
             i++;
         }
     }
@@ -90,8 +87,14 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void criaLista() {
        this.tipoItem.removeAll();
     }
-    public void excluiLinha(DefaultTableModel tabela, int linha) {
-        tabela.removeRow(linha);
+    public void excluiLinha(int linha) {
+        DefaultTableModel tabelaTotalModel = (DefaultTableModel)this.tabelaTotais.getModel();
+        ((DefaultTableModel)this.tabelaEntrada.getModel()).removeRow(linha);
+        ((DefaultTableModel)this.tabelaSaida.getModel()).removeRow(linha);
+        tabelaTotalModel.removeRow(linha);
+        for(int i = linha; i < tabelaTotalModel.getRowCount(); i++) {
+            tabelaTotalModel.setValueAt(i, i, 5);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,7 +192,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final", "Excluir"
+                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final", "Linha"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -897,15 +900,12 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             DefaultTableModel tabelinhaSaida = (DefaultTableModel) tabelaSaida.getModel();
             
             if(verificaItemJaExiste(tipoItemString) == null) {
-                /*BotaoExcluir action = new BotaoExcluir(tabelinhaTotais, tabelinhaSaida, tabelinhaEntrada, 
-                        tabelinhaTotais.getRowCount()-1);
-                JButton excluir = new JButton(action);*/
                 
                 tabelinhaEntrada.addRow(new Object[] {tipoItemString,semana1Entrada+unidade,semana2Entrada+unidade,
                     semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});
 
                 tabelinhaTotais.addRow(new Object[] {tipoItemString,valorEstoqueInicial,totalEntradaText, totalSaidaText, 
-                    valorEstoqueFinalText, "excluir" });
+                    valorEstoqueFinalText, tabelinhaTotais.getRowCount()-1});
 
                 tabelinhaSaida.addRow(new Object[] {tipoItemString,semana1Saida+unidade,semana2Saida+unidade,
                     semana3Saida+unidade,semana4Saida+unidade,semana5Saida+unidade,remanejamentoSaida+unidade, ataSaida});
@@ -913,7 +913,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                 int quant = Integer.parseInt(estoqueInicial.getText());
                 ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), valorEstoqueInicial, semana1Entrada, semana1Saida, semana2Entrada, semana2Saida, semana3Entrada, semana3Saida, semana4Entrada, semana4Saida, semana5Entrada, semana5Saida, remanejamentoEntrada, remanejamentoSaida, ataSaida, totalEntrada, totalSaida, valorEstoqueFinal, unidadeItem.getSelectedItem().toString());
                 this.itens.add(item);
-                this.tabelaTotais.getColumn("Excluir").setCellRenderer(new JTableButtonRenderer());
             }
             else {
                 //soma o item aqui
