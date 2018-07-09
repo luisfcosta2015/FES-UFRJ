@@ -1,5 +1,7 @@
 package front.IdadeAnoEscolar;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +24,7 @@ public class IdadeAnoEscolarController {
     private Button gera_relatorio;
 
     @FXML
-    private ChoiceBox box_escola;
+    private ChoiceBox<String> box_escola;
 
     @FXML
     private ChoiceBox box_turma;
@@ -32,9 +34,9 @@ public class IdadeAnoEscolarController {
 
     DatabaseConnection db = new DatabaseConnection();
     // ObservableList<String> lista_escolas = FXCollections.observableArrayList("Todas as escolas", "Escola 1", "Escola 2", "escola 3");
-    ObservableList<String> lista_escolas = db.getEscolas();
-    ObservableList<String> lista_turma = FXCollections.observableArrayList("Selecione uma turma", "Turma 1", "Turma 2", "Turma 3");
-    //ObservableList<String> lista_turma = FXCollections.observableArrayList();
+    ObservableList<String> lista_escolas;
+    //ObservableList<String> lista_turma = FXCollections.observableArrayList("Selecione uma turma", "Turma 1", "Turma 2", "Turma 3");
+    ObservableList<String> lista_turma = FXCollections.observableArrayList("Selecione uma turma");
     ObservableList<String> lista_grafico = FXCollections.observableArrayList("Pizza", "Barra");
 
 
@@ -49,9 +51,19 @@ public class IdadeAnoEscolarController {
      */
     @FXML
     private void initialize() {
+        lista_escolas = db.getEscolas();
+        lista_turma = db.getTurmasPorEscola();
+
         box_escola.setValue("Selecione uma escola");
         System.out.println();
         box_escola.setItems(lista_escolas);
+        box_escola.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                db.gerarListaDeTurmasPorEscola(box_escola.getItems().get((Integer) t1));
+                box_turma.setValue("Selecione uma turma");
+            }
+        });
 
         box_turma.setValue("Selecione uma turma");
         box_turma.setItems(lista_turma);
