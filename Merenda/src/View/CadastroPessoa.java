@@ -7,6 +7,7 @@ package View;
 
 import Controller.Pessoa;
 import Model.Auxiliar;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class CadastroPessoa extends javax.swing.JFrame {
     
-    
+    boolean showTela = true;
     boolean editmode = false;
     Pessoa p1;
     
@@ -29,6 +30,67 @@ public class CadastroPessoa extends javax.swing.JFrame {
         editmode = false;
         p1 = null;
     }
+    
+     public void telasInvisiveis(){
+        showTela = false;
+    }
+    
+    /* Aqui estão as funções que auxiliaram os testes
+*
+*
+*
+*/
+
+/*
+    Essas funções apenas retornam o botão da tela, para que possa dar doClick nos testes.
+*/    
+    
+public JButton BotaoCadastrar(){ 
+    return btnCadastrar;
+} 
+
+public JButton BotaoPesquisar(){ 
+    return btnPesquisar;
+}
+public JButton BotaoDeletar(){ 
+    return btnDeletar;
+}
+ 
+/*
+    Essa função preenche apenas o campo de nome
+*/
+public void preenchernometest(String nome){
+    txtNome.setText(nome);
+}
+    
+/*
+    Essa função preenche todos os campos da tela
+*/
+
+public void preenchertest(String Nome,String Cpf){
+    txtNome.setText(Nome);
+    txtCpf.setText(Cpf);
+}
+
+/*
+    Essa função retorna os dados da tela, de acordo com o inteiro mandado.
+*/
+
+public String retornaValores(int qualvalor){
+    if(qualvalor== 0){
+    return txtNome.getText();
+    }
+    if(qualvalor== 1){
+    return txtCpf.getText();
+    }
+    return "nada";
+}
+
+/*
+*
+*
+* Aqui estão as funções que auxiliaram os testes
+*/
 
     /**
      * Creates new form CadastroUsuario
@@ -209,13 +271,16 @@ public class CadastroPessoa extends javax.swing.JFrame {
         
         if (!(erros += p.validar()).equals("")){
             // mensagem de erro
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
             // realiza o cadastro no BD
             if (p.cadastrar()){
-                JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
             } else {
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -228,7 +293,8 @@ public class CadastroPessoa extends javax.swing.JFrame {
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         String nome = txtNome.getText();
         if (nome.length() == 0 || nome.length() >= 100){
-            JOptionPane.showMessageDialog(this, "Nome inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nome inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
             return;
         }
         
@@ -245,7 +311,8 @@ public class CadastroPessoa extends javax.swing.JFrame {
             btnPesquisar.setEnabled(false);
             p1 = p;            
         } else {
-            JOptionPane.showMessageDialog(this, "Nenhuma ou mais de uma pessoa encontrada", "Erro", JOptionPane.ERROR_MESSAGE);               
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nenhuma ou mais de uma pessoa encontrada", "Erro", JOptionPane.ERROR_MESSAGE);               
         }       
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -256,18 +323,22 @@ public class CadastroPessoa extends javax.swing.JFrame {
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
         } else if (p1 == null){
-            JOptionPane.showMessageDialog(this, "Não há pessoa carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não há pessoa carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
         } else if (p1.deletar()){            
-            JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
             reset();
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -278,15 +349,18 @@ public class CadastroPessoa extends javax.swing.JFrame {
         
         if (!(erros += p.validar()).equals("")){
             // mensagem de erro
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else{
             int id = p1.getId();
             p1 = p;
             p1.setId(id);
             if (p1.update())
-                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
             else
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             reset();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
