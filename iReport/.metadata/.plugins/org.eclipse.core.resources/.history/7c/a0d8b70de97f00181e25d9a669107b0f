@@ -1,0 +1,57 @@
+package br.com.fes.relatorios.bean;
+
+import java.sql.SQLException;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.ListDataModel;
+
+import br.com.fes.relatorios.dao.DadosDAO;
+import br.com.fes.relatorios.domain.Dados;
+
+
+@ManagedBean(name = "MBAlunos")
+@ViewScoped
+public class AlunosBean {
+	
+	private Dados dadosRegistro = new Dados();
+	private ListDataModel<Dados> dadosConsulta;
+
+	public Dados getDadosRegistro() {
+		if(dadosRegistro == null){
+			dadosRegistro = new Dados();
+		}
+		return dadosRegistro;
+	}
+
+	public void setDadosRegistro(Dados dadosRegistro) {
+		this.dadosRegistro = dadosRegistro;
+	}
+
+	@PostConstruct
+	public void salvar(){
+		try {
+			DadosDAO dao = new DadosDAO();
+			ArrayList<Dados> lista = dao.ConsultaDados();
+			dadosConsulta = new ListDataModel<Dados>(lista);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void consultar(){
+		try {
+			DadosDAO dao = new DadosDAO();
+			System.out.println("matricula" + dadosRegistro.getMatrícula());
+			dao.consultar(dadosRegistro);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
