@@ -5,10 +5,8 @@
  */
 package Controller;
 
-import Model.Auxiliar;
 import Model.Conexao;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -31,24 +29,19 @@ public class Pedido {
     }
     
     // ISSO DEVERIA SER UMA TRANSACTION PRA CADASTRAR OU TUDO OU NADA
-    public boolean cadastraLotes(List<Lote> lst){
+    public boolean cadastraLotes(List<LotePedido> lst){
         if (!carregado) return false;
         
         boolean sucesso = true;
         for (int i = 0; i < lst.size(); i++){ 
             lst.get(i).setId_pedido(getId());
             sucesso = sucesso && lst.get(i).cadastrar();
-        }
-        
+        }        
         return sucesso;    
     }
 
     public int getId() {
         return id;
-    }
-
-    private void setId(int id) {
-        this.id = id;
     }
 
     public int getId_instituicao() {
@@ -65,8 +58,6 @@ public class Pedido {
 
     public void setData(String data) {
         this.data = data;
-    }
-    
-    
+    }   
     
 }

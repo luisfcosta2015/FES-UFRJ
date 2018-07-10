@@ -7,7 +7,7 @@ package View;
 
 import Controller.Alimento;
 import Controller.Instituicao;
-import Controller.Lote;
+import Controller.LotePedido;
 import Controller.Pedido;
 import Model.Auxiliar;
 import java.text.Format;
@@ -23,7 +23,7 @@ import javax.swing.*;
  */
 public class CadastroPedido extends javax.swing.JFrame {
     
-    private List<Lote> itens = new ArrayList<>();
+    private List<LotePedido> itens = new ArrayList<>();
     // alimento que foi carregado aqui pela pesquisa
     private Alimento carregado;
     private DefaultListModel lstModel = new DefaultListModel();;
@@ -448,10 +448,10 @@ public class CadastroPedido extends javax.swing.JFrame {
             return;
         }
         
-        Lote l = new Lote();
-        l.setId_alimento(carregado.getId_alimento());
-        l.setQtd_alimento(Integer.valueOf(txtQtdItens.getText()));
-        itens.add(l);
+        LotePedido lp = new LotePedido();
+        lp.setId_alimento(carregado.getId_alimento());
+        lp.setQtd_alimento(Integer.valueOf(txtQtdItens.getText()));
+        itens.add(lp);
         lstModel.addElement(txtAlimento.getText() + " - " + txtQtdItens.getText());
         resetAlimento();
     }//GEN-LAST:event_btnAdcListaActionPerformed

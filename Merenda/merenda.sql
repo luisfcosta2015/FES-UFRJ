@@ -103,7 +103,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','root');
+INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','root'),(2,1,1,'1001001001','root2','root2');
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,15 +116,12 @@ DROP TABLE IF EXISTS `entrada`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entrada` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_entrega` int(11) NOT NULL,
-  `id_nota_fiscal` int(11) NOT NULL,
-  `id_estoque_anterior` int(11) NOT NULL,
-  `qtd_remanejo` int(11) DEFAULT NULL,
+  `id_alimento` int(11) NOT NULL,
+  `data` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qtd_alimento` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_entrada_entrega1_idx` (`id_entrega`,`id_nota_fiscal`),
-  KEY `fk_entrada_estoque1_idx` (`id_estoque_anterior`),
-  CONSTRAINT `fk_entrada_entrega1` FOREIGN KEY (`id_entrega`, `id_nota_fiscal`) REFERENCES `entrega` (`id`, `id_nota_fiscal`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_entrada_estoque1` FOREIGN KEY (`id_estoque_anterior`) REFERENCES `estoque` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_entrada_alimento_idx` (`id_alimento`),
+  CONSTRAINT `fk_entrada_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -145,16 +142,11 @@ DROP TABLE IF EXISTS `entrega`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entrega` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_nota_fiscal` int(11) NOT NULL,
-  `id_instituicao` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
   `data_entrega` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fornecedor` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`,`id_nota_fiscal`),
-  KEY `fk_entrega_nota_fiscal1_idx` (`id_nota_fiscal`),
-  KEY `fk_entrega_instituicao1_idx` (`id_instituicao`),
-  CONSTRAINT `fk_entrega_instituicao1` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_entrega_nota_fiscal1` FOREIGN KEY (`id_nota_fiscal`) REFERENCES `nota_fiscal` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id_pedido`),
+  CONSTRAINT `fk_entrega_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -165,36 +157,6 @@ CREATE TABLE `entrega` (
 LOCK TABLES `entrega` WRITE;
 /*!40000 ALTER TABLE `entrega` DISABLE KEYS */;
 /*!40000 ALTER TABLE `entrega` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `estoque`
---
-
-DROP TABLE IF EXISTS `estoque`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `estoque` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_entrada` int(11) NOT NULL,
-  `id_saida` int(11) NOT NULL,
-  `qtd_atual` int(11) DEFAULT NULL,
-  `data_estoque` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_estoque_entrada1_idx` (`id_entrada`),
-  KEY `fk_estoque_saida1_idx` (`id_saida`),
-  CONSTRAINT `fk_estoque_entrada1` FOREIGN KEY (`id_entrada`) REFERENCES `entrada` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_estoque_saida1` FOREIGN KEY (`id_saida`) REFERENCES `saida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `estoque`
---
-
-LOCK TABLES `estoque` WRITE;
-/*!40000 ALTER TABLE `estoque` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estoque` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -229,13 +191,35 @@ INSERT INTO `instituicao` VALUES (1,1,'sdaffads','12345678','Rua da Gazela',50,'
 UNLOCK TABLES;
 
 --
--- Table structure for table `lote`
+-- Table structure for table `lote_estoque`
 --
 
-DROP TABLE IF EXISTS `lote`;
+DROP TABLE IF EXISTS `lote_estoque`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lote` (
+CREATE TABLE `lote_estoque` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lote_estoque`
+--
+
+LOCK TABLES `lote_estoque` WRITE;
+/*!40000 ALTER TABLE `lote_estoque` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lote_estoque` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lote_pedido`
+--
+
+DROP TABLE IF EXISTS `lote_pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lote_pedido` (
   `id_pedido` int(11) NOT NULL,
   `id_alimento` int(11) NOT NULL,
   `qtd_alimento` int(11) DEFAULT NULL,
@@ -248,36 +232,12 @@ CREATE TABLE `lote` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lote`
+-- Dumping data for table `lote_pedido`
 --
 
-LOCK TABLES `lote` WRITE;
-/*!40000 ALTER TABLE `lote` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lote` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `nota_fiscal`
---
-
-DROP TABLE IF EXISTS `nota_fiscal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `nota_fiscal` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `data_emissao` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `imagem` blob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `nota_fiscal`
---
-
-LOCK TABLES `nota_fiscal` WRITE;
-/*!40000 ALTER TABLE `nota_fiscal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `nota_fiscal` ENABLE KEYS */;
+LOCK TABLES `lote_pedido` WRITE;
+/*!40000 ALTER TABLE `lote_pedido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lote_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -319,7 +279,7 @@ CREATE TABLE `pessoa` (
   `nome` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cpf` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -328,7 +288,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,'Andre','10010010010'),(2,'Bruna','20020020020');
+INSERT INTO `pessoa` VALUES (1,'Andre','10010010010'),(2,'Bruna','20020020020'),(3,'João de Barro eu te entendo agora','15015018993');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,10 +301,12 @@ DROP TABLE IF EXISTS `saida`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `saida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `qtd_remanejo` int(11) DEFAULT NULL,
-  `qtd_usado` int(11) DEFAULT NULL,
-  `qtd_ata` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `data` int(11) DEFAULT NULL,
+  `id_alimento` int(11) DEFAULT NULL,
+  `qtd_alimento` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_saida_alimento_idx` (`id_alimento`),
+  CONSTRAINT `fk_saida_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -422,4 +384,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-10 16:08:16
+-- Dump completed on 2018-07-10 18:08:01
