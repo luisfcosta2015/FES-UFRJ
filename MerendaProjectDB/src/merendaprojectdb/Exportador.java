@@ -94,7 +94,6 @@ public class Exportador {
             capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
             capa.getCellByPosition(1, 5).setStringValue(relatorio.getEscola().getTelefone());
             capa.getCellByPosition(7, 5).setStringValue(""+relatorio.getEscola().getINEP());
-            capa.getCellByPosition(8, 6).setStringValue(""+relatorio.getEscola().getDistrito());
             for(int i=11;i<16;i++)
             {
                 for(int j=2;j<10;j++)
@@ -127,7 +126,7 @@ public class Exportador {
             
             System.out.println(relatorio.getEscola().getDiretoria());
             
-            cardapio.getCellByPosition(1,2).setStringValue("Unidade: " + relatorio.getEscola().getUnidade()+" / Distrio: " + relatorio.getEscola().getDistrito());
+            cardapio.getCellByPosition(1,2).setStringValue("Unidade: " + relatorio.getEscola().getUnidade()+" / Distrio: ");
             cardapio.getCellByPosition(1,3).setStringValue("Diretoria: " + relatorio.getEscola().getDiretoria());
             cardapio.getCellByPosition(1,4).setStringValue("Descrição do cardápio - " + relatorio.getMes() + "/" + relatorio.getAno());
             
@@ -155,7 +154,7 @@ public class Exportador {
             SpreadsheetDocument modeloItens = SpreadsheetDocument.loadDocument(this.modeloItens);
             Table itensTable = modeloItens.getTableByName("Relatorio Itens");
             itensTable.getCellByPosition(1, 2).setStringValue("Unidade: " + relatorio.getEscola().getUnidade());
-            itensTable.getCellByPosition(14, 2).setStringValue("Distrio: " + relatorio.getEscola().getDistrito());
+            itensTable.getCellByPosition(14, 2).setStringValue("Distrio: ");
             itensTable.getCellByPosition(17, 1).setStringValue("Telefone: " + relatorio.getEscola().getTelefone());
             itensTable.getCellByPosition(18, 2).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()));
             i=5;

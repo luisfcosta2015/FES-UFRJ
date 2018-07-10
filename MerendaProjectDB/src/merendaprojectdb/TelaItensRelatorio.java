@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 package merendaprojectdb;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 /**
  *
  * @author joycinha
@@ -905,7 +903,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                     semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});
 
                 tabelinhaTotais.addRow(new Object[] {tipoItemString,valorEstoqueInicial,totalEntradaText, totalSaidaText, 
-                    valorEstoqueFinalText, "remover" });
+                    valorEstoqueFinalText });
 
                 tabelinhaSaida.addRow(new Object[] {tipoItemString,semana1Saida+unidade,semana2Saida+unidade,
                     semana3Saida+unidade,semana4Saida+unidade,semana5Saida+unidade,remanejamentoSaida+unidade, ataSaida});
@@ -913,13 +911,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                 int quant = Integer.parseInt(estoqueInicial.getText());
                 ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), valorEstoqueInicial, semana1Entrada, semana1Saida, semana2Entrada, semana2Saida, semana3Entrada, semana3Saida, semana4Entrada, semana4Saida, semana5Entrada, semana5Saida, remanejamentoEntrada, remanejamentoSaida, ataSaida, totalEntrada, totalSaida, valorEstoqueFinal, unidadeItem.getSelectedItem().toString());
                 this.itens.add(item);
-                
-                
-                JTable table = new JTable(tabelinhaTotais);
-                table.getColumn("BotaoExcluir").setCellRenderer(new ButtonRenderer());
-                table.getColumn("BotaoExcluir").setCellEditor(new ButtonEditor(new JCheckBox()));
-                tabelinhaTotais=(DefaultTableModel)table.getModel();
-                System.out.println("passei");
             }
             else {
                 //soma o item aqui
@@ -1025,73 +1016,4 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> unidadeItem;
     private javax.swing.JButton voltarAoMenu;
     // End of variables declaration//GEN-END:variables
-}
-class ButtonRenderer extends JButton implements TableCellRenderer {
-
-    public ButtonRenderer() {
-        setOpaque(true);
-    }
-
-    public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
-        if (isSelected) {
-            setForeground(table.getSelectionForeground());
-            setBackground(table.getSelectionBackground());
-        } else {
-            setForeground(table.getForeground());
-            setBackground(UIManager.getColor("Button.background"));
-        }
-        setText((value == null) ? "" : value.toString());
-        return this;
-    }
-}
-
-class ButtonEditor extends DefaultCellEditor {
-
-    protected JButton button;
-    private String label;
-    private boolean isPushed;
-
-    public ButtonEditor(JCheckBox checkBox) {
-        super(checkBox);
-        button = new JButton();
-        button.setOpaque(true);
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fireEditingStopped();
-            }
-        });
-    }
-
-    @Override
-    public Component getTableCellEditorComponent(JTable table, Object value,
-            boolean isSelected, int row, int column) {
-        if (isSelected) {
-            button.setForeground(table.getSelectionForeground());
-            button.setBackground(table.getSelectionBackground());
-        } else {
-            button.setForeground(table.getForeground());
-            button.setBackground(table.getBackground());
-        }
-        label = (value == null) ? "" : value.toString();
-        button.setText(label);
-        isPushed = true;
-        return button;
-    }
-
-    @Override
-    public Object getCellEditorValue() {
-        if (isPushed) {
-            JOptionPane.showMessageDialog(button, label + ": Ouch!");
-        }
-        isPushed = false;
-        return label;
-    }
-
-    @Override
-    public boolean stopCellEditing() {
-        isPushed = false;
-        return super.stopCellEditing();
-    }
 }
