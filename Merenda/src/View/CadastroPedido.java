@@ -5,17 +5,69 @@
  */
 package View;
 
+import Controller.Alimento;
+import Controller.Instituicao;
+import Controller.Lote;
+import Controller.Pedido;
+import Model.Auxiliar;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.*;
+
 /**
  *
  * @author w1n3
  */
 public class CadastroPedido extends javax.swing.JFrame {
+    
+    private List<Lote> itens = new ArrayList<>();
+    // alimento que foi carregado aqui pela pesquisa
+    private Alimento carregado;
+    private DefaultListModel lstModel = new DefaultListModel();;
+    private int id_instituicao = -1;
+    
 
     /**
      * Creates new form CadastroPedido
      */
     public CadastroPedido() {
         initComponents();
+    }
+    
+    public void resetAlimento(){   
+        txtAlimento.setText("");
+        txtQtdItens.setText("");
+        txtFornecedor.setText("");
+        txtMarca.setText("");
+        txtQtdAtende.setText("");
+        chkPerecivel.setSelected(false);
+        
+        txtAlimento.setEnabled(true);
+        txtQtdItens.setEnabled(false);
+        btnPesquisaAlimento.setEnabled(true);
+        lblPesquisaAlimento.setIcon(null);
+        
+        btnAdcLista.setEnabled(false);
+        carregado = null;
+    }
+    
+    public void resetInstituicao(){
+        id_instituicao = -1;
+        lblPesquisaInstituicao.setIcon(null);
+        txtInstituicao.setEnabled(true);
+        btnPesquisaInstituicao.setEnabled(true);
+        txtInstituicao.setText("");        
+    }
+    
+    public void resetAll(){
+        resetAlimento();
+        resetInstituicao();
+        datePicker.setDate(null);
+        itens.clear();
+        lstModel.clear();
     }
 
     /**
@@ -27,21 +79,440 @@ public class CadastroPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        datePicker = new org.jdesktop.swingx.JXDatePicker();
+        jLabel1 = new javax.swing.JLabel();
+        lblPesquisaAlimento = new javax.swing.JLabel();
+        btnPesquisaAlimento = new javax.swing.JButton();
+        txtAlimento = new javax.swing.JTextField();
+        lblAlimento = new javax.swing.JLabel();
+        lblQtdItens = new javax.swing.JLabel();
+        txtQtdItens = new javax.swing.JTextField();
+        txtFornecedor = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        lblQtdAtende = new javax.swing.JLabel();
+        txtQtdAtende = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        chkPerecivel = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstItens = new javax.swing.JList<>();
+        btnLimparTudo = new javax.swing.JButton();
+        btnLimparItem = new javax.swing.JButton();
+        btnAdcLista = new javax.swing.JButton();
+        btnFinalizarPedido = new javax.swing.JButton();
+        txtInstituicao = new javax.swing.JTextField();
+        lblInstituicao = new javax.swing.JLabel();
+        btnPesquisaInstituicao = new javax.swing.JButton();
+        lblPesquisaInstituicao = new javax.swing.JLabel();
+        btnLimparInstituicao = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mItemPrincipal = new javax.swing.JMenuItem();
+        mItemSair = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Data");
+
+        lblPesquisaAlimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblPesquisaAlimento.setEnabled(false);
+
+        btnPesquisaAlimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pesquisa.png"))); // NOI18N
+        btnPesquisaAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaAlimentoActionPerformed(evt);
+            }
+        });
+
+        lblAlimento.setText("Alimento");
+
+        lblQtdItens.setText("UND DE MEDIDA");
+
+        txtQtdItens.setEnabled(false);
+        txtQtdItens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQtdItensActionPerformed(evt);
+            }
+        });
+
+        txtFornecedor.setEnabled(false);
+        txtFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFornecedorActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Fornecedor");
+
+        lblQtdAtende.setText("Qtd. de alunos que atende");
+
+        txtQtdAtende.setEnabled(false);
+
+        txtMarca.setEnabled(false);
+
+        jLabel3.setText("Marca");
+
+        chkPerecivel.setText("Perecivel");
+        chkPerecivel.setEnabled(false);
+        chkPerecivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPerecivelActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel7.setText("Cadastro de Pedido");
+
+        lstItens.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        lstItens.setModel(lstModel);
+        jScrollPane1.setViewportView(lstItens);
+
+        btnLimparTudo.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnLimparTudo.setText("Limpar Tudo");
+        btnLimparTudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparTudoActionPerformed(evt);
+            }
+        });
+
+        btnLimparItem.setText("Limpar Item");
+        btnLimparItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparItemActionPerformed(evt);
+            }
+        });
+
+        btnAdcLista.setText("Adicionar à Lista");
+        btnAdcLista.setEnabled(false);
+        btnAdcLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdcListaActionPerformed(evt);
+            }
+        });
+
+        btnFinalizarPedido.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnFinalizarPedido.setText("Finalizar Pedido");
+        btnFinalizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarPedidoActionPerformed(evt);
+            }
+        });
+
+        lblInstituicao.setText("Instituição");
+
+        btnPesquisaInstituicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pesquisa.png"))); // NOI18N
+        btnPesquisaInstituicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaInstituicaoActionPerformed(evt);
+            }
+        });
+
+        lblPesquisaInstituicao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblPesquisaInstituicao.setEnabled(false);
+
+        btnLimparInstituicao.setText("Limpar Instituicao");
+        btnLimparInstituicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparInstituicaoActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Arquivo");
+
+        mItemPrincipal.setText("Menu Principal");
+        mItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemPrincipal);
+
+        mItemSair.setText("Sair");
+        mItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemSair);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblInstituicao)
+                                    .addComponent(txtInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPesquisaInstituicao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPesquisaInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimparInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblQtdItens)
+                                                .addGap(21, 21, 21)
+                                                .addComponent(txtQtdItens))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblAlimento)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtAlimento)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnPesquisaAlimento)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblPesquisaAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(43, 43, 43)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblQtdAtende)
+                                            .addComponent(chkPerecivel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtQtdAtende, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(btnAdcLista, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(48, 48, 48)
+                                        .addComponent(btnLimparItem, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnLimparTudo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnFinalizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(46, 46, 46))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblInstituicao)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPesquisaInstituicao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPesquisaInstituicao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimparInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblAlimento)
+                                .addComponent(txtAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPesquisaAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPesquisaAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblQtdItens)
+                            .addComponent(txtQtdItens, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkPerecivel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lblQtdAtende))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtQtdAtende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLimparTudo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFinalizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLimparItem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdcLista, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
+        this.setVisible(false);
+        Auxiliar.trocarTela(new PrincipalAdm());
+    }//GEN-LAST:event_mItemPrincipalActionPerformed
+
+    private void mItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSairActionPerformed
+        if (Model.Auxiliar.confirmarSaida()) System.exit(0);
+    }//GEN-LAST:event_mItemSairActionPerformed
+
+    private void btnPesquisaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaAlimentoActionPerformed
+        String txt = txtAlimento.getText();
+        if (txtAlimento.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Campo \'Alimento\' vazio.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Alimento a = new Alimento();
+
+        boolean sucesso = Auxiliar.isNumeric(txt) ?
+        a.consultar_por_id(Integer.parseInt(txt)) : a.consultar_por_nome(txt);
+        if (sucesso){
+            java.net.URL imgURL = getClass().getResource("/images/success.png");
+            ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Alimento encontrada");
+            lblPesquisaAlimento.setIcon(icon);
+            btnPesquisaAlimento.setEnabled(false);
+            txtAlimento.setEnabled(false);
+            txtQtdItens.setEnabled(true);
+            
+            txtAlimento.setText(a.getNome());            
+            txtFornecedor.setText(a.getFornecedor());
+            txtMarca.setText(a.getMarca());
+            lblQtdItens.setText(a.getMedida());
+            chkPerecivel.setSelected(a.isPerecivel());
+            txtQtdAtende.setText(String.valueOf(a.getQtd_atende()));
+            carregado = a;
+            btnAdcLista.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum alimento encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            java.net.URL imgURL = getClass().getResource("/images/failure.png");
+            ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Alimento Não Encontrado");
+            lblPesquisaAlimento.setIcon(icon);
+        }
+    }//GEN-LAST:event_btnPesquisaAlimentoActionPerformed
+
+    private void txtQtdItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtdItensActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQtdItensActionPerformed
+
+    private void txtFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFornecedorActionPerformed
+
+    private void chkPerecivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerecivelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkPerecivelActionPerformed
+
+    private void btnLimparItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparItemActionPerformed
+        resetAlimento();
+    }//GEN-LAST:event_btnLimparItemActionPerformed
+
+    private void btnLimparTudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparTudoActionPerformed
+        resetAll();
+    }//GEN-LAST:event_btnLimparTudoActionPerformed
+
+    private void btnAdcListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdcListaActionPerformed
+        String erro = "";
+        if (txtQtdItens.getText().equals("") || !Auxiliar.isNumeric(txtQtdItens.getText()))
+            erro += "Quantidade de itens inválida";
+        
+        if (carregado == null)
+            erro += "Nenhum alimento carregado";
+        
+        if (!erro.equals("")){
+            JOptionPane.showMessageDialog(this, erro, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Lote l = new Lote();
+        l.setId_alimento(carregado.getId_alimento());
+        l.setQtd_alimento(Integer.valueOf(txtQtdItens.getText()));
+        itens.add(l);
+        lstModel.addElement(txtAlimento.getText() + " - " + txtQtdItens.getText());
+        resetAlimento();
+    }//GEN-LAST:event_btnAdcListaActionPerformed
+
+    private void btnFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarPedidoActionPerformed
+        String erros = "";
+        if (itens.isEmpty()) erros += "Nenhum item adicionado\n";
+        
+        if (id_instituicao == -1) erros += "Instituicao não foi carregada\n";
+        
+        Date d = datePicker.getDate();
+        System.out.println("data: " + d);
+        if (d == null) erros += "Data inválida\n";
+        
+        if (!erros.equals("")){
+            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int reply = JOptionPane.showConfirmDialog(null, "Deseja finalizar o pedido??", "Merenda", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.NO_OPTION) return;
+        
+        Pedido p = new Pedido();
+        p.setId_instituicao(id_instituicao);
+        Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+        p.setData(formatter.format(d));
+        if (p.cadastrar() && p.cadastraLotes(itens)) JOptionPane.showMessageDialog(this, "Pedido cadastrado com sucesso");  
+        else JOptionPane.showMessageDialog(this, "Houve um erro ao cadsatrar o pedido", "Erro", JOptionPane.ERROR_MESSAGE);
+        resetAll();
+    }//GEN-LAST:event_btnFinalizarPedidoActionPerformed
+
+    private void btnPesquisaInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaInstituicaoActionPerformed
+        String txt = txtInstituicao.getText();
+        if (txt.equals("")){
+            JOptionPane.showMessageDialog(this, "Campo \'Instituicao\' vazio.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // SE FOR NÚMERO, PROCURA POR ID, SENÃO PESQUISA POR NOME
+        Instituicao i = new Instituicao();
+        boolean sucesso = Auxiliar.isNumeric(txt) ? i.instituicaoPorId(Integer.parseInt(txt)) : i.instituicaoPorNome(txt);
+        if (sucesso){
+            id_instituicao = i.getId();
+            
+            java.net.URL imgURL = getClass().getResource("/images/success.png");
+            ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Instituicão encontrada");
+            lblPesquisaInstituicao.setIcon(icon);
+            txtInstituicao.setEnabled(false);
+            btnPesquisaInstituicao.setEnabled(false);
+            txtInstituicao.setText(i.getNome());
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhuma instituição encontrada", "Erro", JOptionPane.ERROR_MESSAGE);
+            java.net.URL imgURL = getClass().getResource("/images/failure.png");
+            ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Instituição não Encontrada");
+            lblPesquisaInstituicao.setIcon(icon);
+        }
+    }//GEN-LAST:event_btnPesquisaInstituicaoActionPerformed
+
+    private void btnLimparInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparInstituicaoActionPerformed
+        resetInstituicao();
+    }//GEN-LAST:event_btnLimparInstituicaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +550,36 @@ public class CadastroPedido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdcLista;
+    private javax.swing.JButton btnFinalizarPedido;
+    private javax.swing.JButton btnLimparInstituicao;
+    private javax.swing.JButton btnLimparItem;
+    private javax.swing.JButton btnLimparTudo;
+    private javax.swing.JButton btnPesquisaAlimento;
+    private javax.swing.JButton btnPesquisaInstituicao;
+    private javax.swing.JCheckBox chkPerecivel;
+    private org.jdesktop.swingx.JXDatePicker datePicker;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAlimento;
+    private javax.swing.JLabel lblInstituicao;
+    private javax.swing.JLabel lblPesquisaAlimento;
+    private javax.swing.JLabel lblPesquisaInstituicao;
+    private javax.swing.JLabel lblQtdAtende;
+    private javax.swing.JLabel lblQtdItens;
+    private javax.swing.JList<String> lstItens;
+    private javax.swing.JMenuItem mItemPrincipal;
+    private javax.swing.JMenuItem mItemSair;
+    private javax.swing.JTextField txtAlimento;
+    private javax.swing.JTextField txtFornecedor;
+    private javax.swing.JTextField txtInstituicao;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtQtdAtende;
+    private javax.swing.JTextField txtQtdItens;
     // End of variables declaration//GEN-END:variables
 }

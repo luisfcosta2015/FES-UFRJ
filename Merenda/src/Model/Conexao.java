@@ -19,9 +19,9 @@ public class Conexao {
     private List<Map<String, Object>> resultSetToList(ResultSet rs) throws SQLException {
         ResultSetMetaData md = rs.getMetaData();
         int columns = md.getColumnCount();
-        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> rows = new ArrayList<>();
         while (rs.next()){
-            Map<String, Object> row = new HashMap<String, Object>(columns);
+            Map<String, Object> row = new HashMap<>(columns);
             for(int i = 1; i <= columns; ++i){
                 row.put(md.getColumnName(i), rs.getObject(i));
             }
@@ -31,11 +31,7 @@ public class Conexao {
     }    
     
     public static void testeConexao() {
-        Connection conn = getConnection();
-        if (conn == null)
-            System.out.println("Conexão falhou");
-        else
-            System.out.println("Conectou!!!");    
+        System.out.println((getConnection() == null)? "Conexão falhou" : "Conectou!!!");
     }
     
     private static Connection getConnection() {
@@ -53,10 +49,13 @@ public class Conexao {
                 DBUrl = s.next().split("'")[1];
                 DBUser = s.next().split("'")[1];
                 DBPass = s.next().split("'")[1];
+                
             } catch (Exception e) {
                    Auxiliar.DBError(e.getMessage());
             }
             // ***
+            
+                //System.out.println(DBUrl + " " + DBUser + " " + DBPass);
             return DriverManager.getConnection(DBUrl, DBUser, DBPass);
         } catch (Exception e) {
             Auxiliar.DBError(e.getMessage());

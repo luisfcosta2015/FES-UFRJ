@@ -75,8 +75,6 @@ public class Alimento {
                 + ", qtd_atende=" + getQtd_atende()             
                 + " WHERE id_alimento=" + getId_alimento();
         
-        //System.out.println(query);
-        
         return new Conexao().query_update(query);
     }
     
@@ -103,12 +101,14 @@ public class Alimento {
     
     public boolean consultar_por_id(int id) {
         String query = "SELECT * FROM alimento a where a.id=" + id ;
+        System.out.println(query);
         
         return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
     
     public boolean consultar_por_nome(String nome){
         String query = "SELECT * FROM alimento a where a.nome like \'" + nome + "%\'";
+        System.out.println(query);
         
         return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }

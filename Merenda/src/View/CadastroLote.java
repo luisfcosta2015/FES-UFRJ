@@ -27,7 +27,6 @@ public class CadastroLote extends javax.swing.JFrame {
         txtAlimento.setText("");
         txtPreco.setText("");
         txtQtdAlimento.setText("");
-        datePicker.setDate(null);
         
         txtAlimento.setEnabled(true);
         
@@ -64,7 +63,6 @@ public class CadastroLote extends javax.swing.JFrame {
         lblQtdAlimentos = new javax.swing.JLabel();
         lblDataValidade = new javax.swing.JLabel();
         lblPreco = new javax.swing.JLabel();
-        datePicker = new org.jdesktop.swingx.JXDatePicker();
         txtAlimento = new javax.swing.JTextField();
         btnPesquisaAlimento = new javax.swing.JButton();
         txtQtdAlimento = new javax.swing.JTextField();
@@ -192,10 +190,15 @@ public class CadastroLote extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblQtdAlimentos)
                                     .addComponent(lblAlimento))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnPesquisaAlimento)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnPesquisaAlimento))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(txtQtdAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPesquisaAlimento, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -209,11 +212,7 @@ public class CadastroLote extends javax.swing.JFrame {
                                     .addComponent(lblDataValidade)
                                     .addComponent(lblPreco))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtQtdAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtPreco, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(83, 83, 83)))
                 .addGap(16, 16, 16))
         );
@@ -234,9 +233,7 @@ public class CadastroLote extends javax.swing.JFrame {
                     .addComponent(lblQtdAlimentos)
                     .addComponent(txtQtdAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDataValidade)
-                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblDataValidade)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPreco)
@@ -250,7 +247,7 @@ public class CadastroLote extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
@@ -295,6 +292,7 @@ public class CadastroLote extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisaAlimentoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        /*
         String erros, preco, qtd_alimento;
         int id_alimento;
         Date data_validade;
@@ -304,9 +302,8 @@ public class CadastroLote extends javax.swing.JFrame {
         id_alimento = alimento.getId_alimento();
         preco = txtPreco.getText();
         qtd_alimento = txtQtdAlimento.getText();
-        data_validade = datePicker.getDate();
         
-        erros = lote.preencher_e_validar(id_alimento, preco, qtd_alimento, data_validade);
+        //erros = lote.preencher_e_validar(id_alimento, preco, qtd_alimento);
         
         if (!erros.equals("")) {
             //mensagem de erro
@@ -315,11 +312,11 @@ public class CadastroLote extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
         } else {
             JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (!pode_editar){
+        /*if (!pode_editar){
             JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
             limpar_tela();
             return;
@@ -333,9 +330,8 @@ public class CadastroLote extends javax.swing.JFrame {
         id_alimento = alimento.getId_alimento();
         preco = txtPreco.getText();
         qtd_alimento = txtQtdAlimento.getText();
-        data_validade = datePicker.getDate();
         
-        erros = l.preencher_e_validar(id_alimento, preco, qtd_alimento, data_validade);
+        erros = l.preencher_e_validar(id_alimento, preco, qtd_alimento);
         
         if (!erros.equals("")) {
             //mensagem de erro
@@ -344,10 +340,11 @@ public class CadastroLote extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
         } else {
             JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        /*
         if (!pode_editar){
             JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);
         } else if (lote == null){
@@ -355,7 +352,7 @@ public class CadastroLote extends javax.swing.JFrame {
         } else if (lote.deletar()){
             JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
             limpar_tela();
-        }
+        }*/
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -369,6 +366,8 @@ public class CadastroLote extends javax.swing.JFrame {
             return;
         }
         */
+        
+        /*
 
         Lote l = new Lote();
         String nome, qtd, data, preco;
@@ -406,7 +405,7 @@ public class CadastroLote extends javax.swing.JFrame {
             this.alimento = a;
         } else {
             JOptionPane.showMessageDialog(this, "Nenhum lote encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void txtQtdAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtdAlimentoActionPerformed
@@ -455,7 +454,6 @@ public class CadastroLote extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisaAlimento;
     private javax.swing.JButton btnPesquisar;
-    private org.jdesktop.swingx.JXDatePicker datePicker;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblAlimento;
