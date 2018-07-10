@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,9 +20,9 @@ public class Conexao {
     private List<Map<String, Object>> resultSetToList(ResultSet rs) throws SQLException {
         ResultSetMetaData md = rs.getMetaData();
         int columns = md.getColumnCount();
-        List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> rows = new ArrayList<>();
         while (rs.next()){
-            Map<String, Object> row = new HashMap<String, Object>(columns);
+            Map<String, Object> row = new HashMap<>(columns);
             for(int i = 1; i <= columns; ++i){
                 row.put(md.getColumnName(i), rs.getObject(i));
             }
@@ -31,14 +32,11 @@ public class Conexao {
     }    
     
     public static void testeConexao() {
-        Connection conn = getConnection();
-        if (conn == null)
-            System.out.println("Conexão falhou");
-        else
-            System.out.println("Conectou!!!");    
+        System.out.println((getConnection() == null)? "Conexão falhou" : "Conectou!!!");
     }
     
     private static Connection getConnection() {
+        JOptionPane mensagem = new JOptionPane();
         try {
             String DBUrl = "";
             String DBUser = "";
@@ -53,13 +51,25 @@ public class Conexao {
                 DBUrl = s.next().split("'")[1];
                 DBUser = s.next().split("'")[1];
                 DBPass = s.next().split("'")[1];
+                
             } catch (Exception e) {
                    Auxiliar.DBError(e.getMessage());
             }
             // ***
+            
+                //System.out.println(DBUrl + " " + DBUser + " " + DBPass);
             return DriverManager.getConnection(DBUrl, DBUser, DBPass);
         } catch (Exception e) {
-            Auxiliar.DBError(e.getMessage());
+            try {
+                PrintWriter writer = new PrintWriter("bd.cfg", "UTF-8");
+                writer.println("link_do_banco = 'jdbc:mysql://localhost:3306/merenda?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'");
+                writer.println("usuario = 'root'");
+                writer.println("senha = 'root'");
+                writer.close();
+            } catch (IOException ex) {
+                Auxiliar.DBError(ex.getMessage());
+            }
+            mensagem.showMessageDialog(null, "Favor editar o arquivo 'bd.cfg' para configurar acesso ao SGBD");
         }
         return null;
     }

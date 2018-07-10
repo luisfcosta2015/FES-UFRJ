@@ -33,8 +33,8 @@ public class Cardapio {
     
     public boolean cadastrar(){
         
-        String query = "INSERT INTO cardapio (id_instituicao, data_cardapio, lanche_manha, almoco, lanche_tarde, janta) VALUES";
-        query += "("+ getId_instituicao()+", " + "\'" + getData_cardapio() + "\'," + Auxiliar.nullOrQuotes(getLanche_manha()) + "," + Auxiliar.nullOrQuotes(getAlmoco());
+        String query = "INSERT INTO cardapio (id, id_instituicao, data_cardapio, lanche_manha, almoco, lanche_tarde, janta) VALUES";
+        query += "(0,"+ getId_instituicao()+", " + "\'" + getData_cardapio() + "\'," + Auxiliar.nullOrQuotes(getLanche_manha()) + "," + Auxiliar.nullOrQuotes(getAlmoco());
         query += "," + Auxiliar.nullOrQuotes(getLanche_tarde()) + "," + Auxiliar.nullOrQuotes(getJanta()) +")" ;
         
         return new Conexao().query_update(query);

@@ -18,9 +18,9 @@ import static org.junit.Assert.*;
  *
  * @author Matheus Feitosa
  */
-public class CadastroAlimentoTest {
+public class CadastroInstituicaoTest {
     
-    public CadastroAlimentoTest() {
+    public CadastroInstituicaoTest() {
     }
     
     @BeforeClass
@@ -40,34 +40,30 @@ public class CadastroAlimentoTest {
     }
 
     /**
-     * Test of reset method, of class CadastroAlimento.
+     * Test of reset method, of class CadastroInstituicao.
      */
     @Test
     public void testReset() {
-        /*
-            Essa função confere se a função reset funciona,
-        ela escreve dados e depois da reset, caso todos estiverem vazios funcionou.
-        */
-        CadastroAlimento cad = new CadastroAlimento();
-        cad.preenchertest("nome","marca","fornecedor","123",1,true);
-        cad.reset();
-        String nome = cad.retornaValores(0);
+        CadastroInstituicao I = new CadastroInstituicao();
+        I.preenchertest("nome","endereco","INEP","123",1,"940028922");
+        I.reset();
+        String nome = I.retornaValores(0);
         assertEquals("",nome);
-        String marca = cad.retornaValores(1);
-        assertEquals("",marca);
-        String fornecedor = cad.retornaValores(2);
-        assertEquals("",fornecedor);
-        String quantidade = cad.retornaValores(3);
-        assertEquals("",quantidade);
+        String Endereco = I.retornaValores(1);
+        assertEquals("",Endereco);
+        String Inep = I.retornaValores(2);
+        assertEquals("",Inep);
+        String Qnt = I.retornaValores(3);
+        assertEquals("",Qnt);
     }
 
     /**
-     * Test of main method, of class CadastroAlimento.
+     * Test of main method, of class CadastroInstituicao.
      */
     @Test
     public void testMain() {
-        CadastroAlimento cad = new CadastroAlimento();
-        cad.telasInvisiveis();
+        CadastroInstituicao I = new CadastroInstituicao();
+        I.telasInvisiveis();
         for(int loop = 0;loop<50;loop++){
             /*Como o código funciona:
             
@@ -85,17 +81,18 @@ public class CadastroAlimentoTest {
             String nomenovo;
             while(true){
                 nomenovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
-                cad.preenchernometest(nomenovo);
-                cad.BotaoPesquisar().doClick();
-                String marcateste = cad.retornaValores(1);
-                if("".equals(marcateste)){
+                I.preenchernometest(nomenovo);
+                I.BotaoPesquisar().doClick();
+                String Endereco = I.retornaValores(1);
+                if("".equals(Endereco)){
                     break;
                 }
-                cad.reset();
+                I.reset();
+                System.out.println("View.CadastroInstituicaoTest.testMain()");
             }
-            cad.reset();
-            String marcanovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
-            String fornecedornovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
+            I.reset();
+            String Endereco = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
+            String Inep = Auxiliar.CriaNumero(8);
             int i = ran.nextInt(28) + 1;
             //fonte https://stackoverflow.com/questions/4105331/how-do-i-convert-from-int-to-string
             StringBuilder sb = new StringBuilder();
@@ -103,33 +100,26 @@ public class CadastroAlimentoTest {
             sb.append(i);
             String quantstring = sb.toString();
             int novoint = ran.nextInt(4);
-            i = ran.nextInt(2);
-            boolean booleano;
-            booleano = i != 0;
-            System.out.println(booleano);
-            cad.preenchertest(nomenovo,marcanovo,fornecedornovo,quantstring,novoint,booleano);
-            cad.BotaoCadastrar().doClick();
-            cad.reset();
-            cad.preenchernometest(nomenovo);
-            cad.BotaoPesquisar().doClick();
-            String nome = cad.retornaValores(0);
+            String Telefone = Auxiliar.CriaNumero(ran.nextInt(2)+10);
+            I.preenchertest(nomenovo,Endereco,Inep,quantstring,novoint,Telefone);
+            I.BotaoCadastrar().doClick();
+            I.reset();
+            I.preenchernometest(nomenovo);
+            I.BotaoPesquisar().doClick();
+            String nome = I.retornaValores(0);
             assertEquals(nomenovo,nome);
             System.out.println(nome);
-            String marca = cad.retornaValores(1);
-            System.out.println(marcanovo);
-            assertEquals(marcanovo,marca);
-            String fornecedor = cad.retornaValores(2);
-            System.out.println(fornecedornovo);
-            assertEquals(fornecedornovo,fornecedor);
-            String quantidade = cad.retornaValores(3);
-            System.out.println(quantstring);
+            String End = I.retornaValores(1);
+            assertEquals(Endereco,End);
+            String Ine = I.retornaValores(2);
+            assertEquals(Inep,Ine);
+            String quantidade = I.retornaValores(3);
             assertEquals(quantidade,quantstring);
-            cad.BotaoDeletar().doClick();
-        }
-    } 
-    
+            I.BotaoDeletar().doClick();
+        }   
+    }
     @Test
-    public void testInvalid() {
+    public void testInvalido() {
         /*Como o código funciona:
             
             Primeiro ele cria um numero randomico para descobrir qual casa será invalida,
@@ -141,50 +131,51 @@ public class CadastroAlimentoTest {
         depois clica no botao deletar para deletar caso seja encontrado.
             */
         for(int loop = 0;loop<50;loop++){
-            CadastroAlimento cad = new CadastroAlimento();
-            cad.telasInvisiveis();
+            CadastroInstituicao I = new CadastroInstituicao();
+            I.telasInvisiveis();
             Random ran = new Random();
             String nomenovo;
-            String marcanovo;
-            String fornecedornovo;
+            String Endereconovo;
+            String Inepnovo;
             String quantstring;
+            String Telefonenovo;
             int novoint;
             int erro;
-            erro = ran.nextInt(5);
+            erro = ran.nextInt(6);
             if(erro==0 || ran.nextInt(2)==1 ){
                 if(ran.nextInt(2)==1){
                     while(true){
                         nomenovo = Auxiliar.CriaPalavra(50);
-                        cad.preenchernometest(nomenovo);
-                        cad.BotaoPesquisar().doClick();
-                        String marcateste = cad.retornaValores(1);
-                        if("".equals(marcateste)){
+                        I.preenchernometest(nomenovo);
+                        I.BotaoPesquisar().doClick();
+                        String Enderecoteste = I.retornaValores(1);
+                        if("".equals(Enderecoteste)){
                             break;
                         }
-                        cad.reset();
+                        I.reset();
                     }
                 }else{
                     while(true){
                         nomenovo = "";
-                        cad.preenchernometest(nomenovo);
-                        cad.BotaoPesquisar().doClick();
-                        String marcateste = cad.retornaValores(1);
-                        if("".equals(marcateste)){
+                        I.preenchernometest(nomenovo);
+                        I.BotaoPesquisar().doClick();
+                        String Enderecoteste = I.retornaValores(1);
+                        if("".equals(Enderecoteste)){
                             break;
                         }
-                        cad.reset();
+                        I.reset();
                     }    
                 }
             }else{
                 while(true){
                     nomenovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
-                    cad.preenchernometest(nomenovo);
-                    cad.BotaoPesquisar().doClick();
-                    String marcateste = cad.retornaValores(1);
-                    if("".equals(marcateste)){
+                    I.preenchernometest(nomenovo);
+                    I.BotaoPesquisar().doClick();
+                    String Enderecoteste = I.retornaValores(1);
+                    if("".equals(Enderecoteste)){
                         break;
                     }
-                    cad.reset();
+                    I.reset();
                 }
             }
 
@@ -193,12 +184,12 @@ public class CadastroAlimentoTest {
 
             if(erro==1 || ran.nextInt(2)==1 ){
                  if(ran.nextInt(2)==1){
-                    marcanovo = Auxiliar.CriaPalavra(50);
+                    Endereconovo = Auxiliar.CriaPalavra(50);
                 }else{
-                    marcanovo = "";
+                    Endereconovo = "";
                 }
             }else{
-                marcanovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
+                Endereconovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
             }
 
 
@@ -206,12 +197,12 @@ public class CadastroAlimentoTest {
 
             if(erro==2 || ran.nextInt(2)==1 ){
                 if(ran.nextInt(2)==1){
-                    fornecedornovo = Auxiliar.CriaPalavra(50);
+                    Inepnovo = Auxiliar.CriaNumero(ran.nextInt(10) + 8);
                 }else{
-                    fornecedornovo = "";
+                    Inepnovo = Auxiliar.CriaNumero(ran.nextInt(8));
                 }
             }else{
-                fornecedornovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
+                Inepnovo = Auxiliar.CriaNumero(8);
             }
 
 
@@ -241,32 +232,35 @@ public class CadastroAlimentoTest {
                 novoint = ran.nextInt(4);
             }
 
-            int i = ran.nextInt(2);
-            boolean booleano;
-            booleano = i != 0;
+            if(erro==5 || ran.nextInt(2)==1 ){
+                if(ran.nextInt(2)==1){
+                    Telefonenovo = Auxiliar.CriaNumero(ran.nextInt(10) + 12);
+                }else{
+                    Telefonenovo = Auxiliar.CriaNumero(ran.nextInt(10));
+                }
+            }else{
+                Telefonenovo = Auxiliar.CriaNumero(ran.nextInt(2)+10);
+            }
 
-            cad.preenchertest(nomenovo,marcanovo,fornecedornovo,quantstring,novoint,booleano);
-            cad.BotaoCadastrar().doClick();
-            cad.reset();
-            cad.preenchernometest(nomenovo);
-            cad.BotaoPesquisar().doClick();
-            String nome = cad.retornaValores(0);
+            I.preenchertest(nomenovo,Endereconovo,Inepnovo,quantstring,novoint,Telefonenovo);
+            I.BotaoCadastrar().doClick();
+            I.reset();
+            I.preenchernometest(nomenovo);
+            I.BotaoPesquisar().doClick();
+            String nome = I.retornaValores(0);
             System.out.println(nome);
             assertEquals(nomenovo,nome);
-            String marca = cad.retornaValores(1);
-            System.out.println(marcanovo);
+            String marca = I.retornaValores(1);
+            System.out.println(Endereconovo);
             assertEquals("",marca);
-            String fornecedor = cad.retornaValores(2);
-            System.out.println(fornecedornovo);
+            String fornecedor = I.retornaValores(2);
+            System.out.println(Inepnovo);
             assertEquals("",fornecedor);
-            String quantidade = cad.retornaValores(3);
+            String quantidade = I.retornaValores(3);
             System.out.println(quantstring);
             assertEquals("",quantidade);
-            cad.BotaoDeletar().doClick();
+            I.BotaoDeletar().doClick();
         }
     }
-
+    
 }
-    
-
-    

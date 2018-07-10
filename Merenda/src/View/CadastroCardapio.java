@@ -60,8 +60,8 @@ public class CadastroCardapio extends javax.swing.JFrame {
         chkLancheDaTarde = new javax.swing.JCheckBox();
         chkJanta = new javax.swing.JCheckBox();
         lblInsituicao = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMenuArquivo = new javax.swing.JMenu();
         mItemPrincipal = new javax.swing.JMenuItem();
         mItemSair = new javax.swing.JMenuItem();
 
@@ -115,7 +115,7 @@ public class CadastroCardapio extends javax.swing.JFrame {
 
         lblInsituicao.setText("Instituição : ?");
 
-        jMenu1.setText("Arquivo");
+        jMenuArquivo.setText("Arquivo");
 
         mItemPrincipal.setText("Menu Principal");
         mItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ public class CadastroCardapio extends javax.swing.JFrame {
                 mItemPrincipalActionPerformed(evt);
             }
         });
-        jMenu1.add(mItemPrincipal);
+        jMenuArquivo.add(mItemPrincipal);
 
         mItemSair.setText("Sair");
         mItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -131,11 +131,11 @@ public class CadastroCardapio extends javax.swing.JFrame {
                 mItemSairActionPerformed(evt);
             }
         });
-        jMenu1.add(mItemSair);
+        jMenuArquivo.add(mItemSair);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar.add(jMenuArquivo);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,12 +259,12 @@ public class CadastroCardapio extends javax.swing.JFrame {
         }
         
         Instituicao i = new Instituicao();
-        i.instituicaoPorId(Sessao.getInstance().getIdPessoa());
         
-        if (i.instituicaoPorId(Sessao.getInstance().getIdPessoa()) == false){
+        if (i.instituicaoPorIdPessoa(Sessao.getInstance().getIdPessoa()) == false){
+            System.out.println("Id pessoa no erro la maluco : "+Sessao.getInstance().getIdPessoa());
             erros += "Usuário não é diretor de nenhuma instituição ou de mais de uma\n";
         } else {
-            c.setId_instituicao(Sessao.getInstance().getIdPessoa());
+            c.setId_instituicao(Sessao.getInstance().getIdInstituicao());
         }
         
         if (!erros.equals("")){
@@ -341,8 +341,8 @@ public class CadastroCardapio extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkLancheDaTarde;
     private org.jdesktop.swingx.JXDatePicker datePicker;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuArquivo;
+    private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JLabel lblAlmoco;
     private javax.swing.JLabel lblInsituicao;
     private javax.swing.JLabel lblJanta;

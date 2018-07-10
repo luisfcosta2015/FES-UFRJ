@@ -29,18 +29,15 @@ public class Auxiliar {
     }
     
     // TESTA SE STRING É COMPOSTA APENAS DE NÚMEROS
-    public static boolean isNumeric(String str)
-    {
-        for (char c : str.toCharArray())
-            if (!Character.isDigit(c)) return false;
+    public static boolean isNumeric(String str) {
+        for (char c : str.toCharArray()) if (!Character.isDigit(c)) return false;
         return true;
     }
     
     // CONFIRMAÇÃO DE SAÍDA COM JOPTIONPANE
     public static boolean confirmarSaida(){
         int reply = JOptionPane.showConfirmDialog(null, "Deseja finalizar o programa?", "Merenda", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION)  return true; 
-        return false;
+        return (reply == JOptionPane.YES_OPTION);
     }
     
     // Configuraçõoes personalizadas de telas: Centralizar e etc
@@ -111,6 +108,26 @@ public class Auxiliar {
         }
         return palavra;
     }
+    
+    /*
+        Essa função cria palavras aleatórias para auxiliar nos testes.
+    */
+    public static String CriaNumero(int tamanho){
+        String palavra;
+        String[] letrinhas = {"0","1","2","3","4","5","6","7","8","9"};
+        palavra ="";
+        Random ran = new Random();
+        for(int i = 0;i<tamanho;i++){
+            int k = 0;
+            if(i!=0)
+                k = ran.nextInt(letrinhas.length);
+            if(i==0)
+                k = ran.nextInt(letrinhas.length-1)+1;
+            palavra += letrinhas[k];
+        }
+        return palavra;
+    }
+    
     
     // FUNÇÃO AUXILIAR QUE RETORNA NULL SE FOR NULL
     // SENÃO RETORNA A STRING ENTRE ASPAS
