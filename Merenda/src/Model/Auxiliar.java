@@ -11,12 +11,17 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import Controller.Pessoa;
 import java.util.Random;
-import java.util.concurrent.Callable;
 
 public class Auxiliar {
     
-    // TODO: Mensagem de erro generica
-    public static void errMsg(String msg){
+    // Mensagem de erro generica
+    public static void errMsg(JFrame frame, String msg, boolean mostra){
+        if (mostra) JOptionPane.showMessageDialog(frame, msg, "Erro", JOptionPane.ERROR_MESSAGE);    
+    }
+    
+    // Mensagem de informação
+    public static void msg(JFrame frame, String msg, boolean mostra){
+        if (mostra) JOptionPane.showMessageDialog(frame, msg);        
     }
     
     public static ImageIcon createImageIcon(java.net.URL imgURL, String description) {

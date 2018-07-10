@@ -431,8 +431,7 @@ public String retornaValores(int qualvalor){
             txtMatricula.setText(c.getMatricula());            
             // INCONSISTENCIA NO BD: foi selecionado um tipo de conta que não existe
             if (c.getId_tipo_conta()>= cmbTipoConta.getItemCount() || c.getId_tipo_conta() <= 0){
-                if(showTela==true)
-                    JOptionPane.showMessageDialog(this, "Tipo de conta não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);                
+                Auxiliar.errMsg((JFrame)this, "Tipo de conta não se encontra nas opções", showTela);              
             } else {
                 cmbTipoConta.setSelectedIndex(c.getId_tipo_conta()-1);
             }
@@ -475,23 +474,19 @@ public String retornaValores(int qualvalor){
             erros += "Senha e confirmação de senha diferentes\n";
             
         // se há erros computados na validação da classe ou erros da confirmação de senha feitos na view
-        if(showTela==true){
-            //System.out.println("oiiiiiiiiii");
-            if (!(erros += c.validar()).equals(""))
-                    JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
-            else {
-                if (c.cadastrar()) JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
-                else JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
-                reset();
-            }
+        if (!(erros += c.validar()).equals("")) {
+            Auxiliar.errMsg((JFrame)this, erros, showTela);
+        }else {
+            if (c.cadastrar()) Auxiliar.msg(this, "Cadastro efetuado com sucesso", showTela);
+            else Auxiliar.errMsg(this, erros, showTela);
+            reset();
         }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (!editmode){
-            if(showTela==true)
-                JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            Auxiliar.errMsg(this, "Não está no modo de edição", showTela);
             reset();
             return;
         }
@@ -515,21 +510,29 @@ public String retornaValores(int qualvalor){
         if (!senha.equals(confSenha))
             erros += "Senha e confirmação de senha diferentes\n";
 
-        if (showTela){
-            if (!(erros += c.validar()).equals(""))
-                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
-            else if (c.update())
-                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
-            else
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+        System.out.println("showTela: " + showTela);
+        if (!(erros += c.validar()).equals("")){
+            Auxiliar.errMsg(this, erros, showTela);
+        } else if (c.update()){
+            Auxiliar.msg(this, "Dados atualizados com sucesso", showTela);
+            reset();
+        } else {
+            Auxiliar.errMsg(this, "Erro no BD", showTela);
+            reset();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        if (showTela){
-            if (!editmode) JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);
-            else if (c1 == null) JOptionPane.showMessageDialog(this, "Não há conta carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);
-            else if (c1.deletar()) JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+        if (!editmode){
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (c1 == null){
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não há conta carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (c1.deletar()){
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            reset();
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
