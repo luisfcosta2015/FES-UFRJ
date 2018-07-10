@@ -496,7 +496,7 @@ public class CadastroConta extends javax.swing.JFrame {
         Instituicao i = new Instituicao();
         boolean sucesso = Auxiliar.isNumeric(txt) ? i.instituicaoPorId(Integer.parseInt(txt)) : i.instituicaoPorNome(txt);
         if (sucesso){
-            id_instituicao = i.getId_instituicao();
+            id_instituicao = i.getId();
             java.net.URL imgURL = getClass().getResource("/images/success.png");
             ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Instituicão encontrada");
             lblPesquisaInstituicao.setIcon(icon);
