@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
@@ -20,6 +21,7 @@ import javax.swing.WindowConstants;
  */
 public class CadastroInstituicao extends javax.swing.JFrame {
 
+    boolean showTela = true;
     private int idDiretor = -1;    
     private String oldTxtDiretor;
     List<Map<String, Object>> inst;
@@ -28,6 +30,80 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     /**
      * Creates new form CadastroAlimento
      */
+    
+    /* Aqui estão as funções que auxiliaram os testes
+*
+*
+*
+*/
+
+/*
+    Essas funções apenas retornam o botão da tela, para que possa dar doClick nos testes.
+*/    
+    
+public JButton BotaoCadastrar(){ 
+    return btnCadastrar;
+} 
+
+public JButton BotaoPesquisar(){ 
+    return btnPesquisar;
+}
+public JButton BotaoDeletar(){ 
+    return btnDeletar;
+}
+ 
+/*
+    Essa função preenche apenas o campo de nome
+*/
+public void preenchernometest(String nome){
+txtNome.setText(nome);
+}
+    
+/*
+    Essa função preenche todos os campos da tela
+*/
+
+public void preenchertest(String nome,String endereco,String INEP,String quantidade, int Tipo, String Telefone ){
+txtINEP.setText(INEP);
+txtEndereco.setText(endereco);
+txtNome.setText(nome);
+if(Auxiliar.isNumeric(quantidade)){
+txtQtdAlunos.setText(quantidade);
+}else{
+txtQtdAlunos.setText("0");
+}
+cmbTipo.setSelectedIndex(Tipo);
+txtTelefone.setText(Telefone);
+}
+
+/*
+    Essa função retorna os dados da tela, de acordo com o inteiro mandado.
+*/
+
+public String retornaValores(int qualvalor){
+if(qualvalor== 0){
+return txtNome.getText();
+}
+if(qualvalor== 1){
+return txtEndereco.getText();
+}
+if(qualvalor== 2){
+return txtINEP.getText();
+}
+if(qualvalor== 3){
+return txtQtdAlunos.getText();
+}
+return "nada";
+}
+
+/*
+*
+*
+* Aqui estão as funções que auxiliaram os testes
+*/
+    public void telasInvisiveis(){
+        showTela = false;
+    }
     
     public void reset(){
         //txtDiretor.setText("");
@@ -284,9 +360,13 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         i.setNome(txtNome.getText());
         i.setInep(txtINEP.getText());
         i.setTelefone(txtTelefone.getText());
-        i.setQtd_alunos(
-                (Auxiliar.isNumeric(txtQtdAlunos.getText())) ? 
-                Integer.valueOf(txtQtdAlunos.getText()) : -1);
+        if("".equals(txtQtdAlunos.getText())){
+            i.setQtd_alunos(-1);
+        }else{
+            i.setQtd_alunos(
+                    (Auxiliar.isNumeric(txtQtdAlunos.getText())) ? 
+                    Integer.valueOf(txtQtdAlunos.getText()) : -1);
+        }
         i.setEndereco(txtEndereco.getText());
         
         /*if (!chkDiretor.isSelected()){
@@ -310,13 +390,16 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         
         if (!(erros += i.validar()).equals("")){
             // mensagem de erro
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
             // realiza o cadastro no BD
             if (i.cadastrar()){
-                JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
             } else {
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -337,7 +420,8 @@ public class CadastroInstituicao extends javax.swing.JFrame {
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         String nome = txtNome.getText();
         if (nome.length() == 0 || nome.length() >= 30){
-            JOptionPane.showMessageDialog(this, "Nome de instutuição inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nome de instutuição inválido", "Erro", JOptionPane.ERROR_MESSAGE);      
             return;
         }
         
@@ -357,7 +441,8 @@ public class CadastroInstituicao extends javax.swing.JFrame {
                 }
             }
             if (j == cmbTipo.getItemCount()){
-                JOptionPane.showMessageDialog(this, "Tipo de instituição não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);   
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Tipo de instituição não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);   
             }
             
             
@@ -367,25 +452,30 @@ public class CadastroInstituicao extends javax.swing.JFrame {
             btnPesquisar.setEnabled(false);
             i1 = i;            
         } else {
-            JOptionPane.showMessageDialog(this, "Nenhuma ou mais de uma instituição encontrada", "Erro", JOptionPane.ERROR_MESSAGE);               
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nenhuma ou mais de uma instituição encontrada", "Erro", JOptionPane.ERROR_MESSAGE);               
         }
         
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);              
         } else if (i1 == null){
-            JOptionPane.showMessageDialog(this, "Não há instituição carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não há instituição carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);             
         } else if (i1.deletar()){            
-            JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
             reset();
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -411,15 +501,18 @@ public class CadastroInstituicao extends javax.swing.JFrame {
         
         if (!(erros += i.validar()).equals("")){
             // mensagem de erro
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else{
             int id = i1.getId_instituicao();
             i1 = i;
             i1.setId_instituicao(id);
             if (i.update())
-                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
             else
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             reset();
         }
     }//GEN-LAST:event_btnEditarActionPerformed

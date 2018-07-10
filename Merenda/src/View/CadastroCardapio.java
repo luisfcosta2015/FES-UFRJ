@@ -259,12 +259,12 @@ public class CadastroCardapio extends javax.swing.JFrame {
         }
         
         Instituicao i = new Instituicao();
-        i.instituicaoPorId(Sessao.getInstance().getIdPessoa());
         
-        if (i.instituicaoPorId(Sessao.getInstance().getIdPessoa()) == false){
+        if (i.instituicaoPorIdPessoa(Sessao.getInstance().getIdPessoa()) == false){
+            System.out.println("Id pessoa no erro la maluco : "+Sessao.getInstance().getIdPessoa());
             erros += "Usuário não é diretor de nenhuma instituição ou de mais de uma\n";
         } else {
-            c.setId_instituicao(Sessao.getInstance().getIdPessoa());
+            c.setId_instituicao(Sessao.getInstance().getIdInstituicao());
         }
         
         if (!erros.equals("")){

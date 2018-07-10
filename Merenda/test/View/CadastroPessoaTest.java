@@ -56,95 +56,103 @@ public class CadastroPessoaTest {
      */
     @Test
     public void testMain() {
-        CadastroPessoa p = new CadastroPessoa();
-        p.telasInvisiveis();
-        String nomenovo;
-        Random ran = new Random();
-        while(true){
-                nomenovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
-                p.preenchernometest(nomenovo);
-                p.BotaoPesquisar().doClick();
-                String cpfteste = p.retornaValores(1);
-                if("".equals(cpfteste)){
-                    break;
-                }
-            }
-        p.reset();
-        String cpfnovo = Auxiliar.CriaNumero(11);
-        p.preenchertest(nomenovo,cpfnovo);
-        p.BotaoCadastrar().doClick();
-        p.reset();
-        p.preenchernometest(nomenovo);
-        p.BotaoPesquisar().doClick();
-        String nome = p.retornaValores(0);
-        assertEquals(nomenovo,nome);
-        String cpf = p.retornaValores(1);
-        assertEquals(cpfnovo,cpf);
-        p.BotaoDeletar().doClick();
-    }
-    
-    @Test
-    public void testInvalid() {
-        CadastroPessoa p = new CadastroPessoa();
-        p.telasInvisiveis();
-        Random ran = new Random();
-        String nomenovo;
-        String Cpfnovo;
-        int novoint;
-        int erro;
-        erro = ran.nextInt(2);
-        if(erro==0 || ran.nextInt(2)==1 ){
-            if(ran.nextInt(2)==1){
-                while(true){
-                    nomenovo = Auxiliar.CriaPalavra(50);
+        for(int loop = 0;loop<50;loop++){
+            CadastroPessoa p = new CadastroPessoa();
+            p.telasInvisiveis();
+            String nomenovo;
+            Random ran = new Random();
+            while(true){
+                    nomenovo = Auxiliar.CriaPalavra(ran.nextInt(80) + 1);
                     p.preenchernometest(nomenovo);
                     p.BotaoPesquisar().doClick();
                     String cpfteste = p.retornaValores(1);
                     if("".equals(cpfteste)){
                         break;
                     }
+                    p.reset();
                 }
-            }else{
-                while(true){
-                    nomenovo = "";
-                    p.preenchernometest(nomenovo);
-                    p.BotaoPesquisar().doClick();
-                    String cpfteste = p.retornaValores(1);
+            p.reset();
+            String cpfnovo = Auxiliar.CriaNumero(11);
+            p.preenchertest(nomenovo,cpfnovo);
+            p.BotaoCadastrar().doClick();
+            p.reset();
+            p.preenchernometest(nomenovo);
+            p.BotaoPesquisar().doClick();
+            String nome = p.retornaValores(0);
+            assertEquals(nomenovo,nome);
+            String cpf = p.retornaValores(1);
+            assertEquals(cpfnovo,cpf);
+            p.BotaoDeletar().doClick();
+        }
+    }
+    
+    @Test
+    public void testInvalid() {
+        for(int loop = 0;loop<50;loop++){
+            CadastroPessoa p = new CadastroPessoa();
+            p.telasInvisiveis();
+            Random ran = new Random();
+            String nomenovo;
+            String Cpfnovo;
+            int novoint;
+            int erro;
+            erro = ran.nextInt(2);
+            if(erro==0 || ran.nextInt(2)==1 ){
+                if(ran.nextInt(2)==1){
+                    while(true){
+                        nomenovo = Auxiliar.CriaPalavra(ran.nextInt(50) + 256);
+                        p.preenchernometest(nomenovo);
+                        p.BotaoPesquisar().doClick();
+                        String cpfteste = p.retornaValores(1);
                         if("".equals(cpfteste)){
                             break;
                         }
-                    }    
-                }
-        }else{
-            while(true){
-                nomenovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
-                p.preenchernometest(nomenovo);
-                p.BotaoPesquisar().doClick();
-                String cpfteste = p.retornaValores(1);
-                if("".equals(cpfteste)){
-                    break;
-                }
-            }
-        }
-        
-        if(erro==1 || ran.nextInt(2)==1 ){
-                 if(ran.nextInt(2)==1){
-                    Cpfnovo = Auxiliar.CriaNumero(50);
+                        p.reset();
+                    }
                 }else{
-                    Cpfnovo = "";
-                }
+                    while(true){
+                        nomenovo = "";
+                        p.preenchernometest(nomenovo);
+                        p.BotaoPesquisar().doClick();
+                        String cpfteste = p.retornaValores(1);
+                            if("".equals(cpfteste)){
+                                break;
+                            }
+                        p.reset();
+                        }    
+                    }
             }else{
-                Cpfnovo = Auxiliar.CriaNumero(11);
+                while(true){
+                    nomenovo = Auxiliar.CriaPalavra(ran.nextInt(80) + 1);
+                    p.preenchernometest(nomenovo);
+                    p.BotaoPesquisar().doClick();
+                    String cpfteste = p.retornaValores(1);
+                    if("".equals(cpfteste)){
+                        break;
+                    }
+                    p.reset();
+                }
             }
-        
-        p.preenchertest(nomenovo,Cpfnovo);
-        p.BotaoCadastrar().doClick();
-        p.reset();
-        p.preenchernometest(nomenovo);
-        p.BotaoPesquisar().doClick();
-        String cpf = p.retornaValores(1);
-        assertEquals("",cpf);
-        p.BotaoDeletar().doClick();
+
+            if(erro==1 || ran.nextInt(2)==1 ){
+                     if(ran.nextInt(2)==1){
+                        Cpfnovo = Auxiliar.CriaNumero(ran.nextInt(10) + 12);
+                    }else{
+                        Cpfnovo = Auxiliar.CriaNumero(ran.nextInt(11));
+                    }
+                }else{
+                    Cpfnovo = Auxiliar.CriaNumero(11);
+                }
+
+            p.preenchertest(nomenovo,Cpfnovo);
+            p.BotaoCadastrar().doClick();
+            p.reset();
+            p.preenchernometest(nomenovo);
+            p.BotaoPesquisar().doClick();
+            String cpf = p.retornaValores(1);
+            assertEquals("",cpf);
+            p.BotaoDeletar().doClick();
+        }
     }
     
 }

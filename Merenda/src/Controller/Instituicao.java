@@ -35,7 +35,7 @@ public class Instituicao {
     }
      
     public boolean deletar(){
-        String query = "DELETE FROM instituicao WHERE id_instituicao=" + getId_instituicao();
+        String query = "DELETE FROM instituicao WHERE id=" + getId_instituicao();
         
         return new Conexao().query_update(query);
     }
@@ -48,7 +48,7 @@ public class Instituicao {
                 + ", telefone=\'" + getTelefone() + "\'"
                 + ", qtd_alunos=" + getQtd_alunos()
                 + ", id_tipo=" + getId_tipo()
-                + " WHERE id_instituicao=" + getId_instituicao();
+                + " WHERE id=" + getId_instituicao();
         
         //System.out.println(query);
         
@@ -67,7 +67,7 @@ public class Instituicao {
     }*/
     Auxiliar.PreencheDados preenche_dados = (m) -> {
         setEndereco(String.valueOf(m.get("endereco")));
-        setId_instituicao((int)m.get("id_instituicao"));
+        setId_instituicao((int)m.get("id"));
         setId_tipo((int)m.get("id_tipo"));
         setInep(String.valueOf(m.get("inep")));
         setNome(String.valueOf(m.get("nome")));
@@ -81,9 +81,15 @@ public class Instituicao {
     } 
     
     public boolean instituicaoPorId(int id){
-        String query = "SELECT * FROM instituicao i where i.id_instituicao=" + id;
+        String query = "SELECT * FROM instituicao i where i.id=" + id;
         return Auxiliar.consulta_e_preenche(query, preenche_dados);
-    } 
+    }
+    
+    public boolean instituicaoPorIdPessoa(int id){
+        String query = "select * from instituicao i inner join conta c on i.id=c.id_instituicao where c.id_pessoa=" + id;
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
+    }
+    //instituicaoPorIdPessoa
     
     public String validar(){
         String erros = "";
