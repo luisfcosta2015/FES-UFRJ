@@ -49,9 +49,9 @@
    <top>
       <Pane maxHeight="50.0" maxWidth="1000.0" prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="titulo" text="Relatórios Gráficos">
+            <Label styleClass="titulo" text="visEducar">
                <padding>
-                  <Insets left="560.0" />
+                  <Insets left="755.0" />
                </padding>
             </Label>
             <fx:define>
