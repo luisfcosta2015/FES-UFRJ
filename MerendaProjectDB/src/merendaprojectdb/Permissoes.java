@@ -17,6 +17,7 @@ public class Permissoes {
     public boolean canSeeSchool;
     public boolean canWritePermit;
     public boolean canAddUser;
+    public boolean canSetPadrao;
     
     /*public Permissoes(boolean newReport, boolean writeReport, boolean writeSchool,
             boolean seeReport, boolean seeSchool, boolean writePermit, boolean addUser){*/
@@ -28,6 +29,7 @@ public class Permissoes {
         canSeeSchool = true;
         canWritePermit = false;  
         canAddUser =false;
+        canSetPadrao = false;
     }
     
     public void canNewReport(boolean m){
@@ -56,5 +58,8 @@ public class Permissoes {
     
     public void canAddUser(boolean m){
         canAddUser = m;
+    }
+    public void canSetPadrao(boolean m){
+        canSetPadrao = m;
     }
 }

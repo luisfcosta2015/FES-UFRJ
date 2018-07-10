@@ -74,12 +74,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } else {
             permissoes = this.tipos.getLeitorPermits();
         }
+        System.out.println("Passei");
+        System.out.println(permissoes);
         if(permissoes.canWritePermit == true){
             this.operacoes[i] = "editarPermissoes";
             buttons[i].setText("Editar Permissoes");
             i++;
         }
-        
         if(permissoes.canWriteReport == true){
             this.operacoes[i]= "editarRelatorio";
             buttons[i].setText("Editar Relatorio");
