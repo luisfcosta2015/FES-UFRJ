@@ -88,7 +88,6 @@ public class CadastroInstituicaoTest {
                     break;
                 }
                 I.reset();
-                System.out.println("View.CadastroInstituicaoTest.testMain()");
             }
             I.reset();
             String Endereco = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);

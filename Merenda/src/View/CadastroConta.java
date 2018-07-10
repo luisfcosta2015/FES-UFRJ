@@ -17,10 +17,91 @@ import javax.swing.*;
  */
 public class CadastroConta extends javax.swing.JFrame {
 
+    boolean showTela = true;
     private boolean editmode = false;
     private int id_pessoa = -1, id_instituicao = -1;
     private Conta c1;
     
+    /* Aqui estão as funções que auxiliaram os testes
+*
+*
+*
+*/
+
+/*
+    Essas funções apenas retornam o botão da tela, para que possa dar doClick nos testes.
+*/    
+    
+public JButton BotaoCadastrar(){ 
+    return btnCadastrar;
+} 
+
+public JButton BotaoPesquisar(){ 
+    return btnPesquisar;
+}
+public JButton BotaoDeletar(){ 
+    return btnDeletar;
+}
+
+public JButton BotaoPessoa(){ 
+    return btnPesquisaPessoa;
+}
+
+public JButton BotaoInstituicao(){ 
+    return btnPesquisaInstituicao;
+}
+ 
+/*
+    Essa função preenche apenas o campo de pessoa
+*/
+public void preencherPessoatest(String pessoa){
+    txtPessoa.setText(pessoa);
+}
+
+
+/*
+    Essa função preenche apenas o campo de instituicao
+*/
+public void preencherInstituicaotest(String instituicao){
+    txtInstituicao.setText(instituicao);
+}
+
+/*
+    Essa função preenche todos os campos da tela
+*/
+
+public void preenchertest(String Usuario,String Matricula,String Senha,String Senha2,int inteiro){
+    txtUsuario.setText(Usuario);
+    txtMatricula.setText(Matricula);
+    passSenha.setText(Senha);
+    passConfSenha.setText(Senha2);
+    cmbTipoConta.setSelectedIndex(inteiro);
+    
+}
+
+/*
+    Essa função retorna os dados da tela, de acordo com o inteiro mandado.
+*/
+
+public String retornaValores(int qualvalor){
+    if(qualvalor== 0){
+    return txtUsuario.getText();
+    }
+    if(qualvalor== 1){
+    return txtMatricula.getText();
+    }
+    return "nada";
+}
+
+/*
+*
+*
+* Aqui estão as funções que auxiliaram os testes
+*/
+    public void telasInvisiveis(){
+        showTela = false;
+    }    
+
     public void reset(){
         txtPessoa.setText("");
         txtInstituicao.setText("");
@@ -333,12 +414,14 @@ public class CadastroConta extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         if (id_pessoa == -1){
-            JOptionPane.showMessageDialog(this, "Pessoa ainda não foi carregada", "Erro", JOptionPane.ERROR_MESSAGE); 
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Pessoa ainda não foi carregada", "Erro", JOptionPane.ERROR_MESSAGE); 
             return;
         }
         
         if (id_instituicao == -1){
-            JOptionPane.showMessageDialog(this, "Instituicao ainda não foi carregada", "Erro", JOptionPane.ERROR_MESSAGE); 
+            if(showTela==true)    
+                JOptionPane.showMessageDialog(this, "Instituicao ainda não foi carregada", "Erro", JOptionPane.ERROR_MESSAGE); 
             return;
         }
         
@@ -357,7 +440,8 @@ public class CadastroConta extends javax.swing.JFrame {
             txtMatricula.setText(c.getMatricula());            
             // INCONSISTENCIA NO BD: foi selecionado um tipo de conta que não existe
             if (c.getId_tipo_conta()>= cmbTipoConta.getItemCount() || c.getId_tipo_conta() <= 0){
-                JOptionPane.showMessageDialog(this, "Tipo de conta não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);                
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Tipo de conta não se encontra nas opções", "Erro", JOptionPane.ERROR_MESSAGE);                
             } else {
                 cmbTipoConta.setSelectedIndex(c.getId_tipo_conta()-1);
             }
@@ -372,7 +456,8 @@ public class CadastroConta extends javax.swing.JFrame {
             btnPesquisar.setEnabled(false);
             c1 = c; 
         } else {            
-            JOptionPane.showMessageDialog(this, "Nenhuma conta encontrada", "Erro", JOptionPane.ERROR_MESSAGE);                  
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nenhuma conta encontrada", "Erro", JOptionPane.ERROR_MESSAGE);                  
         } 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -400,12 +485,15 @@ public class CadastroConta extends javax.swing.JFrame {
             
         // se há erros computados na validação da classe ou erros da confirmação de senha feitos na view
         if (!(erros += c.validar()).equals(""))
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         else {
             if (c.cadastrar())
-                JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
             else
-                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                if(showTela==true)
+                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             reset();
         }
         
@@ -413,7 +501,8 @@ public class CadastroConta extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não está no modo de edição", "Erro", JOptionPane.ERROR_MESSAGE);
             reset();
             return;
         }
@@ -438,23 +527,29 @@ public class CadastroConta extends javax.swing.JFrame {
             erros += "Senha e confirmação de senha diferentes\n";
 
         if (!(erros += c.validar()).equals("")){
-            JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
         } else if (c.update()){
-            JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
             reset();
         } else {
-            JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
             reset();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         if (!editmode){
-            JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);
         } else if (c1 == null){
-            JOptionPane.showMessageDialog(this, "Não há conta carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Não há conta carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);
         } else if (c1.deletar()){
-            JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
             reset();
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
@@ -462,7 +557,8 @@ public class CadastroConta extends javax.swing.JFrame {
     private void btnPesquisaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaPessoaActionPerformed
         String txt = txtPessoa.getText();        
         if (txt.equals("")){
-            JOptionPane.showMessageDialog(this, "Campo \'Pessoa\' vazio.", "Erro", JOptionPane.ERROR_MESSAGE);   
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Campo \'Pessoa\' vazio.", "Erro", JOptionPane.ERROR_MESSAGE);   
             return;
         }
         
@@ -478,7 +574,8 @@ public class CadastroConta extends javax.swing.JFrame {
             txtPessoa.setText(p.getNome());
             btnPesquisaPessoa.setEnabled(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Nenhuma pessoa encontrada", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nenhuma pessoa encontrada", "Erro", JOptionPane.ERROR_MESSAGE);
             java.net.URL imgURL = getClass().getResource("/images/failure.png");
             ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Pessoa Não Encontrada");
             lblPesquisaPessoa.setIcon(icon);             
@@ -488,7 +585,8 @@ public class CadastroConta extends javax.swing.JFrame {
     private void btnPesquisaInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaInstituicaoActionPerformed
         String txt = txtInstituicao.getText();        
         if (txt.equals("")){
-            JOptionPane.showMessageDialog(this, "Campo \'Instituicao\' vazio.", "Erro", JOptionPane.ERROR_MESSAGE);   
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Campo \'Instituicao\' vazio.", "Erro", JOptionPane.ERROR_MESSAGE);   
             return;
         }
         
@@ -504,7 +602,8 @@ public class CadastroConta extends javax.swing.JFrame {
             txtInstituicao.setText(i.getNome());
             btnPesquisaInstituicao.setEnabled(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Nenhuma instituição encontrada", "Erro", JOptionPane.ERROR_MESSAGE);
+            if(showTela==true)
+                JOptionPane.showMessageDialog(this, "Nenhuma instituição encontrada", "Erro", JOptionPane.ERROR_MESSAGE);
             java.net.URL imgURL = getClass().getResource("/images/failure.png");
             ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Instituição não Encontrada");
             lblPesquisaInstituicao.setIcon(icon);             

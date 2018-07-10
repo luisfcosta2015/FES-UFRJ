@@ -60,7 +60,7 @@ public class Alimento {
     } 
     
     public boolean deletar(){
-        String query = "DELETE FROM alimento WHERE id" + getId_alimento();
+        String query = "DELETE FROM alimento WHERE id=" + getId_alimento();
         
         return new Conexao().query_update(query);
     }
