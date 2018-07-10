@@ -16,7 +16,7 @@
 - [x] Aplicar CSS na página de login (sprint #3)
 - [x] Corrigir problemas de configuração na página de login (sprint #3)
 - [ ] Criar página de cadastro de usuário
-- [x] Modelagem de perfis de usuários (nova história)
+- [x] Modelagem de perfis de usuários (Já pronto na Sprint passada)
 - [ ] Configurar os perfis (tipos) de usuário e as respectivas permissões
 - [x] Resolver a limpeza de cookies ao fazer o logout
 
