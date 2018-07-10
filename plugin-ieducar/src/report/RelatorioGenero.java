@@ -11,6 +11,7 @@ import net.sf.dynamicreports.report.exception.DRException;
 import net.sf.jasperreports.engine.JRDataSource;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 import static net.sf.dynamicreports.report.builder.DynamicReports.cht;
@@ -30,6 +31,8 @@ public class RelatorioGenero {
     private boolean gerado;
 
     private String[] genero = new String[3];
+    DatabaseConnection db = new DatabaseConnection();
+    ArrayList<Aluno> alunos;
 
     public RelatorioGenero(String e, String t) {
         this.escola = e;
@@ -43,6 +46,7 @@ public class RelatorioGenero {
         this.genero[0] = "Feminino";
         this.genero[1] = "Feminino";
         this.genero[2] = "Feminino";
+        alunos = db.getListaDeAlunos();
     }
 
     private StyleBuilder boldStyle = stl.style().bold();
@@ -108,11 +112,12 @@ public class RelatorioGenero {
         DRDataSource dataSource = new DRDataSource("aluno", "genero", "turma", "registro", "qtdFeminino", "qtdMasculino");
         //Pensando na Quarta série
 
-        for (String g : this.genero) {
-            if (g.equals("Feminino")) {
-                dataSource.add("Aluno 1", "Feminino", this.turma, "ABC", 1, 0);
+        for (Aluno a : this.alunos) {
+            String reg = String.valueOf(a.registro);
+            if (a.genero.equals("F")) {
+                dataSource.add(a.nome, "Feminino", this.turma, reg, 1, 0);
             } else {
-                dataSource.add("Aluno 1", "Masculino", this.turma, "ABC", 0, 1);
+                dataSource.add(a.nome, "Masculino", this.turma, reg, 0, 1);
 
             }
         }
@@ -152,8 +157,8 @@ public class RelatorioGenero {
     public JRDataSource createPizzaSource() {
         DRDataSource dataSource = new DRDataSource("genero", "qtd");
 
-        for (String g : this.genero) {
-            if (g.equals("Feminino")) {
+        for (Aluno a : this.alunos) {
+            if (a.genero.equals("F")) {
                 this.feminino = this.feminino + 1;
             } else {
                 this.masculino = this.masculino + 1;

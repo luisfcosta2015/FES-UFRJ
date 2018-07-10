@@ -101,7 +101,7 @@ public class IdadeAnoEscolarController {
         turma = getChoice(box_turma);
         grafico = getChoice(box_grafico);
 
-        System.out.println(escola);
+        db.gerarListaDeAlunos(escola, turma);
 
         RelatorioIdade relatorioIdade = new RelatorioIdade(escola, turma);
 

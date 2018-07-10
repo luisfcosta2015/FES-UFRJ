@@ -11,7 +11,7 @@ import net.sf.dynamicreports.report.exception.DRException;
 import net.sf.jasperreports.engine.JRDataSource;
 
 import java.awt.*;
-import java.time.*;
+import java.util.*;
 
 import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 import static net.sf.dynamicreports.report.builder.DynamicReports.cht;
@@ -26,6 +26,9 @@ public class RelatorioIdade {
     private String turma;
 
     private int[] intArray = new int[3];
+    DatabaseConnection db = new DatabaseConnection();
+    ArrayList<Aluno> alunos;
+    private int[] faixaEtaria;
 
     private int errado;
     private int certo;
@@ -45,6 +48,8 @@ public class RelatorioIdade {
         intArray[0] = 1;
         intArray[1] = 11;
         intArray[2] = 10;
+        alunos = db.getListaDeAlunos();
+        faixaEtaria = db.getFaixaEtariaSerie();
     }
 
     private StyleBuilder boldStyle = stl.style().bold();
@@ -112,11 +117,12 @@ public class RelatorioIdade {
         DRDataSource dataSource = new DRDataSource("aluno", "idade", "turma", "registro", "qtdCerta", "qtdErrada");
         //Pensando na Quarta série
 
-        for (int anIntArray : intArray) {
-            if (anIntArray > 7) {
-                dataSource.add("Aluno 1", anIntArray, this.turma, "ABC", 0, 1);
+        for (Aluno a : alunos) {
+            String reg = String.valueOf(a.registro);
+            if (a.getIdade() < faixaEtaria[0] || a.getIdade() > faixaEtaria[1]) {
+                dataSource.add(a.nome, a.getIdade(), this.turma, reg, 0, 1);
             } else {
-                dataSource.add("Aluno 1", anIntArray, this.turma, "ABC", 1, 0);
+                dataSource.add(a.nome, a.getIdade(), this.turma, reg, 1, 0);
 
             }
         }
@@ -154,8 +160,8 @@ public class RelatorioIdade {
         DRDataSource dataSource = new DRDataSource("verifica", "qtdTotal");
 
 
-        for (int anIntArray : intArray) {
-            if (anIntArray > 7) {
+        for (Aluno a : alunos) {
+            if (a.getIdade() < faixaEtaria[0] || a.getIdade() > faixaEtaria[1]) {
                 this.errado = this.errado + 1;
             } else {
                 this.certo = this.certo + 1;

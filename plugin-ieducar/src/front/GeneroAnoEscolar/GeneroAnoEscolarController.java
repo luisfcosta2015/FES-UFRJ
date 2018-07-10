@@ -100,6 +100,8 @@ public class GeneroAnoEscolarController {
         turma = getChoice(box_turma);
         grafico = getChoice(box_grafico);
 
+        db.gerarListaDeAlunos(escola, turma);
+
         RelatorioGenero relatorioGenero = new RelatorioGenero(escola, turma);
         if (grafico.equals("Barra")) {
             relatorioGenero.buildBarra();
