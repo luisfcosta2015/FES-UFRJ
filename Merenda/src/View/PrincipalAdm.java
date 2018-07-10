@@ -42,9 +42,15 @@ public class PrincipalAdm extends javax.swing.JFrame {
         mItemConta = new javax.swing.JMenuItem();
         mItemInstituicao = new javax.swing.JMenuItem();
         mItemAlimento = new javax.swing.JMenuItem();
-        mItemLote = new javax.swing.JMenuItem();
+        mItemPedido = new javax.swing.JMenuItem();
         mItemEntrega = new javax.swing.JMenuItem();
-        mItemEncomenda = new javax.swing.JMenuItem();
+        jMenuConsultar = new javax.swing.JMenu();
+        mItemConsultaPessoa = new javax.swing.JMenuItem();
+        mItemConsultaConta = new javax.swing.JMenuItem();
+        mItemConsultaInstituicao = new javax.swing.JMenuItem();
+        mItemConsultaAlimento = new javax.swing.JMenuItem();
+        mItemConsultaPedido = new javax.swing.JMenuItem();
+        mItemConsultaEntrega = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,13 +108,13 @@ public class PrincipalAdm extends javax.swing.JFrame {
         });
         menuCadastrar.add(mItemAlimento);
 
-        mItemLote.setText("Lote");
-        mItemLote.addActionListener(new java.awt.event.ActionListener() {
+        mItemPedido.setText("Pedido");
+        mItemPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemLoteActionPerformed(evt);
+                mItemPedidoActionPerformed(evt);
             }
         });
-        menuCadastrar.add(mItemLote);
+        menuCadastrar.add(mItemPedido);
 
         mItemEntrega.setText("Entrega");
         mItemEntrega.addActionListener(new java.awt.event.ActionListener() {
@@ -118,15 +124,59 @@ public class PrincipalAdm extends javax.swing.JFrame {
         });
         menuCadastrar.add(mItemEntrega);
 
-        mItemEncomenda.setText("Encomenda");
-        mItemEncomenda.addActionListener(new java.awt.event.ActionListener() {
+        menuBar.add(menuCadastrar);
+
+        jMenuConsultar.setText("Consultar");
+
+        mItemConsultaPessoa.setText("Pessoa");
+        mItemConsultaPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemEncomendaActionPerformed(evt);
+                mItemConsultaPessoaActionPerformed(evt);
             }
         });
-        menuCadastrar.add(mItemEncomenda);
+        jMenuConsultar.add(mItemConsultaPessoa);
 
-        menuBar.add(menuCadastrar);
+        mItemConsultaConta.setText("Conta");
+        mItemConsultaConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaContaActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaConta);
+
+        mItemConsultaInstituicao.setText("Instituição");
+        mItemConsultaInstituicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaInstituicaoActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaInstituicao);
+
+        mItemConsultaAlimento.setText("Alimento");
+        mItemConsultaAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaAlimentoActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaAlimento);
+
+        mItemConsultaPedido.setText("Pedido");
+        mItemConsultaPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaPedidoActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaPedido);
+
+        mItemConsultaEntrega.setText("Entrega");
+        mItemConsultaEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaEntregaActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaEntrega);
+
+        menuBar.add(jMenuConsultar);
 
         setJMenuBar(menuBar);
 
@@ -174,18 +224,38 @@ public class PrincipalAdm extends javax.swing.JFrame {
         Auxiliar.trocarTela(new CadastroConta());    
     }//GEN-LAST:event_mItemContaActionPerformed
 
-    private void mItemLoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLoteActionPerformed
+    private void mItemPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPedidoActionPerformed
         this.setVisible(false);        
-        Auxiliar.trocarTela(new CadastroLote());
-    }//GEN-LAST:event_mItemLoteActionPerformed
+        Auxiliar.trocarTela(new CadastroPedido());
+    }//GEN-LAST:event_mItemPedidoActionPerformed
 
     private void mItemEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEntregaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mItemEntregaActionPerformed
 
-    private void mItemEncomendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEncomendaActionPerformed
+    private void mItemConsultaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPessoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mItemEncomendaActionPerformed
+    }//GEN-LAST:event_mItemConsultaPessoaActionPerformed
+
+    private void mItemConsultaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaContaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaContaActionPerformed
+
+    private void mItemConsultaInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaInstituicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaInstituicaoActionPerformed
+
+    private void mItemConsultaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaAlimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaAlimentoActionPerformed
+
+    private void mItemConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaPedidoActionPerformed
+
+    private void mItemConsultaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaEntregaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,13 +294,19 @@ public class PrincipalAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenuConsultar;
     private javax.swing.JMenuItem mItemAlimento;
+    private javax.swing.JMenuItem mItemConsultaAlimento;
+    private javax.swing.JMenuItem mItemConsultaConta;
+    private javax.swing.JMenuItem mItemConsultaEntrega;
+    private javax.swing.JMenuItem mItemConsultaInstituicao;
+    private javax.swing.JMenuItem mItemConsultaPedido;
+    private javax.swing.JMenuItem mItemConsultaPessoa;
     private javax.swing.JMenuItem mItemConta;
-    private javax.swing.JMenuItem mItemEncomenda;
     private javax.swing.JMenuItem mItemEntrega;
     private javax.swing.JMenuItem mItemInstituicao;
     private javax.swing.JMenuItem mItemLogout;
-    private javax.swing.JMenuItem mItemLote;
+    private javax.swing.JMenuItem mItemPedido;
     private javax.swing.JMenuItem mItemPessoa;
     private javax.swing.JMenuItem mItemSair;
     private javax.swing.JMenu menuArquivo;

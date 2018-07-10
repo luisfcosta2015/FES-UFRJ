@@ -15,27 +15,21 @@ import java.util.Map;
  * @author Andre
  */
 public class Instituicao {
-    private int id_instituicao, id_tipo, id_diretor, qtd_alunos;
+    private int id, id_tipo, qtd_alunos;
     private String nome, inep, endereco, telefone;
     
-     public boolean cadastrar(){
+    public boolean cadastrar(){
         
         String query;
-        if (getId_diretor() <= 0){
             query = "INSERT INTO instituicao (nome, endereco, inep, qtd_alunos, telefone, id_tipo) VALUES";
             query += "(\'" + getNome() +"\', " + "\'" + getEndereco() + "\',\'" + getInep() + "\'," + getQtd_alunos();
             query += ",\'" + getTelefone() +"\', " + getId_tipo() + ")" ;
-        } else {
-            query = "INSERT INTO instituicao (nome, endereco, inep, qtd_alunos, telefone, id_tipo) VALUES";
-            query += "(\'" + getNome() +"\', " + "\'" + getEndereco() + "\',\'" + getInep() + "\'," + getQtd_alunos();
-            query += ",\'" + getTelefone() +"\', " + getId_diretor() + ", " + getId_tipo() + ")" ;
-        }
         
         return new Conexao().query_update(query);
     }
      
     public boolean deletar(){
-        String query = "DELETE FROM instituicao WHERE id=" + getId_instituicao();
+        String query = "DELETE FROM instituicao WHERE id=" + getId();
         
         return new Conexao().query_update(query);
     }
@@ -48,7 +42,7 @@ public class Instituicao {
                 + ", telefone=\'" + getTelefone() + "\'"
                 + ", qtd_alunos=" + getQtd_alunos()
                 + ", id_tipo=" + getId_tipo()
-                + " WHERE id=" + getId_instituicao();
+                + " WHERE id=" + getId();
         
         //System.out.println(query);
         
@@ -67,7 +61,7 @@ public class Instituicao {
     }*/
     Auxiliar.PreencheDados preenche_dados = (m) -> {
         setEndereco(String.valueOf(m.get("endereco")));
-        setId_instituicao((int)m.get("id"));
+        setId((int)m.get("id"));
         setId_tipo((int)m.get("id_tipo"));
         setInep(String.valueOf(m.get("inep")));
         setNome(String.valueOf(m.get("nome")));
@@ -116,12 +110,12 @@ public class Instituicao {
         return erros;
     }
     
-    public int getId_instituicao() {
-        return id_instituicao;
+    public int getId() {
+        return id;
     }
 
-    public void setId_instituicao(int id_instituicao) {
-        this.id_instituicao = id_instituicao;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId_tipo() {
@@ -130,14 +124,6 @@ public class Instituicao {
 
     public void setId_tipo(int id_tipo) {
         this.id_tipo = id_tipo;
-    }
-
-    public int getId_diretor() {
-        return id_diretor;
-    }
-
-    public void setId_diretor(int id_diretor) {
-        this.id_diretor = id_diretor;
     }
 
     public int getQtd_alunos() {

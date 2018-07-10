@@ -29,18 +29,15 @@ public class Auxiliar {
     }
     
     // TESTA SE STRING É COMPOSTA APENAS DE NÚMEROS
-    public static boolean isNumeric(String str)
-    {
-        for (char c : str.toCharArray())
-            if (!Character.isDigit(c)) return false;
+    public static boolean isNumeric(String str) {
+        for (char c : str.toCharArray()) if (!Character.isDigit(c)) return false;
         return true;
     }
     
     // CONFIRMAÇÃO DE SAÍDA COM JOPTIONPANE
     public static boolean confirmarSaida(){
         int reply = JOptionPane.showConfirmDialog(null, "Deseja finalizar o programa?", "Merenda", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION)  return true; 
-        return false;
+        return (reply == JOptionPane.YES_OPTION);
     }
     
     // Configuraçõoes personalizadas de telas: Centralizar e etc

@@ -10,14 +10,14 @@ import Model.Sessao;
 
 /**
  *
- * @author Andre
+ * @author convidado
  */
-public class PrincipalDir extends javax.swing.JFrame {
+public class PrincipalLeitor extends javax.swing.JFrame {
 
     /**
-     * Creates new form PrincipalDiretor
+     * Creates new form PrincipalLeitor
      */
-    public PrincipalDir() {
+    public PrincipalLeitor() {
         initComponents();
     }
 
@@ -34,12 +34,14 @@ public class PrincipalDir extends javax.swing.JFrame {
         jMenuArquivo = new javax.swing.JMenu();
         mItemLogout = new javax.swing.JMenuItem();
         mItemSair = new javax.swing.JMenuItem();
-        jMenuCadastrar = new javax.swing.JMenu();
-        mItemCadastroCardapio = new javax.swing.JMenuItem();
-        mItemCadastroEntrega = new javax.swing.JMenuItem();
         jMenuConsultar = new javax.swing.JMenu();
-        mItemConsultaCardapio = new javax.swing.JMenuItem();
+        mItemConsultaPessoa = new javax.swing.JMenuItem();
+        mItemConsultaConta = new javax.swing.JMenuItem();
+        mItemConsultaInstituicao = new javax.swing.JMenuItem();
+        mItemConsultaAlimento = new javax.swing.JMenuItem();
+        mItemConsultaPedido = new javax.swing.JMenuItem();
         mItemConsultaEntrega = new javax.swing.JMenuItem();
+        mItemConsultaCardapio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,35 +65,47 @@ public class PrincipalDir extends javax.swing.JFrame {
 
         jMenuBar.add(jMenuArquivo);
 
-        jMenuCadastrar.setText("Cadastrar");
-
-        mItemCadastroCardapio.setText("Cardápio");
-        mItemCadastroCardapio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemCadastroCardapioActionPerformed(evt);
-            }
-        });
-        jMenuCadastrar.add(mItemCadastroCardapio);
-
-        mItemCadastroEntrega.setText("Entrega");
-        mItemCadastroEntrega.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemCadastroEntregaActionPerformed(evt);
-            }
-        });
-        jMenuCadastrar.add(mItemCadastroEntrega);
-
-        jMenuBar.add(jMenuCadastrar);
-
         jMenuConsultar.setText("Consultar");
 
-        mItemConsultaCardapio.setText("Cardápio");
-        mItemConsultaCardapio.addActionListener(new java.awt.event.ActionListener() {
+        mItemConsultaPessoa.setText("Pessoa");
+        mItemConsultaPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaCardapioActionPerformed(evt);
+                mItemConsultaPessoaActionPerformed(evt);
             }
         });
-        jMenuConsultar.add(mItemConsultaCardapio);
+        jMenuConsultar.add(mItemConsultaPessoa);
+
+        mItemConsultaConta.setText("Conta");
+        mItemConsultaConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaContaActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaConta);
+
+        mItemConsultaInstituicao.setText("Instituição");
+        mItemConsultaInstituicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaInstituicaoActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaInstituicao);
+
+        mItemConsultaAlimento.setText("Alimento");
+        mItemConsultaAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaAlimentoActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaAlimento);
+
+        mItemConsultaPedido.setText("Pedido");
+        mItemConsultaPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaPedidoActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaPedido);
 
         mItemConsultaEntrega.setText("Entrega");
         mItemConsultaEntrega.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +115,14 @@ public class PrincipalDir extends javax.swing.JFrame {
         });
         jMenuConsultar.add(mItemConsultaEntrega);
 
+        mItemConsultaCardapio.setText("Cardápio");
+        mItemConsultaCardapio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultaCardapioActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemConsultaCardapio);
+
         jMenuBar.add(jMenuConsultar);
 
         setJMenuBar(jMenuBar);
@@ -109,39 +131,50 @@ public class PrincipalDir extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 639, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 403, Short.MAX_VALUE)
+            .addGap(0, 275, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSairActionPerformed
-        if (Model.Auxiliar.confirmarSaida()) System.exit(0);     
-    }//GEN-LAST:event_mItemSairActionPerformed
-
     private void mItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLogoutActionPerformed
         Sessao.destroy();
-        this.setVisible(false);        
-        Auxiliar.trocarTela(new Login());   
+        this.setVisible(false);
+        Auxiliar.trocarTela(new Login());
     }//GEN-LAST:event_mItemLogoutActionPerformed
 
-    private void mItemCadastroCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemCadastroCardapioActionPerformed
-        this.setVisible(false);
-        Auxiliar.trocarTela(new CadastroCardapio());
-    }//GEN-LAST:event_mItemCadastroCardapioActionPerformed
+    private void mItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSairActionPerformed
+        if (Model.Auxiliar.confirmarSaida()) System.exit(0);
+    }//GEN-LAST:event_mItemSairActionPerformed
+
+    private void mItemConsultaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPessoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaPessoaActionPerformed
+
+    private void mItemConsultaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaContaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaContaActionPerformed
+
+    private void mItemConsultaInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaInstituicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaInstituicaoActionPerformed
+
+    private void mItemConsultaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaAlimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaAlimentoActionPerformed
+
+    private void mItemConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultaPedidoActionPerformed
 
     private void mItemConsultaCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaCardapioActionPerformed
         this.setVisible(false);
         Auxiliar.trocarTela(new ConsultarCardapio());
     }//GEN-LAST:event_mItemConsultaCardapioActionPerformed
-
-    private void mItemCadastroEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemCadastroEntregaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mItemCadastroEntregaActionPerformed
 
     private void mItemConsultaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaEntregaActionPerformed
         // TODO add your handling code here:
@@ -164,21 +197,20 @@ public class PrincipalDir extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalDir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalDir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalDir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalDir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalDir().setVisible(true);
+                new PrincipalLeitor().setVisible(true);
             }
         });
     }
@@ -186,12 +218,14 @@ public class PrincipalDir extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenu jMenuCadastrar;
     private javax.swing.JMenu jMenuConsultar;
-    private javax.swing.JMenuItem mItemCadastroCardapio;
-    private javax.swing.JMenuItem mItemCadastroEntrega;
+    private javax.swing.JMenuItem mItemConsultaAlimento;
     private javax.swing.JMenuItem mItemConsultaCardapio;
+    private javax.swing.JMenuItem mItemConsultaConta;
     private javax.swing.JMenuItem mItemConsultaEntrega;
+    private javax.swing.JMenuItem mItemConsultaInstituicao;
+    private javax.swing.JMenuItem mItemConsultaPedido;
+    private javax.swing.JMenuItem mItemConsultaPessoa;
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemSair;
     // End of variables declaration//GEN-END:variables
