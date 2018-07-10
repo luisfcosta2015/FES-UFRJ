@@ -77,7 +77,13 @@ public class Instituicao {
     public boolean instituicaoPorId(int id){
         String query = "SELECT * FROM instituicao i where i.id=" + id;
         return Auxiliar.consulta_e_preenche(query, preenche_dados);
-    } 
+    }
+    
+    public boolean instituicaoPorIdPessoa(int id){
+        String query = "select * from instituicao i inner join conta c on i.id=c.id_instituicao where c.id_pessoa=" + id;
+        return Auxiliar.consulta_e_preenche(query, preenche_dados);
+    }
+    //instituicaoPorIdPessoa
     
     public String validar(){
         String erros = "";
