@@ -168,6 +168,43 @@ public class BdManager {
         }
     }
     
+    static boolean alterarEscola(Escola escola, int inep){
+        PreparedStatement ps;
+        
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("update escola set unidade = ?,telefone = ?,estado = ?,prefeitura = ?,secretaria = ?,subSecretaria = ?,departamento = ?, diretoria = ?, distrito = ? where inep = ?");
+            ps.setString(1, escola.getUnidade());
+            ps.setString(2, escola.getTelefone());
+            ps.setString(3, escola.getEstado());
+            ps.setString(4, escola.getPrefeitura());
+            ps.setString(5, escola.getSecretaria());
+            ps.setString(6, escola.getSubsecretaria());
+            ps.setString(7, escola.getDepartamento());
+            ps.setString(8, escola.getDiretoria());
+            ps.setString(9, escola.getDistrito());
+            ps.setInt(10, inep);
+            ps.execute();
+            return true;
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
+    
+    static boolean deletarEscola(String nomeEscola){
+        PreparedStatement ps;
+        try{
+            con = DriverManager.getConnection(host, username, password);
+            ps = con.prepareStatement("delete from escola where unidade like ?");
+            ps.setString(1, nomeEscola);
+            ps.execute();
+            return true;
+        }catch (SQLException err) {
+           System.out.println(err.getMessage());
+           return false;
+        }
+    }
     
     static boolean usuarioExiste(String user){
         PreparedStatement ps;

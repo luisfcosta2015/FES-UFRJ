@@ -169,7 +169,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Gerenciar Escolas");
+        jButton3.setText("Cadastrar Escola");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

@@ -327,7 +327,6 @@ public class TelaPermissao extends javax.swing.JFrame {
         }
         BdManager.setPermissoes(newrp, getrp, seerp, newsc, seesc, newpm, newuser, setPadrao,tipo );
         
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void canSetPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canSetPadraoActionPerformed

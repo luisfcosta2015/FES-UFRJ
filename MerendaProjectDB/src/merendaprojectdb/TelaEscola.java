@@ -7,6 +7,7 @@ package merendaprojectdb;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 //import merendaprojectdb.TelaConfirmarAcao;
 //import telas.Principal;
 
@@ -19,6 +20,7 @@ public class TelaEscola extends javax.swing.JFrame {
     TelaPrincipal principal;
     String usuario;
     TelaNovaEscola nova;
+    TelaAtualizaEscola atualiza;
     TelaConfirmarAcao deletar;
     BdManager banco;
     /**
@@ -53,8 +55,8 @@ public class TelaEscola extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         nomeUnidade = new javax.swing.JComboBox<>();
-        atualizarEscola = new javax.swing.JButton();
-        excluirEscola = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,17 +104,17 @@ public class TelaEscola extends javax.swing.JFrame {
             }
         });
 
-        atualizarEscola.setText("Atualizar");
-        atualizarEscola.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Atualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizarEscolaActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        excluirEscola.setText("Remover");
-        excluirEscola.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Remover");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirEscolaActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -135,8 +137,8 @@ public class TelaEscola extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(excluirEscola)
-                    .addComponent(atualizarEscola))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -145,10 +147,10 @@ public class TelaEscola extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomeUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(atualizarEscola))
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(excluirEscola)
+                    .addComponent(jButton2)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -192,29 +194,43 @@ public class TelaEscola extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void excluirEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirEscolaActionPerformed
-        deletar=new TelaConfirmarAcao(usuario);
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int input = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?", "Confirmar",JOptionPane.YES_NO_OPTION);
+        
+        if(input==JOptionPane.YES_OPTION){
+            Object escolaSelect = nomeUnidade.getSelectedItem();
+            BdManager.deletarEscola(""+escolaSelect);
+        }
+        else{
+        }
+        /*deletar=new TelaConfirmarAcao(usuario);
         deletar.setLocationRelativeTo(null);
         deletar.setVisible(true);
         deletar.setResizable(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_excluirEscolaActionPerformed
+        this.setVisible(false);*/
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nomeUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeUnidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeUnidadeActionPerformed
 
-    private void atualizarEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarEscolaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_atualizarEscolaActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Object escolaSelect = nomeUnidade.getSelectedItem();
+        
+        atualiza=new TelaAtualizaEscola(usuario,""+escolaSelect);
+        atualiza.setLocationRelativeTo(null);
+        atualiza.setVisible(true);
+        atualiza.setResizable(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton atualizarEscola;
-    private javax.swing.JButton excluirEscola;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
