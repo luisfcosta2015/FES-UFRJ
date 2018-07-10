@@ -39,7 +39,6 @@
 Daniel teve muitos problemas para trabalhar no projeto por conta de incompatibilidade e problemas no sistema operacional que estava instalado na máquina, portanto ficou responsável pelas reações e sprint review.
 Dennison estudou sobre a tecnologia para conseguir iniciar o desenvolvimento a partir da próxima sprint.
 Telles e Elvis criaram o banco de dados, subiram e integraram com o projeto.
-Elvis fez a imagem Sail Boat do time.
 
 ### Revisão:
 
