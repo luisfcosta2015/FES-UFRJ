@@ -324,6 +324,7 @@ public class TelaPermissao extends javax.swing.JFrame {
             lei.canWritePermit(newpm);*/
         }
         
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed

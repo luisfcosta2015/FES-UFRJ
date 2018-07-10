@@ -38,7 +38,6 @@ public class CapaDados {
      * @author Joyce Brum
      * @param identificador int - Linha a ser modificada na matriz
      * @param turnos int[] - Vetor de tamanho 4 com os valores por turno
-     * @param atendidos int - numero de alunos atendidos
      * @param numDias int - numero de dias em que foram servidos refeições
      */
     public void setVetorMatriculados(int identificador, int[] turnos, int numDias) {
