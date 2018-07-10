@@ -25,7 +25,7 @@ public class Conta {
                 + "(" + getId_pessoa() + "," + getId_instituicao() + "," + getId_tipo_conta()
                 + ",\'" + getUsuario() + "\',\'" + getSenha() + "\',\'" + getMatricula() + "\')";
         
-        System.out.println(query);
+        //System.out.println(query);
         
         return new Conexao().query_update(query);
     }

@@ -51,7 +51,7 @@ public class Auxiliar {
             System.out.println("Sessao nula.");
         }
         tela.setTitle(title);
-        tela.setResizable(false);
+        tela.setResizable(false); 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         tela.setLocation(dim.width/2-tela.getSize().width/2, dim.height/2-tela.getSize().height/2);
         tela.setVisible(true);        

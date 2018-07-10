@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.Auxiliar;
+
 /**
  *
  * @author w1n3
@@ -27,21 +29,57 @@ public class CadastroEntrega extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mItemPrincipal = new javax.swing.JMenuItem();
+        mItemSair = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Arquivo");
+
+        mItemPrincipal.setText("Menu Principal");
+        mItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemPrincipal);
+
+        mItemSair.setText("Sair");
+        mItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemSair);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 686, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 386, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
+        this.setVisible(false);
+        Auxiliar.trocarTela(new PrincipalAdm());
+    }//GEN-LAST:event_mItemPrincipalActionPerformed
+
+    private void mItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSairActionPerformed
+        if (Model.Auxiliar.confirmarSaida()) System.exit(0);
+    }//GEN-LAST:event_mItemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +117,9 @@ public class CadastroEntrega extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mItemPrincipal;
+    private javax.swing.JMenuItem mItemSair;
     // End of variables declaration//GEN-END:variables
 }
