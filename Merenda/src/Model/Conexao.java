@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +40,7 @@ public class Conexao {
     }
     
     private static Connection getConnection() {
+        JOptionPane mensagem = new JOptionPane();
         try {
             String DBUrl = "";
             String DBUser = "";
@@ -59,7 +61,16 @@ public class Conexao {
             // ***
             return DriverManager.getConnection(DBUrl, DBUser, DBPass);
         } catch (Exception e) {
-            Auxiliar.DBError(e.getMessage());
+            try {
+                PrintWriter writer = new PrintWriter("bd.cfg", "UTF-8");
+                writer.println("link_do_banco = 'jdbc:mysql://localhost:3306/merenda?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC'");
+                writer.println("usuario = 'root'");
+                writer.println("senha = 'root'");
+                writer.close();
+            } catch (IOException ex) {
+                Auxiliar.DBError(ex.getMessage());
+            }
+            mensagem.showMessageDialog(null, "Favor editar o arquivo 'bd.cfg' para configurar acesso ao SGBD");
         }
         return null;
     }
