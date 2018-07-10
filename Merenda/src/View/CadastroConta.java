@@ -23,12 +23,6 @@ public class CadastroConta extends javax.swing.JFrame {
     private Conta c1;
     
     /* Aqui estão as funções que auxiliaram os testes
-*
-*
-*
-*/
-
-/*
     Essas funções apenas retornam o botão da tela, para que possa dar doClick nos testes.
 */    
     
@@ -58,10 +52,7 @@ public void preencherPessoatest(String pessoa){
     txtPessoa.setText(pessoa);
 }
 
-
-/*
-    Essa função preenche apenas o campo de instituicao
-*/
+// preenche apenas o campo de instituicao
 public void preencherInstituicaotest(String instituicao){
     txtInstituicao.setText(instituicao);
 }
@@ -484,17 +475,15 @@ public String retornaValores(int qualvalor){
             erros += "Senha e confirmação de senha diferentes\n";
             
         // se há erros computados na validação da classe ou erros da confirmação de senha feitos na view
-        if (!(erros += c.validar()).equals(""))
-            if(showTela==true)
-                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
-        else {
-            if (c.cadastrar())
-                if(showTela==true)
-                    JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
-            else
-                if(showTela==true)
-                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
-            reset();
+        if(showTela==true){
+            //System.out.println("oiiiiiiiiii");
+            if (!(erros += c.validar()).equals(""))
+                    JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
+            else {
+                if (c.cadastrar()) JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
+                else JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
+                reset();
+            }
         }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -526,31 +515,21 @@ public String retornaValores(int qualvalor){
         if (!senha.equals(confSenha))
             erros += "Senha e confirmação de senha diferentes\n";
 
-        if (!(erros += c.validar()).equals("")){
-            if(showTela==true)
+        if (showTela){
+            if (!(erros += c.validar()).equals(""))
                 JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
-        } else if (c.update()){
-            if(showTela==true)
+            else if (c.update())
                 JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso");
-            reset();
-        } else {
-            if(showTela==true)
+            else
                 JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
-            reset();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        if (!editmode){
-            if(showTela==true)
-                JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);
-        } else if (c1 == null){
-            if(showTela==true)
-                JOptionPane.showMessageDialog(this, "Não há conta carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);
-        } else if (c1.deletar()){
-            if(showTela==true)
-                JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
-            reset();
+        if (showTela){
+            if (!editmode) JOptionPane.showMessageDialog(this, "Modo de edição desabilitado", "Erro", JOptionPane.ERROR_MESSAGE);
+            else if (c1 == null) JOptionPane.showMessageDialog(this, "Não há conta carregada para deleção", "Erro", JOptionPane.ERROR_MESSAGE);
+            else if (c1.deletar()) JOptionPane.showMessageDialog(this, "Deleção efetuada com sucesso");
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
