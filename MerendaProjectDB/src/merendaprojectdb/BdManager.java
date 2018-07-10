@@ -222,7 +222,7 @@ public class BdManager {
         PreparedStatement ps;
         try{ 
             con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento, diretoria) values(?,?,?,?,?,?,?,?,?)");
+            ps = con.prepareStatement("insert into escola(inep,unidade,telefone,estado,prefeitura,secretaria,subSecretaria,departamento, diretoria, distrito) values(?,?,?,?,?,?,?,?,?,?)");
             ps.setInt(1, escola.getINEP());
             ps.setString(2, escola.getUnidade());
             ps.setString(3, escola.getTelefone());
@@ -232,6 +232,7 @@ public class BdManager {
             ps.setString(7, escola.getSubsecretaria());
             ps.setString(8, escola.getDepartamento());
             ps.setString(9, escola.getDiretoria());
+            ps.setString(10, escola.getDistrito());
             ps.execute();
             return true; 
             
@@ -256,6 +257,7 @@ public class BdManager {
             {
                 String estado = rs.getString("estado");
                 String prefeitura = rs.getString("prefeitura");
+                String distrito = rs.getString("distrito");
                 String secretaria = rs.getString("secretaria");
                 String subsecretaria = rs.getString("subsecretaria");
                 String departamento = rs.getString("departamento");
@@ -264,7 +266,7 @@ public class BdManager {
                 String telefone = rs.getString("telefone");
                 int inep = rs.getInt("inep");
                 
-                escolas.add(new Escola(estado, prefeitura, secretaria, subsecretaria, departamento, inep, diretoria, unidade, telefone));
+                escolas.add(new Escola(estado, prefeitura, distrito, secretaria, subsecretaria, departamento, inep, diretoria, unidade, telefone));
             }
             rs.close();
             ps.close();
@@ -310,6 +312,7 @@ public class BdManager {
             {
                 String estado = rs.getString("estado");
                 String prefeitura = rs.getString("prefeitura");
+                String distrito = rs.getString("distrito");
                 String secretaria = rs.getString("secretaria");
                 String subsecretaria = rs.getString("subsecretaria");
                 String departamento = rs.getString("departamento");
@@ -321,7 +324,7 @@ public class BdManager {
                 rs.close();
                 ps.close();
                 con.close();
-                return new Escola(estado, prefeitura, secretaria, subsecretaria, departamento, INEP, diretoria, unidade, telefone);
+                return new Escola(estado, prefeitura, distrito, secretaria, subsecretaria, departamento, INEP, diretoria, unidade, telefone);
             }
             return null;
         }
@@ -342,6 +345,7 @@ public class BdManager {
             {
                 String estado = rs.getString("estado");
                 String prefeitura = rs.getString("prefeitura");
+                String distrito = rs.getString("distrito");
                 String secretaria = rs.getString("secretaria");
                 String subsecretaria = rs.getString("subsecretaria");
                 String departamento = rs.getString("departamento");
@@ -353,7 +357,7 @@ public class BdManager {
                 rs.close();
                 ps.close();
                 con.close();
-                return new Escola(estado, prefeitura, secretaria, subsecretaria, departamento, INEP, diretoria, unidade, telefone);
+                return new Escola(estado, prefeitura, distrito, secretaria, subsecretaria, departamento, INEP, diretoria, unidade, telefone);
             }
             return null;
         }
