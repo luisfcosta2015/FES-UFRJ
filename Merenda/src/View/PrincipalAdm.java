@@ -7,18 +7,21 @@ package View;
 
 import Model.Auxiliar;
 import Model.Sessao;
+import java.awt.BorderLayout;
+import View.CadastroPessoa;
 
 /**
  *
- * @author convidado
+ * @author Andre
  */
-public class PrincipalLeitor extends javax.swing.JFrame {
+public class PrincipalAdm extends javax.swing.JFrame {
 
     /**
-     * Creates new form PrincipalLeitor
+     * Creates new form Principal
      */
-    public PrincipalLeitor() {
+    public PrincipalAdm() {
         initComponents();
+        
     }
 
     /**
@@ -30,10 +33,17 @@ public class PrincipalLeitor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar = new javax.swing.JMenuBar();
-        jMenuArquivo = new javax.swing.JMenu();
+        menuBar = new javax.swing.JMenuBar();
+        menuArquivo = new javax.swing.JMenu();
         mItemLogout = new javax.swing.JMenuItem();
         mItemSair = new javax.swing.JMenuItem();
+        menuCadastrar = new javax.swing.JMenu();
+        mItemPessoa = new javax.swing.JMenuItem();
+        mItemConta = new javax.swing.JMenuItem();
+        mItemInstituicao = new javax.swing.JMenuItem();
+        mItemAlimento = new javax.swing.JMenuItem();
+        mItemPedido = new javax.swing.JMenuItem();
+        mItemEntrega = new javax.swing.JMenuItem();
         jMenuConsultar = new javax.swing.JMenu();
         mItemConsultaPessoa = new javax.swing.JMenuItem();
         mItemConsultaConta = new javax.swing.JMenuItem();
@@ -41,11 +51,10 @@ public class PrincipalLeitor extends javax.swing.JFrame {
         mItemConsultaAlimento = new javax.swing.JMenuItem();
         mItemConsultaPedido = new javax.swing.JMenuItem();
         mItemConsultaEntrega = new javax.swing.JMenuItem();
-        mItemConsultaCardapio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenuArquivo.setText("Arquivo");
+        menuArquivo.setText("Arquivo");
 
         mItemLogout.setText("Logout");
         mItemLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +62,7 @@ public class PrincipalLeitor extends javax.swing.JFrame {
                 mItemLogoutActionPerformed(evt);
             }
         });
-        jMenuArquivo.add(mItemLogout);
+        menuArquivo.add(mItemLogout);
 
         mItemSair.setText("Sair");
         mItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +70,61 @@ public class PrincipalLeitor extends javax.swing.JFrame {
                 mItemSairActionPerformed(evt);
             }
         });
-        jMenuArquivo.add(mItemSair);
+        menuArquivo.add(mItemSair);
 
-        jMenuBar.add(jMenuArquivo);
+        menuBar.add(menuArquivo);
+
+        menuCadastrar.setText("Cadastrar");
+
+        mItemPessoa.setText("Pessoa");
+        mItemPessoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPessoaActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemPessoa);
+
+        mItemConta.setText("Conta");
+        mItemConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemContaActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemConta);
+
+        mItemInstituicao.setText("Instituição");
+        mItemInstituicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemInstituicaoActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemInstituicao);
+
+        mItemAlimento.setText("Alimento");
+        mItemAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemAlimentoActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemAlimento);
+
+        mItemPedido.setText("Pedido");
+        mItemPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPedidoActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemPedido);
+
+        mItemEntrega.setText("Entrega");
+        mItemEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemEntregaActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemEntrega);
+
+        menuBar.add(menuCadastrar);
 
         jMenuConsultar.setText("Consultar");
 
@@ -115,41 +176,62 @@ public class PrincipalLeitor extends javax.swing.JFrame {
         });
         jMenuConsultar.add(mItemConsultaEntrega);
 
-        mItemConsultaCardapio.setText("Cardápio");
-        mItemConsultaCardapio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaCardapioActionPerformed(evt);
-            }
-        });
-        jMenuConsultar.add(mItemConsultaCardapio);
+        menuBar.add(jMenuConsultar);
 
-        jMenuBar.add(jMenuConsultar);
-
-        setJMenuBar(jMenuBar);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 658, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
+            .addGap(0, 377, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLogoutActionPerformed
-        Sessao.destroy();
-        this.setVisible(false);
-        Auxiliar.trocarTela(new Login());
-    }//GEN-LAST:event_mItemLogoutActionPerformed
-
     private void mItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSairActionPerformed
         if (Model.Auxiliar.confirmarSaida()) System.exit(0);
     }//GEN-LAST:event_mItemSairActionPerformed
+
+    private void mItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLogoutActionPerformed
+        Sessao.destroy();
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new Login());       
+    }//GEN-LAST:event_mItemLogoutActionPerformed
+
+    private void mItemPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPessoaActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroPessoa());    
+    }//GEN-LAST:event_mItemPessoaActionPerformed
+
+    private void mItemInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemInstituicaoActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroInstituicao());    
+    }//GEN-LAST:event_mItemInstituicaoActionPerformed
+
+    private void mItemAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemAlimentoActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroAlimento());    
+    }//GEN-LAST:event_mItemAlimentoActionPerformed
+
+    private void mItemContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemContaActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroConta());    
+    }//GEN-LAST:event_mItemContaActionPerformed
+
+    private void mItemPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPedidoActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroPedido());
+    }//GEN-LAST:event_mItemPedidoActionPerformed
+
+    private void mItemEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemEntregaActionPerformed
 
     private void mItemConsultaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPessoaActionPerformed
         // TODO add your handling code here:
@@ -170,11 +252,6 @@ public class PrincipalLeitor extends javax.swing.JFrame {
     private void mItemConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPedidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mItemConsultaPedidoActionPerformed
-
-    private void mItemConsultaCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaCardapioActionPerformed
-        this.setVisible(false);
-        Auxiliar.trocarTela(new ConsultarCardapio());
-    }//GEN-LAST:event_mItemConsultaCardapioActionPerformed
 
     private void mItemConsultaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaEntregaActionPerformed
         // TODO add your handling code here:
@@ -197,36 +274,43 @@ public class PrincipalLeitor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalLeitor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalLeitor().setVisible(true);
+                new PrincipalAdm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenuArquivo;
-    private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenu jMenuConsultar;
+    private javax.swing.JMenuItem mItemAlimento;
     private javax.swing.JMenuItem mItemConsultaAlimento;
-    private javax.swing.JMenuItem mItemConsultaCardapio;
     private javax.swing.JMenuItem mItemConsultaConta;
     private javax.swing.JMenuItem mItemConsultaEntrega;
     private javax.swing.JMenuItem mItemConsultaInstituicao;
     private javax.swing.JMenuItem mItemConsultaPedido;
     private javax.swing.JMenuItem mItemConsultaPessoa;
+    private javax.swing.JMenuItem mItemConta;
+    private javax.swing.JMenuItem mItemEntrega;
+    private javax.swing.JMenuItem mItemInstituicao;
     private javax.swing.JMenuItem mItemLogout;
+    private javax.swing.JMenuItem mItemPedido;
+    private javax.swing.JMenuItem mItemPessoa;
     private javax.swing.JMenuItem mItemSair;
+    private javax.swing.JMenu menuArquivo;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuCadastrar;
     // End of variables declaration//GEN-END:variables
 }
