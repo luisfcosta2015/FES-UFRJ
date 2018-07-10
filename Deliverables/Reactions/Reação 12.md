@@ -1,0 +1,11 @@
+### Semana 12 - 11/06, 13/06
+
+**GREVE DOS RODOVIÁRIOS: NÃO CONSEGUI CHEGAR NA FACULDADE PARA AULA DO EBER, SEGUNDA-FEIRA**
+
+Na quarta-feira, o professor Luis fez uma reunião entre pessoas de grupos distintos para discutirem acerca de problemas que lhes estavam ocorrendo. 
+
+Eu conversei com o time *Celta 80Km/h*, onde inicialmente conversamos bastante sobre os problemas relacionados aos testes que estava sendo um problema para eles (não me recordo com quem conversei, se não me engano se chama Vitor) e eu expliquei a situação do meu grupo, que estava desmotivado muito atrasado em questão de desenvolvimento. Em seguida os outros membros do *Celta* chegaram, me mostraram como estava a interface do programa deles até então e falaram sobre um problema que estava ocorrendo ao tentar realizar login. Indiquei que procurassem sobre **Hash** e se possível implementassem, porque acredito que além de facilitar, naquela situação, é uma questão voltada a segurança da informação. 
+
+O fato de armazenarmos senhas em texto plano num banco de dados é um risco gravíssimo a segurança dos usuários do sistema, visto que, caso ocorra algum tipo de invasão ou roubo de dados, o responsável pelo ataque possuirá acesso de todos os usuários que estão cadastrados no sistema. Aliado a isso, sabemos que é muito comum que os usuários reutilizem suas senhas em diferentes serviços, então isso poderia gerar um estrago ainda maior caso viesse a acontecer tal incidente.
+
+Em breve explicação, o *hash* é um algoritmo matemático de dispersão consegue trabalhar com uma enorme quantidade de dados e limitar a um tamanho específico. Existem vários tipos de *hash*, mas o grande porquê do mesmo ser utilizado é que ele é unidirecional. Uma vez que você converteu a senha do usuário em um *Hash*, você não consegue realizar o processo inverso. Claro que existem técnicas (como *brute force*) para buscar encontrar senhas comuns geradas por colisões, entretanto dificulta em milhares de vezes o trabalho dos atacantes ao tentar utilizar os dados roubados e fornece ao usuário uma camada a mais de proteção.
