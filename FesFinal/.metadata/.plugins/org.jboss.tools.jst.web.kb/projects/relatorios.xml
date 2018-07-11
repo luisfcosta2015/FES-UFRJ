@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FesFinal/relatorios/WebContent/WEB-INF/lib/standard-1.1.2.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/c-1_0-rt.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/c-1_0.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/c.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fmt-1_0-rt.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fmt-1_0.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fmt.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fn.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/permittedtaglibs.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/scriptfree.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/sql-1_0-rt.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/sql-1_0.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/sql.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/x-1_0-rt.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/x-1_0.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/x.tld" project="relatorios"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FesFinal/relatorios/WebContent/WEB-INF/lib/all-themes-1.0.10.jar"/>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FesFinal/relatorios/WebContent/WEB-INF/lib/jstl-1.1.2.jar"/>
+  <path value="/relatorios/WebContent/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="relatorios"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FesFinal/relatorios/WebContent/WEB-INF/lib/javax.faces.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/html_basic.tld" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/jsf_core.tld" project="relatorios"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/mojarra_ext.taglib.xml" project="relatorios"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.faces.jar/meta-inf/mojarra_ext.tld" project="relatorios"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FesFinal/relatorios/WebContent/WEB-INF/lib/primefaces-6.2.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.2.jar/meta-inf/faces-config.xml" project="relatorios"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.2.jar/meta-inf/primefaces-p.taglib.xml" project="relatorios"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-primefaces-6.2.jar/meta-inf/primefaces-pm.taglib.xml" project="relatorios"/>
+    </library>
+   </libraries>
+  </path>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification"/>
+  <core validator-id="jboss.jsf.core"/>
+  <el>
+   <linked-el length="37" name="%0" offset="774" path="%1"/>
+   <linked-el length="32" name="%0" offset="908" path="%1"/>
+   <linked-el length="33" name="%0" offset="1037" path="%1"/>
+   <linked-el length="42" name="%0" offset="1181" path="%1"/>
+   <linked-el length="33" name="%0" offset="1453" path="%1"/>
+   <linked-el length="34" name="%0" offset="1321" path="%1"/>
+   <linked-el length="23" name="%0" offset="1561" path="%1"/>
+   <linked-el length="37" name="%2" offset="774" path="%1"/>
+   <linked-el length="32" name="%2" offset="908" path="%1"/>
+   <linked-el length="33" name="%2" offset="1037" path="%1"/>
+   <linked-el length="42" name="%2" offset="1181" path="%1"/>
+   <linked-el length="33" name="%2" offset="1453" path="%1"/>
+   <linked-el length="34" name="%2" offset="1321" path="%1"/>
+   <linked-el length="23" name="%2" offset="1561" path="%1"/>
+   <linked-el length="37" name="%3" offset="774" path="%1"/>
+   <linked-el length="32" name="%3" offset="908" path="%1"/>
+   <linked-el length="33" name="%3" offset="1037" path="%1"/>
+   <linked-el length="42" name="%3" offset="1181" path="%1"/>
+   <linked-el length="33" name="%3" offset="1453" path="%1"/>
+   <linked-el length="34" name="%3" offset="1321" path="%1"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias
+   path="/relatorios/src/br/com/fes/relatorios/bean/AlunosBean.java" value="%0"/>
+  <alias path="MBAlunos" value="%2"/>
+  <alias path="/relatorios/src/br/com/fes/relatorios/domain/Dados.java" value="%3"/>
+  <alias path="/relatorios/WebContent/Filtro.xhtml" value="%1"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsf/composite">
+   <prefix>composite</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+  <uri value="http://primefaces.org/ui">
+   <prefix>p</prefix>
+  </uri>
+ </uris>
+</kb-project>

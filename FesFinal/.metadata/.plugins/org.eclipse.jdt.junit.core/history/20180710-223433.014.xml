@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AlunosBeanTest" project="relatorios" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.fes.relatorios.Teste.AlunosBeanTest" time="0.014">
+    <testcase name="testSetDadosRegistro" classname="br.com.fes.relatorios.Teste.AlunosBeanTest" time="0.001"/>
+    <testcase name="testConsultar" classname="br.com.fes.relatorios.Teste.AlunosBeanTest" time="0.013"/>
+  </testsuite>
+</testrun>

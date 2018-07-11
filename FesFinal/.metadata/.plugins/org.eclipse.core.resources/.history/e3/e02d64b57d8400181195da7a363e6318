@@ -1,0 +1,48 @@
+package br.com.fes.relatorios.bean;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.ListDataModel;
+
+import br.com.fes.relatorios.dao.DadosDAO;
+import br.com.fes.relatorios.domain.Dados;
+import br.com.fes.relatorios.itext.Gerador;
+
+
+@ManagedBean(name = "MBAlunos")
+@ViewScoped
+public class AlunosBean {
+	public static final String DEST 	= "WebContent/results/alunosPorTurma.pdf";
+	public static final String DEST2 	= "WebContent/results/alunosporturma-final.pdf";
+    public static final String SRC 		= "WebContent/results/alunosPorTurma.pdf";
+    public static final String PICT 	= "WebContent/resources/img/Brasao-caxias.png";
+
+	
+	private Dados dadosRegistro = new Dados();
+
+	public Dados getDadosRegistro() {
+		if(dadosRegistro == null){
+			dadosRegistro = new Dados();
+		}
+		return dadosRegistro;
+	}
+
+	public void setDadosRegistro(Dados dadosRegistro) {
+		this.dadosRegistro = dadosRegistro;
+	}
+
+		
+	public void consultar(){
+		try {
+			DadosDAO dao = new DadosDAO();
+			String query = dao.consultar(dadosRegistro);
+			Gerador ger = new Gerador();
+			
+			System.out.println("ger.createPdf");
+			ger.createPdf(DEST, query.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,21 @@
+package br.com.fes.relatorios.domain;
+
+import br.com.capgov.roupas.Dao.ConsultaRoupasDAO;
+import br.com.capgov.roupas.domain.*;
+import br.com.capgov.roupas.util.FacesUtil;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.ListDataModel;
+
+
+@ManagedBean(name = "MBAlunos")
+@ViewScoped
+public class AlunosBean {
+
+}

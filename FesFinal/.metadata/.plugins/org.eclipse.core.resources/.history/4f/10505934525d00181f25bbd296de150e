@@ -1,0 +1,21 @@
+package br.com.fes.relatorios.dao;
+
+import br.com.fes.relatorios.domain.Dados;
+
+public class DadosDAO {
+	
+	public void salvar(Dados dados){
+		
+		StringBuilder query = new StringBuilder();
+		
+		query.append("SELECT * FROM alunos WHERE ");
+		
+		if(dados.getMatrícula().toString().isEmpty() && )
+		
+		
+		
+		
+		
+	}
+	
+}

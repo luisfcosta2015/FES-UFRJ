@@ -1,0 +1,35 @@
+package br.com.fes.relatorios.Teste;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.itextpdf.text.DocumentException;
+
+import br.com.fes.relatorios.bean.AlunosBean;
+import br.com.fes.relatorios.itext.Gerador;
+import junit.framework.Assert;
+
+public class GeradorTeste {
+	Gerador G;
+	@Before
+	public void setUp() throws Exception {
+		G = new Gerador();
+		
+	}
+
+	@Test
+	public void testCreatePdfNull() throws IOException, DocumentException, SQLException {
+		Assert.assertEquals(3,G.createPdf("WebContent/results/alunosPorTurma.pdf", "SELECT matricula,nome,situacao FROM alunos", null));
+	}
+
+	@Test
+	public void testCreatePdf() throws IOException, DocumentException, SQLException {
+		Assert.assertEquals(3,G.createPdf("WebContent/results/alunosPorTurma.pdf", "SELECT matricula,nome,situacao FROM alunos", null));
+	}
+	
+}

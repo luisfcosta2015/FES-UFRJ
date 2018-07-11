@@ -1,0 +1,269 @@
+package br.com.fes.relatorios.itext;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.junit.experimental.categories.Category;
+
+/*
+
+This file is part of the iText (R) project.
+Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+
+import relatorio.Footer;
+import relatorio.Header;
+
+
+
+@Category(SampleTest.class)
+	public class SimpleTable  {
+	public static final String DEST = "WebContent/results/chapter01/SimpleTable.pdf";
+	public static final String DEST2 = "WebContent/results/chapter01/listagem.pdf";
+	
+/*	public static void main(String[] args) throws Exception {
+	    File file = new File(DEST);
+	    file.getParentFile().mkdirs();
+	    //new SimpleTable().manipulatePdf(DEST);
+	    new SimpleTable().listagemGeral(DEST2);
+	
+	}*/
+    public void createPdf(String filename) throws IOException,  DocumentException, SQLException {
+    	// info to conect to DB
+	    String url = "jdbc:mysql://localhost:3306/fes?useTimezone=true&serverTimezone=UTC";
+		String user = "root";
+		String password = "";
+		
+		
+		Header header = new Header();
+		new Footer();
+		
+		// our SQL SELECT query. 
+	    String query = "SELECT matricula,nome,situacao FROM alunos order by nome ";
+
+    	// step 1
+    	FileOutputStream fos = new FileOutputStream(filename);
+    	//PdfWriter writer = new PdfWriter(fos);
+    	//PdfDocument pdf = new PdfDocument(writer);
+    	
+    	
+        Document document = new Document();
+        // step 2
+        PdfWriter writer = PdfWriter.getInstance(document, fos);
+        Footer event = new Footer();
+        writer.setPageEvent(event);
+        
+       // footer.onEndPagedate(writer,document);
+        
+        
+        String nome_escola = "CIEP Municipalizado 330 - Maria da Glória Corrêa Lemos";
+        int inep = 33101094;
+        int ano = 2018;
+        int turma = 401;
+        String grau ="Ensino Fundamental I (Anos iniciais)";
+        
+        // step 3
+        document.open();
+        
+        //setting header
+        header.first_header(writer,document, nome_escola, inep, ano, turma, grau,PICT);    
+        
+        
+        //setting footer
+        
+        
+        // step 4
+        //opening connection
+        Connection conexao = DriverManager.getConnection(url, user, password);
+        
+		System.out.println("Conectado ao Banco");
+        
+
+	    // create the java statement
+	    Statement st = conexao.createStatement();
+	    ResultSet rs = st.executeQuery(query);
+        
+        PdfPTable table = new PdfPTable(3);
+        
+        table.setSpacingBefore(50f);
+        
+        PdfPCell cell1 = new PdfPCell(new Paragraph("Cód i-Educar"));
+        PdfPCell cell2 = new PdfPCell(new Paragraph("Nome do Aluno"));
+        PdfPCell cell3 = new PdfPCell(new Paragraph("Situação"));
+  
+        table.addCell(cell1);
+        table.addCell(cell2);
+        table.addCell(cell3);
+
+     // iterate through the java resultset, preenchendo tabela com os dados do banco
+	      while (rs.next())
+	      {
+	        int id = rs.getInt("matricula");
+	        String matricula = "00" + id;
+	        table.addCell(matricula);
+	        String Name = rs.getString("Nome");
+	        table.addCell(Name);
+	        String situacao = rs.getString("situacao");
+	        table.addCell(situacao);
+	        table.addCell(matricula);
+	        table.addCell(Name);
+	        table.addCell(situacao);
+	        
+	        // print the results
+	        System.out.format("%s, %s, %s\n", id, Name, situacao);
+	      }
+	      st.close();
+		conexao.close();
+        
+        document.add(table);
+        
+        //page 2
+        document.newPage();
+        document.add(new Paragraph("Test " + 5));
+        
+        //page 3
+        document.newPage();
+
+        
+        
+        //page 4
+        document.newPage();
+            
+              
+        
+        
+        //add last page footer
+        
+      
+        
+        // step 5
+        document.close();
+        
+        System.out.println("pronto");
+
+    }
+	
+	public void listagemGeral(ResultSet rs) throws Exception {
+		
+	    PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+	    //PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST2));
+	    Document doc = new Document(pdfDoc);
+	    
+	    Table table = new Table(3);
+	    
+		// our SQL SELECT query. 
+	    // if you only need a few columns, specify them by name instead of using "*"
+	    //String query = "SELECT matricula,nome,situacao FROM alunos where escola = 'Brizolaum' ";
+		
+	      
+	    //Cabe�ario da tabela
+	    table.addCell("Cod i-Educar");
+	    table.addCell("Nome do Aluno");
+	    table.addCell("Situacaoo");
+	    
+	    
+	    // iterate through the java resultset, preenchendo tabela com os dados do banco
+	      while (rs.next())
+	      {
+	        int id = rs.getInt("matricula");
+	        String matricula = "00" + id;
+	        table.addCell(matricula);
+	        String Name = rs.getString("Nome");
+	        table.addCell(Name);
+	        String situacao = rs.getString("situacao");
+	        table.addCell(situacao);
+	        
+	        // print the results
+	        System.out.format("%s, %s, %s\n", id, Name, situacao);
+	      }
+		   
+	    doc.add(table);
+	
+	    doc.close();
+	    System.out.println("yoga fire");
+	}
+	
+	
+	
+	
+	public void manipulatePdf(ResultSet rs) throws Exception {
+		
+	    PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+	    //PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST2));
+	    Document doc = new Document(pdfDoc);
+	    
+	    Table table = new Table(5);
+	   	      
+	    //Cabe�ario da tabela
+	    table.addCell("matricula");
+	    table.addCell("Nome");
+	    table.addCell("Nascimento");
+	    table.addCell("Escola");
+	    table.addCell("serie");
+	    
+	    
+	    // iterate through the java resultset, preenchendo tabela com os dados do banco
+	      while (rs.next())
+	      {
+	        int id = Integer.parseInt(rs.getString("matrícula"));
+	        String matricula = "00" + id;
+	        table.addCell(matricula);
+	        String Name = rs.getString("nome");
+	        table.addCell(Name);
+	        Date dateCreated = rs.getDate("dataNascimento");
+	        table.addCell(String.valueOf(dateCreated));
+	        String escola = rs.getString("escola");
+	        table.addCell(escola);
+	        String serie = rs.getString("serie");
+	        table.addCell(serie);
+	        
+	        // print the results
+	        System.out.format("%s, %s, %s, %s, %s\n", id, Name,  dateCreated, escola, serie);
+	      }
+	    
+	    doc.add(table);
+	
+	    doc.close();
+	    System.out.println("yoga fire");
+	}
+	
+	public void dbTable() {
+		com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+
+	    try {
+	    	com.itextpdf.text.pdf.PdfWriter.getInstance(document,
+	                new FileOutputStream("WebContent/results/chapter01/DBT.pdf"));
+	        document.open();
+
+	        Image image1 = Image.getInstance("Brasao-caxias.png");
+	        document.add(image1);
+
+	        
+	            String imageUrl = "http://jenkov.com/images/" +
+	            "20081123-20081123-3E1W7902-small-portrait.jpg";
+
+
+	        document.close();
+	    } catch(Exception e){
+	      e.printStackTrace();
+	    }
+	}
+}

@@ -1,0 +1,25 @@
+package br.com.fes.relatorios.Teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import br.com.fes.relatorios.itext.PageXofY;
+import junit.framework.Assert;
+
+public class PageXofYTest {
+	PageXofY P;
+
+	@Before
+	public void setUp() throws Exception {
+		P = new PageXofY();
+	}
+
+	@SuppressWarnings("deprecation")
+	@Test
+	public void manipulatePdftest() throws Exception {
+		Assert.assertEquals(5, P.manipulatePdf("origen", "destino"));
+	}
+
+}

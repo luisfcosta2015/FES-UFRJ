@@ -1,0 +1,25 @@
+package br.com.fes.relatorios.Teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class AlunosBeanTest {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+
+	@Test
+	public void testSetDadosRegistro() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testConsultar() {
+		fail("Not yet implemented");
+	}
+
+}

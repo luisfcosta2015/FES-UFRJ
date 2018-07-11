@@ -1,0 +1,18 @@
+package br.com.fes.relatorios.main;
+
+import java.sql.SQLException;
+
+import br.com.fes.relatorios.factory.ConexaoBanco;
+
+public class Main {
+	
+	public static void main(String[] args) throws SQLException {
+		
+		br.com.fes.relatorios.factory.ConexaoBanco conexao = new br.com.fes.relatorios.factory.ConexaoBanco();
+		ConexaoBanco.createConnection();
+		
+		System.out.println("Conectado ao Banco");
+		
+		conexao.createConnection().close();
+	}
+}

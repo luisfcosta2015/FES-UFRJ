@@ -1,0 +1,8 @@
+127.0.0.1 - - [11/Jul/2018:00:23:11 -0300] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [11/Jul/2018:00:23:12 -0300] "GET /relatorios/WEB-INF/classes/br/com/fes/relatorios/bean/AlunosBean.java HTTP/1.1" 404 949
+0:0:0:0:0:0:0:1 - - [11/Jul/2018:00:23:47 -0300] "GET /relatorios/Filtro.xhtml HTTP/1.1" 200 9444
+0:0:0:0:0:0:0:1 - - [11/Jul/2018:00:23:51 -0300] "POST /relatorios/Filtro.xhtml HTTP/1.1" 200 191
+0:0:0:0:0:0:0:1 - - [11/Jul/2018:00:25:20 -0300] "POST /relatorios/Filtro.xhtml HTTP/1.1" 200 191
+127.0.0.1 - - [11/Jul/2018:00:32:52 -0300] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [11/Jul/2018:00:32:53 -0300] "GET /relatorios/Filtro.xhtml HTTP/1.1" 200 9446
+0:0:0:0:0:0:0:1 - - [11/Jul/2018:00:33:10 -0300] "POST /relatorios/Filtro.xhtml HTTP/1.1" 200 192

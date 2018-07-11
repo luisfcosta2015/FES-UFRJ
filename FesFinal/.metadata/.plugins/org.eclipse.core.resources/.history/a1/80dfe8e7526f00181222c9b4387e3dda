@@ -1,0 +1,51 @@
+package br.com.fes.relatorios.domain;
+
+import br.com.fes.relatorios.dao.*;
+import br.com.fes.relatorios.domain.*;
+
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.ListDataModel;
+
+
+@ManagedBean(name = "MBAlunos")
+@ViewScoped
+public class AlunosBean {
+	
+	private Roupa roupaRegistro = new Roupa();
+	private ListDataModel<Dados> roupaConsulta;
+
+	public Dados getdadosRegistro(){
+		if(dadosRegistro == null){
+			dadosRegistro() = new Dados();
+		}
+	}
+
+	public ListDataModel<Dados> getRoupaConsulta() {
+		return roupaConsulta;
+	}
+
+	public void setRoupaConsulta(ListDataModel<Dados> roupaConsulta) {
+		this.roupaConsulta = roupaConsulta;
+	}
+
+	public void consultar(){
+		try {
+			DadosDAO dao = new DadosDAO();
+			ArrayList<Dados> lista = dao.salvar(dadosRegistrar);
+			roupaConsulta = new ListDataModel<Roupa>(lista);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

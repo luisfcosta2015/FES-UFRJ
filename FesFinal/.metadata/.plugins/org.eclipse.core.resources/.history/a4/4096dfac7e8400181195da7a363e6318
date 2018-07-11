@@ -1,0 +1,162 @@
+package br.com.fes.relatorios.itext;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.junit.experimental.categories.Category;
+
+import com.itextpdf.test.annotations.type.SampleTest;
+
+/*
+
+This file is part of the iText (R) project.
+Copyright (c) 1998-2016 iText Group NV
+
+*/
+
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+ 
+
+
+
+@Category(SampleTest.class)
+	public class Gerador  {
+	public static final String DEST 	= "results/chapter01/alunosPorTurma.pdf";
+	public static final String DEST2 	= "results/chapter01/alunosporturma-final.pdf";
+    public static final String SRC 		= "results/chapter01/alunosPorTurma.pdf";
+    public static final String PICT 	= "WebContent/resources/img/Brasao-caxias.png";
+/*	public static void main(String[] args) throws Exception {
+	    File file = new File(DEST);
+	    file.getParentFile().mkdirs();
+	    //new SimpleTable().manipulatePdf(DEST);
+	    new SimpleTable().listagemGeral(DEST2);
+	
+	}*/
+    public void createPdf(String filename,String query) throws IOException,  DocumentException, SQLException {
+    	// info to conect to DB
+	    String url = "jdbc:mysql://localhost:3306/fes?useTimezone=true&serverTimezone=UTC";
+		String user = "root";
+		String password = "";
+		
+		
+		Header header = new Header();
+		new Footer();
+		
+		// our SQL SELECT query. 
+	    //query = "SELECT matricula,nome,situacao FROM alunos order by nome ";
+
+    	// step 1
+		System.out.println("FileoutputStream filename");
+    	FileOutputStream fos = new FileOutputStream(filename);
+    	//PdfWriter writer = new PdfWriter(fos);
+    	//PdfDocument pdf = new PdfDocument(writer);
+    	
+    	
+        Document document = new Document();
+        // step 2
+        PdfWriter writer = PdfWriter.getInstance(document, fos);
+        Footer event = new Footer();
+        writer.setPageEvent(event);
+        
+       // footer.onEndPagedate(writer,document);
+        
+        
+        String nome_escola = "CIEP Municipalizado 330 - Maria da Glória Corrêa Lemos";
+        int inep = 33101094;
+        int ano = 2018;
+        int turma = 401;
+        String grau ="Ensino Fundamental I (Anos iniciais)";
+        
+        // step 3
+        document.open();
+        
+        //setting header
+        header.first_header(writer,document, nome_escola, inep, ano, turma, grau,PICT);    
+        
+        
+        //setting footer
+        
+        
+        // step 4
+        //opening connection
+        Connection conexao = DriverManager.getConnection(url, user, password);
+        
+		System.out.println("Conectado ao Banco");
+        
+
+	    // create the java statement
+	    Statement st = conexao.createStatement();
+	    ResultSet rs = st.executeQuery(query);
+        
+        PdfPTable table = new PdfPTable(3);
+        
+        table.setSpacingBefore(50f);
+        
+        PdfPCell cell1 = new PdfPCell(new Paragraph("Cód i-Educar"));
+        PdfPCell cell2 = new PdfPCell(new Paragraph("Nome do Aluno"));
+        PdfPCell cell3 = new PdfPCell(new Paragraph("Situação"));
+  
+        table.addCell(cell1);
+        table.addCell(cell2);
+        table.addCell(cell3);
+
+     // iterate through the java resultset, preenchendo tabela com os dados do banco
+	      while (rs.next())
+	      {
+	        int id = rs.getInt("matricula");
+	        String matricula = "00" + id;
+	        table.addCell(matricula);
+	        String Name = rs.getString("Nome");
+	        table.addCell(Name);
+	        String situacao = rs.getString("situacao");
+	        table.addCell(situacao);
+	        table.addCell(matricula);
+	        table.addCell(Name);
+	        table.addCell(situacao);
+	        
+	        // print the results
+	        System.out.format("%s, %s, %s\n", id, Name, situacao);
+	      }
+	      st.close();
+		conexao.close();
+        
+        document.add(table);
+        
+        //page 2
+        document.newPage();
+        document.add(new Paragraph("Test " + 5));
+        
+        //page 3
+        document.newPage();
+
+        
+        
+        //page 4
+        document.newPage();
+            
+              
+        
+        
+        //add last page footer
+        
+      
+        
+        // step 5
+        document.close();
+        
+        System.out.println("pronto");
+
+    }
+}
+	

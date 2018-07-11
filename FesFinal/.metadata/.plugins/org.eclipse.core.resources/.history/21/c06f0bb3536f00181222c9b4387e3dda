@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"	
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/ModeloTemplate.xhtml">
+
+
+	
+	<ui:define name="menu">
+		<ui:include src="/includes/Menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="frmInserir">
+			<h:panelGrid id="pnlInserir" columns = "2" columnClasses="firstColumn,secondColumn">
+			
+				<p:outputLabel value = "Matrícula: "/>
+				<p:inputText maxlength="12" size="17" />
+			
+				<p:outputLabel value = "Nome: " />
+				<p:inputText maxlength="12" size="17" />
+				
+				<p:outputLabel value = "Idade "/>
+				<p:inputText maxlength="12" size="17" />
+			
+				<p:outputLabel value = "Data de Nascimento: " />
+				<p:inputText maxlength="12" size="17" />
+			
+				<p:outputLabel value = "Escola: "/>
+				<p:inputText maxlength="12" size="17" />
+			
+				<p:outputLabel value = "Série: " />
+				<p:inputText maxlength="12" size="17" />
+				<br/>
+				<h:commandButton onclick="confirmButton()" value="Buscar" />
+				
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="footer"/>
+
+
+</ui:composition>

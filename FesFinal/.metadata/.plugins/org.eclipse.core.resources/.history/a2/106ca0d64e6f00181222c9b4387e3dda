@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"	
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/ModeloTemplate.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="/includes/Menu.xhtml" />
+	</ui:define>
+	
+	<body>
+		<div class="header">
+		  <img src="resources/img/logo.png" height="200px" width="500px"/>
+		  <div class="header-right">
+		    <a href="Filtro.xhtml">Filtro</a>
+		    <a class="active" href="#contact">Contact</a>
+	<!-- 	    <a href="#about">About</a>
+	 -->	  </div>
+		</div>
+		<br/>
+		<form>
+			<h:panelGrid columns = "2">
+			
+				 <img src="resources/img/andre.png" height="200px" width="300px"/>
+				 <b>Email:</b> andre.zinum@gmail.com
+				 <br/>
+				 <img src="resources/img/Gustavo.png" height="200px" width="300px"/>
+				 <b>Email:</b> gustavo.siqueira.421@gmail.com
+				 <br/>
+				 <img src="resources/img/vinicius.png" height="200px" width="300px"/>
+				 <b>Email:</b> Michel.caiafa@gmail.com
+				 <br/>
+				 <img src="resources/img/Xiao.png" height="200px" width="300px"/>
+				 <b>Email:</b> xiaoykong06@gmail.com
+				 <br/>
+			</h:panelGrid>
+			
+		</form>
+		<div class="footer">
+			<font color="black">Projetos feito meramente para fins acadêmicos</font>
+		</div>
+	</body>
+</ui:composition>

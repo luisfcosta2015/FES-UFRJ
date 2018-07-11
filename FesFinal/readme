@@ -1,0 +1,67 @@
+Os códigos feitos para a disciplina de Fundamentos da Engenharia de Software
+
+Link do trabalho : https://github.com/luisfcosta2015/FES-UFRJ
+Link do meu grupo : https://github.com/luisfcosta2015/FES-UFRJ/wiki/Time:-Lechuga
+
+Abaixo está o manual de instalação
+
+A primeira ferramenta que vamos instalar será o Java 8.
+Passo 0: Antes de tudo vamos remover, caso tenha o Openjdk para evitar possíveis conflitos.
+
+sudo apt-get purge openjdk*
+
+Passo 1: Agora vamos adicionar o repositório oficial
+sudo add-apt-repository ppa:webupd8team/java
+
+Passo 2: Atualizar
+sudo apt-get update
+
+Passo 3: Por fim instalar
+sudo apt-get install oracle-java8-installer
+
+opcional
+Passo 4: Pode ser interessante configurar automaticamente as variáveis do java, fazemos isso com o seguinte comando
+sudo apt-get install oracle-java8-set-default
+
+Agora vamos instalar o eclipse que será a nossa IDE
+
+Passo 0: Caso já tenha alguma versão do eclipse instalada, remova ela com os seguinte comandos.
+
+rm -Rf /opt/eclipse/
+
+rm -Rf /usr/share/applications/eclipse.desktop
+
+Passo 1: verifique se seu sistema é 32 ou 64 bits com o comando
+uname -m
+
+Passo 2: Vá no site e baixe a última versão, compatível com seu sistema e nomeie o arquivo com “eclipse.tar.gz”(sem as aspas).
+https://www.eclipse.org/downloads/
+
+Passo 3: Vamos descompactar o arquivo
+sudo tar -zxvf eclipse.tar.gz -C /opt/
+
+Agora por fim vamos instalar o Mysql
+
+Passo 1: Instalar
+sudo apt-get install mysql-server
+OBS: na instalação ele vai pedir uma senha que será o Root do banco
+
+Passo 2: Verificar se tudo correu bem
+systemctl status mysql
+
+Integrando Mysql com eclipse
+
+Passo 1: Baixe o Conector
+https://www.mysql.com/products/connector/
+
+Passo 2: Adicione o conector ao Java Build Path do projeto
+
+
+
+
+
+
+
+
+
+

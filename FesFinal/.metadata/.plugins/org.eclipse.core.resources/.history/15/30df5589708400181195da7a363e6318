@@ -1,0 +1,32 @@
+package br.com.fes.relatorios.main;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+/*
+public class Main {
+	
+	public static void main(String[] args) throws SQLException {
+		
+		br.com.fes.relatorios.factory.ConexaoBanco conexao = new br.com.fes.relatorios.factory.ConexaoBanco();
+		conexao.createConnection();
+		
+		System.out.println("Conectado ao Banco");
+		
+		conexao.createConnection().close();
+	}
+}
+*/
+public class Main {
+	
+	public static void main(String[] args) throws SQLException {
+		
+		String url = "jdbc:mysql://localhost:3306/fes?useTimezone=true&serverTimezone=UTC";
+		String user = "root";
+		String password = "";
+		System.out.println("eu 2");
+		Connection conexao = DriverManager.getConnection(url, user, password);
+		System.out.println("eu 3");
+		System.out.println("criando conexao");
+	}
+}

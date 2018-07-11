@@ -1,0 +1,51 @@
+package br.com.fes.relatorios.Teste;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import br.com.fes.relatorios.bean.AlunosBean;
+import br.com.fes.relatorios.itext.Header;
+import junit.framework.Assert;
+
+public class HeaderTest {
+	Header H;
+	@Before
+	public void setUp() throws Exception {
+		H = new Header();
+	}
+
+	@Test
+	public void testOnTopPage() {
+		Assert.assertNull(message, object);
+	}
+
+	@Test
+	public void testFirst_header() throws MalformedURLException, IOException, DocumentException {
+		PdfWriter writer = null;
+		Document document = null;
+		Assert.assertEquals(4, H.first_header(writer, document, "escola", 0, 0, "turma", "grau", "fotinha"));
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
