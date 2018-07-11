@@ -85,4 +85,41 @@
 <p align="justify"> Luiz disse que o esporro fez o cavalinho andar.<p>
 
 <h2> Planejamento para a próxima sprint</h2>
-<p align="justify"></p>
+<p align="justify">A principal tarefa é as questões de documentação que teremos de fazer</p>
+<table>
+  <tr>
+    <th> Atividade </th>
+    <th> Horas Previstas </th>
+    <th> Membro </th>
+  </tr>
+  <tr>
+    <td> Modelo do Cardápio no banco. </td>
+    <td> 2 horas </td>
+    <td> Gabriel </td>
+  </tr>
+  <tr>
+    <td> Sail Boat. </td>
+    <td> 1 horas </td>
+    <td> Matheus </td>
+  </tr>
+  <tr>
+    <td> Ferramentas de testes </td>
+    <td> 5 horas </td>
+    <td> Matheus </td>
+  </tr>
+    <tr>
+    <td> Interface do cardápio </td>
+    <td> 2 horas </td>
+    <td> André </td>
+  </tr>
+    <tr>
+    <td> Atualizar wiki </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+</table> 

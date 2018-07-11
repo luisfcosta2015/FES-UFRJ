@@ -112,11 +112,39 @@ public class CadastroContaTest {
             C.preencherPessoatest(nomenovoP);
             C.preencherInstituicaotest(nomenovoI);
             C.BotaoPessoa().doClick();
+            C.BotaoInstituicao().doClick();
+            
+            
+            String Usuario = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
+            String Matricula = Auxiliar.CriaNumero(10);
+            String Senha = Auxiliar.CriaPalavra(ran.nextInt(3) + 5);
+            String Senha2 = Senha;
+            int inteiro = ran.nextInt(3);
+            
+            C.preenchertest(Usuario,Matricula,Senha,Senha2,inteiro);
+            C.BotaoCadastrar().doClick();
+            C.reset();
+            C.preencherPessoatest(nomenovoP);
+            C.preencherInstituicaotest(nomenovoI);
             C.BotaoPessoa().doClick();
-            
-            
+            C.BotaoInstituicao().doClick();
+            C.BotaoPesquisar().doClick();
+            String teste = C.retornaValores(0);
+            assertEquals(Usuario,teste);
+            teste = C.retornaValores(1);
+            assertEquals(Matricula,teste);
+            C.BotaoDeletar().doClick();
+            I.reset();
+            p.reset();
+            I.preenchernometest(nomenovoI);
+            p.preenchernometest(nomenovoP);
+            p.BotaoPesquisar().doClick();
+            p.BotaoDeletar().doClick();
+            I.BotaoPesquisar().doClick();
+            I.BotaoDeletar().doClick();
         }
   
     }
+    
     
 }
