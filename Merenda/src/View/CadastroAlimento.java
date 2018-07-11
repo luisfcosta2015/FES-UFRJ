@@ -441,7 +441,11 @@ return "nada";
         a.setMedida(String.valueOf(cmbMedida.getSelectedItem()));
         a.setPerecivel(chkPerecivel.isSelected());
         // <= 0 não passa na validação
-        a.setQtd_atende(Auxiliar.isNumeric(txtQtdAtende.getText()) ? Integer.valueOf(txtQtdAtende.getText()) : -1);
+        if("".equals(txtQtdAtende.getText())){
+            a.setQtd_atende(-1);
+        }else{
+            a.setQtd_atende(Auxiliar.isNumeric(txtQtdAtende.getText()) ? Integer.valueOf(txtQtdAtende.getText()) : -1);
+        }
         
         String erros = a.validar();
         

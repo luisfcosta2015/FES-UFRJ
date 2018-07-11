@@ -484,9 +484,13 @@ return "nada";
         i.setNome(txtNome.getText());
         i.setInep(txtINEP.getText());
         i.setTelefone(txtTelefone.getText());
-        i.setQtd_alunos(
-                (Auxiliar.isNumeric(txtQtdAlunos.getText())) ? 
-                Integer.valueOf(txtQtdAlunos.getText()) : -1);
+        if("".equals(txtQtdAlunos.getText())){
+            i.setQtd_alunos(-1);
+        }else{
+            i.setQtd_alunos(
+                    (Auxiliar.isNumeric(txtQtdAlunos.getText())) ? 
+                    Integer.valueOf(txtQtdAlunos.getText()) : -1);
+        }
         i.setEndereco(txtEndereco.getText());
         
         
