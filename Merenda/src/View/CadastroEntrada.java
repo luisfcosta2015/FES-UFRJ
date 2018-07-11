@@ -243,7 +243,6 @@ public class CadastroEntrada extends javax.swing.JFrame {
         boolean sucesso = Auxiliar.isNumeric(txt) ? i.instituicaoPorId(Integer.parseInt(txt)) : i.instituicaoPorNome(txt);
         if (sucesso){
             id_instituicao = i.getId();
-
             java.net.URL imgURL = getClass().getResource("/images/success.png");
             ImageIcon icon = Auxiliar.createImageIcon(imgURL, "Instituicão encontrada");
             lblPesquisaInstituicao.setIcon(icon);
@@ -314,7 +313,7 @@ public class CadastroEntrada extends javax.swing.JFrame {
         e.setId_instituicao(id_instituicao);
         Format formatter = new SimpleDateFormat("dd/MM/yyyy");
         e.setData(formatter.format(d));
-        
+         
         if (!(erro += e.validar()).equals("")){
             Auxiliar.errMsg(this, erro, true);
         } else if (e.cadastrar()){

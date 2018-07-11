@@ -8,6 +8,7 @@ package View;
 import Model.Auxiliar;
 import Model.Conexao;
 import Model.Sessao;
+import javax.swing.JButton;
 
 /**
  *
@@ -18,10 +19,32 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    int tipoDeLogin = -1;
+    boolean apareceTela = true;
+    
     public Login() {
         initComponents();
     }
+    
+    public int RetornaTipoDeLogin(){
+        return tipoDeLogin;
+    }
+    
+    public void NaoApareceTela(){
+        apareceTela = false;
+    }
 
+    public void preencher(String usuario, String senha){
+        txtUsuario.setText(usuario);
+        passSenha.setText(senha);
+        
+    }
+    
+    public JButton BotaoLogin(){ 
+        return btnLogin;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,25 +160,32 @@ public class Login extends javax.swing.JFrame {
         // "" é macete pra converter de char[] pra String
         if ( con.login(txtUsuario.getText(),Auxiliar.criptografar(String.valueOf(passSenha.getPassword()))) ){    
             Sessao sessao = Sessao.getInstance();
+            tipoDeLogin = sessao.getFuncao();
             //System.out.println("Login bem-sucedido: " + sessao.getIdPessoa() + " " + sessao.getFuncao());   
             switch (sessao.getFuncao()) {
                 case 1:
                     // ADMINISTRADOR
                     this.setVisible(false);
-                    Auxiliar.trocarTela(new PrincipalAdm());
+                    if(apareceTela == true)
+                        Auxiliar.trocarTela(new PrincipalAdm());
+                    if(apareceTela == false)
+                        Sessao.destroy();
                     break;
                 case 2:
                     // DIRETOR
                     this.setVisible(false);
-                    Auxiliar.trocarTela(new PrincipalDir());
+                    if(apareceTela == true)    
+                        Auxiliar.trocarTela(new PrincipalDir());
+                    if(apareceTela == false)
+                        Sessao.destroy();
                     break;
                 default:
-                    Auxiliar.errMsg(this, "Sistema ainda não suporta função: " + Auxiliar.getPermission(), true);
+                    Auxiliar.errMsg(this, "Sistema ainda não suporta função: " + Auxiliar.getPermission(), apareceTela);
                     Sessao.destroy();
                     break;
             }
         } else {
-            Auxiliar.errMsg(this, "Usuário ou senha inválidos", true);                                  
+            Auxiliar.errMsg(this, "Usuário ou senha inválidos", apareceTela);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
