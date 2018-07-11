@@ -5,6 +5,15 @@
  */
 package View;
 
+import Controller.Cardapio;
+import Controller.Instituicao;
+import Model.Auxiliar;
+import Model.Sessao;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author convidado
@@ -16,6 +25,21 @@ public class ConsultarCardapio extends javax.swing.JFrame {
      */
     public ConsultarCardapio() {
         initComponents();
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "nome_instituicao", "data_cardapio", "lanche_manha", "almoco", "lanche_tarde", "janta"
+            }
+        ));
+        // caso seja diretor da escola
+        if(Sessao.getInstance().getFuncao() == 2) {
+            Instituicao I = new Instituicao();
+            I.instituicaoPorId(Sessao.getInstance().getIdInstituicao());
+            jTextField1.setText(I.getNome());
+            jTextField1.setEnabled(false);
+        }
     }
 
     /**
@@ -27,21 +51,187 @@ public class ConsultarCardapio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        lblTitulo = new javax.swing.JLabel();
+        lblInsituicao = new javax.swing.JLabel();
+        datePicker = new org.jdesktop.swingx.JXDatePicker();
+        lblData = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMenuArquivo = new javax.swing.JMenu();
+        mItemPrincipal = new javax.swing.JMenuItem();
+        mItemSair = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        lblTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblTitulo.setText("Consultar Cardápio");
+
+        lblInsituicao.setText("Instituição");
+
+        lblData.setText("Data");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setToolTipText("");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+
+        jMenuArquivo.setText("Arquivo");
+
+        mItemPrincipal.setText("Menu Principal");
+        mItemPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPrincipalActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(mItemPrincipal);
+
+        mItemSair.setText("Sair");
+        mItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemSairActionPerformed(evt);
+            }
+        });
+        jMenuArquivo.add(mItemSair);
+
+        jMenuBar.add(jMenuArquivo);
+
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblInsituicao)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblData)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblData)
+                    .addComponent(lblInsituicao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        Cardapio c = new Cardapio();
+        String erros = "", data = "", instituicao = "";
+        Object[][] tabela_crua;
+        
+        instituicao = jTextField1.getText();
+        
+        Date d = datePicker.getDate();
+        if (d == null){
+            erros += "Data inválida\n";
+        } else {
+            Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+            data = formatter.format(d);
+        }
+        
+        tabela_crua = c.consultar_cardapio(data, instituicao);
+        if(tabela_crua.length == 0 && tabela_crua[0].length == 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum cardápio encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            tabela_crua,
+            new String [] {
+                "nome_instituicao", "data_cardapio", "lanche_manha", "almoco", "lanche_tarde", "janta"
+            }
+        ));
+        }
+        
+        jScrollPane1.setViewportView(jTable1);
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
+        this.setVisible(false);
+        
+        switch (Sessao.getInstance().getFuncao()) {
+            case 2:
+                // DIRETOR
+                this.setVisible(false);
+                Auxiliar.trocarTela(new PrincipalDir());
+                break;
+            case 3:
+                // LEITOR
+                this.setVisible(false);
+                Auxiliar.trocarTela(new PrincipalLeitor());
+                break;
+            default:
+                Auxiliar.errMsg(this, "Sistema ainda não suporta função: " + Auxiliar.getPermission(), true);
+                Sessao.destroy();
+                break;
+        }
+        Auxiliar.trocarTela(new PrincipalDir());
+    }//GEN-LAST:event_mItemPrincipalActionPerformed
+
+    private void mItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSairActionPerformed
+        if (Model.Auxiliar.confirmarSaida()) System.exit(0);
+    }//GEN-LAST:event_mItemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +269,17 @@ public class ConsultarCardapio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPesquisar;
+    private org.jdesktop.swingx.JXDatePicker datePicker;
+    private javax.swing.JMenu jMenuArquivo;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblData;
+    private javax.swing.JLabel lblInsituicao;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JMenuItem mItemPrincipal;
+    private javax.swing.JMenuItem mItemSair;
     // End of variables declaration//GEN-END:variables
 }

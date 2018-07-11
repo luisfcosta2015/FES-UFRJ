@@ -74,7 +74,7 @@ public class Conexao {
         return null;
     }
     
-    public boolean login(String usuario, String senha){
+    public boolean login(String usuario, String senha) {
         
         boolean logou = false;        
         try {
@@ -83,8 +83,8 @@ public class Conexao {
             //System.out.println("usuario: " + usuario);
             //System.out.println("senha: " + senha);
             
-            String query = "SELECT * FROM conta c where c.usuario=\'" + usuario + "\' and c.senha=\'" + senha + "\';";
-
+            String query = "SELECT * FROM conta c where c.usuario=\'" + usuario + "\' and c.senha=\'" + senha + "\'";
+            
             // create the java statement, execute the query, and get a java resultset
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);

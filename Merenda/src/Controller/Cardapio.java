@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Auxiliar;
 import Model.Conexao;
+import java.util.Map;
 
 /**
  *
@@ -49,13 +50,35 @@ public class Cardapio {
         setMarca(String.valueOf(m.get("marca")));
         setFornecedor(String.valueOf(m.get("fornecedor")));
         setMedida(String.valueOf(m.get("medida")));
+        
         */
+        setId_cardapio((int)m.get("id"));
+        setId_instituicao((int)m.get("id_instituicao"));
+        setData_cardapio(String.valueOf(m.get("data_cardapio")));
+        setLanche_manha(String.valueOf(m.get("lanche_manha")));
+        setAlmoco(String.valueOf(m.get("almoco")));
+        setLanche_tarde(String.valueOf(m.get("lanche_tarde")));
+        setJanta(String.valueOf(m.get("janta")));
     };
     
-    public boolean consultar_por_x(int x) {
-        String query = /* formata a query e manda bala */"" ;
+    Auxiliar.TabelaDados tabela_dados = (lst, obj) -> {
+        Map<String, Object> m;
+        obj = new Object[lst.size()][6];
+        for(int i = 0 ; i < lst.size() ; i++) {
+            m = lst.get(i);
+            obj[i][0] = (int)m.get("nome_instituicao");
+            obj[i][1] = String.valueOf(m.get("data_cardapio"));
+            obj[i][2] = String.valueOf(m.get("lanche_manha"));
+            obj[i][3] = String.valueOf(m.get("almoco"));
+            obj[i][4] = String.valueOf(m.get("lanche_tarde"));
+            obj[i][5] = String.valueOf(m.get("janta"));
+        }
+    };
+    public Object[][] consultar_cardapio(String data_cardapio, String instituicao) {
+        // parte mais importante pra fazer um consultar funcionar
+        String query = "";
         
-        return Auxiliar.consulta_e_preenche(query, preenche_dados);
+        return Auxiliar.consulta_e_tabela(query, tabela_dados);
     }
 
     public int getId_instituicao() {

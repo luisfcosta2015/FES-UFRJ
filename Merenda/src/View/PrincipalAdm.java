@@ -50,7 +50,6 @@ public class PrincipalAdm extends javax.swing.JFrame {
         mItemConsultaConta = new javax.swing.JMenuItem();
         mItemConsultaInstituicao = new javax.swing.JMenuItem();
         mItemConsultaAlimento = new javax.swing.JMenuItem();
-        mItemConsultaPedido = new javax.swing.JMenuItem();
         mItemConsultaEntrega = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -169,14 +168,6 @@ public class PrincipalAdm extends javax.swing.JFrame {
         });
         jMenuConsultar.add(mItemConsultaAlimento);
 
-        mItemConsultaPedido.setText("Pedido");
-        mItemConsultaPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaPedidoActionPerformed(evt);
-            }
-        });
-        jMenuConsultar.add(mItemConsultaPedido);
-
         mItemConsultaEntrega.setText("Entrega");
         mItemConsultaEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,10 +250,6 @@ public class PrincipalAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mItemConsultaAlimentoActionPerformed
 
-    private void mItemConsultaPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPedidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mItemConsultaPedidoActionPerformed
-
     private void mItemConsultaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaEntregaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mItemConsultaEntregaActionPerformed
@@ -315,7 +302,6 @@ public class PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemConsultaConta;
     private javax.swing.JMenuItem mItemConsultaEntrega;
     private javax.swing.JMenuItem mItemConsultaInstituicao;
-    private javax.swing.JMenuItem mItemConsultaPedido;
     private javax.swing.JMenuItem mItemConsultaPessoa;
     private javax.swing.JMenuItem mItemConta;
     private javax.swing.JMenuItem mItemEntrada;

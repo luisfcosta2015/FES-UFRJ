@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import Controller.Pessoa;
 import java.util.Random;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.xml.bind.DatatypeConverter;
 
 public class Auxiliar {
     
@@ -94,9 +97,30 @@ public class Auxiliar {
         System.err.println("ERRO: " + msg);
     }
     
-    // TODO: Criptografia da senha
-    public static String criptografar(String senha){
-        return senha;
+    public static String pega_o_sal() {
+        String sal = "";
+        Auxiliar.consultar("select * from salt order by id desc").get(0).get("salt");
+        return sal;
+    }
+    
+    // Criptografia da senha em MD5
+    public static String criptografar(String senha) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            
+            md.update((senha+Auxiliar.pega_o_sal()).getBytes());
+            byte[] digest1 = md.digest();
+            String myHash1 = DatatypeConverter.printHexBinary(digest1).toUpperCase();
+            
+            md.update((myHash1+Auxiliar.pega_o_sal()).getBytes());
+            byte[] digest2 = md.digest();
+            String myHash2 = DatatypeConverter.printHexBinary(digest2).toUpperCase();
+            
+            return myHash2;
+        } catch(NoSuchAlgorithmException ex) {
+            Auxiliar.DBError("Não existe o algoritmo MD5");  
+            return "";
+        }
     }
     
     /*
@@ -165,5 +189,21 @@ public class Auxiliar {
         } else {
             return false;
         }
+    }
+    
+    public static interface TabelaDados {
+        void func(List<Map<String, Object>> lst, Object[][] obj);
+    }
+    
+    public static Object[][] consulta_e_tabela(String query, TabelaDados tabela_dados) {
+        Conexao con = new Conexao();
+        int i;
+        Object[][] tabela_crua = new Object[0][0];
+        Map<String, Object> m;
+        List<Map<String, Object>> lst = con.query_select(query);
+        if (lst.size() > 0) {
+            tabela_dados.func(lst, tabela_crua);
+        }
+        return tabela_crua;
     }
 }

@@ -135,7 +135,7 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         Conexao con = new Conexao();
         // "" é macete pra converter de char[] pra String
-        if ( con.login(txtUsuario.getText(),Auxiliar.criptografar(String.valueOf(passSenha.getPassword()))) ){    
+        if (con.login(txtUsuario.getText(), Auxiliar.criptografar(String.valueOf(passSenha.getPassword())))) {    
             Sessao sessao = Sessao.getInstance();
             //System.out.println("Login bem-sucedido: " + sessao.getIdPessoa() + " " + sessao.getFuncao());   
             switch (sessao.getFuncao()) {
@@ -148,6 +148,11 @@ public class Login extends javax.swing.JFrame {
                     // DIRETOR
                     this.setVisible(false);
                     Auxiliar.trocarTela(new PrincipalDir());
+                    break;
+                case 3:
+                    // LEITOR
+                    this.setVisible(false);
+                    Auxiliar.trocarTela(new PrincipalLeitor());
                     break;
                 default:
                     Auxiliar.errMsg(this, "Sistema ainda não suporta função: " + Auxiliar.getPermission(), true);
