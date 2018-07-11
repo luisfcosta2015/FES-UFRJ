@@ -42,6 +42,12 @@ public class LoginTest {
     /**
      * Test of main method, of class Login.
      */
+    
+    /*
+        Esse codigo cria um cadastro Pessoa, um cadastro instituição e 
+    um cadastro conta validos, então ele tenta logar, com a senha correta e incorreta
+    */
+    
     @Test
     public void testMain() {
         CadastroInstituicao I = new CadastroInstituicao();

@@ -54,6 +54,11 @@ public class CadastroPessoaTest {
     /**
      * Test of main method, of class CadastroPessoa.
      */
+    
+    /*
+        Esse codigo cria um cadastro Pessoa com dados validos
+    */
+    
     @Test
     public void testMain() {
         for(int loop = 0;loop<50;loop++){
@@ -85,6 +90,10 @@ public class CadastroPessoaTest {
             p.BotaoDeletar().doClick();
         }
     }
+    
+    /*
+        Esse codigo cria um cadastro Pessoa com dados invalidos
+    */
     
     @Test
     public void testInvalid() {

@@ -50,6 +50,15 @@ public class CadastroContaTest {
     /**
      * Test of main method, of class CadastroConta.
      */
+    
+    
+    
+    /*
+        Esse metodo cria um cadastro instituição e cadastro pessoa validos
+    então ele cadastra uma pessoa valida
+    */
+    
+    
     @Test
     public void testMain() {
         CadastroInstituicao I = new CadastroInstituicao();

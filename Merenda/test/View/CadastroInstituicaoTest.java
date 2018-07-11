@@ -60,23 +60,16 @@ public class CadastroInstituicaoTest {
     /**
      * Test of main method, of class CadastroInstituicao.
      */
+    
+    /*
+        Esse codigo cria um cadastro instituição com dados validos
+    */
+    
     @Test
     public void testMain() {
         CadastroInstituicao I = new CadastroInstituicao();
         I.telasInvisiveis();
         for(int loop = 0;loop<50;loop++){
-            /*Como o código funciona:
-            
-                Primeiro ele cria uma palavra aleatória e coloca na caixa do nome
-            Então aperta o botão de pesquisar e copia o que esta escrito na caixa de marca
-            caso tenha algo escrito, então existe algum alimento nesse banco
-            se não, essa palavra não faz parte do banco.
-            
-                Então ele cria outros dados validos e cadastra no banco.
-            Após isso ele da reset e escreve novamente o nome na caixa de nome e pesquisa,
-            ele ira conferir os dados retornados e os dados salvos,
-            caso os dados estejam iguais então está tudo correto, então ele deleta do banco.
-            */
             Random ran = new Random();
             String nomenovo;
             while(true){
@@ -117,6 +110,11 @@ public class CadastroInstituicaoTest {
             I.BotaoDeletar().doClick();
         }   
     }
+    
+    /*
+        Esse codigo cria um cadastro instituição com dados invalidos
+    */
+    
     @Test
     public void testInvalido() {
         /*Como o código funciona:
