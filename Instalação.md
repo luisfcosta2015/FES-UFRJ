@@ -28,9 +28,9 @@ useradd -M -s /bin/nologin -g tomcat -d /usr/local/tomcat tomcat
 ```bash
 cd /usr/local/
 wget http://ftp.unicamp.br/pub/apache/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.tar.gz
-tar -xvf apache-tomcat-9.0.0.M21.tar.gz
-mv apache-tomcat-9.0.0.M21 tomcat
-rm -f apache-tomcat-9.0.0.M21.tar.gz
+tar -xvf apache-tomcat-9.0.10.tar.gz
+mv apache-tomcat-9.0.10 tomcat
+rm -f apache-tomcat-9.0.10.tar.gz
 cd /usr/local/tomcat
 chgrp -R tomcat conf
 chmod g+rwx conf
