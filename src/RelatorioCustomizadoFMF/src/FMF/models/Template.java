@@ -6,7 +6,9 @@
 package FMF.models;
 
 import FMF.controllers.Leitor;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -34,6 +36,7 @@ public class Template {
     private final static String SUFIX_TEMPLATE = "template.html";
     private final static String ESQUELETO_PATH = "Esqueleto/";
     private final static String OUT_FILE = "../data/Templates/out/out.html";
+    private final static String HTML_TO_PDF_SCRIPT = "../data/Templates/out/generate.sh";
     
     public static List<Template> headers, bodys, footers;
     private final static Template esqueleto = new Template(ESQUELETO_PATH);
@@ -56,6 +59,7 @@ public class Template {
     
     public static void generatePDF(Template header, Template body, Template footer){
         PrintWriter writer = null;
+        Boolean passa = false;
         try {
             String corpo = Template.esqueleto.getTemplate();
             corpo = corpo.replace("$header$", header.getTemplate());
@@ -70,7 +74,19 @@ public class Template {
             Logger.getLogger(Template.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             writer.close();
+        
+            String path = new File("").getAbsolutePath();
+            
+            ProcessBuilder pb = new ProcessBuilder(path+ "/" + HTML_TO_PDF_SCRIPT);
+            pb.directory(new File(path + "/" + "../data/Templates/out/"));
+            try {
+                Process p = pb.start();
+            } catch (IOException ex) {
+                Logger.getLogger(Template.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
+        
     }
     
     private String getDesc(){
