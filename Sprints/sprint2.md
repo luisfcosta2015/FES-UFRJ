@@ -84,4 +84,36 @@
 <p align="justify"> Tomamos um esporro do bem. Nos fez mudar nosso processo e melhorar as coisas. Já tinha grupos com BD feitos no sql e a gente só tinha modelado ele no papel. Demos mole.<p>
 
 <h2> Planejamento para a próxima sprint</h2>
-<p align="justify"></p>
+<p align="justify">Precisamos implementar o banco no software, já que tem grupos que fizeram isso.</p>
+<table>
+  <tr>
+    <th> Atividade </th>
+    <th> Horas Previstas </th>
+    <th> Membro </th>
+  </tr>
+  <tr>
+    <td> Implementação do banco. </td>
+    <td> 5 horas </td>
+    <td> Gabriel </td>
+  </tr>
+  <tr>
+    <td> Telas de login e cadastro de escolas. </td>
+    <td> 5 horas </td>
+    <td> André </td>
+  </tr>
+  <tr>
+    <td> Cadastro de itens. </td>
+    <td> 5 horas </td>
+    <td> Matheus </td>
+  </tr>
+  <tr>
+    <td> Atualizar wiki </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+</table> 

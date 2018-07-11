@@ -343,85 +343,50 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
-insert into salt values (0, "ecoieno1in1od39doa3hd1o");
-
-insert into pessoa values (0,'admin', '10010010023');
-
-insert into tipo_conta values (0,'Administrador'),
-  (0,'Diretor'),
-  (0,'Leitor');
-
-insert into tipo_instituicao values (0,'Secretaria de Educação'),
-  (0,'Escola Tipo A'),
-  (0,'Escola Tipo B'),
-  (0,'Escola Tipo C');
-
-insert into instituicao values (0,1, 'efaefaaef','12345678', 'Rua da Ouvidor', 50, '2140028922');
-
 LOCK TABLES `salt` WRITE;
 /*!40000 ALTER TABLE `salt` DISABLE KEYS */;
 INSERT INTO `salt` VALUES (0,'ecoieno1in1od39doa3hd1o');
 /*!40000 ALTER TABLE `salt` ENABLE KEYS */;
 UNLOCK TABLES;
 
+LOCK TABLES `tipo_conta` WRITE;
+/*!40000 ALTER TABLE `tipo_conta` DISABLE KEYS */;
+INSERT INTO `tipo_conta` VALUES (1,'Administrador'),(2,'Diretor'),(3,'Leitor');
+/*!40000 ALTER TABLE `tipo_conta` ENABLE KEYS */;
+UNLOCK TABLES;
+
 LOCK TABLES `tipo_instituicao` WRITE;
 /*!40000 ALTER TABLE `tipo_instituicao` DISABLE KEYS */;
-INSERT INTO `tipo_instituicao` VALUES (1,'Secretaria de Educação'),
-(2,'Escola Tipo A'),
-(3,'Escola Tipo B'),
-(4,'Escola Tipo C');
+INSERT INTO `tipo_instituicao` VALUES (1,'Secretaria de Educação'),(2,'Escola Tipo A'),(3,'Escola Tipo B'),(4,'Escola Tipo C');
 /*!40000 ALTER TABLE `tipo_instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 LOCK TABLES `instituicao` WRITE;
 /*!40000 ALTER TABLE `instituicao` DISABLE KEYS */;
-INSERT INTO `instituicao` VALUES (1,1,'efaefaaef','12345678','Rua da Ouvidor',50,'2140028922'),
-(2,2,'Escolinha do professor Raimundo','98172487','Rua dos Guajajaras',1500,'9867432323'),
-(3,4,'Escolinha do Prof Girafales','12345812','Vila do Chavez',300,'3255543212');
+INSERT INTO `instituicao` VALUES (1,1,'efaefaaef','12345678','Rua da Ouvidor',50,'2140028922'),(2,2,'Escolinha do professor Raimundo','98172487','Rua dos Guajajaras',1500,'9867432323'),(3,4,'Escolinha do Prof Girafales','12345812','Vila do Chavez',300,'3255543212');
 /*!40000 ALTER TABLE `instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,'admin','10010010023'),
-(2,'Matheus Feitosa','41239941231'),
-(3,'Victor Lento','65512341253');
+INSERT INTO `pessoa` VALUES (1,'admin','10010010023'),(2,'Matheus Feitosa','41239941231'),(3,'Victor Lento','65512341253');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
-UNLOCK TABLES;
-
-LOCK TABLES `tipo_conta` WRITE;
-/*!40000 ALTER TABLE `tipo_conta` DISABLE KEYS */;
-INSERT INTO `tipo_conta` VALUES (1,'Administrador'),
-(2,'Diretor'),
-(3,'Leitor');
-/*!40000 ALTER TABLE `tipo_conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','48A538310CCA5506BBFF12908F6B5F1B'),
-(2,3,3,'5647389201','lei','640FA97CD253EBCC6BA6F195E2E372A9'),
-(3,2,2,'1029387456','dir','114D4B88B648593D797FC7F8313D2755');
+INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','48A538310CCA5506BBFF12908F6B5F1B'),(2,3,3,'5647389201','lei','640FA97CD253EBCC6BA6F195E2E372A9'),(3,2,2,'1029387456','dir','114D4B88B648593D797FC7F8313D2755');
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
 LOCK TABLES `alimento` WRITE;
 /*!40000 ALTER TABLE `alimento` DISABLE KEYS */;
-INSERT INTO `alimento` VALUES (1,'Banana',1,100,'Quilograma (kg)','PalmTree S.A.','Braziliense'),
-(2,'Maça',1,30,'Quilograma (kg)','Isaac Newton S.A.','Argetzina'),
-(3,'Ovos',1,77,'Dúzia','Galinha Garnizé S.A.','Caipirinha'),
-(4,'Melancia',1,10,'Unidade','Magali S.A.','Vermelho por Dentro'),
-(5,'Cana de Açucar',0,2,'Metro (m)','Pão de Açucar S.A.','Canavial'),
-(6,'Arroz',0,62,'Grama (gm)','Chineses S.A.','Soltinho'),
-(7,'Feijão',0,120,'Quilograma (kg)','Zé do Caroço S.A.','Java Beans');
+INSERT INTO `alimento` VALUES (1,'Banana',1,100,'Quilograma (kg)','PalmTree S.A.','Braziliense'),(2,'Maça',1,30,'Quilograma (kg)','Isaac Newton S.A.','Argetzina'),(3,'Ovos',1,77,'Dúzia','Galinha Garnizé S.A.','Caipirinha'),(4,'Melancia',1,10,'Unidade','Magali S.A.','Vermelho por Dentro'),(5,'Cana de Açucar',0,2,'Metro (m)','Pão de Açucar S.A.','Canavial'),(6,'Arroz',0,62,'Grama (gm)','Chineses S.A.','Soltinho'),(7,'Feijão',0,120,'Quilograma (kg)','Zé do Caroço S.A.','Java Beans');
 /*!40000 ALTER TABLE `alimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 LOCK TABLES `cardapio` WRITE;
 /*!40000 ALTER TABLE `cardapio` DISABLE KEYS */;
-INSERT INTO `cardapio` VALUES (1,2,'12/07/2018','maça com banana','strognoff de frango','banana com maça','caldo de cana'),
-(2,2,'13/07/2018','banana','arroz com feijão','melancia','macarrão'),
-(3,2,'14/07/2018','feijão com banana','macarrão com caldo de cana',NULL,NULL);
+INSERT INTO `cardapio` VALUES (1,2,'12/07/2018','maça com banana','strognoff de frango','banana com maça','caldo de cana'),(2,2,'13/07/2018','banana','arroz com feijão','melancia','macarrão'),(3,2,'14/07/2018','feijão com banana','macarrão com caldo de cana',NULL,NULL);
 /*!40000 ALTER TABLE `cardapio` ENABLE KEYS */;
 UNLOCK TABLES;

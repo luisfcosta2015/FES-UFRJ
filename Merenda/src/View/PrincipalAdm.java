@@ -43,6 +43,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
         mItemInstituicao = new javax.swing.JMenuItem();
         mItemAlimento = new javax.swing.JMenuItem();
         mItemPedido = new javax.swing.JMenuItem();
+        mItemEntrega = new javax.swing.JMenuItem();
         mItemEntrada = new javax.swing.JMenuItem();
         mItemSaida = new javax.swing.JMenuItem();
         jMenuConsultar = new javax.swing.JMenu();
@@ -115,6 +116,15 @@ public class PrincipalAdm extends javax.swing.JFrame {
             }
         });
         menuCadastrar.add(mItemPedido);
+
+        mItemEntrega.setText("Entrega");
+        mItemEntrega.setActionCommand("");
+        mItemEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemEntregaActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemEntrega);
 
         mItemEntrada.setText("Entrada");
         mItemEntrada.addActionListener(new java.awt.event.ActionListener() {
@@ -259,6 +269,11 @@ public class PrincipalAdm extends javax.swing.JFrame {
         Auxiliar.trocarTela(new CadastroSaida());
     }//GEN-LAST:event_mItemSaidaActionPerformed
 
+    private void mItemEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEntregaActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroEntrega());
+    }//GEN-LAST:event_mItemEntregaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +320,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemConsultaPessoa;
     private javax.swing.JMenuItem mItemConta;
     private javax.swing.JMenuItem mItemEntrada;
+    private javax.swing.JMenuItem mItemEntrega;
     private javax.swing.JMenuItem mItemInstituicao;
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemPedido;

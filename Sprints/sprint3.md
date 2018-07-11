@@ -103,4 +103,31 @@
 <p align="justify"> O time melhorou bastante a evolução das tarefas. Achamos que estamos encontrando significamente nosso ritmo a medida que nos conhecemos e nos comunicamos sobre os problemas. Primeira sprint com data no domingo.<p>
 
 <h2> Planejamento para a próxima sprint</h2>
-<p align="justify"></p>
+<p align="justify">Precisamos avançar nas questões de interface e no banco.</p>
+<table>
+  <tr>
+    <th> Atividade </th>
+    <th> Horas Previstas </th>
+    <th> Membro </th>
+  </tr>
+    <tr>
+    <td> Atualizar wiki </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+   <tr>
+    <td> Modelagem de pessoas. </td>
+    <td> 5 horas </td>
+    <td> Gabriel e André </td>
+  </tr>
+  <tr>
+    <td> Interfaces de pessoas. </td>
+    <td> 5 horas </td>
+    <td> Matheus e André </td>
+  </tr>
+</table> 

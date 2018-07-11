@@ -67,7 +67,6 @@ public void preenchertest(String Usuario,String Matricula,String Senha,String Se
     passSenha.setText(Senha);
     passConfSenha.setText(Senha2);
     cmbTipoConta.setSelectedIndex(inteiro);
-    
 }
 
 /*

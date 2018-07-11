@@ -97,4 +97,40 @@
 <p align="justify"> Um encontro fora do tempo fisicamente foi essencial para aprofundarmos o projeto. Pela primeira vez nos deram acesso ao mysql e mostramos ao Luiz que temos código.<p>
 
 <h2> Planejamento para a próxima sprint</h2>
-<p align="justify"></p>
+<p align="justify">Agora é o que der</p>
+<table>
+  <tr>
+    <th> Atividade </th>
+    <th> Horas Previstas </th>
+    <th> Membro </th>
+  </tr>
+   <tr>
+    <td> Morte aos bugs. </td>
+    <td> 7 horas </td>
+    <td> Gabriel, Victor, Matheus e André </td>
+  </tr>
+  <tr>
+    <td> Atualização do banco para permitir estoque. </td>
+    <td> 7 horas </td>
+    <td> Gabriel e André </td>
+  </tr>
+  <tr>
+    <td> Implementação do estoque. </td>
+    <td> 7 horas </td>
+    <td> André e Gabriel</td>
+  </tr>
+  <tr>
+    <td> Implementar mais testes </td>
+    <td> 5 horas </td>
+    <td> Matheus </td>
+  </tr>
+  <tr>
+    <td> Atualizar wiki </td>
+    <td> 2 horas </td>
+    <td> Victor </td>
+  </tr>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 2 horas </td>
+    <td> Victor </td>
+  </tr>

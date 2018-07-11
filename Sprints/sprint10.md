@@ -102,4 +102,37 @@
 <p align="justify"> <p>
 
 <h2> Planejamento para a próxima sprint</h2>
-<p align="justify"></p>
+<p align="justify">Precisamos diminuir a quantidade de tarefas no backlog que precisam ser entregues no final do projeto, como interface de adm e testes.</p>
+
+<table>
+  <tr>
+    <th> Atividade </th>
+    <th> Horas Previstas </th>
+    <th> Membro </th>
+  </tr>
+  <tr>
+    <td> Atualização do banco e das autorizações. </td>
+    <td> 2 horas </td>
+    <td> Gabriel e André </td>
+  </tr>
+  <tr>
+    <td> Implementação das interfaces de administrador. </td>
+    <td> 5 horas </td>
+    <td> André </td>
+  </tr>
+  <tr>
+    <td> Implementar testes </td>
+    <td> 5 horas </td>
+    <td> Matheus </td>
+  </tr>
+  <tr>
+    <td> Atualizar wiki </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+</table> 

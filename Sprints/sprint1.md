@@ -91,4 +91,26 @@
 <p align="justify"> Esperamos que o que fizemos funcione durante o projeto<p>
 
 <h2> Planejamento para a próxima sprint</h2>
-<p align="justify"></p>
+<p align="justify"> A meta é iniciar o processo pelo desenvolvimento do banco, permitindo que ele evolua incrementalmente nas próximas etapas.</p>
+<table>
+  <tr>
+    <th> Atividade </th>
+    <th> Horas Previstas </th>
+    <th> Membro </th>
+  </tr>
+    <tr>
+    <td> Atualizar wiki </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+   <tr>
+    <td> Modelagem inicial do banco. </td>
+    <td> 7 horas </td>
+    <td> Gabriel, Matheus, Victor e Gabriel </td>
+  </tr>
+</table> 

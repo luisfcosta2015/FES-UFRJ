@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Conexao;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -16,22 +17,27 @@ public class Pedido {
     private int id, id_instituicao;
     private String data;
     
-    // variavel usada pra sinalizar se o pedido que está carregado já foi cadastrado ou não
-    private boolean carregado = false;
-    
+    // TODO: Ser Transaction
     public boolean cadastrar(){
         
-        String query = "INSERT INTO pedido (id, id_instituicao, data) VALUES";
-        query += "(" + getId() +"," + getId_instituicao() + ",\'" + getData()+ "\')" ;
+        Conexao conn = new Conexao();
+        String query = "INSERT INTO pedido (id_instituicao, data) VALUES";
+        query += "(" + getId_instituicao() + ",\'" + getData()+ "\')" ;
+        boolean sucesso = conn.query_update(query);
+        if (!sucesso) return false;
         
-        return carregado = new Conexao().query_update(query);
+        query = "SELECT max(id) as id FROM pedido;";
+        List<Map<String,Object>> lst = conn.query_select(query);
+        if (lst.isEmpty()) return false;
+        //System.out.println(lst.get(0).get("id"));
+        this.setId((int)lst.get(0).get("id"));        
+        
+        return true;
         
     }
     
-    // ISSO DEVERIA SER UMA TRANSACTION PRA CADASTRAR OU TUDO OU NADA
-    public boolean cadastraLotes(List<LotePedido> lst){
-        if (!carregado) return false;
-        
+    // TODO: SER UMA TRANSACTION PRA CADASTRAR OU TUDO OU NADA
+    public boolean cadastraLotes(List<LotePedido> lst){        
         boolean sucesso = true;
         for (int i = 0; i < lst.size(); i++){ 
             lst.get(i).setId(getId());
@@ -39,11 +45,24 @@ public class Pedido {
         }        
         return sucesso;    
     }
+    
+    public List<Map<String,Object>> consultaLotes(){
+        
+        Conexao conn = new Conexao();
+        String query = "SELECT lp.id_alimento, (select a.nome from alimento a where a.id = lp.id_alimento) as alimento, lp.qtd_alimento "
+                + "FROM lote_pedido lp where lp.id=" + getId();
+        
+        return conn.query_select(query);
+    }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public int getId_instituicao() {
         return id_instituicao;
     }

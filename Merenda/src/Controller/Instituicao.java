@@ -83,7 +83,12 @@ public class Instituicao {
         String query = "select * from instituicao i inner join conta c on i.id=c.id_instituicao where c.id_pessoa=" + id;
         return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
-    //instituicaoPorIdPessoa
+    
+    public List<Map<String,Object>> pedidosDaInstituicao(){
+        Conexao conn = new Conexao();    
+        String query = "select * from pedido p where p.id_instituicao=" + getId();
+        return conn.query_select(query);
+    } 
     
     public String validar(){
         String erros = "";
