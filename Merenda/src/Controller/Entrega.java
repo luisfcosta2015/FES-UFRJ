@@ -22,7 +22,7 @@ public class Entrega {
         Conexao conn = new Conexao();
         String query = "INSERT INTO entrega (id_pedido, data_entrega, fornecedor) VALUES";
         query += "(" + getId_pedido() + ",\'" +  getData_entrega() + "\',\'" + getFornecedor()+ "\')" ;
-        System.out.println(query);
+        //System.out.println(query);
         
         // se deu ruim já sai fora
         if (!conn.query_update(query)) return false; 
