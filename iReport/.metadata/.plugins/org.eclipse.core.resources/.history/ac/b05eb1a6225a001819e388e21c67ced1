@@ -1,6 +1,0 @@
-dbpassword=
-database=localhost
-dbuser=root
-
-
-br.com.fes.relatorios.dao = dao

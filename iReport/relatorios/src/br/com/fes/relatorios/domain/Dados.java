@@ -10,6 +10,8 @@ public class Dados {
 	private Date dataNascimento;
 	private String escola;
 	private String serie;
+	private String turma;
+	private String situacao;
 	
 	public String getMatrícula() {
 		return matrícula;
@@ -46,6 +48,18 @@ public class Dados {
 	}
 	public void setSerie(String serie) {
 		this.serie = serie;
+	}
+	public String getTurma() {
+		return turma;
+	}
+	public void setTurma(String turma) {
+		this.turma = turma;
+	}
+	public String getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 	
 }

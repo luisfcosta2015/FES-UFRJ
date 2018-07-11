@@ -26,14 +26,19 @@
 				<p:outputLabel value = "Idade "/>
 				<p:inputText maxlength="12" size="17" value="#{MBAlunos.dadosRegistro.idade}"/>
 			
-				<p:outputLabel value = "Data de Nascimento: " />
-				<p:inputText maxlength="12" size="17" value="#{MBAlunos.dadosRegistro.dataNascimento}"/>
-			
 				<p:outputLabel value = "Escola: "/>
 				<p:inputText maxlength="12" size="17" value="#{MBAlunos.dadosRegistro.escola}"/>
 			
 				<p:outputLabel value = "Série: " />
 				<p:inputText maxlength="12" size="17" value="#{MBAlunos.dadosRegistro.serie}"/>
+	
+				<p:outputLabel value = "Turma: " />
+				<p:inputText maxlength="12" size="17" value="#{MBAlunos.dadosRegistro.turma}"/>
+	
+				<p:outputLabel value = "Situação: " />
+				<p:inputText maxlength="12" size="17" value="#{MBAlunos.dadosRegistro.situacao}"/>
+	
+		
 				<br/>
 				<p:commandButton value="Buscar" action="#{MBAlunos.consultar}"/>
 				

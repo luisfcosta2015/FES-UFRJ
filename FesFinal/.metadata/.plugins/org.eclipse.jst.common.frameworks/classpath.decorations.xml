@@ -1,7 +1,0 @@
-<classpath>
-  <container id="relatorios!org.eclipse.jst.j2ee.internal.web.container">
-    <entry id="C:/Users/Xiao Yong Kong/Desktop/WorkSpaces/FES/relatorios/WebContent/WEB-INF/lib/javax.faces.jar">
-      <source-attachment-path>C:/Users/Xiao Yong Kong/.m2/repository/org/glassfish/javax.faces/2.1.6/javax.faces-2.1.6-sources.jar</source-attachment-path>
-    </entry>
-  </container>
-</classpath>

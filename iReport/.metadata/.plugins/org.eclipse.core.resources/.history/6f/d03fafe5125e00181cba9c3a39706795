@@ -1,5 +1,0 @@
-alert("Buscando");
-
-function comfirmButton() { 
-	  return alert("Buscando");
-	}

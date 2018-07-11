@@ -19,13 +19,14 @@ public class ConexaoBanco {
 		
 		//ATENCAO - Eu tive que colocar o registerDriver por causa de um bug para achar o driver
 		//O bug so acontecia na minha maquina pessoal, quando fui testar na maquina do trabalho, o banco se conectou sem isso.
-		DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+	//	DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+		
 		Connection conexao = DriverManager.getConnection(url, user, password);
-				
+		System.out.println("criando conexao");
 		return conexao;
 		
 	}
-	
+	/*
 	public ResultSet select(String sql) throws Exception {
         
 		Statement stmt = createConnection().createStatement();
@@ -37,5 +38,5 @@ public class ConexaoBanco {
 		
 		System.out.println("Query " + sql);
         return rs;
-    }	
+    }*/	
 }

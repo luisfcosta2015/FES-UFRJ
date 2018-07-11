@@ -1,5 +1,0 @@
-package br.com.fes.relatorios.dao;
-
-public class ConexaoBanco {
-
-}
