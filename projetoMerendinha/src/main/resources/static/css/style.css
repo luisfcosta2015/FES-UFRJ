@@ -1,5 +1,23 @@
+.container{
+  width: 100%;
+  height: 53px;
+  max-width: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: white;
+}
+
+.navbar-header{
+
+  height: 53px;
+
+}
+
 .navbar-default {
     background: #6db33f;
+    width: 100%;
+    height: 52px;
+    margin-bottom: 0px;
 }
 
 .navbar-default .navbar-brand {

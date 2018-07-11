@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Alimentos - Spring MVC Application</title>
-    <th:block th:include="layout/header"></th:block>
-</head>
-<body>
+  <head>
+      <meta charset="UTF-8" />
+      <title>Bem vindo(a)!</title>
+      <th:block th:include="layout/header"></th:block>
+      <link rel="stylesheet" type="text/css" href="css/index.css">
+  </head>
+  <body>
+      <div class="campo_Pagina">
+          <div class="foto_social">
+              <img src="images/foto_social.jpg">
+          </div>
+      </div>
 
-</body>
+      <h1 class="title">Sistema de gerenciamento de merenda</h1>
+
+
+      <ul class="deft1">
+        <li>Por que é necessário gerenciar a merenda?</li>
+        <p class="li_1">
+          É indispensável que cada município do Rio de Janeiro tenha controle sobre gastos existentes e
+          este sistema de gerenciamento tem como finalidade ajudar a controlar a quantidade de alimento
+          e dar um relatório detalhado sobre a alimentação escolar.
+
+        </p>
+      </ul>
+      <ul class="deft2">
+        <li>Quais os benefícios?</li>
+        <p class="li_2">
+          Poder com um clique visualizar os gastos do mês e orçamentar o próximo melhorará em muito a
+          eficiência e a qualidade do serviço fornecido e esta é a finalidade deste sistema: gerenciar
+          a quantidade de alimento consumido, que sobra, em estoque e gerar um relatório customizado
+          com gastos.
+        </p>
+      </ul>
+
+
+
+  </body>
 </html>

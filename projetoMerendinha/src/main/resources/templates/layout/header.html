@@ -16,7 +16,10 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
                     <ul class="nav navbar-nav">
-                        <li><a th:href="@{/alimentos}">Gerenciar Alimentos</a></li>
+                        <li><a class="gerenciar" th:href="@{/alimentos}">Gerenciar Alimentos</a></li>
+                        <li><a class="gerenciar" th:href="@{/escolas}">Gerenciar Escolas</a></li>
+                        <li><a class="gerenciar" th:href="@{/usuarios}">Usuarios</a></li>
+                        <li><a class="logout" th:href="@{/logout}">Desconectar</a></li>
                     </ul>
                 </div>
             </div>

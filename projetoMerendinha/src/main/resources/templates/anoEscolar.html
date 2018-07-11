@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Anos Escolares</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Anos Escolares</strong>
+		</div>
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-sm table-striped table-hover table-bordered">
+					<thead>
+						<tr>
+							<th>Ano</th>
+							<th>Meses</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="anoEscolar : ${anosEscolares}">
+							<td th:text="${anoEscolar.ano}"></td>
+							<td>
+							    <table class="table table-sm table-striped table-hover">
+								<tbody>
+									<tr th:each="mesEscolar : ${anoEscolar.mesesEscolares}">
+										<td th:text="${mesEscolar.mes}"></td>
+										<td>
+											<div class="btn-group pull-right">
+										   		<a th:href="${'/turno/' + mesEscolar.id}" class="btn btn-default btn-sm">Ver Controle</a>
+										   		<a th:href="${'/mesEscolar/edit/' + mesEscolar.id}" class="btn btn-default btn-sm">Editar</a>
+			                					<a th:href="${'/mesEscolar/delete/' + mesEscolar.id}" class="btn btn-danger btn-sm">Deletar</a>
+										   </div>
+										</td>
+									</tr>
+								</tbody>
+								</table>
+							</td>
+							<td>
+								<div class="btn-group pull-right">
+							   		<a th:href="${'/anoEscolar/addMes/' + anoEscolar.id}" class="btn btn-default">Adicionar Mês</a>
+							   		<a th:href="${'/anoEscolar/edit/' + anoEscolar.id}" class="btn btn-default">Editar</a>
+                					<a th:href="${'/anoEscolar/delete/' + anoEscolar.id}" class="btn btn-danger">Deletar</a>
+							   </div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<a class="btn btn-success" th:href="@{/anoEscolar/add/} + ${idEscola}" >Adicionar Ano Escolar</a>
+		</div>
+	</div>
+</body>
+</html>

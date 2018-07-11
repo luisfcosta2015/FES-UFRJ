@@ -1,0 +1,61 @@
+body{
+  font-size: 18px;
+}
+
+.foto_social{
+  top: 60px;
+  left: 17px;
+  position: absolute;
+  max-width: 400px;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  border: 8px solid white;
+  box-shadow: 1px 1px 4px black;
+}
+
+.foto_social img{
+
+  position: relative;
+  max-width: 350px;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+}
+
+.texto_titulo{
+  position: relative;
+  padding-left: 500px;
+}
+
+h1{
+  font-size: 40px;
+  position: relative;
+  margin-top: 5px;
+  padding-left: 0px;
+  width: 701px;
+  left: 400px;
+  top: 20px;
+}
+
+.deft1{
+  width: 860px;
+  position: relative;
+  top: 45px;
+  left: 380px;
+}
+
+.deft2{
+  position: relative;
+  top: 85px;
+}
+
+.li_1{
+  width: 860px;
+  padding-top: 20px;
+}
+
+.li_2{
+  width: 100%;
+  padding-top: 20px;
+}

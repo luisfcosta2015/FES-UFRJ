@@ -13,11 +13,11 @@ import merenda.repository.AlimentoRepository;
 @Controller
 public class AlimentoController {
 
-    private AlimentoRepository produtoRepository;
+    private AlimentoRepository alimentoRepository;
 
     @Autowired
-    public void setProductRepository(AlimentoRepository produtoRepository) {
-        this.produtoRepository = produtoRepository;
+    public void setAlimentoRepository(AlimentoRepository alimentoRepository) {
+        this.alimentoRepository = alimentoRepository;
     }
 
     @RequestMapping(path = "/")
@@ -26,33 +26,32 @@ public class AlimentoController {
     }
 
     @RequestMapping(path = "/alimentos/add", method = RequestMethod.GET)
-    public String createProduct(Model model) {
+    public String criarAlimento(Model model) {
         model.addAttribute("alimento", new Alimento());
-        return "edit";
+        return "editAlimentos";
     }
 
     @RequestMapping(path = "alimentos", method = RequestMethod.POST)
-    public String saveProduct(Alimento produtO) {
-        produtoRepository.save(produtO);
+    public String salvarAlimento(Alimento alimento) {
+        alimentoRepository.save(alimento);
         return "redirect:/alimentos";
     }
 
     @RequestMapping(path = "/alimentos", method = RequestMethod.GET)
-    public String getAllProducts(Model model) {
-        model.addAttribute("alimentos", produtoRepository.findAll());
-        model.addAttribute("alimento", new Alimento());
+    public String getTodosAlimentos(Model model) {
+        model.addAttribute("alimentos", alimentoRepository.findAll());
         return "alimentos";
     }
 
     @RequestMapping(path = "/alimentos/edit/{id}", method = RequestMethod.GET)
-    public String editProduct(Model model, @PathVariable(value = "id") String id) {
-        model.addAttribute("alimento", produtoRepository.findById(id));
-        return "edit";
+    public String editarAlimento(Model model, @PathVariable(value = "id") String id) {
+        model.addAttribute("alimento", alimentoRepository.findById(id));
+        return "editAlimentos";
     }
 
     @RequestMapping(path = "/alimentos/delete/{id}", method = RequestMethod.GET)
-    public String deleteProduct(@PathVariable(name = "id") String id) {
-        produtoRepository.deleteById(id);
+    public String deletarAlimento(@PathVariable(name = "id") String id) {
+        alimentoRepository.deleteById(id);
         return "redirect:/alimentos";
     }
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Controle de Alimentação</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Controle de Alimentação</strong>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" th:object="${mesEscolar}" th:action="@{/turno/} + ${idEscola}" method="POST" style="margin: 10px">
+				<div class="form-group">
+				    <div class="col-md-1"><input type="hidden" class="form-control input-sm" id="id" th:field="*{id}" readOnly="readonly"/></div>
+					<table class="table table-sm table-striped table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Modalidade de Ensino</th>
+								<th>1º turno</th>
+								<th>2º turno</th>
+								<th>3º turno</th>
+								<th>4º turno</th>
+								<th><strong>Total Atendidos</strong></th>
+								<th><strong>Nr de Dias de Distribuição de Refeição</strong></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="aMatriculados,i : ${mesEscolar.alunosMatriculados}">
+								<input type="hidden" class="form-control input-sm" id="id" th:field="*{alunosMatriculados[__${i.index}__].id}" readOnly="readonly"/>
+								<td th:text="${aMatriculados.modalidade}"></td>
+							    <th:block th:each="turno,j : ${aMatriculados.turnos}">
+							    	<input type="hidden" class="form-control input-sm" id="id" th:field="*{alunosMatriculados[__${i.index}__].turnos[__${j.index}__].id}" readOnly="readonly"/>
+									<td><input type="number" min="0" max="2147483647" step="1" value="${turno.matriculados}" th:field="*{alunosMatriculados[__${i.index}__].turnos[__${j.index}__].matriculados}"/></td>
+								</th:block>
+								<td><input type="number" min="0" max="2147483647" step="1" value="${aMatriculados.atendidos}" th:field="*{alunosMatriculados[__${i.index}__].atendidos}"/></td>
+								<td><input type="number" min="0" max="2147483647" step="1" value="${aMatriculados.nrDiasDistribuicao}" th:field="*{alunosMatriculados[__${i.index}__].nrDiasDistribuicao}"/></td>
+							</tr>
+						</tbody>
+					</table>	
+				</div>
+				<div class="form-group row">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+					<a th:href="@{/anoEscolar/} + ${idEscola}" class="btn btn-default">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

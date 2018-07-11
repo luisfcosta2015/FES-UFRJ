@@ -1,5 +1,12 @@
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/config/Seguranca.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/model/PadraoUserDetails.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/model/Perfil.java
 /home/arctos/git/projetoMerendinha/src/main/java/merenda/model/Usuario.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/controller/AlimentoController.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/model/Escola.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/model/Alimento.java
 /home/arctos/git/projetoMerendinha/src/main/java/merenda/controller/UsuarioController.java
-/home/arctos/git/projetoMerendinha/src/main/java/merenda/UsuarioRepository.java
-/home/arctos/git/projetoMerendinha/src/main/java/merenda/controller/GreetingController.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/service/PadraoUserDetailsService.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/repository/AlimentoRepository.java
 /home/arctos/git/projetoMerendinha/src/main/java/merenda/Application.java
+/home/arctos/git/projetoMerendinha/src/main/java/merenda/repository/UsuarioRepository.java

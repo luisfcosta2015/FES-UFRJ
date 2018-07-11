@@ -1,6 +1,8 @@
 package merenda.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import merenda.model.Usuario;
 
@@ -8,6 +10,8 @@ import merenda.model.Usuario;
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+
+	Optional<Usuario> findByLogin(String login);
 
 }
