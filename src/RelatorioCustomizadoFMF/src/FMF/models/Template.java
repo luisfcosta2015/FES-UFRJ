@@ -6,8 +6,14 @@
 package FMF.models;
 
 import FMF.controllers.Leitor;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +32,12 @@ public class Template {
     private final static String PATH = "../data/Templates/";
     private final static String SUFIX_DESC = "desc.txt";
     private final static String SUFIX_TEMPLATE = "template.html";
-
+    private final static String ESQUELETO_PATH = "Esqueleto/";
+    private final static String OUT_FILE = "../data/Templates/out/out.html";
+    
+    public static List<Template> headers, bodys, footers;
+    private final static Template esqueleto = new Template(ESQUELETO_PATH);
+            
     private String folderPath;
     private String descPath;
     private String templatePath;
@@ -41,6 +52,25 @@ public class Template {
         this.descPath = this.folderPath + SUFIX_DESC;
         this.templatePath = this.folderPath + SUFIX_TEMPLATE;
         this.atributos = this.getAtributos();
+    }
+    
+    public static void generatePDF(Template header, Template body, Template footer){
+        PrintWriter writer = null;
+        try {
+            String corpo = Template.esqueleto.getTemplate();
+            corpo = corpo.replace("$header$", header.getTemplate());
+            corpo = corpo.replace("$body$", body.getTemplate());
+            corpo = corpo.replace("$footer$", footer.getTemplate());
+            writer = new PrintWriter(OUT_FILE, "UTF-8");
+            writer.print(corpo);
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Template.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Template.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            writer.close();
+        }
     }
     
     private String getDesc(){

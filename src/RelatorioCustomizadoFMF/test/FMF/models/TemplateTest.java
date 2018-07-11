@@ -20,7 +20,10 @@ public class TemplateTest {
     @Test
     //testando o contrutor
     public void testTemplate() {
-        Template t = new Template("teste1");
+        Template t1 = new Template("1");
+        Template t2 = new Template("2");
+        Template t3 = new Template("3");
+        Template.generatePDF(t1, t3, t2);
     }
     
 }
