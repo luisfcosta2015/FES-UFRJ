@@ -5,7 +5,10 @@
  */
 package merendaprojectdb;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -16,9 +19,15 @@ public class TelaCadastro extends javax.swing.JFrame {
     /**
      * Creates new form cadastroTela
      */
-    
+    DefaultComboBoxModel modelo;
+    ArrayList<Escola> escolas = BdManager.pegarEscolas();
     public TelaCadastro() {
         initComponents();
+        this.modelo = (DefaultComboBoxModel) this.campoEscola.getModel();
+        for(int i=0;i<escolas.size();i++)
+        {
+            this.modelo.addElement(escolas.get(i).getUnidade());
+        }
     }
     
     TelaPrincipal principal;
@@ -201,11 +210,21 @@ public class TelaCadastro extends javax.swing.JFrame {
         String senha = campoSenha.getText();
         String email = campoEmail.getText();
         Object tipo = campoTipo.getSelectedItem();
-        Object escola = campoEscola.getSelectedItem();
-        // atualiza o banco de dados
-        Usuario usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo);
+        Object itemEscola = campoEscola.getSelectedItem();
+        Usuario usuarioNovo;
+        if((campoTipo.getSelectedItem()+"").compareTo("Diretor")==0)
+        {
+            Escola escola = BdManager.findEscola(itemEscola+"");
+            // atualiza o banco de dados
+            usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo, escola);
+        }
+        else
+        {
+            usuarioNovo = new Usuario(nome,user, senha, email, ""+tipo);
+        }
         if(verificaPreenchimento(usuarioNovo)) {
             BdManager.cadastraUser(usuarioNovo);
+            JOptionPane.showMessageDialog(null,"Usuario cadastrado");
         }
         else {
             JOptionPane.showMessageDialog(null,"Todos os campos são de preenchimento obrigatório");
@@ -221,7 +240,14 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_voltaMouseClicked
     
     private void campoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoActionPerformed
-        // TODO add your handling code here:
+        if((campoTipo.getSelectedItem()+"").compareTo("Diretor")==0)
+        {
+            campoEscola.setEnabled(true);            
+        }
+        else
+        {
+            campoEscola.setEnabled(false);
+        }
     }//GEN-LAST:event_campoTipoActionPerformed
 
     private void campoEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEscolaActionPerformed

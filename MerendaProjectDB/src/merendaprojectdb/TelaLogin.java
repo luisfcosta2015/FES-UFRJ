@@ -140,7 +140,7 @@ public class TelaLogin extends javax.swing.JFrame {
             //itens.setVisible(true);
             //itens.setResizable(true);
             //this.setVisible(false);
-            JOptionPane.showMessageDialog(null,"Usuario errado, tente\n Usuario: Diretor\nSenha:123");
+            JOptionPane.showMessageDialog(null,"Usuario ou senha errado");
             return false;
         }
     }

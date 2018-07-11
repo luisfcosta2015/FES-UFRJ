@@ -30,7 +30,7 @@ public class BdManager {
     //USER
     static boolean cadastraUser(Usuario user) { 
         PreparedStatement ps;
-        if(TelaPrincipal.usuarioLogado.getEscola() != null) {
+        if(user.getEscola() != null) {
             try{
                 con = DriverManager.getConnection(host, username, password);
                 ps = con.prepareStatement("insert into usuario(nome,usuario,senha,email,tipo,escola) values(?,?,?,?,?,?)");
@@ -39,7 +39,7 @@ public class BdManager {
                 ps.setString(3, user.getSenha());
                 ps.setString(4, user.getEmail()) ;
                 ps.setString(5, user.getTipo()) ;
-                ps.setInt(6, TelaPrincipal.usuarioLogado.getEscola().getINEP());
+                ps.setInt(6, user.getEscola().getINEP());
                 ps.execute();
                 return true;
             }
@@ -57,7 +57,6 @@ public class BdManager {
                 ps.setString(3, user.getSenha());
                 ps.setString(4, user.getEmail()) ;
                 ps.setString(5, user.getTipo()) ;
-                ps.setInt(6, TelaPrincipal.usuarioLogado.getEscola().getINEP());
                 ps.execute();
                 return true;
             }
