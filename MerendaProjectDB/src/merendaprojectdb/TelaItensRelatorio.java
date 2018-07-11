@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 /**
  *
  * @author joycinha
@@ -188,7 +189,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final", "BotaoExcluir"
+                "Item", "Estoque Inicial", "Total Entrada", "Total Saida", "Estoque Final", "Excluir"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -899,11 +900,12 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                 /*BotaoExcluir action = new BotaoExcluir(tabelinhaTotais, tabelinhaSaida, tabelinhaEntrada, 
                         tabelinhaTotais.getRowCount()-1);
                 JButton excluir = new JButton(action);*/
+                
                 tabelinhaEntrada.addRow(new Object[] {tipoItemString,semana1Entrada+unidade,semana2Entrada+unidade,
                     semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});
 
                 tabelinhaTotais.addRow(new Object[] {tipoItemString,valorEstoqueInicial,totalEntradaText, totalSaidaText, 
-                    valorEstoqueFinalText });
+                    valorEstoqueFinalText, "excluir" });
 
                 tabelinhaSaida.addRow(new Object[] {tipoItemString,semana1Saida+unidade,semana2Saida+unidade,
                     semana3Saida+unidade,semana4Saida+unidade,semana5Saida+unidade,remanejamentoSaida+unidade, ataSaida});
@@ -911,6 +913,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                 int quant = Integer.parseInt(estoqueInicial.getText());
                 ItemComida item = new ItemComida(tipoItem.getSelectedItem().toString(), valorEstoqueInicial, semana1Entrada, semana1Saida, semana2Entrada, semana2Saida, semana3Entrada, semana3Saida, semana4Entrada, semana4Saida, semana5Entrada, semana5Saida, remanejamentoEntrada, remanejamentoSaida, ataSaida, totalEntrada, totalSaida, valorEstoqueFinal, unidadeItem.getSelectedItem().toString());
                 this.itens.add(item);
+                this.tabelaTotais.getColumn("Excluir").setCellRenderer(new JTableButtonRenderer());
             }
             else {
                 //soma o item aqui
