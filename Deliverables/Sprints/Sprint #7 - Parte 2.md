@@ -26,9 +26,10 @@
 
 * #### Tarefas restantes para conclusão da história posteriormente:
 
-- [-] Testes relacionados aos tipos de usuário, e cadastro, tanto de usuários quanto de escolas
-- [-] Testes referentes ao gerencimento de alimentos
-- [-] Realizar os testes da página de login
+- [x] Testes relacionados aos tipos de usuário, e cadastro, tanto de 
+usuários quanto de escolas
+- [ ] Testes referentes ao gerencimento de alimentos
+- [ ] Realizar os testes da página de login
 - [ ] Layout final
 
 ## Sprint Review
@@ -39,7 +40,8 @@
 
 * Dennison: Tentou concluir a formatação do layout das páginas finializadas; fez a atualização do nosso mapa mental.
 
-* Elvis: Conseguiu fazer projeto exportar relatórios[?]; testes [?]
+* Elvis: Conconluiu a *feature* da página de controle de merendas e fez 
+o teste da classe *Escolas*
 
 * Telles: Concluiu a página de cadastro de usuários e a página de consultas. Não conseguiu configurar os tipos de usuários (permissões).
 
