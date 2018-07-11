@@ -10,7 +10,7 @@ import Model.Conexao;
  *
  * @author w1n3
  */
-public class Entrada {
+public class Saida {
     private int id, id_instituicao, id_alimento, qtd_alimento;
     private String data;
     
@@ -18,7 +18,7 @@ public class Entrada {
         
         Conexao conn = new Conexao();
         
-        String query = "INSERT INTO entrada(id_alimento, id_instituicao, qtd_alimento, data) ";
+        String query = "INSERT INTO saida(id_alimento, id_instituicao, qtd_alimento, data) ";
         query += "values (" + getId_alimento() + "," + getId_instituicao()
               + "," + getQtd_alimento() + ",\'" + getData() + "\')";
         
@@ -32,7 +32,7 @@ public class Entrada {
         le.setId(getId_instituicao());
         le.setId_alimento(getId_alimento());
         le.setQtd_alimento(getQtd_alimento());
-        return le.cadastrar_entrada();
+        return le.cadastrar_saida();
     }
         
     public String validar(){

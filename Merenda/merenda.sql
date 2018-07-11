@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `merenda` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `merenda`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: merenda
@@ -103,7 +105,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','root'),(2,1,1,'1001001001','root2','root2');
+INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','root'),(2,1,1,'1001001001','root2','root2'),(4,1,1,'1234567890','root4','root4');
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,12 +119,15 @@ DROP TABLE IF EXISTS `entrada`;
 CREATE TABLE `entrada` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_alimento` int(11) NOT NULL,
+  `id_instituicao` int(11) NOT NULL,
   `data` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `qtd_alimento` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_entrada_alimento_idx` (`id_alimento`),
-  CONSTRAINT `fk_entrada_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `fk_entrada_instituicao_idx` (`id_instituicao`),
+  CONSTRAINT `fk_entrada_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_entrada_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,6 +136,7 @@ CREATE TABLE `entrada` (
 
 LOCK TABLES `entrada` WRITE;
 /*!40000 ALTER TABLE `entrada` DISABLE KEYS */;
+INSERT INTO `entrada` VALUES (2,1,1,'10/07/2018',10),(3,1,1,'10/07/2018',10),(4,1,1,'10/07/2018',10),(5,1,1,'10/07/2018',10),(6,1,1,'10/07/2018',10),(7,1,1,'10/07/2018',20),(8,1,1,'10/07/2018',30),(9,1,1,'10/07/2018',50);
 /*!40000 ALTER TABLE `entrada` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +205,12 @@ DROP TABLE IF EXISTS `lote_estoque`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lote_estoque` (
   `id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_alimento` int(11) NOT NULL,
+  `qtd_alimento` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`,`id_alimento`),
+  KEY `fk_lote_estoque_alimento_idx` (`id_alimento`),
+  CONSTRAINT `fk_lote_estoque_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_lote_estoque_instituicao` FOREIGN KEY (`id`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -209,6 +220,7 @@ CREATE TABLE `lote_estoque` (
 
 LOCK TABLES `lote_estoque` WRITE;
 /*!40000 ALTER TABLE `lote_estoque` DISABLE KEYS */;
+INSERT INTO `lote_estoque` VALUES (1,1,'30');
 /*!40000 ALTER TABLE `lote_estoque` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,14 +232,14 @@ DROP TABLE IF EXISTS `lote_pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lote_pedido` (
-  `id_pedido` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `id_alimento` int(11) NOT NULL,
   `qtd_alimento` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_pedido`,`id_alimento`),
-  KEY `fk_lote_pedido_idx` (`id_pedido`),
+  PRIMARY KEY (`id`,`id_alimento`),
+  KEY `fk_lote_pedido_idx` (`id`),
   KEY `fk_lote_alimento_idx` (`id_alimento`),
   CONSTRAINT `fk_lote_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_lote_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_lote_pedido` FOREIGN KEY (`id`) REFERENCES `pedido` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -279,7 +291,7 @@ CREATE TABLE `pessoa` (
   `nome` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cpf` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +300,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,'Andre','10010010010'),(2,'Bruna','20020020020'),(3,'João de Barro eu te entendo agora','15015018993');
+INSERT INTO `pessoa` VALUES (1,'Andre','10010010010'),(2,'Bruna','20020020020'),(3,'João de Barro eu te entendo agora','15015018993'),(4,'Gabriel doidão','15015016523');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,13 +313,16 @@ DROP TABLE IF EXISTS `saida`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `saida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `data` int(11) DEFAULT NULL,
   `id_alimento` int(11) DEFAULT NULL,
+  `id_instituicao` int(11) DEFAULT NULL,
+  `data` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `qtd_alimento` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_saida_alimento_idx` (`id_alimento`),
-  CONSTRAINT `fk_saida_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `fk_saida_instituicao_idx` (`id_instituicao`),
+  CONSTRAINT `fk_saida_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_saida_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,6 +331,7 @@ CREATE TABLE `saida` (
 
 LOCK TABLES `saida` WRITE;
 /*!40000 ALTER TABLE `saida` DISABLE KEYS */;
+INSERT INTO `saida` VALUES (1,1,1,'10/07/2018',20),(2,1,1,'11/07/2018',50),(3,1,1,'10/07/2018',20),(4,1,1,'10/07/2018',20);
 /*!40000 ALTER TABLE `saida` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,4 +400,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-10 18:08:01
+-- Dump completed on 2018-07-10 22:18:25

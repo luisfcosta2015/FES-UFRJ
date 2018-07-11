@@ -44,6 +44,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
         mItemAlimento = new javax.swing.JMenuItem();
         mItemPedido = new javax.swing.JMenuItem();
         mItemEntrada = new javax.swing.JMenuItem();
+        mItemSaida = new javax.swing.JMenuItem();
         jMenuConsultar = new javax.swing.JMenu();
         mItemConsultaPessoa = new javax.swing.JMenuItem();
         mItemConsultaConta = new javax.swing.JMenuItem();
@@ -123,6 +124,14 @@ public class PrincipalAdm extends javax.swing.JFrame {
             }
         });
         menuCadastrar.add(mItemEntrada);
+
+        mItemSaida.setText("Saída");
+        mItemSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemSaidaActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(mItemSaida);
 
         menuBar.add(menuCadastrar);
 
@@ -258,6 +267,11 @@ public class PrincipalAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mItemConsultaEntregaActionPerformed
 
+    private void mItemSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSaidaActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroSaida());
+    }//GEN-LAST:event_mItemSaidaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,6 +323,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemPedido;
     private javax.swing.JMenuItem mItemPessoa;
+    private javax.swing.JMenuItem mItemSaida;
     private javax.swing.JMenuItem mItemSair;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenuBar menuBar;
