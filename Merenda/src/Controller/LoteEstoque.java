@@ -54,5 +54,13 @@ public class LoteEstoque extends Lote{
             return conn.query_update(query);
         }        
     }
+     
+     public List<Map<String,Object>> carregarEstoque(int id_instituicao){
+         Conexao conn = new Conexao();
+        String query = "SELECT (select a.nome from alimento a where a.id = le.id_alimento) as alimento, le.qtd_alimento "
+                + "FROM lote_estoque le where le.id=" + id_instituicao;
+        
+        return conn.query_select(query);
+     }
     
 }

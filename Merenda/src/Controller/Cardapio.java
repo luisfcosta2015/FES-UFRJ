@@ -66,7 +66,7 @@ public class Cardapio {
         obj = new Object[lst.size()][6];
         for(int i = 0 ; i < lst.size() ; i++) {
             m = lst.get(i);
-            obj[i][0] = (int)m.get("nome_instituicao");
+            obj[i][0] = String.valueOf(m.get("nome"));
             obj[i][1] = String.valueOf(m.get("data_cardapio"));
             obj[i][2] = String.valueOf(m.get("lanche_manha"));
             obj[i][3] = String.valueOf(m.get("almoco"));
@@ -76,7 +76,17 @@ public class Cardapio {
     };
     public Object[][] consultar_cardapio(String data_cardapio, String instituicao) {
         // parte mais importante pra fazer um consultar funcionar
-        String query = "";
+        String query = "select * from cardapio c inner join instituicao i on c.id_instituicao=i.id where ";
+        if(!data_cardapio.equals("")) {
+             query+="c.data_cardapio=\'" + data_cardapio+"\'";
+        }
+        else if(!data_cardapio.equals("") && !instituicao.equals("")) {
+            query+= " and i.nome like \'%"+instituicao+"%\'";
+        }
+        else {
+            query+= "i.nome like \'%"+instituicao+"%\'";
+        }
+        
         
         return Auxiliar.consulta_e_tabela(query, tabela_dados);
     }

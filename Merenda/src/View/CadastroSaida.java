@@ -318,7 +318,7 @@ public class CadastroSaida extends javax.swing.JFrame {
         if (!(erro += s.validar()).equals("")){
             Auxiliar.errMsg(this, erro, true);
         } else if (s.cadastrar()){
-            Auxiliar.msg(this, "Entrada cadastrada com sucesso", true);
+            Auxiliar.msg(this, "Saída cadastrada com sucesso", true);
             reset();
         } else {
             Auxiliar.errMsg(this, "Erro no BD", true);

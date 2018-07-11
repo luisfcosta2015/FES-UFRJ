@@ -51,6 +51,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
         mItemConsultaInstituicao = new javax.swing.JMenuItem();
         mItemConsultaAlimento = new javax.swing.JMenuItem();
         mItemConsultaEntrega = new javax.swing.JMenuItem();
+        mItemEstoque = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,6 +178,15 @@ public class PrincipalAdm extends javax.swing.JFrame {
         });
         jMenuConsultar.add(mItemConsultaEntrega);
 
+        mItemEstoque.setText("Estoque");
+        mItemEstoque.setToolTipText("");
+        mItemEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemEstoqueActionPerformed(evt);
+            }
+        });
+        jMenuConsultar.add(mItemEstoque);
+
         menuBar.add(jMenuConsultar);
 
         setJMenuBar(menuBar);
@@ -265,6 +275,11 @@ public class PrincipalAdm extends javax.swing.JFrame {
         Auxiliar.trocarTela(new CadastroEntrega());
     }//GEN-LAST:event_mItemEntregaActionPerformed
 
+    private void mItemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEstoqueActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new ConsultarEstoque());
+    }//GEN-LAST:event_mItemEstoqueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +326,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemConta;
     private javax.swing.JMenuItem mItemEntrada;
     private javax.swing.JMenuItem mItemEntrega;
+    private javax.swing.JMenuItem mItemEstoque;
     private javax.swing.JMenuItem mItemInstituicao;
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemPedido;

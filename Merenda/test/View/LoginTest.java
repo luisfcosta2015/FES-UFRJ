@@ -131,7 +131,7 @@ public class LoginTest {
                 inte = L.RetornaTipoDeLogin();
             }
             System.out.println("retornou");
-            System.out.println(inte);
+            System.out.println(inte-1);
             System.out.println("Inteiro");
             System.out.println(inteiro);
             assertEquals(inte-1,inteiro);

@@ -192,7 +192,7 @@ public class ConsultarCardapio extends javax.swing.JFrame {
         }
         
         tabela_crua = c.consultar_cardapio(data, instituicao);
-        if(tabela_crua.length == 0 && tabela_crua[0].length == 0) {
+        if(tabela_crua.length == 0) {
             JOptionPane.showMessageDialog(this, "Nenhum cardápio encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
         }
         else {
