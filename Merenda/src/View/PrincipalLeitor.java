@@ -35,7 +35,6 @@ public class PrincipalLeitor extends javax.swing.JFrame {
         mItemLogout = new javax.swing.JMenuItem();
         mItemSair = new javax.swing.JMenuItem();
         jMenuConsultar = new javax.swing.JMenu();
-        mItemConsultaPessoa = new javax.swing.JMenuItem();
         mItemConsultaConta = new javax.swing.JMenuItem();
         mItemConsultaInstituicao = new javax.swing.JMenuItem();
         mItemConsultaAlimento = new javax.swing.JMenuItem();
@@ -65,14 +64,6 @@ public class PrincipalLeitor extends javax.swing.JFrame {
         jMenuBar.add(jMenuArquivo);
 
         jMenuConsultar.setText("Consultar");
-
-        mItemConsultaPessoa.setText("Pessoa");
-        mItemConsultaPessoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaPessoaActionPerformed(evt);
-            }
-        });
-        jMenuConsultar.add(mItemConsultaPessoa);
 
         mItemConsultaConta.setText("Conta");
         mItemConsultaConta.addActionListener(new java.awt.event.ActionListener() {
@@ -148,24 +139,24 @@ public class PrincipalLeitor extends javax.swing.JFrame {
     }//GEN-LAST:event_mItemConsultaCardapioActionPerformed
 
     private void mItemConsultaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaEntregaActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        Auxiliar.trocarTela(new ConsultarEntrega());
     }//GEN-LAST:event_mItemConsultaEntregaActionPerformed
 
     private void mItemConsultaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaAlimentoActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        Auxiliar.trocarTela(new ConsultarAlimento());
     }//GEN-LAST:event_mItemConsultaAlimentoActionPerformed
 
     private void mItemConsultaInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaInstituicaoActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        Auxiliar.trocarTela(new ConsultarInstituicao());
     }//GEN-LAST:event_mItemConsultaInstituicaoActionPerformed
 
     private void mItemConsultaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaContaActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        Auxiliar.trocarTela(new ConsultarConta());
     }//GEN-LAST:event_mItemConsultaContaActionPerformed
-
-    private void mItemConsultaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPessoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mItemConsultaPessoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,7 +202,6 @@ public class PrincipalLeitor extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemConsultaConta;
     private javax.swing.JMenuItem mItemConsultaEntrega;
     private javax.swing.JMenuItem mItemConsultaInstituicao;
-    private javax.swing.JMenuItem mItemConsultaPessoa;
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemSair;
     // End of variables declaration//GEN-END:variables

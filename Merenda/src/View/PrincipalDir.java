@@ -140,11 +140,13 @@ public class PrincipalDir extends javax.swing.JFrame {
     }//GEN-LAST:event_mItemConsultaCardapioActionPerformed
 
     private void mItemCadastroEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemCadastroEntregaActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        Auxiliar.trocarTela(new CadastroEntrega());
     }//GEN-LAST:event_mItemCadastroEntregaActionPerformed
 
     private void mItemConsultaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaEntregaActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        Auxiliar.trocarTela(new ConsultarEntrega());
     }//GEN-LAST:event_mItemConsultaEntregaActionPerformed
 
     /**
