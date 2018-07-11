@@ -12,6 +12,7 @@ import java.util.Date;
  * @author joycinha
  */
 public class DuplaDataCardapio {
+    String nome="Pedrão";
     Date data;
     String cardapioDoDia;
     public DuplaDataCardapio(Date data, String cardapio) {

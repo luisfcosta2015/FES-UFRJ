@@ -114,7 +114,11 @@ public class TelaOpcoesUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+        TelaPesquisaUser atualiza = new TelaPesquisaUser();
+        atualiza.setLocationRelativeTo(null);
+        atualiza.setVisible(true);
+        atualiza.setResizable(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
