@@ -463,7 +463,7 @@ public class CadastroPedido extends javax.swing.JFrame {
         if (id_instituicao == -1) erros += "Instituicao não foi carregada\n";
         
         Date d = datePicker.getDate();
-        System.out.println("data: " + d);
+        //System.out.println("data: " + d);
         if (d == null) erros += "Data inválida\n";
         
         if (!erros.equals("")){

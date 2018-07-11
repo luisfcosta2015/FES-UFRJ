@@ -34,7 +34,7 @@ public class Pedido {
         
         boolean sucesso = true;
         for (int i = 0; i < lst.size(); i++){ 
-            lst.get(i).setId_pedido(getId());
+            lst.get(i).setId(getId());
             sucesso = sucesso && lst.get(i).cadastrar();
         }        
         return sucesso;    

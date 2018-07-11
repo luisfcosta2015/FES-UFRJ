@@ -510,10 +510,10 @@ public String retornaValores(int qualvalor){
         if (!senha.equals(confSenha))
             erros += "Senha e confirmação de senha diferentes\n";
 
-        System.out.println("showTela: " + showTela);
-        if (!(erros += c.validar()).equals("")){
+        //System.out.println("showTela: " + showTela);
+        if (!(erros += c.validar()).equals(""))
             Auxiliar.errMsg(this, erros, showTela);
-        } else if (c.update()){
+        else if (c.update()){
             Auxiliar.msg(this, "Dados atualizados com sucesso", showTela);
             reset();
         } else {

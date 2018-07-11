@@ -45,7 +45,7 @@ public class Conta {
                 + " WHERE id_instituicao=" + getId_instituicao()
                 + " AND id_pessoa=" + getId_pessoa();
         
-        System.out.println(query);
+        //System.out.println(query);
         
         return new Conexao().query_update(query);
     }

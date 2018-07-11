@@ -15,8 +15,8 @@ public class LotePedido extends Lote{
     
     public boolean cadastrar(){
         
-        String query = "INSERT INTO lote_pedido (id_pedido, id_alimento, qtd_alimento) VALUES";
-        query += "(" + getId_pedido()+", " + getId_alimento()+ "," + getQtd_alimento()+ ")" ;
+        String query = "INSERT INTO lote_pedido (id, id_alimento, qtd_alimento) VALUES";
+        query += "(" + getId()+", " + getId_alimento()+ "," + getQtd_alimento()+ ")" ;
         
         return new Conexao().query_update(query);
     }

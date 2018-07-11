@@ -43,7 +43,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
         mItemInstituicao = new javax.swing.JMenuItem();
         mItemAlimento = new javax.swing.JMenuItem();
         mItemPedido = new javax.swing.JMenuItem();
-        mItemEntrega = new javax.swing.JMenuItem();
+        mItemEntrada = new javax.swing.JMenuItem();
         jMenuConsultar = new javax.swing.JMenu();
         mItemConsultaPessoa = new javax.swing.JMenuItem();
         mItemConsultaConta = new javax.swing.JMenuItem();
@@ -116,13 +116,13 @@ public class PrincipalAdm extends javax.swing.JFrame {
         });
         menuCadastrar.add(mItemPedido);
 
-        mItemEntrega.setText("Entrega");
-        mItemEntrega.addActionListener(new java.awt.event.ActionListener() {
+        mItemEntrada.setText("Entrada");
+        mItemEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemEntregaActionPerformed(evt);
+                mItemEntradaActionPerformed(evt);
             }
         });
-        menuCadastrar.add(mItemEntrega);
+        menuCadastrar.add(mItemEntrada);
 
         menuBar.add(menuCadastrar);
 
@@ -229,9 +229,10 @@ public class PrincipalAdm extends javax.swing.JFrame {
         Auxiliar.trocarTela(new CadastroPedido());
     }//GEN-LAST:event_mItemPedidoActionPerformed
 
-    private void mItemEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEntregaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mItemEntregaActionPerformed
+    private void mItemEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEntradaActionPerformed
+        this.setVisible(false);        
+        Auxiliar.trocarTela(new CadastroEntrada());
+    }//GEN-LAST:event_mItemEntradaActionPerformed
 
     private void mItemConsultaPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaPessoaActionPerformed
         // TODO add your handling code here:
@@ -303,7 +304,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemConsultaPedido;
     private javax.swing.JMenuItem mItemConsultaPessoa;
     private javax.swing.JMenuItem mItemConta;
-    private javax.swing.JMenuItem mItemEntrega;
+    private javax.swing.JMenuItem mItemEntrada;
     private javax.swing.JMenuItem mItemInstituicao;
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemPedido;

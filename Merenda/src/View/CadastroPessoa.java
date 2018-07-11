@@ -269,20 +269,12 @@ public String retornaValores(int qualvalor){
         
         String erros = "";
         
-        if (!(erros += p.validar()).equals("")){
-            // mensagem de erro
-            if(showTela==true)
-                JOptionPane.showMessageDialog(this, erros, "Erro", JOptionPane.ERROR_MESSAGE);
-        } else {
-            // realiza o cadastro no BD
-            if (p.cadastrar()){
-                if(showTela==true)
-                    JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso");
-            } else {
-                if(showTela==true)
-                    JOptionPane.showMessageDialog(this, "Erro no BD", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+        if (!(erros += p.validar()).equals(""))
+            Auxiliar.msg(this, erros, showTela);
+        else if (p.cadastrar())
+            Auxiliar.msg(this, "Cadastro efetuado com sucesso", showTela);
+        else
+            Auxiliar.errMsg(this, "Erro no BD", showTela);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void mItemPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPrincipalActionPerformed
@@ -302,8 +294,7 @@ public String retornaValores(int qualvalor){
         if (p.pessoaPorNome(nome)){
             editmode = true;
             txtCpf.setText(p.getCpf());
-            txtNome.setText(p.getNome());
-            
+            txtNome.setText(p.getNome());            
             
             btnCadastrar.setEnabled(false);
             btnDeletar.setEnabled(true);

@@ -5,23 +5,20 @@
  */
 package Controller;
 
-import Model.Conexao;
-import Model.ModeloLote;
-import java.util.Date;
 /**
  *
  * @author w1n3
  */
 public class Lote {
-    private int id_pedido, id_alimento, qtd_alimento;
-    
+    private int id, id_alimento, qtd_alimento;
+    /*
     public boolean cadastrar(){
         
         String query = "INSERT INTO lote (id_pedido, id_alimento, qtd_alimento) VALUES";
         query += "(" + getId_pedido()+", " + getId_alimento()+ "," + getQtd_alimento()+ ")" ;
         
         return new Conexao().query_update(query);
-    }
+    }*/
     
     /*
     private ModeloLote lote;
@@ -96,12 +93,12 @@ public class Lote {
         return this.lote;
     }*/
 
-    public int getId_pedido() {
-        return id_pedido;
+    public int getId() {
+        return id;
     }
 
-    public void setId_pedido(int id_pedido) {
-        this.id_pedido = id_pedido;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId_alimento() {
