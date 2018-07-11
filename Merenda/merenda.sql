@@ -127,7 +127,7 @@ CREATE TABLE `entrada` (
   KEY `fk_entrada_instituicao_idx` (`id_instituicao`),
   CONSTRAINT `fk_entrada_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_entrada_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `entrada` (
 
 LOCK TABLES `entrada` WRITE;
 /*!40000 ALTER TABLE `entrada` DISABLE KEYS */;
-INSERT INTO `entrada` VALUES (2,1,1,'10/07/2018',10),(3,1,1,'10/07/2018',10),(4,1,1,'10/07/2018',10),(5,1,1,'10/07/2018',10),(6,1,1,'10/07/2018',10),(7,1,1,'10/07/2018',20),(8,1,1,'10/07/2018',30),(9,1,1,'10/07/2018',50);
+INSERT INTO `entrada` VALUES (2,1,1,'10/07/2018',10),(3,1,1,'10/07/2018',10),(4,1,1,'10/07/2018',10),(5,1,1,'10/07/2018',10),(6,1,1,'10/07/2018',10),(7,1,1,'10/07/2018',20),(8,1,1,'10/07/2018',30),(9,1,1,'10/07/2018',50),(10,1,2,'13/07/2018',50),(11,2,2,'13/07/2018',5);
 /*!40000 ALTER TABLE `entrada` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ DROP TABLE IF EXISTS `entrega`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entrega` (
   `id_pedido` int(11) NOT NULL,
-  `data_entrega` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data_entrega` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fornecedor` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_pedido`),
   CONSTRAINT `fk_entrega_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -162,6 +162,7 @@ CREATE TABLE `entrega` (
 
 LOCK TABLES `entrega` WRITE;
 /*!40000 ALTER TABLE `entrega` DISABLE KEYS */;
+INSERT INTO `entrega` VALUES (6,'13/07/2018','Zé fumoze');
 /*!40000 ALTER TABLE `entrega` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +221,7 @@ CREATE TABLE `lote_estoque` (
 
 LOCK TABLES `lote_estoque` WRITE;
 /*!40000 ALTER TABLE `lote_estoque` DISABLE KEYS */;
-INSERT INTO `lote_estoque` VALUES (1,1,'30');
+INSERT INTO `lote_estoque` VALUES (1,1,'30'),(2,1,'50'),(2,2,'5');
 /*!40000 ALTER TABLE `lote_estoque` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,6 +250,7 @@ CREATE TABLE `lote_pedido` (
 
 LOCK TABLES `lote_pedido` WRITE;
 /*!40000 ALTER TABLE `lote_pedido` DISABLE KEYS */;
+INSERT INTO `lote_pedido` VALUES (5,1,1),(6,1,50),(6,2,5);
 /*!40000 ALTER TABLE `lote_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +268,7 @@ CREATE TABLE `pedido` (
   PRIMARY KEY (`id`),
   KEY `fk_pedido_instituicao_idx` (`id_instituicao`),
   CONSTRAINT `fk_pedido_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,7 +277,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (1,1,'10/07/2018');
+INSERT INTO `pedido` VALUES (3,1,'10/07/2018'),(4,1,'10/07/2018'),(5,1,'10/07/2018'),(6,2,'11/07/2018');
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,4 +402,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-10 22:18:25
+-- Dump completed on 2018-07-11  1:23:00
