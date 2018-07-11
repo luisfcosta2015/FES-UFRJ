@@ -105,4 +105,41 @@
 <p align="justify"> Sobrou a parte do sail boat que estava pendente em outras semanas. Temos que manter a comunicação.</p>
 
 <h2> Planejamento para a próxima sprint</h2>
-<p align="justify"></p>
+<p align="justify">Ainda precisamos compensar as tarefas não feitas</p>
+<table>
+  <tr>
+    <th> Atividade </th>
+    <th> Horas Previstas </th>
+    <th> Membro </th>
+  </tr>
+  <tr>
+    <td> Atualização do banco. </td>
+    <td> 2 horas </td>
+    <td> Gabriel e André </td>
+  </tr>
+  <tr>
+  <tr>
+    <td> Criação da tabela de estoque. </td>
+    <td> 2 horas </td>
+    <td> Gabriel </td>
+  </tr>
+    <td> Sail Boat. </td>
+    <td> 1 horas </td>
+    <td> Matheus </td>
+  </tr>
+  <tr>
+    <td> Ferramentas de testes </td>
+    <td> 5 horas </td>
+    <td> Matheus </td>
+  </tr>
+    <tr>
+    <td> Atualizar wiki </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+    <tr>
+    <td> Documentação da sprint </td>
+    <td> 1 horas </td>
+    <td> Victor </td>
+  </tr>
+</table> 
