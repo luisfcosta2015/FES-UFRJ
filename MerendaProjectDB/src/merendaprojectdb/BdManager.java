@@ -740,20 +740,19 @@ public class BdManager {
            return false;
         }
     }
-    static boolean setPermissoes(boolean newrp, boolean getrp,boolean seerp,boolean newsc,boolean seesc,boolean newpm,boolean newuser, boolean setPadrao, String usuario){
+    static boolean setPermissoes(boolean newrp, boolean getrp,boolean seerp,boolean newsc,boolean newpm,boolean newuser, boolean setPadrao, String usuario){
         PreparedStatement ps;
         try{
             con = DriverManager.getConnection(host, username, password);
-            ps = con.prepareStatement("update permissoes set canNewReport = ?, canWriteReport = ?, canWriteSchool = ?,canSeeReport = ?,canSeeSchool = ? ,canWritePermit = ?,canAddUser = ?,canSetPadrao = ? where usuario = ?");
+            ps = con.prepareStatement("update permissoes set canNewReport = ?, canWriteReport = ?, canWriteSchool = ?,canSeeReport = ?,canWritePermit = ?,canAddUser = ?,canSetPadrao = ? where usuario = ?");
             ps.setBoolean(1, newrp);
             ps.setBoolean(2, getrp);
             ps.setBoolean(3, newsc);
             ps.setBoolean(4, seerp);
-            ps.setBoolean(5, seesc);
-            ps.setBoolean(6, newpm);
-            ps.setBoolean(7, newuser);
-            ps.setBoolean(8, setPadrao);
-            ps.setString(9,usuario);
+            ps.setBoolean(5, newpm);
+            ps.setBoolean(6, newuser);
+            ps.setBoolean(7, setPadrao);
+            ps.setString(8,usuario);
             ps.execute();
             ps.close();
             con.close();

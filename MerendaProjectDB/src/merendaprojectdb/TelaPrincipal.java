@@ -29,7 +29,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private TelaListaRelatorios listaRelatorios;
     private TelaGerarArquivos geradorArquivos;
     private TelaPermissao permission;
-    private String[] operacoes = new String[7];
+    private String[] operacoes = new String[8];
     private BdManager banco;
     private TelaTrocarDeEscola trocaDeEscola;
     private TelaEditarPadroes editarPadroes;
@@ -57,7 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * Esse método e chamado para definir as funcionalidades de cada botão.
      */
     private void setButtons() {
-        javax.swing.JButton[] buttons = new javax.swing.JButton[7];
+        javax.swing.JButton[] buttons = new javax.swing.JButton[8];
         buttons[0] = this.jButton1;
         buttons[1] = this.jButton2;
         buttons[2] = this.jButton3;
@@ -65,6 +65,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttons[4] = this.jButton5;
         buttons[5] = this.jButton6;
         buttons[6] = this.jButton7;
+        buttons[7] = this.jButton8;
         int i = 0;
         Permissoes permissoes;
         if(usuarioLogado.getTipo().equals("Diretor")) {
@@ -74,8 +75,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } else {
             permissoes = this.tipos.getLeitorPermits();
         }
-        System.out.println("Passei");
-        System.out.println(permissoes);
         if(permissoes.canWritePermit == true){
             this.operacoes[i] = "editarPermissoes";
             buttons[i].setText("Editar Permissoes");
@@ -118,7 +117,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             buttons[i].setText("Gerenciar Usuario");
             i++;
         }
-        for(; i < 7; i++) {
+        if(permissoes.canSetPadrao==true){
+            this.operacoes[i]="Valores Padrão";
+            buttons[i].setText("Valores Padrão");
+            i++;
+        }
+        for(; i < 8; i++) {
             this.operacoes[i] = "";
             buttons[i].setVisible(false);
             buttons[i].setEnabled(false);
@@ -169,7 +173,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Cadastrar Escola");
+        jButton3.setText("Gerenciar Escola");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -392,6 +396,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 escola.setResizable(true);
                 this.setVisible(false);
                 break;
+            case "Valores Padrão":
+                editarPadroes=new TelaEditarPadroes();
+                editarPadroes.setLocationRelativeTo(null);
+                editarPadroes.setVisible(true);
+                editarPadroes.setResizable(true);
+                this.setVisible(false);
+                break;
             default:
                 break;
         }
@@ -483,11 +494,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botãoAlterarEscolaActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        editarPadroes=new TelaEditarPadroes();
-        editarPadroes.setLocationRelativeTo(null);
-        editarPadroes.setVisible(true);
-        editarPadroes.setResizable(true);
-        this.setVisible(false);
+        if(this.operacoes[7]=="") {
+            return;
+        }
+        buttonActionPerformedSwitch(7);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**

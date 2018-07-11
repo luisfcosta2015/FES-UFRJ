@@ -21,7 +21,6 @@ public class TiposDeUsuario {
         boolean canWriteReport;
         boolean canSeeReport;
         boolean canWriteSchool;
-        boolean canSeeSchool;
         boolean canWritePermit;
         boolean canAddUser;
         boolean canSetPadrao;
@@ -32,12 +31,11 @@ public class TiposDeUsuario {
             canWriteReport = BdManager.getPermissoes("Diretor", "canWriteReport");
             canSeeReport = BdManager.getPermissoes("Diretor", "canSeeReport");
             canWriteSchool = BdManager.getPermissoes("Diretor", "canWriteSchool");
-            canSeeSchool = BdManager.getPermissoes("Diretor", "canSeeSchool");
             canWritePermit = BdManager.getPermissoes("Diretor", "canWritePermit");
             canAddUser = BdManager.getPermissoes("Diretor", "canAddUser");
             canSetPadrao = BdManager.getPermissoes("Diretor", "canSetPadrao");
             
-            setPermissoesDir(canNewReport, canWriteReport, canSeeReport, canWriteSchool, canSeeSchool, canWritePermit, canAddUser,canSetPadrao);
+            setPermissoesDir(canNewReport, canWriteReport, canSeeReport, canWriteSchool, canWritePermit, canAddUser,canSetPadrao);
         }
         if( adm == null ) {
             adm = new Permissoes();
@@ -45,12 +43,11 @@ public class TiposDeUsuario {
             canWriteReport = BdManager.getPermissoes("Admin", "canWriteReport");
             canSeeReport = BdManager.getPermissoes("Admin", "canSeeReport");
             canWriteSchool = BdManager.getPermissoes("Admin", "canWriteSchool");
-            canSeeSchool = BdManager.getPermissoes("Admin", "canSeeSchool");
             canWritePermit = BdManager.getPermissoes("Admin", "canWritePermit");
             canAddUser = BdManager.getPermissoes("Admin", "canAddUser");
             canSetPadrao = BdManager.getPermissoes("Admin", "canSetPadrao");
             
-            setPermissoesAdm(canNewReport, canWriteReport, canSeeReport, canWriteSchool, canSeeSchool, canWritePermit, canAddUser,canSetPadrao);
+            setPermissoesAdm(canNewReport, canWriteReport, canSeeReport, canWriteSchool, canWritePermit, canAddUser,canSetPadrao);
         }
         if( leitor == null ) {
             leitor = new Permissoes();
@@ -58,22 +55,20 @@ public class TiposDeUsuario {
             canWriteReport = BdManager.getPermissoes("Leitor", "canWriteReport");
             canSeeReport = BdManager.getPermissoes("Leitor", "canSeeReport");
             canWriteSchool = BdManager.getPermissoes("Leitor", "canWriteSchool");
-            canSeeSchool = BdManager.getPermissoes("Leitor", "canSeeSchool");
             canWritePermit = BdManager.getPermissoes("Leitor", "canWritePermit");
             canAddUser = BdManager.getPermissoes("Leitor", "canAddUser");
             canSetPadrao = BdManager.getPermissoes("Leitor", "canSetPadrao");
             
-            setPermissoesLeitor(canNewReport, canWriteReport, canSeeReport, canWriteSchool, canSeeSchool, canWritePermit, canAddUser,canSetPadrao);
+            setPermissoesLeitor(canNewReport, canWriteReport, canSeeReport, canWriteSchool, canWritePermit, canAddUser,canSetPadrao);
         } 
     }
     
     public void setPermissoesAdm(boolean newReport, boolean writeReport, boolean seeReport, boolean writeSchool, 
-            boolean seeSchool, boolean writePermit,boolean addUser, boolean setPadrao){
+            boolean writePermit,boolean addUser, boolean setPadrao){
         adm.canNewReport(newReport);
         adm.canWriteReport(writeReport);
         adm.canSeeReport(seeReport);
         adm.canWriteSchool(writeSchool);
-        adm.canSeeSchool(seeSchool);
         adm.canWritePermit(writePermit);
         adm.canAddUser(addUser); 
         adm.canSetPadrao(setPadrao);
@@ -84,12 +79,11 @@ public class TiposDeUsuario {
     }
     
     public void setPermissoesLeitor(boolean nr, boolean wr, boolean sr, boolean ws, 
-            boolean ss, boolean wp, boolean au, boolean setPadrao){
+            boolean wp, boolean au, boolean setPadrao){
         leitor.canNewReport(nr);
         leitor.canWriteReport(wr);
         leitor.canSeeReport(sr);
         leitor.canWriteSchool(ws);
-        leitor.canSeeSchool(ss);
         leitor.canWritePermit(wp);  
         leitor.canAddUser(au);
         leitor.canSetPadrao(setPadrao);
@@ -100,12 +94,11 @@ public class TiposDeUsuario {
     }
     
     public void setPermissoesDir(boolean nr, boolean wr, boolean sr, boolean ws, 
-            boolean ss, boolean wp, boolean au, boolean setPadrao){
+            boolean wp, boolean au, boolean setPadrao){
         dir.canNewReport(nr);
         dir.canWriteReport(wr);
         dir.canSeeReport(sr);
         dir.canWriteSchool(ws);
-        dir.canSeeSchool(ss);
         dir.canWritePermit(wp);  
         dir.canAddUser(au);
         dir.canSetPadrao(setPadrao);
