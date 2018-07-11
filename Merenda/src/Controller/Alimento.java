@@ -6,10 +6,7 @@
 package Controller;
 
 import Model.Auxiliar;
-import Model.Auxiliar.PreencheDados;
 import Model.Conexao;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -101,14 +98,14 @@ public class Alimento {
     
     public boolean consultar_por_id(int id) {
         String query = "SELECT * FROM alimento a where a.id=" + id ;
-        System.out.println(query);
+        //System.out.println(query);
         
         return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }
     
     public boolean consultar_por_nome(String nome){
         String query = "SELECT * FROM alimento a where a.nome like \'" + nome + "%\'";
-        System.out.println(query);
+        //System.out.println(query);
         
         return Auxiliar.consulta_e_preenche(query, preenche_dados);
     }

@@ -478,7 +478,7 @@ public class CadastroPedido extends javax.swing.JFrame {
         p.setId_instituicao(id_instituicao);
         Format formatter = new SimpleDateFormat("dd/MM/yyyy");
         p.setData(formatter.format(d));
-        if (p.cadastrar() && p.cadastraLotes(itens)) JOptionPane.showMessageDialog(this, "Pedido cadastrado com sucesso");  
+        if (p.cadastrar()) {if (p.cadastraLotes(itens)) JOptionPane.showMessageDialog(this, "Pedido cadastrado com sucesso");  }
         else JOptionPane.showMessageDialog(this, "Houve um erro ao cadsatrar o pedido", "Erro", JOptionPane.ERROR_MESSAGE);
         resetAll();
     }//GEN-LAST:event_btnFinalizarPedidoActionPerformed

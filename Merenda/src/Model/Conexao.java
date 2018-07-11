@@ -141,7 +141,7 @@ public class Conexao {
         
         try {
             Connection conn = getConnection();
-            System.out.println(query);
+            //System.out.println(query);
 
             // create the java statement
             Statement st = conn.createStatement();
