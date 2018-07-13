@@ -1,6 +1,0 @@
-NOME=Boletim
-ARQCONS=boletim.txt
-DESC=nota;nomealuno;
-IN=Boletim com notas do aluno em um semestre
-OUT=matricula;semestre;
-PDF=data/PDF/pdf1.txt

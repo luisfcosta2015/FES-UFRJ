@@ -1,0 +1,36 @@
+{
+  "nome":"Boletim",
+  "consultas":["notas_cons"],
+  "header":{
+    "id":"1",
+    "user_input":{},
+    "consultas":{},
+    "constantes":{
+      "nomeescola":"Escola Teste",
+      "titulo":"boletim"
+    }
+  },
+  "body":{
+    "id":"3",
+    "user_input":{
+      "ano":"Escreva o ano:",
+      "matricula":"Escreva a matricula:",
+      "serie":"Escreva a serie do aluno:",
+    },
+    "consultas":{
+      "n1_1":{"consulta":"notas_cons", "campo":"n1", "pos":"0" },
+      "n2_1":{"consulta":"notas_cons", "campo":"n2", "pos":"0" },
+      "m_1":{"consulta":"notas_cons", "campo":"m", "pos":"0" },
+      "s_1":{"consulta":"notas_cons", "campo":"situacao", "pos":"0" }
+    },
+    "constantes":{}
+  },
+  "footer":{
+    "id":"2",
+    "user_input":{},
+    "consultas":{},
+    "constantes":{}
+  }
+
+
+}
