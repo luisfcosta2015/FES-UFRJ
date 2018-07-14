@@ -36,7 +36,7 @@ public class Calendario {
     }
     private void montaArray() {
         for(Date dt = this.inicial; dt.compareTo(this.fim) <= 0;) {
-            if(calendario.get(calendario.DAY_OF_WEEK) != 1 && calendario.get(calendario.DAY_OF_WEEK) != 7) {
+            if(calendario.get(calendario.DAY_OF_WEEK) != 1) {
                 this.datas.add(new Date(dt.getTime()));
             }
             calendario.add(Calendar.DATE, +1);

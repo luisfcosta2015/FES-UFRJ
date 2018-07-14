@@ -424,7 +424,6 @@ public class BdManager {
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from relatorios where inep like ?");
             if(TelaPrincipal.usuarioLogado == null || TelaPrincipal.escolaAtual == null) {
-                System.out.println("nenhuma escola selecionada para o usuário");
                 return relatorios;
             }
             ps.setInt(1, TelaPrincipal.escolaAtual.getINEP());
@@ -557,7 +556,6 @@ public class BdManager {
             con = DriverManager.getConnection(host, username, password);
             ps = con.prepareStatement("select * from relatorios where inep like ?");
             if(TelaPrincipal.usuarioLogado == null || TelaPrincipal.escolaAtual == null) {
-                System.out.println("nenhuma escola selecionada para o usuário");
                 return relatoriosSelecionados;
             }
             ps.setInt(1, TelaPrincipal.escolaAtual.getINEP());

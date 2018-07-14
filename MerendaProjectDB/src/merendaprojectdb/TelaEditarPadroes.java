@@ -44,7 +44,7 @@ public class TelaEditarPadroes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Padrões");
 
-        jLabel2.setText("porcentagem louca:");
+        jLabel2.setText("Porcentagem ");
 
         salvarPorcentagem.setText("salvar");
         salvarPorcentagem.addActionListener(new java.awt.event.ActionListener() {
@@ -72,13 +72,13 @@ public class TelaEditarPadroes extends javax.swing.JFrame {
                                 .addGap(156, 156, 156)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
+                                .addGap(36, 36, 36)
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(porcentagem, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(salvarPorcentagem)))
-                        .addGap(0, 122, Short.MAX_VALUE))
+                        .addGap(0, 151, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(voltar)))

@@ -204,14 +204,14 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="1">
-                <Column editable="true" title="Alunos Atendidos" type="java.lang.Integer"/>
-                <Column editable="true" title="Total mensal servido" type="java.lang.Integer"/>
+                <Column editable="false" title="Alunos Atendidos" type="java.lang.Integer"/>
+                <Column editable="false" title="Total mensal servido" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title value="Alunos Atendidos"/>
+                  <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
@@ -245,14 +245,14 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="7" rowCount="1">
-                <Column editable="false" title="Matriculados" type="java.lang.String">
+                <Column editable="true" title="Matriculados" type="java.lang.String">
                   <Data value="Mais Educa&#xe7;&#xe3;o"/>
                 </Column>
-                <Column editable="true" title="2&#xba; turno Matriculado" type="java.lang.Integer"/>
-                <Column editable="true" title="2&#xb0; turno Atendido" type="java.lang.Integer"/>
+                <Column editable="false" title="2&#xba; turno Matriculado" type="java.lang.Integer"/>
+                <Column editable="false" title="2&#xb0; turno Atendido" type="java.lang.Integer"/>
                 <Column editable="true" title="Dias Distribuicao" type="java.lang.Integer"/>
-                <Column editable="true" title="Total Desj. Servido" type="java.lang.Integer"/>
-                <Column editable="true" title="Total lanche Servido" type="java.lang.Integer"/>
+                <Column editable="false" title="Total Desj. Servido" type="java.lang.Integer"/>
+                <Column editable="false" title="Total lanche Servido" type="java.lang.Integer"/>
                 <Column editable="false" title="Total Mais Educ." type="java.lang.Integer"/>
               </Table>
             </Property>
@@ -313,14 +313,14 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="1">
-                <Column editable="false" title="Matriculados" type="java.lang.String">
+                <Column editable="true" title="Matriculados" type="java.lang.String">
                   <Data value="Mais Educa&#xe7;&#xe3;o"/>
                 </Column>
-                <Column editable="true" title="1&#xba; turno Matriculado" type="java.lang.Integer"/>
-                <Column editable="true" title="1&#xb0; turno Atendido" type="java.lang.Integer"/>
+                <Column editable="false" title="1&#xba; turno Matriculado" type="java.lang.Integer"/>
+                <Column editable="false" title="1&#xb0; turno Atendido" type="java.lang.Integer"/>
                 <Column editable="true" title="Dias Distribuicao" type="java.lang.Integer"/>
-                <Column editable="true" title="Total Desj. Servido" type="java.lang.Integer"/>
-                <Column editable="true" title="Total lanche Servido" type="java.lang.Integer"/>
+                <Column editable="false" title="Total Desj. Servido" type="java.lang.Integer"/>
+                <Column editable="false" title="Total lanche Servido" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

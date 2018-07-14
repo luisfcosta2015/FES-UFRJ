@@ -124,7 +124,6 @@ public class TelaLogin extends javax.swing.JFrame {
         if(banco.verificarUser(campoSenha.getText().intern(),campoUsuario.getText())==true)
         {
             TelaPrincipal.usuarioLogado = BdManager.findUser(this.campoUsuario.getText());
-            System.out.println(TelaPrincipal.usuarioLogado);
             principal = new TelaPrincipal();
             principal.setLocationRelativeTo(null);
             principal.setVisible(true);

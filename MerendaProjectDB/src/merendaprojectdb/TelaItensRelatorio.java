@@ -17,7 +17,6 @@ import javax.swing.table.TableCellRenderer;
 public class TelaItensRelatorio extends javax.swing.JFrame {
     
     TelaPrincipal principal;
-    BdManager banco;
     DefaultListModel modelList = new DefaultListModel();
     private Relatorio relatorio;
     private CapaDados capa;
@@ -37,15 +36,45 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         this.editando = false;
         this.nomeRel = nomeRel;
         this.itens = new ArrayList<ItemComida>();
+        listenClickTable();
         // com essa parte podemos adicionar o dropBox com as coisas vindas do banco
     }
     public TelaItensRelatorio(Relatorio relatorio) {
         this.relatorio = relatorio;
         this.itens = relatorio.getItensRelatorio();
+        if(this.itens == null) {
+            this.itens = new ArrayList<ItemComida>();
+        }
         initComponents();
         carregarItens();
         carregarTabela();
         this.editando = true;
+        listenClickTable();
+    }
+    private void listenClickTable() {
+        this.tabelaTotais.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int input = JOptionPane.showConfirmDialog(null, 
+                "Esta ação irá excluir este item da lista", 
+                "Deseja prosseguir?",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if(input == JOptionPane.NO_OPTION || input == JOptionPane.CANCEL_OPTION || input == JOptionPane.CLOSED_OPTION) {
+                return;
+            }
+            int row = tabelaTotais.rowAtPoint(evt.getPoint());
+            int col = tabelaTotais.columnAtPoint(evt.getPoint());
+            if (row >= 0 && col == 5) {
+                DefaultTableModel tabela = (DefaultTableModel) tabelaTotais.getModel();
+                DefaultTableModel entrada = (DefaultTableModel) tabelaEntrada.getModel();
+                DefaultTableModel saida = (DefaultTableModel) tabelaSaida.getModel();
+                String tipo = tabela.getValueAt(row, 0) + "";
+                ItemComida itemExistente = verificaItemJaExiste(tipo);
+                itens.remove(itemExistente); 
+                tabela.removeRow(row);
+                entrada.removeRow(row);
+                saida.removeRow(row);
+            }
+        }});
     }
     private void carregarTabela() {
         // tem que rever
@@ -66,22 +95,20 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             tabelinhaSaida.addRow(new Object[] {item.tipoItem, item.semana1Saida+item.unidade,item.semana2Saida+
                     item.unidade,item.semana3Saida+item.unidade,item.semana4Saida+item.unidade,item.semana5Saida+
                             item.unidade, item.remanejamentoSaida+item.unidade, item.ataSaida});
-            /*BotaoExcluir action = new BotaoExcluir(tabelinhaTotais, tabelinhaSaida, tabelinhaEntrada, i);
-            JButton excluir = new JButton(action);
-            excluir.setVisible(true);*/
             tabelinhaTotais.addRow(new Object[] {item.tipoItem, item.estoqueInicial,item.totalEntrada,item.totalSaida ,
-                item.estoqueFinal, i});
+                item.estoqueFinal, "Excluir"});
             /*this.tabelaTotais.getColumn("Excluir").setCellRenderer(new JTableButtonRenderer());
             this.tabelaTotais.getColumn("Excluir").setCellEditor(new ButtonEditor(new JCheckBox(), new BotaoExcluir(tabelinhaEntrada, 
                         tabelinhaSaida, tabelinhaTotais, i)));*/
             i++;
         }
+        tabelaTotais.getColumn("Excluir").setCellRenderer(new ButtonRenderer());
     }
     private void carregarItens(){
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) tipoItem.getModel();
         //modelo.addElement("thiago");
         ArrayList<String> itens = new ArrayList();
-        itens=banco.pegarItensDoCardapio();
+        itens=BdManager.pegarItensDoCardapio();
         modelo.removeAllElements();
         modelo.addElement("Selecione o Item");
         for(int i=0;i<itens.size();i++)
@@ -94,6 +121,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
        this.tipoItem.removeAll();
     }
     public void excluirLinha(int linha) {
+        
         DefaultTableModel tabelaTotal = (DefaultTableModel) this.tabelaTotais.getModel();
         DefaultTableModel tabela2 = (DefaultTableModel) this.tabelaEntrada.getModel();
         DefaultTableModel tabela3 = (DefaultTableModel) this.tabelaSaida.getModel();
@@ -854,6 +882,9 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_voltarAoMenuActionPerformed
     private ItemComida verificaItemJaExiste(String tipo) {
+        if(this.itens == null || this.itens.size() == 0) {
+            return null;
+        }
         for(ItemComida item: this.itens) {
             if(item.tipoItem.compareToIgnoreCase(tipo) == 0) {
                 return item;
@@ -997,14 +1028,14 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
     private void AdicionarItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarItensActionPerformed
         
         String newItem = novoItem.getText();
-        if(banco.VerificarItemExistente(newItem)) // retorna true se o item ja existe
+        if(BdManager.VerificarItemExistente(newItem)) // retorna true se o item ja existe
         {
             novoItem.setText("");
             JOptionPane.showMessageDialog(null,"Esse item já existe na Lista, procure-o na lista acima :3");
         }
         else
         {
-            banco.AdicionarItemListaCardapio(newItem);
+            BdManager.AdicionarItemListaCardapio(newItem);
             carregarItens();
             novoItem.setText("");
             JOptionPane.showMessageDialog(null,"Item adicionado com sucesso :3");

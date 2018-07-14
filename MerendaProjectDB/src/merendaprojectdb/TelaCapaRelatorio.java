@@ -119,15 +119,19 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane2.setViewportView(desjejumTable);
-        if (desjejumTable.getColumnModel().getColumnCount() > 0) {
-            desjejumTable.getColumnModel().getColumn(0).setHeaderValue("Alunos Atendidos");
-        }
 
         jLabel4.setText("Desjejum");
 
@@ -143,7 +147,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, false
+                true, false, false, true, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -168,7 +172,7 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
+                true, false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

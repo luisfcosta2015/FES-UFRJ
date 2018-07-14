@@ -119,6 +119,10 @@ public class TelaMesAno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"mês e ano obrigatórios");
             return;
         }
+        if(Integer.parseInt(campoMes.getText()) > 12 || Integer.parseInt(campoMes.getText()) < 0) {
+            JOptionPane.showMessageDialog(null,"Mês inválido");
+            return;
+        }
         if(BdManager.findIdRelatorio(TelaPrincipal.escolaAtual.getINEP(), Integer.parseInt(campoMes.getText())-1, Integer.parseInt(campoAno.getText())) ==-1)
         {
             TelaCapaRelatorio capa = new TelaCapaRelatorio(Integer.parseInt(this.campoMes.getText()), Integer.parseInt(campoAno.getText()));

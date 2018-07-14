@@ -120,9 +120,7 @@ public class Exportador {
             Cardapio cardapioRel = relatorio.getCardapioRelatorio();
             SpreadsheetDocument modeloCardapio = SpreadsheetDocument.loadDocument(this.modeloCardapio);
             Table cardapio = modeloCardapio.getTableByName("Cardapio");
-            
-            System.out.println(relatorio.getEscola().getDiretoria());
-            
+                        
             cardapio.getCellByPosition(1,2).setStringValue("Unidade: " + relatorio.getEscola().getUnidade()+" / Distrio: ");
             cardapio.getCellByPosition(1,3).setStringValue("Diretoria: " + relatorio.getEscola().getDiretoria());
             cardapio.getCellByPosition(1,4).setStringValue("Descrição do cardápio - " + relatorio.getMes() + "/" + relatorio.getAno());
@@ -156,7 +154,6 @@ public class Exportador {
     }
     
     public void exportarODS(Relatorio relatorio){
-        System.out.println("Inicio");
         String fileAdress = getFileName(relatorio, ".ods");
         
         SpreadsheetDocument doc = gerarArquivo(relatorio, fileAdress);
@@ -164,7 +161,6 @@ public class Exportador {
             doc.save(fileAdress);
 
             File file = new File(fileAdress);
-            System.out.println("Fim");
             OOUtils.open(file);
         } catch (IOException ex) {
             Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,7 +171,6 @@ public class Exportador {
     public void exportarODT(Relatorio relatorio){
         String fileAdress = getFileName(relatorio, ".odt");
         try{
-            System.out.println("Inicio");
             TextDocument outputOdt = TextDocument.newTextDocument();
             outputOdt.save(fileAdress);
             File f1 = new File(fileAdress);
@@ -195,7 +190,6 @@ public class Exportador {
             p1.add(p2,false);
             p1.saveToPackageAs(new File(fileAdress));
             f2.delete();
-            System.out.println("Fim");
             OOUtils.open(f1);
             
         }
@@ -221,11 +215,8 @@ public class Exportador {
         try{
             
             // Load the ODS file
-            System.out.println("passei0");
             final OpenDocument doc = new OpenDocument();
-            System.out.println("passei1");
             doc.loadFrom("arquivos/teste2.ods");
-            System.out.println("passei2");
 
             // Open the PDF document
             Document document = new Document(PageSize.A4);
@@ -256,9 +247,7 @@ public class Exportador {
             tp.setHeight(h);
 
             // Configure the renderer
-            System.out.println("passei3");
             ODTRenderer renderer = new ODTRenderer(doc);
-            System.out.println("passei4");
             renderer.setIgnoreMargins(true);
             renderer.setPaintMaxResolution(true);
 
@@ -278,7 +267,7 @@ public class Exportador {
             
         }
         catch (IllegalArgumentException e) {
-            System.out.println("vosh");
+            System.out.println(e.getMessage());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Exportador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DocumentException ex) {

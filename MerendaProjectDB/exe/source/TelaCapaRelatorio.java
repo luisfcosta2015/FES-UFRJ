@@ -385,9 +385,6 @@ public class TelaCapaRelatorio extends javax.swing.JFrame {
         atualizaTotal();
     }
     private void proximaPagina(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaPagina
-        //String var = "aa13b";
-        //var = var.replace("[a-zA-Z]", "");
-        //System.out.println(var);
         if(this.editando) {
              atualizaCapaDados();
             this.cardapio = new TelaCardapio(this.relatorio);

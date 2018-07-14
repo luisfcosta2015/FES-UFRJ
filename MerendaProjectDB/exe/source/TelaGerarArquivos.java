@@ -153,9 +153,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gerarODSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODSActionPerformed
-        System.out.println("A");
         exportador.exportarODS(this.relatorio);
-        System.out.println("B");
     }//GEN-LAST:event_gerarODSActionPerformed
 
     private void gerarODTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarODTActionPerformed
@@ -184,10 +182,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             
             doc.removeSheet(0);
             
-            System.out.println(TelaPrincipal.escolaAtual.getUnidade());
-            System.out.println(relatorio.getEscola().getUnidade());
-            
-            
             capa.getCellByPosition(1, 3).setStringValue(relatorio.getEscola().getUnidade());
             capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()));
             capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
@@ -201,7 +195,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
                     capa.getCellByPosition(j, i).setStringValue(""+capaDados.getValueAt(i-11, j-2));
                 }
             }
-            System.out.println(capaDados.getValueAt(1, 5));
             capa.getCellByPosition(2, 17).setStringValue(""+capaDados.alunosAtendidosDesjejum);
             capa.getCellByPosition(6, 17).setStringValue(""+capaDados.desjejumTotalMensalServido);
             
@@ -220,7 +213,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             capa.getCellByPosition(2,26).setStringValue(""+capaDados.getTotalServido());
             doc.appendSheet(capa, "capa");
             doc.save("ttestefinal.ods");
-            System.out.println("Fim");
             File file = new File("ttestefinal.ods");
             OOUtils.open(file);
             
@@ -259,47 +251,3 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }
-
-
-
- /*Document doc = SpreadsheetDocument.loadDocument("teste2.odt");
-            InputStream oi = new FileInputStream("teste1.odt");
-            TableTemplate template = doc.LoadTableTemplateFromForeignTable(oi, "template");
-            Table table = doc.getTableByName("pipoca");
-            table.applyStyle(template);
-            Column coluna = table.getColumnByIndex(1);
-            coluna.setWidth(40);
-            table.getCellByPosition(1, 0).setDoubleValue(23.0);
-            doc.save("ttestefinal.odt");*/
-            
-
-            // add image
-            //outputOdt.newImage(new URI("odf-logo.png"));
-
-            // add paragraph
-            //outputOdt.addParagraph("Hello World, Hello Simple ODF!");
-
-            // add list
-            //outputOdt.addParagraph("The following is a list.");
-            //List list = outputOdt.addList();
-            /*String[] items = {"item1", "item2", "item3"};
-            list.addItems(items);
-
-            // add table
-            Table table = outputOdt.addTable(2, 2);
-            Cell cell = table.getCellByPosition(0, 0);
-            cell.setStringValue("Hello World!");
-
-            outputOdt.save("HelloWorld.odt");
-            System.out.println("0");
-            SpreadsheetDocument doc = SpreadsheetDocument.newSpreadsheetDocument();
-            System.out.println("1");
-            Table sheet = doc.getSheetByIndex(0);
-            System.out.println("2");
-            sheet.getCellByPosition(0, 0).setStringValue("Betrag");
-            System.out.println("3");
-            sheet.getCellByPosition(1, 0).setDoubleValue(23.0);
-            System.out.println("4");
-            doc.save("HelloWorld.ods");
-            System.out.println("5");
-              */
