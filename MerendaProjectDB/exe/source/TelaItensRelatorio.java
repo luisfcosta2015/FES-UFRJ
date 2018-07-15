@@ -775,7 +775,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
         }
         else
         {
-            System.out.println("alterando relatorio");
             BdManager.alterarRelatorio(this.relatorio);
         }
         principal=new TelaPrincipal();
@@ -813,11 +812,6 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
             String totalSaidaText=totalSaida+unidade;
             int valorEstoqueFinal=(Integer.parseInt(estoqueInicial.getText())+Integer.parseInt(remanejamentoE.getText())+totalEntrada-Integer.parseInt(remanejamentoS.getText())-Integer.parseInt(ata.getText())-totalSaida);
             String valorEstoqueFinalText=valorEstoqueFinal+unidade;
-            
-            
-            System.out.println(valorEstoqueFinal);
-            
-            
             
             DefaultTableModel tabelinhaEntrada = (DefaultTableModel) tabelaEntrada.getModel();
             tabelinhaEntrada.addRow(new Object[] {tipoItem.getSelectedItem(),semana1Entrada+unidade,semana2Entrada+unidade,semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});

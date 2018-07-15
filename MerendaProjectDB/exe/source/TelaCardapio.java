@@ -17,6 +17,7 @@ import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Cliente
@@ -287,14 +288,14 @@ public class TelaCardapio extends javax.swing.JFrame {
                         tabelinha.removeRow(lin);
                         return;
                     }
-                    System.out.println("numero da linha invalido");
+                    JOptionPane.showMessageDialog(null, "Linha precisa estar preenchida");
                     return;
                 }
                 System.out.println("linha em branco");
                 return;
             }
             catch (ParseException e) {
-                System.out.println("erro no parse da data");
+                System.out.println(e);
                 return;
             }
         }

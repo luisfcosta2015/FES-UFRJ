@@ -17,6 +17,7 @@ import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Cliente
@@ -55,9 +56,10 @@ public class TelaCardapio extends javax.swing.JFrame {
         ArrayList<Date> dias = calendario.getList();
         for(Date data : dias)
         {
-            Object[] dado = {df.format(data)};
+            Object[] dado = {df.format(data),"","Excluir"};
             tabelinha.addRow(dado);
         }
+        setListenerExcluir();
     }
     
     /**
@@ -72,7 +74,7 @@ public class TelaCardapio extends javax.swing.JFrame {
         DateFormat df = new SimpleDateFormat("dd/MM");
         ArrayList<DuplaDataCardapio> cardapioList = cardapio.getList();
         for(DuplaDataCardapio dupla : cardapioList) {
-            Object[] obj = new Object[2];
+            Object[] obj = new Object[3];
             obj[0] = df.format(dupla.data);
             if(dupla.cardapioDoDia != null ) {
                 obj[1] = dupla.cardapioDoDia;
@@ -80,10 +82,37 @@ public class TelaCardapio extends javax.swing.JFrame {
             else {
                 obj[1] = "";
             }
+            obj[2]="Excluir";
             tabelinha.addRow(obj);
         }
+        setListenerExcluir();
     }
-    
+    private void setListenerExcluir() {
+        this.tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int input = JOptionPane.showConfirmDialog(null, 
+                "Esta ação irá excluir esta data da lista", 
+                "Deseja prosseguir?",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if(input == JOptionPane.NO_OPTION || input == JOptionPane.CANCEL_OPTION || input == JOptionPane.CLOSED_OPTION) {
+                return;
+            }
+            int row = tabela.rowAtPoint(evt.getPoint());
+            int col = tabela.columnAtPoint(evt.getPoint());
+            if (row >= 0 && col == 2) {
+                try {
+                    DateFormat df = new SimpleDateFormat("dd/MM");
+                    Date data = df.parse(tabelinha.getValueAt(row, 0).toString());
+                    cardapio.remove(data);
+                    tabelinha.removeRow(row);
+                }
+                catch(ParseException e) {
+                    System.out.println(e);
+                }
+            }
+        }});
+        this.tabela.getColumn("Excluir").setCellRenderer(new ButtonRenderer());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,7 +141,7 @@ public class TelaCardapio extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Dia", "Cardapio"
+                "Dia", "Cardapio", "Excluir"
             }
         ));
         tabela.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
