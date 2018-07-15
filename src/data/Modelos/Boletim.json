@@ -1,6 +1,6 @@
 {
   "nome":"Boletim",
-  "consultas":["notas_cons"],
+  "consultas":["consulta_boletim.json"],
   "header":{
     "id":"1",
     "user_input":{},

@@ -21,6 +21,7 @@ public class RelatorioTest {
     //testando o contrutor
     public void testConstrutor() {
         Relatorio a = new Relatorio("Boletim.json");
+        System.out.print(a.listaPreenchimentosNecessarios());
     }
     
 }
