@@ -57,14 +57,18 @@ public class Template {
         this.atributos = this.getAtributos();
     }
     
-    public static void generatePDF(Template header, Template body, Template footer){
+    /*
+        As Strings passadas irão substituir $header$, $body$ e $footer$ no
+    template esqueleto. Para isso, é necessário recebê-los já preenchidos
+     */
+    public static void generatePDF(String header, String body, String footer){
         PrintWriter writer = null;
         Boolean passa = false;
         try {
             String corpo = Template.esqueleto.getTemplate();
-            corpo = corpo.replace("$header$", header.getTemplate());
-            corpo = corpo.replace("$body$", body.getTemplate());
-            corpo = corpo.replace("$footer$", footer.getTemplate());
+            corpo = corpo.replace("$header$", header);
+            corpo = corpo.replace("$body$", body);
+            corpo = corpo.replace("$footer$", footer);
             writer = new PrintWriter(OUT_FILE, "UTF-8");
             writer.print(corpo);
             writer.close();
@@ -97,7 +101,10 @@ public class Template {
         return Leitor.leArquivo(this.templatePath);    
     }
     
-    private String getTemplatePreenchido(Map<String, String> valores){
+    /*
+        Preenche o HTML com os valores a serem substituídos no arquivo
+     */
+    public String getTemplatePreenchido(Map<String, String> valores){
         String arquivo = getTemplate();
         for (Map.Entry<String, String> it : valores.entrySet()){
             arquivo = arquivo.replace("$"+it.getKey()+"$", it.getValue());
@@ -105,8 +112,10 @@ public class Template {
         return arquivo;
     }
 
-    
-    private Map<String, String> getAtributos(){
+    /*
+        Mapeia todos os atributos que precisam ser preenchidos no HTML desse Template
+     */
+    public Map<String, String> getAtributos(){
         String texto = getTemplate();
         Map<String, String> atributos = new HashMap<>();
         
