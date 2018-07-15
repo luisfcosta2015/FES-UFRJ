@@ -327,7 +327,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_sairMouseClicked
     private void buttonActionPerformedSwitch(int button) {
-        System.out.println( button + this.operacoes[button]);
         switch(this.operacoes[button]){
             case "editarPermissoes":
                 permission=new TelaPermissao();
