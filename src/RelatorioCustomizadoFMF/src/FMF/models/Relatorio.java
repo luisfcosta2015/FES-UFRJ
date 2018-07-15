@@ -88,7 +88,29 @@ public class Relatorio {
         -   Preenche os campos onde foram feitas as consultas
      */
     public void geraPDFPreenchido(Map<String, String> preenchido){
-    
+        //============= START- PREENCHIMENTO DE CONSTANTES
+
+        JSONObject o = new JSONObject(Leitor.leArquivo(this.file_path));
+        Iterator<String> constantes = o.getJSONObject("header").getJSONObject("constantes").keys();
+        while(constantes.hasNext()){
+            String chave = constantes.next();
+            preenchido.put(chave,o.getJSONObject("header").getJSONObject("constantes").getString(chave));
+        }
+        constantes = o.getJSONObject("body").getJSONObject("constantes").keys();
+        while(constantes.hasNext()){
+            String chave = constantes.next();
+            preenchido.put(chave,o.getJSONObject("body").getJSONObject("constantes").getString(chave));
+        }
+        constantes = o.getJSONObject("footer").getJSONObject("constantes").keys();
+        while(constantes.hasNext()){
+            String chave = constantes.next();
+            preenchido.put(chave,o.getJSONObject("footer").getJSONObject("constantes").getString(chave));
+        }
+        //============= END - PREENCHIMENTO DE CONSTANTES
+        
+        Template.generatePDF(this.header.getTemplatePreenchido(preenchido),
+                this.body.getTemplatePreenchido(preenchido),
+                this.footer.getTemplatePreenchido(preenchido));
     }
     
 }

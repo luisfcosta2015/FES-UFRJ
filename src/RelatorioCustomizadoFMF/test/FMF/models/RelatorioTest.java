@@ -5,6 +5,7 @@
  */
 package FMF.models;
 
+import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,7 +22,11 @@ public class RelatorioTest {
     //testando o contrutor
     public void testConstrutor() {
         Relatorio a = new Relatorio("Boletim.json");
-        System.out.print(a.listaPreenchimentosNecessarios());
+        Map<String, String> m1 = a.listaPreenchimentosNecessarios();
+        m1.put("dia","15");
+        m1.put("mes","junho");
+        m1.put("ano","2018");
+        a.geraPDFPreenchido(m1);
     }
     
 }

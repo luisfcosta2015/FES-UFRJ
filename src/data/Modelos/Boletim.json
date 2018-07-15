@@ -7,13 +7,15 @@
     "consultas":{},
     "constantes":{
       "nomeescola":"Escola Teste",
-      "titulo":"boletim"
+      "titulo":"Boletim"
     }
   },
   "body":{
     "id":"3",
     "user_input":{
       "ano":"Escreva o ano:",
+      "mes":"Escreva o mês",
+      "dia":"Escreva o dia",
       "matricula":"Escreva a matricula:",
       "serie":"Escreva a serie do aluno:",
     },
