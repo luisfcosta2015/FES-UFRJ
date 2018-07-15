@@ -91,9 +91,9 @@ public class CadastroAlimentoTest {
                 if("".equals(marcateste)){
                     break;
                 }
-                cad.reset();
+                cad.btnLimpar().doClick();
             }
-            cad.reset();
+            cad.btnLimpar().doClick();
             String marcanovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
             String fornecedornovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
             int i = ran.nextInt(28) + 1;
@@ -109,7 +109,8 @@ public class CadastroAlimentoTest {
             System.out.println(booleano);
             cad.preenchertest(nomenovo,marcanovo,fornecedornovo,quantstring,novoint,booleano);
             cad.BotaoCadastrar().doClick();
-            cad.reset();
+            //cadastrou/\
+            cad.btnLimpar().doClick();
             cad.preenchernometest(nomenovo);
             cad.BotaoPesquisar().doClick();
             String nome = cad.retornaValores(0);
@@ -124,7 +125,51 @@ public class CadastroAlimentoTest {
             String quantidade = cad.retornaValores(3);
             System.out.println(quantstring);
             assertEquals(quantidade,quantstring);
+            //conferiu/\
+            cad.btnLimpar().doClick();
+            cad.preenchernometest(nomenovo);
+            cad.BotaoPesquisar().doClick();
+            marcanovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
+            fornecedornovo = Auxiliar.CriaPalavra(ran.nextInt(28) + 1);
+            i = ran.nextInt(28) + 1;
+            //fonte https://stackoverflow.com/questions/4105331/how-do-i-convert-from-int-to-string
+            sb = new StringBuilder();
+            sb.append("");
+            sb.append(i);
+            quantstring = sb.toString();
+            novoint = ran.nextInt(4);
+            i = ran.nextInt(2);
+            booleano = i != 0;
+            System.out.println(booleano);
+            cad.preenchertest(nomenovo,marcanovo,fornecedornovo,quantstring,novoint,booleano);
+            cad.btnEditar().doClick();
+            //editou/\
+            cad.btnLimpar().doClick();
+            cad.preenchernometest(nomenovo);
+            cad.BotaoPesquisar().doClick();
+
+
+            System.out.println(loop);
+
+            nome = cad.retornaValores(0);
+            System.out.println(nome);
+            assertEquals(nomenovo,nome);
+            System.out.println(nome);
+            fornecedor = cad.retornaValores(2);
+            System.out.println(fornecedor);
+            marca = cad.retornaValores(1);
+            System.out.println(marca);
+            System.out.println(marcanovo);
+            assertEquals(marcanovo,marca);
+            
+            System.out.println(fornecedornovo);
+            assertEquals(fornecedornovo,fornecedor);
+            quantidade = cad.retornaValores(3);
+            System.out.println(quantstring);
+            assertEquals(quantidade,quantstring);
+            //conferiu/\
             cad.BotaoDeletar().doClick();
+            cad.reset();
         }
     } 
     

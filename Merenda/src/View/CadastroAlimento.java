@@ -48,6 +48,14 @@ public JButton BotaoPesquisar(){
 public JButton BotaoDeletar(){ 
     return btnDeletar;
 }
+
+public JButton btnEditar(){ 
+    return btnDeletar;
+}
+
+public JButton btnLimpar(){ 
+    return btnDeletar;
+}
  
 /*
     Essa função preenche apenas o campo de nome
