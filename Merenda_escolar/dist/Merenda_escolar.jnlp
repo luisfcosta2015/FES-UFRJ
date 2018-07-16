@@ -8,8 +8,9 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Merenda_escolar.jar" size="33140" download="eager" />
-    <jar href="lib\Merenda_escolar.jar" size="11540" download="eager" />
+    <jar href="Merenda_escolar.jar" size="331588" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.46-bin.jar" size="1004840" download="eager" />
+    <jar href="lib\rs2xml.jar" size="171578" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Merenda_escolar" >
     <param name="requiredFXVersion" value="8.0+"/>
