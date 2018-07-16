@@ -5,12 +5,15 @@
  */
 package FMF.controllers;
 
+import FMF.models.Relatorio;
 import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,18 +54,21 @@ public class GerarRelatorioController implements Initializable {
     @FXML
     private Text RelatorioEscolhido;    
     
+    private Map<String, String> parametros;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO: Iterar sobre o array global de modelos, obter o título a partir da classe modelo e usá-lo pra setar
         
         List<Pair< String,EventHandler<? super MouseEvent> > > miniaturas = new ArrayList<>();
-        for(Integer i=0;i<10;i++){
-            String title = "Teste "+ i.toString();
+        for(Relatorio rel: Relatorio.Relatorios){
+            String title = rel.nome;
             miniaturas.add(new Pair<>(title, new EventHandler<MouseEvent>() {
 
                     @Override
                     public void handle(MouseEvent event) {
                         RelatorioEscolhido.setText(title);
+                        parametros = rel.listaPreenchimentosNecessarios();
                     }
             }));
         }
@@ -86,20 +92,26 @@ public class GerarRelatorioController implements Initializable {
         background.getChildren().setAll(x);
     }
     
-    public void gerarAct() throws IOException{
+    public void gerarAct(){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FMF/views/popupGerarRel.fxml"));
 
-        Parent root1 = (Parent) fxmlLoader.load();
+        Parent root1 = null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         PopupGerarRelController controller = fxmlLoader.<PopupGerarRelController>getController();
-        List<String> messages = Arrays.asList("Matrícula", "Semestre", "CódigoEscola");
-        controller.setParams(messages);
+        controller.setParams(this.parametros);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root1));  
         stage.show();    
 
     }
+    
+    
 
     
 }

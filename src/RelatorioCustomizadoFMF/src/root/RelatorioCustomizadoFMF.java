@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import FMF.models.MysqlCon;
+import FMF.models.Relatorio;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -34,12 +35,16 @@ public class RelatorioCustomizadoFMF extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         
+        //Carregando os Modelos
+        Relatorio.load();
+
         Parent root = FXMLLoader.load(getClass().getResource("/FMF/views/index.fxml"));
         
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        
         
     }
 

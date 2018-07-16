@@ -1,6 +1,7 @@
 package FMF.models;
 
 import FMF.controllers.Leitor;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,13 +23,17 @@ public class Relatorio {
     private String file_path;
     private List<ArquivoConsulta> Consultas = new ArrayList<ArquivoConsulta>();
     
+    public static List<Relatorio> Relatorios = new ArrayList<Relatorio>();
+    
     public String nome;
     public Template header, body, footer;
     
     public Relatorio(String JSON_Name){
         this.file_path = FOLDER_PATH + JSON_Name;
+        
         JSONObject o = new JSONObject(Leitor.leArquivo(this.file_path));
         this.nome = o.getString("nome");
+        
         this.header = new Template(o.getJSONObject("header").getString("id"));
         this.body = new Template(o.getJSONObject("body").getString("id"));
         this.footer = new Template(o.getJSONObject("footer").getString("id"));
@@ -42,6 +47,19 @@ public class Relatorio {
             }
         }
         
+    }
+    
+    /*
+        Carrega todos os relatórios encontrados na pasta Modelos, os instancia e
+    os insere na lista global. 
+     */
+    public static void load(){
+        File folder = new File(FOLDER_PATH);
+        File[] listOfFiles = folder.listFiles();
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            Relatorios.add(new Relatorio(listOfFiles[i].getName()));
+        }
     }
     
     

@@ -7,6 +7,7 @@ package FMF.controllers;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,10 +60,11 @@ public class PopupGerarRelController implements Initializable {
         background.getChildren().addAll(txt, l1);        
     }
     
-    public void setParams(List<String> params){
+    public void setParams(Map<String, String> params){
+        
         try{
             int count = 0;
-            for (String i : params){
+            for (String i : params.keySet()){
                 addInsertField(i, count++);
             }
         } catch(Exception e){
