@@ -56,6 +56,7 @@ public class GerarRelatorioController implements Initializable {
     
     private Map<String, String> parametros;
     
+    private Relatorio escolhido;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO: Iterar sobre o array global de modelos, obter o título a partir da classe modelo e usá-lo pra setar
@@ -69,6 +70,7 @@ public class GerarRelatorioController implements Initializable {
                     public void handle(MouseEvent event) {
                         RelatorioEscolhido.setText(title);
                         parametros = rel.listaPreenchimentosNecessarios();
+                        escolhido = rel;
                     }
             }));
         }
@@ -103,7 +105,7 @@ public class GerarRelatorioController implements Initializable {
         }
 
         PopupGerarRelController controller = fxmlLoader.<PopupGerarRelController>getController();
-        controller.setParams(this.parametros);
+        controller.setParams(this.parametros, this.escolhido);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root1));  

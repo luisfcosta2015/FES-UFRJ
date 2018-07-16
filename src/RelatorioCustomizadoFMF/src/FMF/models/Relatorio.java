@@ -105,6 +105,7 @@ public class Relatorio {
         -   Realiza as consultas usando o Map recebido
         -   Preenche os campos onde foram feitas as consultas
      */
+    // TODO : preencher os campos obtidos da consulta
     public void geraPDFPreenchido(Map<String, String> preenchido){
         //============= START- PREENCHIMENTO DE CONSTANTES
 
