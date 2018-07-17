@@ -12,7 +12,7 @@ public class QueryToJSON {
     public QueryToJSON() {}
     
     /* Executa uma query e retorna seu valor na linha e coluna específicos */
-    public String valorQuery(Map<String,String> atrib, String consulta, int lin, String col) {
+    public static String valorQuery(Map<String,String> atrib, String consulta, int lin, String col) {
         String cons = retornaQuery(atrib, consulta); // Consulta tratada e executável ao BD
         Object val;
         val = new Object();
@@ -41,7 +41,7 @@ public class QueryToJSON {
     }
     
     /* Substitui os valores dos atributos entre cifrão e retorna a query executável no BD */
-    public String retornaQuery(Map<String,String> atrib, String consulta) {
+    public static String retornaQuery(Map<String,String> atrib, String consulta) {
 	String cons = "";
 	char c[] = consulta.toCharArray();
 	for(int i = 0; i < consulta.length(); i++) {

@@ -20,8 +20,8 @@ public class MysqlCon{
     	try{
             Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/FMF","root","timeFMF");
-            //here sonoo is database name, root is username and password
+            "jdbc:mysql://localhost:3306/Escola_Teste?useSSL=false","root","FMF");
+            //alterem a senha ou o nome do banco de dados em cada situação
             System.out.println("Conectado ao BD");
         }catch(Exception e){
             System.out.println(e);
