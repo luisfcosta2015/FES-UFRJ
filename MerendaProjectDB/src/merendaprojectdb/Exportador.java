@@ -125,8 +125,6 @@ public class Exportador {
             SpreadsheetDocument modeloCardapio = SpreadsheetDocument.loadDocument(this.modeloCardapio);
             Table cardapio = modeloCardapio.getTableByName("Cardapio");
             
-            System.out.println(relatorio.getEscola().getDiretoria());
-            
             cardapio.getCellByPosition(1,2).setStringValue("Unidade: " + relatorio.getEscola().getUnidade()+" / Distrio: " + relatorio.getEscola().getDistrito());
             cardapio.getCellByPosition(1,3).setStringValue("Diretoria: " + relatorio.getEscola().getDiretoria());
             cardapio.getCellByPosition(1,4).setStringValue("Descrição do cardápio - " + relatorio.getMes() + "/" + relatorio.getAno());
@@ -223,16 +221,12 @@ public class Exportador {
             File f1 = new File(fileAdress);
             
             ODSingleXMLDocument p1 = ODSingleXMLDocument.createFromPackage(f1);
-
+            
             String adressOds = getFileName(relatorio, ".ods");
             SpreadsheetDocument doc = gerarArquivo(relatorio, fileAdress);
             doc.save(adressOds);
             File f2 = new File(adressOds);
             ODSingleXMLDocument p2 = ODSingleXMLDocument.createFromPackage(f2);
-            
-            SpreadSheet planilhas = SpreadSheet.createFromFile(f2);
-            Sheet capa = planilhas.getSheet("capa");
-            Sheet cardapio = planilhas.getSheet("Cardapio");
             
             p1.add(p2,false);
             p1.saveToPackageAs(new File(fileAdress));

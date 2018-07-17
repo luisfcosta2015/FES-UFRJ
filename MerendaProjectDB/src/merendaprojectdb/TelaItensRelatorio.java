@@ -972,7 +972,7 @@ public class TelaItensRelatorio extends javax.swing.JFrame {
                     semana3Entrada+unidade,semana4Entrada+unidade,semana5Entrada+unidade,remanejamentoEntrada+unidade});
 
                 tabelinhaTotais.addRow(new Object[] {tipoItemString,valorEstoqueInicial,totalEntradaText, totalSaidaText, 
-                    valorEstoqueFinalText, tabelinhaTotais.getRowCount()});
+                    valorEstoqueFinalText, "Excluir"});
 
                 tabelinhaSaida.addRow(new Object[] {tipoItemString,semana1Saida+unidade,semana2Saida+unidade,
                     semana3Saida+unidade,semana4Saida+unidade,semana5Saida+unidade,remanejamentoSaida+unidade, ataSaida});

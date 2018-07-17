@@ -19,7 +19,7 @@ import java.sql.Statement;
 public class BdManager {
     public static String host = "jdbc:mysql://localhost:3306/merendafes";
     public static String username = "root";
-    public static String password = "@Vitor1997";
+    public static String password = "senha123";
     private static Connection con;
     //fake variaveis para fingir comunicacao com o banco
     private static ArrayList<Relatorio> relatorios = new ArrayList<>();

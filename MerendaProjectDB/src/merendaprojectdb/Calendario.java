@@ -44,6 +44,41 @@ public class Calendario {
         }
     }
     
+    public int adicionar( Date data){
+        ArrayList<Date> temp = new ArrayList<Date>();
+        boolean inserido = false;
+        int pos=0;
+        for(int i = 0; i < this.datas.size(); i++)  {
+            if(!inserido && this.datas.get(i).getDate() > data.getDate()) {
+                temp.add(i, data);
+                inserido = true;
+                temp.add(i+1, this.datas.get(i));
+                continue;
+            }
+            if(!inserido && this.datas.get(i).getDate()==data.getDate())
+            {
+                return -1;
+            }
+            temp.add(this.datas.get(i));
+        }
+        if(!inserido)
+        {
+            temp.add(data);
+        }
+        this.datas=temp;
+        return pos;
+    }
+    /*public void removeDF(Date data){
+        int dia = data.getDate();
+        for(Date dt : this.datas)
+        {
+            if(dt.getDate()==dia)
+            {
+                datas.remove(dt);
+            }
+        }
+    }*/
+    
     public ArrayList<Date> getList() {
         return this.datas;
     }

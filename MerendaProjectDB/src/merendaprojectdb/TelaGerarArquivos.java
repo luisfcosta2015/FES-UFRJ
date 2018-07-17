@@ -59,8 +59,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
         gerarODT = new javax.swing.JButton();
         gerarPDF = new javax.swing.JButton();
         voltar = new javax.swing.JLabel();
-        teste1 = new javax.swing.JButton();
-        teste2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,20 +90,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
             }
         });
 
-        teste1.setText("teste");
-        teste1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teste1ActionPerformed(evt);
-            }
-        });
-
-        teste2.setText("teste2");
-        teste2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teste2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,17 +103,10 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
                 .addComponent(gerarPDF)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(teste1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(teste2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(gerarODS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                        .addComponent(gerarODT)))
+                .addGap(55, 55, 55)
+                .addComponent(gerarODS)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(gerarODT)
                 .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
@@ -142,11 +119,7 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
                     .addComponent(gerarODT))
                 .addGap(53, 53, 53)
                 .addComponent(gerarPDF)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(teste1)
-                    .addComponent(teste2))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,78 +147,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_voltarMouseClicked
 
-    private void teste1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teste1ActionPerformed
-
-        try {
-            CapaDados capaDados = relatorio.getCapaRelatorio();
-            SpreadsheetDocument doc = SpreadsheetDocument.newSpreadsheetDocument();
-            SpreadsheetDocument modelo = SpreadsheetDocument.loadDocument("modelo.ods");
-            Table capa = modelo.getTableByName("Capa");
-            
-            doc.removeSheet(0);
-            
-            System.out.println(TelaPrincipal.escolaAtual.getUnidade());
-            System.out.println(relatorio.getEscola().getUnidade());
-            
-            
-            capa.getCellByPosition(1, 3).setStringValue(relatorio.getEscola().getUnidade());
-            capa.getCellByPosition(9, 3).setStringValue(""+(relatorio.getMes()+1)+"/"+(relatorio.getAno()));
-            capa.getCellByPosition(1, 4).setStringValue(relatorio.getEscola().getUnidade());
-            capa.getCellByPosition(1, 5).setStringValue(relatorio.getEscola().getTelefone());
-            capa.getCellByPosition(7, 5).setStringValue(""+relatorio.getEscola().getINEP());
-            
-            for(int i=11;i<16;i++)
-            {
-                for(int j=2;j<10;j++)
-                {
-                    capa.getCellByPosition(j, i).setStringValue(""+capaDados.getValueAt(i-11, j-2));
-                }
-            }
-            System.out.println(capaDados.getValueAt(1, 5));
-            capa.getCellByPosition(2, 17).setStringValue(""+capaDados.alunosAtendidosDesjejum);
-            capa.getCellByPosition(6, 17).setStringValue(""+capaDados.desjejumTotalMensalServido);
-            
-            capa.getCellByPosition(2,21).setStringValue(""+capaDados.maisEducacao[0].matriculados);
-            capa.getCellByPosition(4,21).setStringValue(""+capaDados.maisEducacao[0].atendidos);
-            capa.getCellByPosition(6,21).setStringValue(""+capaDados.maisEducacao[0].numDias);
-            capa.getCellByPosition(7,21).setStringValue(""+capaDados.maisEducacao[0].totalDesjejum);
-            capa.getCellByPosition(8,21).setStringValue(""+capaDados.maisEducacao[0].totalLanche);
-            
-            capa.getCellByPosition(2,24).setStringValue(""+capaDados.maisEducacao[1].matriculados);
-            capa.getCellByPosition(4,24).setStringValue(""+capaDados.maisEducacao[1].atendidos);
-            capa.getCellByPosition(6,24).setStringValue(""+capaDados.maisEducacao[1].numDias);
-            capa.getCellByPosition(8,24).setStringValue(""+capaDados.maisEducacao[1].totalLanche);
-            capa.getCellByPosition(9,24).setStringValue(""+capaDados.getTotalMaisEducacao());
-            
-            capa.getCellByPosition(2,26).setStringValue(""+capaDados.getTotalServido());
-            doc.appendSheet(capa, "capa");
-            doc.save("ttestefinal.ods");
-            System.out.println("Fim");
-            File file = new File("ttestefinal.ods");
-            OOUtils.open(file);
-            
-        } catch (Exception e) {
-            System.err.println("ERROR: unable to create output file.");
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_teste1ActionPerformed
-
-    private void teste2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teste2ActionPerformed
-       
-        try
-        {
-            TextDocument document = TextDocument.newTextDocument();
-            Table table1 = Table.newTable(document);
-
-            table1.setTableName("Table1");
-
-            document.save("teste2.odt");
-        } catch (Exception ex) {
-            Logger.getLogger(TelaGerarArquivos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }//GEN-LAST:event_teste2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -254,8 +155,6 @@ public class TelaGerarArquivos extends javax.swing.JFrame {
     private javax.swing.JButton gerarODS;
     private javax.swing.JButton gerarODT;
     private javax.swing.JButton gerarPDF;
-    private javax.swing.JButton teste1;
-    private javax.swing.JButton teste2;
     private javax.swing.JLabel voltar;
     // End of variables declaration//GEN-END:variables
 }

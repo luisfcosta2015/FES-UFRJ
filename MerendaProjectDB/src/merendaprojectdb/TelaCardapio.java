@@ -89,30 +89,64 @@ public class TelaCardapio extends javax.swing.JFrame {
     }
     private void setListenerExcluir() {
         this.tabela.addMouseListener(new java.awt.event.MouseAdapter() {
-        @Override
+            
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            int input = JOptionPane.showConfirmDialog(null, 
-                "Esta ação irá excluir esta data da lista", 
-                "Deseja prosseguir?",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-            if(input == JOptionPane.NO_OPTION || input == JOptionPane.CANCEL_OPTION || input == JOptionPane.CLOSED_OPTION) {
-                return;
-            }
+            
             int row = tabela.rowAtPoint(evt.getPoint());
             int col = tabela.columnAtPoint(evt.getPoint());
             if (row >= 0 && col == 2) {
+                int input = JOptionPane.showConfirmDialog(null, 
+                "Esta ação irá excluir esta data da lista", 
+                "Deseja prosseguir?",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if(input == JOptionPane.NO_OPTION || input == JOptionPane.CANCEL_OPTION || input == JOptionPane.CLOSED_OPTION) {
+                    return;
+                }
                 try {
                     DateFormat df = new SimpleDateFormat("dd/MM");
                     Date data = df.parse(tabelinha.getValueAt(row, 0).toString());
-                    cardapio.remove(data);
+                    System.out.println(data);
+                    if(editando)
+                    {
+                       cardapio.remove(findExistingDate(data));
+                    }
+                    else
+                    {
+                        calendario.remove(findExistingDate(data));
+                    }
+                    
                     tabelinha.removeRow(row);
                 }
                 catch(ParseException e) {
                     System.out.println(e);
                 }
+                
             }
         }});
         this.tabela.getColumn("Excluir").setCellRenderer(new ButtonRenderer());
     }
+    
+    public Date findExistingDate(Date data){
+        if(this.editando)
+        {
+            for(DuplaDataCardapio dc : this.cardapio.getList()) {
+                if(dc.data.getDate() == data.getDate())
+                {
+                    return dc.data;
+                }
+            }
+        }
+        else
+        {
+            for(Date dt : this.calendario.getList()) {
+                if(dt.getDate() == data.getDate())
+                {
+                    return dt;
+                }
+            }
+        }
+        return null;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,9 +161,9 @@ public class TelaCardapio extends javax.swing.JFrame {
         tabela = new javax.swing.JTable();
         proxButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        linha = new javax.swing.JTextField();
+        diaAdicionar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        excluir = new javax.swing.JButton();
+        Adicionar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -143,7 +177,16 @@ public class TelaCardapio extends javax.swing.JFrame {
             new String [] {
                 "Dia", "Cardapio", "Excluir"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabela.getTableHeader().setReorderingAllowed(false);
         tabela.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 tabelaPropertyChange(evt);
@@ -160,12 +203,12 @@ public class TelaCardapio extends javax.swing.JFrame {
 
         jLabel3.setText("excluir elemento");
 
-        jLabel4.setText("linha");
+        jLabel4.setText("Dia");
 
-        excluir.setText("Excluir");
-        excluir.addActionListener(new java.awt.event.ActionListener() {
+        Adicionar.setText("Adicionar");
+        Adicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirActionPerformed(evt);
+                AdicionarActionPerformed(evt);
             }
         });
 
@@ -179,15 +222,15 @@ public class TelaCardapio extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(linha, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(proxButton))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(excluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(diaAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(Adicionar)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -206,9 +249,9 @@ public class TelaCardapio extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(linha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(diaAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(excluir))))
+                            .addComponent(Adicionar))))
                 .addGap(0, 101, Short.MAX_VALUE))
         );
 
@@ -303,57 +346,51 @@ public class TelaCardapio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_proxButtonActionPerformed
 
-    private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
+    private void AdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarActionPerformed
         // TODO add your handling code here:
-        if(this.editando) {
-            try {
-                if(!this.linha.getText().isEmpty()) {
-                    int lin = Integer.parseInt(this.linha.getText());
-                    if(lin < this.tabelinha.getRowCount()) {
-                        DateFormat df = new SimpleDateFormat("dd/MM");
-                        Date data = df.parse(this.tabelinha.getValueAt(lin, 0).toString());
-                        this.cardapio.remove(data);
-                        tabelinha.removeRow(lin);
-                        return;
-                    }
-                    System.out.println("numero da linha invalido");
-                    return;
-                }
-                System.out.println("linha em branco");
-                return;
-            }
-            catch (ParseException e) {
-                System.out.println("erro no parse da data");
-                return;
-            }
-        }
-        try {
-            if(!this.linha.getText().isEmpty()) {
-                int lin = Integer.parseInt(this.linha.getText());
-                if(lin < this.tabelinha.getRowCount()) {
-                    DateFormat df = new SimpleDateFormat("dd/MM");
-                    Date data = df.parse(this.tabelinha.getValueAt(lin, 0).toString());
-                    calendario.remove(data);
-                    tabelinha.removeRow(lin);
-                    return;
-                }
-                System.out.println("numero da linha invalido");
-                return;
-            }
-            System.out.println("linha em branco");
+        if(this.diaAdicionar.getText() == null || this.diaAdicionar.getText() == "" || 
+           Integer.parseInt(this.diaAdicionar.getText()) <= 0 || Integer.parseInt(this.diaAdicionar.getText()) > 31) {
             return;
         }
-        catch (ParseException e) {
-            System.out.println("erro no parse da data");
+        int pos = 0;
+        Date data = new Date(this.ano, this.mes, Integer.parseInt(this.diaAdicionar.getText()));
+        if(this.editando) {
+            
+            pos = this.cardapio.adicionar(data);
+            System.out.println(this.cardapio.getList().get(pos).data);
+            System.out.println(data);
+            
         }
-    }//GEN-LAST:event_excluirActionPerformed
+        
+        else{
+            pos = this.calendario.adicionar(data);
+        }
+        if(pos!=-1)
+        {
+            adicionarNaTabela(data,pos);
+            System.out.println(this.tabelinha.getRowCount());
+            System.out.println(this.cardapio.getList().size());
+            
+            
+        }
+// caso nao esteja editando ele preenche o campo cardapio do relatorio no action performed do proximo, entao nao
+        //precisa atualizar ArrayList nenhum, apenas inserir a linha na posição desejada
+    }//GEN-LAST:event_AdicionarActionPerformed
 
+    private void adicionarNaTabela(Date data, int pos){
+        DateFormat df = new SimpleDateFormat("dd/MM");
+        System.out.println("AAA");
+        this.tabelinha.insertRow(pos, new Object[]{df.format(data),"","Exluir"});
+        System.out.println("BBB");
+    }
+    
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton excluir;
+    private javax.swing.JButton Adicionar;
+    private javax.swing.JTextField diaAdicionar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -361,7 +398,6 @@ public class TelaCardapio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField linha;
     private javax.swing.JButton proxButton;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables

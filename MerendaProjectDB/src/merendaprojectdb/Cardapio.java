@@ -46,7 +46,42 @@ public class Cardapio {
     public ArrayList<DuplaDataCardapio> getList() {
         return this.cardapioList;
     }
-    
+    public int adicionar(Date data) {
+        ArrayList<DuplaDataCardapio> temp = new ArrayList<DuplaDataCardapio>();
+        boolean inserido = false;
+        int pos=0;
+        for(int i = 0; i < this.cardapioList.size(); i++)  {
+            if(!inserido && this.cardapioList.get(i).data.getDate() > data.getDate()) {
+                
+                temp.add(i, new DuplaDataCardapio(data,""));
+                inserido = true;
+                temp.add(i+1,this.cardapioList.get(i));
+                pos=i;
+                continue;
+            }
+            if(!inserido && this.cardapioList.get(i).data.getDate()==data.getDate())
+            {
+                return -1;
+            }
+            temp.add(this.cardapioList.get(i));
+        }
+        if(!inserido)
+        {
+            temp.add(new DuplaDataCardapio(data,""));
+        }
+        this.cardapioList=temp;
+        return pos;
+    }
+    /*public void removeDF(Date data){
+        int dia = data.getDate();
+        for(DuplaDataCardapio dupla : this.cardapioList)
+        {
+            if(dupla.data.getDate()==dia)
+            {
+                cardapioList.remove(dupla);
+            }
+        }
+    }*/
     public boolean remove(Date data) {
         for(DuplaDataCardapio dupla: cardapioList) {
             if(dupla.data.compareTo(data)==0) {

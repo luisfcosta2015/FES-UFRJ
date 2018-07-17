@@ -50,16 +50,16 @@
                       <Component id="jScrollPane1" min="-2" pref="375" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="linha" min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="proxButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="excluir" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="diaAdicionar" min="-2" pref="29" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="Adicionar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -85,9 +85,9 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="linha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="diaAdicionar" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="excluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Adicionar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -110,7 +110,7 @@
                   <Table columnCount="3" rowCount="0">
                     <Column editable="true" title="Dia" type="java.lang.Object"/>
                     <Column editable="true" title="Cardapio" type="java.lang.Object"/>
-                    <Column editable="true" title="Excluir" type="java.lang.Object"/>
+                    <Column editable="false" title="Excluir" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -133,7 +133,7 @@
                   </TableColumnModel>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
               <Events>
@@ -155,19 +155,19 @@
             <Property name="text" type="java.lang.String" value="excluir elemento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="linha">
+        <Component class="javax.swing.JTextField" name="diaAdicionar">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="linha"/>
+            <Property name="text" type="java.lang.String" value="Dia"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="excluir">
+        <Component class="javax.swing.JButton" name="Adicionar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Excluir"/>
+            <Property name="text" type="java.lang.String" value="Adicionar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="excluirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdicionarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
