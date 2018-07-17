@@ -41,13 +41,14 @@ public class Conexao {
             String DBUrl = "";
             String DBUser = "";
             String DBPass = "";
+            String[] Raw;
             
             // ***
             // Pega a Url, usuario e senha do arquivo bd.cfg para realizar
             // conexão com o BD. A mensagem de erro está relacionada com a
             // tentativa de ler o arquivo, ou seja, quem emitirá será o
             // Scanner do Java.
-            try (Scanner s = new Scanner(new File("bd.cfg")).useDelimiter("\\n")) {
+            try (Scanner s = new Scanner(new File("bd.cfg")).useDelimiter("\n")) {
                 DBUrl = s.next().split("'")[1];
                 DBUser = s.next().split("'")[1];
                 DBPass = s.next().split("'")[1];
@@ -56,8 +57,6 @@ public class Conexao {
                    Auxiliar.DBError(e.getMessage());
             }
             // ***
-            
-                //System.out.println(DBUrl + " " + DBUser + " " + DBPass);
             return DriverManager.getConnection(DBUrl, DBUser, DBPass);
         } catch (Exception e) {
             try {
