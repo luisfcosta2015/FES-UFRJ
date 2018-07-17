@@ -1,0 +1,3 @@
+NOME=Rodapé com Assinatura
+TIPO=FOOTER
+CAMPOS=dia;mes;ano;

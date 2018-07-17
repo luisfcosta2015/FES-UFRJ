@@ -1,0 +1,34 @@
+{
+  "nome":"Boletim v2",
+  "consultas":["consulta_boletim.json"],
+  "header":{
+    "id":"4",
+    "user_input":{},
+    "consultas":{},
+    "constantes":{
+      "nomeescola":"Escola Teste",
+      "titulo":"Boletim"
+    }
+  },
+  "body":{
+    "id":"3",
+    "user_input":{
+      "matricula":"Escreva a matricula:"
+    },
+    "consultas":{
+      "n1_1":{"consulta":"notas_cons", "campo":"n1", "pos":"0" },
+      "n2_1":{"consulta":"notas_cons", "campo":"n2", "pos":"0" },
+      "m_1":{"consulta":"notas_cons", "campo":"m", "pos":"0" },
+      "s_1":{"consulta":"notas_cons", "campo":"situacao", "pos":"0" }
+    },
+    "constantes":{}
+  },
+  "footer":{
+    "id":"5",
+    "user_input":{},
+    "consultas":{},
+    "constantes":{}
+  }
+
+
+}
