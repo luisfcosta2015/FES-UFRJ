@@ -1,1 +1,0 @@
-SELECT Nome FROM Professor WHERE Disciplina='$disciplina$'

@@ -64,7 +64,7 @@ public class MysqlConTest {
         teste.Conectar();
         
         try {
-            rs = teste.query("select * from aluno where nome = 'Arnaldo Pereira'");
+            rs = teste.query("select * from Aluno ");
             /* Avança para o primeiro elemento do ResultSet */
             /* Indicará erro se o ResultSet for vazio (Sabendo que Arnaldo Pereira está no BD) */
             assertTrue(rs.next());

@@ -9,4 +9,4 @@ from
 Avaliacao ava INNER JOIN Aluno a ON a.Matricula=ava.Matricula 
 INNER JOIN Aluno_Turma alut ON alut.Matricula=a.Matricula
 INNER JOIN Turma t ON t.ID_Turma=alut.ID_Turma
-WHERE ava.Matricula=1;
+WHERE ava.Matricula=$matricula$;

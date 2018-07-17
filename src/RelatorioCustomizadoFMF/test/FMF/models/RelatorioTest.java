@@ -23,9 +23,8 @@ public class RelatorioTest {
     public void testConstrutor() {
         Relatorio a = new Relatorio("Boletim.json");
         Map<String, String> m1 = a.listaPreenchimentosNecessarios();
-        m1.put("dia","15");
-        m1.put("mes","junho");
-        m1.put("ano","2018");
+        System.out.print(m1);
+        m1.put("matricula", "2");
         a.geraPDFPreenchido(m1);
     }
     

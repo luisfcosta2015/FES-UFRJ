@@ -1,6 +1,6 @@
 {
   "nome":"Boletim",
-  "consultas":["consulta_boletim.json"],
+  "consultas":["cons_1.sql"],
   "header":{
     "id":"1",
     "user_input":{},
@@ -12,24 +12,50 @@
   },
   "body":{
     "id":"3",
-    "user_input":{
-      "ano":"Escreva o ano:",
-      "mes":"Escreva o mês",
-      "dia":"Escreva o dia",
-      "matricula":"Escreva a matricula:",
-      "serie":"Escreva a serie do aluno:",
-    },
+    "user_input":{},
     "consultas":{
-      "n1_1":{"consulta":"notas_cons", "campo":"n1", "pos":"0" },
-      "n2_1":{"consulta":"notas_cons", "campo":"n2", "pos":"0" },
-      "m_1":{"consulta":"notas_cons", "campo":"m", "pos":"0" },
-      "s_1":{"consulta":"notas_cons", "campo":"situacao", "pos":"0" }
+      "disciplina1":{"consulta":"cons_1.sql", "campo":"Disciplina", "pos":"1" },
+      "disciplina2":{"consulta":"cons_1.sql", "campo":"Disciplina", "pos":"2" },
+      "disciplina3":{"consulta":"cons_1.sql", "campo":"Disciplina", "pos":"3" },
+      "disciplina4":{"consulta":"cons_1.sql", "campo":"Disciplina", "pos":"4" },
+      "disciplina5":{"consulta":"cons_1.sql", "campo":"Disciplina", "pos":"5" },
+      "disciplina6":{"consulta":"cons_1.sql", "campo":"Disciplina", "pos":"6" },
+
+      "nome":{"consulta":"cons_1.sql", "campo":"Nome", "pos":"1" },	
+      "ano":{"consulta":"cons_1.sql", "campo":"Ano", "pos":"1" },	
+      "turma":{"consulta":"cons_1.sql", "campo":"N_Turma", "pos":"1" },	
+      "serie":{"consulta":"cons_1.sql", "campo":"Serie", "pos":"1" },	
+
+      "n1_1":{"consulta":"cons_1.sql", "campo":"Nota1", "pos":"1" },
+      "n2_1":{"consulta":"cons_1.sql", "campo":"Nota2", "pos":"1" },
+      "n3_1":{"consulta":"cons_1.sql", "campo":"Nota3", "pos":"1" },
+      "n1_2":{"consulta":"cons_1.sql", "campo":"Nota1", "pos":"2" },
+      "n2_2":{"consulta":"cons_1.sql", "campo":"Nota2", "pos":"2" },
+      "n3_2":{"consulta":"cons_1.sql", "campo":"Nota3", "pos":"2" },
+      "n1_3":{"consulta":"cons_1.sql", "campo":"Nota1", "pos":"3" },
+      "n2_3":{"consulta":"cons_1.sql", "campo":"Nota2", "pos":"3" },
+      "n3_3":{"consulta":"cons_1.sql", "campo":"Nota3", "pos":"3" },
+      "n1_4":{"consulta":"cons_1.sql", "campo":"Nota1", "pos":"4" },
+      "n2_4":{"consulta":"cons_1.sql", "campo":"Nota2", "pos":"4" },
+      "n3_4":{"consulta":"cons_1.sql", "campo":"Nota3", "pos":"4" },
+      "n1_5":{"consulta":"cons_1.sql", "campo":"Nota1", "pos":"5" },
+      "n2_5":{"consulta":"cons_1.sql", "campo":"Nota2", "pos":"5" },
+      "n3_5":{"consulta":"cons_1.sql", "campo":"Nota3", "pos":"5" },
+      "n1_6":{"consulta":"cons_1.sql", "campo":"Nota1", "pos":"6" },
+      "n2_6":{"consulta":"cons_1.sql", "campo":"Nota2", "pos":"6" },
+      "n3_6":{"consulta":"cons_1.sql", "campo":"Nota3", "pos":"6" },
     },
-    "constantes":{}
+    "constantes":{
+        "sem":"-",
+        "curso":"Técnico",
+    }
   },
   "footer":{
     "id":"2",
-    "user_input":{},
+    "user_input":{
+    	"mes":"Digite o mês",
+        "dia":"Digite o dia"
+    },
     "consultas":{},
     "constantes":{}
   }

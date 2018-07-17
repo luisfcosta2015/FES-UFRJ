@@ -1,4 +1,5 @@
 #Query que retorna dados para a geracao de um boletim do aluno com matricula=1
+use Escola_Teste;
 Select a.nome AS 'Nome', 
 ava.Nota1,ava.Nota2,ava.Nota3, 
 ava.Disciplina, 

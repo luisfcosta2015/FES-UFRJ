@@ -3,6 +3,7 @@ package FMF.models;
 import FMF.controllers.Leitor;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -107,9 +108,29 @@ public class Relatorio {
      */
     // TODO : preencher os campos obtidos da consulta
     public void geraPDFPreenchido(Map<String, String> preenchido){
-        //============= START- PREENCHIMENTO DE CONSTANTES
-
         JSONObject o = new JSONObject(Leitor.leArquivo(this.file_path));
+
+        for(ArquivoConsulta cons: Consultas){
+            String c = cons.getConsulta(preenchido);
+            List<String> temp = new ArrayList<String>();
+            temp.add("header");
+            temp.add("body");
+            temp.add("footer");
+            for(String corpo: temp){
+                JSONObject ob = o.getJSONObject(corpo).getJSONObject("consultas");
+                Iterator<String> campos = ob.keys();
+                while(campos.hasNext()){
+                    String campo = campos.next();
+                    //se esse campo utiliza essa consulta
+                    if(ob.getJSONObject(campo).getString("consulta").equals(cons.filename)){
+                        preenchido.put(campo, QueryToJSON.valorQuery(preenchido, c, ob.getJSONObject(campo).getInt("pos"), ob.getJSONObject(campo).getString("campo") ));
+                    }
+                }
+            }
+        }
+        
+        //============= START- PREENCHIMENTO DE DADOS
+
         Iterator<String> constantes = o.getJSONObject("header").getJSONObject("constantes").keys();
         while(constantes.hasNext()){
             String chave = constantes.next();
@@ -125,7 +146,7 @@ public class Relatorio {
             String chave = constantes.next();
             preenchido.put(chave,o.getJSONObject("footer").getJSONObject("constantes").getString(chave));
         }
-        //============= END - PREENCHIMENTO DE CONSTANTES
+        //============= END - PREENCHIMENTO DE DADOS
         
         Template.generatePDF(this.header.getTemplatePreenchido(preenchido),
                 this.body.getTemplatePreenchido(preenchido),

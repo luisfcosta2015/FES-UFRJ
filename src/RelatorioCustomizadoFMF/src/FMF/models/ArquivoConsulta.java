@@ -23,8 +23,10 @@ import java.util.Set;
 public class ArquivoConsulta {
     private final String path;
     private static final String DATAPATH = "../data/Consultas/";
+    public String filename;
     public ArquivoConsulta(String filename) throws FileNotFoundException{
         this.path = DATAPATH + filename;
+        this.filename = filename;
         File file = new File(this.path);
         
         //Lança uma exeção caso não ache o arquivo
