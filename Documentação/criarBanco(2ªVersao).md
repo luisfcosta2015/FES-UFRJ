@@ -1,9 +1,9 @@
-#Script de criacao e populacao de um banco ficticio
-#Uso voltado para a geracao de um boletim 
+# Script de criacao e populacao de um banco ficticio
 
+## Script
+```SQL
 DROP DATABASE IF EXISTS Escola_Teste;
 CREATE DATABASE Escola_Teste CHARACTER SET utf8 COLLATE utf8_general_ci;
-use Escola_Teste;
 
 DROP TABLE IF EXISTS Aluno;
 DROP TABLE IF EXISTS Avaliacao;
