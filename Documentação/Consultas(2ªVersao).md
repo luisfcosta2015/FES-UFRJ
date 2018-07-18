@@ -1,4 +1,4 @@
-##Query que retorna dados para a geracao de um boletim do aluno com matricula=1
+## Query que retorna dados para a geracao de um boletim do aluno com matricula=1
 Select a.nome AS 'Nome',
 ava.Nota1,ava.Nota2,ava.Nota3,
 ava.Disciplina,
