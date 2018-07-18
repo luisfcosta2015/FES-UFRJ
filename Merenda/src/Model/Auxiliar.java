@@ -116,6 +116,7 @@ public class Auxiliar {
             byte[] digest2 = md.digest();
             String myHash2 = DatatypeConverter.printHexBinary(digest2).toUpperCase();
             
+            //System.out.println(myHash2);
             return myHash2;
         } catch(NoSuchAlgorithmException ex) {
             Auxiliar.DBError("Não existe o algoritmo MD5");  
@@ -163,8 +164,33 @@ public class Auxiliar {
     // SENÃO RETORNA A STRING ENTRE ASPAS
     public static String nullOrQuotes(String s){
         if (s == null || s.equals("")) return null;
-        System.out.println("passei por aqui com " + s );
+        //System.out.println("passei por aqui com " + s );
         return "\'" + s + "\'";
+    }
+    
+    // -1 se d1 < d2, 0 se d1 == d2, 1 se d1 > d2
+    private int comparaData(String data1, String data2){
+        String[] _data1 = data1.split("/"), _data2 = data2.split("/");
+        int[] d1 = new int[3], d2 = new int[3];
+        for (int i = 0; i < 3; i++){
+            d1[i] = Integer.valueOf(_data1[i]);
+            d2[i] = Integer.valueOf(_data2[i]);
+        }
+        if (d1[2] < d2[2]){
+            return -1;
+        } else if (d1[2] > d2[2]){
+            return 1;
+        } else if (d1[1] < d2[1]){
+            return -1;
+        } else if (d1[1] > d2[1]){
+            return 1;        
+        } else if (d1[0] < d2[0]){
+            return -1;
+        } else if (d1[0] > d2[0]){
+            return 1;        
+        }
+        
+        return 0;
     }
     
     // Realiza uma consulta genérica no banco

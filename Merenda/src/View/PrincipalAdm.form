@@ -104,36 +104,12 @@
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mItemConsultaConta">
+            <MenuItem class="javax.swing.JMenuItem" name="mItemInterfaceConsultas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Conta"/>
+                <Property name="label" type="java.lang.String" value="Consultas"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItemConsultaContaActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mItemConsultaInstituicao">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Institui&#xe7;&#xe3;o"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItemConsultaInstituicaoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mItemConsultaAlimento">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Alimento"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItemConsultaAlimentoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mItemConsultaEntrega">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Entrega"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItemConsultaEntregaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mItemInterfaceConsultasActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mItemEstoque">

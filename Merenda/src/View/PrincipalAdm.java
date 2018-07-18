@@ -47,10 +47,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
         mItemEntrada = new javax.swing.JMenuItem();
         mItemSaida = new javax.swing.JMenuItem();
         jMenuConsultar = new javax.swing.JMenu();
-        mItemConsultaConta = new javax.swing.JMenuItem();
-        mItemConsultaInstituicao = new javax.swing.JMenuItem();
-        mItemConsultaAlimento = new javax.swing.JMenuItem();
-        mItemConsultaEntrega = new javax.swing.JMenuItem();
+        mItemInterfaceConsultas = new javax.swing.JMenuItem();
         mItemEstoque = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,37 +143,13 @@ public class PrincipalAdm extends javax.swing.JFrame {
 
         jMenuConsultar.setText("Consultar");
 
-        mItemConsultaConta.setText("Conta");
-        mItemConsultaConta.addActionListener(new java.awt.event.ActionListener() {
+        mItemInterfaceConsultas.setLabel("Consultas");
+        mItemInterfaceConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaContaActionPerformed(evt);
+                mItemInterfaceConsultasActionPerformed(evt);
             }
         });
-        jMenuConsultar.add(mItemConsultaConta);
-
-        mItemConsultaInstituicao.setText("Instituição");
-        mItemConsultaInstituicao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaInstituicaoActionPerformed(evt);
-            }
-        });
-        jMenuConsultar.add(mItemConsultaInstituicao);
-
-        mItemConsultaAlimento.setText("Alimento");
-        mItemConsultaAlimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaAlimentoActionPerformed(evt);
-            }
-        });
-        jMenuConsultar.add(mItemConsultaAlimento);
-
-        mItemConsultaEntrega.setText("Entrega");
-        mItemConsultaEntrega.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemConsultaEntregaActionPerformed(evt);
-            }
-        });
-        jMenuConsultar.add(mItemConsultaEntrega);
+        jMenuConsultar.add(mItemInterfaceConsultas);
 
         mItemEstoque.setText("Estoque");
         mItemEstoque.setToolTipText("");
@@ -245,25 +218,12 @@ public class PrincipalAdm extends javax.swing.JFrame {
         Auxiliar.trocarTela(new CadastroEntrada());
     }//GEN-LAST:event_mItemEntradaActionPerformed
 
-    private void mItemConsultaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaContaActionPerformed
+    private void mItemInterfaceConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemInterfaceConsultasActionPerformed
         this.setVisible(false);
-        Auxiliar.trocarTela(new ConsultarConta());
-    }//GEN-LAST:event_mItemConsultaContaActionPerformed
-
-    private void mItemConsultaInstituicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaInstituicaoActionPerformed
-        this.setVisible(false);
-        Auxiliar.trocarTela(new ConsultarInstituicao());
-    }//GEN-LAST:event_mItemConsultaInstituicaoActionPerformed
-
-    private void mItemConsultaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaAlimentoActionPerformed
-        this.setVisible(false);
-        Auxiliar.trocarTela(new ConsultarAlimento());
-    }//GEN-LAST:event_mItemConsultaAlimentoActionPerformed
-
-    private void mItemConsultaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultaEntregaActionPerformed
-        this.setVisible(false);
-        Auxiliar.trocarTela(new ConsultarEntrega());
-    }//GEN-LAST:event_mItemConsultaEntregaActionPerformed
+        InterfaceConsultas  i = new InterfaceConsultas();
+        Auxiliar.trocarTela(i);
+        i.setResizable(true);
+    }//GEN-LAST:event_mItemInterfaceConsultasActionPerformed
 
     private void mItemSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSaidaActionPerformed
         this.setVisible(false);        
@@ -319,15 +279,12 @@ public class PrincipalAdm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuConsultar;
     private javax.swing.JMenuItem mItemAlimento;
-    private javax.swing.JMenuItem mItemConsultaAlimento;
-    private javax.swing.JMenuItem mItemConsultaConta;
-    private javax.swing.JMenuItem mItemConsultaEntrega;
-    private javax.swing.JMenuItem mItemConsultaInstituicao;
     private javax.swing.JMenuItem mItemConta;
     private javax.swing.JMenuItem mItemEntrada;
     private javax.swing.JMenuItem mItemEntrega;
     private javax.swing.JMenuItem mItemEstoque;
     private javax.swing.JMenuItem mItemInstituicao;
+    private javax.swing.JMenuItem mItemInterfaceConsultas;
     private javax.swing.JMenuItem mItemLogout;
     private javax.swing.JMenuItem mItemPedido;
     private javax.swing.JMenuItem mItemPessoa;
