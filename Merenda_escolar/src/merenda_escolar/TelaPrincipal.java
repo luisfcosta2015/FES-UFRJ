@@ -40,7 +40,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenLan = new javax.swing.JMenu();
         MenLanCA = new javax.swing.JMenuItem();
         MenLanES = new javax.swing.JMenuItem();
-        MenLanRem = new javax.swing.JMenuItem();
         MenRel = new javax.swing.JMenu();
         MenRelCA = new javax.swing.JMenuItem();
         MenRelRG = new javax.swing.JMenuItem();
@@ -111,13 +110,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenLan.setEnabled(false);
 
         MenLanCA.setText("Controle de Alimento");
+        MenLanCA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenLanCAActionPerformed(evt);
+            }
+        });
         MenLan.add(MenLanCA);
 
-        MenLanES.setText("Entrada e Saída");
+        MenLanES.setText("Entrada, Saída e Remanejamento");
+        MenLanES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenLanESActionPerformed(evt);
+            }
+        });
         MenLan.add(MenLanES);
-
-        MenLanRem.setText("Remanejamento");
-        MenLan.add(MenLanRem);
 
         Menu.add(MenLan);
 
@@ -134,12 +140,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenCon.setText("Consultas");
 
         MenConAli.setText("Alimento");
+        MenConAli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenConAliActionPerformed(evt);
+            }
+        });
         MenCon.add(MenConAli);
 
         MenLanCar.setText("Cardápio");
+        MenLanCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenLanCarActionPerformed(evt);
+            }
+        });
         MenCon.add(MenLanCar);
 
         MenLanEsc.setText("Escolas");
+        MenLanEsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenLanEscActionPerformed(evt);
+            }
+        });
         MenCon.add(MenLanEsc);
 
         Menu.add(MenCon);
@@ -193,6 +214,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void MenCadRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadRefActionPerformed
         // TODO add your handling code here:
+        TelaRefeicoes refeicoes = new TelaRefeicoes();
+        refeicoes.setVisible(true);
     }//GEN-LAST:event_MenCadRefActionPerformed
 
     private void MenCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadUserActionPerformed
@@ -227,6 +250,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaEscola escola = new TelaEscola();
         escola.setVisible(true);
     }//GEN-LAST:event_MenCadEscActionPerformed
+
+    private void MenConAliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenConAliActionPerformed
+        // TODO add your handling code here:
+        TelaConsultaAlimento ConsultaAlimento = new TelaConsultaAlimento ();
+        ConsultaAlimento.setVisible(true);
+    }//GEN-LAST:event_MenConAliActionPerformed
+
+    private void MenLanEscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenLanEscActionPerformed
+        // TODO add your handling code here:
+        TelaConsultaEscola ConsultaEscola = new TelaConsultaEscola();
+        ConsultaEscola.setVisible(true);
+    }//GEN-LAST:event_MenLanEscActionPerformed
+
+    private void MenLanCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenLanCarActionPerformed
+        // TODO add your handling code here:
+        TelaConsultaCardapio cardapio = new TelaConsultaCardapio();
+        cardapio.setVisible(true);
+    }//GEN-LAST:event_MenLanCarActionPerformed
+
+    private void MenLanCAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenLanCAActionPerformed
+        // TODO add your handling code here:
+        TelaControleAlimento ca = new TelaControleAlimento();
+        ca.setVisible(true);
+    }//GEN-LAST:event_MenLanCAActionPerformed
+
+    private void MenLanESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenLanESActionPerformed
+        // TODO add your handling code here:
+        TelaEntradaSaida es = new TelaEntradaSaida();
+        es.setVisible(true);        
+    }//GEN-LAST:event_MenLanESActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,7 +331,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenLanCar;
     private javax.swing.JMenuItem MenLanES;
     private javax.swing.JMenuItem MenLanEsc;
-    private javax.swing.JMenuItem MenLanRem;
     private javax.swing.JMenu MenOpSair;
     private javax.swing.JMenu MenRel;
     private javax.swing.JMenuItem MenRelCA;
