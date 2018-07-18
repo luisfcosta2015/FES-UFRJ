@@ -61,7 +61,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="MenLan">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Lan&#xe7;amentos"/>
+            <Property name="text" type="java.lang.String" value="Lan&#xe7;amentos e Relat&#xf3;rios"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
@@ -83,23 +83,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenLanESActionPerformed"/>
               </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="MenRel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Relat&#xf3;rios "/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="MenRelCA">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Controle da Alimenta&#xe7;&#xe3;o"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="MenRelRG">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio Geral"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

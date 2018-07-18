@@ -8,7 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Merenda_escolar.jar" size="387255" download="eager" />
+    <jar href="Merenda_escolar.jar" size="394157" download="eager" />
+    <jar href="lib\itextpdf-5.5.9.jar" size="2287148" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.46-bin.jar" size="1004840" download="eager" />
     <jar href="lib\rs2xml.jar" size="171578" download="eager" />
   </resources>

@@ -180,7 +180,7 @@ public class TelaAlimento extends javax.swing.JFrame {
 
         jLabel2.setText("Gênero");
 
-        jLabel3.setText("Quantidade");
+        jLabel3.setText(" Qtde (Kg)");
 
         txtDescr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

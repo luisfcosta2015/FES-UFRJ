@@ -40,9 +40,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenLan = new javax.swing.JMenu();
         MenLanCA = new javax.swing.JMenuItem();
         MenLanES = new javax.swing.JMenuItem();
-        MenRel = new javax.swing.JMenu();
-        MenRelCA = new javax.swing.JMenuItem();
-        MenRelRG = new javax.swing.JMenuItem();
         MenCon = new javax.swing.JMenu();
         MenConAli = new javax.swing.JMenuItem();
         MenLanCar = new javax.swing.JMenuItem();
@@ -106,7 +103,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         Menu.add(MenCad);
 
-        MenLan.setText("Lançamentos");
+        MenLan.setText("Lançamentos e Relatórios");
         MenLan.setEnabled(false);
 
         MenLanCA.setText("Controle de Alimento");
@@ -126,16 +123,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenLan.add(MenLanES);
 
         Menu.add(MenLan);
-
-        MenRel.setText("Relatórios ");
-
-        MenRelCA.setText("Controle da Alimentação");
-        MenRel.add(MenRelCA);
-
-        MenRelRG.setText("Relatório Geral");
-        MenRel.add(MenRelRG);
-
-        Menu.add(MenRel);
 
         MenCon.setText("Consultas");
 
@@ -332,9 +319,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenLanES;
     private javax.swing.JMenuItem MenLanEsc;
     private javax.swing.JMenu MenOpSair;
-    private javax.swing.JMenu MenRel;
-    private javax.swing.JMenuItem MenRelCA;
-    private javax.swing.JMenuItem MenRelRG;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem14;
