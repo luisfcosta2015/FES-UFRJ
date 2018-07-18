@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `merenda` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `merenda`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.34-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: merenda
 -- ------------------------------------------------------
--- Server version	5.7.20-log
+-- Server version	10.1.34-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -33,7 +31,7 @@ CREATE TABLE `alimento` (
   `fornecedor` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `marca` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +40,7 @@ CREATE TABLE `alimento` (
 
 LOCK TABLES `alimento` WRITE;
 /*!40000 ALTER TABLE `alimento` DISABLE KEYS */;
-INSERT INTO `alimento` VALUES (1,'Banana',1,100,'Quilograma (kg)','PalmTree S.A.','Braziliense'),(3,'Ovos',1,77,'Dúzia','Galinha Garnizé S.A.','Caipirinha'),(4,'Melancia',1,10,'Unidade','Magali S.A.','Vermelho por Dentro'),(5,'Cana de Açucar',0,2,'Metro (m)','Pão de Açucar S.A.','Canavial'),(7,'Feijão',0,120,'Quilograma (kg)','Zé do Caroço S.A.','Java Beans');
+INSERT INTO `alimento` VALUES (1,'Banana',1,100,'Quilograma (kg)','PalmTree S.A.','Braziliense'),(2,'Maça',1,30,'Quilograma (kg)','Isaac Newton S.A.','Argetzina'),(3,'Ovos',1,77,'Dúzia','Galinha Garnizé S.A.','Caipirinha'),(4,'Melancia',1,10,'Unidade','Magali S.A.','Vermelho por Dentro'),(5,'Cana de Açucar',0,2,'Metro (m)','Pão de Açucar S.A.','Canavial'),(7,'Feijão',0,120,'Quilograma (kg)','Zé do Caroço S.A.','Java Beans'),(46,'M',1,23,'Metro (m)','I','STCKAPAXPKTJHKEDQHXGUVCDU'),(180,'Macarrão',0,10,'Quilograma (kg)','Seu Zé','Massa do China'),(181,'Carne Moida',0,10,'Quilograma (kg)','Fazenda do João','Vaquinha'),(182,'Molho de tomate',0,10,'Quilograma (kg)','Extreme','Sadio');
 /*!40000 ALTER TABLE `alimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +104,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','48A538310CCA5506BBFF12908F6B5F1B'),(2,3,3,'5647389201','lei','640FA97CD253EBCC6BA6F195E2E372A9'),(3,2,2,'1029387456','dir','114D4B88B648593D797FC7F8313D2755');
+INSERT INTO `conta` VALUES (1,1,1,'1001001001','root','48A538310CCA5506BBFF12908F6B5F1B'),(2,3,3,'5647389201','lei','640FA97CD253EBCC6BA6F195E2E372A9'),(3,2,2,'1029387456','dir','114D4B88B648593D797FC7F8313D2755'),(214,163,1,'9464235795','MFJQPHI','347336E107D27CC23137A9FDB8130A91'),(515,367,2,'1234512345','Fei','B17C4B7AAFB46D78F487BC4B1F4657BC');
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +126,7 @@ CREATE TABLE `entrada` (
   KEY `fk_entrada_instituicao_idx` (`id_instituicao`),
   CONSTRAINT `fk_entrada_alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_entrada_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +135,7 @@ CREATE TABLE `entrada` (
 
 LOCK TABLES `entrada` WRITE;
 /*!40000 ALTER TABLE `entrada` DISABLE KEYS */;
-INSERT INTO `entrada` VALUES (1,1,1,'20/07/2018',50),(2,1,1,'20/07/2018',10);
+INSERT INTO `entrada` VALUES (1,1,1,'10/07/2018',50),(2,2,1,'12/07/2018',5),(3,180,367,'23/07/2018',15),(4,181,367,'23/07/2018',15),(5,182,367,'23/07/2018',15);
 /*!40000 ALTER TABLE `entrada` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,6 +161,7 @@ CREATE TABLE `entrega` (
 
 LOCK TABLES `entrega` WRITE;
 /*!40000 ALTER TABLE `entrega` DISABLE KEYS */;
+INSERT INTO `entrega` VALUES (1,'12/07/2018','Milionário e José Rico'),(2,'23/07/2018','Caminhões do seu Bino');
 /*!40000 ALTER TABLE `entrega` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +183,7 @@ CREATE TABLE `instituicao` (
   PRIMARY KEY (`id`,`id_tipo`),
   KEY `fk_instituicao_tipo_idx` (`id_tipo`),
   CONSTRAINT `fk_instituicao_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +192,7 @@ CREATE TABLE `instituicao` (
 
 LOCK TABLES `instituicao` WRITE;
 /*!40000 ALTER TABLE `instituicao` DISABLE KEYS */;
-INSERT INTO `instituicao` VALUES (1,1,'efaefaaef','12345678','Rua da Ouvidor',50,'2140028922'),(2,2,'Escolinha do professor Raimundo','98172487','Rua dos Guajajaras',1500,'9867432323'),(3,4,'Escolinha do Prof Girafales','12345812','Vila do Chavez',300,'3255543212');
+INSERT INTO `instituicao` VALUES (1,1,'efaefaaef','12345678','Rua da Ouvidor',50,'2140028922'),(2,2,'Escolinha do professor Raimundo','98172487','Rua dos Guajajaras',1500,'9867432323'),(3,4,'Escolinha do Prof Girafales','12345812','Vila do Chavez',300,'3255543212'),(49,2,'QORHSSDFTKJIUEU','66777111','JILFRFCHXE',22,'1558481611'),(112,3,'VUMBCEOFCILRLVSUXPMCV','69172576','IJFIBMTBZVXBIJT',15,'77505228521'),(163,4,'EODVGOVPDQFVXMR','82526717','JBXDXZHLIEEUFQ',4,'6577962405'),(264,2,'PCMIVMLCBISOAJRVOIS','92541563','EBXSFKCILXZPZKXZEDFTZGGKJLCKVZIIPERUZVZIOFDTBRVAIP',16,'7053587493'),(365,2,'KFVTZHTLAXU','44732100','JPHZJTRVKZFSAUHJUBDLHBFCBXKDVRKRBCPCQAFVBZGKZDEEQP',3,'25750648657'),(367,1,'Colegio Santa Tereza','43567254','Rua Santo Agostinho',123,'2198134589');
 /*!40000 ALTER TABLE `instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +220,7 @@ CREATE TABLE `lote_estoque` (
 
 LOCK TABLES `lote_estoque` WRITE;
 /*!40000 ALTER TABLE `lote_estoque` DISABLE KEYS */;
-INSERT INTO `lote_estoque` VALUES (1,1,'30');
+INSERT INTO `lote_estoque` VALUES (1,1,'40'),(1,2,'5'),(367,180,'15'),(367,181,'15'),(367,182,'15');
 /*!40000 ALTER TABLE `lote_estoque` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,6 +249,7 @@ CREATE TABLE `lote_pedido` (
 
 LOCK TABLES `lote_pedido` WRITE;
 /*!40000 ALTER TABLE `lote_pedido` DISABLE KEYS */;
+INSERT INTO `lote_pedido` VALUES (1,2,5),(2,180,15),(2,181,15),(2,182,15);
 /*!40000 ALTER TABLE `lote_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +267,7 @@ CREATE TABLE `pedido` (
   PRIMARY KEY (`id`),
   KEY `fk_pedido_instituicao_idx` (`id_instituicao`),
   CONSTRAINT `fk_pedido_instituicao` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,6 +276,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` VALUES (1,1,'11/07/2018'),(2,367,'20/07/2018');
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,7 +292,7 @@ CREATE TABLE `pessoa` (
   `nome` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cpf` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=516 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,7 +301,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,'admin','10010010023'),(2,'Matheus Feitosa','41239941231'),(3,'Victor Lento','65512341253');
+INSERT INTO `pessoa` VALUES (1,'admin','10010010023'),(2,'Matheus Feitosa','41239941231'),(3,'Victor Lento','65512341253'),(105,'mat','12345678912'),(163,'M','86109312756'),(214,'VBIDRMUUZRUPFBIPSDGJXXFJPHOFQKDZBHAIXBIFUGXQ','11209956036'),(515,'Matheus Feitosao','12345678912');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +332,7 @@ CREATE TABLE `saida` (
 
 LOCK TABLES `saida` WRITE;
 /*!40000 ALTER TABLE `saida` DISABLE KEYS */;
-INSERT INTO `saida` VALUES (1,1,1,'20/07/2018',30);
+INSERT INTO `saida` VALUES (1,1,1,'10/07/2018',10);
 /*!40000 ALTER TABLE `saida` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -406,14 +407,6 @@ LOCK TABLES `tipo_instituicao` WRITE;
 INSERT INTO `tipo_instituicao` VALUES (1,'Secretaria de Educação'),(2,'Escola Tipo A'),(3,'Escola Tipo B'),(4,'Escola Tipo C');
 /*!40000 ALTER TABLE `tipo_instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'merenda'
---
-
---
--- Dumping routines for database 'merenda'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -424,4 +417,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-18  0:09:09
+-- Dump completed on 2018-07-18  9:09:35
