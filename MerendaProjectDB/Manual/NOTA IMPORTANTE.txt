@@ -1,0 +1,2 @@
+Caso algo no programa seja mudado e seja necessário dar build novamente no programa, será necessário
+copiar a pasta arquivos para dentro da pasta dist, que será onde os arquivos serão gerados
