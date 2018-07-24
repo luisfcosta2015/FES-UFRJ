@@ -12,7 +12,7 @@ Vamos desenvolver um componente para a comunidade do Software Público *i-Educar
 
 ## Cenário atual:
 
-O *i-Educar* é um software livre e público totalmente on-line que torna mais fácil a prática e a gestão dos processos das escolas, matrículas e dados de alunos, apoiando os profissionais da rede de ensino e gestores a resolverem os desafios da educação dentro e fora da sala de aula. Ele foi desenvolvido originalmente pela Prefeitura de Itajaí-SC e disponibilizado como Software Livre no Portal do Software Público Brasileiro (<https://softwarepublico.gov.br>), onde atualmente é mantido pela Comunidade i-Educar.
+O *i-Educar* é um software livre e público totalmente on-line que torna mais fácil a prática e a gestão dos processos das escolas, matrículas e dados de alunos, apoiando os profissionais da rede de ensino e gestores a resolverem os desafios da educação dentro e fora da sala de aula. Ele foi desenvolvido originalmente pela Prefeitura de Itajaí-SC e disponibilizado como Software Livre no Portal do Software Público Brasileiro (<https://github.com/portabilis/i-educar>), onde atualmente é mantido pela Comunidade i-Educar.
 
 Para cumprir os requistos da disciplina, Fundamentos da Engenharia de Software, vamos precisar entregar um projeto completo de software,passando pela especificação, desenvolvimento, validação, evolução e testes. 
 
